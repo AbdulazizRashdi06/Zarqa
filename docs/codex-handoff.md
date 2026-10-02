@@ -35,13 +35,11 @@ You are finishing **Zarqa**, a lost-and-found PWA for GUtech university (Oman). 
 
 ## Status (update this section as you go)
 - Done: step 1 (skeleton, deploy, CI), step 2 (email-code sign-in through Resend from `hello@tryzarqa.com`, sessions, first-name step), the domain `tryzarqa.com`, and the logo.
-- Step 3 (reports), **server done and tested**: `POST /api/reports` (multipart: kind, title, category, description, locationName or locationText, eventDate yyyy-MM-dd optional, eventTime HH:mm optional, photos[] ≤ 4), `GET /api/reports/mine?kind=`, `GET/PATCH/DELETE /api/reports/{id}`, `POST /api/reports/{id}/close`, `GET /api/home`, `GET /api/photos/{id}` (access rules in `PhotoAccess`), `GET /api/me/stats`, `POST/DELETE /api/me/avatar`, `GET /api/avatars/{userId}`. Photos are re-encoded (EXIF and GPS stripped, rotated upright, at most 1600px). Free-text category is normalised (`Reports/Categories.cs`). Creating or editing a report enqueues a `MatchJob` (`Matching/MatchQueue.cs`).
-- Step 3, **web in progress**: wire the Home form to `POST /api/reports` (photo picker with client-side downscale, location pick vs free text, success → `/reports`), build the Reports screen (`design/screens/Reports.dc.html`) and the Profile screen (`Profile.dc.html`).
+- Step 3 (reports) **done and live**: API (`POST /api/reports` multipart with up to 4 photos, `GET /api/reports/mine`, `GET/PATCH/DELETE /api/reports/{id}`, `POST .../close`, `GET /api/home`, `GET /api/photos/{id}` with `PhotoAccess` rules, `/api/me/stats`, avatar upload) and web (Home form posts with photo previews, `Reports`, `ReportDetail`, `Profile` screens). Photos are re-encoded server-side with EXIF stripped. New reports enqueue a `MatchJob`.
+- Live check without email: `bash deploy/smoke.sh` signs in a throwaway user by writing a login code straight into the DB, posts a report with a photo, then cleans up.
 
 ## Remaining work
 Build each step to the design, with tests, then commit, push and deploy.
-
-**Step 3 web**: see Status.
 
 **Step 4, matching worker** (`server/Zarqa.Api/Matching/`). Port faithfully from `benchmark/` and don't redesign:
 - `benchmark/src/text.js` → tokens, overlap, alias index, `expandedLocationTokens`, `daysBetween`, `dateRelation`, `embeddingText`.
