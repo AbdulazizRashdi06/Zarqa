@@ -182,5 +182,10 @@
   "chat.returned.title": "RETURNED.",
   "chat.returned.body": "Back where it belongs. Zarqa saw this coming three days ago.",
   "chat.returned.home": "Back home",
-  "chat.returned.keep": "Keep chatting"
+  "chat.returned.keep": "Keep chatting",
+  "alerts.label": "DON'T MISS IT",
+  "alerts.body": "Turn on alerts and I'll ping you the second I spot a match or someone messages you.",
+  "alerts.install": "On iPhone, alerts need Zarqa on your Home Screen: tap Share, then 'Add to Home Screen', and open it from there.",
+  "alerts.turnOn": "Turn on",
+  "alerts.later": "Later"
 }

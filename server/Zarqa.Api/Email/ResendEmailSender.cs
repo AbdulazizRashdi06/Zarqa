@@ -16,18 +16,23 @@ public sealed class EmailOptions
 /// <summary>Sends email through Resend's HTTP API (https://resend.com/docs/api-reference/emails/send-email).</summary>
 public sealed class ResendEmailSender(HttpClient http, IOptions<EmailOptions> options, ILogger<ResendEmailSender> log) : IEmailSender
 {
-    public async Task SendSignInCodeAsync(string email, string code, CancellationToken ct)
+    public Task SendSignInCodeAsync(string email, string code, CancellationToken ct)
     {
         var message = SignInCodeEmail.Build(code);
+        return SendAsync(email, message.Subject, message.Html, message.Text, ct);
+    }
+
+    public async Task SendAsync(string email, string subject, string html, string text, CancellationToken ct)
+    {
         using var request = new HttpRequestMessage(HttpMethod.Post, "https://api.resend.com/emails")
         {
             Content = JsonContent.Create(new
             {
                 from = options.Value.From,
                 to = new[] { email },
-                subject = message.Subject,
-                html = message.Html,
-                text = message.Text,
+                subject,
+                html,
+                text,
             }),
         };
         request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", options.Value.ResendApiKey);
@@ -36,7 +41,7 @@ public sealed class ResendEmailSender(HttpClient http, IOptions<EmailOptions> op
         if (!response.IsSuccessStatusCode)
         {
             var body = await response.Content.ReadAsStringAsync(ct);
-            log.LogError("Resend refused the sign-in email to {Email}: {Status} {Body}", email, (int)response.StatusCode, body);
+            log.LogError("Resend refused the email to {Email}: {Status} {Body}", email, (int)response.StatusCode, body);
             throw new EmailNotSentException();
         }
     }

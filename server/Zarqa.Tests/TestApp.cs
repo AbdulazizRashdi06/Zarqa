@@ -25,6 +25,7 @@ public sealed class TestApp : WebApplicationFactory<Program>, IAsyncLifetime
     public string ConnectionString { get; private set; } = "";
     public CapturingEmailSender Emails { get; } = new();
     public FakeModels Models { get; } = new();
+    public FakePush Push { get; } = new();
     public string PhotoRoot { get; } = Path.Combine(Path.GetTempPath(), $"zarqa-photos-{Guid.NewGuid():N}");
 
     public async Task InitializeAsync()
@@ -71,6 +72,7 @@ public sealed class TestApp : WebApplicationFactory<Program>, IAsyncLifetime
             s.Replace(ServiceDescriptor.Transient<Zarqa.Api.Matching.IEmbedder>(_ => Models.Embedder));
             s.Replace(ServiceDescriptor.Transient<Zarqa.Api.Matching.ILuna>(_ => Models.Luna));
             s.Replace(ServiceDescriptor.Transient<Zarqa.Api.Matching.IJev>(_ => Models.Jev));
+            s.Replace(ServiceDescriptor.Singleton<Zarqa.Api.Notifications.IPushSender>(Push));
         });
     }
 
@@ -129,4 +131,26 @@ public sealed class CapturingEmailSender : IEmailSender
     }
 
     public string LastCodeFor(string email) => _last[email];
+
+    public ConcurrentQueue<(string To, string Subject)> Sent { get; } = new();
+
+    public Task SendAsync(string to, string subject, string html, string text, CancellationToken ct)
+    {
+        Sent.Enqueue((to, subject));
+        return Task.CompletedTask;
+    }
+}
+
+public sealed class FakePush : Zarqa.Api.Notifications.IPushSender
+{
+    public ConcurrentQueue<(string Endpoint, Zarqa.Api.Notifications.PushPayload Payload)> Sent { get; } = new();
+    /// <summary>Endpoints the "browser" has unsubscribed: sending to them reports Gone.</summary>
+    public ConcurrentDictionary<string, bool> Gone { get; } = new();
+
+    public Task<bool> SendAsync(Zarqa.Api.Data.PushSubscription s, Zarqa.Api.Notifications.PushPayload p, CancellationToken ct)
+    {
+        if (Gone.ContainsKey(s.Endpoint)) return Task.FromResult(false);
+        Sent.Enqueue((s.Endpoint, p));
+        return Task.FromResult(true);
+    }
 }

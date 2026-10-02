@@ -175,3 +175,10 @@ public class PushSubscription
     public required string Auth { get; set; }
     public DateTimeOffset CreatedAt { get; set; }
 }
+
+/// <summary>Small app-owned values, e.g. the generated web-push (VAPID) keys.</summary>
+public class AppSetting
+{
+    public required string Key { get; set; }
+    public required string Value { get; set; }
+}

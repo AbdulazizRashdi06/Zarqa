@@ -47,6 +47,7 @@ PHOTO="$(printf '%s' "$REPORT" | python -c 'import json,sys; print(json.load(sys
 echo "report:  $(printf '%s' "$REPORT" | python -c 'import json,sys; r=json.load(sys.stdin); print(r["kind"], "|", r["title"], "|", r["locationText"], "|", r["pill"], "|", len(r["photoIds"]), "photo")')"
 echo "photo:   $(curl -s -b "$JAR" -o /dev/null -w '%{http_code} %{content_type} %{size_download} bytes' "$URL/api/photos/$PHOTO")"
 echo "home:    $(json "$URL/api/home")"
+echo "push:    key $(json "$URL/api/push/key" | python -c 'import json,sys; print(len(json.load(sys.stdin)["publicKey"]), "chars")')"
 
 echo "delete:  $(curl -s -b "$JAR" -X DELETE -o /dev/null -w '%{http_code}' "$URL/api/reports/$ID")"
 "${SSH[@]}" "$PSQL -c \"delete from match_jobs where report_id = '$ID'; delete from login_codes where email = '$EMAIL'; delete from users where email = '$EMAIL';\""

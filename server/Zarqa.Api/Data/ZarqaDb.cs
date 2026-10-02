@@ -23,6 +23,7 @@ public class ZarqaDb(DbContextOptions<ZarqaDb> options) : DbContext(options), ID
     public DbSet<Message> Messages => Set<Message>();
     public DbSet<ConversationRead> ConversationReads => Set<ConversationRead>();
     public DbSet<PushSubscription> PushSubscriptions => Set<PushSubscription>();
+    public DbSet<AppSetting> AppSettings => Set<AppSetting>();
 
     protected override void ConfigureConventions(ModelConfigurationBuilder b)
     {
@@ -95,6 +96,12 @@ public class ZarqaDb(DbContextOptions<ZarqaDb> options) : DbContext(options), ID
 
         b.Entity<ConversationRead>(e => e.HasKey(x => new { x.UserId, x.ConversationId }));
 
-        b.Entity<PushSubscription>(e => e.HasIndex(x => x.Endpoint).IsUnique());
+        b.Entity<PushSubscription>(e =>
+        {
+            e.HasIndex(x => x.Endpoint).IsUnique();
+            e.HasIndex(x => x.UserId);
+        });
+
+        b.Entity<AppSetting>(e => e.HasKey(x => x.Key));
     }
 }

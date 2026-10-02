@@ -6,6 +6,7 @@ import { Avatar, BackHeader, Switch } from '../components/ui'
 import { t } from '../i18n'
 import { api, apiForm, ApiError } from '../lib/api'
 import { shrinkPhoto } from '../lib/images'
+import { enablePush, pushState } from '../lib/push'
 import s from './Profile.module.css'
 
 type Stats = { posts: number; gotBack: number; helpedReturn: number }
@@ -89,7 +90,15 @@ export default function Profile() {
             <span className={s.rowTitle}>{t('profile.alerts')}</span>
             <span className={s.rowSub}>{t('profile.alerts.sub')}</span>
           </span>
-          <Switch checked={me.matchAlerts} onChange={(v) => patch({ matchAlerts: v })} label={t('profile.alerts')} />
+          <Switch
+            checked={me.matchAlerts}
+            onChange={(v) => {
+              void patch({ matchAlerts: v })
+              // Turning alerts on is a tap: the moment the browser allows asking for push permission.
+              if (v && pushState() === 'default') void enablePush().catch(() => undefined)
+            }}
+            label={t('profile.alerts')}
+          />
         </div>
         <div className={s.row}>
           <span className={s.rowText}>

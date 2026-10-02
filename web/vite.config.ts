@@ -9,7 +9,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'icons/apple-touch-icon.png', 'mascot/*.png'],
+      includeAssets: ['favicon.svg', 'icons/apple-touch-icon.png', 'mascot/*.png', 'push-sw.js'],
       manifest: {
         name: 'Zarqa',
         short_name: 'Zarqa',
@@ -28,6 +28,8 @@ export default defineConfig({
       workbox: {
         // API responses are never cached: reports and chats must be live.
         navigateFallbackDenylist: [/^\/api\//],
+        // Push and notification-click handlers (public/push-sw.js).
+        importScripts: ['push-sw.js'],
         globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
       },
     }),

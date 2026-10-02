@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react'
 import { Link, useNavigate } from 'react-router'
 import { useSession } from '../auth/session'
+import { AlertsNudge } from '../components/AlertsNudge'
 import { ArrowRight, Camera, ChatBubble, Lock, Pin, TagIcon } from '../components/icons'
 import { Avatar, BigButton, LuggageTag, MonoLabel, RoundButton, Sticker, Switch, TearLine, Ticket, Wordmark, ZarqaBubble } from '../components/ui'
 import { t, tm, type StringKey } from '../i18n'
@@ -169,6 +170,8 @@ export default function Home() {
           </span>
         )}
       </Link>
+
+      {me?.matchAlerts && <AlertsNudge />}
 
       <div className={s.modes}>
         {(['lost', 'found'] as const).map((m, i) => {
