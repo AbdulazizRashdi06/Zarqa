@@ -1,6 +1,7 @@
 using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json;
+using Microsoft.EntityFrameworkCore;
 
 namespace Zarqa.Tests;
 
@@ -93,5 +94,18 @@ public class AuthFlowTests(TestApp app) : IClassFixture<TestApp>
 
         Assert.Equal(HttpStatusCode.BadRequest, (await http.PatchAsJsonAsync("/api/me", new { firstName = "<script>" })).StatusCode);
         Assert.Equal(HttpStatusCode.OK, (await http.PatchAsJsonAsync("/api/me", new { firstName = "عبدالعزيز" })).StatusCode);
+    }
+
+    [Fact]
+    public async Task Failed_email_returns_503_and_does_not_use_up_the_limit()
+    {
+        const string email = "outage@gutech.edu.om";
+        app.Emails.FailNext = true;
+        var r = await app.Client().PostAsJsonAsync("/api/auth/request-code", new { email });
+        Assert.Equal(HttpStatusCode.ServiceUnavailable, r.StatusCode);
+        Assert.Equal("We couldn't send the email just now. Try again in a minute.", await Error(r));
+
+        await using var db = app.Db();
+        Assert.False(await db.LoginCodes.AnyAsync(c => c.Email == email));
     }
 }

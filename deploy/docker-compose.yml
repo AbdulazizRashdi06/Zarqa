@@ -1,6 +1,9 @@
 # Production stack on the VPS. Secrets come from deploy/.env (never committed):
 #   POSTGRES_PASSWORD=...
 #   ZARQA_DOMAIN=zarqa.example.com
+#   EMAIL_PROVIDER=resend            (optional; default "log")
+#   RESEND_API_KEY=re_...            (set with deploy/set-secret.sh, never typed into chat)
+#   EMAIL_FROM=Zarqa <hello@zarqa.example.com>
 # Run: docker compose -f deploy/docker-compose.yml --env-file deploy/.env up -d --build
 name: zarqa
 
@@ -13,6 +16,10 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Production
       ConnectionStrings__Zarqa: Host=postgres;Database=zarqa;Username=zarqa;Password=${POSTGRES_PASSWORD}
+      # Sign-in emails: "log" (codes in the server log) until a Resend key and verified sender are set.
+      Email__Provider: ${EMAIL_PROVIDER:-log}
+      Email__ResendApiKey: ${RESEND_API_KEY:-}
+      Email__From: ${EMAIL_FROM:-}
     depends_on:
       postgres:
         condition: service_healthy

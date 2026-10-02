@@ -29,7 +29,7 @@ public sealed class TestApp : WebApplicationFactory<Program>, IAsyncLifetime
         var external = Environment.GetEnvironmentVariable("ZARQA_TEST_DB");
         if (string.IsNullOrEmpty(external))
         {
-            _container = new PostgreSqlBuilder().WithImage("pgvector/pgvector:pg17").Build();
+            _container = new PostgreSqlBuilder("pgvector/pgvector:pg17").Build();
             await _container.StartAsync();
             external = _container.GetConnectionString();
         }
@@ -42,13 +42,15 @@ public sealed class TestApp : WebApplicationFactory<Program>, IAsyncLifetime
         ConnectionString = new NpgsqlConnectionStringBuilder(_adminConnection) { Database = _database }.ConnectionString;
 
         // Migrate before the host starts: its hosted services (e.g. the cookie key ring) read the tables.
-        var options = new DbContextOptionsBuilder<ZarqaDb>()
-            .UseNpgsql(ConnectionString, o => o.UseVector())
-            .UseSnakeCaseNamingConvention()
-            .Options;
-        await using var db = new ZarqaDb(options);
+        await using var db = Db();
         await db.Database.MigrateAsync();
     }
+
+    /// <summary>A context on the test database, outside the app, for checking what the app wrote.</summary>
+    public ZarqaDb Db() => new(new DbContextOptionsBuilder<ZarqaDb>()
+        .UseNpgsql(ConnectionString, o => o.UseVector())
+        .UseSnakeCaseNamingConvention()
+        .Options);
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
@@ -79,8 +81,16 @@ public sealed class CapturingEmailSender : IEmailSender
 {
     private readonly ConcurrentDictionary<string, string> _last = new();
 
+    /// <summary>Makes the next send fail like a provider outage.</summary>
+    public bool FailNext { get; set; }
+
     public Task SendSignInCodeAsync(string email, string code, CancellationToken ct)
     {
+        if (FailNext)
+        {
+            FailNext = false;
+            throw new Zarqa.Api.Email.EmailNotSentException();
+        }
         _last[email] = code;
         return Task.CompletedTask;
     }

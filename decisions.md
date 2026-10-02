@@ -36,6 +36,7 @@ The decisions made while turning the uni matching prototype into a real app, and
 - **Database:** PostgreSQL with pgvector. Vector search replaces Firestore `findNearest`.
 - **Front end:** React + Vite + TypeScript, delivered as a phone-first PWA with web push and email as the backup.
 - **Hosting:** a cheap VPS running Docker Compose (app, Postgres, Caddy for HTTPS). Ordered 2026-10-02: Contabo Cloud VPS 4, "Hub Europe" region, IPv4 `173.249.40.122`. Access is by SSH key only (`~/.ssh/zarqa_vps` on the dev PC); password login gets disabled.
+- **Sign-in emails: Resend** (HTTP API, free tier 3,000/month). Chosen 2026-10-02 for its simple API and good delivery to Microsoft 365. It needs a verified sending domain. Until the key is set (`bash deploy/set-secret.sh RESEND_API_KEY`), codes go to the server log. The email has no links, so it can't be imitated for phishing.
 - **Sign-in:** a one-time code sent by email. Accepted addresses are those whose domain is exactly `gutech.edu.om` or ends in `.gutech.edu.om` (students use `student.gutech.edu.om`). Compare the parsed domain, never a plain string suffix.
 - **First milestone:** a campus pilot. No WhatsApp bot, native app or staff dashboard yet.
 

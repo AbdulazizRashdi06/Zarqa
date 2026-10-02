@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Zarqa.Api.Data;
+using Zarqa.Api.Email;
 
 namespace Zarqa.Api.Auth;
 
@@ -29,15 +30,26 @@ public static class AuthEndpoints
                 return Errors.TooMany("Too many codes for this email. Wait 15 minutes and try again.");
 
             var code = LoginCodes.Generate();
-            db.LoginCodes.Add(new LoginCode
+            var login = new LoginCode
             {
                 Email = address,
                 CodeHash = LoginCodes.Hash(address, code),
                 CreatedAt = now,
                 ExpiresAt = now + LoginCodes.Lifetime,
-            });
+            };
+            db.LoginCodes.Add(login);
             await db.SaveChangesAsync(ct);
-            await email.SendSignInCodeAsync(address, code, ct);
+            try
+            {
+                await email.SendSignInCodeAsync(address, code, ct);
+            }
+            catch (Exception e) when (e is EmailNotSentException or HttpRequestException or TaskCanceledException && !ct.IsCancellationRequested)
+            {
+                // A code nobody received shouldn't count against the address's limit.
+                db.LoginCodes.Remove(login);
+                await db.SaveChangesAsync(CancellationToken.None);
+                return Errors.Unavailable("We couldn't send the email just now. Try again in a minute.");
+            }
             return Results.Ok(new { email = address });
         }).RequireRateLimiting(RequestCodeLimit);
 
@@ -97,4 +109,5 @@ public static class Errors
     public static IResult Forbidden(string message) => Results.Json(new { error = message }, statusCode: StatusCodes.Status403Forbidden);
     public static IResult NotFound(string message = "Not found.") => Results.Json(new { error = message }, statusCode: StatusCodes.Status404NotFound);
     public static IResult TooMany(string message) => Results.Json(new { error = message }, statusCode: StatusCodes.Status429TooManyRequests);
+    public static IResult Unavailable(string message) => Results.Json(new { error = message }, statusCode: StatusCodes.Status503ServiceUnavailable);
 }
