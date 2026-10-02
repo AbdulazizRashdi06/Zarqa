@@ -1,0 +1,8 @@
+; Resend sending records for tryzarqa.com (BIND format, for Cloudflare: DNS > Records > Import).
+; Leave "Proxy imported DNS records" UNCHECKED.
+$ORIGIN tryzarqa.com.
+resend._domainkey	1	IN	TXT	"p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDQ7PRpql52PcuNDD9p8McTBJ5F6W7vhUYgnFdC/vcRsEmdrcKKGFVI5NI2EeIH2bMwxr5/frgIOBon3r2m4f+176lU31JhBnHNf8nx5evPZ1gnOfJaJSH21/bDJT7wKykxsGYbvdoR3BlBki5xdhrKR4P5YIXlvcx4QjPoIeAT/QIDAQAB"
+send	1	IN	MX	10 feedback-smtp.eu-west-1.amazonses.com.
+send	1	IN	TXT	"v=spf1 include:amazonses.com ~all"
+rsend	1	IN	CNAME	send.forge.rmta.net.
+_dmarc	1	IN	TXT	"v=DMARC1; p=none;"
