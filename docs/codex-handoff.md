@@ -36,7 +36,7 @@ You are finishing **Zarqa**, a lost-and-found PWA for GUtech university (Oman). 
 ## Status (update this section as you go)
 - Precache optimized from 2854.67 KiB to about 1261 KiB using WebP mascots and Latin font subsets. Original PNG artwork, including the iPhone, is unchanged.
 - Backups installed: nightly 02:17 UTC as `deploy`, database + photos, 14-day retention, checksum verification. Scratch DB and photo-volume restore passed on 2026-10-02. Off-site setup instructions in `CLAUDE.md` await owner storage.
-- Launch web completed: `/admin` stats, moderation and per-report logs; two-confirmation account deletion; public Terms, Privacy, Help and Tips. Four mobile browser regression tests added; all 86 server tests pass. Deployment validation is in progress.
+- Launch web completed: `/admin` stats, moderation and per-report logs; two-confirmation account deletion; public Terms, Privacy, Help and Tips. Four mobile browser regression tests added; all 86 server tests pass. Pushed to main and deployed; live phone flow and account deletion verified with disposable users and a synthetic match.
 - User instruction (2026-10-02): **keep the existing iPhone mascot**. Do not regenerate or replace it; file-size optimization is still in scope.
 - Done: step 1 (skeleton, deploy, CI), step 2 (email-code sign-in through Resend from `hello@tryzarqa.com`, sessions, first-name step), the domain `tryzarqa.com`, and the logo.
 - Step 3 (reports) **done and live**: API (`POST /api/reports` multipart with up to 4 photos, `GET /api/reports/mine`, `GET/PATCH/DELETE /api/reports/{id}`, `POST .../close`, `GET /api/home`, `GET /api/photos/{id}` with `PhotoAccess` rules, `/api/me/stats`, avatar upload) and web (Home form posts with photo previews, `Reports`, `ReportDetail`, `Profile` screens). Photos are re-encoded server-side with EXIF stripped. New reports enqueue a `MatchJob`.
@@ -47,19 +47,17 @@ You are finishing **Zarqa**, a lost-and-found PWA for GUtech university (Oman). 
 - Live check without email: `bash deploy/smoke.sh` signs in a throwaway user by writing a login code straight into the DB, posts a report with a photo, then cleans up.
 
 ## Remaining work
-Build each step to the design, with tests, then commit, push and deploy.
 
-**Step 8, launch prep: what's left (web + ops)**
-1. **Admin screen** at `/admin`: Profile already links to it when `me.isAdmin`. Show `/api/admin/stats` as tiles, a report list from `/api/admin/reports` (photos via `/api/photos/{id}`) with Close and Ban owner buttons, and a match-log viewer from `/api/admin/log?reportId=`. Keep it simple and in the app's style.
-2. **Delete my account** button in Profile: confirm twice, call `DELETE /api/me`, then go to `/signin`.
-3. **Static pages** in the app's style, reachable without signing in (the SignIn screen links Terms, Privacy and Help with `href="#"`; point them at real routes): `/terms`, `/privacy`, `/help`, `/tips` (replace the Placeholder routes).
-   - Privacy must state honestly what's stored (email, first name, reports, photos with EXIF stripped, chats), who sees what (matches only, never browsable; card/ID photos only the uploader), the AI processing (OpenAI/OpenRouter/TypeSafe get report text and non-card photos for matching), Resend for email, retention (60 days, then 6 months), and deletion (Profile). Mention Oman's PDPL (Royal Decree 6/2022) and say it's a student pilot, not a university service. Add a visible note that the texts need review before a wide launch.
-   - Help covers the contact email `hello@tryzarqa.com`.
-4. **Backups on the VPS**: a nightly cron for the `deploy` user. It runs `pg_dump` (via `docker compose exec -T postgres pg_dump -U zarqa zarqa | gzip`) and tars the `zarqa_photos` volume into `/opt/zarqa/backups/`, keeping 14 days. Do a test restore into a scratch database. Off-site copies need the user's own storage account: write the instructions in `CLAUDE.md`, don't create accounts.
-5. **Mascot**: `design/mascot/phone.png` (also `web/public/mascot/phone.png`) shows an Apple logo. Regenerate a generic phone with the `zarqa-mascot` skill if available (`.claude/skills/zarqa-mascot`); otherwise leave a TODO in `decisions.md`.
-6. **Precache size**: the service worker precaches about 2.8 MB, mostly mascot PNGs. Convert the mascots to WebP or shrink them to their display sizes.
+Launch web and local VPS backups are complete. The existing iPhone mascot is retained at the owner's explicit request.
+
+- Owner: configure an OpenAI API key or working OpenRouter using the existing set-secret script, then rerun the two-user flow with a **real model-generated match**. Presence-only checks on 2026-10-02 confirmed both are absent. Never share key values in chat.
+- Owner: add TypeSafe/Jev access if available; otherwise use the existing Luna fallback. Jev is not configured.
+- Owner: supply an off-site storage account and follow the encrypted backup instructions in CLAUDE.md. Local nightly backups and scratch restoration are verified.
+- Before wide launch: review the visible draft Terms and Privacy against current Oman PDPL requirements and overseas processing arrangements.
 
 ## Done means
+Verification on 2026-10-02: 86 server tests and 4 phone UI tests passed. The live 390 x 844 flow below passed using a synthetic match (not an AI result); actual model matching remains blocked by absent credentials. The synthetic users, reports and chats were deleted afterward. Photo upload/access passed separately in `deploy/smoke.sh`.
+
 All steps built, tests green, CI green, deployed to https://tryzarqa.com and checked end to end on a phone-sized viewport:
 1. sign in
 2. post a lost report

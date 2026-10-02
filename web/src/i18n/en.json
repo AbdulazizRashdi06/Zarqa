@@ -29,7 +29,7 @@
   "form.category": "Category",
   "form.category.placeholder": "Tech, Bags, Keys, Cards & IDs…",
   "form.cardNotice.title": "CARD PHOTOS STAY PRIVATE",
-  "form.cardNotice.body": "Only the proven owner will ever see them. Describing the card works better: the issuer, the colour, the first letter of the name.",
+  "form.cardNotice.body": "Only you can see these photos, even after a match. They never go to AI. Describe the issuer and colour instead; leave out names and card numbers.",
   "form.name.lost": "What did you lose?",
   "form.name.found": "What did you find?",
   "form.name.placeholder.lost": "AirPods Pro case",

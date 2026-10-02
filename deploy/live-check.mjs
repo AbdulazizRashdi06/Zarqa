@@ -1,7 +1,7 @@
 // Explicit opt-in live phone browser smoke test. Only creates/deletes its own fixtures.
 // Does NOT measure AI matching: a synthetic match is inserted when models are unavailable.
 import { chromium, expect } from '../web/node_modules/@playwright/test/index.mjs'
-import { execFileSync } from 'node:child_process'
+import { execFile } from 'node:child_process'
 import { createHash, randomBytes, randomInt, randomUUID } from 'node:crypto'
 import { homedir } from 'node:os'
 import { mkdirSync, readFileSync } from 'node:fs'
@@ -9,7 +9,21 @@ if (!process.argv.includes('--live')) throw new Error('Use --live to test tryzar
 const strings = JSON.parse(readFileSync(new URL('../web/src/i18n/en.json', import.meta.url)))
 const t = key => strings[key]
 const url = 'https://tryzarqa.com'
-const run = script => execFileSync('ssh', ['-i', `${homedir()}/.ssh/zarqa_vps`, '-o', 'BatchMode=yes', 'deploy@173.249.40.122', 'bash -s'], { input: script, encoding: 'utf8' }).trim()
+const run = async script => {
+  for (let attempt = 0; ; attempt++) {
+    try {
+      const result = await new Promise((resolve, reject) => {
+        const child = execFile('ssh', ['-i', `${homedir()}/.ssh/zarqa_vps`, '-o', 'BatchMode=yes', '-o', 'ConnectTimeout=10', 'deploy@173.249.40.122', 'bash -s'], { encoding: 'utf8' }, (error, stdout) => error ? reject(error) : resolve(stdout))
+        child.stdin.end(script)
+      })
+      return result.trim()
+    } catch (error) {
+      if (attempt >= 2 || error.code !== 255) throw error
+      console.log('SSH connection interrupted; retrying in 15 seconds.')
+      await new Promise(resolve => setTimeout(resolve, 15000))
+    }
+  }
+}
 const sql = query => run(`cd /opt/zarqa\ndocker compose -f deploy/docker-compose.yml --env-file deploy/.env exec -T postgres psql -X -v ON_ERROR_STOP=1 -qAt -U zarqa -d zarqa <<'SQL'\n${query}\nSQL\n`)
 const browser = await chromium.launch()
 const contexts = []
@@ -20,7 +34,7 @@ async function signIn(role) {
   emails.push(email)
   const code = String(randomInt(1000000)).padStart(6, '0'), salt = randomBytes(16)
   const hash = `${salt.toString('base64')}.${createHash('sha256').update(salt).update(`${email}\n${code}`).digest('base64')}`
-  sql(`INSERT INTO login_codes (id,email,code_hash,expires_at,attempts,created_at) VALUES (gen_random_uuid(),'${email}','${hash}',now()+interval '5 minutes',0,now());`)
+  await sql(`INSERT INTO login_codes (id,email,code_hash,expires_at,attempts,created_at) VALUES (gen_random_uuid(),'${email}','${hash}',now()+interval '5 minutes',0,now());`)
   const context = await browser.newContext({ viewport: { width: 390, height: 844 }, serviceWorkers: 'block' })
   contexts.push(context)
   const page = await context.newPage()
@@ -37,7 +51,7 @@ async function signIn(role) {
   const res = await context.request.get(`${url}/api/me`)
   const me = await res.json()
   // Reserved invalid domain ensures automatic claim emails cannot reach a real person.
-  sql(`UPDATE users SET email='${me.id}@example.invalid',match_alerts=false WHERE id='${me.id}';`)
+  await sql(`UPDATE users SET email='${me.id}@example.invalid',match_alerts=false WHERE id='${me.id}';`)
   return { page, context, id: me.id }
 }
 async function post(user, kind) {
@@ -65,7 +79,7 @@ try {
   const owner = await signIn('owner'), finder = await signIn('finder')
   const lost = await post(owner, 'lost'), found = await post(finder, 'found')
   const match = randomUUID()
-  sql(`INSERT INTO matches (id,lost_id,found_id,prescore,final_score,decided_by,reasons,status,created_at) VALUES ('${match}','${lost}','${found}',0.9,0.9,'LunaFallback',ARRAY['Synthetic smoke-test fixture; not a model result'],'Suggested',now());`)
+  await sql(`INSERT INTO matches (id,lost_id,found_id,prescore,final_score,decided_by,reasons,status,created_at) VALUES ('${match}','${lost}','${found}',0.9,0.9,'LunaFallback',ARRAY['Synthetic smoke-test fixture; not a model result'],'Suggested',now());`)
   await owner.page.goto(`${url}/matches/${match}`)
   await expect(owner.page.getByRole('button', { name: t('match.mine'), exact: true })).toBeVisible()
   await owner.page.screenshot({ path: 'test-results/live-match-phone.png', fullPage: true })
@@ -86,6 +100,7 @@ try {
   await expect(finder.page.getByText(t('chat.handover.confirmed'), { exact: true })).toBeVisible()
   await owner.page.getByRole('button', { name: t('chat.gotItBack'), exact: true }).click()
   await expect(owner.page.getByRole('dialog')).toBeVisible()
+  await owner.page.getByRole('dialog').locator('img').evaluate(img => img.decode())
   await owner.page.screenshot({ path: 'test-results/live-returned-phone.png', fullPage: true })
   const stats = await (await owner.context.request.get(`${url}/api/me/stats`)).json()
   const helped = await (await finder.context.request.get(`${url}/api/me/stats`)).json()
@@ -106,7 +121,7 @@ try {
     if (![204, 401].includes(response.status())) { failed = true; console.error('Fixture cleanup failed:', response.status()) }
     await c.close()
   }
-  for (const email of emails) sql(`DELETE FROM login_codes WHERE email='${email}';`)
+  for (const email of emails) await sql(`DELETE FROM login_codes WHERE email='${email}';`)
   await browser.close()
   if (failed) throw new Error('Some fixture accounts need cleanup')
 }

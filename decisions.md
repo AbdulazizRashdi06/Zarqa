@@ -177,6 +177,6 @@ Bare floor names such as "2nd floor" are left out because several places share t
 - [ ] **Replace the benchmark's reconstructed `luna` baseline** with the real `processReport` code (prompt and overlap weights).
 - [ ] **Measure real API latency.** Benchmark Luna timings include Codex CLI start-up.
 - [ ] **Production model access.** The Codex CLI with a ChatGPT login can't run on a server. The app needs an OpenAI API key (or a working OpenRouter) before the pilot.
-- [ ] **ID and bank card reports in the app.** Their photos must skip every model, be visible only to the finder and the claimant, and be matched on text alone.
-- [ ] **Privacy notice and terms** for the pilot, since no institution stands behind the stored data.
+- [x] **ID and bank card reports in the app.** Photos skip every model and are visible only to the uploader; matching uses text alone.
+- [x] **Pilot Privacy and Terms drafts** are public; legal review remains required before wide launch.
 - [ ] **Jev availability.** It's in early access and signups are paused, so keep the plain-Luna fallback.
