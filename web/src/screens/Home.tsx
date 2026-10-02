@@ -75,7 +75,7 @@ export default function Home() {
   return (
     <main className={s.page}>
       <header className={s.header}>
-        <Wordmark />
+        <Wordmark size={46} />
         <div className={s.headerRight}>
           <RoundButton to="/chats" label={t('home.chats')}>
             <ChatBubble size={20} />
