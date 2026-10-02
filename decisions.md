@@ -73,7 +73,9 @@ The decisions made while turning the uni matching prototype into a real app, and
 - Owner-only matches keep finders and found items from being browsed by people fishing for things that aren't theirs.
 - Keeping the decision prompts unchanged keeps the benchmark numbers valid for the app.
 
-**Later.** Before a public release: replace `mascot/phone.png` (it shows an Apple logo) and add pointing, shrugging and waving poses. Arabic and RTL after the pilot.
+**Later.** Add pointing, shrugging and waving poses. Arabic and RTL after the pilot.
+
+**Kept on purpose (2026-10-02).** `mascot/phone.png` (Zarqa holding an iPhone) stays as it is: the owner chose to keep the artwork, so don't replace it with a generic phone.
 
 ## 2026-10-01: Build the app from scratch: C# backend, phone-first web app
 
