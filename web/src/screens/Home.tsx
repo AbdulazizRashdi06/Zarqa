@@ -1,30 +1,23 @@
-import { useEffect, useMemo, useState } from 'react'
-import { Link } from 'react-router'
+import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react'
+import { Link, useNavigate } from 'react-router'
 import { useSession } from '../auth/session'
 import { ArrowRight, Camera, ChatBubble, Lock, Pin, TagIcon } from '../components/icons'
-import { Avatar, BigButton, LuggageTag, MonoLabel, RoundButton, Switch, TearLine, Ticket, Wordmark, ZarqaBubble } from '../components/ui'
+import { Avatar, BigButton, LuggageTag, MonoLabel, RoundButton, Sticker, Switch, TearLine, Ticket, Wordmark, ZarqaBubble } from '../components/ui'
 import { t, tm, type StringKey } from '../i18n'
+import { api, apiForm, ApiError } from '../lib/api'
+import { muscatNow } from '../lib/dates'
+import { shrinkPhoto } from '../lib/images'
 import { isSensitiveText, partOfDay, type Mode } from '../lib/rules'
+import type { HomeSummary, Report } from '../lib/types'
 import s from './Home.module.css'
 
 type Place = { name: string; aliases: string[] }
 
-const accentOf = (mode: Mode) => (mode === 'lost' ? 'var(--tan)' : 'var(--sage)')
+const MAX_PHOTOS = 4
+const TILTS = [-3, 2, -1.5, 2.5]
+type PickedPhoto = { blob: Blob; url: string }
 
-/** Today's date and the current time in campus time, as <input type=date|time> values. */
-function muscatNow() {
-  const parts = new Intl.DateTimeFormat('en-CA', {
-    timeZone: 'Asia/Muscat',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    hourCycle: 'h23',
-  }).formatToParts(new Date())
-  const get = (type: string) => parts.find((p) => p.type === type)!.value
-  return { date: `${get('year')}-${get('month')}-${get('day')}`, time: `${get('hour')}:${get('minute')}` }
-}
+const accentOf = (mode: Mode) => (mode === 'lost' ? 'var(--tan)' : 'var(--sage)')
 
 function formatDate(date: string, today: string) {
   const d = new Date(`${date}T12:00:00`)
@@ -53,6 +46,65 @@ export default function Home() {
   // When is optional: hidden until the user says they know. Time stays optional even then.
   const [knowsWhen, setKnowsWhen] = useState(false)
   const [time, setTime] = useState('')
+  // A name picked from the campus list; typing again turns it back into free text.
+  const [placeName, setPlaceName] = useState<string | null>(null)
+  const [photos, setPhotos] = useState<PickedPhoto[]>([])
+  const [busy, setBusy] = useState(false)
+  const [error, setError] = useState('')
+  const [summary, setSummary] = useState<HomeSummary | null>(null)
+  const fileInput = useRef<HTMLInputElement>(null)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    api<HomeSummary>('/home').then(setSummary).catch(() => setSummary(null))
+  }, [])
+
+  async function addPhotos(files: FileList | null) {
+    if (!files) return
+    const room = MAX_PHOTOS - photos.length
+    const picked = await Promise.all(
+      [...files].slice(0, room).map(async (f) => {
+        const blob = await shrinkPhoto(f)
+        return { blob, url: URL.createObjectURL(blob) }
+      }),
+    )
+    setPhotos((p) => [...p, ...picked])
+  }
+
+  function removePhoto(i: number) {
+    setPhotos((p) => {
+      URL.revokeObjectURL(p[i].url)
+      return p.filter((_, j) => j !== i)
+    })
+  }
+
+  async function submit(e: FormEvent) {
+    e.preventDefault()
+    if (busy) return
+    setBusy(true)
+    setError('')
+    const form = new FormData()
+    form.set('kind', mode)
+    form.set('category', category)
+    form.set('title', title)
+    form.set('description', description)
+    if (placeName) form.set('locationName', placeName)
+    else form.set('locationText', locQuery)
+    if (knowsWhen) {
+      form.set('eventDate', date)
+      if (time) form.set('eventTime', time)
+    }
+    photos.forEach((p, i) => form.append('photos', p.blob, `photo-${i + 1}.jpg`))
+    try {
+      const report = await apiForm<Report>('/reports', form)
+      photos.forEach((p) => URL.revokeObjectURL(p.url))
+      navigate('/reports', { state: { posted: report.kind } })
+    } catch (err) {
+      setError(err instanceof ApiError ? err.message : t('common.error'))
+    } finally {
+      setBusy(false)
+    }
+  }
 
   useEffect(() => {
     fetch('/api/locations')
@@ -77,10 +129,10 @@ export default function Home() {
       <header className={s.header}>
         <Wordmark size={46} />
         <div className={s.headerRight}>
-          <RoundButton to="/chats" label={t('home.chats')}>
+          <RoundButton to="/chats" label={t('home.chats')} badge={summary?.unreadChats}>
             <ChatBubble size={20} />
           </RoundButton>
-          <Avatar name={firstName || 'Z'} to="/profile" label={t('home.profile')} ring />
+          <Avatar name={firstName || 'Z'} photoUrl={me?.avatarUrl} to="/profile" label={t('home.profile')} ring />
         </div>
       </header>
 
@@ -101,11 +153,21 @@ export default function Home() {
         </span>
         <span className={s.reportsText}>
           <span className={s.reportsTitle}>{t('home.myReports')}</span>
-          <span className={s.reportsMeta}>{t('home.reportsMeta', { active: 0 })}</span>
+          <span className={s.reportsMeta}>
+            {t('home.reportsMeta', { active: summary?.active ?? 0 })}
+            {summary && summary.matchesWaiting > 0 && (
+              <span style={{ color: 'var(--tan)' }}> · {t('home.reportsWaiting', { n: summary.matchesWaiting })}</span>
+            )}
+          </span>
         </span>
         <span className={s.reportsArrow}>
           <ArrowRight size={20} color="var(--ink)" />
         </span>
+        {summary && summary.matchesWaiting > 0 && (
+          <span className={s.reportsSticker}>
+            <Sticker>{t('home.spotted')}</Sticker>
+          </span>
+        )}
       </Link>
 
       <div className={s.modes}>
@@ -142,7 +204,7 @@ export default function Home() {
       </div>
 
       <Ticket>
-        <form className={s.form} onSubmit={(e) => e.preventDefault()}>
+        <form className={s.form} onSubmit={submit} noValidate>
           <div className={s.formTop}>
             <span className={s.reportTag} style={{ background: accent }}>
               {tm('form.tag', mode)}
@@ -154,16 +216,45 @@ export default function Home() {
             <div className={s.fieldLabel}>
               <span className={s.num}>01</span>
               {tm('form.photos', mode)}
-              <span className={s.count}>0/4</span>
+              <span className={s.count}>
+                {photos.length}/{MAX_PHOTOS}
+              </span>
             </div>
             <div className={s.photos}>
-              <button type="button" aria-label={t('form.addPhoto')} className={s.photoAdd} style={{ transform: 'rotate(-3deg)' }}>
-                <Camera size={24} color="var(--ink)" />
-                {tm('form.photoCta', mode)}
-              </button>
-              {[2, -1.5, 2.5].map((r) => (
-                <div key={r} className={s.photoSlot} style={{ transform: `rotate(${r}deg)` }} />
+              {photos.map((p, i) => (
+                <div key={p.url} className={s.photoSlot} style={{ transform: `rotate(${TILTS[i]}deg)`, borderStyle: 'solid' }}>
+                  <img src={p.url} alt="" className={s.photoImg} />
+                  <button type="button" className={s.photoRemove} aria-label={t('form.removePhoto')} onClick={() => removePhoto(i)}>
+                    ×
+                  </button>
+                </div>
               ))}
+              {photos.length < MAX_PHOTOS && (
+                <button
+                  type="button"
+                  aria-label={t('form.addPhoto')}
+                  className={s.photoAdd}
+                  style={{ transform: `rotate(${TILTS[photos.length]}deg)` }}
+                  onClick={() => fileInput.current?.click()}
+                >
+                  <Camera size={24} color="var(--ink)" />
+                  {tm('form.photoCta', mode)}
+                </button>
+              )}
+              {Array.from({ length: Math.max(0, MAX_PHOTOS - photos.length - 1) }, (_, i) => (
+                <div key={i} className={s.photoSlot} style={{ transform: `rotate(${TILTS[photos.length + 1 + i]}deg)` }} />
+              ))}
+              <input
+                ref={fileInput}
+                type="file"
+                accept="image/*"
+                multiple
+                hidden
+                onChange={(e) => {
+                  void addPhotos(e.target.files)
+                  e.target.value = ''
+                }}
+              />
             </div>
           </div>
 
@@ -241,6 +332,7 @@ export default function Home() {
                 value={locQuery}
                 onChange={(e) => {
                   setLocQuery(e.target.value)
+                  setPlaceName(null)
                   setLocOpen(true)
                 }}
                 onFocus={() => setLocOpen(true)}
@@ -257,6 +349,7 @@ export default function Home() {
                     className={s.suggestItem}
                     onClick={() => {
                       setLocQuery(p.name)
+                      setPlaceName(p.name)
                       setLocOpen(false)
                     }}
                   >
@@ -300,7 +393,19 @@ export default function Home() {
 
           <TearLine />
 
-          <BigButton type="submit" variant="dark" accent={accent} label={tm('form.submit', mode)} labelSize={28} />
+          {error && (
+            <p className={s.error} role="alert">
+              {error}
+            </p>
+          )}
+          <BigButton
+            type="submit"
+            variant="dark"
+            accent={accent}
+            label={busy ? t('form.posting') : tm('form.submit', mode)}
+            labelSize={28}
+            disabled={busy || !title.trim() || !category.trim()}
+          />
         </form>
       </Ticket>
     </main>

@@ -26,3 +26,16 @@ export async function api<T = unknown>(path: string, { method, body }: Options =
   if (!res.ok) throw new ApiError(data?.error ?? 'Something went wrong. Try again.', res.status)
   return data as T
 }
+
+/** Multipart upload (reports with photos, avatar). */
+export async function apiForm<T = unknown>(path: string, form: FormData): Promise<T> {
+  let res: Response
+  try {
+    res = await fetch(`/api${path}`, { method: 'POST', body: form, credentials: 'same-origin' })
+  } catch {
+    throw new ApiError("Can't reach Zarqa. Check your connection.", 0)
+  }
+  const data = await res.json().catch(() => null)
+  if (!res.ok) throw new ApiError(data?.error ?? 'Something went wrong. Try again.', res.status)
+  return data as T
+}

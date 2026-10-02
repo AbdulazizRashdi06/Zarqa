@@ -9,6 +9,8 @@ export type Me = {
   showFirstName: boolean
   matchAlerts: boolean
   locale: string
+  avatarUrl: string | null
+  isAdmin: boolean
 }
 
 export type Session = {

@@ -58,3 +58,47 @@ export const SignOut = (p: IconProps) => (
     <path d="M10 16l-4-4 4-4M6 12h10" />
   </Svg>
 )
+
+// Item icons for report cards (from design/screens/Reports.dc.html).
+export const BudsIcon = (p: IconProps) => (
+  <Svg strokeWidth={1.7} {...p}>
+    <rect x="4" y="7" width="16" height="12" rx="5" />
+    <path d="M4 12h16" />
+    <path d="M11 14.5h2" />
+  </Svg>
+)
+export const CardIcon = (p: IconProps) => (
+  <Svg strokeWidth={1.7} {...p}>
+    <rect x="3" y="5" width="18" height="14" rx="2.5" />
+    <circle cx="8.5" cy="11" r="2" />
+    <path d="M5.8 16c.6-1.4 1.6-2 2.7-2s2.1.6 2.7 2" />
+    <path d="M14 10h4" />
+    <path d="M14 13.5h3" />
+  </Svg>
+)
+export const BottleIcon = (p: IconProps) => (
+  <Svg strokeWidth={1.7} {...p}>
+    <rect x="9.5" y="2.5" width="5" height="3" rx="1" />
+    <path d="M9 5.5h6l1 3v11a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-11z" />
+    <path d="M8 12h8" />
+  </Svg>
+)
+export const CalcIcon = (p: IconProps) => (
+  <Svg strokeWidth={1.7} {...p}>
+    <rect x="5" y="2.5" width="14" height="19" rx="2.5" />
+    <rect x="8" y="5.5" width="8" height="4" rx="1" />
+    <path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 16.5h.01M12 16.5h.01M15.5 16.5h.01" />
+  </Svg>
+)
+export const KeyIcon = (p: IconProps) => (
+  <Svg strokeWidth={1.7} {...p}>
+    <circle cx="8" cy="15" r="4" />
+    <path d="M11 12l8-8M16 7l2 2M14 9l2 2" />
+  </Svg>
+)
+export const BagIcon = (p: IconProps) => (
+  <Svg strokeWidth={1.7} {...p}>
+    <path d="M6 8h12l-1 12H7z" />
+    <path d="M9 8V6a3 3 0 0 1 6 0v2" />
+  </Svg>
+)

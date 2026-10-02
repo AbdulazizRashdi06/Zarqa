@@ -19,7 +19,10 @@ FROM mcr.microsoft.com/dotnet/aspnet:10.0
 WORKDIR /app
 COPY --from=api /out ./
 COPY --from=web /web/dist ./wwwroot
+# Photo volume mount point, owned by the non-root app user.
+RUN mkdir -p /app/data/photos && chown -R app:app /app/data
 ENV ASPNETCORE_URLS=http://+:8080
+ENV Photos__Root=/app/data/photos
 EXPOSE 8080
 USER app
 ENTRYPOINT ["dotnet", "Zarqa.Api.dll"]
