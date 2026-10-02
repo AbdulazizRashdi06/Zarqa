@@ -7,6 +7,9 @@ using Microsoft.EntityFrameworkCore;
 using Zarqa.Api.Auth;
 using Zarqa.Api.Data;
 using Zarqa.Api.Email;
+using Zarqa.Api.Matching;
+using Zarqa.Api.Photos;
+using Zarqa.Api.Reports;
 using Zarqa.Api.Users;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,6 +31,13 @@ else
 {
     builder.Services.AddSingleton<IEmailSender, LogEmailSender>();
 }
+
+builder.Services.Configure<PhotoOptions>(builder.Configuration.GetSection("Photos"));
+builder.Services.AddSingleton<PhotoStore>();
+builder.Services.AddScoped<MatchQueue>();
+// Up to 4 phone photos per report (the PWA shrinks them first, but older phones may not).
+builder.Services.Configure<Microsoft.AspNetCore.Http.Features.FormOptions>(o => o.MultipartBodyLengthLimit = 70 * 1024 * 1024);
+builder.WebHost.ConfigureKestrel(k => k.Limits.MaxRequestBodySize = 70 * 1024 * 1024);
 
 builder.Services.AddDataProtection().SetApplicationName("Zarqa").PersistKeysToDbContext<ZarqaDb>();
 
@@ -67,8 +77,11 @@ builder.Services.AddRateLimiter(o =>
     static RateLimitPartition<string> PerIp(HttpContext http, int permits) =>
         RateLimitPartition.GetFixedWindowLimiter(http.Connection.RemoteIpAddress?.ToString() ?? "unknown",
             _ => new FixedWindowRateLimiterOptions { PermitLimit = permits, Window = TimeSpan.FromMinutes(15) });
-    o.AddPolicy(AuthEndpoints.RequestCodeLimit, http => PerIp(http, 10));
-    o.AddPolicy(AuthEndpoints.VerifyLimit, http => PerIp(http, 30));
+    // Per network address; tests raise these (Auth:RequestCodePerIp / Auth:VerifyPerIp).
+    var codesPerIp = builder.Configuration.GetValue("Auth:RequestCodePerIp", 10);
+    var verifiesPerIp = builder.Configuration.GetValue("Auth:VerifyPerIp", 30);
+    o.AddPolicy(AuthEndpoints.RequestCodeLimit, http => PerIp(http, codesPerIp));
+    o.AddPolicy(AuthEndpoints.VerifyLimit, http => PerIp(http, verifiesPerIp));
 });
 
 builder.Services.Configure<ForwardedHeadersOptions>(o =>
@@ -112,6 +125,7 @@ api.MapGet("/locations", async (string? q, ZarqaDb db, CancellationToken ct) =>
 
 api.MapAuth();
 api.MapMe();
+api.MapReports();
 
 // Unknown /api paths are 404s; everything else is the PWA's client-side routing.
 api.MapFallback(() => Results.NotFound());

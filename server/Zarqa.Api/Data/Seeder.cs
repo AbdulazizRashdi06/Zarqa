@@ -11,7 +11,12 @@ public static class Seeder
         using var scope = services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<ZarqaDb>();
         await db.Database.MigrateAsync(ct);
+        await SeedLocationsAsync(db, ct);
+    }
 
+    /// <summary>Upserts the campus-map locations.</summary>
+    public static async Task SeedLocationsAsync(ZarqaDb db, CancellationToken ct = default)
+    {
         var seed = LoadLocations();
         var existing = await db.Locations.ToDictionaryAsync(x => x.Name, ct);
         foreach (var (name, aliases) in seed)
