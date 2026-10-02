@@ -43,16 +43,6 @@
   -webkit-text-stroke: 2px var(--paper);
 }
 
-.lede {
-  position: relative;
-  z-index: 1;
-  margin: 0;
-  font-size: 17px;
-  line-height: 1.45;
-  color: var(--text-soft);
-  max-width: 320px;
-}
-
 .legend {
   margin: -8px 0 0;
   display: flex;

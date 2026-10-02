@@ -74,7 +74,6 @@ export default function SignIn() {
         <span style={{ color: 'var(--tan)' }}>{t('signin.h3')}</span>
       </h1>
 
-      <p className={s.lede}>{t('signin.lede')}</p>
       <p className={s.legend}>{t('signin.legend')}</p>
 
       <form className={s.form} onSubmit={sendCode} noValidate>
