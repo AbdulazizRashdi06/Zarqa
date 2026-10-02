@@ -49,3 +49,9 @@ export function ItemThumb({
     </span>
   )
 }
+
+/** Just the category icon (Match tags). */
+export function ItemIcon({ categoryKey, size = 34, color = 'var(--ink)' }: { categoryKey: string | null; size?: number; color?: string }) {
+  const Icon = (categoryKey && byCategory[categoryKey]) || TagIcon
+  return <Icon size={size} color={color} />
+}

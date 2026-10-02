@@ -1,7 +1,10 @@
 import { BrowserRouter, Route, Routes } from 'react-router'
 import { GuestOnly, RequireSession, SessionProvider } from './auth/SessionProvider'
 import { t } from './i18n'
+import Chat from './screens/Chat'
+import Chats from './screens/Chats'
 import Home from './screens/Home'
+import Match from './screens/Match'
 import Placeholder from './screens/Placeholder'
 import Profile from './screens/Profile'
 import ReportDetail from './screens/ReportDetail'
@@ -20,9 +23,9 @@ export default function App() {
           <Route path="/" element={<RequireSession><Home /></RequireSession>} />
           <Route path="/reports" element={<RequireSession><Reports /></RequireSession>} />
           <Route path="/reports/:id" element={<RequireSession><ReportDetail /></RequireSession>} />
-          <Route path="/matches/:id" element={<RequireSession><Placeholder title={t('match.title')} mascot="happy" /></RequireSession>} />
-          <Route path="/chats" element={<RequireSession><Placeholder title={t('chats.title')} /></RequireSession>} />
-          <Route path="/chats/:id" element={<RequireSession><Placeholder title={t('chats.title')} /></RequireSession>} />
+          <Route path="/matches/:id" element={<RequireSession><Match /></RequireSession>} />
+          <Route path="/chats" element={<RequireSession><Chats /></RequireSession>} />
+          <Route path="/chats/:id" element={<RequireSession><Chat /></RequireSession>} />
           <Route path="/profile" element={<RequireSession><Profile /></RequireSession>} />
           <Route path="/tips" element={<RequireSession><Placeholder title={t('profile.tips')} /></RequireSession>} />
           <Route path="/help" element={<RequireSession><Placeholder title={t('profile.help')} /></RequireSession>} />

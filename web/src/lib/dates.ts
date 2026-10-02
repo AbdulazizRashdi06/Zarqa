@@ -17,12 +17,17 @@ export function muscatNow() {
 
 const dayMonth = (date: string) => new Date(`${date}T12:00:00`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })
 
-/** "Today", "Yesterday" or "24 Sep". */
+const shift = (date: string, days: number) => {
+  const d = new Date(`${date}T12:00:00Z`)
+  d.setUTCDate(d.getUTCDate() + days)
+  return d.toISOString().slice(0, 10)
+}
+
+/** "Today", "Yesterday", "Tomorrow" or "24 Sep". */
 export function relativeDay(date: string, today = muscatNow().date) {
   if (date === today) return 'Today'
-  const y = new Date(`${today}T12:00:00`)
-  y.setDate(y.getDate() - 1)
-  if (date === y.toISOString().slice(0, 10)) return 'Yesterday'
+  if (date === shift(today, -1)) return 'Yesterday'
+  if (date === shift(today, 1)) return 'Tomorrow'
   return dayMonth(date)
 }
 
