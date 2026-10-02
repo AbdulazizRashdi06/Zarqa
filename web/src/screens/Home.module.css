@@ -20,7 +20,7 @@
 .hello {
   position: relative;
   min-height: clamp(140px, 40vw, 172px);
-  margin-bottom: -20px;
+  margin-bottom: -6px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
