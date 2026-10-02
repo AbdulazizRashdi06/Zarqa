@@ -62,14 +62,18 @@
 }
 
 /* MY REPORTS: one line, louder only when a match is waiting */
+/* Sits under the tags, left of Zarqa peeking over the ticket */
 .reportsChip {
   position: relative;
   z-index: 1;
+  align-self: flex-start;
+  max-width: calc(100% - 112px);
+  white-space: nowrap;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   min-height: var(--tap);
-  padding: 0 14px 0 14px;
+  padding: 0 12px;
   border: 1.5px solid var(--slate);
   border-radius: 999px;
   background: var(--surface);
@@ -81,18 +85,23 @@
 }
 .reportsTitle {
   font-family: var(--font-display);
-  font-size: 19px;
+  font-size: clamp(16px, 4.9vw, 19px);
   line-height: 1;
   letter-spacing: 0.5px;
   text-transform: uppercase;
 }
-.reportsMeta {
-  margin-left: auto;
+.reportsCount {
+  min-width: 24px;
+  height: 24px;
+  padding: 0 7px;
+  border-radius: 12px;
+  background: var(--slate);
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 1.2px;
-  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .reportsSticker {
   position: absolute;
@@ -116,7 +125,7 @@
 }
 .modeTag {
   height: 84px;
-  padding: 10px 12px 10px 34px;
+  padding: 10px 10px 10px 33px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -128,7 +137,8 @@
   line-height: 0.95;
 }
 .modeSmall {
-  font-size: 13px;
+  font-size: clamp(11px, 3.3vw, 13px);
+  white-space: nowrap;
   font-weight: 700;
 }
 
@@ -337,6 +347,11 @@
   position: relative;
   height: 76px;
 }
+.photoEmpty {
+  height: 76px;
+  border-radius: 10px;
+  border: 2px dashed var(--paper-line);
+}
 .photoImg {
   width: 100%;
   height: 100%;
@@ -393,4 +408,32 @@
   letter-spacing: 1.2px;
   text-transform: uppercase;
   color: var(--ink-muted);
+}
+
+/* Room above the ticket for Zarqa; she stands behind the paper. */
+.ticketWrap {
+  position: relative;
+  margin-top: -8px;
+  isolation: isolate;
+}
+.peek {
+  position: absolute;
+  z-index: -1;
+  right: 6px;
+  bottom: calc(100% - 14px);
+  width: 100px;
+  height: auto;
+  pointer-events: none;
+}
+
+@media (max-width: 340px) {
+  .peek {
+    width: 92px;
+  }
+  .reportsChip {
+    max-width: calc(100% - 100px);
+  }
+  .reportsCount {
+    display: none;
+  }
 }

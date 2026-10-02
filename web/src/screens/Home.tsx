@@ -220,18 +220,6 @@ export default function Home() {
         />
       </div>
 
-      <Link to="/reports" className={`${s.reportsChip} ${waiting > 0 ? s.reportsHot : ''}`}>
-        <TagIcon size={20} color="var(--text)" />
-        <span className={s.reportsTitle}>{t('home.myReports')}</span>
-        {summary && <span className={s.reportsMeta}>{t('home.reportsMeta', { active: summary.active })}</span>}
-        {waiting > 0 && (
-          <span className={s.reportsSticker}>
-            <Sticker>{t('home.reportsWaiting', { n: waiting })}</Sticker>
-          </span>
-        )}
-        <ArrowRight size={18} color="var(--text-muted)" />
-      </Link>
-
       <div className={s.modes}>
         {(['lost', 'found'] as const).map((m) => {
           const on = m === mode
@@ -261,6 +249,25 @@ export default function Home() {
         })}
       </div>
 
+      <Link to="/reports" className={`${s.reportsChip} ${waiting > 0 ? s.reportsHot : ''}`}>
+        <TagIcon size={20} color="var(--text)" />
+        <span className={s.reportsTitle}>{t('home.myReports')}</span>
+        {summary && (
+          <span className={s.reportsCount} aria-label={t('home.reportsMeta', { active: summary.active })}>
+            {summary.active}
+          </span>
+        )}
+        {waiting > 0 && (
+          <span className={s.reportsSticker}>
+            <Sticker>{t('home.reportsWaiting', { n: waiting })}</Sticker>
+          </span>
+        )}
+        <ArrowRight size={18} color="var(--text-muted)" />
+      </Link>
+
+      <div className={s.ticketWrap}>
+        {/* Zarqa peeks over the ticket, camera ready, ready to snap the item. */}
+        <img src="/mascot/home-camera-peek.webp" alt="" className={s.peek} />
       <Ticket>
         <form className={s.form} onSubmit={submit} noValidate>
           <div className={s.field}>
@@ -282,11 +289,14 @@ export default function Home() {
                 </div>
               ))}
               {photos.length < MAX_PHOTOS && (
-                <button type="button" aria-label={t('form.addPhoto')} className={s.photoAdd} onClick={() => fileInput.current?.click()}>
+                <button type="button" aria-label={t('form.addPhoto')} className={s.photoAdd} style={{ transform: `rotate(${TILTS[photos.length]}deg)` }} onClick={() => fileInput.current?.click()}>
                   <Camera size={24} color="var(--ink)" />
                   <span aria-hidden="true">{tm('form.photoCta', mode)}</span>
                 </button>
               )}
+              {Array.from({ length: Math.max(0, MAX_PHOTOS - photos.length - 1) }, (_, i) => (
+                <div key={i} aria-hidden="true" className={s.photoEmpty} style={{ transform: `rotate(${TILTS[photos.length + 1 + i]}deg)` }} />
+              ))}
               <input
                 ref={fileInput}
                 type="file"
@@ -442,6 +452,7 @@ export default function Home() {
           )}
         </form>
       </Ticket>
+      </div>
 
 
       {me?.matchAlerts && <AlertsNudge />}
