@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 using Zarqa.Api.Auth;
+using Zarqa.Api.Chat;
 using Zarqa.Api.Data;
 using Zarqa.Api.Email;
 using Zarqa.Api.Matching;
@@ -141,6 +142,8 @@ api.MapGet("/locations", async (string? q, ZarqaDb db, CancellationToken ct) =>
 api.MapAuth();
 api.MapMe();
 api.MapReports();
+api.MapMatches();
+api.MapChats();
 
 // Unknown /api paths are 404s; everything else is the PWA's client-side routing.
 api.MapFallback(() => Results.NotFound());

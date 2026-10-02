@@ -197,14 +197,3 @@ public sealed class Matcher(
         return await db.ReviewLogs.Where(l => l.CreatedAt >= today).SumAsync(l => l.CostUsd ?? 0, ct);
     }
 }
-
-/// <summary>Hooks for push and email notifications (step 7).</summary>
-public interface INotifier
-{
-    Task MatchCreatedAsync(Guid matchId, CancellationToken ct);
-}
-
-public sealed class NoopNotifier : INotifier
-{
-    public Task MatchCreatedAsync(Guid matchId, CancellationToken ct) => Task.CompletedTask;
-}
