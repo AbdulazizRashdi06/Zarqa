@@ -24,4 +24,8 @@
     <ProjectReference Include="..\Zarqa.Api\Zarqa.Api.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Fixtures\**" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>

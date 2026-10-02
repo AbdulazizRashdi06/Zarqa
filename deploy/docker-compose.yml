@@ -22,6 +22,12 @@ services:
       Email__From: ${EMAIL_FROM:-}
       # TEST ONLY: shows the sign-in code in the app (anyone can sign in as anyone). Off for real users.
       Auth__TestMode: ${AUTH_TEST_MODE:-false}
+      # Matching models (secrets: set with deploy/set-secret.*). No keys = matching waits, nothing breaks.
+      Models__OpenAiApiKey: ${OPENAI_API_KEY:-}
+      Models__OpenAiBaseUrl: ${OPENAI_BASE_URL:-}
+      Models__OpenRouterApiKey: ${OPENROUTER_API_KEY:-}
+      Models__TypeSafeApiKey: ${TYPESAFE_API_KEY:-}
+      Models__DailySpendCapUsd: ${MODEL_DAILY_CAP_USD:-2}
     depends_on:
       postgres:
         condition: service_healthy

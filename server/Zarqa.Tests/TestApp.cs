@@ -24,6 +24,7 @@ public sealed class TestApp : WebApplicationFactory<Program>, IAsyncLifetime
 
     public string ConnectionString { get; private set; } = "";
     public CapturingEmailSender Emails { get; } = new();
+    public FakeModels Models { get; } = new();
     public string PhotoRoot { get; } = Path.Combine(Path.GetTempPath(), $"zarqa-photos-{Guid.NewGuid():N}");
 
     public async Task InitializeAsync()
@@ -62,7 +63,15 @@ public sealed class TestApp : WebApplicationFactory<Program>, IAsyncLifetime
         builder.UseSetting("Photos:Root", PhotoRoot);
         builder.UseSetting("Auth:RequestCodePerIp", "1000");
         builder.UseSetting("Auth:VerifyPerIp", "1000");
-        builder.ConfigureServices(s => s.Replace(ServiceDescriptor.Singleton<IEmailSender>(Emails)));
+        // Tests drive the matching worker step by step (MatchWorker.RunOneAsync).
+        builder.UseSetting("Matching:Worker", "false");
+        builder.ConfigureServices(s =>
+        {
+            s.Replace(ServiceDescriptor.Singleton<IEmailSender>(Emails));
+            s.Replace(ServiceDescriptor.Transient<Zarqa.Api.Matching.IEmbedder>(_ => Models.Embedder));
+            s.Replace(ServiceDescriptor.Transient<Zarqa.Api.Matching.ILuna>(_ => Models.Luna));
+            s.Replace(ServiceDescriptor.Transient<Zarqa.Api.Matching.IJev>(_ => Models.Jev));
+        });
     }
 
     /// <summary>A signed-in client for a fresh user with a first name.</summary>
@@ -73,6 +82,13 @@ public sealed class TestApp : WebApplicationFactory<Program>, IAsyncLifetime
         (await http.PostAsJsonAsync("/api/auth/verify", new { email, code = Emails.LastCodeFor(email.ToLowerInvariant()) })).EnsureSuccessStatusCode();
         (await http.PatchAsJsonAsync("/api/me", new { firstName })).EnsureSuccessStatusCode();
         return http;
+    }
+
+    /// <summary>Runs the matching worker until no job is due.</summary>
+    public async Task DrainMatchingAsync()
+    {
+        var worker = Services.GetRequiredService<Zarqa.Api.Matching.MatchWorker>();
+        for (var i = 0; i < 50 && await worker.RunOneAsync(CancellationToken.None); i++) { }
     }
 
     /// <summary>A client that keeps cookies; https so the Secure auth cookie is sent back.</summary>

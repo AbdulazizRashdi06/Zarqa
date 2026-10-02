@@ -2,6 +2,20 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-10-02: Matching in the app (step 4)
+
+**Decision.**
+- **A faithful port** of the benchmark's luna-debate, in `server/Zarqa.Api/Matching/`. A golden test checks the C# text helpers and preliminary score against the benchmark's own output for 353 campus pairs (within 1e-9), so the benchmark's numbers apply to the app. The advocate and fallback prompts are copied verbatim.
+- **Pipeline per report:** embed, then vector top 25 (other people's open or in-chat reports of the opposite kind), then a prescore shortlist (≥ 0.56, top 10), then review. It runs in both directions.
+- **Review:** the debate with Jev when Jev is configured. If Jev is missing or fails, a plain Luna review decides at 0.72. If an advocate call fails, the job is retried (3 tries with backoff).
+- **A pair is reviewed once.** Suggested, confirmed and rejected pairs are never reviewed or suggested again.
+- **Photos:** the first 2 per report go to the models; card/ID reports send none.
+- **Queue:** `match_jobs`, with a single background worker. **Without model keys, jobs wait** and nothing breaks.
+- **Spend cap:** matching pauses for the day once logged model cost reaches `MODEL_DAILY_CAP_USD` (default $2). Expected pilot cost is about $3 a year.
+- **Audit trail:** every step (embed, shortlist with prescore parts, each review with advocate arguments and Jev answers, reasons) goes to `review_log`.
+
+**Why.** Recall was measured on exactly this pipeline. Re-reviewing rejected pairs would only nag people.
+
 ## 2026-10-02: Name, design and product flow
 
 **Decision.**

@@ -35,6 +35,21 @@ else
 builder.Services.Configure<PhotoOptions>(builder.Configuration.GetSection("Photos"));
 builder.Services.AddSingleton<PhotoStore>();
 builder.Services.AddScoped<MatchQueue>();
+
+// Matching (decisions.md: luna-debate). Without model keys the worker waits and jobs stay queued.
+builder.Services.Configure<ModelOptions>(builder.Configuration.GetSection("Models"));
+builder.Services.AddSingleton(_ => new AliasIndex(Seeder.LoadLocations().Select(kv => (kv.Key, kv.Value))));
+builder.Services.AddHttpClient<IEmbedder, OpenAiEmbedder>(c => c.Timeout = TimeSpan.FromSeconds(60));
+builder.Services.AddHttpClient<ILuna, OpenAiLuna>(c => c.Timeout = TimeSpan.FromSeconds(120));
+builder.Services.AddHttpClient<IJev, TypeSafeJev>(c => c.Timeout = TimeSpan.FromSeconds(60));
+builder.Services.AddScoped<DebateReviewer>();
+builder.Services.AddScoped<LunaReviewer>();
+builder.Services.AddScoped<ReasonWriter>();
+builder.Services.AddScoped<Matcher>();
+builder.Services.AddScoped<INotifier, NoopNotifier>();
+builder.Services.AddSingleton<MatchWorker>();
+if (builder.Configuration.GetValue("Matching:Worker", true))
+    builder.Services.AddHostedService(sp => sp.GetRequiredService<MatchWorker>());
 // Up to 4 phone photos per report (the PWA shrinks them first, but older phones may not).
 builder.Services.Configure<Microsoft.AspNetCore.Http.Features.FormOptions>(o => o.MultipartBodyLengthLimit = 70 * 1024 * 1024);
 builder.WebHost.ConfigureKestrel(k => k.Limits.MaxRequestBodySize = 70 * 1024 * 1024);

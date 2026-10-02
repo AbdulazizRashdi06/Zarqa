@@ -36,22 +36,11 @@ You are finishing **Zarqa**, a lost-and-found PWA for GUtech university (Oman). 
 ## Status (update this section as you go)
 - Done: step 1 (skeleton, deploy, CI), step 2 (email-code sign-in through Resend from `hello@tryzarqa.com`, sessions, first-name step), the domain `tryzarqa.com`, and the logo.
 - Step 3 (reports) **done and live**: API (`POST /api/reports` multipart with up to 4 photos, `GET /api/reports/mine`, `GET/PATCH/DELETE /api/reports/{id}`, `POST .../close`, `GET /api/home`, `GET /api/photos/{id}` with `PhotoAccess` rules, `/api/me/stats`, avatar upload) and web (Home form posts with photo previews, `Reports`, `ReportDetail`, `Profile` screens). Photos are re-encoded server-side with EXIF stripped. New reports enqueue a `MatchJob`.
+- Step 4 (matching) **done and deployed**: `server/Zarqa.Api/Matching/` (TextRules + Prescore ported with a golden test against `benchmark/` output, ModelClients, Reviewers (debate, Luna fallback, Jev readers), Reasons, Matcher, MatchWorker). Matching waits until the server has model keys (`OPENAI_API_KEY` or `OPENROUTER_API_KEY`, plus `TYPESAFE_API_KEY` for Jev). Tests use `FakeModels`; `app.DrainMatchingAsync()` runs the worker. `INotifier` (`Matching/Matcher.cs`) is the hook for step 7.
 - Live check without email: `bash deploy/smoke.sh` signs in a throwaway user by writing a login code straight into the DB, posts a report with a photo, then cleans up.
 
 ## Remaining work
 Build each step to the design, with tests, then commit, push and deploy.
-
-**Step 4, matching worker** (`server/Zarqa.Api/Matching/`). Port faithfully from `benchmark/` and don't redesign:
-- `benchmark/src/text.js` → tokens, overlap, alias index, `expandedLocationTokens`, `daysBetween`, `dateRelation`, `embeddingText`.
-- `benchmark/src/prescore.js` → preliminary score. The category term uses `Report.CategoryNorm`; null on either side means 0.
-- Retrieval: opposite kind, status Open or InChat, other users' reports, pgvector cosine top 25. Shortlist with prescore ≥ 0.56, top 10 (`CURRENT` in `benchmark/config.js`).
-- `benchmark/src/reviewers/debate.js`: two gpt-6-luna advocates (for and against) in parallel, JSON-schema output, photos (first 2 per report, low detail, never sensitive ones) as data URLs. Then Jev (`benchmark/src/jevClient.js`, model `jev-1.13.0`, readers `readNoul`/`readChoice`/`readScore`). Match when `0.5·same_item + 0.5·overall ≥ 0.65`.
-- Fallback when Jev is unconfigured or fails: `benchmark/src/reviewers/luna.js` review at 0.72.
-- Providers via config/env: `OPENAI_API_KEY` or `OPENAI_BASE_URL` (Luna + embeddings `text-embedding-3-small`, 1536 dims), or `OPENROUTER_API_KEY`; Jev via `TYPESAFE_API_KEY` or OpenRouter's decisions endpoint. **With no keys, the worker leaves jobs pending and logs once**; nothing breaks.
-- A `BackgroundService` polls `match_jobs` (lock with `locked_until`, 3 tries with backoff). It writes a `review_log` row per step (prescore parts, advocate outputs, Jev answers, tokens, latency) and creates `Match` rows (unique pair, never re-suggest a rejected pair). It runs in both directions: a new found report is matched against open lost reports too.
-- Match reasons (only for created matches): code facts (same category, same campus place via aliases, time gap) plus one short Luna "explain" call for 1–2 detail bullets. Keep the decision prompts identical to the benchmark.
-- Daily model-spend cap in config.
-- Tests: a golden prescore test. Write a small Node script in `benchmark/scripts/` that exports `preliminaryScore` inputs and outputs for the campus reports using deterministic synthetic vectors; C# must match within 1e-9. Plus worker tests with fake model clients.
 
 **Step 5, Match screen** (`Match.dc.html`): `GET /api/matches/{id}` (lost owner only), `POST /api/matches/{id}/confirm` (creates a `Conversation` plus a Zarqa system message, sets both reports to InChat, returns the conversation id), `POST /api/matches/{id}/reject`. Strength stamp: ≥ 0.80 "STRONG MATCH", else "LIKELY MATCH". Show found photos only if not sensitive.
 
