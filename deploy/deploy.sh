@@ -5,8 +5,8 @@
 set -euo pipefail
 
 HOST="deploy@173.249.40.122"
-# Temporary public name until there's a real domain (also set as ZARQA_DOMAIN in the server's deploy/.env).
-URL="https://173-249-40-122.sslip.io"
+# Public address (ZARQA_DOMAIN in the server's deploy/.env lists every host Caddy serves).
+URL="https://tryzarqa.com"
 SSH=(ssh -i ~/.ssh/zarqa_vps -o BatchMode=yes "$HOST")
 
 cd "$(dirname "$0")/.."

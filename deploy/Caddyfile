@@ -1,4 +1,5 @@
-# Automatic HTTPS for the domain in ZARQA_DOMAIN.
+# Automatic HTTPS for every host in ZARQA_DOMAIN (comma-separated), e.g.
+#   ZARQA_DOMAIN=tryzarqa.com, 173-249-40-122.sslip.io
 {$ZARQA_DOMAIN} {
 	encode zstd gzip
 	reverse_proxy api:8080
@@ -9,4 +10,9 @@
 		Referrer-Policy "strict-origin-when-cross-origin"
 		Permissions-Policy "geolocation=(), microphone=()"
 	}
+}
+
+# One canonical address: sign-in cookies belong to a single host.
+www.tryzarqa.com {
+	redir https://tryzarqa.com{uri} permanent
 }
