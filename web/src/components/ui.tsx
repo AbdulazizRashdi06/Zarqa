@@ -67,7 +67,7 @@ export function Sticker({ children, rotate = -3, style }: { children: ReactNode;
 
 export type Mascot = 'thinking' | 'happy' | 'wink' | 'reading' | 'question' | 'portrait' | 'full' | 'lookout' | 'phone'
 
-const mascotSrc = (m: Mascot) => `/mascot/${m}.png`
+const mascotSrc = (m: Mascot) => `/mascot/${m}.webp`
 
 /** Zarqa with a speech bubble. `quiet` is the smaller, softer tip style (Chats, chat system messages). */
 export function ZarqaBubble({

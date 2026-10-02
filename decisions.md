@@ -2,6 +2,12 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-10-02: Smaller offline download, unchanged artwork
+
+- Keep all original mascot PNGs, including the existing iPhone, per the owner's instruction. Ship WebP copies at display-appropriate sizes; omit PNG mascots from service-worker precache while retaining them for older clients.
+- Use Latin font subsets for the English pilot; revisit font coverage when adding Arabic. Precache falls from 2854.67 KiB to approximately 1261 KiB (56% smaller). Mascot files fall from 1,780,200 to 278,980 bytes (84% smaller).
+- Reproduce the image conversion with `deploy/optimize-mascots.py` (Python + Pillow). No artwork or branding was changed.
+
 ## 2026-10-02: Nightly backups
 
 - Nightly database and photo backups at 02:17 UTC, retained locally for 14 days with owner-only access. Publish only complete, verified archives and prevent concurrent runs with `flock`.

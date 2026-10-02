@@ -61,7 +61,7 @@ export default function Admin() {
       <div className={s.tiles}>{metrics.map(key => <div className={s.tile} key={key}><strong>{key.startsWith('spend') ? `$${stats[key].toFixed(4)}` : stats[key]}</strong><span>{t(`admin.${key}` as StringKey)}</span></div>)}</div>
       <Ticket className={s.card}>{(['reports', 'matches', 'decidedBy'] as const).map(key => <section key={key}><h2>{t(`admin.${key}` as StringKey)}</h2>{stats[key].map((g, i) => <p key={i}>{[g.kind, g.status, g.by].filter(Boolean).join(' / ')}: {g.count}</p>)}</section>)}</Ticket>
     </>}
-    <label>{t('admin.filter')}<select value={status} onChange={e => setStatus(e.target.value)}><option value="">{t('admin.all')}</option>{['Open', 'InChat', 'Returned', 'Closed', 'Expired'].map(x => <option key={x}>{x}</option>)}</select></label>
+    <label>{t('admin.filter')}<select value={status} onChange={e => setStatus(e.target.value)}><option value="">{t('admin.all')}</option>{['Open', 'InChat', 'Returned', 'Closed', 'Expired'].map(x => <option key={x} value={x}>{t(`admin.status.${x}` as StringKey)}</option>)}</select></label>
     <p>{t('admin.limit')}</p>
     {!loading && !reports.filter(r => !status || r.status === status).length && <p>{t('admin.empty')}</p>}
     {reports.filter(r => !status || r.status === status).map(r => <Ticket className={s.card} key={r.id}>

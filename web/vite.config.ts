@@ -9,7 +9,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'icons/apple-touch-icon.png', 'mascot/*.png', 'push-sw.js'],
+      includeAssets: ['favicon.svg', 'icons/apple-touch-icon.png', 'mascot/*.webp', 'push-sw.js'],
       manifest: {
         name: 'Zarqa',
         short_name: 'Zarqa',
@@ -30,7 +30,8 @@ export default defineConfig({
         navigateFallbackDenylist: [/^\/api\//],
         // Push and notification-click handlers (public/push-sw.js).
         importScripts: ['push-sw.js'],
-        globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
+        globIgnores: ['mascot/*.png'],
+        globPatterns: ['**/*.{js,css,html,svg,png,webp,woff2}'],
       },
     }),
   ],

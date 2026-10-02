@@ -59,7 +59,7 @@ export default function SignIn() {
 
   return (
     <main className={s.page}>
-      <img src="/mascot/lookout.png" alt="Zarqa shading her eyes, looking far into the distance" className={s.hero} />
+      <img src="/mascot/lookout.webp" alt="Zarqa shading her eyes, looking far into the distance" className={s.hero} />
 
       <h1 className={s.title}>
         {t('signin.h1')}

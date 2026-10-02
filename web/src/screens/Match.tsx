@@ -79,7 +79,7 @@ export default function Match() {
         <Sticker rotate={6} style={{ marginBottom: -6, position: 'relative', zIndex: 1 }}>
           {t('match.spotted')}
         </Sticker>
-        <img src="/mascot/happy.png" alt="" />
+        <img src="/mascot/happy.webp" alt="" />
       </div>
 
       <h1 className={s.title}>

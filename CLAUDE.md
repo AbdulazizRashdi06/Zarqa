@@ -43,6 +43,8 @@ The mascot is a girl inspired by Zarqa Al-Yamama: cream veil, blue eyes, two bra
 - Launch pages: `/terms`, `/privacy`, `/help`, `/tips` are public; `/admin` is restricted to admins. Profile has account deletion with two confirmations. All new copy lives in `web/src/i18n/en.json`.
 - Browser regression tests: `cd web` then `npx playwright install chromium` and `npx playwright test` (390 × 844 viewport, mocked API for launch UI). CI runs these alongside lint/build and server tests.
 - Owner override (2026-10-02): keep the existing iPhone mascot. Do not replace its phone or regenerate the artwork.
+- Public mascot WebPs are reproducible with `python deploy/optimize-mascots.py` (Pillow). PNG originals stay unchanged; the PWA excludes those PNGs from precache. English pilot fonts use Latin subsets.
+- Optional live browser smoke test: `node deploy/live-check.mjs --live` after installing web dependencies and Playwright Chromium. It verifies two disposable users at 390 × 844, suppresses sign-in email via a DB code fixture, routes automatic fixture mail to the reserved `.invalid` domain, and deletes its accounts afterward. Its inserted synthetic match tests the handover flow, **not model accuracy or live model integration**.
 
 - Local: `docker compose -f deploy/docker-compose.dev.yml up -d` (Postgres + pgvector on port 5433), then the `api` and `web` entries in `.claude/launch.json`. Vite proxies `/api` to the API on port 5284.
 - Tests: `dotnet test server/Zarqa.slnx`; web: `npm --prefix web run lint` and `npm --prefix web run build`.

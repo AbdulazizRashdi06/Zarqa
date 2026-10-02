@@ -34,6 +34,7 @@ You are finishing **Zarqa**, a lost-and-found PWA for GUtech university (Oman). 
 - Local DB: Docker Desktop on the dev PC was broken (stale sockets, needs a Windows restart). Fallback: a dev Postgres on the VPS bound to localhost, reached with `ssh -i ~/.ssh/zarqa_vps -N -L 5433:127.0.0.1:5433 deploy@173.249.40.122`. Then run tests with `ZARQA_TEST_DB="Host=localhost;Port=5433;Database=zarqa;Username=zarqa;Password=zarqa-dev" dotnet test server/Zarqa.slnx`.
 
 ## Status (update this section as you go)
+- Precache optimized from 2854.67 KiB to about 1261 KiB using WebP mascots and Latin font subsets. Original PNG artwork, including the iPhone, is unchanged.
 - Backups installed: nightly 02:17 UTC as `deploy`, database + photos, 14-day retention, checksum verification. Scratch DB and photo-volume restore passed on 2026-10-02. Off-site setup instructions in `CLAUDE.md` await owner storage.
 - Launch web completed: `/admin` stats, moderation and per-report logs; two-confirmation account deletion; public Terms, Privacy, Help and Tips. Four mobile browser regression tests added; all 86 server tests pass. Deployment validation is in progress.
 - User instruction (2026-10-02): **keep the existing iPhone mascot**. Do not regenerate or replace it; file-size optimization is still in scope.

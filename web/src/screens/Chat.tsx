@@ -151,7 +151,7 @@ export default function Chat() {
           if (m.kind === 'system')
             return (
               <div key={m.id} className={s.system}>
-                <img src="/mascot/reading.png" alt="Zarqa" width={52} />
+                <img src="/mascot/reading.webp" alt="Zarqa" width={52} />
                 <div className={s.systemBubble}>
                   <span className={s.zarqa}>ZARQA</span>
                   <span>{m.text}</span>
@@ -173,7 +173,7 @@ export default function Chat() {
                 <TearLine inset={16} notch={22} />
                 {m.handoverStatus === 'confirmed' ? (
                   <div className={s.confirmed}>
-                    <img src="/mascot/wink.png" alt="Zarqa winking" width={34} />
+                    <img src="/mascot/wink.webp" alt="Zarqa winking" width={34} />
                     {t('chat.handover.seeYou')}
                   </div>
                 ) : m.canConfirm && active ? (
@@ -264,7 +264,7 @@ export default function Chat() {
 
       {returned && (
         <div role="dialog" aria-label={t('chat.returned.title')} className={s.overlay}>
-          <img src="/mascot/phone.png" alt="Zarqa holding up a returned item" className={s.overlayMascot} />
+          <img src="/mascot/phone.webp" alt="Zarqa holding up a returned item" className={s.overlayMascot} />
           <span className={s.overlayItem}>{thread.itemTitle}</span>
           <h2 className={s.overlayTitle}>{t('chat.returned.title')}</h2>
           <p className={s.overlayText}>{t('chat.returned.body')}</p>
