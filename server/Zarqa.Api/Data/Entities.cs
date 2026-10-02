@@ -65,8 +65,8 @@ public class Report
     /// <summary>Campus-map name when picked from the list; null for free text.</summary>
     public string? LocationName { get; set; }
     public required string LocationText { get; set; }
-    /// <summary>Day it was lost/found, in campus time (Asia/Muscat). Required.</summary>
-    public DateOnly EventDate { get; set; }
+    /// <summary>Day it was lost/found, in campus time (Asia/Muscat). Optional: "do you know when?" is a choice.</summary>
+    public DateOnly? EventDate { get; set; }
     /// <summary>Approximate time of day, campus time. Optional: people often don't know.</summary>
     public TimeOnly? EventTime { get; set; }
     /// <summary>Card/ID report: photos never go to a model.</summary>

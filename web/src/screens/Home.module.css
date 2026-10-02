@@ -345,3 +345,10 @@
   align-items: center;
   justify-content: center;
 }
+
+/* "Do you know when?" switch, right-aligned on the field label row */
+.whenToggle {
+  margin-left: auto;
+  align-self: center;
+  flex-shrink: 0;
+}

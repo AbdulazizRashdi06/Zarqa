@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router'
 import { useSession } from '../auth/session'
 import { ArrowRight, Camera, ChatBubble, Lock, Pin, TagIcon } from '../components/icons'
-import { Avatar, BigButton, LuggageTag, MonoLabel, RoundButton, TearLine, Ticket, Wordmark, ZarqaBubble } from '../components/ui'
+import { Avatar, BigButton, LuggageTag, MonoLabel, RoundButton, Switch, TearLine, Ticket, Wordmark, ZarqaBubble } from '../components/ui'
 import { t, tm, type StringKey } from '../i18n'
 import { isSensitiveText, partOfDay, type Mode } from '../lib/rules'
 import s from './Home.module.css'
@@ -50,7 +50,8 @@ export default function Home() {
   const [places, setPlaces] = useState<Place[]>([])
   const now = useMemo(() => muscatNow(), [])
   const [date, setDate] = useState(now.date)
-  // Optional: empty until the user picks one.
+  // When is optional: hidden until the user says they know. Time stays optional even then.
+  const [knowsWhen, setKnowsWhen] = useState(false)
   const [time, setTime] = useState('')
 
   useEffect(() => {
@@ -267,10 +268,14 @@ export default function Home() {
           </div>
 
           <div className={s.field}>
-            <span className={s.fieldLabel}>
+            <div className={s.fieldLabel}>
               <span className={s.num}>06</span>
-              {tm('form.when', mode)}
-            </span>
+              <span id="knows-when-label">{tm('form.when', mode)}</span>
+              <span className={s.whenToggle}>
+                <Switch checked={knowsWhen} onChange={setKnowsWhen} label={t('form.when.toggle')} />
+              </span>
+            </div>
+            {knowsWhen && (
             <div className={s.when}>
               <label className={s.whenBox}>
                 <span className={s.whenLabel}>{t('form.date')}</span>
@@ -290,6 +295,7 @@ export default function Home() {
                 )}
               </label>
             </div>
+            )}
           </div>
 
           <TearLine />

@@ -88,5 +88,6 @@
   "signin.test.use": "Use code {code}",
   "form.time.none": "NOT SURE",
   "form.time.pick": "Pick a time (optional)",
-  "form.time.clear": "Clear the time"
+  "form.time.clear": "Clear the time",
+  "form.when.toggle": "Do you know when?"
 }
