@@ -19,7 +19,7 @@ public static class AuthEndpoints
     {
         var auth = api.MapGroup("/auth");
 
-        auth.MapPost("/request-code", async (RequestCodeBody body, ZarqaDb db, IEmailSender email, TimeProvider clock, CancellationToken ct) =>
+        auth.MapPost("/request-code", async (RequestCodeBody body, ZarqaDb db, IEmailSender email, TimeProvider clock, IConfiguration config, CancellationToken ct) =>
         {
             var address = EmailRules.NormalizeUniversityEmail(body.Email);
             if (address is null) return Errors.BadRequest("Only GUtech emails can join (@gutech.edu.om).");
@@ -50,7 +50,11 @@ public static class AuthEndpoints
                 await db.SaveChangesAsync(CancellationToken.None);
                 return Errors.Unavailable("We couldn't send the email just now. Try again in a minute.");
             }
-            return Results.Ok(new { email = address });
+            // Test mode (Auth:TestMode) hands the code to the app so sign-in works without email.
+            // Anyone can then sign in as any GUtech address: never on with real users.
+            return config.GetValue<bool>("Auth:TestMode")
+                ? Results.Ok(new { email = address, testCode = code })
+                : Results.Ok(new { email = address });
         }).RequireRateLimiting(RequestCodeLimit);
 
         auth.MapPost("/verify", async (VerifyBody body, ZarqaDb db, TimeProvider clock, HttpContext http, CancellationToken ct) =>

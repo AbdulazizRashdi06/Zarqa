@@ -20,6 +20,8 @@ services:
       Email__Provider: ${EMAIL_PROVIDER:-log}
       Email__ResendApiKey: ${RESEND_API_KEY:-}
       Email__From: ${EMAIL_FROM:-}
+      # TEST ONLY: shows the sign-in code in the app (anyone can sign in as anyone). Off for real users.
+      Auth__TestMode: ${AUTH_TEST_MODE:-false}
     depends_on:
       postgres:
         condition: service_healthy

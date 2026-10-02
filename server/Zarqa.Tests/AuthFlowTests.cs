@@ -23,6 +23,8 @@ public class AuthFlowTests(TestApp app) : IClassFixture<TestApp>
 
         var sent = await http.PostAsJsonAsync("/api/auth/request-code", new { email });
         Assert.Equal(HttpStatusCode.OK, sent.StatusCode);
+        // Test mode is off by default: the code never reaches the client.
+        Assert.False((await sent.Content.ReadFromJsonAsync<JsonElement>()).TryGetProperty("testCode", out _));
         var code = app.Emails.LastCodeFor("maryam.test@student.gutech.edu.om");
 
         var wrong = await http.PostAsJsonAsync("/api/auth/verify", new { email, code = code == "000000" ? "111111" : "000000" });

@@ -12,6 +12,7 @@ export default function SignIn() {
   const [step, setStep] = useState<'email' | 'code'>('email')
   const [email, setEmail] = useState('')
   const [sentTo, setSentTo] = useState('')
+  const [testCode, setTestCode] = useState<string | null>(null)
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
   const [cooldown, setCooldown] = useState(0)
@@ -28,8 +29,9 @@ export default function SignIn() {
     setBusy(true)
     setError('')
     try {
-      const r = await api<{ email: string }>('/auth/request-code', { body: { email } })
+      const r = await api<{ email: string; testCode?: string }>('/auth/request-code', { body: { email } })
       setSentTo(r.email)
+      setTestCode(r.testCode ?? null)
       setStep('code')
       setCooldown(RESEND_AFTER)
     } catch (err) {
@@ -43,6 +45,7 @@ export default function SignIn() {
     return (
       <CodeStep
         email={sentTo}
+        testCode={testCode}
         cooldown={cooldown}
         resend={() => sendCode()}
         back={() => {
@@ -116,12 +119,14 @@ export default function SignIn() {
 
 function CodeStep({
   email,
+  testCode,
   cooldown,
   resend,
   back,
   resendError,
 }: {
   email: string
+  testCode: string | null
   cooldown: number
   resend: () => void
   back: () => void
@@ -165,7 +170,15 @@ function CodeStep({
         <MonoLabel color="var(--text-muted)">GUTECH · MUSCAT</MonoLabel>
       </div>
 
-      <h1 className={s.codeTitle} style={{ marginTop: 40 }}>
+      {testCode && (
+        <div className={s.testMode} role="note">
+          <MonoLabel color="var(--ink)">{t('signin.test.title')}</MonoLabel>
+          <span>{t('signin.test.body')}</span>
+          <BigButton variant="dark" label={t('signin.test.use', { code: testCode })} labelSize={22} disabled={busy} onClick={() => verify(testCode)} />
+        </div>
+      )}
+
+      <h1 className={s.codeTitle} style={{ marginTop: testCode ? 0 : 40 }}>
         {t('signin.code.h1')}
         <br />
         <span style={{ color: 'var(--tan)' }}>{t('signin.code.h2')}</span>

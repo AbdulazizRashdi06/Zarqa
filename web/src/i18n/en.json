@@ -82,5 +82,8 @@
   "welcome.label": "FIRST NAME",
   "welcome.go": "Let’s go",
   "welcome.saving": "Saving…",
-  "welcome.help": "Only your first name shows in chats. You can hide it in your profile."
+  "welcome.help": "Only your first name shows in chats. You can hide it in your profile.",
+  "signin.test.title": "TEST MODE",
+  "signin.test.body": "Email isn't set up yet, so here's your code. Anyone can sign in this way until it's switched off.",
+  "signin.test.use": "Use code {code}"
 }

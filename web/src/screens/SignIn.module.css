@@ -198,3 +198,17 @@
   justify-content: space-between;
   gap: 12px;
 }
+
+/* Test mode: sign-in code shown in the app (no email yet) */
+.testMode {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--tan);
+  color: var(--ink);
+  border-radius: 16px;
+  padding: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
