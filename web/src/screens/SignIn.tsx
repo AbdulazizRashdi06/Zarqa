@@ -59,10 +59,6 @@ export default function SignIn() {
 
   return (
     <main className={s.page}>
-      <div className={s.top} style={{ justifyContent: 'flex-end' }}>
-        <MonoLabel color="var(--text-muted)">GUTECH · MUSCAT</MonoLabel>
-      </div>
-
       <img src="/mascot/lookout.png" alt="Zarqa shading her eyes, looking far into the distance" className={s.hero} />
 
       <h1 className={s.title}>
@@ -165,7 +161,6 @@ function CodeStep({
     <main className={s.page}>
       <div className={s.top}>
         <Wordmark size={26} />
-        <MonoLabel color="var(--text-muted)">GUTECH · MUSCAT</MonoLabel>
       </div>
 
       {testCode && (
