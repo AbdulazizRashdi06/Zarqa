@@ -1,0 +1,22 @@
+.page { padding: 16px var(--gutter) 32px; display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.page h1 { font: 48px/1.05 var(--font-display); text-transform: uppercase; margin: 0; }
+.page h2 { font: 24px/1.2 var(--font-display); margin: 0 0 8px; }
+.page p { line-height: 1.6; margin: 0 0 16px; overflow-wrap: anywhere; }
+.card { padding: 20px; color: var(--ink); }
+.card section + section { border-top: 2px dashed var(--paper-line); padding-top: 18px; }
+.card a { color: var(--ink); }
+.notice { border-left: 4px solid var(--tan); padding: 12px; background: var(--surface); }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.actions button, .actions a, .page select, .page input { min-height: 44px; padding: 10px 12px; border-radius: 10px; font: inherit; }
+.actions button { background: var(--tan); color: var(--ink); border: 0; font-weight: 700; }
+.actions a { color: var(--tan); }
+.tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.tile { background: var(--paper); color: var(--ink); border-radius: 16px; padding: 14px; overflow-wrap: anywhere; }
+.tile strong { display: block; font: 32px var(--font-display); }
+.tile span { font: 11px var(--font-mono); }
+.photos { display: flex; gap: 8px; overflow-x: auto; margin-bottom: 12px; }
+.photos img { width: 100px; height: 100px; object-fit: cover; border-radius: 12px; }
+.error { color: #f0a58c; }
+.page pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 12px; }
+.page summary { min-height: 44px; cursor: pointer; padding: 12px 0; overflow-wrap: anywhere; }
+.page label { display: flex; flex-direction: column; gap: 8px; }

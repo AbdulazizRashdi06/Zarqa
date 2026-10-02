@@ -2,6 +2,14 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-10-02: Pilot launch pages and moderation
+
+- Public Terms, Privacy, Help and Tips are accessible without signing in. Legal texts visibly remain drafts requiring review before wider launch. Privacy describes actual admin access, overseas providers, sensitive-photo protection and retention, without claiming compliance.
+- Admin UI uses the existing protected API: latest 200 reports, explicit close/ban confirmations, unban, and latest 100 log entries per report. Card/ID photos stay private to the uploader.
+- Account deletion asks twice, preserves the session on a failed request, and clears it only after successful deletion.
+- The owner explicitly requested keeping the existing iPhone mascot. This supersedes the earlier request to replace its Apple-branded phone.
+- Verified the PDPL reference against MTCIT: https://www.mtcit.gov.om/sectors/governance/personal . Review must include subsequent amendments, including the ministry's listed Royal Decree 68/2026; no legal compliance assessment has been made.
+
 ## 2026-10-02: Matching in the app (step 4)
 
 **Decision.**

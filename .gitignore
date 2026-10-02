@@ -7,6 +7,9 @@ server/**/obj/
 web/node_modules/
 web/dist/
 web/dev-dist/
+web/test-results/
+web/playwright-report/
+test-results/
 
 # secrets
 .env

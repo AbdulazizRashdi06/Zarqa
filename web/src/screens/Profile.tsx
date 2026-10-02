@@ -16,6 +16,7 @@ export default function Profile() {
   const navigate = useNavigate()
   const [stats, setStats] = useState<Stats | null>(null)
   const [error, setError] = useState('')
+  const [deleting, setDeleting] = useState(false)
   const fileInput = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
@@ -48,6 +49,19 @@ export default function Profile() {
     } catch (e) {
       setError(e instanceof ApiError ? e.message : t('common.error'))
     }
+  }
+
+  async function deleteAccount() {
+    if (deleting || !window.confirm(t('profile.deleteConfirm')) || !window.confirm(t('profile.deleteFinal'))) return
+    setDeleting(true)
+    setError('')
+    try {
+      await api('/me', { method: 'DELETE' })
+      setMe(null)
+      navigate('/signin', { replace: true })
+    } catch (e) {
+      setError(e instanceof ApiError ? e.message : t('common.error'))
+    } finally { setDeleting(false) }
   }
 
   return (
@@ -136,6 +150,9 @@ export default function Profile() {
       >
         <SignOut size={20} />
         {t('profile.signOut')}
+      </button>
+      <button type="button" className={s.signOut} disabled={deleting} onClick={deleteAccount}>
+        {t(deleting ? 'profile.deleting' : 'profile.delete')}
       </button>
     </main>
   )

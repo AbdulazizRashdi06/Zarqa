@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react'
-import { useNavigate } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import { useSession, type Me } from '../auth/session'
 import { BigButton, MonoLabel, Wordmark, ZarqaBubble } from '../components/ui'
 import { t } from '../i18n'
@@ -103,9 +103,9 @@ export default function SignIn() {
       </form>
 
       <nav className={s.links} aria-label="About">
-        <a href="#">{t('signin.terms')}</a>
-        <a href="#">{t('signin.privacy')}</a>
-        <a href="#">{t('signin.helpLink')}</a>
+        <Link to="/terms">{t('signin.terms')}</Link>
+        <Link to="/privacy">{t('signin.privacy')}</Link>
+        <Link to="/help">{t('signin.helpLink')}</Link>
       </nav>
     </main>
   )

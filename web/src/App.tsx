@@ -1,6 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router'
 import { GuestOnly, RequireSession, SessionProvider } from './auth/SessionProvider'
 import { t } from './i18n'
+import Admin from './screens/Admin'
+import Info from './screens/Info'
 import Chat from './screens/Chat'
 import Chats from './screens/Chats'
 import Home from './screens/Home'
@@ -27,8 +29,8 @@ export default function App() {
           <Route path="/chats" element={<RequireSession><Chats /></RequireSession>} />
           <Route path="/chats/:id" element={<RequireSession><Chat /></RequireSession>} />
           <Route path="/profile" element={<RequireSession><Profile /></RequireSession>} />
-          <Route path="/tips" element={<RequireSession><Placeholder title={t('profile.tips')} /></RequireSession>} />
-          <Route path="/help" element={<RequireSession><Placeholder title={t('profile.help')} /></RequireSession>} />
+          <Route path="/admin" element={<RequireSession><Admin /></RequireSession>} />
+          {(['terms', 'privacy', 'help', 'tips'] as const).map(page => <Route key={page} path={`/${page}`} element={<Info page={page} />} />)}
           <Route path="*" element={<Placeholder title={t('notFound.title')} mascot="question" zarqa={t('notFound.zarqa')} back={false} />} />
         </Routes>
       </SessionProvider>

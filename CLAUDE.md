@@ -40,6 +40,10 @@ The mascot is a girl inspired by Zarqa Al-Yamama: cream veil, blue eyes, two bra
 
 ## Running and deploying
 
+- Launch pages: `/terms`, `/privacy`, `/help`, `/tips` are public; `/admin` is restricted to admins. Profile has account deletion with two confirmations. All new copy lives in `web/src/i18n/en.json`.
+- Browser regression tests: `cd web` then `npx playwright install chromium` and `npx playwright test` (390 × 844 viewport, mocked API for launch UI). CI runs these alongside lint/build and server tests.
+- Owner override (2026-10-02): keep the existing iPhone mascot. Do not replace its phone or regenerate the artwork.
+
 - Local: `docker compose -f deploy/docker-compose.dev.yml up -d` (Postgres + pgvector on port 5433), then the `api` and `web` entries in `.claude/launch.json`. Vite proxies `/api` to the API on port 5284.
 - Tests: `dotnet test server/Zarqa.slnx`; web: `npm --prefix web run lint` and `npm --prefix web run build`.
 - **Deploy:** `bash deploy/deploy.sh` (Git Bash). It uploads the source to the VPS, rebuilds with Docker Compose, and checks `/api/health`. Live at **https://tryzarqa.com** (`www.` redirects there; the old `173-249-40-122.sslip.io` address still works).
