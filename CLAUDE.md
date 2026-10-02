@@ -76,6 +76,7 @@ The mascot is a girl inspired by Zarqa Al-Yamama: cream veil, blue eyes, two bra
 - Owner login on VPS: `cd /opt/zarqa && docker compose -f deploy/docker-compose.yml --env-file deploy/.env exec codex codex login --device-auth`. Complete the browser/device flow yourself. Never read/copy `auth.json` or any tokens into this repo or chat. The CLI handles token refresh. The auth volume is deliberately excluded from data backups; recovery needs a fresh owner login.
 - Enable routing with `bash /opt/zarqa/deploy/enable-codex.sh` after login. Pause matching with `MATCHING_ENABLED=false` in server `deploy/.env` and recreate the API. A configured route does not prove account entitlement; verify a real inference.
 - Gateway tests: `node --test deploy/codex/gateway.test.mjs`. Actual matching smoke: `node deploy/live-check.mjs --live --models`; it waits for a **real Debate match**, confirms handover and both return stats, then deletes its disposable users. Default `--live` still inserts a synthetic match.
+- Verified live on 2026-10-02 after owner device login: both reports embedded, Luna advocates and direct Jev produced a Debate match at **0.83875**, then claim, chat, confirmed handover, return stats and two-confirmation account deletion passed at 390 × 844. Fixtures were removed. This smoke was text-only; it does not measure recall/precision or live vision handling. All 88 server tests and 5 gateway tests passed; routing implementation CI was green.
 - Codex review costs logged in the matching ledger are conservative **API-equivalent token estimates**, including CLI instruction overhead; actual reviews use ChatGPT plan allowance. Latency includes CLI startup. This setup validates integration, not benchmark recall or precision.
 - Official authentication: https://learn.chatgpt.com/docs/auth ; CLI feature controls: https://learn.chatgpt.com/docs/config-file/config-basic . API keys remain the recommended default for production automation; this user-requested Codex route is for pilot testing.
 
@@ -84,4 +85,4 @@ The mascot is a girl inspired by Zarqa Al-Yamama: cream veil, blue eyes, two bra
 - Windows 11, PowerShell 5.1 (no `&&`). Node 22.
 - Model access is in `benchmark/.env`. Never print key values.
 - gpt-6-luna is reached through the **Codex CLI** (`npm i -g @openai/codex`), signed in with ChatGPT. The Codex binary bundled with the desktop app is too old and refuses gpt-6-luna.
-- OpenRouter had technical issues; there is no OpenAI API key yet.
+- OpenRouter had technical issues. The owner configured server OpenAI embeddings and TypeSafe/Jev API keys through the hidden set-secret prompts on 2026-10-02; never read or print their values.

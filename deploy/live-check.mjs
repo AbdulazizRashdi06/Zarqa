@@ -77,7 +77,9 @@ try {
     await expect(p.getByRole('heading', { name: t(`info.${path}.title`), exact: true })).toBeVisible()
     await c.close()
   }
+  console.log('Public pages passed; signing in disposable users...')
   const owner = await signIn('owner'), finder = await signIn('finder')
+  console.log('Disposable users signed in; posting lost and found reports...')
   const lost = await post(owner, 'lost'), found = await post(finder, 'found')
   let match
   if (realModels) {
@@ -116,8 +118,11 @@ try {
   await owner.page.getByLabel(t('form.date'), { exact: true }).fill(tomorrow)
   await owner.page.getByLabel(t('form.time'), { exact: true }).fill('12:00')
   await owner.page.getByLabel(t('chat.plan.place'), { exact: true }).fill('Library entrance')
+  const handoverPosted = owner.page.waitForResponse(r => r.url().endsWith('/handover') && r.request().method() === 'POST', { timeout: 60000 })
   await owner.page.getByRole('button', { name: t('chat.plan.send'), exact: true }).click()
-  await finder.page.getByRole('button', { name: t('chat.handover.confirm'), exact: true }).click({ timeout: 15000 })
+  const handoverResponse = await handoverPosted
+  if (!handoverResponse.ok()) throw new Error(`Post handover: ${handoverResponse.status()}`)
+  await finder.page.getByRole('button', { name: t('chat.handover.confirm'), exact: true }).click({ timeout: 30000 })
   await expect(finder.page.getByText(t('chat.handover.confirmed'), { exact: true })).toBeVisible()
   await owner.page.getByRole('button', { name: t('chat.gotItBack'), exact: true }).click()
   await expect(owner.page.getByRole('dialog')).toBeVisible()

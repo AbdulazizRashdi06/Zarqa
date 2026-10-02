@@ -8,6 +8,7 @@ The decisions made while turning the uni matching prototype into a real app, and
 - Add a separate private Luna gateway using the official CLI; its login credentials remain in a dedicated server volume. The app routes embeddings to OpenAI and Jev directly to TypeSafe. Gateway receives no API keys, exposes no public port and disables model tools.
 - Use a real model-generated Debate match in the phone smoke test, rather than an inserted match. Integration checks do not establish recall or precision; no thresholds were retuned.
 - Review spend values are API-equivalent estimates because Codex uses ChatGPT plan usage, with CLI overhead/latency included. The existing daily cap remains a conservative pause mechanism.
+- Verified on the VPS after owner device login: OpenAI embeddings, both Luna advocates and direct Jev produced a real Debate match at 0.83875. Claim, chat, confirmed handover, returned stats and account deletion passed in the live phone smoke. Its disposable fixtures were removed. The first attempt matched but hit a handover-button timeout; the smoke now waits for the handover HTTP response before checking the finder. This establishes text-only integration, not live vision support or matching accuracy.
 
 ## 2026-10-02: Smaller offline download, unchanged artwork
 
@@ -183,7 +184,7 @@ Bare floor names such as "2nd floor" are left out because several places share t
 - [ ] **Location specialist agent.**
 - [ ] **Replace the benchmark's reconstructed `luna` baseline** with the real `processReport` code (prompt and overlap weights).
 - [ ] **Measure real API latency.** Benchmark Luna timings include Codex CLI start-up.
-- [ ] **Production model access.** The Codex CLI with a ChatGPT login can't run on a server. The app needs an OpenAI API key (or a working OpenRouter) before the pilot.
+- [x] **Pilot model access.** OpenAI API embeddings, Luna through a private ChatGPT-authenticated Codex service on the VPS, and direct Jev are configured and live-tested. API-key inference remains the recommended default for production automation; this owner-selected route uses ChatGPT plan allowance.
 - [x] **ID and bank card reports in the app.** Photos skip every model and are visible only to the uploader; matching uses text alone.
 - [x] **Pilot Privacy and Terms drafts** are public; legal review remains required before wide launch.
-- [ ] **Jev availability.** It's in early access and signups are paused, so keep the plain-Luna fallback.
+- [x] **Jev access for this pilot.** The owner's direct TypeSafe API route succeeded in the live matching test. Keep the plain-Luna fallback for provider failures.
