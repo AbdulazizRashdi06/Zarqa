@@ -50,7 +50,8 @@ export default function Home() {
   const [places, setPlaces] = useState<Place[]>([])
   const now = useMemo(() => muscatNow(), [])
   const [date, setDate] = useState(now.date)
-  const [time, setTime] = useState(now.time)
+  // Optional: empty until the user picks one.
+  const [time, setTime] = useState('')
 
   useEffect(() => {
     fetch('/api/locations')
@@ -278,8 +279,15 @@ export default function Home() {
               </label>
               <label className={s.whenBox}>
                 <span className={s.whenLabel}>{t('form.time')}</span>
-                <span className={s.whenValue}>{formatTime(time)}</span>
-                <input type="time" className={s.whenNative} value={time} onChange={(e) => e.target.value && setTime(e.target.value)} />
+                <span className={s.whenValue} style={time ? undefined : { color: 'var(--ink-muted)' }}>
+                  {time ? formatTime(time) : t('form.time.none')}
+                </span>
+                <input type="time" className={s.whenNative} value={time} onChange={(e) => setTime(e.target.value)} aria-label={t('form.time.pick')} />
+                {time && (
+                  <button type="button" className={s.whenClear} aria-label={t('form.time.clear')} onClick={() => setTime('')}>
+                    ×
+                  </button>
+                )}
               </label>
             </div>
           </div>

@@ -85,5 +85,8 @@
   "welcome.help": "Only your first name shows in chats. You can hide it in your profile.",
   "signin.test.title": "TEST MODE",
   "signin.test.body": "Email isn't set up yet, so here's your code. Anyone can sign in this way until it's switched off.",
-  "signin.test.use": "Use code {code}"
+  "signin.test.use": "Use code {code}",
+  "form.time.none": "NOT SURE",
+  "form.time.pick": "Pick a time (optional)",
+  "form.time.clear": "Clear the time"
 }
