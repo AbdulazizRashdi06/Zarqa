@@ -133,13 +133,15 @@ public static class ReportEndpoints
             return Results.NoContent();
         });
 
-        api.MapGet("/home", async (HttpContext http, ZarqaDb db, CancellationToken ct) =>
+        api.MapGet("/home", async (HttpContext http, ZarqaDb db, TimeProvider clock, CancellationToken ct) =>
         {
             var me = http.User.Id();
+            var since = clock.GetUtcNow().AddDays(-1);
+            var postedToday = await db.Reports.CountAsync(r => r.UserId == me && r.CreatedAt > since, ct);
             var active = await db.Reports.CountAsync(r => r.UserId == me && (r.Status == ReportStatus.Open || r.Status == ReportStatus.InChat), ct);
             var waiting = await db.Matches.CountAsync(m => m.Status == MatchStatus.Suggested && m.Lost!.UserId == me, ct);
             var unread = await Chats.UnreadCountAsync(db, me, ct);
-            return Results.Ok(new { active, matchesWaiting = waiting, unreadChats = unread });
+            return Results.Ok(new { active, matchesWaiting = waiting, unreadChats = unread, postsLeft = Math.Max(0, MaxPostsPerDay - postedToday) });
         }).RequireAuthorization();
 
         api.MapGet("/photos/{id:guid}", async (Guid id, HttpContext http, ZarqaDb db, PhotoStore photos, CancellationToken ct) =>

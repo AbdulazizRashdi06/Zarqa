@@ -57,7 +57,7 @@ async function signIn(role) {
 }
 async function post(user, kind) {
   const p = user.page
-  if (kind === 'found') await p.getByRole('button', { name: /TAG 02/ }).click()
+  if (kind === 'found') await p.getByRole('button', { name: 'I found something' }).click()
   await p.locator('#item-text').fill('Smoke test blue umbrella. Synthetic launch check, yellow star sticker on the handle.')
   await p.locator('#item-loc').fill('Library')
   await p.locator('#item-text').click()

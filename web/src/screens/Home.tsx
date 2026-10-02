@@ -1,12 +1,13 @@
-import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react'
+import { useEffect, useMemo, useRef, useState, type FormEvent, type KeyboardEvent } from 'react'
 import { Link, useNavigate } from 'react-router'
 import { useSession } from '../auth/session'
 import { AlertsNudge } from '../components/AlertsNudge'
-import { ArrowRight, Camera, ChatBubble, Lock, Pin, TagIcon } from '../components/icons'
-import { Avatar, BigButton, LuggageTag, MonoLabel, RoundButton, Sticker, Switch, TearLine, Ticket, Wordmark, ZarqaBubble } from '../components/ui'
+import { ArrowRight, Camera, ChatBubble, Close, Lock, Pin, TagIcon } from '../components/icons'
+import { Avatar, BigButton, LuggageTag, MonoLabel, RoundButton, Sticker, Switch, TearLine, Ticket, Wordmark } from '../components/ui'
 import { t, tm, type StringKey } from '../i18n'
 import { api, apiForm, ApiError } from '../lib/api'
 import { muscatNow } from '../lib/dates'
+import { clearDraft, loadFields, loadPhotos, saveFields, savePhotos } from '../lib/draft'
 import { shrinkPhoto } from '../lib/images'
 import { isSensitiveText, partOfDay, type Mode } from '../lib/rules'
 import type { HomeSummary, Report } from '../lib/types'
@@ -32,43 +33,77 @@ function formatTime(time: string) {
   return `~ ${hour12}:${String(m).padStart(2, '0')} ${h < 12 ? 'AM' : 'PM'}`
 }
 
+const toPicked = (blob: Blob): PickedPhoto => ({ blob, url: URL.createObjectURL(blob) })
+
 export default function Home() {
   const { me } = useSession()
   const firstName = me?.firstName ?? ''
-  const [mode, setMode] = useState<Mode>('lost')
-  // One box: what it is plus every detail. The server and the matcher work from this one text.
-  const [text, setText] = useState('')
-  const [locQuery, setLocQuery] = useState('')
-  const [locOpen, setLocOpen] = useState(false)
-  const [places, setPlaces] = useState<Place[]>([])
   const now = useMemo(() => muscatNow(), [])
-  const [date, setDate] = useState(now.date)
+  const draft = useMemo(() => loadFields(), [])
+  const [mode, setMode] = useState<Mode>(draft.mode ?? 'lost')
+  // One box: what it is plus every detail. The server and the matcher work from this one text.
+  const [text, setText] = useState(draft.text ?? '')
+  const [locQuery, setLocQuery] = useState(draft.locQuery ?? '')
+  const [locOpen, setLocOpen] = useState(false)
+  const [activeOpt, setActiveOpt] = useState(-1)
+  const [places, setPlaces] = useState<Place[]>([])
+  const [date, setDate] = useState(draft.date && draft.date <= now.date ? draft.date : now.date)
   // When is optional: hidden until the user says they know. Time stays optional even then.
-  const [knowsWhen, setKnowsWhen] = useState(false)
-  const [time, setTime] = useState('')
+  const [knowsWhen, setKnowsWhen] = useState(draft.knowsWhen ?? false)
+  const [time, setTime] = useState(draft.time ?? '')
   // A name picked from the campus list; typing again turns it back into free text.
-  const [placeName, setPlaceName] = useState<string | null>(null)
+  const [placeName, setPlaceName] = useState<string | null>(draft.placeName ?? null)
   const [photos, setPhotos] = useState<PickedPhoto[]>([])
+  const [photosLoaded, setPhotosLoaded] = useState(false)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
   const [summary, setSummary] = useState<HomeSummary | null>(null)
   const fileInput = useRef<HTMLInputElement>(null)
+  const textBox = useRef<HTMLTextAreaElement>(null)
   const navigate = useNavigate()
 
   useEffect(() => {
     api<HomeSummary>('/home').then(setSummary).catch(() => setSummary(null))
   }, [])
 
+  useEffect(() => {
+    fetch('/api/locations')
+      .then((r) => (r.ok ? r.json() : []))
+      .then(setPlaces)
+      .catch(() => setPlaces([]))
+  }, [])
+
+  // Bring back photos from an unfinished draft.
+  useEffect(() => {
+    let live = true
+    loadPhotos().then((blobs) => {
+      if (!live) return
+      setPhotos((p) => (p.length ? p : blobs.slice(0, MAX_PHOTOS).map(toPicked)))
+      setPhotosLoaded(true)
+    })
+    return () => {
+      live = false
+    }
+  }, [])
+
+  useEffect(() => {
+    saveFields({ mode, text, locQuery, placeName, knowsWhen, date, time })
+  }, [mode, text, locQuery, placeName, knowsWhen, date, time])
+
+  useEffect(() => {
+    if (photosLoaded) void savePhotos(photos.map((p) => p.blob))
+  }, [photos, photosLoaded])
+
   async function addPhotos(files: FileList | null) {
-    if (!files) return
+    if (!files?.length) return
     const room = MAX_PHOTOS - photos.length
-    const picked = await Promise.all(
-      [...files].slice(0, room).map(async (f) => {
-        const blob = await shrinkPhoto(f)
-        return { blob, url: URL.createObjectURL(blob) }
-      }),
-    )
-    setPhotos((p) => [...p, ...picked])
+    try {
+      const picked = await Promise.all([...files].slice(0, room).map(async (f) => toPicked(await shrinkPhoto(f))))
+      setPhotos((p) => [...p, ...picked].slice(0, MAX_PHOTOS))
+      setError('')
+    } catch {
+      setError(t('form.photoError'))
+    }
   }
 
   function removePhoto(i: number) {
@@ -81,6 +116,11 @@ export default function Home() {
   async function submit(e: FormEvent) {
     e.preventDefault()
     if (busy) return
+    if (!text.trim()) {
+      setError(t('form.text.missing'))
+      textBox.current?.focus()
+      return
+    }
     setBusy(true)
     setError('')
     const form = new FormData()
@@ -96,6 +136,8 @@ export default function Home() {
     try {
       const report = await apiForm<Report>('/reports', form)
       photos.forEach((p) => URL.revokeObjectURL(p.url))
+      setPhotosLoaded(false)
+      clearDraft()
       navigate('/reports', { state: { posted: report.kind } })
     } catch (err) {
       setError(err instanceof ApiError ? err.message : t('common.error'))
@@ -103,13 +145,6 @@ export default function Home() {
       setBusy(false)
     }
   }
-
-  useEffect(() => {
-    fetch('/api/locations')
-      .then((r) => (r.ok ? r.json() : []))
-      .then(setPlaces)
-      .catch(() => setPlaces([]))
-  }, [])
 
   const suggestions = useMemo(() => {
     const q = locQuery.trim().toLowerCase()
@@ -119,8 +154,39 @@ export default function Home() {
     return hits.slice(0, 5)
   }, [places, locQuery])
 
+  const listOpen = locOpen && suggestions.length > 0
+
+  function pickPlace(p: Place) {
+    setLocQuery(p.name)
+    setPlaceName(p.name)
+    setLocOpen(false)
+    setActiveOpt(-1)
+  }
+
+  function onLocKey(e: KeyboardEvent<HTMLInputElement>) {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault()
+      if (!listOpen) {
+        setLocOpen(true)
+        setActiveOpt(e.key === 'ArrowDown' ? 0 : suggestions.length - 1)
+        return
+      }
+      const step = e.key === 'ArrowDown' ? 1 : -1
+      setActiveOpt((i) => (i + step + suggestions.length) % suggestions.length)
+    } else if (e.key === 'Enter' && listOpen && activeOpt >= 0) {
+      e.preventDefault()
+      pickPlace(suggestions[activeOpt])
+    } else if (e.key === 'Escape' && listOpen) {
+      e.preventDefault()
+      setLocOpen(false)
+      setActiveOpt(-1)
+    }
+  }
+
   const accent = accentOf(mode)
   const showCardNotice = isSensitiveText(text)
+  const waiting = summary?.matchesWaiting ?? 0
+  const postsLeft = summary?.postsLeft
 
   return (
     <main className={s.page}>
@@ -135,68 +201,59 @@ export default function Home() {
       </header>
 
       <div className={s.hello}>
+        <div className={s.helloText}>
+          <span className={s.greeting}>
+            {partOfDay()}
+            {firstName && `, ${firstName}`}
+          </span>
+          <h1 className={s.headline}>
+            {tm('home.headA', mode)}
+            <br />
+            <span style={{ color: accent }}>{tm('home.headB', mode)}</span>
+          </h1>
+        </div>
         {/* Zarqa keeps watch beside the headline: looking out for lost things, pleased about found ones. */}
         <img
           src={mode === 'lost' ? '/mascot/home-searching.webp' : '/mascot/home-found-keys.webp'}
           alt=""
-          aria-hidden="true"
           className={s.helloMascot}
         />
-        <span className={s.greeting}>
-          {partOfDay()}, {firstName}
-        </span>
-        <h1 className={s.headline}>
-          {tm('home.headA', mode)}
-          <br />
-          <span style={{ color: accent }}>{tm('home.headB', mode)}</span>
-        </h1>
       </div>
 
-      <Link to="/reports" className={s.reportsBar}>
-        <span className={s.reportsIcon}>
-          <TagIcon size={26} color="var(--ink)" />
-        </span>
-        <span className={s.reportsText}>
-          <span className={s.reportsTitle}>{t('home.myReports')}</span>
-          <span className={s.reportsMeta}>
-            {t('home.reportsMeta', { active: summary?.active ?? 0 })}
-            {summary && summary.matchesWaiting > 0 && (
-              <span style={{ color: 'var(--tan)' }}> · {t('home.reportsWaiting', { n: summary.matchesWaiting })}</span>
-            )}
-          </span>
-        </span>
-        <span className={s.reportsArrow}>
-          <ArrowRight size={20} color="var(--ink)" />
-        </span>
-        {summary && summary.matchesWaiting > 0 && (
+      <Link to="/reports" className={`${s.reportsChip} ${waiting > 0 ? s.reportsHot : ''}`}>
+        <TagIcon size={20} color="var(--text)" />
+        <span className={s.reportsTitle}>{t('home.myReports')}</span>
+        {summary && <span className={s.reportsMeta}>{t('home.reportsMeta', { active: summary.active })}</span>}
+        {waiting > 0 && (
           <span className={s.reportsSticker}>
-            <Sticker>{t('home.spotted')}</Sticker>
+            <Sticker>{t('home.reportsWaiting', { n: waiting })}</Sticker>
           </span>
         )}
+        <ArrowRight size={18} color="var(--text-muted)" />
       </Link>
 
-      {me?.matchAlerts && <AlertsNudge />}
-
       <div className={s.modes}>
-        {(['lost', 'found'] as const).map((m, i) => {
+        {(['lost', 'found'] as const).map((m) => {
           const on = m === mode
           return (
             <button
               key={m}
               type="button"
               aria-pressed={on}
+              aria-label={t(`home.mode.${m}.small` as StringKey)}
               className={s.modeBtn}
               onClick={() => setMode(m)}
-              style={{ transform: on ? `rotate(${m === 'lost' ? -3 : 3}deg)` : undefined }}
+              style={{ transform: on ? `rotate(${m === 'lost' ? -2.5 : 2.5}deg)` : undefined }}
             >
               <LuggageTag
                 className={s.modeTag}
                 style={{ background: on ? accentOf(m) : 'var(--surface)', color: on ? 'var(--ink)' : 'var(--text-muted)' }}
               >
-                <MonoLabel>TAG 0{i + 1}</MonoLabel>
-                <span style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-                  <span className={s.modeBig}>{t(`home.mode.${m}.big` as StringKey)}</span>
-                  <span className={s.modeSmall}>{t(`home.mode.${m}.small` as StringKey)}</span>
+                <span className={s.modeBig} aria-hidden="true">
+                  {t(`home.mode.${m}.big` as StringKey)}
+                </span>
+                <span className={s.modeSmall} aria-hidden="true">
+                  {t(`home.mode.${m}.small` as StringKey)}
                 </span>
               </LuggageTag>
             </button>
@@ -204,53 +261,32 @@ export default function Home() {
         })}
       </div>
 
-      <div className={s.zarqa}>
-        <ZarqaBubble mascot="thinking" alt="Zarqa thinking">
-          {tm('home.zarqa', mode)}
-        </ZarqaBubble>
-      </div>
-
       <Ticket>
         <form className={s.form} onSubmit={submit} noValidate>
-          <div className={s.formTop}>
-            <span className={s.reportTag} style={{ background: accent }}>
-              {tm('form.tag', mode)}
-            </span>
-            <MonoLabel color="var(--ink-muted)">{t('form.campus')}</MonoLabel>
-          </div>
-
           <div className={s.field}>
             <div className={s.fieldLabel}>
-              <span className={s.num}>01</span>
-              {tm('form.photos', mode)}
+              <span id="photos-label">{tm('form.photos', mode)}</span>
               <span className={s.count}>
                 {photos.length}/{MAX_PHOTOS}
               </span>
             </div>
-            <div className={s.photos}>
+            <div className={s.photos} role="group" aria-labelledby="photos-label">
               {photos.map((p, i) => (
-                <div key={p.url} className={s.photoSlot} style={{ transform: `rotate(${TILTS[i]}deg)`, borderStyle: 'solid' }}>
-                  <img src={p.url} alt="" className={s.photoImg} />
+                <div key={p.url} className={s.photoSlot} style={{ transform: `rotate(${TILTS[i]}deg)` }}>
+                  <img src={p.url} alt={t('form.photoN', { n: i + 1 })} className={s.photoImg} />
                   <button type="button" className={s.photoRemove} aria-label={t('form.removePhoto')} onClick={() => removePhoto(i)}>
-                    ×
+                    <span className={s.xDot}>
+                      <Close size={14} />
+                    </span>
                   </button>
                 </div>
               ))}
               {photos.length < MAX_PHOTOS && (
-                <button
-                  type="button"
-                  aria-label={t('form.addPhoto')}
-                  className={s.photoAdd}
-                  style={{ transform: `rotate(${TILTS[photos.length]}deg)` }}
-                  onClick={() => fileInput.current?.click()}
-                >
+                <button type="button" aria-label={t('form.addPhoto')} className={s.photoAdd} onClick={() => fileInput.current?.click()}>
                   <Camera size={24} color="var(--ink)" />
-                  {tm('form.photoCta', mode)}
+                  <span aria-hidden="true">{tm('form.photoCta', mode)}</span>
                 </button>
               )}
-              {Array.from({ length: Math.max(0, MAX_PHOTOS - photos.length - 1) }, (_, i) => (
-                <div key={i} className={s.photoSlot} style={{ transform: `rotate(${TILTS[photos.length + 1 + i]}deg)` }} />
-              ))}
               <input
                 ref={fileInput}
                 type="file"
@@ -267,18 +303,22 @@ export default function Home() {
 
           <div className={s.field}>
             <label htmlFor="item-text" className={s.fieldLabel}>
-              <span className={s.num}>02</span>
               {tm('form.name', mode)}
             </label>
             <textarea
+              ref={textBox}
               id="item-text"
               className={s.textarea}
               rows={3}
               maxLength={500}
               value={text}
-              onChange={(e) => setText(e.target.value)}
+              onChange={(e) => {
+                setText(e.target.value)
+                if (error === t('form.text.missing')) setError('')
+              }}
               placeholder={tm('form.text.placeholder', mode)}
               aria-describedby="item-text-hint"
+              aria-invalid={error === t('form.text.missing') || undefined}
             />
             <span id="item-text-hint" className={s.hint}>
               {t('form.text.hint')}
@@ -287,8 +327,8 @@ export default function Home() {
               <div className={s.notice} role="note">
                 <Lock size={22} color="var(--tan)" />
                 <div className={s.noticeBody}>
-                  <MonoLabel color="var(--tan)">{t('form.cardNotice.title')}</MonoLabel>
-                  <span>{t('form.cardNotice.body')}</span>
+                  <MonoLabel color="var(--tan)">{tm('form.cardNotice.title', mode)}</MonoLabel>
+                  <span>{tm('form.cardNotice.body', mode)}</span>
                 </div>
               </div>
             )}
@@ -296,7 +336,6 @@ export default function Home() {
 
           <div className={s.field}>
             <label htmlFor="item-loc" className={s.fieldLabel}>
-              <span className={s.num}>03</span>
               {tm('form.where', mode)}
             </label>
             <div className={s.locWrap}>
@@ -305,7 +344,12 @@ export default function Home() {
               </span>
               <input
                 id="item-loc"
-                type="search"
+                type="text"
+                role="combobox"
+                aria-autocomplete="list"
+                aria-expanded={listOpen}
+                aria-controls="item-loc-list"
+                aria-activedescendant={listOpen && activeOpt >= 0 ? `item-loc-opt-${activeOpt}` : undefined}
                 className={s.locInput}
                 autoComplete="off"
                 maxLength={120}
@@ -314,60 +358,67 @@ export default function Home() {
                   setLocQuery(e.target.value)
                   setPlaceName(null)
                   setLocOpen(true)
+                  setActiveOpt(-1)
                 }}
                 onFocus={() => setLocOpen(true)}
-                onBlur={() => setTimeout(() => setLocOpen(false), 150)}
+                onBlur={() => {
+                  setLocOpen(false)
+                  setActiveOpt(-1)
+                }}
+                onKeyDown={onLocKey}
                 placeholder={t('form.where.placeholder')}
               />
             </div>
-            {locOpen && suggestions.length > 0 && (
-              <div className={s.suggest}>
-                {suggestions.map((p) => (
-                  <button
+            <ul id="item-loc-list" role="listbox" aria-label={t('form.where.list')} className={s.suggest} hidden={!listOpen}>
+              {listOpen &&
+                suggestions.map((p, i) => (
+                  <li
                     key={p.name}
-                    type="button"
-                    className={s.suggestItem}
-                    onClick={() => {
-                      setLocQuery(p.name)
-                      setPlaceName(p.name)
-                      setLocOpen(false)
-                    }}
+                    id={`item-loc-opt-${i}`}
+                    role="option"
+                    aria-selected={i === activeOpt}
+                    className={`${s.suggestItem} ${i === activeOpt ? s.suggestActive : ''}`}
+                    // mousedown keeps focus in the input, so the list doesn't close before the pick lands.
+                    onMouseDown={(e) => e.preventDefault()}
+                    onClick={() => pickPlace(p)}
                   >
                     {p.name}
-                  </button>
+                  </li>
                 ))}
-              </div>
-            )}
+            </ul>
           </div>
 
           <div className={s.field}>
             <div className={s.fieldLabel}>
-              <span className={s.num}>04</span>
               <span id="knows-when-label">{tm('form.when', mode)}</span>
               <span className={s.whenToggle}>
                 <Switch checked={knowsWhen} onChange={setKnowsWhen} label={t('form.when.toggle')} />
               </span>
             </div>
             {knowsWhen && (
-            <div className={s.when}>
-              <label className={s.whenBox}>
-                <span className={s.whenLabel}>{t('form.date')}</span>
-                <span className={s.whenValue}>{formatDate(date, now.date)}</span>
-                <input type="date" className={s.whenNative} value={date} max={now.date} onChange={(e) => e.target.value && setDate(e.target.value)} />
-              </label>
-              <label className={s.whenBox}>
-                <span className={s.whenLabel}>{t('form.time')}</span>
-                <span className={s.whenValue} style={time ? undefined : { color: 'var(--ink-muted)' }}>
-                  {time ? formatTime(time) : t('form.time.none')}
-                </span>
-                <input type="time" className={s.whenNative} value={time} onChange={(e) => setTime(e.target.value)} aria-label={t('form.time.pick')} />
-                {time && (
-                  <button type="button" className={s.whenClear} aria-label={t('form.time.clear')} onClick={() => setTime('')}>
-                    ×
-                  </button>
-                )}
-              </label>
-            </div>
+              <div className={s.when}>
+                <label className={s.whenBox}>
+                  <span className={s.whenLabel}>{t('form.date')}</span>
+                  <span className={s.whenValue}>{formatDate(date, now.date)}</span>
+                  <input type="date" className={s.whenNative} value={date} max={now.date} onChange={(e) => e.target.value && setDate(e.target.value)} />
+                </label>
+                <div className={s.whenBox}>
+                  <label className={s.whenPick}>
+                    <span className={s.whenLabel}>{t('form.time')}</span>
+                    <span className={s.whenValue} style={time ? undefined : { color: 'var(--ink-muted)' }}>
+                      {time ? formatTime(time) : t('form.time.none')}
+                    </span>
+                    <input type="time" className={s.whenNative} value={time} onChange={(e) => setTime(e.target.value)} aria-label={t('form.time.pick')} />
+                  </label>
+                  {time && (
+                    <button type="button" className={s.whenClear} aria-label={t('form.time.clear')} onClick={() => setTime('')}>
+                      <span className={s.xDot}>
+                        <Close size={14} />
+                      </span>
+                    </button>
+                  )}
+                </div>
+              </div>
             )}
           </div>
 
@@ -384,10 +435,16 @@ export default function Home() {
             accent={accent}
             label={busy ? t('form.posting') : tm('form.submit', mode)}
             labelSize={28}
-            disabled={busy || !text.trim()}
+            disabled={busy || postsLeft === 0}
           />
+          {postsLeft !== undefined && (
+            <p className={s.limit}>{postsLeft === 0 ? t('form.limit.none') : t('form.limit', { n: postsLeft })}</p>
+          )}
         </form>
       </Ticket>
+
+
+      {me?.matchAlerts && <AlertsNudge />}
     </main>
   )
 }

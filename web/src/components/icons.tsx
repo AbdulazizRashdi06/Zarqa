@@ -23,6 +23,7 @@ function Svg({ size = 20, color = 'currentColor', strokeWidth = 2, children }: I
 export const ArrowRight = (p: IconProps) => <Svg strokeWidth={2.6} {...p}><path d="M5 12h14M13 6l6 6-6 6" /></Svg>
 export const ChevronLeft = (p: IconProps) => <Svg strokeWidth={2.2} {...p}><path d="M15 6l-6 6 6 6" /></Svg>
 export const ChevronRight = (p: IconProps) => <Svg {...p}><path d="M9 6l6 6-6 6" /></Svg>
+export const Close = (p: IconProps) => <Svg strokeWidth={2.6} {...p}><path d="M6 6l12 12M18 6L6 18" /></Svg>
 export const Check = (p: IconProps) => <Svg strokeWidth={2.8} {...p}><path d="M5 12.5l4.5 4.5L19 7.5" /></Svg>
 export const ChatBubble = (p: IconProps) => (
   <Svg {...p}><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.5 3.5V17A1.5 1.5 0 0 1 4 15.5z" /></Svg>

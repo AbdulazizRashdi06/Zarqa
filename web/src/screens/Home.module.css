@@ -2,7 +2,7 @@
   padding: 18px var(--gutter) 40px;
   display: flex;
   flex-direction: column;
-  gap: 26px;
+  gap: 20px;
 }
 
 .header {
@@ -16,23 +16,24 @@
   gap: 8px;
 }
 
+/* Headline in its own column, Zarqa in a reserved one: she never sits on the words. */
 .hello {
-  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(96px, 29vw, 136px);
+  align-items: end;
+  gap: 4px;
+  margin-right: calc(var(--gutter) * -1 + 4px);
+}
+.helloText {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-}
-.hello > :not(img) {
-  position: relative;
-  z-index: 1;
+  gap: 10px;
+  padding-bottom: 4px;
 }
 .helloMascot {
-  position: absolute;
-  z-index: 0;
-  top: 4px;
-  right: calc(var(--gutter) * -1 + 2px);
-  width: clamp(126px, 36vw, 158px);
+  width: 100%;
   height: auto;
+  align-self: end;
   pointer-events: none;
 }
 .greeting {
@@ -47,46 +48,34 @@
   margin: 0;
   font-family: var(--font-display);
   font-weight: 400;
-  /* A little under the design's 78px so Zarqa fits beside it on a phone. */
-  font-size: clamp(50px, 15vw, 66px);
+  font-size: clamp(42px, 12.6vw, 60px);
   line-height: 0.92;
   letter-spacing: 0.5px;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 
-/* MY REPORTS bar */
-.reportsBar {
+/* MY REPORTS: one line, louder only when a match is waiting */
+.reportsChip {
   position: relative;
+  align-self: flex-start;
   display: flex;
   align-items: center;
-  gap: 14px;
-  background: var(--surface);
+  gap: 10px;
+  min-height: var(--tap);
+  padding: 0 14px 0 14px;
   border: 1.5px solid var(--slate);
-  border-radius: 20px;
-  padding: 14px 12px 14px 16px;
+  border-radius: 999px;
+  background: var(--surface);
   color: var(--text);
   text-decoration: none;
 }
-.reportsIcon {
-  width: 48px;
-  height: 48px;
-  flex-shrink: 0;
-  border-radius: 14px;
-  background: var(--paper);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.reportsText {
-  flex-grow: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+.reportsHot {
+  border-color: var(--tan);
 }
 .reportsTitle {
   font-family: var(--font-display);
-  font-size: 26px;
+  font-size: 19px;
   line-height: 1;
   letter-spacing: 0.5px;
   text-transform: uppercase;
@@ -98,20 +87,10 @@
   letter-spacing: 1.2px;
   color: var(--text-muted);
 }
-.reportsArrow {
-  width: 44px;
-  height: 44px;
-  flex-shrink: 0;
-  border-radius: 22px;
-  background: var(--tan);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 .reportsSticker {
   position: absolute;
-  top: -9px;
-  left: 14px;
+  top: -11px;
+  right: -8px;
 }
 
 /* LOST / FOUND toggle tags */
@@ -129,11 +108,12 @@
   transition: transform 0.15s;
 }
 .modeTag {
-  height: 126px;
-  padding: 14px 14px 14px 36px;
+  height: 84px;
+  padding: 10px 12px 10px 34px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 4px;
 }
 .modeBig {
   font-family: var(--font-display);
@@ -145,29 +125,11 @@
   font-weight: 700;
 }
 
-.zarqa {
-  margin: -6px 0 -14px;
-}
-
 /* Report form ticket */
 .form {
   display: flex;
   flex-direction: column;
-  gap: 26px;
-}
-.formTop {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.reportTag {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  color: var(--ink);
+  gap: 24px;
 }
 .field {
   display: flex;
@@ -180,12 +142,6 @@
   gap: 10px;
   font-size: 17px;
   font-weight: 800;
-}
-.num {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--tan-dark);
 }
 .count {
   margin-left: auto;
@@ -208,7 +164,7 @@
 }
 .input::placeholder,
 .textarea::placeholder {
-  color: #9a948c;
+  color: #6f6a63;
 }
 .textarea {
   composes: input;
@@ -223,11 +179,11 @@
 .photos {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
-  padding: 4px 2px;
+  gap: 12px;
+  padding: 6px 2px 2px;
 }
 .photoAdd {
-  height: 80px;
+  height: 76px;
   border-radius: 10px;
   border: 2px dashed var(--ink);
   background: transparent;
@@ -242,12 +198,6 @@
   font-weight: 700;
   letter-spacing: 1px;
   padding: 0;
-}
-.photoSlot {
-  height: 80px;
-  border-radius: 10px;
-  border: 2px dashed var(--paper-line);
-  overflow: hidden;
 }
 
 .notice {
@@ -284,6 +234,8 @@
   padding-left: 30px;
 }
 .suggest {
+  margin: 0;
+  list-style: none;
   border-radius: 14px;
   background: var(--ground);
   display: flex;
@@ -292,17 +244,21 @@
 }
 .suggestItem {
   min-height: 44px;
-  text-align: left;
-  border: none;
-  background: none;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
   border-radius: 10px;
   padding: 0 12px;
   font-size: 16px;
   font-weight: 600;
   color: var(--paper);
 }
-.suggestItem:hover {
+.suggestItem:hover,
+.suggestActive {
   background: var(--surface);
+}
+.suggest[hidden] {
+  display: none;
 }
 
 .when {
@@ -332,6 +288,11 @@
   line-height: 1;
   text-transform: uppercase;
 }
+.whenPick {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 /* Native picker stretched invisibly over the box, so the phone's own date/time UI opens. */
 .whenNative {
   position: absolute;
@@ -345,17 +306,14 @@
 /* Clears the optional time; sits above the invisible native picker */
 .whenClear {
   position: absolute;
-  top: 4px;
-  right: 4px;
+  top: 0;
+  right: 0;
   z-index: 1;
-  width: 32px;
-  height: 32px;
+  width: var(--tap);
+  height: var(--tap);
   border: none;
-  border-radius: 16px;
-  background: var(--ink);
-  color: var(--paper);
-  font-size: 18px;
-  line-height: 1;
+  background: none;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -370,32 +328,43 @@
 
 .photoSlot {
   position: relative;
+  height: 76px;
 }
 .photoImg {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  border-radius: 10px;
+  border: 2px solid var(--ink);
 }
+/* 44px tap target; the visible dot is smaller */
 .photoRemove {
   position: absolute;
-  top: 3px;
-  right: 3px;
+  top: -14px;
+  right: -14px;
+  width: var(--tap);
+  height: var(--tap);
+  border: none;
+  background: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.xDot {
   width: 26px;
   height: 26px;
-  border: none;
   border-radius: 13px;
   background: var(--ink);
   color: var(--paper);
-  font-size: 16px;
-  line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .error {
-  margin: -10px 0 0;
+  margin: -8px 0 -10px;
   font-size: 14px;
   font-weight: 700;
   color: #b4472b;
@@ -405,5 +374,16 @@
   margin-top: -4px;
   font-size: 13px;
   line-height: 1.4;
+  color: var(--ink-muted);
+}
+
+.limit {
+  margin: -12px 0 0;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
   color: var(--ink-muted);
 }

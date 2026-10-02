@@ -47,7 +47,7 @@ Success for the pilot is **items returned to their owners**. Recall matters more
 ## Capabilities and Constraints
 
 - Built: sign-in, posting, My Reports, AI matching with reasons, the Match screen, chat with handover tickets, notifications, Profile (stats, toggles, avatar, delete account), an admin screen, retention (reports expire after 60 days, data is deleted after 6 months), nightly backups.
-- **Card and ID items:** photos of ID or bank cards are never sent to any model, are visible only to the uploader, and are never copied into the repo.
+- **Card and ID items:** photos of ID or bank cards are never sent to any model, are visible only to the uploader, and are never copied into the repo. Their text may include the **first name** printed on the card (finders are asked for it so Zarqa can find the owner); surnames, ID numbers and card numbers stay out.
 - Photos are re-encoded on upload with EXIF and GPS stripped.
 - Users see first names only, and can hide them ("GUtech student"). Emails are never shown.
 - At most 10 posts per user per day.
@@ -75,7 +75,7 @@ Success for the pilot is **items returned to their owners**. Recall matters more
 ## Product Principles
 
 1. **Recall first.** Never trade away finding true pairs for neatness. When in doubt, show the match.
-2. **Private by default.** People only see what a match entitles them to. Card and ID details never leave the uploader.
+2. **Private by default.** People only see what a match entitles them to. Card and ID photos and numbers never leave the uploader; only a first name may help the match.
 3. **A minute to post.** Every extra field or step costs reports, and fewer reports means fewer matches.
 4. **Zarqa does the looking.** The person describes; the app searches, explains and nudges. No browsing.
 5. **Students' own thing.** Warm, funny, campus-local. Never a university form.

@@ -20,4 +20,4 @@ export type Report = {
   createdAt: string
 }
 
-export type HomeSummary = { active: number; matchesWaiting: number; unreadChats: number }
+export type HomeSummary = { active: number; matchesWaiting: number; unreadChats: number; postsLeft: number }

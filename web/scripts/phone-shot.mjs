@@ -1,7 +1,7 @@
 // Phone-layout screenshots of the running dev app (390×844 at 2×, like the design mockups).
 //
 //   node scripts/phone-shot.mjs --login <email> <code> --state <file>      sign in once, save the session
-//   node scripts/phone-shot.mjs --state <file> --out <png> [--path /] [--click "FOUND"] [--full]
+//   node scripts/phone-shot.mjs --state <file> --out <png> [--path /] [--click "I found"] [--fill "#item-text=text"] [--size 360x740] [--full]
 //
 // The dev servers must be running (web on :5173, api on :5284).
 import { chromium } from '@playwright/test'
@@ -13,13 +13,15 @@ const opt = (name) => {
 }
 const base = opt('--base') ?? 'http://localhost:5173'
 const state = opt('--state')
+const [width, height] = (opt('--size') ?? '390x844').split('x').map(Number)
+const phone = width < 768
 
 const browser = await chromium.launch()
 const context = await browser.newContext({
-  viewport: { width: 390, height: 844 },
-  deviceScaleFactor: 2,
-  isMobile: true,
-  hasTouch: true,
+  viewport: { width, height },
+  deviceScaleFactor: phone ? 2 : 1,
+  isMobile: phone,
+  hasTouch: phone,
   storageState: args.includes('--login') ? undefined : state,
 })
 const page = await context.newPage()
@@ -41,6 +43,12 @@ if (args.includes('--login')) {
   await page.waitForLoadState('networkidle')
   const click = opt('--click')
   if (click) await page.getByRole('button', { name: new RegExp(click) }).first().click()
+  const fill = opt('--fill')
+  if (fill) {
+    const at = fill.indexOf('=')
+    await page.fill(fill.slice(0, at), fill.slice(at + 1))
+    await page.locator(fill.slice(0, at)).blur()
+  }
   await page.waitForTimeout(500)
   await page.screenshot({ path: opt('--out'), fullPage: args.includes('--full') })
   console.log(`saved ${opt('--out')}`)

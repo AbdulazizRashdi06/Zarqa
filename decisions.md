@@ -2,6 +2,20 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-10-03: First names on found cards may go to matching
+
+- **Decision:** when someone finds a student, ID or bank card, Home asks them to type the **first name** printed on it, plus the issuer and colour. Owners are asked to mention their first name too. Surnames, ID numbers and card numbers stay out.
+- **Why:** a card is near-impossible to match on "blue card" alone, and recall is the deciding metric. A first name alone identifies little on a 2,000-person campus.
+- **What doesn't change:** card and ID *photos* are still never sent to any model, are visible only to the uploader, and are never copied into the repo. The text, including the first name, goes through matching like any other report text.
+- Chosen by the user during the Home critique (2026-10-03).
+
+## 2026-10-03: Home screen tidy-up after the design critique
+
+- The form comes first: Zarqa's speech bubble, the "TAG 01/02" and "GUTECH CAMPUS" labels and the field numbers are gone. My Reports is a one-line chip. The Lost/Found tags sit above the form, and Zarqa has her own column beside the headline.
+- Submit stays enabled; an empty description focuses the box with "Tell me what it is first." The 10-posts-a-day limit shows under the button.
+- Unfinished drafts are kept for the browser tab: fields in sessionStorage, photos in IndexedDB.
+- Accessibility: the place picker is an ARIA combobox with arrow keys; placeholders meet 4.5:1; focus rings are ink on paper; the × buttons have 44px targets.
+
 ## 2026-10-02: Exact sign-in exception for the owner to test
 
 - The owner requested access with their personal Gmail address. Add server-configured exact email exceptions through `AUTH_ALLOWED_EMAILS`; GUtech domain/subdomain acceptance stays the default.
