@@ -61,7 +61,7 @@
   "signin.emailLabel": "UNIVERSITY EMAIL",
   "signin.send": "Send me a code",
   "signin.sending": "Sending…",
-  "signin.help": "We will email you a 6-digit code. Only @gutech.edu.om accounts can join.",
+  "signin.help": "We will email you a 6-digit code. Use your GUtech email or an approved testing email.",
   "signin.terms": "Terms",
   "signin.privacy": "Privacy",
   "signin.helpLink": "Help",

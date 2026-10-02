@@ -22,6 +22,8 @@ services:
       Email__From: ${EMAIL_FROM:-}
       # TEST ONLY: shows the sign-in code in the app (anyone can sign in as anyone). Off for real users.
       Auth__TestMode: ${AUTH_TEST_MODE:-false}
+      # Exact email exceptions for pilot testers; normal emailed-code verification still applies.
+      Auth__AllowedEmails: ${AUTH_ALLOWED_EMAILS:-}
       # Matching models (secrets: set with deploy/set-secret.*). No keys = matching waits, nothing breaks.
       Models__OpenAiApiKey: ${OPENAI_API_KEY:-}
       Models__OpenAiBaseUrl: ${OPENAI_BASE_URL:-}

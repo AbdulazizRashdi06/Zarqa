@@ -2,6 +2,8 @@ using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Testing;
 
 namespace Zarqa.Tests;
 
@@ -58,6 +60,23 @@ public class AuthFlowTests(TestApp app) : IClassFixture<TestApp>
     {
         var r = await app.Client().PostAsJsonAsync("/api/auth/request-code", new { email = "someone@fakegutech.edu.om" });
         Assert.Equal(HttpStatusCode.BadRequest, r.StatusCode);
+    }
+
+    [Fact]
+    public async Task Approved_testing_email_requires_a_code_and_signs_in_without_admin_rights()
+    {
+        using var configured = app.WithWebHostBuilder(builder => builder.UseSetting("Auth:AllowedEmails", "tester@gmail.com"));
+        using var http = configured.CreateClient(new WebApplicationFactoryClientOptions { BaseAddress = new Uri("https://localhost"), HandleCookies = true });
+        const string email = "tester@gmail.com";
+        Assert.Equal(HttpStatusCode.Unauthorized, (await http.GetAsync("/api/me")).StatusCode);
+        var sent = await http.PostAsJsonAsync("/api/auth/request-code", new { email = " TESTER@gmail.com " });
+        Assert.Equal(HttpStatusCode.OK, sent.StatusCode);
+        Assert.False((await sent.Content.ReadFromJsonAsync<JsonElement>()).TryGetProperty("testCode", out _));
+        Assert.Equal(HttpStatusCode.BadRequest, (await http.PostAsJsonAsync("/api/auth/request-code", new { email = "other@gmail.com" })).StatusCode);
+        var verified = await http.PostAsJsonAsync("/api/auth/verify", new { email, code = app.Emails.LastCodeFor(email) });
+        Assert.Equal(HttpStatusCode.OK, verified.StatusCode);
+        Assert.Equal(email, await Prop<string>(await http.GetAsync("/api/me"), "email"));
+        Assert.Equal(HttpStatusCode.Forbidden, (await http.GetAsync("/api/admin/stats")).StatusCode);
     }
 
     [Fact]

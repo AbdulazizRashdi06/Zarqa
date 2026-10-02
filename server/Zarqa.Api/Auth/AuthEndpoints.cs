@@ -21,8 +21,8 @@ public static class AuthEndpoints
 
         auth.MapPost("/request-code", async (RequestCodeBody body, ZarqaDb db, IEmailSender email, TimeProvider clock, IConfiguration config, CancellationToken ct) =>
         {
-            var address = EmailRules.NormalizeUniversityEmail(body.Email);
-            if (address is null) return Errors.BadRequest("Only GUtech emails can join (@gutech.edu.om).");
+            var address = EmailRules.NormalizeSignInEmail(body.Email, config["Auth:AllowedEmails"]);
+            if (address is null) return Errors.BadRequest("Use your GUtech email or an approved testing email.");
 
             var now = clock.GetUtcNow();
             var recent = await db.LoginCodes.CountAsync(c => c.Email == address && c.CreatedAt > now - LoginCodes.Window, ct);
@@ -59,7 +59,7 @@ public static class AuthEndpoints
 
         auth.MapPost("/verify", async (VerifyBody body, ZarqaDb db, TimeProvider clock, HttpContext http, IConfiguration config, CancellationToken ct) =>
         {
-            var address = EmailRules.NormalizeUniversityEmail(body.Email);
+            var address = EmailRules.NormalizeSignInEmail(body.Email, config["Auth:AllowedEmails"]);
             var code = body.Code?.Trim();
             if (address is null || !LoginCodes.IsWellFormed(code)) return Errors.BadRequest("Enter the 6-digit code from your email.");
 

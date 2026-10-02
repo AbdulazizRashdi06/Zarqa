@@ -50,6 +50,7 @@ The mascot is a girl inspired by Zarqa Al-Yamama: cream veil, blue eyes, two bra
 - Tests: `dotnet test server/Zarqa.slnx`; web: `npm --prefix web run lint` and `npm --prefix web run build`.
 - **Deploy:** `bash deploy/deploy.sh` (Git Bash). It uploads the source to the VPS, rebuilds with Docker Compose, and checks `/api/health`. Live at **https://tryzarqa.com** (`www.` redirects there; the old `173-249-40-122.sslip.io` address still works).
 - **Secrets on the server:** the user runs `bash deploy/set-secret.sh NAME` (hidden prompt; restarts the API). Never ask for secret values in chat. Non-secret settings (`EMAIL_PROVIDER`, `EMAIL_FROM`, `ZARQA_DOMAIN`) can be edited directly in `/opt/zarqa/deploy/.env`.
+- Pilot sign-in exceptions: non-secret `AUTH_ALLOWED_EMAILS` is a comma-separated list of exact addresses, checked case-insensitively alongside the GUtech domain rule in both code request and verification. The owner requested one Gmail exception for testing. It still requires the emailed code and does not grant admin rights or enable `AUTH_TEST_MODE`.
 - **VPS:** Contabo, Ubuntu 24.04. SSH is `ssh -i ~/.ssh/zarqa_vps deploy@173.249.40.122` (passwordless sudo). It's key-only: root and password login are off. The firewall allows 22/80/443 only, and security updates are automatic. The app lives in `/opt/zarqa`, with secrets in `/opt/zarqa/deploy/.env` (server only, never in the repo).
 
 ## Backups and recovery

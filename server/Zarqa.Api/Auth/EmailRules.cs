@@ -8,10 +8,10 @@ public static class EmailRules
 
     /// <summary>
     /// Lower-cased address when it's a plain GUtech address (the domain is exactly gutech.edu.om
-    /// or a subdomain of it, e.g. student.gutech.edu.om); otherwise null.
+    /// or a subdomain of it, e.g. student.gutech.edu.om) or an explicitly allowed address; otherwise null.
     /// Compares the parsed domain, never a string suffix, so fakegutech.edu.om is refused.
     /// </summary>
-    public static string? NormalizeUniversityEmail(string? input)
+    public static string? NormalizeSignInEmail(string? input, string? allowedEmails = null)
     {
         var raw = input?.Trim();
         if (string.IsNullOrEmpty(raw) || raw.Length > 254) return null;
@@ -21,6 +21,8 @@ public static class EmailRules
 
         var domain = parsed.Host.ToLowerInvariant();
         var allowed = domain == UniversityDomain || domain.EndsWith("." + UniversityDomain, StringComparison.Ordinal);
+        allowed |= (allowedEmails ?? "").Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+            .Contains(parsed.Address, StringComparer.OrdinalIgnoreCase);
         return allowed ? parsed.Address.ToLowerInvariant() : null;
     }
 

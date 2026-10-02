@@ -2,6 +2,11 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-10-02: Exact sign-in exception for the owner to test
+
+- The owner requested access with their personal Gmail address. Add server-configured exact email exceptions through `AUTH_ALLOWED_EMAILS`; GUtech domain/subdomain acceptance stays the default.
+- Apply the same rule to requesting and verifying codes. Exceptions still prove mailbox access with the normal emailed code, receive no extra privileges, and do not enable test mode. Do not publish the owner's address in source or UI copy.
+
 ## 2026-10-02: Authenticate Luna with ChatGPT for matching tests
 
 - Owner explicitly chose direct Jev API, ChatGPT/Codex authentication for Luna, and a separate OpenAI API key for embeddings. Preserve the production embedding model and all matching prompts/thresholds.

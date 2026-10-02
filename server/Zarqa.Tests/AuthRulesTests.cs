@@ -10,7 +10,7 @@ public class EmailRulesTests
     [InlineData("  staff@gutech.edu.om ", "staff@gutech.edu.om")]
     [InlineData("x@any.sub.gutech.edu.om", "x@any.sub.gutech.edu.om")]
     public void Accepts_gutech_and_its_subdomains(string input, string expected) =>
-        Assert.Equal(expected, EmailRules.NormalizeUniversityEmail(input));
+        Assert.Equal(expected, EmailRules.NormalizeSignInEmail(input));
 
     [Theory]
     [InlineData("ali@fakegutech.edu.om")]          // suffix match would wrongly accept this
@@ -24,7 +24,17 @@ public class EmailRulesTests
     [InlineData("")]
     [InlineData(null)]
     public void Refuses_everything_else(string? input) =>
-        Assert.Null(EmailRules.NormalizeUniversityEmail(input));
+        Assert.Null(EmailRules.NormalizeSignInEmail(input));
+
+    [Theory]
+    [InlineData("  TESTER@gmail.com ", "tester@gmail.com")]
+    [InlineData("other@gmail.com", null)]
+    [InlineData("tester+other@gmail.com", null)]
+    [InlineData("tester@gmail.com.evil.com", null)]
+    [InlineData("Tester <tester@gmail.com>", null)]
+    [InlineData("ali@fakegutech.edu.om", null)]
+    public void Testing_exceptions_match_only_the_exact_bare_address(string input, string? expected) =>
+        Assert.Equal(expected, EmailRules.NormalizeSignInEmail(input, " testER@gmail.com, second@example.invalid "));
 
     [Theory]
     [InlineData("abdulaziz.rashdi@student.gutech.edu.om", "Abdulaziz")]
