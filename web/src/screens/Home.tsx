@@ -138,6 +138,13 @@ export default function Home() {
       </header>
 
       <div className={s.hello}>
+        {/* Zarqa keeps watch beside the headline: looking out for lost things, pleased about found ones. */}
+        <img
+          src={mode === 'lost' ? '/mascot/home-searching.webp' : '/mascot/home-found-keys.webp'}
+          alt=""
+          aria-hidden="true"
+          className={s.helloMascot}
+        />
         <span className={s.greeting}>
           {partOfDay()}, {firstName}
         </span>

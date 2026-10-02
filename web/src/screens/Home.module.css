@@ -17,9 +17,23 @@
 }
 
 .hello {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+.hello > :not(img) {
+  position: relative;
+  z-index: 1;
+}
+.helloMascot {
+  position: absolute;
+  z-index: 0;
+  top: 4px;
+  right: calc(var(--gutter) * -1 + 2px);
+  width: clamp(126px, 36vw, 158px);
+  height: auto;
+  pointer-events: none;
 }
 .greeting {
   font-family: var(--font-mono);
@@ -33,7 +47,8 @@
   margin: 0;
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(56px, 20vw, 78px);
+  /* A little under the design's 78px so Zarqa fits beside it on a phone. */
+  font-size: clamp(50px, 15vw, 66px);
   line-height: 0.92;
   letter-spacing: 0.5px;
   text-transform: uppercase;
