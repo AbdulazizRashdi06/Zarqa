@@ -58,11 +58,9 @@ async function signIn(role) {
 async function post(user, kind) {
   const p = user.page
   if (kind === 'found') await p.getByRole('button', { name: /TAG 02/ }).click()
-  await p.locator('#item-cat').fill('Other')
-  await p.locator('#item-name').fill('Smoke test blue umbrella')
-  await p.locator('#item-desc').fill('Synthetic launch check. Blue umbrella with a yellow star sticker.')
+  await p.locator('#item-text').fill('Smoke test blue umbrella. Synthetic launch check, yellow star sticker on the handle.')
   await p.locator('#item-loc').fill('Library')
-  await p.locator('#item-name').click()
+  await p.locator('#item-text').click()
   const posted = p.waitForResponse(r => r.url() === `${url}/api/reports` && r.request().method() === 'POST')
   await p.getByRole('button', { name: t(`form.submit.${kind}`), exact: true }).click()
   const res = await posted

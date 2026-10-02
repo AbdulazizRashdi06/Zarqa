@@ -58,3 +58,32 @@ public class PrescoreGoldenTests
         }
     }
 }
+
+public class OneTextPrescoreTests
+{
+    private static readonly AliasIndex Aliases = new(Zarqa.Api.Data.Seeder.LoadLocations().Select(kv => (kv.Key, kv.Value)));
+
+    private static MatchInput One(string text, string category = "") =>
+        new(Guid.NewGuid(), "lost", "", category, category, text, "GU1 Library", "", "2026-09-01", false, []);
+
+    [Fact]
+    public void One_text_reports_put_the_whole_text_weight_on_the_text()
+    {
+        var a = One("blue metal bottle with a cat sticker", "Bottles");
+        var b = One("blue metal bottle, cat sticker", "Bottles");
+        var r = Prescore.Score(a, b, 0.5, Aliases);
+        // Every token of the shorter text is shared, so the overlap is 1 and the text term is the full 0.24.
+        Assert.Equal(0.24, r.Text, 10);
+        Assert.Equal(0.05, r.Category, 10);
+        Assert.Equal(Math.Min(1, 0.5 + 0.05 + 0.24 + 0.08 + 0.04), r.Score, 10);
+    }
+
+    [Fact]
+    public void Older_reports_fold_their_name_into_the_match_text()
+    {
+        var report = new Zarqa.Api.Data.Report { Title = "Blue bottle", CategoryText = "Bottles", LocationText = "", Description = "metal, cat sticker" };
+        Assert.Equal("Blue bottle. metal, cat sticker", Matcher.MatchText(report));
+        report.Description = "Blue bottle, metal, cat sticker";
+        Assert.Equal("Blue bottle, metal, cat sticker", Matcher.MatchText(report));
+    }
+}

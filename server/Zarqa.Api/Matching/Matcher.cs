@@ -166,18 +166,27 @@ public sealed class Matcher(
         return await lunaReviewer.ReviewAsync(lost, found, images, ct);
     }
 
+    /// <summary>
+    /// The app matches on one text per report (decisions.md, 2026-10-02): no separate item name.
+    /// Reports from the older two-field form fold their name into the text.
+    /// </summary>
     public MatchInput ToInput(Report r) => new(
         r.Id,
         r.Kind == ReportKind.Lost ? "lost" : "found",
-        r.Title,
+        "",
         r.CategoryText,
         r.CategoryNorm ?? "",
-        r.Description,
+        MatchText(r),
         r.LocationText,
         "",
         r.EventDate?.ToString("yyyy-MM-dd"),
         r.IsSensitive,
         r.Photos.OrderBy(p => p.Position).Select(p => photos.PathFor(p.StorageKey)).ToList());
+
+    public static string MatchText(Report r) =>
+        r.Description.StartsWith(r.Title, StringComparison.OrdinalIgnoreCase) ? r.Description
+        : r.Description.Length == 0 ? r.Title
+        : $"{r.Title}. {r.Description}";
 
     private void Log(Guid reportId, Guid? counterpart, string step, JsonObject payload, decimal cost) =>
         db.ReviewLogs.Add(new ReviewLog

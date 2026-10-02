@@ -187,9 +187,19 @@ public static class Prescore
         var cb = b.CategoryKey.ToLowerInvariant().Trim();
         if (ca.Length > 0 && cb.Length > 0) category = ca == cb ? 0.05 : -0.02;
 
-        var titleOverlap = TextRules.Overlap(TextRules.Tokens(a.Title), TextRules.Tokens(b.Title));
-        var detailOverlap = TextRules.Overlap(TextRules.Tokens($"{a.Title} {a.Description}"), TextRules.Tokens($"{b.Title} {b.Description}"));
-        var text = 0.14 * titleOverlap + 0.10 * detailOverlap;
+        double text;
+        if (a.Title.Length == 0 && b.Title.Length == 0)
+        {
+            // One-text reports (the app): no item names, so the whole 0.24 text weight goes on the one text.
+            // Fixed rule, set before measuring; shortlist recall checked in benchmark/scripts/shortlist-experiment.js.
+            text = 0.24 * TextRules.Overlap(TextRules.Tokens(a.Description), TextRules.Tokens(b.Description));
+        }
+        else
+        {
+            var titleOverlap = TextRules.Overlap(TextRules.Tokens(a.Title), TextRules.Tokens(b.Title));
+            var detailOverlap = TextRules.Overlap(TextRules.Tokens($"{a.Title} {a.Description}"), TextRules.Tokens($"{b.Title} {b.Description}"));
+            text = 0.14 * titleOverlap + 0.10 * detailOverlap;
+        }
 
         var location = 0.08 * TextRules.Overlap(TextRules.ExpandedLocationTokens(a, aliases), TextRules.ExpandedLocationTokens(b, aliases));
 

@@ -36,9 +36,8 @@ export default function Home() {
   const { me } = useSession()
   const firstName = me?.firstName ?? ''
   const [mode, setMode] = useState<Mode>('lost')
-  const [category, setCategory] = useState('')
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
+  // One box: what it is plus every detail. The server and the matcher work from this one text.
+  const [text, setText] = useState('')
   const [locQuery, setLocQuery] = useState('')
   const [locOpen, setLocOpen] = useState(false)
   const [places, setPlaces] = useState<Place[]>([])
@@ -86,9 +85,7 @@ export default function Home() {
     setError('')
     const form = new FormData()
     form.set('kind', mode)
-    form.set('category', category)
-    form.set('title', title)
-    form.set('description', description)
+    form.set('text', text)
     if (placeName) form.set('locationName', placeName)
     else form.set('locationText', locQuery)
     if (knowsWhen) {
@@ -123,7 +120,7 @@ export default function Home() {
   }, [places, locQuery])
 
   const accent = accentOf(mode)
-  const showCardNotice = isSensitiveText(category)
+  const showCardNotice = isSensitiveText(text)
 
   return (
     <main className={s.page}>
@@ -269,19 +266,23 @@ export default function Home() {
           </div>
 
           <div className={s.field}>
-            <label htmlFor="item-cat" className={s.fieldLabel}>
+            <label htmlFor="item-text" className={s.fieldLabel}>
               <span className={s.num}>02</span>
-              {t('form.category')}
+              {tm('form.name', mode)}
             </label>
-            <input
-              id="item-cat"
-              className={s.input}
-              autoComplete="off"
-              maxLength={60}
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              placeholder={t('form.category.placeholder')}
+            <textarea
+              id="item-text"
+              className={s.textarea}
+              rows={3}
+              maxLength={500}
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              placeholder={tm('form.text.placeholder', mode)}
+              aria-describedby="item-text-hint"
             />
+            <span id="item-text-hint" className={s.hint}>
+              {t('form.text.hint')}
+            </span>
             {showCardNotice && (
               <div className={s.notice} role="note">
                 <Lock size={22} color="var(--tan)" />
@@ -294,39 +295,8 @@ export default function Home() {
           </div>
 
           <div className={s.field}>
-            <label htmlFor="item-name" className={s.fieldLabel}>
-              <span className={s.num}>03</span>
-              {tm('form.name', mode)}
-            </label>
-            <input
-              id="item-name"
-              className={s.input}
-              maxLength={80}
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              placeholder={tm('form.name.placeholder', mode)}
-            />
-          </div>
-
-          <div className={s.field}>
-            <label htmlFor="item-desc" className={s.fieldLabel}>
-              <span className={s.num}>04</span>
-              {t('form.description')}
-            </label>
-            <textarea
-              id="item-desc"
-              className={s.textarea}
-              rows={2}
-              maxLength={500}
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              placeholder={t('form.description.placeholder')}
-            />
-          </div>
-
-          <div className={s.field}>
             <label htmlFor="item-loc" className={s.fieldLabel}>
-              <span className={s.num}>05</span>
+              <span className={s.num}>03</span>
               {tm('form.where', mode)}
             </label>
             <div className={s.locWrap}>
@@ -372,7 +342,7 @@ export default function Home() {
 
           <div className={s.field}>
             <div className={s.fieldLabel}>
-              <span className={s.num}>06</span>
+              <span className={s.num}>04</span>
               <span id="knows-when-label">{tm('form.when', mode)}</span>
               <span className={s.whenToggle}>
                 <Switch checked={knowsWhen} onChange={setKnowsWhen} label={t('form.when.toggle')} />
@@ -414,7 +384,7 @@ export default function Home() {
             accent={accent}
             label={busy ? t('form.posting') : tm('form.submit', mode)}
             labelSize={28}
-            disabled={busy || !title.trim() || !category.trim()}
+            disabled={busy || !text.trim()}
           />
         </form>
       </Ticket>

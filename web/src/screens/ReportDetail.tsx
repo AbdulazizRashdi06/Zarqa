@@ -72,14 +72,8 @@ export default function ReportDetail() {
           )}
 
           <dl className={s.fields}>
-            <dt><MonoLabel color="var(--ink-muted)">{t('form.category')}</MonoLabel></dt>
-            <dd>{report.category}</dd>
-            {report.description && (
-              <>
-                <dt><MonoLabel color="var(--ink-muted)">{t('form.description')}</MonoLabel></dt>
-                <dd>{report.description}</dd>
-              </>
-            )}
+            <dt><MonoLabel color="var(--ink-muted)">{t('detail.what')}</MonoLabel></dt>
+            <dd>{report.description || report.title}</dd>
             <dt><MonoLabel color="var(--ink-muted)">{t('detail.where')}</MonoLabel></dt>
             <dd>{report.locationText || t('detail.whereUnknown')}</dd>
             <dt><MonoLabel color="var(--ink-muted)">{t('detail.when')}</MonoLabel></dt>

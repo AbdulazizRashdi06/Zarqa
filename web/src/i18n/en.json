@@ -26,16 +26,10 @@
   "form.photoCta.lost": "ADD",
   "form.photoCta.found": "SNAP",
   "form.addPhoto": "Add a photo",
-  "form.category": "Category",
-  "form.category.placeholder": "Tech, Bags, Keys, Cards & IDs…",
   "form.cardNotice.title": "CARD PHOTOS STAY PRIVATE",
   "form.cardNotice.body": "Only you can see these photos, even after a match. They never go to AI. Describe the issuer and colour instead; leave out names and card numbers.",
   "form.name.lost": "What did you lose?",
   "form.name.found": "What did you find?",
-  "form.name.placeholder.lost": "AirPods Pro case",
-  "form.name.placeholder.found": "Black umbrella",
-  "form.description": "Description",
-  "form.description.placeholder": "color, brand, stickers, marks",
   "form.where.lost": "Where did you last have it?",
   "form.where.found": "Where did you find it?",
   "form.where.placeholder": "Library, cafeteria…",
@@ -267,5 +261,9 @@
   "admin.status.InChat": "Chatting",
   "admin.status.Returned": "Returned",
   "admin.status.Closed": "Closed",
-  "admin.status.Expired": "Expired"
+  "admin.status.Expired": "Expired",
+  "form.text.placeholder.lost": "e.g. Black AirPods Pro case with a cat sticker on the back",
+  "form.text.placeholder.found": "e.g. Black umbrella with a wooden handle",
+  "form.text.hint": "Say what it is, plus colour, brand, stickers or marks. The more detail, the better I match.",
+  "detail.what": "WHAT IT IS"
 }

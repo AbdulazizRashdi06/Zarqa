@@ -25,13 +25,12 @@ internal static class PromptParts
     /// <summary>benchmark brief(r): title, category, description (≤500 chars), location, eventDate.</summary>
     public static JsonObject Brief(MatchInput r)
     {
-        var o = new JsonObject
-        {
-            ["title"] = r.Title,
-            ["category"] = r.Category,
-            ["description"] = TextRules.Truncate(r.Description, 500),
-            ["location"] = r.Location,
-        };
+        var o = new JsonObject();
+        // One-text reports have no item name: the description carries everything.
+        if (r.Title.Length > 0) o["title"] = r.Title;
+        if (r.Category.Length > 0) o["category"] = r.Category;
+        o["description"] = TextRules.Truncate(r.Description, 500);
+        o["location"] = r.Location;
         if (r.EventDate is not null) o["eventDate"] = r.EventDate;
         return o;
     }
@@ -185,14 +184,12 @@ public sealed class LunaReviewer(ILuna luna, AliasIndex aliases)
 
     private static JsonObject Describe(MatchInput r)
     {
-        var o = new JsonObject
-        {
-            ["title"] = r.Title,
-            ["category"] = r.Category,
-            ["description"] = r.Description,
-            ["location"] = r.Location,
-            ["campusZone"] = r.CampusZone,
-        };
+        var o = new JsonObject();
+        if (r.Title.Length > 0) o["title"] = r.Title;
+        if (r.Category.Length > 0) o["category"] = r.Category;
+        o["description"] = r.Description;
+        o["location"] = r.Location;
+        o["campusZone"] = r.CampusZone;
         if (r.EventDate is not null) o["eventDate"] = r.EventDate;
         return o;
     }

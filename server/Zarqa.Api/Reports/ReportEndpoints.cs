@@ -46,7 +46,16 @@ public static class ReportEndpoints
                 CreatedAt = now,
                 UpdatedAt = now,
             };
-            var error = await ApplyFields(report, form["title"], form["category"], form["description"], form["locationName"], form["locationText"],
+            // The Home form sends one "text" box; older clients send title/category/description separately.
+            var (title, category, description) = ((string?)form["title"], (string?)form["category"], (string?)form["description"]);
+            if (form.ContainsKey("text"))
+            {
+                var parts = ReportText.Split(form["text"]);
+                if (parts is null) return Errors.BadRequest("Tell me what it is first.");
+                if (parts.Description.Length > 500) return Errors.BadRequest("Keep it under 500 characters.");
+                (title, category, description) = (parts.Title, parts.Category, parts.Description);
+            }
+            var error = await ApplyFields(report, title, category, description, form["locationName"], form["locationText"],
                 form["eventDate"], form["eventTime"], db, clock, ct);
             if (error is not null) return error;
 
@@ -154,7 +163,9 @@ public static class ReportEndpoints
         category = Clean(category);
         description = Clean(description) ?? "";
         if (title is null || title.Length > 80) return Errors.BadRequest("Give the item a name (up to 80 characters).");
-        if (category is null || category.Length > 60) return Errors.BadRequest("Add a category, like Tech, Bags or Keys.");
+        // Category may be empty (one-box form, nothing recognised): it then just adds no category term.
+        if (category is { Length: > 60 }) return Errors.BadRequest("Keep the category short.");
+        category ??= "";
         if (description.Length > 500) return Errors.BadRequest("Keep the description under 500 characters.");
 
         // A name from the campus list wins; otherwise keep what they typed.
@@ -184,13 +195,13 @@ public static class ReportEndpoints
 
         r.Title = title;
         r.CategoryText = category;
-        r.CategoryNorm = Categories.Normalize(category, title);
+        r.CategoryNorm = category.Length > 0 ? Categories.Normalize(category, title) : Categories.Normalize(description, title);
         r.Description = description;
         r.LocationName = place?.Name;
         r.LocationText = place?.Name ?? typed;
         r.EventDate = date;
         r.EventTime = time;
-        r.IsSensitive = Categories.IsSensitive(category, title);
+        r.IsSensitive = Categories.IsSensitive(category, title, description);
         foreach (var p in r.Photos) p.IsSensitive = r.IsSensitive;
         return null;
     }

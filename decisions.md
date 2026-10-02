@@ -35,6 +35,28 @@ The decisions made while turning the uni matching prototype into a real app, and
 - The owner explicitly requested keeping the existing iPhone mascot. This supersedes the earlier request to replace its Apple-branded phone.
 - Verified the PDPL reference against MTCIT: https://www.mtcit.gov.om/sectors/governance/personal . Review must include subsequent amendments, including the ministry's listed Royal Decree 68/2026; no legal compliance assessment has been made.
 
+## 2026-10-03: Match on one text per report
+
+**Decision.** The Home form has one "describe it" box instead of category, name and description. Matching uses that one text:
+- No item name goes into the prescore, the embedding or the prompts.
+- The category comes from keywords in the text.
+- When both reports have no name, the prescore puts the whole text weight (0.24) on the one text. This is a fixed rule, set before measuring.
+- A short display name is cut from the text for report cards only.
+- Older two-field reports fold their name into the text.
+
+**Checked** with `benchmark/scripts/shortlist-experiment.js` on the campus set (32 true pairs, filler to 100 and 1,000 reports). The question was whether true pairs still reach the review stage:
+
+| Embeddings | Report shape | Top-25 retrieval | Shortlist ≥ 0.56 | Reviews per report (100 / 1,000) |
+|---|---|---|---|---|
+| MiniLM (the benchmark's) | two fields | 100% | 100% | 4.3 / 9.6 |
+| MiniLM | one text | 100% | 100% | 5.1 / 9.8 |
+| text-embedding-3-small (production) | two fields | 100% | 100% | 7.6 / 9.9 |
+| text-embedding-3-small | one text | 100% | 100% | 8.9 / 10.0 |
+
+**Found on the way.** The luna-debate benchmark run used the local **MiniLM** embeddings, but production uses **text-embedding-3-small**. The shortlist still keeps every true pair with the production model. It is fuller, though: more pairs are reviewed, which costs a little more.
+
+**Not yet re-measured.** The final debate decision (recall, precision, traps) with one-text prompts and production embeddings needs a paid luna-debate re-run, or the pilot's own confirmed/rejected labels. Until then, the 97% recall from 2026-10-01 is an estimate for the app, not a measurement.
+
 ## 2026-10-02: Matching in the app (step 4)
 
 **Decision.**
@@ -187,6 +209,7 @@ Bare floor names such as "2nd floor" are left out because several places share t
 
 - [ ] **Long-gap date rule.** 7 of the 8 false matches at cut-off 0.60 had the item lost 1–11 months before it was found.
 - [ ] **Re-check the 0.65 cut-off** on freshly collected items that weren't used to choose it.
+- [ ] **Re-run luna-debate with the app's real setup:** one-text reports and text-embedding-3-small (see 2026-10-03).
 - [ ] **Blind-label false matches** as plausible or wrong, to report a fairer precision.
 - [ ] **Location specialist agent.**
 - [ ] **Replace the benchmark's reconstructed `luna` baseline** with the real `processReport` code (prompt and overlap weights).

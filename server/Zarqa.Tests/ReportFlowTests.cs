@@ -114,15 +114,37 @@ public class ReportFlowTests(TestApp app) : IClassFixture<TestApp>
         Assert.Equal(HttpStatusCode.NotFound, (await finder.GetAsync($"/api/photos/{lost.GetProperty("photoIds")[0].GetString()}")).StatusCode);
     }
 
-    [Theory]
-    [InlineData("", "Tech", "Give the item a name")]
-    [InlineData("Phone", "", "Add a category")]
-    public async Task Validates_required_fields(string title, string category, string error)
+    [Fact]
+    public async Task Validates_required_fields()
     {
         var http = await app.SignedIn($"validate.{Guid.NewGuid():N}@gutech.edu.om");
-        var r = await http.PostAsync("/api/reports", Form("lost", title, category));
+        var noName = await http.PostAsync("/api/reports", Form("lost", "", "Tech"));
+        Assert.StartsWith("Give the item a name", (await Json(noName)).GetProperty("error").GetString());
+
+        var empty = new MultipartFormDataContent { { new StringContent("lost"), "kind" }, { new StringContent("   "), "text" } };
+        var r = await http.PostAsync("/api/reports", empty);
         Assert.Equal(HttpStatusCode.BadRequest, r.StatusCode);
-        Assert.StartsWith(error, (await Json(r)).GetProperty("error").GetString());
+        Assert.StartsWith("Tell me what it is", (await Json(r)).GetProperty("error").GetString());
+    }
+
+    [Fact]
+    public async Task One_text_box_becomes_name_category_and_description()
+    {
+        var http = await app.SignedIn("onebox@gutech.edu.om");
+        var form = new MultipartFormDataContent
+        {
+            { new StringContent("lost"), "kind" },
+            { new StringContent("black JBL earbuds case, small scratch on the lid and a cat sticker"), "text" },
+            { new StringContent("GU1 Library"), "locationName" },
+        };
+        var report = await Json(await http.PostAsync("/api/reports", form));
+        Assert.Equal("Black JBL earbuds case", report.GetProperty("title").GetString());
+        Assert.Equal("Electronics", report.GetProperty("categoryKey").GetString());
+        Assert.Equal("black JBL earbuds case, small scratch on the lid and a cat sticker", report.GetProperty("description").GetString());
+        Assert.False(report.GetProperty("isSensitive").GetBoolean());
+
+        var card = new MultipartFormDataContent { { new StringContent("found"), "kind" }, { new StringContent("Blue bank card from Bank Muscat"), "text" } };
+        Assert.True((await Json(await http.PostAsync("/api/reports", card))).GetProperty("isSensitive").GetBoolean());
     }
 
     [Fact]
