@@ -2,6 +2,12 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-10-02: Nightly backups
+
+- Nightly database and photo backups at 02:17 UTC, retained locally for 14 days with owner-only access. Publish only complete, verified archives and prevent concurrent runs with `flock`.
+- Verified a restore into a scratch database and disposable photo volume; the production database was untouched. Database and photos are captured sequentially, so recovery must account for intervening uploads/deletions.
+- Off-site storage awaits the owner's account. Setup, encryption, lifecycle and restore instructions are in `CLAUDE.md`; no accounts or credentials were created.
+
 ## 2026-10-02: Pilot launch pages and moderation
 
 - Public Terms, Privacy, Help and Tips are accessible without signing in. Legal texts visibly remain drafts requiring review before wider launch. Privacy describes actual admin access, overseas providers, sensitive-photo protection and retention, without claiming compliance.

@@ -50,6 +50,22 @@ The mascot is a girl inspired by Zarqa Al-Yamama: cream veil, blue eyes, two bra
 - **Secrets on the server:** the user runs `bash deploy/set-secret.sh NAME` (hidden prompt; restarts the API). Never ask for secret values in chat. Non-secret settings (`EMAIL_PROVIDER`, `EMAIL_FROM`, `ZARQA_DOMAIN`) can be edited directly in `/opt/zarqa/deploy/.env`.
 - **VPS:** Contabo, Ubuntu 24.04. SSH is `ssh -i ~/.ssh/zarqa_vps deploy@173.249.40.122` (passwordless sudo). It's key-only: root and password login are off. The firewall allows 22/80/443 only, and security updates are automatic. The app lives in `/opt/zarqa`, with secrets in `/opt/zarqa/deploy/.env` (server only, never in the repo).
 
+## Backups and recovery
+
+- Installed for `deploy`: nightly at **02:17 UTC** (06:17 Oman), running `deploy/backup.sh`. Reinstall idempotently with `bash /opt/zarqa/deploy/install-backups.sh` on the VPS.
+- `/opt/zarqa/backups/<UTC timestamp>/` contains `database.sql.gz`, `photos.tar.gz` and `SHA256SUMS`, with owner-only permissions. A lock prevents overlapping runs; incomplete runs stay unpublished and are cleaned up. Successful runs remove completed backups older than 14 days. Check `backups/cron.log` and backup timestamps regularly; cron failures do not currently send alerts.
+- `bash /opt/zarqa/deploy/restore-check.sh` verifies checksums, imports the latest dump with SQL errors treated as failures into a uniquely named scratch database, and extracts photos into a disposable Docker volume. Both scratch resources are removed afterward. **Verified on 2026-10-02**, including DB and photo archive restoration; production data was not replaced.
+- The dump is transactionally consistent, but DB and photo archives are sequential, not one atomic snapshot. Pause writes for a coordinated recovery snapshot if exact synchronization is needed. Secrets and deployment configuration are deliberately excluded and must be recovered separately by the owner.
+- For real disaster recovery: stop the API to prevent writes and retention jobs, preserve the current database/photo volume, verify checksums, restore to a new database and volume, check photo references, apply deletion requests made since the snapshot, then switch configuration and restart. Do not import over the running production database. The scratch script is only a restore test.
+
+### Off-site copies (owner storage account required)
+
+1. Choose storage under your own account in an appropriate region; review its handling of personal data. No account or off-site destination has been created.
+2. Install `rclone` on the VPS and run its interactive `rclone config` yourself as `deploy`; keep credentials out of this repo and chat. Give the destination a dedicated prefix and enable an encrypted `crypt` remote named `zarqa-backups`. Store its recovery password and configuration separately in your password manager.
+3. After a successful nightly backup, run `rclone copy /opt/zarqa/backups zarqa-backups:pilot --include '/20*/**'`. Use **copy**, not sync, and inspect the first upload and download. Do not include `.env` or cron logs.
+4. Configure destination lifecycle expiry to 14 days (including old versions) so deleted personal data does not remain indefinitely. If longer retention is needed, review and update the privacy notice first. Add monitoring for failed uploads.
+5. Download a complete dated set, verify `SHA256SUMS`, and perform the same scratch restore before relying on off-site recovery. Repeat restore drills periodically.
+
 ## Environment
 
 - Windows 11, PowerShell 5.1 (no `&&`). Node 22.
