@@ -68,6 +68,17 @@ The mascot is a girl inspired by Zarqa Al-Yamama: cream veil, blue eyes, two bra
 4. Configure destination lifecycle expiry to 14 days (including old versions) so deleted personal data does not remain indefinitely. If longer retention is needed, review and update the privacy notice first. Add monitoring for failed uploads.
 5. Download a complete dated set, verify `SHA256SUMS`, and perform the same scratch restore before relying on off-site recovery. Repeat restore drills periodically.
 
+## Matching model routes (2026-10-02 testing setup)
+
+- The owner chose **OpenAI API embeddings + Luna via ChatGPT-authenticated Codex + direct TypeSafe/Jev**. `OPENAI_API_KEY` is used for `text-embedding-3-small`; `TYPESAFE_API_KEY` selects direct `jev-1.13.0`. Neither key is passed to the Codex service.
+- `LUNA_BASE_URL=http://codex:8090/v1` sends only Luna calls to the private gateway. Without this override, the existing OpenAI/OpenRouter API routing still works. Model names, prompts, shortlist and decision thresholds are unchanged.
+- The `codex` Compose service has no host port and no database/photo mounts. It uses official CLI 0.160.0 with its own `zarqa_codex_auth` volume, non-root user, read-only root filesystem, ephemeral sessions and disabled shell, web search, apps, agents and hooks. Temporary review files are removed. CLI diagnostics are not returned to users or logged by the gateway.
+- Owner login on VPS: `cd /opt/zarqa && docker compose -f deploy/docker-compose.yml --env-file deploy/.env exec codex codex login --device-auth`. Complete the browser/device flow yourself. Never read/copy `auth.json` or any tokens into this repo or chat. The CLI handles token refresh. The auth volume is deliberately excluded from data backups; recovery needs a fresh owner login.
+- Enable routing with `bash /opt/zarqa/deploy/enable-codex.sh` after login. Pause matching with `MATCHING_ENABLED=false` in server `deploy/.env` and recreate the API. A configured route does not prove account entitlement; verify a real inference.
+- Gateway tests: `node --test deploy/codex/gateway.test.mjs`. Actual matching smoke: `node deploy/live-check.mjs --live --models`; it waits for a **real Debate match**, confirms handover and both return stats, then deletes its disposable users. Default `--live` still inserts a synthetic match.
+- Codex review costs logged in the matching ledger are conservative **API-equivalent token estimates**, including CLI instruction overhead; actual reviews use ChatGPT plan allowance. Latency includes CLI startup. This setup validates integration, not benchmark recall or precision.
+- Official authentication: https://learn.chatgpt.com/docs/auth ; CLI feature controls: https://learn.chatgpt.com/docs/config-file/config-basic . API keys remain the recommended default for production automation; this user-requested Codex route is for pilot testing.
+
 ## Environment
 
 - Windows 11, PowerShell 5.1 (no `&&`). Node 22.

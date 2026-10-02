@@ -1,5 +1,5 @@
 // Explicit opt-in live phone browser smoke test. Only creates/deletes its own fixtures.
-// Does NOT measure AI matching: a synthetic match is inserted when models are unavailable.
+// --models waits for a real model decision; default mode inserts a synthetic match.
 import { chromium, expect } from '../web/node_modules/@playwright/test/index.mjs'
 import { execFile } from 'node:child_process'
 import { createHash, randomBytes, randomInt, randomUUID } from 'node:crypto'
@@ -9,6 +9,7 @@ if (!process.argv.includes('--live')) throw new Error('Use --live to test tryzar
 const strings = JSON.parse(readFileSync(new URL('../web/src/i18n/en.json', import.meta.url)))
 const t = key => strings[key]
 const url = 'https://tryzarqa.com'
+const realModels = process.argv.includes('--models')
 const run = async script => {
   for (let attempt = 0; ; attempt++) {
     try {
@@ -78,8 +79,28 @@ try {
   }
   const owner = await signIn('owner'), finder = await signIn('finder')
   const lost = await post(owner, 'lost'), found = await post(finder, 'found')
-  const match = randomUUID()
-  await sql(`INSERT INTO matches (id,lost_id,found_id,prescore,final_score,decided_by,reasons,status,created_at) VALUES ('${match}','${lost}','${found}',0.9,0.9,'LunaFallback',ARRAY['Synthetic smoke-test fixture; not a model result'],'Suggested',now());`)
+  let match
+  if (realModels) {
+    console.log('Waiting for the real embedding, Luna and Jev pipeline...')
+    const deadline = Date.now() + 240000
+    while (Date.now() < deadline) {
+      const reports = await (await owner.context.request.get(`${url}/api/reports/mine`)).json()
+      match = reports.find(r => r.id === lost)?.matchId
+      if (match) break
+      await new Promise(resolve => setTimeout(resolve, 2000))
+    }
+    if (!match) {
+      const jobs = await sql(`SELECT json_build_object('attempts',attempts,'finished',completed_at IS NOT NULL,'hasError',last_error IS NOT NULL) FROM match_jobs WHERE report_id IN ('${lost}','${found}');`)
+      console.log('Test job status:', jobs)
+      throw new Error('No real match appeared within four minutes')
+    }
+    const decision = await sql(`SELECT decided_by || ' score=' || final_score FROM matches WHERE id='${match}' AND lost_id='${lost}' AND found_id='${found}';`)
+    if (!decision.startsWith('Debate')) throw new Error(`Expected direct Jev debate; got ${decision}`)
+    console.log('Real model match:', decision)
+  } else {
+    match = randomUUID()
+    await sql(`INSERT INTO matches (id,lost_id,found_id,prescore,final_score,decided_by,reasons,status,created_at) VALUES ('${match}','${lost}','${found}',0.9,0.9,'LunaFallback',ARRAY['Synthetic smoke-test fixture; not a model result'],'Suggested',now());`)
+  }
   await owner.page.goto(`${url}/matches/${match}`)
   await expect(owner.page.getByRole('button', { name: t('match.mine'), exact: true })).toBeVisible()
   await owner.page.screenshot({ path: 'test-results/live-match-phone.png', fullPage: true })
@@ -105,7 +126,7 @@ try {
   const stats = await (await owner.context.request.get(`${url}/api/me/stats`)).json()
   const helped = await (await finder.context.request.get(`${url}/api/me/stats`)).json()
   if (stats.gotBack !== 1 || helped.helpedReturn !== 1) throw new Error('Return stats did not update')
-  console.log('PASS: public pages, real code verification, two reports, synthetic match, claim, chat, confirmed handover, return and both stats at 390x844.')
+  console.log(`PASS: public pages, real code verification, two reports, ${realModels ? 'real Jev debate' : 'synthetic'} match, claim, chat, confirmed handover, return and both stats at 390x844.`)
   // Also exercise the new deletion UI against the real endpoint.
   await owner.page.goto(`${url}/profile`)
   let confirmations = 0

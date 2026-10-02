@@ -2,6 +2,13 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-10-02: Authenticate Luna with ChatGPT for matching tests
+
+- Owner explicitly chose direct Jev API, ChatGPT/Codex authentication for Luna, and a separate OpenAI API key for embeddings. Preserve the production embedding model and all matching prompts/thresholds.
+- Add a separate private Luna gateway using the official CLI; its login credentials remain in a dedicated server volume. The app routes embeddings to OpenAI and Jev directly to TypeSafe. Gateway receives no API keys, exposes no public port and disables model tools.
+- Use a real model-generated Debate match in the phone smoke test, rather than an inserted match. Integration checks do not establish recall or precision; no thresholds were retuned.
+- Review spend values are API-equivalent estimates because Codex uses ChatGPT plan usage, with CLI overhead/latency included. The existing daily cap remains a conservative pause mechanism.
+
 ## 2026-10-02: Smaller offline download, unchanged artwork
 
 - Keep all original mascot PNGs, including the existing iPhone, per the owner's instruction. Ship WebP copies at display-appropriate sizes; omit PNG mascots from service-worker precache while retaining them for older clients.

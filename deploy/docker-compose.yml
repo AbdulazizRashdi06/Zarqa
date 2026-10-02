@@ -25,9 +25,11 @@ services:
       # Matching models (secrets: set with deploy/set-secret.*). No keys = matching waits, nothing breaks.
       Models__OpenAiApiKey: ${OPENAI_API_KEY:-}
       Models__OpenAiBaseUrl: ${OPENAI_BASE_URL:-}
+      Models__LunaBaseUrl: ${LUNA_BASE_URL:-}
       Models__OpenRouterApiKey: ${OPENROUTER_API_KEY:-}
       Models__TypeSafeApiKey: ${TYPESAFE_API_KEY:-}
       Models__DailySpendCapUsd: ${MODEL_DAILY_CAP_USD:-2}
+      Matching__Worker: ${MATCHING_ENABLED:-true}
       # Comma-separated admin emails (Profile shows an Admin link for them).
       Admin__Emails: ${ADMIN_EMAILS:-}
     depends_on:
@@ -35,6 +37,27 @@ services:
         condition: service_healthy
     volumes:
       - photos:/app/data/photos
+
+  # Private inference gateway: no published ports, no API keys or app data mounts.
+  # Authentication is owned/refreshed by the official Codex CLI in its own volume.
+  codex:
+    build:
+      context: ..
+      dockerfile: deploy/codex/Dockerfile
+    restart: unless-stopped
+    init: true
+    read_only: true
+    tmpfs:
+      - /tmp:size=128m,mode=1777
+    environment:
+      CODEX_HOME: /home/node/.codex
+    volumes:
+      - codex_auth:/home/node/.codex
+    security_opt:
+      - no-new-privileges:true
+    cap_drop: [ALL]
+    mem_limit: 512m
+    pids_limit: 128
 
   postgres:
     image: pgvector/pgvector:pg17
@@ -66,6 +89,7 @@ services:
       - api
 
 volumes:
+  codex_auth:
   pgdata:
   photos:
   caddy_data:

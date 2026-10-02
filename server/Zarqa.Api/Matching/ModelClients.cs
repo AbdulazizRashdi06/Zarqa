@@ -15,6 +15,8 @@ public sealed class ModelOptions
 {
     public string? OpenAiApiKey { get; set; }
     public string? OpenAiBaseUrl { get; set; }
+    /// <summary>Optional separate Luna route, e.g. the private Codex gateway. Never receives API keys.</summary>
+    public string? LunaBaseUrl { get; set; }
     public string? OpenRouterApiKey { get; set; }
     public string? TypeSafeApiKey { get; set; }
     public string LunaModel { get; set; } = "gpt-6-luna";
@@ -26,7 +28,7 @@ public sealed class ModelOptions
     /// <summary>Matching pauses for the day once logged model spend reaches this.</summary>
     public decimal DailySpendCapUsd { get; set; } = 2m;
 
-    public bool HasLunaRoute => !string.IsNullOrWhiteSpace(OpenAiApiKey) || !string.IsNullOrWhiteSpace(OpenAiBaseUrl) || !string.IsNullOrWhiteSpace(OpenRouterApiKey);
+    public bool HasLunaRoute => !string.IsNullOrWhiteSpace(LunaBaseUrl) || !string.IsNullOrWhiteSpace(OpenAiApiKey) || !string.IsNullOrWhiteSpace(OpenAiBaseUrl) || !string.IsNullOrWhiteSpace(OpenRouterApiKey);
     public bool HasJevRoute => !string.IsNullOrWhiteSpace(TypeSafeApiKey) || !string.IsNullOrWhiteSpace(OpenRouterApiKey);
 }
 
@@ -80,6 +82,7 @@ internal static class Route
     public static (string Base, string? Key, string Model)? For(ModelOptions o, bool embedding)
     {
         var model = embedding ? o.EmbeddingModel : o.LunaModel;
+        if (!embedding && !string.IsNullOrWhiteSpace(o.LunaBaseUrl)) return (o.LunaBaseUrl.TrimEnd('/'), null, model);
         if (!string.IsNullOrWhiteSpace(o.OpenAiBaseUrl)) return (o.OpenAiBaseUrl.TrimEnd('/'), o.OpenAiApiKey, model);
         if (!string.IsNullOrWhiteSpace(o.OpenAiApiKey)) return (OpenAi, o.OpenAiApiKey, model);
         if (!string.IsNullOrWhiteSpace(o.OpenRouterApiKey)) return (OpenRouter, o.OpenRouterApiKey, model.Contains('/') ? model : $"openai/{model}");

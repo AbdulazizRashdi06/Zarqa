@@ -32,6 +32,7 @@ jobs:
       - run: npm run build
       - run: npx playwright install --with-deps chromium
       - run: npx playwright test
+      - run: node --test ../deploy/codex/gateway.test.mjs
 
   image:
     runs-on: ubuntu-latest
@@ -39,3 +40,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: docker build -f deploy/Dockerfile -t zarqa:ci .
+      - run: docker build -f deploy/codex/Dockerfile -t zarqa-codex:ci .
