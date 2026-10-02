@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
+using Zarqa.Api.Admin;
 using Zarqa.Api.Auth;
 using Zarqa.Api.Chat;
 using Zarqa.Api.Data;
@@ -55,6 +56,10 @@ builder.Services.AddSingleton<VapidKeys>();
 builder.Services.AddSingleton<IPushSender, WebPushSender>();
 builder.Services.AddScoped<NotificationSender>();
 builder.Services.AddScoped<INotifier, Notifier>();
+
+builder.Services.AddScoped<Retention>();
+if (builder.Configuration.GetValue("Retention:Worker", true))
+    builder.Services.AddHostedService<RetentionWorker>();
 builder.Services.AddSingleton<MatchWorker>();
 if (builder.Configuration.GetValue("Matching:Worker", true))
     builder.Services.AddHostedService(sp => sp.GetRequiredService<MatchWorker>());
@@ -82,15 +87,18 @@ builder.Services
         {
             var db = ctx.HttpContext.RequestServices.GetRequiredService<ZarqaDb>();
             var id = ctx.Principal!.Id();
-            var ok = await db.Users.AnyAsync(u => u.Id == id && !u.IsBanned);
-            if (!ok)
+            var user = await db.Users.Where(u => u.Id == id).Select(u => new { u.IsBanned, u.IsAdmin }).FirstOrDefaultAsync();
+            if (user is null || user.IsBanned)
             {
                 ctx.RejectPrincipal();
                 await ctx.HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+                return;
             }
+            // Admin rights follow the database on every request, not the cookie.
+            if (user.IsAdmin) ((System.Security.Claims.ClaimsIdentity)ctx.Principal!.Identity!).AddClaim(new System.Security.Claims.Claim(AdminEndpoints.Policy, "1"));
         };
     });
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(o => o.AddPolicy(AdminEndpoints.Policy, p => p.RequireClaim(AdminEndpoints.Policy)));
 
 builder.Services.AddRateLimiter(o =>
 {
@@ -152,6 +160,7 @@ api.MapReports();
 api.MapMatches();
 api.MapChats();
 api.MapPush();
+api.MapAdmin();
 
 // Unknown /api paths are 404s; everything else is the PWA's client-side routing.
 api.MapFallback(() => Results.NotFound());

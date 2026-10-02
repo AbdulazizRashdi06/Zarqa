@@ -28,6 +28,8 @@ services:
       Models__OpenRouterApiKey: ${OPENROUTER_API_KEY:-}
       Models__TypeSafeApiKey: ${TYPESAFE_API_KEY:-}
       Models__DailySpendCapUsd: ${MODEL_DAILY_CAP_USD:-2}
+      # Comma-separated admin emails (Profile shows an Admin link for them).
+      Admin__Emails: ${ADMIN_EMAILS:-}
     depends_on:
       postgres:
         condition: service_healthy

@@ -66,6 +66,8 @@ public sealed class TestApp : WebApplicationFactory<Program>, IAsyncLifetime
         builder.UseSetting("Auth:VerifyPerIp", "1000");
         // Tests drive the matching worker step by step (MatchWorker.RunOneAsync).
         builder.UseSetting("Matching:Worker", "false");
+        builder.UseSetting("Retention:Worker", "false");
+        builder.UseSetting("Admin:Emails", "admin@gutech.edu.om");
         builder.ConfigureServices(s =>
         {
             s.Replace(ServiceDescriptor.Singleton<IEmailSender>(Emails));

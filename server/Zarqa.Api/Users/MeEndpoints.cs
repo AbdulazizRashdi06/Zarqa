@@ -41,6 +41,13 @@ public static partial class MeEndpoints
             return Results.Ok(ToDto(user));
         });
 
+        me.MapDelete("", async (HttpContext http, Zarqa.Api.Admin.Retention retention, CancellationToken ct) =>
+        {
+            await retention.DeleteUserAsync(http.User.Id(), ct);
+            await Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions.SignOutAsync(http, Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme);
+            return Results.NoContent();
+        });
+
         me.MapGet("/stats", async (HttpContext http, ZarqaDb db, CancellationToken ct) =>
         {
             var id = http.User.Id();

@@ -57,7 +57,7 @@ public static class AuthEndpoints
                 : Results.Ok(new { email = address });
         }).RequireRateLimiting(RequestCodeLimit);
 
-        auth.MapPost("/verify", async (VerifyBody body, ZarqaDb db, TimeProvider clock, HttpContext http, CancellationToken ct) =>
+        auth.MapPost("/verify", async (VerifyBody body, ZarqaDb db, TimeProvider clock, HttpContext http, IConfiguration config, CancellationToken ct) =>
         {
             var address = EmailRules.NormalizeUniversityEmail(body.Email);
             var code = body.Code?.Trim();
@@ -88,6 +88,9 @@ public static class AuthEndpoints
                 db.Users.Add(user);
             }
             if (user.IsBanned) return Errors.Forbidden("This account can't sign in. Contact us via Help.");
+            // Admins are listed in config (Admin:Emails, comma-separated): no admin UI to grant it.
+            var admins = (config["Admin:Emails"] ?? "").Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+            user.IsAdmin = admins.Contains(address, StringComparer.OrdinalIgnoreCase);
             user.LastSeenAt = now;
             await db.SaveChangesAsync(ct);
 
