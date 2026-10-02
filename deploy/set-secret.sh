@@ -18,15 +18,5 @@ if [ "$NAME" = RESEND_API_KEY ] && { [ "${VALUE#re_}" = "$VALUE" ] || [ ${#VALUE
   echo "That doesn't look like a Resend key (they start with re_). Nothing changed."; exit 1
 fi
 
-# The value travels over SSH stdin, never as a command-line argument.
-printf '%s' "$VALUE" | ssh -i ~/.ssh/zarqa_vps -o BatchMode=yes deploy@173.249.40.122 "
-  set -e
-  cd /opt/zarqa
-  VALUE=\$(cat)
-  touch deploy/.env && chmod 600 deploy/.env
-  grep -v '^$NAME=' deploy/.env > deploy/.env.new || true
-  printf '%s=%s\n' '$NAME' \"\$VALUE\" >> deploy/.env.new
-  mv deploy/.env.new deploy/.env && chmod 600 deploy/.env
-  docker compose -f deploy/docker-compose.yml --env-file deploy/.env up -d api >/dev/null 2>&1
-  echo \"$NAME saved on the server (\${#VALUE} characters); API restarted.\"
-"
+# The value travels over SSH stdin; the server-side script (deploy/set-env-remote.sh) stores it.
+printf '%s' "$VALUE" | ssh -i ~/.ssh/zarqa_vps -o BatchMode=yes deploy@173.249.40.122 bash /opt/zarqa/deploy/set-env-remote.sh "$NAME"
