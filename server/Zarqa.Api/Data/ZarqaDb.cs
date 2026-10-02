@@ -1,9 +1,13 @@
+using Microsoft.AspNetCore.DataProtection.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Zarqa.Api.Data;
 
-public class ZarqaDb(DbContextOptions<ZarqaDb> options) : DbContext(options)
+public class ZarqaDb(DbContextOptions<ZarqaDb> options) : DbContext(options), IDataProtectionKeyContext
 {
+    /// <summary>Cookie encryption keys, so sign-ins survive restarts and redeploys.</summary>
+    public DbSet<DataProtectionKey> DataProtectionKeys => Set<DataProtectionKey>();
+
     /// <summary>text-embedding-3-small, the model the benchmark's numbers are based on.</summary>
     public const int EmbeddingDimensions = 1536;
 

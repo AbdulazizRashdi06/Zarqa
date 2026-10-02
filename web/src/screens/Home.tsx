@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router'
+import { useSession } from '../auth/session'
 import { ArrowRight, Camera, ChatBubble, Lock, Pin, TagIcon } from '../components/icons'
 import { Avatar, BigButton, LuggageTag, MonoLabel, RoundButton, TearLine, Ticket, Wordmark, ZarqaBubble } from '../components/ui'
 import { t, tm, type StringKey } from '../i18n'
@@ -38,8 +39,8 @@ function formatTime(time: string) {
 }
 
 export default function Home() {
-  // Placeholder user until sign-in lands (step 2).
-  const firstName = 'there'
+  const { me } = useSession()
+  const firstName = me?.firstName ?? ''
   const [mode, setMode] = useState<Mode>('lost')
   const [category, setCategory] = useState('')
   const [title, setTitle] = useState('')
@@ -77,7 +78,7 @@ export default function Home() {
           <RoundButton to="/chats" label={t('home.chats')}>
             <ChatBubble size={20} />
           </RoundButton>
-          <Avatar name={firstName === 'there' ? 'Z' : firstName} to="/profile" label={t('home.profile')} ring />
+          <Avatar name={firstName || 'Z'} to="/profile" label={t('home.profile')} ring />
         </div>
       </header>
 

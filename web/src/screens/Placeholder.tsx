@@ -10,12 +10,14 @@ export default function Placeholder({
   mascot = 'reading',
   zarqa = t('placeholder.zarqa'),
   back = true,
+  action,
 }: {
   title: string
   accent?: string
   mascot?: Mascot
   zarqa?: ReactNode
   back?: boolean
+  action?: ReactNode
 }) {
   const [first, ...rest] = title.split(' ')
   return (
@@ -34,6 +36,7 @@ export default function Placeholder({
         <ZarqaBubble mascot={mascot} alt="Zarqa" width={70} quiet>
           {zarqa}
         </ZarqaBubble>
+        {action}
         {!back && <BigButton to="/" label="Back home" />}
       </div>
     </main>

@@ -24,3 +24,6 @@ mascot-output/
 # Real campus photos from the collection page: kept out of the public repo.
 # The benchmark needs them locally; rebuild with benchmark/scripts/build-campus.js.
 benchmark/data/campus/photos/
+
+# test output
+server/**/TestResults/
