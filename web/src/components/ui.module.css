@@ -1,14 +1,5 @@
 /* Shared Zarqa components. Values come from design/screens/*.dc.html. */
 
-.wordmark {
-  display: flex;
-  align-items: flex-end;
-  gap: 6px;
-  font-family: var(--font-display);
-  line-height: 1;
-  letter-spacing: 1px;
-}
-
 /* Small uppercase mono label used everywhere */
 .label {
   font-family: var(--font-mono);

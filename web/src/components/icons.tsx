@@ -58,13 +58,3 @@ export const SignOut = (p: IconProps) => (
     <path d="M10 16l-4-4 4-4M6 12h10" />
   </Svg>
 )
-
-/** The tan eye glyph after the ZARQA wordmark. */
-export function EyeGlyph() {
-  return (
-    <svg aria-hidden="true" width="22" height="14" viewBox="0 0 22 14" style={{ marginBottom: 5, flexShrink: 0 }}>
-      <path d="M1 7C4.5 2 7.6 1 11 1s6.5 1 10 6c-3.5 5-6.6 6-10 6S4.5 12 1 7z" fill="none" stroke="var(--tan)" strokeWidth="2" strokeLinejoin="round" />
-      <circle cx="11" cy="7" r="3" fill="var(--tan)" />
-    </svg>
-  )
-}

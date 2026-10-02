@@ -1,17 +1,13 @@
 import type { CSSProperties, ReactNode } from 'react'
 import { Link } from 'react-router'
-import { ArrowRight, ChevronLeft, EyeGlyph } from './icons'
+import { ArrowRight, ChevronLeft } from './icons'
 import s from './ui.module.css'
 
 type Css = CSSProperties & Record<`--${string}`, string | number>
 
+/** The ZARQA logo (public/logo.png). `size` is the logo's height in px. */
 export function Wordmark({ size = 30 }: { size?: number }) {
-  return (
-    <span className={s.wordmark} style={{ fontSize: size }}>
-      ZARQA
-      <EyeGlyph />
-    </span>
-  )
+  return <img src="/logo.png" alt="Zarqa" height={size} style={{ height: size, width: 'auto', display: 'block' }} />
 }
 
 export function MonoLabel({ children, color, className }: { children: ReactNode; color?: string; className?: string }) {
