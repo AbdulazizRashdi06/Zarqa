@@ -1,0 +1,8 @@
+{
+  "_note": "EXAMPLE aliases for the smoke test only. Replace with the real GUtech alias list from processReport.",
+  "Library": ["LRC", "learning resource centre", "learning resource center"],
+  "Cafeteria": ["canteen", "food court", "cafe"],
+  "Main Auditorium": ["auditorium", "main hall"],
+  "Sports Hall": ["gym", "sports centre"],
+  "Engineering Building": ["eng building", "engineering block"]
+}

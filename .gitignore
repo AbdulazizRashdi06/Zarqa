@@ -1,0 +1,26 @@
+# .NET
+server/**/bin/
+server/**/obj/
+*.user
+
+# web
+web/node_modules/
+web/dist/
+web/dev-dist/
+
+# secrets
+.env
+deploy/.env
+
+# design source zip (unpacked into design/)
+zarqa-design.zip
+
+# mascot generation scratch (keep finished images in design/mascot)
+mascot-output/
+
+# local Claude settings
+.claude/settings.local.json
+
+# Real campus photos from the collection page: kept out of the public repo.
+# The benchmark needs them locally; rebuild with benchmark/scripts/build-campus.js.
+benchmark/data/campus/photos/

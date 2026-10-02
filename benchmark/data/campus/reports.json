@@ -1,0 +1,1278 @@
+[
+ {
+  "id": "F01",
+  "type": "found",
+  "title": "Black Dell laptop",
+  "category": "Electronics",
+  "description": "Found a black Dell laptop on a study desk, charger still plugged in.",
+  "location": "Library",
+  "campusZone": "",
+  "eventDate": "2026-09-02",
+  "createdAt": "2026-09-02T08:00:00.000Z",
+  "photos": [
+   "photos/eea57713bdbe40c03b8020ca01ed1f90.jpg"
+  ],
+  "status": "open",
+  "tags": []
+ },
+ {
+  "id": "F02",
+  "type": "found",
+  "title": "Blue pen",
+  "category": "Stationery",
+  "description": "Blue ballpoint pen with a clear body, left on a table.",
+  "location": "Gu2 prayer room",
+  "campusZone": "",
+  "eventDate": "2026-09-03",
+  "createdAt": "2026-09-03T15:00:00.000Z",
+  "photos": [
+   "photos/9b3870ae606a4d53beb638c4eb9c2027.jpg"
+  ],
+  "status": "open",
+  "tags": []
+ },
+ {
+  "id": "F03",
+  "type": "found",
+  "title": "Grey backpack",
+  "category": "Bags",
+  "description": "Grey backpack with a black mesh back and mesh side pockets, left on a table.",
+  "location": "Canteen ground",
+  "campusZone": "",
+  "eventDate": "2026-09-04",
+  "createdAt": "2026-09-04T12:00:00.000Z",
+  "photos": [
+   "photos/92cea6f91f56a8fa088635224d3b7ecd.jpg"
+  ],
+  "status": "open",
+  "tags": []
+ },
+ {
+  "id": "F04",
+  "type": "found",
+  "title": "JBL earbuds case",
+  "category": "Electronics",
+  "description": "Silver JBL earbuds case with a black top, found on a desk.",
+  "location": "Gu1 102",
+  "campusZone": "",
+  "eventDate": "2026-09-05",
+  "createdAt": "2026-09-05T09:00:00.000Z",
+  "photos": [
+   "photos/ca6923ecf7ec00f6fa2c0f2851406342.jpg"
+  ],
+  "status": "open",
+  "tags": []
+ },
+ {
+  "id": "F05",
+  "type": "found",
+  "title": "ID card",
+  "category": "Wallets & cards",
+  "description": "Found an Omani ID card on the floor.",
+  "location": "Oman hall",
+  "campusZone": "",
+  "eventDate": "2026-09-06",
+  "createdAt": "2026-09-06T16:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "sensitive_photo_removed"
+  ]
+ },
+ {
+  "id": "F06",
+  "type": "found",
+  "title": "Dell laptop",
+  "category": "Electronics",
+  "description": "Black Dell laptop with scratches on the lid, charger attached.",
+  "location": "Ampitheatre",
+  "campusZone": "",
+  "eventDate": "2026-09-08",
+  "createdAt": "2026-09-08T13:00:00.000Z",
+  "photos": [
+   "photos/d8980b77b8778511e5527934263bd0e2.jpg"
+  ],
+  "status": "open",
+  "tags": []
+ },
+ {
+  "id": "F07",
+  "type": "found",
+  "title": "Glasses",
+  "category": "Accessories",
+  "description": "Black framed glasses left on a table.",
+  "location": "Canteen",
+  "campusZone": "",
+  "eventDate": "2026-09-09",
+  "createdAt": "2026-09-09T10:00:00.000Z",
+  "photos": [
+   "photos/5e2174bcf72e1f19333c732269dc1630.jpg"
+  ],
+  "status": "open",
+  "tags": []
+ },
+ {
+  "id": "F08",
+  "type": "found",
+  "title": "Phone charger",
+  "category": "Electronics",
+  "description": "White plug with a long black cable.",
+  "location": "Prayer room",
+  "campusZone": "",
+  "eventDate": "2026-09-10",
+  "createdAt": "2026-09-10T17:00:00.000Z",
+  "photos": [
+   "photos/bad092cc42ffa4d90787d928df83b011.jpg"
+  ],
+  "status": "open",
+  "tags": []
+ },
+ {
+  "id": "F09",
+  "type": "found",
+  "title": "Blue notebook",
+  "category": "Stationery",
+  "description": "Blue hardcover notebook with a marble pattern.",
+  "location": "Main building",
+  "campusZone": "",
+  "eventDate": "2026-09-11",
+  "createdAt": "2026-09-11T14:00:00.000Z",
+  "photos": [
+   "photos/3b1a7ca5abd0556a51a1409a46deeb72.jpg"
+  ],
+  "status": "open",
+  "tags": []
+ },
+ {
+  "id": "F10",
+  "type": "found",
+  "title": "Card game box",
+  "category": "Other",
+  "description": "Box of the Money Talks card game by Balinca, Arabic and English.",
+  "location": "554",
+  "campusZone": "",
+  "eventDate": "2026-09-12",
+  "createdAt": "2026-09-12T11:00:00.000Z",
+  "photos": [
+   "photos/54efcb52d1d158a4f8b76fed3e3dbbe9.jpg"
+  ],
+  "status": "open",
+  "tags": []
+ },
+ {
+  "id": "F11",
+  "type": "found",
+  "title": "Ping pong paddle",
+  "category": "Sports",
+  "description": "Table tennis bat, red rubber, orange handle, worn edges.",
+  "location": "Ground floor",
+  "campusZone": "",
+  "eventDate": "2026-09-13",
+  "createdAt": "2026-09-13T08:00:00.000Z",
+  "photos": [
+   "photos/2f6f4932b5b67ca2d4035e2f03703aa9.jpg"
+  ],
+  "status": "open",
+  "tags": []
+ },
+ {
+  "id": "F12",
+  "type": "found",
+  "title": "TV remote",
+  "category": "Electronics",
+  "description": "Black Oscar TV remote with Netflix and Prime Video buttons.",
+  "location": "Rsa office",
+  "campusZone": "",
+  "eventDate": "2026-09-14",
+  "createdAt": "2026-09-14T15:00:00.000Z",
+  "photos": [
+   "photos/e500808140eaddbf352b5f367d00fa5d.jpg"
+  ],
+  "status": "open",
+  "tags": []
+ },
+ {
+  "id": "F13",
+  "type": "found",
+  "title": "Bank card",
+  "category": "Wallets & cards",
+  "description": "Found a bank debit card.",
+  "location": "Canteen seccond floor",
+  "campusZone": "",
+  "eventDate": "2026-09-15",
+  "createdAt": "2026-09-15T12:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "sensitive_photo_removed"
+  ]
+ },
+ {
+  "id": "F14",
+  "type": "found",
+  "title": "Debit card",
+  "category": "Wallets & cards",
+  "description": "Red and black debit card found near the cars.",
+  "location": "Parkinglot",
+  "campusZone": "",
+  "eventDate": "2026-09-16",
+  "createdAt": "2026-09-16T09:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "sensitive_photo_removed"
+  ]
+ },
+ {
+  "id": "F15",
+  "type": "found",
+  "title": "Glasses",
+  "category": "Accessories",
+  "description": "Rimless glasses with thin dark arms.",
+  "location": "Cs department",
+  "campusZone": "",
+  "eventDate": "2026-09-17",
+  "createdAt": "2026-09-17T16:00:00.000Z",
+  "photos": [
+   "photos/7ddfb974e2945ecb9dcf17feab42ed53.jpg"
+  ],
+  "status": "open",
+  "tags": []
+ },
+ {
+  "id": "F16",
+  "type": "found",
+  "title": "Kumma",
+  "category": "Clothing",
+  "description": "White Omani kumma with brown embroidery.",
+  "location": "Reading area",
+  "campusZone": "",
+  "eventDate": "2026-09-18",
+  "createdAt": "2026-09-18T13:00:00.000Z",
+  "photos": [
+   "photos/bfd907dd87359215040629df2f87bea3.jpg"
+  ],
+  "status": "open",
+  "tags": []
+ },
+ {
+  "id": "F17",
+  "type": "found",
+  "title": "Black cable",
+  "category": "Electronics",
+  "description": "Long black charging cable on the floor, no plug.",
+  "location": "Library",
+  "campusZone": "",
+  "eventDate": "2026-09-19",
+  "createdAt": "2026-09-19T10:00:00.000Z",
+  "photos": [
+   "photos/738d528d11e4f8a6f05de784ad7cf33d.jpg"
+  ],
+  "status": "open",
+  "tags": []
+ },
+ {
+  "id": "F18",
+  "type": "found",
+  "title": "Chemistry textbook",
+  "category": "Books",
+  "description": "Chemistry book by Zumdahl, ninth edition, left by a window.",
+  "location": "Gu2",
+  "campusZone": "",
+  "eventDate": "2026-09-20",
+  "createdAt": "2026-09-20T17:00:00.000Z",
+  "photos": [
+   "photos/7f8a35a4203404db36885c50aa4f0d85.jpg"
+  ],
+  "status": "open",
+  "tags": []
+ },
+ {
+  "id": "F19",
+  "type": "found",
+  "title": "Black sandals",
+  "category": "Clothing",
+  "description": "Pair of black leather sandals left by the door.",
+  "location": "Prayer room upad building",
+  "campusZone": "",
+  "eventDate": "2026-09-21",
+  "createdAt": "2026-09-21T14:00:00.000Z",
+  "photos": [
+   "photos/80f50b0938bec1581ceee157dc03b9ac.jpg"
+  ],
+  "status": "open",
+  "tags": []
+ },
+ {
+  "id": "F20",
+  "type": "found",
+  "title": "Silver laptop",
+  "category": "Electronics",
+  "description": "Silver MacBook left open on a table.",
+  "location": "Reading area",
+  "campusZone": "",
+  "eventDate": "2026-09-22",
+  "createdAt": "2026-09-22T11:00:00.000Z",
+  "photos": [
+   "photos/737dcc1a8f9d5be1ab04c1b628e95d65.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "stock_photo"
+  ]
+ },
+ {
+  "id": "F21",
+  "type": "found",
+  "title": "Bunch of keys",
+  "category": "Keys",
+  "description": "Keys on a ring with a metal clip, found in the dirt.",
+  "location": "Dirt parking",
+  "campusZone": "",
+  "eventDate": "2026-09-23",
+  "createdAt": "2026-09-23T08:00:00.000Z",
+  "photos": [
+   "photos/0694a8aa77630d4abf0e8ed85eedb9fb.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "stock_photo"
+  ]
+ },
+ {
+  "id": "F22",
+  "type": "found",
+  "title": "Black pen",
+  "category": "Stationery",
+  "description": "Black metal fountain pen.",
+  "location": "Ampitheatre",
+  "campusZone": "",
+  "eventDate": "2026-09-24",
+  "createdAt": "2026-09-24T15:00:00.000Z",
+  "photos": [
+   "photos/a4348292375c545768fc23049bd9ab5a.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "stock_photo"
+  ]
+ },
+ {
+  "id": "F23",
+  "type": "found",
+  "title": "Old book",
+  "category": "Books",
+  "description": "Old book with yellow pages, cover missing.",
+  "location": "I dont remember",
+  "campusZone": "",
+  "eventDate": "2026-09-24",
+  "createdAt": "2026-09-24T12:00:00.000Z",
+  "photos": [
+   "photos/403e40b96fe29bc244974d48f34e6ee7.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "stock_photo"
+  ]
+ },
+ {
+  "id": "F24",
+  "type": "found",
+  "title": "Car key",
+  "category": "Keys",
+  "description": "Car key with a car-shaped keychain.",
+  "location": "Gu2 102",
+  "campusZone": "",
+  "eventDate": "2026-09-25",
+  "createdAt": "2026-09-25T09:00:00.000Z",
+  "photos": [
+   "photos/b5640d9f5ac62ab1959a83a735224045.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "stock_photo"
+  ]
+ },
+ {
+  "id": "F25",
+  "type": "found",
+  "title": "Black wallet",
+  "category": "Wallets & cards",
+  "description": "Black leather wallet with some cash inside.",
+  "location": "Cs department",
+  "campusZone": "",
+  "eventDate": "2026-09-26",
+  "createdAt": "2026-09-26T16:00:00.000Z",
+  "photos": [
+   "photos/b3e2fba4fadc0fb71af0e9b5f0e9134a.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "stock_photo"
+  ]
+ },
+ {
+  "id": "F26",
+  "type": "found",
+  "title": "Brown jacket",
+  "category": "Clothing",
+  "description": "Dark brown zip jacket with a stripe down the front.",
+  "location": "Outside",
+  "campusZone": "",
+  "eventDate": "2026-09-27",
+  "createdAt": "2026-09-27T13:00:00.000Z",
+  "photos": [
+   "photos/f608e6e51131830ef36f1372f5661470.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "stock_photo"
+  ]
+ },
+ {
+  "id": "F-P01",
+  "type": "found",
+  "title": "Water bottle",
+  "category": "Bottles",
+  "description": "Found a pink metal water bottle.",
+  "location": "6th floor",
+  "campusZone": "",
+  "eventDate": "2026-09-05",
+  "createdAt": "2026-09-05T10:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "no_photo"
+  ]
+ },
+ {
+  "id": "F-P02",
+  "type": "found",
+  "title": "AirPods",
+  "category": "Electronics",
+  "description": "White AirPods case found on a chair.",
+  "location": "GU1 Library",
+  "campusZone": "",
+  "eventDate": "2026-09-07",
+  "createdAt": "2026-09-07T17:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "no_photo"
+  ]
+ },
+ {
+  "id": "F-P03",
+  "type": "found",
+  "title": "Umbrella",
+  "category": "Other",
+  "description": "Black umbrella left at the entrance.",
+  "location": "main entrance",
+  "campusZone": "",
+  "eventDate": "2026-09-09",
+  "createdAt": "2026-09-09T14:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "no_photo"
+  ]
+ },
+ {
+  "id": "F-P04",
+  "type": "found",
+  "title": "Calculator",
+  "category": "Stationery",
+  "description": "Casio fx-991 calculator left in the lab.",
+  "location": "3rd floor",
+  "campusZone": "",
+  "eventDate": "2026-09-12",
+  "createdAt": "2026-09-12T11:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "no_photo"
+  ]
+ },
+ {
+  "id": "F-P05",
+  "type": "found",
+  "title": "Prayer beads",
+  "category": "Accessories",
+  "description": "Brown masbaha (prayer beads).",
+  "location": "prayer rooms",
+  "campusZone": "",
+  "eventDate": "2026-09-14",
+  "createdAt": "2026-09-14T08:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "no_photo"
+  ]
+ },
+ {
+  "id": "F-P06",
+  "type": "found",
+  "title": "Student ID",
+  "category": "Wallets & cards",
+  "description": "GUtech student card found on the floor.",
+  "location": "GUbridge",
+  "campusZone": "",
+  "eventDate": "2026-09-16",
+  "createdAt": "2026-09-16T15:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "no_photo"
+  ]
+ },
+ {
+  "id": "F-P07",
+  "type": "found",
+  "title": "Scarf",
+  "category": "Clothing",
+  "description": "Black shayla left on a seat.",
+  "location": "Germany Hall",
+  "campusZone": "",
+  "eventDate": "2026-09-18",
+  "createdAt": "2026-09-18T12:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "no_photo"
+  ]
+ },
+ {
+  "id": "F-P08",
+  "type": "found",
+  "title": "Power bank",
+  "category": "Electronics",
+  "description": "White Anker power bank.",
+  "location": "Sab3",
+  "campusZone": "",
+  "eventDate": "2026-09-20",
+  "createdAt": "2026-09-20T09:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "no_photo"
+  ]
+ },
+ {
+  "id": "F-P09",
+  "type": "found",
+  "title": "Hoodie",
+  "category": "Clothing",
+  "description": "Grey hoodie, size M.",
+  "location": "gym",
+  "campusZone": "",
+  "eventDate": "2026-09-22",
+  "createdAt": "2026-09-22T16:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "no_photo"
+  ]
+ },
+ {
+  "id": "F-P10",
+  "type": "found",
+  "title": "Car key",
+  "category": "Keys",
+  "description": "Hyundai car key, no keychain.",
+  "location": "UPAD parking",
+  "campusZone": "",
+  "eventDate": "2026-09-25",
+  "createdAt": "2026-09-25T13:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "no_photo"
+  ]
+ },
+ {
+  "id": "L01",
+  "type": "lost",
+  "title": "Lost my laptop",
+  "category": "Electronics",
+  "description": "Dell Latitude, black. I left it charging on a desk while studying.",
+  "location": "6th floor",
+  "campusZone": "",
+  "eventDate": "2026-09-01",
+  "createdAt": "2026-09-03T08:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "alias_location",
+   "lookalike"
+  ]
+ },
+ {
+  "id": "L02",
+  "type": "lost",
+  "title": "Blue pen",
+  "category": "Stationery",
+  "description": "Cheap blue pen with a rubber grip, I think I left it in the prayer room.",
+  "location": "UPAD building",
+  "campusZone": "",
+  "eventDate": "2026-09-03",
+  "createdAt": "2026-09-03T15:30:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "alias_location"
+  ]
+ },
+ {
+  "id": "L03",
+  "type": "lost",
+  "title": "Lost my bag",
+  "category": "Bags",
+  "description": "Grey school bag, has my laptop sleeve and lecture notes inside.",
+  "location": "cafeteria",
+  "campusZone": "",
+  "eventDate": "2026-09-04",
+  "createdAt": "2026-09-06T13:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "alias_location",
+   "vague"
+  ]
+ },
+ {
+  "id": "L04",
+  "type": "lost",
+  "title": "JBL earbuds",
+  "category": "Electronics",
+  "description": "My JBL wireless earbuds in their silver case, lost after a lecture.",
+  "location": "GU1 room 102",
+  "campusZone": "",
+  "eventDate": "2026-09-04",
+  "createdAt": "2026-09-06T10:30:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": []
+ },
+ {
+  "id": "L05",
+  "type": "lost",
+  "title": "Lost ID card",
+  "category": "Wallets & cards",
+  "description": "My Omani civil ID card, lost it during the event.",
+  "location": "amphitheatre",
+  "campusZone": "",
+  "eventDate": "2026-09-06",
+  "createdAt": "2026-09-10T18:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "alias_location",
+   "no_photo"
+  ]
+ },
+ {
+  "id": "L06",
+  "type": "lost",
+  "title": "Dell laptop",
+  "category": "Electronics",
+  "description": "Black Dell laptop, the lid has a lot of scratches. Had my charger with it.",
+  "location": "Oman Hall",
+  "campusZone": "",
+  "eventDate": "2026-09-08",
+  "createdAt": "2026-09-11T13:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "alias_location",
+   "lookalike"
+  ]
+ },
+ {
+  "id": "L07",
+  "type": "lost",
+  "title": "My eyeglasses",
+  "category": "Accessories",
+  "description": "Black thick-frame prescription glasses.",
+  "location": "Ground Canteen",
+  "campusZone": "",
+  "eventDate": "2026-09-08",
+  "createdAt": "2026-09-11T10:30:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "alias_location",
+   "lookalike"
+  ]
+ },
+ {
+  "id": "L08",
+  "type": "lost",
+  "title": "iPhone charger",
+  "category": "Electronics",
+  "description": "White UK plug with a black braided USB-C cable.",
+  "location": "prayer room ground floor",
+  "campusZone": "",
+  "eventDate": "2026-09-10",
+  "createdAt": "2026-09-11T18:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "lookalike"
+  ]
+ },
+ {
+  "id": "L09",
+  "type": "lost",
+  "title": "Notebook",
+  "category": "Stationery",
+  "description": "Hardcover notebook, blue with a marble-like pattern. Has my thesis notes.",
+  "location": "GU1",
+  "campusZone": "",
+  "eventDate": "2026-09-11",
+  "createdAt": "2026-09-13T15:30:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "alias_location"
+  ]
+ },
+ {
+  "id": "L11",
+  "type": "lost",
+  "title": "Ping pong racket",
+  "category": "Sports",
+  "description": "Red and orange table tennis racket, an old one.",
+  "location": "sports hall",
+  "campusZone": "",
+  "eventDate": "2026-09-12",
+  "createdAt": "2026-09-16T10:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "location_vague"
+  ]
+ },
+ {
+  "id": "L12",
+  "type": "lost",
+  "title": "Remote control",
+  "category": "Electronics",
+  "description": "Oscar remote for the TV in our office.",
+  "location": "RSA office",
+  "campusZone": "",
+  "eventDate": "2026-09-14",
+  "createdAt": "2026-09-15T15:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": []
+ },
+ {
+  "id": "L13",
+  "type": "lost",
+  "title": "Bank Muscat card",
+  "category": "Wallets & cards",
+  "description": "Lost my Bank Muscat Visa debit card, red and black.",
+  "location": "canteen upstairs",
+  "campusZone": "",
+  "eventDate": "2026-09-15",
+  "createdAt": "2026-09-15T12:30:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "no_photo",
+   "lookalike"
+  ]
+ },
+ {
+  "id": "L15",
+  "type": "lost",
+  "title": "Glasses without frame",
+  "category": "Accessories",
+  "description": "Rimless glasses, thin metal legs.",
+  "location": "4th floor",
+  "campusZone": "",
+  "eventDate": "2026-09-16",
+  "createdAt": "2026-09-23T17:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "alias_location",
+   "lookalike"
+  ]
+ },
+ {
+  "id": "L16",
+  "type": "lost",
+  "title": "Kumma",
+  "category": "Clothing",
+  "description": "White kumma with brown embroidery.",
+  "location": "library",
+  "campusZone": "",
+  "eventDate": "2026-09-18",
+  "createdAt": "2026-09-20T14:30:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "location_vague"
+  ]
+ },
+ {
+  "id": "L17",
+  "type": "lost",
+  "title": "Charging cable",
+  "category": "Electronics",
+  "description": "Long black type-C cable, fell under the desks.",
+  "location": "6th floor",
+  "campusZone": "",
+  "eventDate": "2026-09-19",
+  "createdAt": "2026-09-28T12:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "alias_location",
+   "lookalike",
+   "late_report"
+  ]
+ },
+ {
+  "id": "L18",
+  "type": "lost",
+  "title": "Chemistry textbook",
+  "category": "Books",
+  "description": "Zumdahl Chemistry 9th edition, I use it for Chem 101.",
+  "location": "UPAD building",
+  "campusZone": "",
+  "eventDate": "2026-09-19",
+  "createdAt": "2026-09-25T17:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "alias_location"
+  ]
+ },
+ {
+  "id": "L19",
+  "type": "lost",
+  "title": "Sandals",
+  "category": "Clothing",
+  "description": "Black leather sandals, left them at the prayer room door.",
+  "location": "GU2 prayer room",
+  "campusZone": "",
+  "eventDate": "2026-09-21",
+  "createdAt": "2026-09-21T14:30:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": []
+ },
+ {
+  "id": "L20",
+  "type": "lost",
+  "title": "MacBook Air",
+  "category": "Electronics",
+  "description": "Silver MacBook Air 15 inch, sticker on the bottom.",
+  "location": "reading area",
+  "campusZone": "",
+  "eventDate": "2026-09-22",
+  "createdAt": "2026-09-23T12:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "lookalike"
+  ]
+ },
+ {
+  "id": "L21",
+  "type": "lost",
+  "title": "House keys",
+  "category": "Keys",
+  "description": "Bunch of keys with a silver carabiner clip.",
+  "location": "after the wadi",
+  "campusZone": "",
+  "eventDate": "2026-09-22",
+  "createdAt": "2026-10-05T09:30:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "alias_location",
+   "late_report"
+  ]
+ },
+ {
+  "id": "L22",
+  "type": "lost",
+  "title": "Fountain pen",
+  "category": "Stationery",
+  "description": "Black fountain pen, a gift from my dad.",
+  "location": "Oman hall",
+  "campusZone": "",
+  "eventDate": "2026-09-24",
+  "createdAt": "2026-09-26T17:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "alias_location"
+  ]
+ },
+ {
+  "id": "L24",
+  "type": "lost",
+  "title": "Toyota key",
+  "category": "Keys",
+  "description": "Toyota remote key with a small car keychain and two metal tags.",
+  "location": "GU2",
+  "campusZone": "",
+  "eventDate": "2026-09-25",
+  "createdAt": "2026-09-26T09:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "lookalike"
+  ]
+ },
+ {
+  "id": "L25",
+  "type": "lost",
+  "title": "Wallet",
+  "category": "Wallets & cards",
+  "description": "Black wallet with a pattern on the leather, had 10 rials in it.",
+  "location": "4th floor",
+  "campusZone": "",
+  "eventDate": "2026-09-25",
+  "createdAt": "2026-09-30T16:30:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "alias_location"
+  ]
+ },
+ {
+  "id": "L26",
+  "type": "lost",
+  "title": "Brown jacket",
+  "category": "Clothing",
+  "description": "Dark brown work jacket with a white stripe and a LOST patch.",
+  "location": "near the pitch",
+  "campusZone": "",
+  "eventDate": "2026-09-27",
+  "createdAt": "2026-10-04T14:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "location_vague",
+   "late_report"
+  ]
+ },
+ {
+  "id": "L-P01",
+  "type": "lost",
+  "title": "Pink bottle",
+  "category": "Bottles",
+  "description": "Pink stainless steel bottle.",
+  "location": "GU1 Library",
+  "campusZone": "",
+  "eventDate": "2026-09-05",
+  "createdAt": "2026-09-06T11:30:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "alias_location",
+   "no_photo"
+  ]
+ },
+ {
+  "id": "L-P02",
+  "type": "lost",
+  "title": "AirPods Pro",
+  "category": "Electronics",
+  "description": "AirPods Pro in their case.",
+  "location": "library",
+  "campusZone": "",
+  "eventDate": "2026-09-06",
+  "createdAt": "2026-09-22T19:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "late_report",
+   "no_photo"
+  ]
+ },
+ {
+  "id": "L-P03",
+  "type": "lost",
+  "title": "Umbrella",
+  "category": "Other",
+  "description": "Black folding umbrella.",
+  "location": "main entrance",
+  "campusZone": "",
+  "eventDate": "2026-09-09",
+  "createdAt": "2026-09-12T14:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "no_photo"
+  ]
+ },
+ {
+  "id": "L-P04",
+  "type": "lost",
+  "title": "Calculator",
+  "category": "Stationery",
+  "description": "Casio fx-991ES, my name is on the back.",
+  "location": "Faculty of Sciences",
+  "campusZone": "",
+  "eventDate": "2026-09-12",
+  "createdAt": "2026-09-14T11:30:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "alias_location",
+   "no_photo"
+  ]
+ },
+ {
+  "id": "L-P06",
+  "type": "lost",
+  "title": "Student card",
+  "category": "Wallets & cards",
+  "description": "My GUtech student ID.",
+  "location": "GU bridge",
+  "campusZone": "",
+  "eventDate": "2026-09-15",
+  "createdAt": "2026-09-15T16:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "owner_first",
+   "no_photo"
+  ]
+ },
+ {
+  "id": "L-P07",
+  "type": "lost",
+  "title": "Shayla",
+  "category": "Clothing",
+  "description": "Black chiffon shayla.",
+  "location": "GU2",
+  "campusZone": "",
+  "eventDate": "2026-09-18",
+  "createdAt": "2026-09-19T13:30:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "location_vague",
+   "no_photo"
+  ]
+ },
+ {
+  "id": "L-P08",
+  "type": "lost",
+  "title": "Power bank",
+  "category": "Electronics",
+  "description": "White Anker 10000mAh power bank.",
+  "location": "smoking area",
+  "campusZone": "",
+  "eventDate": "2026-09-20",
+  "createdAt": "2026-09-22T11:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "alias_location",
+   "no_photo"
+  ]
+ },
+ {
+  "id": "L-P09",
+  "type": "lost",
+  "title": "Hoodie",
+  "category": "Clothing",
+  "description": "Grey Nike hoodie, medium.",
+  "location": "sports hall",
+  "campusZone": "",
+  "eventDate": "2026-09-21",
+  "createdAt": "2026-10-12T16:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "alias_location",
+   "late_report",
+   "no_photo"
+  ]
+ },
+ {
+  "id": "L-P10",
+  "type": "lost",
+  "title": "Hyundai key",
+  "category": "Keys",
+  "description": "Hyundai Accent key, no keychain.",
+  "location": "GU2 parking",
+  "campusZone": "",
+  "eventDate": "2026-09-25",
+  "createdAt": "2026-09-26T13:30:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "lookalike",
+   "no_photo"
+  ]
+ },
+ {
+  "id": "N1",
+  "type": "lost",
+  "title": "Lost HP laptop",
+  "category": "Electronics",
+  "description": "Black HP laptop in a grey sleeve.",
+  "location": "library",
+  "campusZone": "",
+  "eventDate": "2026-09-02",
+  "createdAt": "2026-09-03T09:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "hard_negative"
+  ]
+ },
+ {
+  "id": "N2",
+  "type": "lost",
+  "title": "Blue notebook",
+  "category": "Stationery",
+  "description": "Blue spiral notebook, A5, my name on the first page.",
+  "location": "GU2",
+  "campusZone": "",
+  "eventDate": "2026-09-10",
+  "createdAt": "2026-09-12T15:30:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "hard_negative"
+  ]
+ },
+ {
+  "id": "N3",
+  "type": "lost",
+  "title": "Sunglasses",
+  "category": "Accessories",
+  "description": "Black Ray-Ban sunglasses in a case.",
+  "location": "canteen",
+  "campusZone": "",
+  "eventDate": "2026-09-09",
+  "createdAt": "2026-09-10T12:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "hard_negative"
+  ]
+ },
+ {
+  "id": "N4",
+  "type": "lost",
+  "title": "Brown wallet",
+  "category": "Wallets & cards",
+  "description": "Brown leather wallet with my bank cards.",
+  "location": "main parking",
+  "campusZone": "",
+  "eventDate": "2026-09-26",
+  "createdAt": "2026-09-27T16:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "hard_negative"
+  ]
+ },
+ {
+  "id": "N5",
+  "type": "lost",
+  "title": "Grey backpack",
+  "category": "Bags",
+  "description": "Grey North Face backpack with a red logo.",
+  "location": "GU2",
+  "campusZone": "",
+  "eventDate": "2026-09-03",
+  "createdAt": "2026-09-05T12:30:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "hard_negative"
+  ]
+ },
+ {
+  "id": "N6",
+  "type": "lost",
+  "title": "Galaxy Buds",
+  "category": "Electronics",
+  "description": "White Samsung Galaxy Buds case.",
+  "location": "GU1",
+  "campusZone": "",
+  "eventDate": "2026-09-05",
+  "createdAt": "2026-09-06T10:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "hard_negative"
+  ]
+ },
+ {
+  "id": "O1",
+  "type": "lost",
+  "title": "Gold ring",
+  "category": "Accessories",
+  "description": "Thin gold ring, lost somewhere on campus.",
+  "location": "girls dorms",
+  "campusZone": "",
+  "eventDate": "2026-09-18",
+  "createdAt": "2026-09-18T14:30:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "orphan"
+  ]
+ },
+ {
+  "id": "O2",
+  "type": "lost",
+  "title": "USB flash drive",
+  "category": "Electronics",
+  "description": "SanDisk 64GB flash drive with my project on it.",
+  "location": "mechatronics lab",
+  "campusZone": "",
+  "eventDate": "2026-09-11",
+  "createdAt": "2026-09-12T13:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "orphan"
+  ]
+ },
+ {
+  "id": "O3",
+  "type": "lost",
+  "title": "Parking card",
+  "category": "Wallets & cards",
+  "description": "Student parking permit card.",
+  "location": "student parking",
+  "campusZone": "",
+  "eventDate": "2026-09-23",
+  "createdAt": "2026-09-23T08:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "orphan"
+  ]
+ },
+ {
+  "id": "O4",
+  "type": "lost",
+  "title": "Casio watch",
+  "category": "Accessories",
+  "description": "Black Casio digital watch.",
+  "location": "gym",
+  "campusZone": "",
+  "eventDate": "2026-09-22",
+  "createdAt": "2026-09-22T16:30:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "orphan"
+  ]
+ }
+]

@@ -1,0 +1,93 @@
+/* Zarqa visual system: design/HANDOFF.md. Dark only. */
+:root {
+  /* surfaces */
+  --ground: #222634;
+  --surface: #2e3343;
+  --slate: #434e5f;
+  --line: #3a4152;
+  --paper: #f2eee8;
+  --paper-line: #cfc6ba;
+
+  /* accents: tan = Lost + primary, sage = Found */
+  --tan: #bd9777;
+  --tan-dark: #8a6a4f;
+  --tan-light: #e3c4a8;
+  --sage: #8e9da0;
+
+  /* text */
+  --text: #f2eee8;
+  --text-muted: #a9b4b6;
+  --text-soft: #c3cbcc;
+  --text-faint: #98a4a7;
+  --chevron: #7d898c;
+  --ink: #222634;
+  --ink-muted: #5e6472;
+
+  --font-display: 'Anton', Impact, sans-serif;
+  --font-body: 'Figtree', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --gutter: 20px;
+  --tap: 44px;
+
+  color-scheme: dark;
+  background: var(--ground);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--ground);
+}
+
+/* Phone-first: the design is 390px wide; wider screens get a centred column. */
+#root {
+  max-width: 480px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--tan-light);
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--tan-light);
+  outline-offset: 2px;
+}
+
+img {
+  max-width: 100%;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

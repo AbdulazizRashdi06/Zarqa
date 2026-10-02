@@ -1,0 +1,10 @@
+[
+  { "lostId": "L-bottle", "foundId": "F-bottle", "isMatch": true, "difficulty": "medium", "tags": ["alias_location"] },
+  { "lostId": "L-charger", "foundId": "F-charger", "isMatch": true, "difficulty": "medium", "tags": ["alias_location"] },
+  { "lostId": "L-keys", "foundId": "F-keys", "isMatch": true, "difficulty": "easy", "tags": ["alias_location", "late_report"] },
+  { "lostId": "L-backpack", "foundId": "F-backpack", "isMatch": true, "difficulty": "hard", "tags": ["vague", "photo_needed"] },
+  { "lostId": "L-glasses", "foundId": "F-glasses", "isMatch": true, "difficulty": "easy", "tags": ["alias_location"] },
+  { "lostId": "L-earbuds-late", "foundId": "F-earbuds", "isMatch": true, "difficulty": "hard", "tags": ["late_report"] },
+  { "lostId": "L-backpack-neg", "foundId": "F-backpack", "isMatch": false, "difficulty": "hard", "tags": ["hard_negative"] },
+  { "lostId": "L-sunglasses-neg", "foundId": "F-glasses", "isMatch": false, "difficulty": "hard", "tags": ["hard_negative"] }
+]

@@ -1,0 +1,23 @@
+.page {
+  flex-grow: 1;
+  padding: 16px var(--gutter) 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.bottom {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

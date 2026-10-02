@@ -1,0 +1,5 @@
+# LF everywhere: the server and Docker builds are Linux.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.woff2 binary

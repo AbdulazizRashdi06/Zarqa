@@ -1,0 +1,17 @@
+{
+  "name": "lostra-matching-benchmark",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "filler": "node scripts/make-filler.js",
+    "bench": "node --env-file-if-exists=.env scripts/run.js",
+    "bench:offline": "node scripts/run.js --offline --data data/sample",
+    "test": "node --test \"test/*.test.js\""
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^3.8.1"
+  }
+}

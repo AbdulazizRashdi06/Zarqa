@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Zarqa.Api/Zarqa.Api.csproj" />
+  <Project Path="Zarqa.Tests/Zarqa.Tests.csproj" />
+</Solution>

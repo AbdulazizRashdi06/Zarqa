@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Zarqa — Profile</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Figtree:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#E3C4A8}a:hover{color:#F2EEE8}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; overflow: hidden; background: #222634; color: #F2EEE8; font-family: 'Figtree', system-ui, sans-serif; box-sizing: border-box; padding: 16px 20px 24px; display: flex; flex-direction: column; gap: 20px">
+
+<header style="display: flex; align-items: center; justify-content: space-between">
+<a href="Main.dc.html" aria-label="Back to home" style="width: 44px; height: 44px; border-radius: 22px; background: #2E3343; display: flex; align-items: center; justify-content: center">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F2EEE8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg>
+</a>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; color: #A9B4B6">PROFILE</span>
+</header>
+
+<div style="display: flex; align-items: flex-end; gap: 16px">
+<div style="position: relative; flex-shrink: 0">
+<div aria-hidden="true" style="width: 88px; height: 88px; border-radius: 44px; background: #BD9777; color: #222634; display: flex; align-items: center; justify-content: center; font-family: 'Anton', Impact, sans-serif; font-size: 44px">A</div>
+<button type="button" aria-label="Change photo" style="position: absolute; right: -4px; bottom: -2px; width: 34px; height: 34px; border-radius: 17px; border: 3px solid #222634; background: #F2EEE8; display: flex; align-items: center; justify-content: center; padding: 0; cursor: pointer">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#222634" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5A2.5 2.5 0 0 1 6.5 6h1.8l1.4-2h4.6l1.4 2h1.8A2.5 2.5 0 0 1 20 8.5v9a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5z"></path><circle cx="12" cy="13" r="3.5"></circle></svg>
+</button>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; min-width: 0; padding-bottom: 4px">
+<h1 style="margin: 0; font-family: 'Anton', Impact, sans-serif; font-weight: 400; font-size: 48px; line-height: 0.9; text-transform: uppercase">Abdulaziz</h1>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; color: #BD9777">GUTECH STUDENT</span>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); background: #F2EEE8; color: #222634; border-radius: 20px; padding: 14px 4px">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 2px">
+<span style="font-family: 'Anton', Impact, sans-serif; font-size: 44px; line-height: 1">4</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 1px; color: #5E6472">POSTS</span>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 2px; border-left: 2px dashed #CFC6BA; border-right: 2px dashed #CFC6BA">
+<span style="font-family: 'Anton', Impact, sans-serif; font-size: 44px; line-height: 1">0</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 1px; color: #5E6472">GOT BACK</span>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 2px">
+<span style="font-family: 'Anton', Impact, sans-serif; font-size: 44px; line-height: 1; color: #8A6A4F">1</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 1px; color: #5E6472">HELPED RETURN</span>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; color: #8E9DA0; padding-bottom: 4px">SETTINGS</span>
+<div style="display: flex; align-items: center; gap: 12px; min-height: 60px; border-bottom: 1px solid #3A4152">
+<span style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px">
+<span style="font-weight: 700; font-size: 16px">Match alerts</span>
+<span style="font-size: 13px; color: #A9B4B6">When Zarqa spots a possible match</span>
+</span>
+<button type="button" role="switch" aria-checked="{{notif}}" aria-label="Match alerts" onClick="{{toggleNotif}}" style="width: 54px; height: 32px; flex-shrink: 0; border-radius: 16px; border: none; padding: 3px; background: {{notifTrack}}; display: flex; justify-content: {{notifSide}}; cursor: pointer; box-sizing: border-box">
+<span style="width: 26px; height: 26px; border-radius: 13px; background: #F2EEE8"></span>
+</button>
+</div>
+<div style="display: flex; align-items: center; gap: 12px; min-height: 60px; border-bottom: 1px solid #3A4152">
+<span style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px">
+<span style="font-weight: 700; font-size: 16px">Show my first name in chats</span>
+<span style="font-size: 13px; color: #A9B4B6">Otherwise you appear as “GUtech student”</span>
+</span>
+<button type="button" role="switch" aria-checked="{{showName}}" aria-label="Show my first name in chats" onClick="{{toggleName}}" style="width: 54px; height: 32px; flex-shrink: 0; border-radius: 16px; border: none; padding: 3px; background: {{nameTrack}}; display: flex; justify-content: {{nameSide}}; cursor: pointer; box-sizing: border-box">
+<span style="width: 26px; height: 26px; border-radius: 13px; background: #F2EEE8"></span>
+</button>
+</div>
+<a href="#" style="display: flex; align-items: center; gap: 12px; min-height: 54px; border-bottom: 1px solid #3A4152; color: #F2EEE8; text-decoration: none">
+<span style="flex-grow: 1; font-weight: 700; font-size: 16px">Language</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; color: #BD9777">EN</span>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7D898C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+</a>
+<a href="#" style="display: flex; align-items: center; gap: 12px; min-height: 54px; border-bottom: 1px solid #3A4152; color: #F2EEE8; text-decoration: none">
+<span style="flex-grow: 1; font-weight: 700; font-size: 16px">Safe handover tips</span>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7D898C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+</a>
+<a href="#" style="display: flex; align-items: center; gap: 12px; min-height: 54px; color: #F2EEE8; text-decoration: none">
+<span style="flex-grow: 1; font-weight: 700; font-size: 16px">Help and feedback</span>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7D898C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+</a>
+</div>
+
+<a href="SignIn.dc.html" style="margin-top: auto; min-height: 56px; border-radius: 16px; border: 2px solid #F2EEE8; color: #F2EEE8; font-family: 'Anton', Impact, sans-serif; font-size: 22px; letter-spacing: 0.5px; display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; box-sizing: border-box">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F2EEE8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-4"></path><path d="M10 16l-4-4 4-4M6 12h10"></path></svg>
+SIGN OUT</a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var self = this;
+    var s = this.state || {};
+    var notif = s.notif === undefined ? true : s.notif;
+    var showName = s.showName === undefined ? true : s.showName;
+    return {
+      notif: notif,
+      showName: showName,
+      notifTrack: notif ? '#BD9777' : '#434E5F',
+      notifSide: notif ? 'flex-end' : 'flex-start',
+      nameTrack: showName ? '#BD9777' : '#434E5F',
+      nameSide: showName ? 'flex-end' : 'flex-start',
+      toggleNotif: function () { self.setState({ notif: !notif }); },
+      toggleName: function () { self.setState({ showName: !showName }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

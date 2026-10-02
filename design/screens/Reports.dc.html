@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Zarqa — Your reports</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Figtree:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; overflow: hidden; background: #222634; color: #F2EEE8; font-family: 'Figtree', system-ui, sans-serif; box-sizing: border-box; padding: 16px 20px 24px; display: flex; flex-direction: column; gap: 16px">
+
+<header style="display: flex; align-items: center; justify-content: space-between">
+<a href="Main.dc.html" aria-label="Back to home" style="width: 44px; height: 44px; border-radius: 22px; background: #2E3343; display: flex; align-items: center; justify-content: center">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F2EEE8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg>
+</a>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; color: #A9B4B6">4 REPORTS</span>
+</header>
+
+<h1 style="margin: 0; font-family: 'Anton', Impact, sans-serif; font-weight: 400; font-size: 64px; line-height: 0.92; text-transform: uppercase">Your<br><span style="color: #BD9777">reports</span></h1>
+
+<div style="display: flex; gap: 8px">
+<sc-for list="{{filters}}" as="f" hint-placeholder-count="3">
+<button type="button" aria-pressed="{{f.on}}" onClick="{{f.pick}}" style="font-family: 'JetBrains Mono', monospace; min-height: 36px; padding: 0 14px; border-radius: 999px; border: 1.5px solid {{f.border}}; background: {{f.bg}}; color: {{f.fg}}; font-size: 11px; font-weight: 700; letter-spacing: 1.2px; cursor: pointer">{{f.label}}</button>
+</sc-for>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{posts}}" as="p" hint-placeholder-count="4">
+<a href="{{p.href}}" style="position: relative; display: flex; align-items: center; gap: 12px; background: #F2EEE8; color: #222634; border-radius: 18px; padding: 12px 14px 12px 12px; text-decoration: none">
+<span style="width: 60px; height: 60px; flex-shrink: 0; border-radius: 12px; background: {{p.tint}}; display: flex; align-items: center; justify-content: center">
+<sc-if value="{{p.isBuds}}" hint-placeholder-val="{{ false }}">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#222634" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="5"></rect><path d="M4 12h16"></path><path d="M11 14.5h2"></path></svg>
+</sc-if>
+<sc-if value="{{p.isCard}}" hint-placeholder-val="{{ false }}">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#222634" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"></rect><circle cx="8.5" cy="11" r="2"></circle><path d="M5.8 16c.6-1.4 1.6-2 2.7-2s2.1.6 2.7 2"></path><path d="M14 10h4"></path><path d="M14 13.5h3"></path></svg>
+</sc-if>
+<sc-if value="{{p.isBottle}}" hint-placeholder-val="{{ false }}">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#222634" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="9.5" y="2.5" width="5" height="3" rx="1"></rect><path d="M9 5.5h6l1 3v11a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-11z"></path><path d="M8 12h8"></path></svg>
+</sc-if>
+<sc-if value="{{p.isCalc}}" hint-placeholder-val="{{ false }}">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#222634" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2.5" width="14" height="19" rx="2.5"></rect><rect x="8" y="5.5" width="8" height="4" rx="1"></rect><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 16.5h.01M12 16.5h.01M15.5 16.5h.01"></path></svg>
+</sc-if>
+</span>
+<span style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; color: #8A6A4F">{{p.typeLine}}</span>
+<span style="font-family: 'Anton', Impact, sans-serif; font-size: 22px; line-height: 1; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{p.name}}</span>
+<span style="align-self: flex-start; display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; padding: 3px 9px 3px 7px; border-radius: 999px; background: {{p.statusBg}}; color: {{p.statusFg}}">
+<span style="width: 7px; height: 7px; border-radius: 4px; background: {{p.statusDot}}"></span>{{p.status}}
+</span>
+</span>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5E6472" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0"><path d="M9 6l6 6-6 6"></path></svg>
+<sc-if value="{{p.hasMatch}}" hint-placeholder-val="{{ false }}">
+<span style="position: absolute; top: -8px; right: 14px; transform: rotate(3deg); background: #BD9777; color: #222634; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 1.2px; padding: 4px 9px; border-radius: 999px; border: 2px solid #222634">ZARQA SPOTTED A MATCH</span>
+</sc-if>
+</a>
+</sc-for>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var self = this;
+    var s = this.state || {};
+    var filter = s.filter || 'all';
+    var st = {
+      'Searching': { statusBg: '#E4DED6', statusFg: '#3F4652', statusDot: '#7D898C' },
+      'Possible match': { statusBg: '#222634', statusFg: '#E3C4A8', statusDot: '#BD9777' },
+      'Chatting': { statusBg: '#D3DBDC', statusFg: '#222634', statusDot: '#434E5F' },
+      'Returned': { statusBg: '#D6E6DA', statusFg: '#1F4A2E', statusDot: '#3F8A57' }
+    };
+    var raw = [
+      { name: 'AirPods Pro case', type: 'lost', place: 'Library, 2nd floor', date: 'Today', status: 'Possible match', icon: 'buds', href: 'Match.dc.html', hasMatch: true },
+      { name: 'Student ID card', type: 'found', place: 'Main cafeteria', date: 'Yesterday', status: 'Chatting', icon: 'card', href: 'Chat.dc.html', hasMatch: false },
+      { name: 'Blue water bottle', type: 'lost', place: 'Lecture Hall B', date: '24 Sep', status: 'Searching', icon: 'bottle', href: '#', hasMatch: false },
+      { name: 'Casio fx-991 calculator', type: 'found', place: 'Engineering lab', date: '18 Sep', status: 'Returned', icon: 'calc', href: '#', hasMatch: false }
+    ];
+    var posts = raw.filter(function (p) { return filter === 'all' || p.type === filter; }).map(function (p) {
+      return Object.assign({}, p, st[p.status], {
+        typeLine: (p.type === 'lost' ? 'LOST' : 'FOUND') + ' · ' + p.place.toUpperCase() + ' · ' + p.date.toUpperCase(),
+        tint: p.type === 'lost' ? '#E8D6C6' : '#D3DBDC',
+        isBuds: p.icon === 'buds', isCard: p.icon === 'card', isBottle: p.icon === 'bottle', isCalc: p.icon === 'calc'
+      });
+    });
+    var filters = [['all', 'ALL'], ['lost', 'LOST'], ['found', 'FOUND']].map(function (f) {
+      var on = f[0] === filter;
+      return { label: f[1], on: on, bg: on ? '#F2EEE8' : 'transparent', fg: on ? '#222634' : '#F2EEE8', border: on ? '#F2EEE8' : '#4A5468', pick: function () { self.setState({ filter: f[0] }); } };
+    });
+    return { posts: posts, filters: filters };
+  }
+}
+</script>
+</body>
+</html>

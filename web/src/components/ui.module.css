@@ -1,0 +1,265 @@
+/* Shared Zarqa components. Values come from design/screens/*.dc.html. */
+
+.wordmark {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  font-family: var(--font-display);
+  line-height: 1;
+  letter-spacing: 1px;
+}
+
+/* Small uppercase mono label used everywhere */
+.label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* Luggage tag: notched left corners + punched hole */
+.tag {
+  position: relative;
+  clip-path: polygon(var(--notch) 0, 100% 0, 100% 100%, var(--notch) 100%, 0 calc(100% - var(--notch)), 0 var(--notch));
+}
+.tagHole {
+  position: absolute;
+  left: calc(var(--notch) * 0.6);
+  top: 50%;
+  width: var(--hole);
+  height: var(--hole);
+  margin-top: calc(var(--hole) / -2);
+  border-radius: 50%;
+  background: var(--hole-color);
+}
+
+/* Off-white ticket card */
+.ticket {
+  position: relative;
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 24px;
+  padding: 20px 20px 22px;
+}
+.tear {
+  position: relative;
+  height: 0;
+  border-top: 2px dashed var(--paper-line);
+}
+.tear::before,
+.tear::after {
+  content: '';
+  position: absolute;
+  top: calc(var(--notch-size) / -2 - 1px);
+  width: var(--notch-size);
+  height: var(--notch-size);
+  border-radius: 50%;
+  background: var(--notch-color);
+}
+.tear::before {
+  left: calc(var(--notch-size) / -2);
+}
+.tear::after {
+  right: calc(var(--notch-size) / -2);
+}
+
+/* Tilted sticker */
+.sticker {
+  display: inline-block;
+  background: var(--tan);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 2px solid var(--ground);
+  white-space: nowrap;
+}
+
+/* Zarqa + speech bubble */
+.bubbleRow {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+}
+.bubble {
+  flex-grow: 1;
+  background: var(--surface);
+  border-radius: 18px 18px 18px 4px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 14px;
+}
+.bubbleName {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--tan);
+}
+.bubbleText {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.bubbleQuiet .bubbleText {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-soft);
+}
+
+/* Big primary button: Anton label + round arrow */
+.big {
+  height: 66px;
+  border: none;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 10px 0 22px;
+  text-decoration: none;
+  width: 100%;
+}
+.big:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+.bigLabel {
+  font-family: var(--font-display);
+  font-size: 27px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bigCircle {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  border-radius: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bigTan {
+  background: var(--tan);
+  color: var(--ink);
+}
+.bigTan .bigCircle {
+  background: var(--ground);
+}
+.bigDark {
+  background: var(--ground);
+  color: var(--paper);
+}
+
+/* Round 44px icon button (back, chats) */
+.roundBtn {
+  position: relative;
+  width: var(--tap);
+  height: var(--tap);
+  flex-shrink: 0;
+  border-radius: 22px;
+  border: none;
+  background: var(--surface);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.badge {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 4px;
+  border-radius: 10px;
+  background: var(--tan);
+  color: var(--ink);
+  border: 2px solid var(--ground);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.backHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.backHeader .label {
+  color: var(--text-muted);
+}
+
+/* Switch */
+.switch {
+  width: 54px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  border: none;
+  padding: 3px;
+  display: flex;
+  background: var(--slate);
+  justify-content: flex-start;
+  transition: background 0.15s;
+}
+.switch[aria-checked='true'] {
+  background: var(--tan);
+  justify-content: flex-end;
+}
+.switchKnob {
+  width: 26px;
+  height: 26px;
+  border-radius: 13px;
+  background: var(--paper);
+}
+
+/* Report status pill */
+.pill {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 9px 3px 7px;
+  border-radius: 999px;
+}
+.pillDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 4px;
+}
+
+/* Initial-letter avatar */
+.avatar {
+  flex-shrink: 0;
+  border-radius: 50%;
+  color: var(--ink);
+  font-family: var(--font-display);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  overflow: hidden;
+}
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

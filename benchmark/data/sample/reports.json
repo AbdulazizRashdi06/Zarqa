@@ -1,0 +1,23 @@
+[
+  { "id": "F-bottle", "type": "found", "title": "Blue metal water bottle", "category": "Bottles", "description": "Dark blue insulated bottle with a sticker of a cat, left on a desk.", "location": "Library, 2nd floor", "campusZone": "Central", "eventDate": "2026-09-20", "createdAt": "2026-09-20T09:10:00Z", "photos": [] },
+  { "id": "L-bottle", "type": "lost", "title": "Navy Hydro Flask", "category": "Bottles", "description": "Navy blue Hydro Flask, has a cat sticker on the side. Think I left it while studying in the LRC.", "location": "LRC", "campusZone": "Central", "eventDate": "2026-09-20", "createdAt": "2026-09-21T14:00:00Z", "photos": [] },
+
+  { "id": "F-charger", "type": "found", "title": "Laptop charger", "category": "Electronics", "description": "White USB-C laptop charger, plugged in under a table.", "location": "Engineering Building room E204", "campusZone": "East", "eventDate": "2026-09-18", "createdAt": "2026-09-18T12:00:00Z", "photos": [] },
+  { "id": "L-charger", "type": "lost", "title": "MacBook charger", "category": "Electronics", "description": "Apple 67W USB-C charger, white. Forgot it after my lab.", "location": "eng block", "campusZone": "East", "eventDate": "2026-09-18", "createdAt": "2026-09-19T08:30:00Z", "photos": [] },
+
+  { "id": "F-keys", "type": "found", "title": "Car key", "category": "Keys", "description": "Toyota car key with a red lanyard.", "location": "Cafeteria", "campusZone": "Central", "eventDate": "2026-09-15", "createdAt": "2026-09-15T13:20:00Z", "photos": [] },
+  { "id": "L-keys", "type": "lost", "title": "Toyota key", "category": "Keys", "description": "My car key, it's on a red strap.", "location": "food court", "campusZone": "Central", "eventDate": "2026-09-15", "createdAt": "2026-09-22T10:00:00Z", "photos": [] },
+
+  { "id": "F-backpack", "type": "found", "title": "Black backpack", "category": "Bags", "description": "Black backpack, JanSport, some notebooks inside.", "location": "Sports Hall", "campusZone": "West", "eventDate": "2026-09-19", "createdAt": "2026-09-19T17:45:00Z", "photos": [] },
+  { "id": "L-backpack", "type": "lost", "title": "Dark bag", "category": "Bags", "description": "Lost my bag after football. Dark coloured, has my calculus notes in it.", "location": "gym", "campusZone": "West", "eventDate": "2026-09-19", "createdAt": "2026-09-20T08:00:00Z", "photos": [] },
+  { "id": "L-backpack-neg", "type": "lost", "title": "Black backpack", "category": "Bags", "description": "Black Nike backpack with a broken zip and a keychain of a football.", "location": "Main Auditorium", "campusZone": "Central", "eventDate": "2026-09-19", "createdAt": "2026-09-20T09:30:00Z", "photos": [] },
+
+  { "id": "F-glasses", "type": "found", "title": "Glasses in a brown case", "category": "Accessories", "description": "Prescription glasses with thin gold frame, in a brown case.", "location": "Main Auditorium", "campusZone": "Central", "eventDate": "2026-09-17", "createdAt": "2026-09-17T11:00:00Z", "photos": [] },
+  { "id": "L-glasses", "type": "lost", "title": "Reading glasses", "category": "Accessories", "description": "Gold-rimmed glasses, brown case. Left after the orientation talk in the main hall.", "location": "main hall", "campusZone": "Central", "eventDate": "2026-09-17", "createdAt": "2026-09-18T07:50:00Z", "photos": [] },
+  { "id": "L-sunglasses-neg", "type": "lost", "title": "Sunglasses", "category": "Accessories", "description": "Black Ray-Ban sunglasses in a black case.", "location": "Main Auditorium", "campusZone": "Central", "eventDate": "2026-09-17", "createdAt": "2026-09-18T09:10:00Z", "photos": [] },
+
+  { "id": "L-wallet-orphan", "type": "lost", "title": "Brown wallet", "category": "Wallets & cards", "description": "Brown leather wallet with my student ID.", "location": "Cafeteria", "campusZone": "Central", "eventDate": "2026-09-21", "createdAt": "2026-09-21T15:00:00Z", "photos": [] },
+
+  { "id": "F-earbuds", "type": "found", "title": "White earbuds case", "category": "Electronics", "description": "Small white earbuds case, looks like AirPods, scratched lid.", "location": "Library", "campusZone": "Central", "eventDate": "2026-09-10", "createdAt": "2026-09-10T10:00:00Z", "photos": [] },
+  { "id": "L-earbuds-late", "type": "lost", "title": "AirPods Pro", "category": "Electronics", "description": "AirPods Pro in their case, the lid has scratches. Lost them about two weeks ago, maybe in the LRC.", "location": "LRC", "campusZone": "Central", "eventDate": "2026-09-09", "createdAt": "2026-09-24T12:00:00Z", "photos": [] }
+]
