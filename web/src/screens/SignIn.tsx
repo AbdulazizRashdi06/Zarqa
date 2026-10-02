@@ -59,8 +59,7 @@ export default function SignIn() {
 
   return (
     <main className={s.page}>
-      <div className={s.top}>
-        <Wordmark size={26} />
+      <div className={s.top} style={{ justifyContent: 'flex-end' }}>
         <MonoLabel color="var(--text-muted)">GUTECH · MUSCAT</MonoLabel>
       </div>
 
@@ -71,7 +70,7 @@ export default function SignIn() {
         <br />
         <span className={s.outline}>{t('signin.h2')}</span>
         <br />
-        <span style={{ color: 'var(--tan)' }}>{t('signin.h3')}</span>
+        <img src="/logo.png" alt={t('signin.h3')} className={s.titleLogo} />
       </h1>
 
       <p className={s.legend}>{t('signin.legend')}</p>

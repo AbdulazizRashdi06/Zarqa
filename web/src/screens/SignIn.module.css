@@ -38,6 +38,13 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
+/* Third headline line: the ZARQA logo in place of the word */
+.titleLogo {
+  display: block;
+  height: clamp(58px, 18vw, 72px);
+  width: auto;
+  margin-top: 8px;
+}
 .outline {
   color: transparent;
   -webkit-text-stroke: 2px var(--paper);
