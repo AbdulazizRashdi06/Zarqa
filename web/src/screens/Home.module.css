@@ -16,24 +16,30 @@
   gap: 8px;
 }
 
-/* Headline in its own column, Zarqa in a reserved one: she never sits on the words. */
+/* Zarqa fills the right side and stands on the My Reports bar; the words stay on top. */
 .hello {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) clamp(96px, 29vw, 136px);
-  align-items: end;
-  gap: 4px;
-  margin-right: calc(var(--gutter) * -1 + 4px);
+  position: relative;
+  min-height: clamp(140px, 40vw, 172px);
+  margin-bottom: -20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 24px;
 }
 .helloText {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding-bottom: 4px;
 }
 .helloMascot {
-  width: 100%;
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+  right: calc(var(--gutter) * -1 + 2px);
+  width: clamp(140px, 40vw, 172px);
   height: auto;
-  align-self: end;
   pointer-events: none;
 }
 .greeting {
@@ -48,7 +54,7 @@
   margin: 0;
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(42px, 12.6vw, 60px);
+  font-size: clamp(44px, 12.8vw, 62px);
   line-height: 0.92;
   letter-spacing: 0.5px;
   text-transform: uppercase;
@@ -58,7 +64,7 @@
 /* MY REPORTS: one line, louder only when a match is waiting */
 .reportsChip {
   position: relative;
-  align-self: flex-start;
+  z-index: 1;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -81,6 +87,7 @@
   text-transform: uppercase;
 }
 .reportsMeta {
+  margin-left: auto;
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 700;
