@@ -58,8 +58,9 @@ services:
     security_opt:
       - no-new-privileges:true
     cap_drop: [ALL]
-    mem_limit: 512m
-    pids_limit: 128
+    # Up to CODEX_MAX_RUNNING (4) Codex processes at once; each needs roughly 150 MB and ~25 threads.
+    mem_limit: 1g
+    pids_limit: 256
 
   postgres:
     image: pgvector/pgvector:pg17

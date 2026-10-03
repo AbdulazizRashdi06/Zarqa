@@ -40,3 +40,21 @@ test('private diagnostics never appear in inference errors', async () => {
     assert.doesNotMatch(await response.text(), /private-token|private-report/)
   }, async () => { throw new Error('private-token private-report') })
 })
+
+test('extra reviews wait their turn instead of failing', async () => {
+  let running = 0, peak = 0
+  const runner = async () => {
+    running++; peak = Math.max(peak, running)
+    await new Promise((r) => setTimeout(r, 40))
+    running--
+    return { parsed: { match: true }, usage: {} }
+  }
+  const server = createGateway(runner, async () => true, { maxRunning: 2, maxWaiting: 20 })
+  await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve))
+  try {
+    const base = `http://127.0.0.1:${server.address().port}`
+    const statuses = await Promise.all(Array.from({ length: 8 }, () => post(base).then((r) => r.status)))
+    assert.deepEqual(statuses, Array(8).fill(200))
+    assert.equal(peak, 2)
+  } finally { await new Promise((resolve) => server.close(resolve)) }
+})

@@ -79,13 +79,18 @@ function signedIn() {
   return new Promise(resolve => execFile('codex', ['login', 'status'], { timeout: 10000 }, (error, stdout, stderr) => resolve(!error && /Logged in using ChatGPT/.test(stdout + stderr))))
 }
 
-export function createGateway(runner = runCodex, auth = signedIn) {
+// Each review is a Codex CLI process; only a few fit the container at once. Extra requests wait their turn
+// (the app sends up to 10 at a time) instead of failing, which would cost matches.
+export function createGateway(runner = runCodex, auth = signedIn, { maxRunning = Number(process.env.CODEX_MAX_RUNNING || 4), maxWaiting = 40 } = {}) {
   let active = 0
+  const queue = []
+  const acquire = () => (active < maxRunning ? (active++, Promise.resolve()) : new Promise((resolve) => queue.push(resolve)))
+  const release = () => { const next = queue.shift(); if (next) next(); else active-- }
   return createServer(async (req, res) => {
     const send = (status, body) => { res.writeHead(status, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }); res.end(JSON.stringify(body)) }
     if (req.method === 'GET' && req.url === '/health') return send(200, { signedIn: await auth() })
     if (req.method !== 'POST' || req.url !== '/v1/chat/completions') return send(404, { error: 'Not found' })
-    if (active >= 10) return send(429, { error: 'Review capacity reached' })
+    if (queue.length >= maxWaiting) return send(429, { error: 'Review capacity reached' })
     let chunks = [], length = 0
     try {
       for await (const chunk of req) {
@@ -97,8 +102,8 @@ export function createGateway(runner = runCodex, auth = signedIn) {
       try { input = parseChat(JSON.parse(Buffer.concat(chunks).toString('utf8'))) }
       catch { return send(400, { error: 'Invalid structured review request' }) }
       if (!await auth()) return send(503, { error: 'Codex needs ChatGPT login' })
-      if (active >= 10) return send(429, { error: 'Review capacity reached' })
-      active++
+      if (queue.length >= maxWaiting) return send(429, { error: 'Review capacity reached' })
+      await acquire()
       try {
         const { parsed, usage } = await runner(input)
         send(200, {
@@ -106,7 +111,7 @@ export function createGateway(runner = runCodex, auth = signedIn) {
           usage: { prompt_tokens: usage.input_tokens ?? 0, completion_tokens: (usage.output_tokens ?? 0) + (usage.reasoning_output_tokens ?? 0), prompt_tokens_details: { cached_tokens: usage.cached_input_tokens ?? 0 } },
         })
       } catch { send(502, { error: 'Codex review failed; check login or usage limits' }) }
-      finally { active-- }
+      finally { release() }
     } catch { if (!res.headersSent) send(400, { error: 'Request interrupted' }) }
   })
 }
