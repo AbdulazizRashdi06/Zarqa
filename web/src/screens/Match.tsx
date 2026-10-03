@@ -104,9 +104,9 @@ export default function Match() {
           <span className={s.tagName}>{match.found.title}</span>
           <span className={s.tagMeta}>{when(match.found)}</span>
         </LuggageTag>
-        <div className={s.stamp} aria-label={match.strength === 'strong' ? t('match.strong') : t('match.likely')}>
-          <span className={s.stampSmall}>{match.strength === 'strong' ? 'STRONG' : 'LIKELY'}</span>
-          <span className={s.stampBig}>MATCH</span>
+        <div className={s.stamp} role="img" aria-label={match.strength === 'strong' ? t('match.strong') : t('match.likely')}>
+          <span className={s.stampSmall} aria-hidden="true">{match.strength === 'strong' ? 'STRONG' : 'LIKELY'}</span>
+          <span className={s.stampBig} aria-hidden="true">MATCH</span>
         </div>
       </div>
 

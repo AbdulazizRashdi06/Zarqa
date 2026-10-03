@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState, type FormEvent } from 'react'
+import { useCallback, useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import { ArrowRight, Check, ChevronLeft } from '../components/icons'
 import { Avatar, BigButton, LuggageTag, RoundButton, TearLine } from '../components/ui'
@@ -124,6 +124,7 @@ export default function Chat() {
   const visible = thread.messages.filter((m) => !(m.kind === 'handover' && m.handoverStatus === 'replaced'))
   const returnPending = thread.messages.some((m) => m.kind === 'return' && m.handoverStatus === 'suggested')
   const handoverSet = thread.messages.some((m) => m.kind === 'handover' && m.handoverStatus === 'confirmed')
+  const awaitingMe = thread.messages.some((m) => m.kind === 'handover' && m.handoverStatus === 'suggested' && m.canConfirm)
 
   return (
     <main className={s.page}>
@@ -146,7 +147,7 @@ export default function Chat() {
         </div>
       </div>
 
-      <div className={s.messages}>
+      <div className={s.messages} role="log" aria-live="polite" aria-label={t('chat.messages')}>
         {visible.map((m) => {
           if (m.kind === 'system')
             return (
@@ -262,9 +263,12 @@ export default function Chat() {
                 </button>
               )}
               <div className={s.quick}>
-                <button type="button" className={`${s.chip} ${s.chipPlan}`} onClick={() => setPlanning(true)}>
-                  {t('chat.suggestTime')}
-                </button>
+                {/* With a suggestion waiting for me, its own "Suggest another" is the one way to counter it. */}
+                {!awaitingMe && (
+                  <button type="button" className={`${s.chip} ${s.chipPlan}`} onClick={() => setPlanning(true)}>
+                    {t('chat.suggestTime')}
+                  </button>
+                )}
                 {QUICK.map((k) => (
                   <button key={k} type="button" className={s.chip} onClick={() => send(t(k))}>
                     {t(k)}
@@ -305,16 +309,16 @@ export default function Chat() {
       )}
 
       {returned && (
-        <div role="dialog" aria-label={t('chat.returned.title')} className={s.overlay}>
+        <ReturnedDialog onClose={() => setReturned(false)} className={s.overlay}>
           <img src="/mascot/phone.webp" alt="Zarqa holding up a returned item" className={s.overlayMascot} />
           <span className={s.overlayItem}>{thread.itemTitle}</span>
-          <h2 className={s.overlayTitle}>{t('chat.returned.title')}</h2>
+          <h2 id="returned-title" tabIndex={-1} className={s.overlayTitle}>{t('chat.returned.title')}</h2>
           <p className={s.overlayText}>{t('chat.returned.body')}</p>
           <BigButton to="/" label={t('chat.returned.home')} />
           <button type="button" className={s.keep} onClick={() => setReturned(false)}>
             {t('chat.returned.keep')}
           </button>
-        </div>
+        </ReturnedDialog>
       )}
     </main>
   )
@@ -352,5 +356,41 @@ function HandoverForm({ onSend, onCancel }: { onSend: (date: string, time: strin
         </button>
       </div>
     </form>
+  )
+}
+
+/** Modal celebration: takes focus, keeps Tab inside, closes on Escape. */
+function ReturnedDialog({ children, className, onClose }: { children: ReactNode; className: string; onClose: () => void }) {
+  const box = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    const before = document.activeElement as HTMLElement | null
+    box.current?.querySelector<HTMLElement>('h2')?.focus()
+    return () => before?.focus()
+  }, [])
+  return (
+    <div
+      ref={box}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="returned-title"
+      className={className}
+      onKeyDown={(e) => {
+        if (e.key === 'Escape') onClose()
+        if (e.key !== 'Tab' || !box.current) return
+        const items = [...box.current.querySelectorAll<HTMLElement>('a[href], button')]
+        if (items.length === 0) return
+        const first = items[0]
+        const last = items[items.length - 1]
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault()
+          last.focus()
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault()
+          first.focus()
+        }
+      }}
+    >
+      {children}
+    </div>
   )
 }
