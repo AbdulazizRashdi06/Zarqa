@@ -76,12 +76,36 @@ public class ChatFlowTests(TestApp app) : IClassFixture<TestApp>
         Assert.Equal("confirmed", confirmed.GetProperty("handoverStatus").GetString());
         Assert.Equal($"{tomorrow}T14:30", confirmed.GetProperty("handoverAt").GetString());
 
-        // Got it back: both reports returned, stats move, the chat closes.
-        Assert.Equal(HttpStatusCode.NoContent, (await owner.PostAsync($"/api/conversations/{chatId}/returned", null)).StatusCode);
+        // Returned is a handshake: the owner asks, nothing closes until the finder confirms.
+        var ask = await Json(await owner.PostAsync($"/api/conversations/{chatId}/returned", null));
+        var askId = ask.GetProperty("id").GetInt64();
+        Assert.Equal("return", ask.GetProperty("kind").GetString());
+        Assert.NotEqual("Returned", (await Json(await owner.GetAsync("/api/reports/mine")))[0].GetProperty("pill").GetString());
+        Assert.Equal(HttpStatusCode.BadRequest, (await owner.PostAsync($"/api/returns/{askId}/confirm", null)).StatusCode);
+        Assert.Equal("confirmed", (await Json(await finder.PostAsync($"/api/returns/{askId}/confirm", null))).GetProperty("handoverStatus").GetString());
         Assert.Equal("Returned", (await Json(await owner.GetAsync("/api/reports/mine")))[0].GetProperty("pill").GetString());
         Assert.Equal(1, (await Json(await owner.GetAsync("/api/me/stats"))).GetProperty("gotBack").GetInt32());
         Assert.Equal(1, (await Json(await finder.GetAsync("/api/me/stats"))).GetProperty("helpedReturn").GetInt32());
         Assert.Equal(HttpStatusCode.BadRequest, (await finder.PostAsJsonAsync($"/api/conversations/{chatId}/messages", new { text = "hi" })).StatusCode);
+    }
+
+    [Fact]
+    public async Task Not_back_yet_keeps_the_chat_open()
+    {
+        var (owner, finder, _, _, match) = await MatchedPair("notyet");
+        var chatId = (await Json(await owner.PostAsync($"/api/matches/{match}/confirm", null))).GetProperty("conversationId").GetGuid();
+
+        // The finder asks; the owner says it isn't back yet. Both reports stay in the chat.
+        var ask = (await Json(await finder.PostAsync($"/api/conversations/{chatId}/returned", null))).GetProperty("id").GetInt64();
+        Assert.Equal(HttpStatusCode.BadRequest, (await owner.PostAsync($"/api/conversations/{chatId}/returned", null)).StatusCode);
+        Assert.Equal("replaced", (await Json(await owner.PostAsync($"/api/returns/{ask}/decline", null))).GetProperty("handoverStatus").GetString());
+        Assert.Equal(HttpStatusCode.BadRequest, (await finder.PostAsync($"/api/returns/{ask}/confirm", null)).StatusCode);
+        Assert.Equal("Chatting", (await Json(await owner.GetAsync("/api/reports/mine")))[0].GetProperty("pill").GetString());
+
+        // The asker can withdraw their own request too.
+        var again = (await Json(await owner.PostAsync($"/api/conversations/{chatId}/returned", null))).GetProperty("id").GetInt64();
+        Assert.Equal(HttpStatusCode.OK, (await owner.PostAsync($"/api/returns/{again}/decline", null)).StatusCode);
+        Assert.Equal(HttpStatusCode.OK, (await finder.PostAsJsonAsync($"/api/conversations/{chatId}/messages", new { text = "still open" })).StatusCode);
     }
 
     [Fact]

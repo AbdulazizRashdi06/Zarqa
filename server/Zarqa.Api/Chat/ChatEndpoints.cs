@@ -129,14 +129,35 @@ public static class ChatEndpoints
             return Results.NoContent();
         });
 
-        chats.MapPost("/{id:guid}/returned", async (Guid id, HttpContext http, ZarqaDb db, TimeProvider clock, CancellationToken ct) =>
+        // Returned is a handshake: one person asks, the other confirms. Nothing closes on a single tap.
+        chats.MapPost("/{id:guid}/returned", async (Guid id, HttpContext http, ZarqaDb db, TimeProvider clock, INotifier notifier, CancellationToken ct) =>
         {
             var me = http.User.Id();
             var c = await Mine(db, id, me, ct);
             if (c is null) return Errors.NotFound();
-            if (c.Status == ConversationStatus.Returned) return Results.NoContent();
             if (c.Status != ConversationStatus.Active) return Errors.BadRequest("This chat is closed.");
+            var pending = await PendingReturn(db, id, ct);
+            if (pending is not null)
+                return pending.SenderId == me ? Results.Ok(ToDto(pending, me)) : Errors.BadRequest("They already asked. Confirm their ticket instead.");
+            var body = c.LostUserId == me ? "I got it back. Can you confirm?" : "I handed it over. Did you get it back?";
+            var m = new Message { ConversationId = id, SenderId = me, Kind = MessageKind.Return, Body = body, HandoverStatus = HandoverStatus.Suggested, CreatedAt = clock.GetUtcNow() };
+            db.Messages.Add(m);
+            await db.SaveChangesAsync(ct);
+            await MarkRead(db, me, id, m.Id, ct);
+            await notifier.MessageAsync(m.Id, ct);
+            return Results.Ok(ToDto(m, me));
+        });
+
+        api.MapPost("/returns/{messageId:long}/confirm", async (long messageId, HttpContext http, ZarqaDb db, TimeProvider clock, CancellationToken ct) =>
+        {
+            var me = http.User.Id();
+            var m = await db.Messages.FirstOrDefaultAsync(x => x.Id == messageId && x.Kind == MessageKind.Return, ct);
+            var c = m is null ? null : await Mine(db, m.ConversationId, me, ct);
+            if (m is null || c is null) return Errors.NotFound();
+            if (m.SenderId == me) return Errors.BadRequest("The other person confirms this.");
+            if (m.HandoverStatus != HandoverStatus.Suggested || c.Status != ConversationStatus.Active) return Errors.BadRequest("That request isn't open any more.");
             var now = clock.GetUtcNow();
+            m.HandoverStatus = HandoverStatus.Confirmed;
             c.Status = ConversationStatus.Returned;
             c.ReturnedAt = now;
             foreach (var r in await db.Reports.Where(r => r.Id == c.Match!.LostId || r.Id == c.Match!.FoundId).ToListAsync(ct))
@@ -145,10 +166,24 @@ public static class ChatEndpoints
                 r.UpdatedAt = now;
                 await ReportEndpoints.ExpireOpenMatches(db, r.Id, now, ct);
             }
-            db.Messages.Add(new Message { ConversationId = id, Kind = MessageKind.System, Body = "Returned. Back where it belongs. Thank you both!", CreatedAt = now });
+            db.Messages.Add(new Message { ConversationId = c.Id, Kind = MessageKind.System, Body = "Returned. Back where it belongs. Thank you both!", CreatedAt = now });
             await db.SaveChangesAsync(ct);
-            return Results.NoContent();
-        });
+            return Results.Ok(ToDto(m, me));
+        }).RequireAuthorization();
+
+        // The asker withdraws it, or the other person says it isn't back yet. The chat stays open.
+        api.MapPost("/returns/{messageId:long}/decline", async (long messageId, HttpContext http, ZarqaDb db, TimeProvider clock, CancellationToken ct) =>
+        {
+            var me = http.User.Id();
+            var m = await db.Messages.FirstOrDefaultAsync(x => x.Id == messageId && x.Kind == MessageKind.Return, ct);
+            if (m is null || await Mine(db, m.ConversationId, me, ct) is null) return Errors.NotFound();
+            if (m.HandoverStatus != HandoverStatus.Suggested) return Errors.BadRequest("That request isn't open any more.");
+            m.HandoverStatus = HandoverStatus.Replaced;
+            if (m.SenderId != me)
+                db.Messages.Add(new Message { ConversationId = m.ConversationId, Kind = MessageKind.System, Body = "Not back yet. Keep chatting and sort out the handover.", CreatedAt = clock.GetUtcNow() });
+            await db.SaveChangesAsync(ct);
+            return Results.Ok(ToDto(m, me));
+        }).RequireAuthorization();
 
         chats.MapPost("/{id:guid}/not-it", async (Guid id, HttpContext http, ZarqaDb db, TimeProvider clock, MatchQueue queue, CancellationToken ct) =>
         {
@@ -178,6 +213,9 @@ public static class ChatEndpoints
 
     private static async Task<Conversation?> Mine(ZarqaDb db, Guid id, Guid me, CancellationToken ct) =>
         await db.Conversations.Include(c => c.Match).FirstOrDefaultAsync(c => c.Id == id && (c.LostUserId == me || c.FoundUserId == me), ct);
+
+    private static Task<Message?> PendingReturn(ZarqaDb db, Guid conversationId, CancellationToken ct) =>
+        db.Messages.FirstOrDefaultAsync(m => m.ConversationId == conversationId && m.Kind == MessageKind.Return && m.HandoverStatus == HandoverStatus.Suggested, ct);
 
     private static async Task<Dictionary<Guid, User>> OtherUsers(ZarqaDb db, List<Conversation> list, Guid me, CancellationToken ct)
     {
@@ -211,5 +249,5 @@ public static class ChatEndpoints
         m.HandoverAt is { } at ? Local(at).ToString("yyyy-MM-ddTHH:mm", CultureInfo.InvariantCulture) : null,
         m.HandoverPlace,
         m.HandoverStatus?.ToString().ToLowerInvariant(),
-        m.Kind == MessageKind.Handover && m.HandoverStatus == HandoverStatus.Suggested && m.SenderId != me);
+        m.Kind is MessageKind.Handover or MessageKind.Return && m.HandoverStatus == HandoverStatus.Suggested && m.SenderId != me);
 }

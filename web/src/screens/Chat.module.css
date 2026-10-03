@@ -70,19 +70,51 @@
   letter-spacing: 1px;
   flex-shrink: 0;
 }
-.gotIt {
-  flex-shrink: 0;
-  height: 44px;
-  padding: 0 12px;
-  border-radius: 12px;
-  border: 2px solid var(--paper);
+/* Ask the other person to confirm it's back. Quiet until a handover is confirmed. */
+.returnAsk {
+  align-self: stretch;
+  min-height: var(--tap);
+  border-radius: 14px;
+  border: 1.5px solid var(--slate);
   background: transparent;
-  color: var(--paper);
-  font-size: 13px;
+  color: var(--text-soft);
+  font-size: 15px;
   font-weight: 800;
   display: flex;
   align-items: center;
-  gap: 5px;
+  justify-content: center;
+  gap: 8px;
+}
+.returnAskReady {
+  border-color: var(--sage);
+  background: var(--sage);
+  color: var(--ink);
+}
+.returnTicket {
+  border: 2px solid var(--sage);
+}
+.returnText {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.returnWait {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.withdraw {
+  min-height: var(--tap);
+  border: none;
+  background: none;
+  padding: 0 4px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  white-space: nowrap;
 }
 
 .messages {

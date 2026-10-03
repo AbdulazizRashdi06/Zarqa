@@ -13,7 +13,8 @@ public enum MatchDecider { Debate, LunaFallback }
 
 public enum ConversationStatus { Active, Returned, Closed }
 
-public enum MessageKind { Text, System, Handover }
+/// <summary>Return is a request to mark the item returned; the other person confirms it (HandoverStatus tracks it).</summary>
+public enum MessageKind { Text, System, Handover, Return }
 
 public enum HandoverStatus { Suggested, Confirmed, Replaced }
 

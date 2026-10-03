@@ -122,8 +122,10 @@ try {
   if (!handoverResponse.ok()) throw new Error(`Post handover: ${handoverResponse.status()}`)
   await finder.page.getByRole('button', { name: t('chat.handover.confirm'), exact: true }).click({ timeout: 30000 })
   await expect(finder.page.getByText(t('chat.handover.confirmed'), { exact: true })).toBeVisible()
-  await owner.page.getByRole('button', { name: t('chat.gotItBack'), exact: true }).click()
-  await expect(owner.page.getByRole('dialog')).toBeVisible()
+  // Returned is a handshake: the owner asks, the finder confirms, both see the celebration.
+  await owner.page.getByRole('button', { name: t('chat.return.ask.lost'), exact: true }).click()
+  await finder.page.getByRole('button', { name: t('chat.return.yes'), exact: true }).click({ timeout: 30000 })
+  await expect(owner.page.getByRole('dialog')).toBeVisible({ timeout: 15000 })
   await owner.page.getByRole('dialog').locator('img').evaluate(img => img.decode())
   await owner.page.screenshot({ path: 'test-results/live-returned-phone.png', fullPage: true })
   const stats = await (await owner.context.request.get(`${url}/api/me/stats`)).json()

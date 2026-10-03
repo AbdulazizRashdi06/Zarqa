@@ -9,7 +9,7 @@ import s from './Chat.module.css'
 
 type Msg = {
   id: number
-  kind: 'text' | 'system' | 'handover'
+  kind: 'text' | 'system' | 'handover' | 'return'
   mine: boolean
   text: string
   at: string
@@ -55,7 +55,11 @@ export default function Chat() {
         if (first) setThread(th)
         else {
           merge(th.messages)
-          setThread((cur) => (cur ? { ...cur, status: th.status } : cur))
+          setThread((cur) => {
+            // The other person confirmed our "it's back": celebrate on this side too.
+            if (cur?.status === 'Active' && th.status === 'Returned') setReturned(true)
+            return cur ? { ...cur, status: th.status } : cur
+          })
         }
         const newest = th.messages.at(-1)?.id
         if (newest && newest > lastId.current) {
@@ -118,6 +122,8 @@ export default function Chat() {
 
   const active = thread.status === 'Active'
   const visible = thread.messages.filter((m) => !(m.kind === 'handover' && m.handoverStatus === 'replaced'))
+  const returnPending = thread.messages.some((m) => m.kind === 'return' && m.handoverStatus === 'suggested')
+  const handoverSet = thread.messages.some((m) => m.kind === 'handover' && m.handoverStatus === 'confirmed')
 
   return (
     <main className={s.page}>
@@ -137,12 +143,6 @@ export default function Chat() {
             <span className={s.itemName}>{thread.itemTitle}</span>
             <span className={s.itemStatus}>{thread.status === 'Active' ? 'CHATTING' : thread.status.toUpperCase()}</span>
           </LuggageTag>
-          {active && (
-            <button type="button" className={s.gotIt} onClick={() => act(`/conversations/${id}/returned`, () => setReturned(true))}>
-              <Check size={15} color="var(--paper)" />
-              {t('chat.gotItBack')}
-            </button>
-          )}
         </div>
       </div>
 
@@ -158,6 +158,38 @@ export default function Chat() {
                 </div>
               </div>
             )
+          if (m.kind === 'return') {
+            if (m.handoverStatus === 'replaced') return null
+            return (
+              <div key={m.id} className={`${s.ticket} ${s.returnTicket}`} style={{ alignSelf: m.mine ? 'flex-end' : 'flex-start' }}>
+                <span className={s.ticketLabel}>{m.mine ? t('chat.return.you') : t('chat.return.they', { name: thread.otherName.toUpperCase() })}</span>
+                <span className={s.returnText}>{m.text}</span>
+                <TearLine inset={16} notch={22} />
+                {m.handoverStatus === 'confirmed' ? (
+                  <div className={s.confirmed}>
+                    <Check size={18} color="var(--ink)" />
+                    {t('chat.return.done')}
+                  </div>
+                ) : m.canConfirm && active ? (
+                  <div className={s.ticketActions}>
+                    <button type="button" className={s.confirmBtn} onClick={() => act(`/returns/${m.id}/confirm`, () => setReturned(true))}>
+                      {t('chat.return.yes')}
+                    </button>
+                    <button type="button" className={s.otherBtn} onClick={() => act(`/returns/${m.id}/decline`)}>
+                      {t('chat.return.no')}
+                    </button>
+                  </div>
+                ) : active ? (
+                  <div className={s.returnWait}>
+                    <span className={s.waiting}>{t('chat.handover.waiting', { name: thread.otherName })}</span>
+                    <button type="button" className={s.withdraw} onClick={() => act(`/returns/${m.id}/decline`)}>
+                      {t('chat.return.withdraw')}
+                    </button>
+                  </div>
+                ) : null}
+              </div>
+            )
+          }
           if (m.kind === 'handover' && m.handoverAt) {
             const [date, time] = m.handoverAt.split('T')
             const dayLabel = relativeDay(date)
@@ -219,6 +251,16 @@ export default function Chat() {
             />
           ) : (
             <>
+              {!returnPending && (
+                <button
+                  type="button"
+                  className={`${s.returnAsk} ${handoverSet ? s.returnAskReady : ''}`}
+                  onClick={() => act(`/conversations/${id}/returned`)}
+                >
+                  <Check size={18} />
+                  {thread.myRole === 'lost' ? t('chat.return.ask.lost') : t('chat.return.ask.found')}
+                </button>
+              )}
               <div className={s.quick}>
                 <button type="button" className={`${s.chip} ${s.chipPlan}`} onClick={() => setPlanning(true)}>
                   {t('chat.suggestTime')}
