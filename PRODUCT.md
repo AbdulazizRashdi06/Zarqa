@@ -66,9 +66,9 @@ Success for the pilot is **items returned to their owners**. Recall matters more
 
 - The benchmark in `benchmark/`:
   - 32 true lost/found pairs and 18 lookalike traps from real campus items
-  - luna-debate measured at 97% recall and 97% strict precision on that set
-  - the 0.65 cut-off is partly tuned on that same set
-  - the final decision step hasn't been re-measured with the app's one-text, production-embedding setup
+  - luna-debate measured at 97% recall and 97% strict precision on that set (2026-10-01)
+  - re-measured with the app's own one-text, production-embedding setup at 100 reports: 97% recall, 100% precision, 0 of 18 traps (2026-10-03)
+  - the 0.65 cut-off is partly tuned on that same set, so these are optimistic
 - A live end-to-end check with one real matched pair (debate decided).
 - No users, testimonials, press, university endorsement or return counts exist yet. Don't invent them.
 

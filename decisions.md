@@ -2,6 +2,19 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-10-03: Full QA before the pilot
+
+Ran the whole app through automated suites, browser flows on fresh users, security and permission probes, axe accessibility scans, screen sizes from 320px to desktop, read-only checks on the live site and the matching benchmark. Methods borrowed from Anthropic's `webapp-testing` skill and Currents' `playwright-best-practices` (read, not installed).
+
+**Passed:** 69 security and permission checks (strangers and the wrong side get 404 everywhere; card photos never leave the uploader; EXIF/GPS stripped); 30 user flows; 23 accessibility checks; 6 screen sizes; 106 server, 9 browser and 6 gateway tests; live HTTPS, redirects, closed internal ports and offline PWA.
+
+**Found and fixed:**
+- **Codex gateway capacity (P1).** The app sends up to 10 Luna reviews at once; the container fitted about 4–6 Codex processes and wedged at its 128-process limit during the benchmark, which also stopped live matching until it was restarted. The gateway now runs at most 4 (`CODEX_MAX_RUNNING`) and queues the rest; the container has 1 GB and 256 processes; the app waits up to 5 minutes for Luna.
+- **Sign-in throttle vs shared campus Wi-Fi (P1).** 10 codes per 15 minutes per address would lock out students behind one campus address. Now 100 codes and 300 verifies per address; per-email (3 codes) and per-code (5 tries) limits still apply.
+- **Security headers (P2).** Added a Content-Security-Policy and `X-Frame-Options: DENY`, removed the `Server` header. Checked on every screen of the production build: no violations.
+- **Slow first load (P2).** About 7 s to the main picture on slow 4G because images waited for the app script. Sign-in images are now preloaded; the logo is WebP (56 KB → 26 KB).
+- **Small (P2–P3).** Finder's chat list now keyboard-reachable; "1 REPORT" wording; no "0 REPORTS" before the list loads. Public pages now have an axe test in `web/tests/a11y.spec.ts`.
+
 ## 2026-10-03: First names on found cards may go to matching
 
 - **Decision:** when someone finds a student, ID or bank card, Home asks them to type the **first name** printed on it, plus the issuer and colour. Owners are asked to mention their first name too. Surnames, ID numbers and card numbers stay out.
@@ -69,7 +82,17 @@ The decisions made while turning the uni matching prototype into a real app, and
 
 **Found on the way.** The luna-debate benchmark run used the local **MiniLM** embeddings, but production uses **text-embedding-3-small**. The shortlist still keeps every true pair with the production model. It is fuller, though: more pairs are reviewed, which costs a little more.
 
-**Not yet re-measured.** The final debate decision (recall, precision, traps) with one-text prompts and production embeddings needs a paid luna-debate re-run, or the pilot's own confirmed/rejected labels. Until then, the 97% recall from 2026-10-01 is an estimate for the app, not a measurement.
+**Re-measured on 2026-10-03** (`run.js --shape one`, results in `benchmark/results/2026-10-03T08-34-49-398Z`). The full luna-debate pipeline ran with the app's own setup: one-text reports, the app's prescore rule and prompts, text-embedding-3-small, Luna through the production Codex gateway and Jev `jev-1.13.0`, at 100 reports:
+
+| | Recall | Precision | Lookalike traps matched |
+|---|---|---|---|
+| 2026-10-01 (two fields, MiniLM) | 97% | 97% | 0 / 18 |
+| 2026-10-03 (app setup, one text) | **97%** (31 / 32) | **100%** | **0 / 18** |
+
+- Retrieval and shortlist kept every true pair (100%). The one miss is a hard lookalike pair with no photo.
+- No Luna or Jev call failed during the run.
+- The 0.65 cut-off is still the one partly tuned on this same set, so these numbers are optimistic; the pilot's confirm/reject labels remain the honest check.
+- Not run at 1,000 reports: through the Codex gateway each call is a separate process, and the pre-fix gateway could only run two safely (see 2026-10-03 QA). Run it after the gateway fix is live.
 
 ## 2026-10-02: Matching in the app (step 4)
 
@@ -223,7 +246,8 @@ Bare floor names such as "2nd floor" are left out because several places share t
 
 - [ ] **Long-gap date rule.** 7 of the 8 false matches at cut-off 0.60 had the item lost 1–11 months before it was found.
 - [ ] **Re-check the 0.65 cut-off** on freshly collected items that weren't used to choose it.
-- [ ] **Re-run luna-debate with the app's real setup:** one-text reports and text-embedding-3-small (see 2026-10-03).
+- [x] **Re-run luna-debate with the app's real setup:** done at 100 reports on 2026-10-03: 97% recall, 100% precision, 0 traps.
+- [ ] **Same re-run at 1,000 reports**, once the Codex gateway queue is deployed.
 - [ ] **Blind-label false matches** as plausible or wrong, to report a fairer precision.
 - [ ] **Location specialist agent.**
 - [ ] **Replace the benchmark's reconstructed `luna` baseline** with the real `processReport` code (prompt and overlap weights).
