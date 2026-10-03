@@ -5,9 +5,9 @@ import s from './ui.module.css'
 
 type Css = CSSProperties & Record<`--${string}`, string | number>
 
-/** The ZARQA logo (public/logo.png). `size` is the logo's height in px. */
+/** The ZARQA logo (public/logo.webp; logo.png is the original). `size` is the logo's height in px. */
 export function Wordmark({ size = 30 }: { size?: number }) {
-  return <img src="/logo.png" alt="Zarqa" height={size} style={{ height: size, width: 'auto', display: 'block' }} />
+  return <img src="/logo.webp" alt="Zarqa" height={size} style={{ height: size, width: 'auto', display: 'block' }} />
 }
 
 export function MonoLabel({ children, color, className }: { children: ReactNode; color?: string; className?: string }) {

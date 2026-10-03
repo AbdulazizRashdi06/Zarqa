@@ -59,14 +59,14 @@ export default function SignIn() {
 
   return (
     <main className={s.page}>
-      <img src="/mascot/lookout.webp" alt="Zarqa shading her eyes, looking far into the distance" className={s.hero} />
+      <img src="/mascot/lookout.webp" fetchPriority="high" alt="Zarqa shading her eyes, looking far into the distance" className={s.hero} />
 
       <h1 className={s.title}>
         {t('signin.h1')}
         <br />
         <span className={s.outline}>{t('signin.h2')}</span>
         <br />
-        <img src="/logo.png" alt={t('signin.h3')} className={s.titleLogo} />
+        <img src="/logo.webp" alt={t('signin.h3')} className={s.titleLogo} />
       </h1>
 
       <p className={s.legend}>{t('signin.legend')}</p>
