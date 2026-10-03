@@ -26,7 +26,7 @@ export default function Reports() {
 
   return (
     <main className={s.page}>
-      <BackHeader label={t('reports.count', { n: reports?.length ?? 0 })} />
+      <BackHeader label={reports ? t(reports.length === 1 ? 'reports.countOne' : 'reports.count', { n: reports.length }) : undefined} />
 
       <h1 className={s.title}>
         {t('reports.h1')}

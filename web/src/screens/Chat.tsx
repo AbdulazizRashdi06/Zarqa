@@ -147,7 +147,7 @@ export default function Chat() {
         </div>
       </div>
 
-      <div className={s.messages} role="log" aria-live="polite" aria-label={t('chat.messages')}>
+      <div className={s.messages} role="log" aria-live="polite" aria-label={t('chat.messages')} tabIndex={0}>
         {visible.map((m) => {
           if (m.kind === 'system')
             return (

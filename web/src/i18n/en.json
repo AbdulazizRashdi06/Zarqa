@@ -82,6 +82,7 @@
   "form.removePhoto": "Remove this photo",
   "form.posting": "Posting…",
   "reports.count": "{n} REPORTS",
+  "reports.countOne": "1 REPORT",
   "reports.h1": "Your",
   "reports.h2": "reports",
   "reports.filter": "Show",
