@@ -154,3 +154,17 @@
   font-weight: 700;
   color: #f0a58c;
 }
+
+/* Account deletion: quiet, clearly a warning, never bigger than Sign out */
+.deleteLink {
+  align-self: center;
+  min-height: var(--tap);
+  border: none;
+  background: none;
+  padding: 0 8px;
+  color: #f0a58c;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

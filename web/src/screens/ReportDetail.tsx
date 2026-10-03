@@ -101,6 +101,7 @@ export default function ReportDetail() {
             onClick={() => act(`/reports/${report.id}/close`, 'POST', t('detail.closeConfirm'))}
           />
         )}
+        {report.conversationId && <BigButton to={`/chats/${report.conversationId}`} label={t('detail.openChat')} labelSize={24} />}
         {!report.conversationId && (
           <button type="button" className={s.delete} disabled={busy} onClick={() => act(`/reports/${report.id}`, 'DELETE', t('detail.deleteConfirm'))}>
             {t('detail.delete')}

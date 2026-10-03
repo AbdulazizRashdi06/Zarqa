@@ -40,7 +40,7 @@ export default function Chats() {
 
   return (
     <main className={s.page}>
-      <BackHeader label={t('chats.unread', { n: unread })} />
+      <BackHeader label={unread > 0 ? t('chats.unread', { n: unread }) : undefined} />
       <h1 className={s.title}>
         {t('chats.h1')}
         <br />
@@ -49,11 +49,12 @@ export default function Chats() {
 
       <div className={s.list}>
         {(chats ?? []).map((c) => {
-          const closed = c.status !== 'Active'
+          const closed = c.status === 'Closed'
+          const returned = c.status === 'Returned'
           const line = `${c.itemTitle} · ${c.status === 'Returned' ? t('chats.returned') : c.status === 'Closed' ? t('chats.closed') : c.myRole === 'lost' ? t('chats.youLost') : t('chats.youFound')}`
           return (
             <Link key={c.id} to={`/chats/${c.id}`} className={s.row} style={closed ? { opacity: 0.6 } : undefined}>
-              <Avatar name={c.otherName} photoUrl={c.otherAvatarUrl} size={52} background={closed ? 'var(--slate)' : c.myRole === 'lost' ? 'var(--sage)' : 'var(--tan)'} />
+              <Avatar name={c.otherName} photoUrl={c.otherAvatarUrl} size={52} background={closed ? 'var(--text-faint)' : returned ? 'var(--sage)' : c.myRole === 'lost' ? 'var(--sage)' : 'var(--tan)'} />
               <span className={s.text}>
                 <span className={s.top}>
                   <span className={s.name}>{c.otherName}</span>

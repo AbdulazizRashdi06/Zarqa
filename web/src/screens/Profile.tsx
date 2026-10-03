@@ -92,7 +92,7 @@ export default function Profile() {
           <span className={s.statLabel}>{t('profile.gotBack')}</span>
         </div>
         <div className={s.stat}>
-          <span className={s.statNum} style={{ color: 'var(--tan-dark)' }}>{stats?.helpedReturn ?? '–'}</span>
+          <span className={s.statNum} style={{ color: 'var(--tan)' }}>{stats?.helpedReturn ?? '–'}</span>
           <span className={s.statLabel}>{t('profile.helped')}</span>
         </div>
       </div>
@@ -151,7 +151,7 @@ export default function Profile() {
         <SignOut size={20} />
         {t('profile.signOut')}
       </button>
-      <button type="button" className={s.signOut} disabled={deleting} onClick={deleteAccount}>
+      <button type="button" className={s.deleteLink} disabled={deleting} onClick={deleteAccount}>
         {t(deleting ? 'profile.deleting' : 'profile.delete')}
       </button>
     </main>

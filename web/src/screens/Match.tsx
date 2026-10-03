@@ -30,6 +30,7 @@ export default function Match() {
   const navigate = useNavigate()
   const [match, setMatch] = useState<MatchView | null>(null)
   const [error, setError] = useState('')
+  const [gone, setGone] = useState(false)
   const [busy, setBusy] = useState(false)
   const [showWords, setShowWords] = useState(false)
   const wordsId = useId()
@@ -37,7 +38,10 @@ export default function Match() {
   useEffect(() => {
     api<MatchView>(`/matches/${id}`)
       .then(setMatch)
-      .catch((e) => setError(e instanceof ApiError ? e.message : t('common.error')))
+      .catch((e) => {
+        if (e instanceof ApiError && e.status === 404) setGone(true)
+        else setError(e instanceof ApiError ? e.message : t('common.error'))
+      })
   }, [id])
 
   async function confirm() {
@@ -68,6 +72,14 @@ export default function Match() {
       <main className={s.page}>
         <BackHeader to="/reports" />
         {error && <p className={s.error}>{error}</p>}
+        {gone && (
+          <>
+            <ZarqaBubble mascot="question" alt="" width={70} quiet>
+              {t('match.gone')}
+            </ZarqaBubble>
+            <BigButton to="/reports" label={t('match.toReports')} />
+          </>
+        )}
       </main>
     )
   }

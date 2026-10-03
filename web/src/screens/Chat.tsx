@@ -313,7 +313,7 @@ export default function Chat() {
           <img src="/mascot/phone.webp" alt="Zarqa holding up a returned item" className={s.overlayMascot} />
           <span className={s.overlayItem}>{thread.itemTitle}</span>
           <h2 id="returned-title" tabIndex={-1} className={s.overlayTitle}>{t('chat.returned.title')}</h2>
-          <p className={s.overlayText}>{t('chat.returned.body')}</p>
+          <p className={s.overlayText}>{thread.myRole === 'found' ? t('chat.returned.body.found', { name: thread.otherName }) : t('chat.returned.body')}</p>
           <BigButton to="/" label={t('chat.returned.home')} />
           <button type="button" className={s.keep} onClick={() => setReturned(false)}>
             {t('chat.returned.keep')}
