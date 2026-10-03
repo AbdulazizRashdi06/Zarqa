@@ -75,9 +75,8 @@ export default function Reports() {
 
       {reports && reports.length === 0 && (
         <div className={s.empty}>
-          <ZarqaBubble mascot="question" alt="Zarqa" width={70} quiet>
-            {t('reports.empty')}
-          </ZarqaBubble>
+          <img src="/mascot/empty-sad.webp" alt="" className={s.emptyArt} />
+          <p className={s.emptyText}>{t('reports.empty')}</p>
           <BigButton to="/" label={t('reports.postOne')} />
         </div>
       )}

@@ -41,7 +41,11 @@ export default function Chats() {
   return (
     <main className={s.page}>
       <BackHeader label={t('chats.unread', { n: unread })} />
-      <h1 className={s.title}>{t('chats.title')}</h1>
+      <h1 className={s.title}>
+        {t('chats.h1')}
+        <br />
+        <span style={{ color: 'var(--tan)' }}>{t('chats.h2')}</span>
+      </h1>
 
       <div className={s.list}>
         {(chats ?? []).map((c) => {
@@ -68,13 +72,20 @@ export default function Chats() {
         })}
       </div>
 
-      {chats && chats.length === 0 && <p className={s.empty}>{t('chats.empty')}</p>}
+      {chats && chats.length === 0 && (
+        <div className={s.empty}>
+          <img src="/mascot/empty-sad.webp" alt="" className={s.emptyArt} />
+          <p className={s.emptyText}>{t('chats.empty')}</p>
+        </div>
+      )}
 
-      <div className={s.tip}>
-        <ZarqaBubble mascot="reading" alt="Zarqa" width={70} quiet>
-          {t('chats.tip')}
-        </ZarqaBubble>
-      </div>
+      {chats && chats.length > 0 && (
+        <div className={s.tip}>
+          <ZarqaBubble mascot="reading" alt="Zarqa" width={70} quiet>
+            {t('chats.tip')}
+          </ZarqaBubble>
+        </div>
+      )}
     </main>
   )
 }
