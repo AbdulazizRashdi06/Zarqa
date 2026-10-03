@@ -170,3 +170,34 @@
   line-height: 1.4;
   color: var(--text-muted);
 }
+
+/* The finder's own words, one tap away */
+.words {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.wordsToggle {
+  width: 100%;
+  min-height: var(--tap);
+  border: none;
+  background: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--tan-light);
+  font-size: 15px;
+  font-weight: 800;
+}
+.wordsText {
+  margin: 0 0 14px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--surface);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+}
+.wordsText[hidden] {
+  display: none;
+}

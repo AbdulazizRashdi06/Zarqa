@@ -22,6 +22,11 @@ function Svg({ size = 20, color = 'currentColor', strokeWidth = 2, children }: I
 
 export const ArrowRight = (p: IconProps) => <Svg strokeWidth={2.6} {...p}><path d="M5 12h14M13 6l6 6-6 6" /></Svg>
 export const ChevronLeft = (p: IconProps) => <Svg strokeWidth={2.2} {...p}><path d="M15 6l-6 6 6 6" /></Svg>
+export const ChevronDown = (p: IconProps & { style?: React.CSSProperties }) => (
+  <span style={{ display: 'inline-flex', transition: 'transform 0.2s', ...p.style }}>
+    <Svg {...p}><path d="M6 9l6 6 6-6" /></Svg>
+  </span>
+)
 export const ChevronRight = (p: IconProps) => <Svg {...p}><path d="M9 6l6 6-6 6" /></Svg>
 export const Close = (p: IconProps) => <Svg strokeWidth={2.6} {...p}><path d="M6 6l12 12M18 6L6 18" /></Svg>
 export const Check = (p: IconProps) => <Svg strokeWidth={2.8} {...p}><path d="M5 12.5l4.5 4.5L19 7.5" /></Svg>

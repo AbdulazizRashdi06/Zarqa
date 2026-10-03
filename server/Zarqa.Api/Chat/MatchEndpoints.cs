@@ -13,7 +13,7 @@ public static class MatchEndpoints
 
     public const string Opening = "You two matched. Ask a question only the owner would know, and meet somewhere public.";
 
-    public record SideDto(Guid Id, string Title, string? CategoryKey, string LocationText, string? EventDate, string? EventTime, Guid[] PhotoIds, DateTimeOffset CreatedAt);
+    public record SideDto(Guid Id, string Title, string Description, string? CategoryKey, string LocationText, string? EventDate, string? EventTime, Guid[] PhotoIds, DateTimeOffset CreatedAt);
     public record MatchDto(Guid Id, string Status, double FinalScore, string Strength, string[] Reasons, DateTimeOffset CreatedAt, SideDto Lost, SideDto Found, Guid? ConversationId);
 
     public static void MapMatches(this RouteGroupBuilder api)
@@ -71,6 +71,6 @@ public static class MatchEndpoints
         db.Matches.Include(m => m.Lost).ThenInclude(r => r!.Photos).Include(m => m.Found).ThenInclude(r => r!.Photos)
             .FirstOrDefaultAsync(m => m.Id == id && m.Lost!.UserId == me, ct);
 
-    private static SideDto Side(Report r) => new(r.Id, r.Title, r.CategoryNorm, r.LocationText, r.EventDate?.ToString("yyyy-MM-dd"),
+    private static SideDto Side(Report r) => new(r.Id, r.Title, r.Description, r.CategoryNorm, r.LocationText, r.EventDate?.ToString("yyyy-MM-dd"),
         r.EventTime?.ToString("HH:mm"), r.IsSensitive ? [] : r.Photos.OrderBy(p => p.Position).Select(p => p.Id).ToArray(), r.CreatedAt);
 }

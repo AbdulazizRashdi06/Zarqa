@@ -122,7 +122,10 @@ public class ChatFlowTests(TestApp app) : IClassFixture<TestApp>
     public async Task Not_mine_rejects_the_match()
     {
         var (owner, _, lost, _, match) = await MatchedPair("reject", score: 0.7);
-        Assert.Equal("likely", (await Json(await owner.GetAsync($"/api/matches/{match}"))).GetProperty("strength").GetString());
+        var view = await Json(await owner.GetAsync($"/api/matches/{match}"));
+        Assert.Equal("likely", view.GetProperty("strength").GetString());
+        // The owner can read the finder's own words, not only the reasons.
+        Assert.False(string.IsNullOrEmpty(view.GetProperty("found").GetProperty("description").GetString()));
         Assert.Equal(HttpStatusCode.NoContent, (await owner.PostAsync($"/api/matches/{match}/reject", null)).StatusCode);
         await using var db = app.Db();
         Assert.Equal(MatchStatus.Rejected, (await db.Matches.FirstAsync(m => m.Id == match)).Status);

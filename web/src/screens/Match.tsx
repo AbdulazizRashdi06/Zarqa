@@ -1,13 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useId, useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import { ItemIcon } from '../components/ItemThumb'
+import { ChevronDown } from '../components/icons'
 import { BackHeader, BigButton, LuggageTag, Sticker, ZarqaBubble } from '../components/ui'
 import { t } from '../i18n'
 import { api, ApiError } from '../lib/api'
 import { clockTime, relativeDay } from '../lib/dates'
 import s from './Match.module.css'
 
-type Side = { id: string; title: string; categoryKey: string | null; locationText: string; eventDate: string | null; eventTime: string | null; photoIds: string[]; createdAt: string }
+type Side = { id: string; title: string; description: string; categoryKey: string | null; locationText: string; eventDate: string | null; eventTime: string | null; photoIds: string[]; createdAt: string }
 type MatchView = {
   id: string
   status: 'Suggested' | 'Confirmed' | 'Rejected' | 'Expired'
@@ -30,6 +31,8 @@ export default function Match() {
   const [match, setMatch] = useState<MatchView | null>(null)
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
+  const [showWords, setShowWords] = useState(false)
+  const wordsId = useId()
 
   useEffect(() => {
     api<MatchView>(`/matches/${id}`)
@@ -108,9 +111,9 @@ export default function Match() {
       </div>
 
       {match.found.photoIds.length > 0 && (
-        <div className={s.photos} aria-label={t('match.theirPhotos')}>
-          {match.found.photoIds.map((p) => (
-            <img key={p} src={`/api/photos/${p}`} alt="" className={s.photo} />
+        <div className={s.photos} role="group" aria-label={t('match.theirPhotos')}>
+          {match.found.photoIds.map((p, i) => (
+            <img key={p} src={`/api/photos/${p}`} alt={t('match.photoN', { n: i + 1, total: match.found.photoIds.length })} className={s.photo} />
           ))}
         </div>
       )}
@@ -123,6 +126,18 @@ export default function Match() {
               {r}
             </div>
           ))}
+        </div>
+      )}
+
+      {match.found.description && (
+        <div className={s.words}>
+          <button type="button" className={s.wordsToggle} aria-expanded={showWords} aria-controls={wordsId} onClick={() => setShowWords((v) => !v)}>
+            {t('match.theirWords')}
+            <ChevronDown size={18} style={{ transform: showWords ? 'rotate(180deg)' : undefined }} />
+          </button>
+          <blockquote id={wordsId} className={s.wordsText} hidden={!showWords}>
+            {match.found.description}
+          </blockquote>
         </div>
       )}
 
