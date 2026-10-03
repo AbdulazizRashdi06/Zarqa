@@ -130,7 +130,8 @@ export default function Match() {
         {error && <p className={s.error}>{error}</p>}
         {match.status === 'Suggested' && (
           <>
-            <BigButton label={t('match.mine')} labelSize={25} onClick={confirm} disabled={busy} />
+            <BigButton label={t('match.mine')} labelSize={30} onClick={confirm} disabled={busy} />
+            <p className={s.mineNote}>{t('match.mineNote')}</p>
             <button type="button" className={s.notMine} onClick={reject} disabled={busy}>
               {t('match.notMine')}
             </button>

@@ -1,7 +1,7 @@
 .page {
   position: relative;
   flex-grow: 1;
-  padding: 16px var(--gutter) 150px;
+  padding: 16px var(--gutter) calc(22px + env(safe-area-inset-bottom));
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -31,16 +31,17 @@
   text-transform: uppercase;
 }
 
+/* Each tag gets about half the width so neither name hides under the other. */
 .tags {
   position: relative;
-  height: 232px;
+  height: 262px;
   flex-shrink: 0;
 }
 .lostTag,
 .foundTag {
   position: absolute;
-  height: 170px;
-  padding: 16px 14px 14px 38px;
+  height: 196px;
+  padding: 16px 12px 14px 34px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -48,26 +49,27 @@
 }
 .lostTag {
   left: -4px;
-  top: 14px;
-  width: 210px;
+  top: 10px;
+  width: calc(50% + 6px);
   transform: rotate(-6deg);
   background: var(--paper);
 }
 .foundTag {
   right: -4px;
-  top: 52px;
-  width: 200px;
+  top: 44px;
+  width: calc(50% + 10px);
   transform: rotate(5deg);
   background: var(--tan);
 }
 .tagName {
   font-family: var(--font-display);
-  font-size: 24px;
+  font-size: 22px;
   line-height: 1;
   text-transform: uppercase;
   overflow: hidden;
+  overflow-wrap: anywhere;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
 .tagMeta {
@@ -76,8 +78,8 @@
 }
 .stamp {
   position: absolute;
-  left: calc(50% - 75px);
-  top: 150px;
+  left: calc(50% - 46px);
+  top: 176px;
   width: 92px;
   height: 92px;
   border-radius: 46px;
@@ -138,15 +140,10 @@
   flex-shrink: 0;
 }
 
+/* After the reasons, never over them; on tall phones it still sits at the bottom. */
 .bar {
-  position: fixed;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 480px;
-  padding: 12px var(--gutter) calc(22px + env(safe-area-inset-bottom));
-  background: var(--ground);
+  margin-top: auto;
+  padding-top: 8px;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -164,4 +161,12 @@
   font-size: 14px;
   font-weight: 700;
   color: #f0a58c;
+}
+
+.mineNote {
+  margin: 2px 0 0;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--text-muted);
 }
