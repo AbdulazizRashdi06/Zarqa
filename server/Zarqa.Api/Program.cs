@@ -43,7 +43,8 @@ builder.Services.AddScoped<MatchQueue>();
 builder.Services.Configure<ModelOptions>(builder.Configuration.GetSection("Models"));
 builder.Services.AddSingleton(_ => new AliasIndex(Seeder.LoadLocations().Select(kv => (kv.Key, kv.Value))));
 builder.Services.AddHttpClient<IEmbedder, OpenAiEmbedder>(c => c.Timeout = TimeSpan.FromSeconds(60));
-builder.Services.AddHttpClient<ILuna, OpenAiLuna>(c => c.Timeout = TimeSpan.FromSeconds(120));
+// Long enough for a review that waits its turn in the Codex gateway's queue.
+builder.Services.AddHttpClient<ILuna, OpenAiLuna>(c => c.Timeout = TimeSpan.FromMinutes(5));
 builder.Services.AddHttpClient<IJev, TypeSafeJev>(c => c.Timeout = TimeSpan.FromSeconds(60));
 builder.Services.AddScoped<DebateReviewer>();
 builder.Services.AddScoped<LunaReviewer>();
@@ -108,9 +109,10 @@ builder.Services.AddRateLimiter(o =>
     static RateLimitPartition<string> PerIp(HttpContext http, int permits) =>
         RateLimitPartition.GetFixedWindowLimiter(http.Connection.RemoteIpAddress?.ToString() ?? "unknown",
             _ => new FixedWindowRateLimiterOptions { PermitLimit = permits, Window = TimeSpan.FromMinutes(15) });
-    // Per network address; tests raise these (Auth:RequestCodePerIp / Auth:VerifyPerIp).
-    var codesPerIp = builder.Configuration.GetValue("Auth:RequestCodePerIp", 10);
-    var verifiesPerIp = builder.Configuration.GetValue("Auth:VerifyPerIp", 30);
+    // Per network address. Campus Wi-Fi puts many students behind one address, so these are generous;
+    // abuse is held back per email (3 codes / 15 min) and per code (5 tries). Override with Auth:RequestCodePerIp / Auth:VerifyPerIp.
+    var codesPerIp = builder.Configuration.GetValue("Auth:RequestCodePerIp", 100);
+    var verifiesPerIp = builder.Configuration.GetValue("Auth:VerifyPerIp", 300);
     o.AddPolicy(AuthEndpoints.RequestCodeLimit, http => PerIp(http, codesPerIp));
     o.AddPolicy(AuthEndpoints.VerifyLimit, http => PerIp(http, verifiesPerIp));
 });
