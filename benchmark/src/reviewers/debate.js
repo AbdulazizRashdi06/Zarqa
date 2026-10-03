@@ -53,7 +53,13 @@ const QUESTIONS = {
   },
 };
 
-const brief = (r) => ({ title: r.title, category: r.category, description: truncate(r.description, 500), location: r.location, eventDate: r.eventDate });
+const brief = (r) => ({
+  ...(r.title ? { title: r.title } : {}),
+  ...(r.category ? { category: r.category } : {}),
+  description: truncate(r.description, 500),
+  location: r.location,
+  eventDate: r.eventDate,
+});
 
 async function advocate(side, lost, found, ctx) {
   if (ctx.offline) return { argument: `(offline ${side} argument)`, strength: "moderate", call: { kind: "luna", estimated: true, ...OFFLINE_ESTIMATE.luna } };

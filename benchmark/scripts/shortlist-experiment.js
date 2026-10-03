@@ -4,6 +4,7 @@
 //
 //   EMBEDDING_PROVIDER=local node --env-file=.env scripts/shortlist-experiment.js --shape two
 //   node --env-file=.env scripts/shortlist-experiment.js --shape one        (API embeddings)
+import { toOne } from "../src/oneText.js";
 import { parseArgs } from "node:util";
 import path from "node:path";
 import { CURRENT, PROPOSED } from "../config.js";
@@ -24,31 +25,6 @@ const { values: args } = parseArgs({
 });
 
 // Same keyword map as server/Zarqa.Api/Reports/Categories.cs (first hit wins).
-const KEYWORDS = [
-  ["Wallets & cards", ["wallet", "purse", "card", "cards", "id", "ids", "license", "licence", "passport", "bank", "visa", "mastercard", "permit"]],
-  ["Keys", ["key", "keys", "keychain", "keyring", "car key"]],
-  ["Electronics", ["tech", "electronics", "electronic", "phone", "iphone", "samsung", "galaxy", "laptop", "macbook", "notebook pc", "charger", "cable", "earbuds", "airpods", "buds", "headphones", "headset", "earphones", "powerbank", "power bank", "ipad", "tablet", "remote", "usb", "flash", "drive", "mouse", "keyboard", "speaker", "camera", "jbl", "beats"]],
-  ["Bottles", ["bottle", "bottles", "flask", "tumbler", "thermos", "cup", "mug"]],
-  ["Bags", ["bag", "bags", "backpack", "handbag", "tote", "pouch", "satchel", "suitcase", "luggage"]],
-  ["Books", ["book", "books", "textbook", "novel", "quran", "mushaf"]],
-  ["Stationery", ["stationery", "pen", "pens", "pencil", "notebook", "notes", "calculator", "casio fx", "ruler", "highlighter", "folder", "binder"]],
-  ["Clothing", ["clothes", "clothing", "jacket", "hoodie", "sweater", "shirt", "tshirt", "t-shirt", "scarf", "shayla", "hijab", "abaya", "dishdasha", "kumma", "massar", "cap", "hat", "shoe", "shoes", "sandals", "slippers", "sneakers", "coat", "jumper"]],
-  ["Accessories", ["accessories", "accessory", "glasses", "eyeglasses", "sunglasses", "spectacles", "watch", "ring", "bracelet", "necklace", "earring", "earrings", "jewelry", "jewellery", "umbrella", "beads", "masbaha", "tasbih", "misbaha"]],
-  ["Sports", ["sports", "sport", "ball", "football", "racket", "racquet", "paddle", "gym", "padel", "shuttlecock"]],
-  ["Other", ["other", "misc", "miscellaneous"]],
-];
-function normalizeCategory(text) {
-  const joined = ` ${String(text || "").toLowerCase().split(/[^\p{L}\p{N}-]+/u).filter(Boolean).join(" ")} `;
-  for (const [cat, words] of KEYWORDS) if (words.some((w) => joined.includes(` ${w} `))) return cat;
-  return "";
-}
-
-/** The app's one-box shape: one text (what a student would type), category from keywords, no title. */
-const toOne = (r) => {
-  const text = `${r.title}. ${r.description || ""}`.trim();
-  return { ...r, title: "", description: text, category: normalizeCategory(text) };
-};
-
 /** Prescore for one-box reports: with no titles, the whole 0.24 text weight goes on the one text. */
 function prescoreOne(a, b, va, vb, aliasIndex) {
   const cos = cosine(va, vb);

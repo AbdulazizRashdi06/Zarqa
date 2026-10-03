@@ -24,8 +24,8 @@ const SCHEMA = {
 
 const describe = (r) =>
   JSON.stringify({
-    title: r.title,
-    category: r.category,
+    ...(r.title ? { title: r.title } : {}),
+    ...(r.category ? { category: r.category } : {}),
     description: r.description,
     location: r.location,
     campusZone: r.campusZone,

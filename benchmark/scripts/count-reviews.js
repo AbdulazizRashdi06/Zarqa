@@ -6,18 +6,22 @@ import path from "node:path";
 import { parseArgs } from "node:util";
 import { buildDatabase, loadDataset } from "../src/dataset.js";
 import { embedReports } from "../src/embeddings.js";
+import { toOne } from "../src/oneText.js";
 import { makeFiller, placesFrom } from "../src/filler.js";
 import { PIPELINES } from "../src/systems.js";
 import { buildAliasIndex } from "../src/text.js";
 
 process.env.LUNA_PROVIDER = "none"; // chatJson throws → reviewer falls back → no model calls
-const { values: a } = parseArgs({ options: { data: { type: "string", default: "data/campus" }, sizes: { type: "string", default: "10,100,1000,10000" } } });
+const { values: a } = parseArgs({ options: { data: { type: "string", default: "data/campus" }, sizes: { type: "string", default: "10,100,1000,10000" }, shape: { type: "string", default: "two" } } });
 const sizes = a.sizes.split(",").map(Number);
 const dataDir = path.resolve(a.data);
 const ds = await loadDataset(dataDir);
 const ctx = { offline: false, useCache: true, aliasIndex: buildAliasIndex(ds.locations), dataDir };
 const latest = ds.reports.reduce((m, r) => Math.max(m, Date.parse(r.createdAt)), 0);
-const filler = makeFiller({ count: Math.max(...sizes), places: placesFrom(ds), endIso: new Date(latest).toISOString(), days: 365 });
+const rawFiller = makeFiller({ count: Math.max(...sizes), places: placesFrom(ds), endIso: new Date(latest).toISOString(), days: 365 });
+// --shape one: the app's one-box reports (same as run.js --shape one).
+const filler = a.shape === "one" ? rawFiller.map(toOne) : rawFiller;
+if (a.shape === "one") ds.reports = ds.reports.map(toOne);
 
 const all = new Set();
 for (const size of sizes) {

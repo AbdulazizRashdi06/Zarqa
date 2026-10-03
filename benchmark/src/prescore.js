@@ -14,9 +14,14 @@ export function preliminaryScore(a, b, vecA, vecB, aliasIndex) {
   const ca = (a.category || "").toLowerCase().trim(), cb = (b.category || "").toLowerCase().trim();
   if (ca && cb) category = ca === cb ? 0.05 : -0.02;
 
-  const titleOverlap = overlap(tokens(a.title), tokens(b.title));
-  const detailOverlap = overlap(tokens(`${a.title} ${a.description}`), tokens(`${b.title} ${b.description}`));
-  const text = 0.14 * titleOverlap + 0.10 * detailOverlap;
+  // One-text reports (the app) have no titles: the whole 0.24 text weight goes on the one text.
+  let text;
+  if (!a.title && !b.title) text = 0.24 * overlap(tokens(a.description), tokens(b.description));
+  else {
+    const titleOverlap = overlap(tokens(a.title), tokens(b.title));
+    const detailOverlap = overlap(tokens(`${a.title} ${a.description}`), tokens(`${b.title} ${b.description}`));
+    text = 0.14 * titleOverlap + 0.10 * detailOverlap;
+  }
 
   const location = 0.08 * overlap(expandedLocationTokens(a, aliasIndex), expandedLocationTokens(b, aliasIndex));
 

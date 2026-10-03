@@ -12,6 +12,7 @@ import { codexInstalled, embeddingModelName, embeddingProvider, lunaProvider } f
 import { buildDatabase, loadDataset } from "../src/dataset.js";
 import { embedReports } from "../src/embeddings.js";
 import { makeFiller, placesFrom } from "../src/filler.js";
+import { toOne } from "../src/oneText.js";
 import { callCost } from "../src/ledger.js";
 import { mcnemar, score } from "../src/metrics.js";
 import { extractPhotoAttributes } from "../src/photoAttributes.js";
@@ -25,6 +26,7 @@ const { values: args } = parseArgs({
     sizes: { type: "string", default: "10,100,1000,10000" },
     filler: { type: "string" }, // optional JSON file; otherwise generated in memory
     "filler-days": { type: "string", default: "365" },
+    shape: { type: "string", default: "two" }, // "one" = the app's one-box reports (src/oneText.js)
     "max-queries": { type: "string" }, // cap real reports processed per size (cost control)
     parallel: { type: "string", default: "4" }, // reports processed at once
     "review-concurrency": { type: "string" }, // reviews per report run at once
@@ -50,9 +52,11 @@ const ctx = {
 };
 
 const latestReal = dataset.reports.reduce((m, r) => Math.max(m, Date.parse(r.createdAt)), 0);
-const filler = args.filler
+const rawFiller = args.filler
   ? JSON.parse(await readFile(args.filler, "utf8"))
   : makeFiller({ count: Math.max(...sizes), places: placesFrom(dataset), endIso: new Date(latestReal).toISOString(), days: Number(args["filler-days"]) });
+const filler = args.shape === "one" ? rawFiller.map(toOne) : rawFiller;
+if (args.shape === "one") dataset.reports = dataset.reports.map(toOne);
 
 if (!ctx.offline) {
   const env = process.env;
