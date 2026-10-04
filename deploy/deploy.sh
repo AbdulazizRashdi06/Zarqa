@@ -11,14 +11,25 @@ SSH=(ssh -i ~/.ssh/zarqa_vps -o BatchMode=yes "$HOST")
 
 cd "$(dirname "$0")/.."
 
+# Caddy mounts the single file deploy/Caddyfile; replacing the file leaves the container on the old copy,
+# so note its checksum and recreate Caddy when it changes.
+before=$("${SSH[@]}" 'sha256sum /opt/zarqa/deploy/Caddyfile 2>/dev/null' || true)
+
 echo "Uploading source..."
+# Local photo uploads (Data/photos) never leave the dev machine.
 tar -czf - \
   --exclude='node_modules' --exclude='dist' --exclude='dev-dist' \
-  --exclude='bin' --exclude='obj' --exclude='.env' \
+  --exclude='bin' --exclude='obj' --exclude='.env' --exclude='server/Zarqa.Api/Data/photos' \
   server web deploy | "${SSH[@]}" 'cd /opt/zarqa && tar -xzf -'
 
 echo "Building and restarting..."
 "${SSH[@]}" 'cd /opt/zarqa && docker compose -f deploy/docker-compose.yml --env-file deploy/.env up -d --build --remove-orphans && docker image prune -f >/dev/null'
+
+after=$("${SSH[@]}" 'sha256sum /opt/zarqa/deploy/Caddyfile')
+if [ "$before" != "$after" ]; then
+  echo "Caddyfile changed: recreating Caddy..."
+  "${SSH[@]}" 'cd /opt/zarqa && docker compose -f deploy/docker-compose.yml --env-file deploy/.env up -d --force-recreate caddy'
+fi
 
 echo "Health:"
 sleep 5
