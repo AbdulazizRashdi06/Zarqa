@@ -23,7 +23,7 @@ www.tryzarqa.com {
 }
 
 # Uni Schedule (separate app, container uni-schedule on the zarqa_default network; see the Schedule repo deploy/).
-schedule.173-249-40-122.sslip.io {
+schedule.tryzarqa.com, schedule.173-249-40-122.sslip.io {
 	encode gzip
 	reverse_proxy uni-schedule:8080
 }
