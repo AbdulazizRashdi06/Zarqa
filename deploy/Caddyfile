@@ -27,3 +27,21 @@ schedule.tryzarqa.com, schedule.173-249-40-122.sslip.io {
 	encode gzip
 	reverse_proxy uni-schedule:8080
 }
+
+# >>> zoor
+# Managed by the Zoor repo (deploy/Caddyfile.snippet). deploy/deploy.sh writes this block into
+# /opt/zarqa/deploy/Caddyfile; keep the copy in Zarqa's repo (LostraAi deploy/Caddyfile) the same.
+zoor.173-249-40-122.sslip.io {
+	encode zstd gzip
+	reverse_proxy zoor:3000
+
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		X-Frame-Options "DENY"
+		Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' wss://{host}; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'"
+		-Server
+	}
+}
+# <<< zoor
