@@ -247,7 +247,7 @@ Bare floor names such as "2nd floor" are left out because several places share t
 - [ ] **Long-gap date rule.** 7 of the 8 false matches at cut-off 0.60 had the item lost 1–11 months before it was found.
 - [ ] **Re-check the 0.65 cut-off** on freshly collected items that weren't used to choose it.
 - [x] **Re-run luna-debate with the app's real setup:** done at 100 reports on 2026-10-03: 97% recall, 100% precision, 0 traps.
-- [ ] **Same re-run at 1,000 reports**, once the Codex gateway queue is deployed.
+- [ ] **Same re-run at 1,000 reports.** The gateway queue is live, but on 2026-10-26 the owner asked not to run it. Leave it until they ask.
 - [ ] **Blind-label false matches** as plausible or wrong, to report a fairer precision.
 - [ ] **Location specialist agent.**
 - [ ] **Replace the benchmark's reconstructed `luna` baseline** with the real `processReport` code (prompt and overlap weights).

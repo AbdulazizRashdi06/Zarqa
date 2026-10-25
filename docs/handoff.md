@@ -39,8 +39,10 @@ You are finishing **Zarqa**, a lost-and-found PWA for GUtech university (Oman). 
 Last updated **2026-10-26**. The app is built and live; the pilot work left is checks and owner tasks (see Remaining work).
 
 **Git state on 2026-10-26:**
-- `main` is **3 commits ahead of `origin/main`** (unpushed): the Caddy routes for Uni Schedule (13 and 14 Oct) and Zoor (20 Oct). They are probably already deployed on the server. Push them before anything else, so the next deploy doesn't drop those routes.
-- **Branch `codex-model-choice`** (pushed, **not merged**): a 23 Oct change to `deploy/codex/gateway.mjs` that lets callers pick an allowed model and reports Codex usage limits as HTTP 429, with tests. Review it against `main`, run `node --test deploy/codex/gateway.test.mjs`, and merge it if it's sound. It touches only the gateway and one CLAUDE.md line; matching prompts and thresholds don't change.
+- `main` is pushed, and `codex-model-choice` is reviewed and merged (9 of 9 gateway tests pass). A gateway 429 makes the app retry the match job, the same as a 502. Deployed: health OK, and Uni Schedule and Zoor still respond.
+- The live `zarqa-codex-1` container has a **pids limit of 1024**, while compose says 256. Someone probably changed it by hand. It was left as it is because DriveAlt shares the gateway. Ask the owner before recreating that container.
+- `node deploy/live-check.mjs --live --models` passed on 26 Oct: a real Debate match at **0.90875**, handover, stats and two-confirmation deletion at 390 × 844.
+- **The owner said not to run the 1,000-report benchmark (26 Oct).** One run was started and stopped after about a minute, and its VPS copy was deleted. Don't start it again unless the owner asks.
 
 **Since 2026-10-02:**
 - **One text per report (3 Oct).** The Home form has a single "describe it" box. The server derives a short display name and the category. Matching uses the one text, with the prescore's 0.24 text weight all on it (`server/Zarqa.Api/Reports/ReportText.cs`, `Matching/TextRules.cs`).
@@ -75,9 +77,9 @@ Last updated **2026-10-26**. The app is built and live; the pilot work left is c
 Launch web and local VPS backups are complete. The existing iPhone mascot is retained at the owner's explicit request.
 
 In order:
-1. **Push `main`** (3 unpushed Caddy commits), then **review and merge `codex-model-choice`** (see Status). Deploy, then check that https://tryzarqa.com/api/health is OK and the Uni Schedule and Zoor addresses still respond.
-2. **Confirm the gateway queue is live** (`CODEX_MAX_RUNNING`, 1 GB, 256 processes in `deploy/docker-compose.yml`), then run `node deploy/live-check.mjs --live --models` once for a real Debate match.
-3. **Benchmark at 1,000 reports with the app's setup:** `cd benchmark` then `npm run bench -- --data data/campus --shape one --systems luna-debate --sizes 1000 --yes`, through the same routes as production. Record the result in `decisions.md` next to the 100-report re-run. Don't retune the 0.65 cut-off on this set.
+1. ~~Push, merge `codex-model-choice`, deploy~~ (done 26 Oct).
+2. ~~Gateway queue and live model check~~ (done 26 Oct: 4 running, 1 GB; Debate match 0.90875).
+3. ~~Benchmark at 1,000 reports~~: **on hold at the owner's request (26 Oct).** If the owner asks for it, run it on the VPS in a throwaway container on `zarqa_default` (Luna through `http://codex:8090/v1` with no key, embeddings through the OpenAI API, Jev direct). Don't retune 0.65 on it.
 4. **Long-gap date rule (open item in `decisions.md`):** 7 of 8 false matches at cut-off 0.60 had the item lost 1–11 months before it was found. If you add a rule, fix it before measuring (for example, pass Jev a "lost more than 30 days before found" signal) and report it honestly; recall must not drop.
 5. **Collect the pilot's confirm/reject outcomes** as the honest check of the 0.65 cut-off. Don't change thresholds without that data.
 
