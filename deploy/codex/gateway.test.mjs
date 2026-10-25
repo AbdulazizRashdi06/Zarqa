@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { createGateway, parseChat } from './gateway.mjs'
+import { createGateway, parseChat, isUsageLimit } from './gateway.mjs'
 
 const body = () => ({ model: 'gpt-6-luna', messages: [{ role: 'system', content: 'Review this item' }, { role: 'user', content: [{ type: 'text', text: 'Blue umbrella' }] }], response_format: { type: 'json_schema', json_schema: { schema: { type: 'object', properties: { match: { type: 'boolean' } } } } } })
 test('external images, different models and tool messages are rejected', () => {
@@ -39,6 +39,24 @@ test('private diagnostics never appear in inference errors', async () => {
     const response = await post(base); assert.equal(response.status, 502)
     assert.doesNotMatch(await response.text(), /private-token|private-report/)
   }, async () => { throw new Error('private-token private-report') })
+})
+
+test('allowed models are passed through to Codex', async () => {
+  const b = body(); b.model = 'gpt-6.1-sol'
+  assert.equal(parseChat(b).model, 'gpt-6.1-sol')
+  await withServer(async base => { assert.equal((await post(base, b)).status, 200) },
+    async input => { assert.equal(input.model, 'gpt-6.1-sol'); return { parsed: { match: true }, usage: {} } })
+})
+test('usage limits answer 429 without leaking Codex output', async () => {
+  await withServer(async base => {
+    const response = await post(base); assert.equal(response.status, 429)
+    assert.doesNotMatch(await response.text(), /private-report/)
+  }, async () => { throw Object.assign(new Error('private-report'), { usageLimit: true }) })
+})
+test('only limit-style Codex errors count as usage limits', () => {
+  assert.equal(isUsageLimit({ type: 'error', message: "You've hit your usage limit. Try again in 3 hours." }), true)
+  assert.equal(isUsageLimit({ type: 'turn.failed', error: { message: 'Rate limit reached for requests' } }), true)
+  assert.equal(isUsageLimit({ type: 'turn.failed', error: { message: 'stream disconnected' } }), false)
 })
 
 test('extra reviews wait their turn instead of failing', async () => {
