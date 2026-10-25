@@ -1,10 +1,8 @@
-# Zarqa: handoff prompt for finishing the app
+# Zarqa: handoff for the next session
 
-Run from the repo root (PowerShell or Git Bash):
+Start a new Claude Code session with **Claude Opus**, opened in the repo root `C:\Projects\LostraAi` so `CLAUDE.md` and the memory load. Then send:
 
-```
-codex -m gpt-6-astra -c model_reasoning_effort=medium "Read docs/codex-handoff.md and follow it."
-```
+> Read docs/handoff.md and follow it.
 
 Everything below this line is the prompt.
 
@@ -25,6 +23,9 @@ You are finishing **Zarqa**, a lost-and-found PWA for GUtech university (Oman). 
 - **Recall is the deciding metric** for matching. Any threshold tuned on benchmark data must be chosen honestly (2-fold cross-fitting). Say so if a number was tuned on the data it's reported on.
 - Keep the voice playful and student-made (see the `en.json` strings and the design). Every UI string goes in `web/src/i18n/en.json`.
 - Commit in small logical steps with clear messages ending with `Co-Authored-By` lines as the existing history does, push to `main`, and deploy with `bash deploy/deploy.sh` (Git Bash) after each finished step. CI (`.github/workflows/ci.yml`) must stay green.
+- **The VPS is shared.** `deploy/Caddyfile` also routes other apps on the same server: Uni Schedule (`schedule.tryzarqa.com`, `schedule.173-249-40-122.sslip.io`) and Zoor (`zoor.173-249-40-122.sslip.io`). Keep those blocks when editing the Caddyfile, and don't stop or touch their containers. Deploys recreate Caddy when the Caddyfile changes.
+- Leave the untracked `.github/hooks/` and `.impeccable/` folders alone: they belong to the owner's design tooling. Don't commit or delete them.
+- SSH (port 22) is blocked on the GUtech campus Wi-Fi. If deploy or SSH hangs, the owner has to switch to a phone hotspot; the server itself is fine.
 
 ## Stack and layout
 - `server/Zarqa.Api`: ASP.NET Core (.NET 10) minimal APIs, EF Core + Npgsql + pgvector, snake_case naming. Folders: `Auth/`, `Users/`, `Reports/`, `Photos/`, `Matching/`, `Chat/`, `Email/`, `Data/` (entities, `ZarqaDb`, migrations, seeder). Errors are returned as `{ "error": "message" }` via `Errors.*` in `Auth/AuthEndpoints.cs`.
@@ -34,6 +35,27 @@ You are finishing **Zarqa**, a lost-and-found PWA for GUtech university (Oman). 
 - Local DB: Docker Desktop on the dev PC was broken (stale sockets, needs a Windows restart). Fallback: a dev Postgres on the VPS bound to localhost, reached with `ssh -i ~/.ssh/zarqa_vps -N -L 5433:127.0.0.1:5433 deploy@173.249.40.122`. Then run tests with `ZARQA_TEST_DB="Host=localhost;Port=5433;Database=zarqa;Username=zarqa;Password=zarqa-dev" dotnet test server/Zarqa.slnx`.
 
 ## Status (update this section as you go)
+
+Last updated **2026-10-26**. The app is built and live; the pilot work left is checks and owner tasks (see Remaining work).
+
+**Git state on 2026-10-26:**
+- `main` is **3 commits ahead of `origin/main`** (unpushed): the Caddy routes for Uni Schedule (13 and 14 Oct) and Zoor (20 Oct). They are probably already deployed on the server. Push them before anything else, so the next deploy doesn't drop those routes.
+- **Branch `codex-model-choice`** (pushed, **not merged**): a 23 Oct change to `deploy/codex/gateway.mjs` that lets callers pick an allowed model and reports Codex usage limits as HTTP 429, with tests. Review it against `main`, run `node --test deploy/codex/gateway.test.mjs`, and merge it if it's sound. It touches only the gateway and one CLAUDE.md line; matching prompts and thresholds don't change.
+
+**Since 2026-10-02:**
+- **One text per report (3 Oct).** The Home form has a single "describe it" box. The server derives a short display name and the category. Matching uses the one text, with the prescore's 0.24 text weight all on it (`server/Zarqa.Api/Reports/ReportText.cs`, `Matching/TextRules.cs`).
+- **Benchmark re-run with the app's real setup (3 Oct):** `benchmark/scripts/run.js --shape one`, at 100 reports: 97% recall, 100% precision, 0 of 18 traps. The 1,000-report re-run is still open.
+- **Card finds (3 Oct):** Home asks for the first name printed on a found card, plus the issuer and colour; surnames and numbers stay out. Card photos still never reach a model.
+- **Full QA (3 Oct), all passing:** 106 server, 9 browser and 6 gateway tests; 69 security probes; axe accessibility checks. Fixed along the way:
+  - the Codex gateway now runs at most 4 Codex processes (`CODEX_MAX_RUNNING`) and queues the rest; the app waits up to 5 minutes for Luna;
+  - sign-in limits raised for shared campus Wi-Fi;
+  - CSP and anti-framing headers added;
+  - faster first load.
+- **Home redesign after the design critique (3 Oct):** form first; drafts kept in sessionStorage and IndexedDB; an accessible place picker. Returned is now a two-person handshake in chat.
+- **Deploy fix (4 Oct):** deploys recreate Caddy when the Caddyfile changes and never upload local photos.
+- **Other apps proxied on the shared VPS (13–20 Oct):** see Hard rules.
+
+**Earlier status (2026-10-02):**
 - Owner testing sign-in: `AUTH_ALLOWED_EMAILS` permits the owner's requested personal address as an exact exception to the GUtech-domain rule. Normal email-code verification remains required; this setting does not grant admin rights or enable test mode.
 - Matching model access configured and verified on 2026-10-02: `text-embedding-3-small` through the OpenAI API, `gpt-6-luna` through the private ChatGPT-authenticated Codex gateway, and direct TypeSafe `jev-1.13.0`. The owner completed VPS device login and split routing is enabled. A real Debate match scored 0.83875; the complete phone flow, return stats and account deletion passed. All 88 server tests and 5 gateway tests pass; routing implementation CI is green.
 - Precache optimized from 2854.67 KiB to about 1261 KiB using WebP mascots and Latin font subsets. Original PNG artwork, including the iPhone, is unchanged.
@@ -52,12 +74,20 @@ You are finishing **Zarqa**, a lost-and-found PWA for GUtech university (Oman). 
 
 Launch web and local VPS backups are complete. The existing iPhone mascot is retained at the owner's explicit request.
 
+In order:
+1. **Push `main`** (3 unpushed Caddy commits), then **review and merge `codex-model-choice`** (see Status). Deploy, then check that https://tryzarqa.com/api/health is OK and the Uni Schedule and Zoor addresses still respond.
+2. **Confirm the gateway queue is live** (`CODEX_MAX_RUNNING`, 1 GB, 256 processes in `deploy/docker-compose.yml`), then run `node deploy/live-check.mjs --live --models` once for a real Debate match.
+3. **Benchmark at 1,000 reports with the app's setup:** `cd benchmark` then `npm run bench -- --data data/campus --shape one --systems luna-debate --sizes 1000 --yes`, through the same routes as production. Record the result in `decisions.md` next to the 100-report re-run. Don't retune the 0.65 cut-off on this set.
+4. **Long-gap date rule (open item in `decisions.md`):** 7 of 8 false matches at cut-off 0.60 had the item lost 1–11 months before it was found. If you add a rule, fix it before measuring (for example, pass Jev a "lost more than 30 days before found" signal) and report it honestly; recall must not drop.
+5. **Collect the pilot's confirm/reject outcomes** as the honest check of the 0.65 cut-off. Don't change thresholds without that data.
+
+Still needs the owner:
 - Model integration is ready for testing. Run `node deploy/live-check.mjs --live --models` for another disposable real-match check. Benchmark recall/precision on fresh data remains separate work; the integration smoke did not retune thresholds. If Codex login expires or plan usage is exhausted, complete owner login or wait for allowance before retrying.
 - Owner: supply an off-site storage account and follow the encrypted backup instructions in CLAUDE.md. Local nightly backups and scratch restoration are verified.
 - Before wide launch: review the visible draft Terms and Privacy against current Oman PDPL requirements and overseas processing arrangements.
 
 ## Done means
-Verification on 2026-10-02: 88 server tests, 5 gateway tests and 4 phone UI tests passed. The live 390 x 844 flow below passed with a real model-generated Debate match (score 0.83875). A previous attempt produced a match but timed out at handover; the smoke now waits for the handover HTTP response before checking the finder. Disposable users, reports and chats were deleted afterward. Photo upload/access passed separately in `deploy/smoke.sh`; this model smoke used text-only reports.
+Latest verification (2026-10-03 QA): 106 server, 9 browser and 6 gateway tests passed, plus the security, accessibility and screen-size checks recorded in `decisions.md`. Earlier verification on 2026-10-02: 88 server tests, 5 gateway tests and 4 phone UI tests passed. The live 390 x 844 flow below passed with a real model-generated Debate match (score 0.83875). A previous attempt produced a match but timed out at handover; the smoke now waits for the handover HTTP response before checking the finder. Disposable users, reports and chats were deleted afterward. Photo upload/access passed separately in `deploy/smoke.sh`; this model smoke used text-only reports.
 
 All steps built, tests green, CI green, deployed to https://tryzarqa.com and checked end to end on a phone-sized viewport:
 1. sign in
