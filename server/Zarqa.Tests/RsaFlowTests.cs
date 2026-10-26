@@ -20,12 +20,15 @@ public class RsaFlowTests(TestApp app) : IClassFixture<TestApp>
         return form;
     }
 
-    /// <summary>An RSA staff member, added by the admin (the owner sets the desk up).</summary>
+    /// <summary>An RSA staff member, listed directly (sign-in codes are rate-limited per email, so the admin signs in once, below).</summary>
     private async Task<HttpClient> Staff(string tag)
     {
-        var admin = await app.SignedIn("admin@gutech.edu.om");
         var email = $"rsa.{tag}@gutech.edu.om";
-        Assert.Equal(HttpStatusCode.NoContent, (await admin.PostAsJsonAsync("/api/rsa/team", new { email })).StatusCode);
+        await using (var db = app.Db())
+        {
+            db.RsaMembers.Add(new RsaMember { Email = email, AddedAt = DateTimeOffset.UtcNow });
+            await db.SaveChangesAsync();
+        }
         return await app.SignedIn(email, "Huda");
     }
 
@@ -198,7 +201,11 @@ public class RsaFlowTests(TestApp app) : IClassFixture<TestApp>
     [Fact]
     public async Task Staff_add_colleagues_and_removal_takes_effect_at_once()
     {
-        var first = await Staff("team1");
+        // The owner (an admin) adds the first person; staff add colleagues.
+        var admin = await app.SignedIn("admin@gutech.edu.om");
+        Assert.True((await Json(await admin.GetAsync("/api/me"))).GetProperty("isRsa").GetBoolean());
+        Assert.Equal(HttpStatusCode.NoContent, (await admin.PostAsJsonAsync("/api/rsa/team", new { email = "rsa.team1@gutech.edu.om" })).StatusCode);
+        var first = await app.SignedIn("rsa.team1@gutech.edu.om", "Huda");
         Assert.Equal(HttpStatusCode.NoContent, (await first.PostAsJsonAsync("/api/rsa/team", new { email = "RSA.Team2@gutech.edu.om" })).StatusCode);
         Assert.Equal(HttpStatusCode.BadRequest, (await first.PostAsJsonAsync("/api/rsa/team", new { email = "someone@gmail.com" })).StatusCode);
         var second = await app.SignedIn("rsa.team2@gutech.edu.om");
