@@ -69,6 +69,18 @@ public sealed class Notifier(NotificationQueue queue) : INotifier
         queue.Enqueue((sp, c) => sp.GetRequiredService<NotificationSender>().HandoverAsync(messageId, c));
         return Task.CompletedTask;
     }
+
+    public Task RsaReceivedAsync(Guid reportId, CancellationToken ct)
+    {
+        queue.Enqueue((sp, c) => sp.GetRequiredService<NotificationSender>().RsaReceivedAsync(reportId, c));
+        return Task.CompletedTask;
+    }
+
+    public Task CollectedAsync(Guid matchId, CancellationToken ct)
+    {
+        queue.Enqueue((sp, c) => sp.GetRequiredService<NotificationSender>().CollectedAsync(matchId, c));
+        return Task.CompletedTask;
+    }
 }
 
 /// <summary>Builds and sends each notification. Public methods are also called directly by tests.</summary>
@@ -76,12 +88,13 @@ public sealed class NotificationSender(ZarqaDb db, IPushSender push, IEmailSende
 {
     public async Task MatchCreatedAsync(Guid matchId, CancellationToken ct)
     {
-        var m = await db.Matches.Include(x => x.Lost).ThenInclude(r => r!.User).FirstOrDefaultAsync(x => x.Id == matchId, ct);
+        var m = await db.Matches.Include(x => x.Lost).ThenInclude(r => r!.User).Include(x => x.Found).FirstOrDefaultAsync(x => x.Id == matchId, ct);
         var owner = m?.Lost?.User;
         if (m is null || owner is null || !owner.MatchAlerts) return;
         await PushAsync(owner.Id, new PushPayload("Zarqa spotted something 👀", $"Is this your {m.Lost!.Title}? Tap to see.", $"/matches/{m.Id}", $"match-{m.Id}"), ct);
-        var (html, text) = NoticeEmail.Build("ZARQA SPOTTED SOMETHING", $"Is this your {m.Lost.Title}?",
-            "Someone found an item that looks a lot like yours. Open Zarqa and check the match: if it's yours, you can message the finder right away.");
+        var (html, text) = NoticeEmail.Build("ZARQA SPOTTED SOMETHING", $"Is this your {m.Lost.Title}?", m.Found!.DropAtRsa
+            ? "Someone found an item that looks a lot like yours and handed it to the RSA desk. Open Zarqa and check the match: if it's yours, you'll get a pickup code."
+            : "Someone found an item that looks a lot like yours. Open Zarqa and check the match: if it's yours, you can message the finder right away.");
         await SafeEmailAsync(owner.Email, $"Zarqa spotted a possible match for your {m.Lost.Title}", html, text, ct);
     }
 
@@ -115,6 +128,30 @@ public sealed class NotificationSender(ZarqaDb db, IPushSender push, IEmailSende
             ? ($"Handover confirmed: {when}", m.SenderId!.Value)
             : ($"{MeEndpoints.DisplayName(sender!)} suggested a handover", to);
         await PushAsync(recipient, new PushPayload(title, $"{when} · {m.HandoverPlace}", $"/chats/{c!.Id}", $"chat-{c.Id}"), ct);
+    }
+
+    public async Task RsaReceivedAsync(Guid reportId, CancellationToken ct)
+    {
+        var r = await db.Reports.Include(x => x.User).FirstOrDefaultAsync(x => x.Id == reportId, ct);
+        if (r?.User is null) return;
+        await PushAsync(r.UserId, new PushPayload("The RSA has it ✅", $"The {r.Title} is safe at the RSA desk. You're a legend.", $"/reports/{r.Id}", $"report-{r.Id}"), ct);
+        // Someone already said "It's mine": now they can go and get it.
+        var m = await db.Matches.Include(x => x.Lost).ThenInclude(x => x!.User)
+            .FirstOrDefaultAsync(x => x.FoundId == reportId && x.Status == MatchStatus.Confirmed && x.PickupCode != null && x.CollectedAt == null, ct);
+        var owner = m?.Lost?.User;
+        if (m is null || owner is null) return;
+        var code = Rsa.RsaCodes.Format(m.PickupCode);
+        await PushAsync(owner.Id, new PushPayload("Ready to collect 🎉", $"Your {m.Lost!.Title} is at the RSA desk. Pickup code {code}.", $"/matches/{m.Id}", $"match-{m.Id}"), ct);
+        var (html, text) = NoticeEmail.Build("READY TO COLLECT", $"Your {m.Lost.Title} is at the RSA desk",
+            $"Show the pickup code {code} at the RSA desk and bring your student ID. They'll check it against your description and hand it over.");
+        await SafeEmailAsync(owner.Email, $"Your {m.Lost.Title} is ready to collect", html, text, ct);
+    }
+
+    public async Task CollectedAsync(Guid matchId, CancellationToken ct)
+    {
+        var m = await db.Matches.Include(x => x.Found).FirstOrDefaultAsync(x => x.Id == matchId, ct);
+        if (m?.Found is null) return;
+        await PushAsync(m.Found.UserId, new PushPayload("Back where it belongs 💛", $"The {m.Found.Title} you found is back with its owner. Thank you!", $"/reports/{m.Found.Id}", $"report-{m.Found.Id}"), ct);
     }
 
     private async Task<(Message?, Conversation?, User?, Guid)> LoadAsync(long messageId, CancellationToken ct)

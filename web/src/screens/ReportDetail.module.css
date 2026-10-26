@@ -84,3 +84,4 @@
   font-weight: 700;
   color: #f0a58c;
 }
+.code { font: 52px/1 var(--font-display); letter-spacing: 4px; margin: 10px 0 12px; color: var(--ink); }

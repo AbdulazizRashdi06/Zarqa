@@ -24,6 +24,7 @@ public class ZarqaDb(DbContextOptions<ZarqaDb> options) : DbContext(options), ID
     public DbSet<ConversationRead> ConversationReads => Set<ConversationRead>();
     public DbSet<PushSubscription> PushSubscriptions => Set<PushSubscription>();
     public DbSet<AppSetting> AppSettings => Set<AppSetting>();
+    public DbSet<RsaMember> RsaMembers => Set<RsaMember>();
 
     protected override void ConfigureConventions(ModelConfigurationBuilder b)
     {
@@ -63,11 +64,15 @@ public class ZarqaDb(DbContextOptions<ZarqaDb> options) : DbContext(options), ID
             e.HasIndex(x => new { x.Kind, x.Status });
             e.HasMany(x => x.Photos).WithOne().HasForeignKey(p => p.ReportId).OnDelete(DeleteBehavior.Cascade);
             e.HasOne(x => x.User).WithMany().HasForeignKey(x => x.UserId);
+            e.Property(x => x.DropCode).HasMaxLength(6);
+            e.HasIndex(x => x.DropCode).IsUnique();
         });
 
         b.Entity<Match>(e =>
         {
             e.HasIndex(x => new { x.LostId, x.FoundId }).IsUnique();
+            e.Property(x => x.PickupCode).HasMaxLength(6);
+            e.HasIndex(x => x.PickupCode).IsUnique();
             e.HasOne(x => x.Lost).WithMany().HasForeignKey(x => x.LostId).OnDelete(DeleteBehavior.Cascade);
             e.HasOne(x => x.Found).WithMany().HasForeignKey(x => x.FoundId).OnDelete(DeleteBehavior.Cascade);
         });
@@ -103,5 +108,11 @@ public class ZarqaDb(DbContextOptions<ZarqaDb> options) : DbContext(options), ID
         });
 
         b.Entity<AppSetting>(e => e.HasKey(x => x.Key));
+
+        b.Entity<RsaMember>(e =>
+        {
+            e.HasKey(x => x.Email);
+            e.Property(x => x.Email).HasMaxLength(254);
+        });
     }
 }

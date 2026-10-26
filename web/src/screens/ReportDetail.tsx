@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router'
+import { useLocation, useNavigate, useParams } from 'react-router'
 import { BackHeader, BigButton, MonoLabel, StatusPill, Ticket, ZarqaBubble, type PillStatus } from '../components/ui'
 import { t } from '../i18n'
 import { api, ApiError } from '../lib/api'
@@ -14,6 +14,7 @@ export default function ReportDetail() {
   const [report, setReport] = useState<Report | null>(null)
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
+  const justPosted = (useLocation().state as { posted?: string } | null)?.posted === 'rsa'
 
   useEffect(() => {
     api<Report>(`/reports/${id}`)
@@ -35,6 +36,19 @@ export default function ReportDetail() {
     }
   }
 
+  async function dropAtRsa() {
+    if (!report || !window.confirm(t('detail.rsa.insteadConfirm'))) return
+    setBusy(true)
+    setError('')
+    try {
+      setReport(await api<Report>(`/reports/${report.id}/rsa`, { method: 'POST' }))
+    } catch (e) {
+      setError(e instanceof ApiError ? e.message : t('common.error'))
+    } finally {
+      setBusy(false)
+    }
+  }
+
   if (!report) {
     return (
       <main className={s.page}>
@@ -45,6 +59,7 @@ export default function ReportDetail() {
   }
 
   const accent = report.kind === 'lost' ? 'var(--tan)' : 'var(--sage)'
+  const atRsa = report.pill === 'At the RSA' || report.pill === 'Claimed at RSA'
   const when = report.eventDate
     ? `${relativeDay(report.eventDate)}${report.eventTime ? ` · ~${clockTime(report.eventTime)}` : ''}`
     : t('detail.whenUnknown')
@@ -83,7 +98,25 @@ export default function ReportDetail() {
         </div>
       </Ticket>
 
-      {report.pill === 'Searching' && (
+      {justPosted && (
+        <ZarqaBubble mascot="wink" alt="Zarqa winking" width={64}>
+          {t('reports.posted.rsa')}
+        </ZarqaBubble>
+      )}
+
+      {report.dropAtRsa && report.dropCode && report.status !== 'Returned' && report.status !== 'Closed' && report.status !== 'Expired' && (
+        <Ticket>
+          <div className={s.body}>
+            <MonoLabel color="var(--ink-muted)">{t('detail.rsa.label')}</MonoLabel>
+            <p className={s.code} aria-label={report.dropCode.split('').join(' ')}>{report.dropCode}</p>
+            <p className={s.note}>
+              {report.pill === 'Claimed at RSA' ? t('detail.rsa.claimed') : report.rsaReceived ? t('detail.rsa.held') : t('detail.rsa.bring')}
+            </p>
+          </div>
+        </Ticket>
+      )}
+
+      {report.pill === 'Searching' && !report.dropAtRsa && (
         <ZarqaBubble mascot="reading" alt="Zarqa" width={60} quiet>
           {report.kind === 'lost' ? t('detail.searching.lost') : t('detail.searching.found')}
         </ZarqaBubble>
@@ -92,7 +125,13 @@ export default function ReportDetail() {
       {error && <p className={s.error}>{error}</p>}
 
       <div className={s.actions}>
-        {(report.pill === 'Searching' || report.pill === 'Possible match') && (
+        {report.pill === 'Ready to collect' && report.pickupMatchId && (
+          <BigButton to={`/matches/${report.pickupMatchId}`} label={t('detail.pickup')} labelSize={24} />
+        )}
+        {report.kind === 'found' && report.pill === 'Searching' && !report.dropAtRsa && !report.conversationId && (
+          <BigButton label={t('detail.rsa.instead')} labelSize={22} disabled={busy} onClick={dropAtRsa} />
+        )}
+        {(report.pill === 'Searching' || report.pill === 'Possible match' || report.pill === 'Bring to RSA') && (
           <BigButton
             variant="dark"
             label={report.kind === 'lost' ? t('detail.closeLost') : t('detail.closeFound')}
@@ -102,7 +141,7 @@ export default function ReportDetail() {
           />
         )}
         {report.conversationId && <BigButton to={`/chats/${report.conversationId}`} label={t('detail.openChat')} labelSize={24} />}
-        {!report.conversationId && (
+        {!report.conversationId && !atRsa && report.pill !== 'Ready to collect' && (
           <button type="button" className={s.delete} disabled={busy} onClick={() => act(`/reports/${report.id}`, 'DELETE', t('detail.deleteConfirm'))}>
             {t('detail.delete')}
           </button>

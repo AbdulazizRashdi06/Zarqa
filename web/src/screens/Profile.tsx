@@ -133,6 +133,12 @@ export default function Profile() {
           <span className={s.rowTitle}>{t('profile.help')}</span>
           <ChevronRight size={18} color="var(--chevron)" />
         </Link>
+        {me.isRsa && (
+          <Link to="/rsa" className={s.link} style={{ borderTop: '1px solid var(--line)' }}>
+            <span className={s.rowTitle}>{t('profile.rsa')}</span>
+            <ChevronRight size={18} color="var(--chevron)" />
+          </Link>
+        )}
         {me.isAdmin && (
           <Link to="/admin" className={s.link} style={{ borderTop: '1px solid var(--line)' }}>
             <span className={s.rowTitle}>{t('profile.admin')}</span>

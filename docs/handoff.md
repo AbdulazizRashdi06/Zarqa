@@ -44,6 +44,8 @@ Last updated **2026-10-26**. The app is built and live; the pilot work left is c
 - `node deploy/live-check.mjs --live --models` passed on 26 Oct: a real Debate match at **0.90875**, handover, stats and two-confirmation deletion at 390 × 844.
 - **The owner said not to run the 1,000-report benchmark (26 Oct).** One run was started and stopped after about a minute, and its VPS copy was deleted. Don't start it again unless the owner asks.
 
+**RSA desk (26 Oct):** finders can hand found items to the RSA (drop code), the RSA marks them received, owners collect them with a pickup code (no chat), and staff can read chats read-only. Code is in `server/Zarqa.Api/Rsa/` and `web/src/screens/Rsa.tsx`; tests are `RsaFlowTests.cs` and `web/tests/rsa.spec.ts`. Owner to-dos: add the first RSA staff email on `/rsa` → Team, and send the RSA desk's exact location and hours (the pickup ticket currently says "RSA desk · GUtech campus").
+
 **Since 2026-10-02:**
 - **One text per report (3 Oct).** The Home form has a single "describe it" box. The server derives a short display name and the category. Matching uses the one text, with the prescore's 0.24 text weight all on it (`server/Zarqa.Api/Reports/ReportText.cs`, `Matching/TextRules.cs`).
 - **Benchmark re-run with the app's real setup (3 Oct):** `benchmark/scripts/run.js --shape one`, at 100 reports: 97% recall, 100% precision, 0 of 18 traps. The 1,000-report re-run is still open.

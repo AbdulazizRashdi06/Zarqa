@@ -2,7 +2,7 @@ import { useEffect, useId, useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import { ItemIcon } from '../components/ItemThumb'
 import { ChevronDown } from '../components/icons'
-import { BackHeader, BigButton, LuggageTag, Sticker, ZarqaBubble } from '../components/ui'
+import { BackHeader, BigButton, LuggageTag, MonoLabel, Sticker, Ticket, ZarqaBubble } from '../components/ui'
 import { t } from '../i18n'
 import { api, ApiError } from '../lib/api'
 import { clockTime, relativeDay } from '../lib/dates'
@@ -19,6 +19,11 @@ type MatchView = {
   lost: Side
   found: Side
   conversationId: string | null
+  /** Held for the RSA desk: "It's mine" gives a pickup code instead of a chat. */
+  atRsa: boolean
+  rsaReceived: boolean
+  pickupCode: string | null
+  collected: boolean
 }
 
 const when = (x: Side) =>
@@ -48,8 +53,14 @@ export default function Match() {
     setBusy(true)
     setError('')
     try {
-      const r = await api<{ conversationId: string }>(`/matches/${id}/confirm`, { method: 'POST' })
-      navigate(`/chats/${r.conversationId}`, { replace: true })
+      const r = await api<{ conversationId?: string; pickupCode?: string }>(`/matches/${id}/confirm`, { method: 'POST' })
+      if (r.conversationId) {
+        navigate(`/chats/${r.conversationId}`, { replace: true })
+        return
+      }
+      setMatch(await api<MatchView>(`/matches/${id}`))
+      setBusy(false)
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     } catch (e) {
       setError(e instanceof ApiError ? e.message : t('common.error'))
       setBusy(false)
@@ -80,6 +91,34 @@ export default function Match() {
             <BigButton to="/reports" label={t('match.toReports')} />
           </>
         )}
+      </main>
+    )
+  }
+
+  if (match.status === 'Confirmed' && match.pickupCode) {
+    return (
+      <main className={s.page}>
+        <BackHeader to="/reports" />
+        <h1 className={s.title}>
+          {match.collected ? t('match.pickup.collected') : t('match.pickup.h1')}
+        </h1>
+        {!match.collected && (
+          <>
+            <Ticket>
+              <div className={s.pickup}>
+                <MonoLabel color="var(--ink-muted)">{t('match.pickup.label')}</MonoLabel>
+                <p className={s.pickupCode} aria-label={match.pickupCode.split('').join(' ')}>{match.pickupCode}</p>
+                <p className={s.pickupItem}>{match.lost.title}</p>
+                <p>{t('match.pickup.where')}</p>
+                <p>{t('match.pickup.bring')}</p>
+              </div>
+            </Ticket>
+            <ZarqaBubble mascot={match.rsaReceived ? 'happy' : 'reading'} alt="Zarqa" width={60} quiet>
+              {match.rsaReceived ? t('match.pickup.ready') : t('match.pickup.notYet')}
+            </ZarqaBubble>
+          </>
+        )}
+        <BigButton to="/reports" label={t('match.toReports')} />
       </main>
     )
   }
@@ -158,7 +197,7 @@ export default function Match() {
         {match.status === 'Suggested' && (
           <>
             <BigButton label={t('match.mine')} labelSize={30} onClick={confirm} disabled={busy} />
-            <p className={s.mineNote}>{t('match.mineNote')}</p>
+            <p className={s.mineNote}>{match.atRsa ? t('match.mineNote.rsa') : t('match.mineNote')}</p>
             <button type="button" className={s.notMine} onClick={reject} disabled={busy}>
               {t('match.notMine')}
             </button>

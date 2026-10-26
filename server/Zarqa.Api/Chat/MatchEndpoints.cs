@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Zarqa.Api.Auth;
 using Zarqa.Api.Data;
 using Zarqa.Api.Matching;
+using Zarqa.Api.Rsa;
 
 namespace Zarqa.Api.Chat;
 
@@ -14,7 +15,9 @@ public static class MatchEndpoints
     public const string Opening = "You two matched. Ask a question only the owner would know, and meet somewhere public.";
 
     public record SideDto(Guid Id, string Title, string Description, string? CategoryKey, string LocationText, string? EventDate, string? EventTime, Guid[] PhotoIds, DateTimeOffset CreatedAt);
-    public record MatchDto(Guid Id, string Status, double FinalScore, string Strength, string[] Reasons, DateTimeOffset CreatedAt, SideDto Lost, SideDto Found, Guid? ConversationId);
+    /// <summary>AtRsa: the finder handed it to the RSA desk, so "It's mine" gives a pickup code instead of a chat.</summary>
+    public record MatchDto(Guid Id, string Status, double FinalScore, string Strength, string[] Reasons, DateTimeOffset CreatedAt, SideDto Lost, SideDto Found,
+        Guid? ConversationId, bool AtRsa, bool RsaReceived, string? PickupCode, bool Collected);
 
     public static void MapMatches(this RouteGroupBuilder api)
     {
@@ -26,7 +29,8 @@ public static class MatchEndpoints
             if (m is null) return Errors.NotFound();
             var conversation = await db.Conversations.Where(c => c.MatchId == m.Id).Select(c => (Guid?)c.Id).FirstOrDefaultAsync(ct);
             return Results.Ok(new MatchDto(m.Id, m.Status.ToString(), m.FinalScore, m.FinalScore >= StrongAt ? "strong" : "likely", m.Reasons, m.CreatedAt,
-                Side(m.Lost!), Side(m.Found!), conversation));
+                Side(m.Lost!), Side(m.Found!), conversation, m.Found!.DropAtRsa, m.Found.RsaReceivedAt is not null,
+                m.Status == MatchStatus.Confirmed ? RsaCodes.Format(m.PickupCode) : null, m.CollectedAt is not null));
         });
 
         matches.MapPost("/{id:guid}/confirm", async (Guid id, HttpContext http, ZarqaDb db, TimeProvider clock, INotifier notifier, CancellationToken ct) =>
@@ -36,11 +40,26 @@ public static class MatchEndpoints
             if (m is null) return Errors.NotFound();
             var existing = await db.Conversations.FirstOrDefaultAsync(c => c.MatchId == m.Id, ct);
             if (existing is not null) return Results.Ok(new { conversationId = existing.Id });
+            if (m.Status == MatchStatus.Confirmed && m.PickupCode is not null) return Results.Ok(new { pickupCode = RsaCodes.Format(m.PickupCode) });
             if (m.Status != MatchStatus.Suggested) return Errors.BadRequest("This match isn't open any more.");
             if (m.Found!.Status != ReportStatus.Open)
-                return Errors.BadRequest("Someone else is already talking to the finder about this one. Zarqa will tell you if it frees up.");
+                return Errors.BadRequest(m.Found.DropAtRsa
+                    ? "Someone else has already claimed this one at the RSA desk. Zarqa will tell you if it frees up."
+                    : "Someone else is already talking to the finder about this one. Zarqa will tell you if it frees up.");
 
             var now = clock.GetUtcNow();
+            if (m.Found.DropAtRsa)
+            {
+                // Held for the RSA desk: no chat. The owner collects it there with a pickup code.
+                m.Status = MatchStatus.Confirmed;
+                m.ResolvedAt = now;
+                m.PickupCode = await RsaCodes.NewAsync(db, ct);
+                m.Lost!.Status = ReportStatus.Pickup;
+                m.Found.Status = ReportStatus.Pickup;
+                await db.SaveChangesAsync(ct);
+                return Results.Ok(new { pickupCode = RsaCodes.Format(m.PickupCode) });
+            }
+
             m.Status = MatchStatus.Confirmed;
             m.ResolvedAt = now;
             m.Lost!.Status = ReportStatus.InChat;

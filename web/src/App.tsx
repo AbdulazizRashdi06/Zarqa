@@ -10,6 +10,7 @@ import Match from './screens/Match'
 import Placeholder from './screens/Placeholder'
 import Profile from './screens/Profile'
 import ReportDetail from './screens/ReportDetail'
+import Rsa from './screens/Rsa'
 import Reports from './screens/Reports'
 import SignIn from './screens/SignIn'
 import Welcome from './screens/Welcome'
@@ -30,6 +31,7 @@ export default function App() {
           <Route path="/chats/:id" element={<RequireSession><Chat /></RequireSession>} />
           <Route path="/profile" element={<RequireSession><Profile /></RequireSession>} />
           <Route path="/admin" element={<RequireSession><Admin /></RequireSession>} />
+          <Route path="/rsa" element={<RequireSession><Rsa /></RequireSession>} />
           {(['terms', 'privacy', 'help', 'tips'] as const).map(page => <Route key={page} path={`/${page}`} element={<Info page={page} />} />)}
           <Route path="*" element={<Placeholder title={t('notFound.title')} mascot="question" zarqa={t('notFound.zarqa')} back={false} />} />
         </Routes>

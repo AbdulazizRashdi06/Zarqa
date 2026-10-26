@@ -40,7 +40,7 @@ The mascot is a girl inspired by Zarqa Al-Yamama: cream veil, blue eyes, two bra
 
 ## Running and deploying
 
-- Launch pages: `/terms`, `/privacy`, `/help`, `/tips` are public; `/admin` is restricted to admins. Profile has account deletion with two confirmations. All new copy lives in `web/src/i18n/en.json`.
+- Launch pages: `/terms`, `/privacy`, `/help`, `/tips` are public; `/admin` is restricted to admins; `/rsa` (RSA desk: drop-off, pickup codes, shelf, read-only chats, team) is restricted to `rsa_members` and admins. See decisions.md, 2026-10-26. Profile has account deletion with two confirmations. All new copy lives in `web/src/i18n/en.json`.
 - Browser regression tests: `cd web` then `npx playwright install chromium` and `npx playwright test` (390 × 844 viewport, mocked API for launch UI). CI runs these alongside lint/build and server tests.
 - Owner override (2026-10-02): keep the existing iPhone mascot. Do not replace its phone or regenerate the artwork.
 - Public mascot WebPs are reproducible with `python deploy/optimize-mascots.py` (Pillow). PNG originals stay unchanged; the PWA excludes those PNGs from precache. English pilot fonts use Latin subsets.

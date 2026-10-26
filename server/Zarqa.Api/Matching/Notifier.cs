@@ -14,6 +14,12 @@ public interface INotifier
 
     /// <summary>A handover was suggested or confirmed: tell the other person.</summary>
     Task HandoverAsync(long messageId, CancellationToken ct);
+
+    /// <summary>The RSA desk received a found item: tell the finder, and the owner if they already claimed it.</summary>
+    Task RsaReceivedAsync(Guid reportId, CancellationToken ct);
+
+    /// <summary>The owner collected an item at the RSA desk: tell the finder.</summary>
+    Task CollectedAsync(Guid matchId, CancellationToken ct);
 }
 
 public sealed class NoopNotifier : INotifier
@@ -22,4 +28,6 @@ public sealed class NoopNotifier : INotifier
     public Task ClaimedAsync(Guid conversationId, CancellationToken ct) => Task.CompletedTask;
     public Task MessageAsync(long messageId, CancellationToken ct) => Task.CompletedTask;
     public Task HandoverAsync(long messageId, CancellationToken ct) => Task.CompletedTask;
+    public Task RsaReceivedAsync(Guid reportId, CancellationToken ct) => Task.CompletedTask;
+    public Task CollectedAsync(Guid matchId, CancellationToken ct) => Task.CompletedTask;
 }
