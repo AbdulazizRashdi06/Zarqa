@@ -2,6 +2,19 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-10-26: The RSA desk
+
+**Decision.** After the owner met the campus RSA office, Zarqa got an RSA desk:
+- **Drop-off (optional).** A finder can switch on "I'll drop it at the RSA desk" when posting, or choose it later from the report. The report gets a 6-character **drop code** (`K7P-4QM`; no 0/O, 1/I/L, 2/Z, 5/S, 8/B). Staff type it at the desk and mark the item **received**.
+- **Pickup, no chat.** When the owner taps "It's mine" on an item held for the RSA, both reports become `Pickup` and the owner gets a **pickup code** instead of a chat. Staff type the code, see the owner's own description and first name next to the item, and mark it **handed over** (both reports Returned) or **not theirs** (both reports back to Open and re-matched). Owners who claim before the drop-off are notified, with the code, when the RSA receives it.
+- **Finders who keep the item** use the existing chat and handover flow unchanged.
+- **Read-only chat monitor.** Staff can read every owner–finder chat. There is no write route, and staff aren't participants, so the normal chat API stays closed to them.
+- **Access.** Staff are listed in `rsa_members` by email. The owner (an admin) adds the first person on `/rsa` → Team, and staff can add colleagues. Nobody can remove themselves. Membership is checked on every request, so a removal takes effect immediately. Admins always have desk access.
+- **Privacy.** Staff see non-card photos, as admins do; card and ID photos stay with their uploader. The Privacy and Help pages say so.
+- **Retention.** Items received by the RSA don't auto-expire at 60 days, because the item is still on the shelf; staff close them from the Shelf. Items that are only expected (never handed in) expire as usual.
+
+**Matching is unchanged** (luna-debate, 0.65). Items in `Pickup` stay in the candidate pool, like `InChat` ones.
+
 ## 2026-10-03: Full QA before the pilot
 
 Ran the whole app through automated suites, browser flows on fresh users, security and permission probes, axe accessibility scans, screen sizes from 320px to desktop, read-only checks on the live site and the matching benchmark. Methods borrowed from Anthropic's `webapp-testing` skill and Currents' `playwright-best-practices` (read, not installed).

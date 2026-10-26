@@ -188,13 +188,17 @@ export function Switch({ checked, onChange, label }: { checked: boolean; onChang
   )
 }
 
-export type PillStatus = 'Searching' | 'Possible match' | 'Chatting' | 'Returned'
+export type PillStatus = 'Searching' | 'Possible match' | 'Chatting' | 'Returned' | 'Bring to RSA' | 'At the RSA' | 'Ready to collect' | 'Claimed at RSA'
 
 const pillColors: Record<PillStatus, { bg: string; fg: string; dot: string }> = {
   Searching: { bg: '#E4DED6', fg: '#3F4652', dot: '#7D898C' },
   'Possible match': { bg: '#222634', fg: '#E3C4A8', dot: '#BD9777' },
   Chatting: { bg: '#D3DBDC', fg: '#222634', dot: '#434E5F' },
   Returned: { bg: '#D6E6DA', fg: '#1F4A2E', dot: '#3F8A57' },
+  'Bring to RSA': { bg: '#E4DED6', fg: '#3F4652', dot: '#BD9777' },
+  'At the RSA': { bg: '#D3DBDC', fg: '#222634', dot: '#7D898C' },
+  'Ready to collect': { bg: '#222634', fg: '#E3C4A8', dot: '#BD9777' },
+  'Claimed at RSA': { bg: '#D3DBDC', fg: '#222634', dot: '#434E5F' },
 }
 
 export function StatusPill({ status }: { status: PillStatus }) {

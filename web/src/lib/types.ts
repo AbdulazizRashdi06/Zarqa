@@ -1,4 +1,4 @@
-export type Pill = 'Searching' | 'Possible match' | 'Chatting' | 'Returned' | 'Closed'
+export type Pill = 'Searching' | 'Possible match' | 'Chatting' | 'Returned' | 'Closed' | 'Bring to RSA' | 'At the RSA' | 'Ready to collect' | 'Claimed at RSA'
 
 export type Report = {
   id: string
@@ -18,6 +18,12 @@ export type Report = {
   matchId: string | null
   conversationId: string | null
   createdAt: string
+  /** Found item handed to the RSA desk; dropCode is shown there (only to the finder). */
+  dropAtRsa: boolean
+  dropCode: string | null
+  rsaReceived: boolean
+  /** Lost report claimed at the RSA desk: the match holding the pickup code. */
+  pickupMatchId: string | null
 }
 
 export type HomeSummary = { active: number; matchesWaiting: number; unreadChats: number; postsLeft: number }

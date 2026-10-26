@@ -201,3 +201,7 @@
 .wordsText[hidden] {
   display: none;
 }
+.pickup { padding: 22px 20px; color: var(--ink); display: flex; flex-direction: column; gap: 6px; }
+.pickup p { margin: 0; line-height: 1.5; }
+.pickupCode { font: 56px/1 var(--font-display); letter-spacing: 4px; margin: 6px 0 4px !important; }
+.pickupItem { font-weight: 700; }

@@ -8,7 +8,7 @@ namespace Zarqa.Api.Users;
 
 public static partial class MeEndpoints
 {
-    public record MeDto(Guid Id, string Email, string? FirstName, string? SuggestedFirstName, bool ShowFirstName, bool MatchAlerts, string Locale, string? AvatarUrl, bool IsAdmin);
+    public record MeDto(Guid Id, string Email, string? FirstName, string? SuggestedFirstName, bool ShowFirstName, bool MatchAlerts, string Locale, string? AvatarUrl, bool IsAdmin, bool IsRsa);
 
     public record PatchMeBody(string? FirstName, bool? ShowFirstName, bool? MatchAlerts);
 
@@ -23,7 +23,7 @@ public static partial class MeEndpoints
         me.MapGet("", async (HttpContext http, ZarqaDb db, CancellationToken ct) =>
         {
             var user = await db.Users.AsNoTracking().FirstAsync(u => u.Id == http.User.Id(), ct);
-            return ToDto(user);
+            return ToDto(user, http.User);
         });
 
         me.MapPatch("", async (PatchMeBody body, HttpContext http, ZarqaDb db, CancellationToken ct) =>
@@ -38,7 +38,7 @@ public static partial class MeEndpoints
             if (body.ShowFirstName is { } show) user.ShowFirstName = show;
             if (body.MatchAlerts is { } alerts) user.MatchAlerts = alerts;
             await db.SaveChangesAsync(ct);
-            return Results.Ok(ToDto(user));
+            return Results.Ok(ToDto(user, http.User));
         });
 
         me.MapDelete("", async (HttpContext http, Zarqa.Api.Admin.Retention retention, CancellationToken ct) =>
@@ -70,7 +70,7 @@ public static partial class MeEndpoints
             if (user.AvatarPhotoKey is not null) photos.Delete(user.AvatarPhotoKey);
             user.AvatarPhotoKey = key;
             await db.SaveChangesAsync(ct);
-            return Results.Ok(ToDto(user));
+            return Results.Ok(ToDto(user, req.HttpContext.User));
         }).DisableAntiforgery();
 
         me.MapDelete("/avatar", async (HttpContext http, ZarqaDb db, PhotoStore photos, CancellationToken ct) =>
@@ -79,7 +79,7 @@ public static partial class MeEndpoints
             if (user.AvatarPhotoKey is not null) photos.Delete(user.AvatarPhotoKey);
             user.AvatarPhotoKey = null;
             await db.SaveChangesAsync(ct);
-            return Results.Ok(ToDto(user));
+            return Results.Ok(ToDto(user, http.User));
         });
 
         api.MapGet("/avatars/{id:guid}", async (Guid id, ZarqaDb db, PhotoStore photos, HttpContext http, CancellationToken ct) =>
@@ -93,9 +93,10 @@ public static partial class MeEndpoints
         }).RequireAuthorization();
     }
 
-    private static MeDto ToDto(User u) =>
+    /// <summary>RSA access is a claim set per request (see Program.cs), so it's read from the principal.</summary>
+    private static MeDto ToDto(User u, System.Security.Claims.ClaimsPrincipal p) =>
         new(u.Id, u.Email, u.FirstName, u.FirstName is null ? EmailRules.GuessFirstName(u.Email) : null, u.ShowFirstName, u.MatchAlerts, u.Locale,
-            AvatarUrl(u), u.IsAdmin);
+            AvatarUrl(u), u.IsAdmin, p.HasClaim(c => c.Type == Rsa.RsaEndpoints.Policy));
 
     /// <summary>Cache-busting URL of a user's avatar, or null.</summary>
     public static string? AvatarUrl(User u) =>

@@ -22,7 +22,9 @@ public sealed class Retention(ZarqaDb db, PhotoStore photos, IEmailSender email,
 
         // 1. Expire open reports nobody has touched for 60 days, and say so.
         var stale = await db.Reports.Include(r => r.User)
-            .Where(r => r.Status == ReportStatus.Open && r.UpdatedAt < now - ExpireAfter).ToListAsync(ct);
+            .Where(r => r.Status == ReportStatus.Open && r.UpdatedAt < now - ExpireAfter)
+            // Items on the RSA shelf stay listed: the RSA closes them when they give them away.
+            .Where(r => !(r.DropAtRsa && r.RsaReceivedAt != null)).ToListAsync(ct);
         foreach (var r in stale)
         {
             r.Status = ReportStatus.Expired;
@@ -69,8 +71,14 @@ public sealed class Retention(ZarqaDb db, PhotoStore photos, IEmailSender email,
         // Chats the user took part in go too, so the other side's reports return to searching.
         var otherReports = await db.Conversations.Where(c => c.LostUserId == userId || c.FoundUserId == userId)
             .Select(c => c.LostUserId == userId ? c.Match!.FoundId : c.Match!.LostId).ToListAsync(ct);
+        // Same for an RSA pickup the user was part of (there's no chat to follow).
+        var pickupOthers = await db.Matches.Where(m => m.PickupCode != null && m.Status == MatchStatus.Confirmed && m.CollectedAt == null
+                && (m.Lost!.UserId == userId || m.Found!.UserId == userId))
+            .Select(m => m.Lost!.UserId == userId ? m.FoundId : m.LostId).ToListAsync(ct);
         await DeleteReportsAsync(reportIds, ct);
         await db.Reports.Where(r => otherReports.Contains(r.Id) && r.Status == ReportStatus.InChat)
+            .ExecuteUpdateAsync(s => s.SetProperty(r => r.Status, ReportStatus.Open), ct);
+        await db.Reports.Where(r => pickupOthers.Contains(r.Id) && r.Status == ReportStatus.Pickup)
             .ExecuteUpdateAsync(s => s.SetProperty(r => r.Status, ReportStatus.Open), ct);
         await db.PushSubscriptions.Where(s => s.UserId == userId).ExecuteDeleteAsync(ct);
         await db.ConversationReads.Where(r => r.UserId == userId).ExecuteDeleteAsync(ct);

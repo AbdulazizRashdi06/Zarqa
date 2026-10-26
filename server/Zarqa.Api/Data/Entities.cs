@@ -5,7 +5,8 @@ namespace Zarqa.Api.Data;
 public enum ReportKind { Lost, Found }
 
 /// <summary>Stored status. The UI pill ("Possible match") is derived from this plus suggested matches.</summary>
-public enum ReportStatus { Open, InChat, Returned, Closed, Expired }
+/// <summary>Pickup: the owner claimed an item held at the RSA desk and collects it there (no chat).</summary>
+public enum ReportStatus { Open, InChat, Returned, Closed, Expired, Pickup }
 
 public enum MatchStatus { Suggested, Confirmed, Rejected, Expired }
 
@@ -77,6 +78,12 @@ public class Report
     public DateTimeOffset CreatedAt { get; set; }
     public DateTimeOffset UpdatedAt { get; set; }
     public List<Photo> Photos { get; set; } = [];
+    /// <summary>Found item the finder hands to the RSA desk instead of meeting the owner.</summary>
+    public bool DropAtRsa { get; set; }
+    /// <summary>Short code the finder shows at the RSA desk (stored without the dash).</summary>
+    public string? DropCode { get; set; }
+    public DateTimeOffset? RsaReceivedAt { get; set; }
+    public Guid? RsaReceivedBy { get; set; }
 }
 
 public class Photo
@@ -105,6 +112,10 @@ public class Match
     public MatchStatus Status { get; set; } = MatchStatus.Suggested;
     public DateTimeOffset CreatedAt { get; set; }
     public DateTimeOffset? ResolvedAt { get; set; }
+    /// <summary>For an item held at the RSA: the code the owner shows to collect it.</summary>
+    public string? PickupCode { get; set; }
+    public DateTimeOffset? CollectedAt { get; set; }
+    public Guid? CollectedBy { get; set; }
 }
 
 public class MatchJob
@@ -182,4 +193,12 @@ public class AppSetting
 {
     public required string Key { get; set; }
     public required string Value { get; set; }
+}
+
+/// <summary>RSA desk staff, by email. They may sign in before or after being added.</summary>
+public class RsaMember
+{
+    public required string Email { get; set; }
+    public Guid? AddedBy { get; set; }
+    public DateTimeOffset AddedAt { get; set; }
 }

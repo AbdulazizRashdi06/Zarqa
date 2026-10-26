@@ -50,6 +50,7 @@ export default function Home() {
   const [date, setDate] = useState(draft.date && draft.date <= now.date ? draft.date : now.date)
   // When is optional: hidden until the user says they know. Time stays optional even then.
   const [knowsWhen, setKnowsWhen] = useState(draft.knowsWhen ?? false)
+  const [dropAtRsa, setDropAtRsa] = useState(false)
   const [time, setTime] = useState(draft.time ?? '')
   // A name picked from the campus list; typing again turns it back into free text.
   const [placeName, setPlaceName] = useState<string | null>(draft.placeName ?? null)
@@ -132,13 +133,16 @@ export default function Home() {
       form.set('eventDate', date)
       if (time) form.set('eventTime', time)
     }
+    if (mode === 'found' && dropAtRsa) form.set('dropAtRsa', 'true')
     photos.forEach((p, i) => form.append('photos', p.blob, `photo-${i + 1}.jpg`))
     try {
       const report = await apiForm<Report>('/reports', form)
       photos.forEach((p) => URL.revokeObjectURL(p.url))
       setPhotosLoaded(false)
       clearDraft()
-      navigate('/reports', { state: { posted: report.kind } })
+      // A drop-off goes straight to its code, which the finder shows at the RSA desk.
+      if (report.dropCode) navigate(`/reports/${report.id}`, { state: { posted: 'rsa' } })
+      else navigate('/reports', { state: { posted: report.kind } })
     } catch (err) {
       setError(err instanceof ApiError ? err.message : t('common.error'))
     } finally {
@@ -431,6 +435,18 @@ export default function Home() {
               </div>
             )}
           </div>
+
+          {mode === 'found' && (
+            <div className={s.field}>
+              <div className={s.fieldLabel}>
+                <span id="drop-rsa-label">{t('form.rsa')}</span>
+                <span className={s.whenToggle}>
+                  <Switch checked={dropAtRsa} onChange={setDropAtRsa} label={t('form.rsa')} />
+                </span>
+              </div>
+              {dropAtRsa && <span className={s.hint}>{t('form.rsa.note')}</span>}
+            </div>
+          )}
 
           <TearLine />
 

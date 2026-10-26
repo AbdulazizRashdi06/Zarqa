@@ -13,6 +13,7 @@ using Zarqa.Api.Matching;
 using Zarqa.Api.Notifications;
 using Zarqa.Api.Photos;
 using Zarqa.Api.Reports;
+using Zarqa.Api.Rsa;
 using Zarqa.Api.Users;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -88,7 +89,8 @@ builder.Services
         {
             var db = ctx.HttpContext.RequestServices.GetRequiredService<ZarqaDb>();
             var id = ctx.Principal!.Id();
-            var user = await db.Users.Where(u => u.Id == id).Select(u => new { u.IsBanned, u.IsAdmin }).FirstOrDefaultAsync();
+            var user = await db.Users.Where(u => u.Id == id)
+                .Select(u => new { u.IsBanned, u.IsAdmin, IsRsa = db.RsaMembers.Any(m => m.Email == u.Email) }).FirstOrDefaultAsync();
             if (user is null || user.IsBanned)
             {
                 ctx.RejectPrincipal();
@@ -96,10 +98,17 @@ builder.Services
                 return;
             }
             // Admin rights follow the database on every request, not the cookie.
-            if (user.IsAdmin) ((System.Security.Claims.ClaimsIdentity)ctx.Principal!.Identity!).AddClaim(new System.Security.Claims.Claim(AdminEndpoints.Policy, "1"));
+            var identity = (System.Security.Claims.ClaimsIdentity)ctx.Principal!.Identity!;
+            if (user.IsAdmin) identity.AddClaim(new System.Security.Claims.Claim(AdminEndpoints.Policy, "1"));
+            // RSA desk staff, and admins, who set the desk up.
+            if (user.IsAdmin || user.IsRsa) identity.AddClaim(new System.Security.Claims.Claim(Zarqa.Api.Rsa.RsaEndpoints.Policy, "1"));
         };
     });
-builder.Services.AddAuthorization(o => o.AddPolicy(AdminEndpoints.Policy, p => p.RequireClaim(AdminEndpoints.Policy)));
+builder.Services.AddAuthorization(o =>
+{
+    o.AddPolicy(AdminEndpoints.Policy, p => p.RequireClaim(AdminEndpoints.Policy));
+    o.AddPolicy(Zarqa.Api.Rsa.RsaEndpoints.Policy, p => p.RequireClaim(Zarqa.Api.Rsa.RsaEndpoints.Policy));
+});
 
 builder.Services.AddRateLimiter(o =>
 {
@@ -163,6 +172,7 @@ api.MapMatches();
 api.MapChats();
 api.MapPush();
 api.MapAdmin();
+api.MapRsa();
 
 // Unknown /api paths are 404s; everything else is the PWA's client-side routing.
 api.MapFallback(() => Results.NotFound());

@@ -68,7 +68,7 @@ public sealed class Matcher(
         var other = report.Kind == ReportKind.Lost ? ReportKind.Found : ReportKind.Lost;
         var pool = await db.Reports.Include(r => r.Photos)
             .Where(r => r.Kind == other && r.UserId != report.UserId && r.Embedding != null
-                        && (r.Status == ReportStatus.Open || r.Status == ReportStatus.InChat))
+                        && (r.Status == ReportStatus.Open || r.Status == ReportStatus.InChat || r.Status == ReportStatus.Pickup))
             .OrderBy(r => r.Embedding!.CosineDistance(report.Embedding))
             .Take(VectorLimit)
             .ToListAsync(ct);

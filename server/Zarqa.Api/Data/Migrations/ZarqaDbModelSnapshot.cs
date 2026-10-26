@@ -198,6 +198,14 @@ namespace Zarqa.Api.Data.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("id");
 
+                    b.Property<DateTimeOffset?>("CollectedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("collected_at");
+
+                    b.Property<Guid?>("CollectedBy")
+                        .HasColumnType("uuid")
+                        .HasColumnName("collected_by");
+
                     b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at");
@@ -222,6 +230,11 @@ namespace Zarqa.Api.Data.Migrations
                     b.Property<double?>("Overall")
                         .HasColumnType("double precision")
                         .HasColumnName("overall");
+
+                    b.Property<string>("PickupCode")
+                        .HasMaxLength(6)
+                        .HasColumnType("character varying(6)")
+                        .HasColumnName("pickup_code");
 
                     b.Property<double>("Prescore")
                         .HasColumnType("double precision")
@@ -250,6 +263,10 @@ namespace Zarqa.Api.Data.Migrations
 
                     b.HasIndex("FoundId")
                         .HasDatabaseName("ix_matches_found_id");
+
+                    b.HasIndex("PickupCode")
+                        .IsUnique()
+                        .HasDatabaseName("ix_matches_pickup_code");
 
                     b.HasIndex("LostId", "FoundId")
                         .IsUnique()
@@ -464,6 +481,15 @@ namespace Zarqa.Api.Data.Migrations
                         .HasColumnType("character varying(500)")
                         .HasColumnName("description");
 
+                    b.Property<bool>("DropAtRsa")
+                        .HasColumnType("boolean")
+                        .HasColumnName("drop_at_rsa");
+
+                    b.Property<string>("DropCode")
+                        .HasMaxLength(6)
+                        .HasColumnType("character varying(6)")
+                        .HasColumnName("drop_code");
+
                     b.Property<Vector>("Embedding")
                         .HasColumnType("vector(1536)")
                         .HasColumnName("embedding");
@@ -495,6 +521,14 @@ namespace Zarqa.Api.Data.Migrations
                         .HasColumnType("character varying(120)")
                         .HasColumnName("location_text");
 
+                    b.Property<DateTimeOffset?>("RsaReceivedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("rsa_received_at");
+
+                    b.Property<Guid?>("RsaReceivedBy")
+                        .HasColumnType("uuid")
+                        .HasColumnName("rsa_received_by");
+
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("text")
@@ -516,6 +550,10 @@ namespace Zarqa.Api.Data.Migrations
 
                     b.HasKey("Id")
                         .HasName("pk_reports");
+
+                    b.HasIndex("DropCode")
+                        .IsUnique()
+                        .HasDatabaseName("ix_reports_drop_code");
 
                     b.HasIndex("Kind", "Status")
                         .HasDatabaseName("ix_reports_kind_status");
@@ -580,6 +618,27 @@ namespace Zarqa.Api.Data.Migrations
                         .HasDatabaseName("ix_review_logs_report_id");
 
                     b.ToTable("review_logs", (string)null);
+                });
+
+            modelBuilder.Entity("Zarqa.Api.Data.RsaMember", b =>
+                {
+                    b.Property<string>("Email")
+                        .HasMaxLength(254)
+                        .HasColumnType("character varying(254)")
+                        .HasColumnName("email");
+
+                    b.Property<DateTimeOffset>("AddedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("added_at");
+
+                    b.Property<Guid?>("AddedBy")
+                        .HasColumnType("uuid")
+                        .HasColumnName("added_by");
+
+                    b.HasKey("Email")
+                        .HasName("pk_rsa_members");
+
+                    b.ToTable("rsa_members", (string)null);
                 });
 
             modelBuilder.Entity("Zarqa.Api.Data.User", b =>

@@ -5,6 +5,7 @@ using Zarqa.Api.Data;
 using Zarqa.Api.Chat;
 using Zarqa.Api.Matching;
 using Zarqa.Api.Photos;
+using Zarqa.Api.Rsa;
 
 namespace Zarqa.Api.Reports;
 
@@ -18,7 +19,8 @@ public static class ReportEndpoints
         Guid Id, string Kind, string Title, string Category, string? CategoryKey, string Description,
         string? LocationName, string LocationText, string? EventDate, string? EventTime,
         string Status, string Pill, bool IsSensitive, Guid[] PhotoIds,
-        Guid? MatchId, Guid? ConversationId, DateTimeOffset CreatedAt);
+        Guid? MatchId, Guid? ConversationId, DateTimeOffset CreatedAt,
+        bool DropAtRsa, string? DropCode, bool RsaReceived, Guid? PickupMatchId);
 
     public static void MapReports(this RouteGroupBuilder api)
     {
@@ -58,6 +60,12 @@ public static class ReportEndpoints
             var error = await ApplyFields(report, title, category, description, form["locationName"], form["locationText"],
                 form["eventDate"], form["eventTime"], db, clock, ct);
             if (error is not null) return error;
+            // Optional: the finder hands it to the RSA desk instead of meeting the owner.
+            if (report.Kind == ReportKind.Found && form["dropAtRsa"].ToString() is "true" or "on" or "1")
+            {
+                report.DropAtRsa = true;
+                report.DropCode = await RsaCodes.NewAsync(db, ct);
+            }
 
             var files = form.Files.GetFiles("photos");
             if (files.Count > MaxPhotos) return Errors.BadRequest($"Up to {MaxPhotos} photos.");
@@ -108,11 +116,30 @@ public static class ReportEndpoints
             return Results.Ok(await ToDto(db, r, ct));
         });
 
+        // A finder who kept the item can still decide to drop it at the RSA desk.
+        reports.MapPost("/{id:guid}/rsa", async (Guid id, HttpContext http, ZarqaDb db, TimeProvider clock, CancellationToken ct) =>
+        {
+            var r = await db.Reports.Include(x => x.Photos).FirstOrDefaultAsync(x => x.Id == id && x.UserId == http.User.Id(), ct);
+            if (r is null) return Errors.NotFound();
+            if (r.Kind != ReportKind.Found) return Errors.BadRequest("Only found items go to the RSA desk.");
+            if (r.Status != ReportStatus.Open) return Errors.BadRequest("This one is already on its way back to its owner.");
+            if (!r.DropAtRsa)
+            {
+                r.DropAtRsa = true;
+                r.DropCode = await RsaCodes.NewAsync(db, ct);
+                r.UpdatedAt = clock.GetUtcNow();
+                await db.SaveChangesAsync(ct);
+            }
+            return Results.Ok(await ToDto(db, r, ct));
+        });
+
         reports.MapPost("/{id:guid}/close", async (Guid id, HttpContext http, ZarqaDb db, TimeProvider clock, CancellationToken ct) =>
         {
             var r = await db.Reports.FirstOrDefaultAsync(x => x.Id == id && x.UserId == http.User.Id(), ct);
             if (r is null) return Errors.NotFound();
             if (r.Status == ReportStatus.InChat) return Errors.BadRequest("Finish the chat first: mark it returned there.");
+            if (r.Status == ReportStatus.Pickup) return Errors.BadRequest("Someone is collecting this at the RSA desk. The RSA closes it when they do.");
+            if (r.DropAtRsa && r.RsaReceivedAt is not null) return Errors.BadRequest("The RSA has it now, so they'll close it when it's collected.");
             r.Status = ReportStatus.Closed;
             r.UpdatedAt = clock.GetUtcNow();
             await ExpireOpenMatches(db, r.Id, clock.GetUtcNow(), ct);
@@ -125,6 +152,8 @@ public static class ReportEndpoints
             var r = await db.Reports.Include(x => x.Photos).FirstOrDefaultAsync(x => x.Id == id && x.UserId == http.User.Id(), ct);
             if (r is null) return Errors.NotFound();
             if (r.Status == ReportStatus.InChat) return Errors.BadRequest("Finish the chat first: mark it returned there.");
+            if (r.Status == ReportStatus.Pickup || (r.DropAtRsa && r.RsaReceivedAt is not null))
+                return Errors.BadRequest("This one is with the RSA desk, so it stays.");
             var hasChat = await db.Conversations.AnyAsync(c => c.Match!.LostId == id || c.Match!.FoundId == id, ct);
             if (hasChat) return Errors.BadRequest("This report has a chat, so it stays. You can close it instead.");
             foreach (var p in r.Photos) photos.Delete(p.StorageKey);
@@ -138,7 +167,7 @@ public static class ReportEndpoints
             var me = http.User.Id();
             var since = clock.GetUtcNow().AddDays(-1);
             var postedToday = await db.Reports.CountAsync(r => r.UserId == me && r.CreatedAt > since, ct);
-            var active = await db.Reports.CountAsync(r => r.UserId == me && (r.Status == ReportStatus.Open || r.Status == ReportStatus.InChat), ct);
+            var active = await db.Reports.CountAsync(r => r.UserId == me && (r.Status == ReportStatus.Open || r.Status == ReportStatus.InChat || r.Status == ReportStatus.Pickup), ct);
             var waiting = await db.Matches.CountAsync(m => m.Status == MatchStatus.Suggested && m.Lost!.UserId == me, ct);
             var unread = await Chats.UnreadCountAsync(db, me, ct);
             return Results.Ok(new { active, matchesWaiting = waiting, unreadChats = unread, postsLeft = Math.Max(0, MaxPostsPerDay - postedToday) });
@@ -236,22 +265,30 @@ public static class ReportEndpoints
             .OrderByDescending(c => c.CreatedAt)
             .Select(c => new { c.Id, c.Match!.LostId, c.Match.FoundId })
             .ToListAsync(ct);
+        // The owner's pickup at the RSA desk; the Match screen shows the code.
+        var pickups = await db.Matches.AsNoTracking()
+            .Where(m => m.PickupCode != null && m.Status == MatchStatus.Confirmed && ids.Contains(m.LostId))
+            .Select(m => new { m.LostId, m.Id })
+            .ToListAsync(ct);
 
         return list.Select(r =>
         {
             var match = suggested.FirstOrDefault(m => m.LostId == r.Id)?.Id;
             var chat = chats.FirstOrDefault(c => c.LostId == r.Id || c.FoundId == r.Id)?.Id;
+            var pickup = pickups.FirstOrDefault(m => m.LostId == r.Id)?.Id;
             var pill = r.Status switch
             {
                 ReportStatus.Returned => "Returned",
                 ReportStatus.InChat => "Chatting",
+                ReportStatus.Pickup => r.Kind == ReportKind.Lost ? "Ready to collect" : "Claimed at RSA",
+                ReportStatus.Open when r.DropAtRsa => r.RsaReceivedAt is null ? "Bring to RSA" : "At the RSA",
                 ReportStatus.Closed or ReportStatus.Expired => "Closed",
                 _ => match is not null ? "Possible match" : "Searching",
             };
             return new ReportDto(r.Id, r.Kind == ReportKind.Lost ? "lost" : "found", r.Title, r.CategoryText, r.CategoryNorm, r.Description,
                 r.LocationName, r.LocationText, r.EventDate?.ToString("yyyy-MM-dd"), r.EventTime?.ToString("HH:mm"),
                 r.Status.ToString(), pill, r.IsSensitive, r.Photos.OrderBy(p => p.Position).Select(p => p.Id).ToArray(),
-                match, chat, r.CreatedAt);
+                match, chat, r.CreatedAt, r.DropAtRsa, RsaCodes.Format(r.DropCode), r.RsaReceivedAt is not null, pickup);
         }).ToList();
     }
 }
@@ -264,6 +301,8 @@ public static class PhotoAccess
         var report = await db.Reports.AsNoTracking().FirstAsync(r => r.Id == photo.ReportId, ct);
         if (report.UserId == viewer) return true;
         if (await db.Users.AnyAsync(u => u.Id == viewer && u.IsAdmin, ct)) return !photo.IsSensitive;
+        // RSA staff check items against descriptions at the desk; card/ID photos stay with the uploader.
+        if (!photo.IsSensitive && await db.Users.AnyAsync(u => u.Id == viewer && db.RsaMembers.Any(m => m.Email == u.Email), ct)) return true;
         // Card/ID photos stay with the uploader for the pilot: the chat is where ownership gets proven.
         if (photo.IsSensitive) return false;
 

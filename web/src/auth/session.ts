@@ -11,6 +11,8 @@ export type Me = {
   locale: string
   avatarUrl: string | null
   isAdmin: boolean
+  /** RSA desk staff (admins too). */
+  isRsa: boolean
 }
 
 export type Session = {
