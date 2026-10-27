@@ -23,6 +23,8 @@ public sealed partial class CardCover(IOcrEngine ocr)
     public const double MaxCoveredShare = 0.7;
     /// <summary>The re-check in the other three orientations: real Tesseract reads upside-down letters as digits at up to ~65.</summary>
     public const float SidewaysConfidence = 70;
+    /// <summary>Re-checks before giving up: each one covers what the previous one still read.</summary>
+    public const int RecheckRounds = 3;
     public static readonly SKColor Ink = new(0x22, 0x1F, 0x1A);
 
     public async Task<CoverResult> CoverAsync(byte[] jpeg, CancellationToken ct)
@@ -57,35 +59,65 @@ public sealed partial class CardCover(IOcrEngine ocr)
 
             var boxes = TextBoxes(bestWords, best.Width);
             boxes.AddRange(BusyRegions(best, bestWords));
-            if (CoveredShare(best.Width, best.Height, boxes) > MaxCoveredShare) return CoverResult.Fail("too much to cover");
 
-            using var covered = best.Copy();
-            using (var canvas = new SKCanvas(covered))
-            using (var paint = new SKPaint { Color = Ink, Style = SKPaintStyle.Fill, IsAntialias = false })
-                foreach (var b in boxes) canvas.DrawRect(b, paint);
-            using var image = SKImage.FromBitmap(covered);
-            using var data = image.Encode(SKEncodedImageFormat.Jpeg, 82);
-            var output = data.ToArray();
-
-            // Re-check the bytes we would actually serve, in every orientation.
-            using var check = SKBitmap.Decode(output);
-            foreach (var degrees in new[] { 0, 90, 180, 270 })
+            // Covering changes how OCR splits the image, so a re-check can find digits the first read missed.
+            // Cover those too and check again; the copy is only kept after a clean check of the served bytes.
+            var leftover = "";
+            for (var round = 0; round < RecheckRounds; round++)
             {
-                using var rotated = Rotate(check, degrees);
-                using var work = Scale(rotated, scale);
-                var left = (await ocr.ReadAsync(work, ct)).Where(w => w.Text.Any(char.IsDigit)
-                    // A cover block itself reads as "1" or "|"; that's not a leak.
-                    && InkShare(work, w.Box) < 0.5
-                    // Sideways or upside down, letters get misread as digits; count only confident reads there.
-                    && (degrees == 0 || w.Confidence >= SidewaysConfidence));
-                if (left.Any()) return CoverResult.Fail($"digits still readable ({degrees}°)");
+                if (CoveredShare(best.Width, best.Height, boxes) > MaxCoveredShare) return CoverResult.Fail("too much to cover");
+                var output = Draw(best, boxes);
+
+                using var check = SKBitmap.Decode(output);
+                var left = new List<OcrWord>();
+                foreach (var degrees in new[] { 0, 90, 180, 270 })
+                {
+                    using var rotated = Rotate(check, degrees);
+                    using var work = Scale(rotated, scale);
+                    var read = (await ocr.ReadAsync(work, ct)).Where(w => w.Text.Any(char.IsDigit)
+                        // A cover block itself reads as "1" or "|"; that's not a leak.
+                        && InkShare(work, w.Box) < 0.5
+                        // Sideways or upside down, letters get misread as digits; count only confident reads there.
+                        && (degrees == 0 || w.Confidence >= SidewaysConfidence));
+                    foreach (var w in Unscale([.. read], scale)) left.Add(w with { Box = Unrotate(w.Box, degrees, check.Width, check.Height) });
+                    if (left.Count > 0) leftover = $"{degrees}°";
+                }
+                if (left.Count == 0) return new CoverResult(output, round == 0 ? "covered" : $"covered after {round + 1} checks");
+                boxes.AddRange(TextBoxes(left, best.Width));
             }
-            return new CoverResult(output, "covered");
+            return CoverResult.Fail($"digits still readable ({leftover})");
         }
         finally
         {
             best?.Dispose();
         }
+    }
+
+    /// <summary>The image with the boxes filled in, as the JPEG we would serve.</summary>
+    private static byte[] Draw(SKBitmap image, IReadOnlyList<SKRect> boxes)
+    {
+        using var covered = image.Copy();
+        using (var canvas = new SKCanvas(covered))
+        using (var paint = new SKPaint { Color = Ink, Style = SKPaintStyle.Fill, IsAntialias = false })
+            foreach (var b in boxes) canvas.DrawRect(b, paint);
+        using var encoded = SKImage.FromBitmap(covered);
+        using var data = encoded.Encode(SKEncodedImageFormat.Jpeg, 82);
+        return data.ToArray();
+    }
+
+    /// <summary>A box read on <see cref="Rotate"/>(image, degrees), in the unrotated image's pixels (width × height).</summary>
+    public static SKRectI Unrotate(SKRectI box, int degrees, int width, int height)
+    {
+        (int X, int Y) Back(int u, int v) => degrees switch
+        {
+            90 => (v, height - u),
+            180 => (width - u, height - v),
+            270 => (width - v, u),
+            _ => (u, v),
+        };
+        var (x1, y1) = Back(box.Left, box.Top);
+        var (x2, y2) = Back(box.Right, box.Bottom);
+        return new SKRectI(Math.Min(x1, x2), Math.Min(y1, y2), Math.Max(x1, x2), Math.Max(y1, y2));
     }
 
     /// <summary>Boxes over the numbers OCR found, padded; whole rows for card numbers and MRZ lines.</summary>

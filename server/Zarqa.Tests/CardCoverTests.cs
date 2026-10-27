@@ -107,9 +107,12 @@ public sealed class FakeOcr : IOcrEngine
     public bool IsAvailable { get; set; } = true;
     public SyntheticCard? Card { get; set; }
     public bool Throw { get; set; }
-    /// <summary>Simulates a digit the covering missed: the first read doesn't see it, the re-check does.</summary>
-    public bool AlwaysSeesDigit { get; set; }
+    /// <summary>A digit the first read misses (so it isn't covered) and the re-check finds, in the same place.</summary>
+    public bool MissedDigit { get; set; }
+    /// <summary>A digit that turns up somewhere new on every re-check, so covering never catches up.</summary>
+    public bool StubbornDigit { get; set; }
     public int Calls;
+    public static readonly SKRectI MissedDigitBox = new(1100, 40, 1130, 80);
 
     public Task<IReadOnlyList<OcrWord>> ReadAsync(SKBitmap image, CancellationToken ct)
     {
@@ -121,7 +124,9 @@ public sealed class FakeOcr : IOcrEngine
         foreach (var (text, box) in Card.Words)
             if (SyntheticCard.InkShare(image, box) < 0.5) words.Add(new OcrWord(text, 91, box));
         // A digit the first read missed (so it was never covered) turns up when the covered copy is re-checked.
-        if (AlwaysSeesDigit && words.Count < Card.Words.Count) words.Add(new OcrWord("7", 90, new SKRectI(1100, 40, 1130, 80)));
+        var recheck = words.Count < Card.Words.Count; // some words are covered: this is the covered copy
+        if (MissedDigit && recheck) words.Add(new OcrWord("7", 90, MissedDigitBox));
+        if (StubbornDigit && recheck) { var x = 40 + 40 * (Calls % 25); words.Add(new OcrWord("7", 90, new SKRectI(x, 700, x + 20, 740))); }
         return Task.FromResult<IReadOnlyList<OcrWord>>(words);
     }
 }
@@ -211,12 +216,43 @@ public class CardCoverTests
     }
 
     [Fact]
-    public void A_digit_still_readable_after_covering_means_no_copy()
+    public void A_digit_found_on_the_recheck_is_covered_too()
     {
         var card = SyntheticCard.Student();
-        var (result, covered) = Cover(card, new FakeOcr { Card = card, AlwaysSeesDigit = true });
+        var (result, covered) = Cover(card, new FakeOcr { Card = card, MissedDigit = true });
+        Assert.NotNull(covered);
+        Assert.InRange(SyntheticCard.InkShare(covered, FakeOcr.MissedDigitBox), 0.95, 1);
+        Assert.Equal(0, SyntheticCard.InkShare(covered, Box(card, "Sara")));
+        Assert.Equal("covered after 2 checks", result.Reason);
+    }
+
+    [Fact]
+    public void Digits_that_keep_turning_up_mean_no_copy()
+    {
+        var card = SyntheticCard.Student();
+        var (result, covered) = Cover(card, new FakeOcr { Card = card, StubbornDigit = true });
         Assert.Null(covered);
         Assert.StartsWith("digits still readable", result.Reason);
+    }
+
+    [Theory]
+    [InlineData(90)]
+    [InlineData(180)]
+    [InlineData(270)]
+    public void Boxes_read_on_a_rotated_copy_map_back(int degrees)
+    {
+        using var bmp = new SKBitmap(300, 200);
+        bmp.Erase(SKColors.White);
+        var box = new SKRectI(40, 30, 70, 50);
+        for (var y = box.Top; y < box.Bottom; y++) for (var x = box.Left; x < box.Right; x++) bmp.SetPixel(x, y, SKColors.Black);
+        using var rotated = CardCover.Rotate(bmp, degrees);
+        // Find the black box on the rotated copy, as OCR would, then map it back.
+        int minX = int.MaxValue, minY = int.MaxValue, maxX = 0, maxY = 0;
+        for (var y = 0; y < rotated.Height; y++)
+            for (var x = 0; x < rotated.Width; x++)
+                if (rotated.GetPixel(x, y).Red < 100) (minX, minY, maxX, maxY) = (Math.Min(minX, x), Math.Min(minY, y), Math.Max(maxX, x + 1), Math.Max(maxY, y + 1));
+        var back = CardCover.Unrotate(new SKRectI(minX, minY, maxX, maxY), degrees, 300, 200);
+        Assert.InRange(Math.Abs(back.Left - box.Left) + Math.Abs(back.Top - box.Top) + Math.Abs(back.Right - box.Right) + Math.Abs(back.Bottom - box.Bottom), 0, 4);
     }
 
     [Fact]
@@ -235,37 +271,47 @@ public class CardCoverTests
         Assert.Equal(new OcrWord("2023-4471", 88, new SKRectI(510, 290, 760, 334)), words[1]);
     }
 
-    /// <summary>The real engine on a drawn card, where Tesseract is installed (CI and the API image).</summary>
-    [Fact]
-    public async Task Real_tesseract_covers_printed_digits_when_installed()
+    /// <summary>The real engine on drawn cards, where Tesseract is installed (CI and the API image).</summary>
+    [Theory]
+    [InlineData("student")]
+    [InlineData("bank")]
+    public async Task Real_tesseract_covers_printed_digits_when_installed(string kind)
     {
         var ocr = new TesseractOcr(Microsoft.Extensions.Options.Options.Create(new CoverOptions()), Microsoft.Extensions.Logging.Abstractions.NullLogger<TesseractOcr>.Instance);
         if (!ocr.IsAvailable) return; // Not installed on this machine: covered by CI.
         // SkiaSharp's no-dependency Linux build has no font lookup, so load a font file directly.
         var fontFile = new[] { "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", @"C:\Windows\Fonts\arial.ttf" }.FirstOrDefault(File.Exists);
         Assert.NotNull(fontFile);
+        var (background, colour, name, lines) = kind == "student"
+            ? (SKColors.White, SKColors.Black, "Sara", new (string, float, float)[]
+                { ("GUtech Student Card", 120, 56), ("Name: Sara", 260, 56), ("ID 20234471", 400, 56), ("Born 14/03/2004", 540, 56) })
+            // A dark bank card: grouped number, expiry and small print, light text.
+            : (new SKColor(0x7A, 0x12, 0x1E), new SKColor(0xF2, 0xEE, 0xE6), "SARA", new (string, float, float)[]
+                { ("Bank Muscat", 110, 60), ("4111 1111 1111 1111", 380, 72), ("VALID THRU 12/29", 480, 40), ("SARA AL HARTHY", 600, 52),
+                  ("Customer service 24795555", 700, 26) });
         using var bmp = new SKBitmap(1200, 760);
         using (var canvas = new SKCanvas(bmp))
         {
-            canvas.Clear(SKColors.White);
-            using var font = new SKFont(SKTypeface.FromFile(fontFile), 56);
-            using var ink = new SKPaint { Color = SKColors.Black, IsAntialias = true };
-            canvas.DrawText("GUtech Student Card", 80, 120, font, ink);
-            canvas.DrawText("Name: Sara", 80, 260, font, ink);
-            canvas.DrawText("ID 20234471", 80, 400, font, ink);
-            canvas.DrawText("Born 14/03/2004", 80, 540, font, ink);
+            canvas.Clear(background);
+            using var typeface = SKTypeface.FromFile(fontFile);
+            using var ink = new SKPaint { Color = colour, IsAntialias = true };
+            foreach (var (text, y, size) in lines)
+            {
+                using var font = new SKFont(typeface, size);
+                canvas.DrawText(text, 80, y, font, ink);
+            }
         }
         using var img = SKImage.FromBitmap(bmp);
         var before = await ocr.ReadAsync(bmp, CancellationToken.None);
-        Assert.Contains(before, w => w.Text.Contains("Sara"));
+        Assert.Contains(before, w => w.Text.Contains(name));
         Assert.Contains(before, w => w.Text.Any(char.IsDigit));
 
         var result = await new CardCover(ocr).CoverAsync(img.Encode(SKEncodedImageFormat.Jpeg, 92).ToArray(), CancellationToken.None);
-        Assert.NotNull(result.Jpeg);
+        Assert.True(result.Jpeg is not null, result.Reason);
         using var covered = SKBitmap.Decode(result.Jpeg);
         var after = await ocr.ReadAsync(covered, CancellationToken.None);
-        Assert.DoesNotContain(after, w => w.Text.Any(char.IsDigit));
-        Assert.Contains(after, w => w.Text.Contains("Sara"));
+        Assert.DoesNotContain(after, w => w.Text.Any(char.IsDigit) && CardCover.InkShare(covered, w.Box) < 0.5);
+        Assert.Contains(after, w => w.Text.Contains(name));
     }
 }
 
@@ -369,7 +415,7 @@ public class CardCoverFlowTests(TestApp app) : IClassFixture<TestApp>
     public async Task When_covering_fails_the_photo_stays_private()
     {
         app.Ocr.Card = SyntheticCard.Student();
-        app.Ocr.AlwaysSeesDigit = true;
+        app.Ocr.StubbornDigit = true;
         try
         {
             var finder = await app.SignedIn("finder.fail@gutech.edu.om");
@@ -382,7 +428,7 @@ public class CardCoverFlowTests(TestApp app) : IClassFixture<TestApp>
             Assert.Equal(HttpStatusCode.NotFound, (await admin.GetAsync($"/api/photos/{photoId}")).StatusCode);
             Assert.Equal(HttpStatusCode.OK, (await finder.GetAsync($"/api/photos/{photoId}")).StatusCode);
         }
-        finally { app.Ocr.AlwaysSeesDigit = false; }
+        finally { app.Ocr.StubbornDigit = false; }
     }
 
     [Fact]
