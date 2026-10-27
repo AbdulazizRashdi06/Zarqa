@@ -33,6 +33,21 @@ public class ReportFlowTests(TestApp app) : IClassFixture<TestApp>
 
     public static async Task<JsonElement> Json(HttpResponseMessage r) => await r.Content.ReadFromJsonAsync<JsonElement>();
 
+    private static MultipartFormDataContent TextForm(string kind, string text) => new() { { new StringContent(kind), "kind" }, { new StringContent(text), "text" } };
+
+    [Fact]
+    public async Task A_plain_wallet_is_not_a_card_report_but_a_wallet_with_a_card_is()
+    {
+        var http = await app.SignedIn("owner.wallets@gutech.edu.om");
+        var wallet = await Json(await http.PostAsync("/api/reports", TextForm("found", "Black leather wallet")));
+        Assert.Equal("Wallets & cards", wallet.GetProperty("category").GetString());
+        Assert.False(wallet.GetProperty("isSensitive").GetBoolean());
+        var withCard = await Json(await http.PostAsync("/api/reports", TextForm("found", "Brown wallet with a student card inside")));
+        Assert.True(withCard.GetProperty("isSensitive").GetBoolean());
+        var idCard = await Json(await http.PostAsync("/api/reports", TextForm("lost", "My national ID")));
+        Assert.True(idCard.GetProperty("isSensitive").GetBoolean());
+    }
+
     [Fact]
     public async Task Post_list_view_photo_and_close()
     {

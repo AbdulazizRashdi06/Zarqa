@@ -232,7 +232,9 @@ public static class ReportEndpoints
         r.LocationText = place?.Name ?? typed;
         r.EventDate = date;
         r.EventTime = time;
-        r.IsSensitive = Categories.IsSensitive(category, title, description);
+        // Only the user's own words count: Zarqa's own label "Wallets & cards" would make every wallet a card report
+        // (owner decision 2026-10-27). A category typed by an older two-field client still counts.
+        r.IsSensitive = Categories.IsSensitive(Categories.All.Contains(category) ? null : category, title, description);
         foreach (var p in r.Photos) p.IsSensitive = r.IsSensitive;
         return null;
     }
