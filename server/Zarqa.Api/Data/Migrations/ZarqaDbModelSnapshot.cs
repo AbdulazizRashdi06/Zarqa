@@ -381,6 +381,14 @@ namespace Zarqa.Api.Data.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("id");
 
+                    b.Property<int>("CoverState")
+                        .HasColumnType("integer")
+                        .HasColumnName("cover_state");
+
+                    b.Property<string>("CoveredKey")
+                        .HasColumnType("text")
+                        .HasColumnName("covered_key");
+
                     b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at");

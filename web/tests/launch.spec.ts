@@ -47,9 +47,9 @@ test('non-admin cannot open admin screen', async ({ page }) => {
   await expect(page).toHaveURL(/\/profile$/)
   expect(adminCalls).toBe(0)
 })
-test('admin can moderate and inspect logs without requesting sensitive photos', async ({ page }) => {
+test('admin can moderate and inspect logs without requesting private card photos', async ({ page }) => {
   await session(page, true)
-  const report = { id: 'report', title: 'Student ID', kind: 'found', status: 'Open', owner: 'finder@gutech.edu.om', ownerId: 'finder', ownerBanned: false, isSensitive: true, photoIds: ['private-photo'], description: 'A card', location: 'Library' }
+  const report = { id: 'report', title: 'Student ID', kind: 'found', status: 'Open', owner: 'finder@gutech.edu.om', ownerId: 'finder', ownerBanned: false, isSensitive: true, photoIds: [] as string[], description: 'A card', location: 'Library' }
   await page.route('**/api/admin/stats', route => route.fulfill({ json: { users: 2, newUsers30d: 2, returned: 0, pendingJobs: 1, failedJobs: 0, spendTodayUsd: 0, spend30dUsd: 0, reports: [], matches: [], decidedBy: [] } }))
   await page.route('**/api/admin/reports', route => route.fulfill({ json: [report] }))
   await page.route('**/api/admin/log?*', route => route.fulfill({ json: [{ id: 1, step: 'shortlist', payload: '{"count":0}', createdAt: '2026-10-02T12:00:00Z' }] }))
@@ -58,6 +58,7 @@ test('admin can moderate and inspect logs without requesting sensitive photos', 
   await page.route('**/api/admin/reports/report/close', route => { report.status = 'Closed'; return route.fulfill({ status: 204 }) })
   await page.route('**/api/admin/users/finder/ban', route => { report.ownerBanned = true; return route.fulfill({ status: 204 }) })
   await page.goto('/admin')
+  await expect(page.getByText('Card or ID: the photo stays private to the uploader')).toBeVisible()
   await page.getByRole('button', { name: 'View match log' }).click()
   await page.getByText(/shortlist ·/).click()
   await expect(page.getByText('{"count":0}')).toBeVisible()

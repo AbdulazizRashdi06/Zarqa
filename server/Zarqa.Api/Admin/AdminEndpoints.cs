@@ -54,7 +54,7 @@ public static class AdminEndpoints
                 owner = r.User!.Email,
                 ownerId = r.UserId,
                 ownerBanned = r.User.IsBanned,
-                photoIds = r.IsSensitive ? [] : r.Photos.OrderBy(p => p.Position).Select(p => p.Id).ToArray(),
+                photoIds = PhotoAccess.SharedIds(r),
                 r.CreatedAt,
             });
         });

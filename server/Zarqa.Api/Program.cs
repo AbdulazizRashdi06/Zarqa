@@ -38,6 +38,13 @@ else
 
 builder.Services.Configure<PhotoOptions>(builder.Configuration.GetSection("Photos"));
 builder.Services.AddSingleton<PhotoStore>();
+// Card/ID photos: local OCR covers the numbers (decisions.md, 2026-10-27). Never a network service.
+builder.Services.Configure<CoverOptions>(builder.Configuration.GetSection("Cover"));
+builder.Services.AddSingleton<IOcrEngine, TesseractOcr>();
+builder.Services.AddSingleton<CardCover>();
+builder.Services.AddSingleton<CardCoverWorker>();
+if (builder.Configuration.GetValue("Cover:Worker", true))
+    builder.Services.AddHostedService(sp => sp.GetRequiredService<CardCoverWorker>());
 builder.Services.AddScoped<MatchQueue>();
 
 // Matching (decisions.md: luna-debate). Without model keys the worker waits and jobs stay queued.

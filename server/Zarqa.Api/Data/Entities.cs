@@ -93,8 +93,14 @@ public class Photo
     public required string StorageKey { get; set; }
     public int Position { get; set; }
     public bool IsSensitive { get; set; }
+    /// <summary>Card/ID photos only: the locally covered copy (numbers and barcodes covered), shown and sent in place of the original.</summary>
+    public string? CoveredKey { get; set; }
+    public CoverState CoverState { get; set; }
     public DateTimeOffset CreatedAt { get; set; }
 }
+
+/// <summary>None: not a card photo, or posted before covering existed. Failed: stays private to the uploader.</summary>
+public enum CoverState { None, Pending, Ready, Failed }
 
 public class Match
 {

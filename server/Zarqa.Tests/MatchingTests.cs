@@ -86,14 +86,24 @@ public class MatchingTests : IClassFixture<TestApp>, IAsyncLifetime
     }
 
     [Fact]
-    public async Task Card_photos_never_reach_a_model()
+    public async Task Uncovered_card_photos_never_reach_a_model()
     {
         var (lost, found, _) = await PostPair("onyx", category: "Cards & IDs", photos: 1);
+        // Every test photo is the same coral JPEG; give the card photos their own bytes so they can be told apart.
+        await using var db = app.Db();
+        var cardUrls = new List<string>();
+        foreach (var key in await db.Photos.Where(p => p.ReportId == lost || p.ReportId == found).Select(p => p.StorageKey).ToListAsync())
+        {
+            var bytes = new SyntheticCard().Jpeg();
+            await File.WriteAllBytesAsync(Path.Combine(app.PhotoRoot, key), bytes);
+            cardUrls.Add($"data:image/jpeg;base64,{Convert.ToBase64String(bytes)}");
+        }
+        Assert.NotEmpty(cardUrls);
         await app.DrainMatchingAsync();
 
+        // Not covered yet (no OCR has run), so the card photos stay out; other reports' ordinary photos may be sent.
         Assert.NotEmpty(app.Models.LunaCalls);
-        Assert.All(app.Models.LunaCalls, c => Assert.Equal(0, c.Images));
-        await using var db = app.Db();
+        Assert.DoesNotContain(app.Models.LunaImages, cardUrls.Contains);
         Assert.True(await db.Matches.AnyAsync(m => m.LostId == lost && m.FoundId == found));
     }
 

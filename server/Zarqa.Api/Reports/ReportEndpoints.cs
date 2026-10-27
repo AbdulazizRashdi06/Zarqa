@@ -58,7 +58,7 @@ public static class ReportEndpoints
                 (title, category, description) = (parts.Title, parts.Category, parts.Description);
             }
             var error = await ApplyFields(report, title, category, description, form["locationName"], form["locationText"],
-                form["eventDate"], form["eventTime"], db, clock, ct);
+                form["eventDate"], form["eventTime"], db, photos, clock, ct);
             if (error is not null) return error;
             // Optional: the finder hands it to the RSA desk instead of meeting the owner.
             if (report.Kind == ReportKind.Found && form["dropAtRsa"].ToString() is "true" or "on" or "1")
@@ -76,7 +76,11 @@ public static class ReportEndpoints
                 await using var stream = file.OpenReadStream();
                 var key = await photos.SaveAsync(stream, PhotoStore.MaxEdge, ct);
                 if (key is null) return Errors.BadRequest("One of the files isn't a photo we can read.");
-                report.Photos.Add(new Photo { StorageKey = key, Position = report.Photos.Count, IsSensitive = report.IsSensitive, CreatedAt = now });
+                report.Photos.Add(new Photo
+                {
+                    StorageKey = key, Position = report.Photos.Count, IsSensitive = report.IsSensitive, CreatedAt = now,
+                    CoverState = report.IsSensitive ? CoverState.Pending : CoverState.None,
+                });
             }
 
             db.Reports.Add(report);
@@ -101,14 +105,15 @@ public static class ReportEndpoints
             return r is null ? Errors.NotFound() : Results.Ok(await ToDto(db, r, ct));
         });
 
-        reports.MapPatch("/{id:guid}", async (Guid id, PatchBody body, HttpContext http, ZarqaDb db, TimeProvider clock, MatchQueue queue, CancellationToken ct) =>
+        reports.MapPatch("/{id:guid}", async (Guid id, PatchBody body, HttpContext http, ZarqaDb db, PhotoStore photos, TimeProvider clock, MatchQueue queue,
+            CancellationToken ct) =>
         {
             var r = await db.Reports.Include(x => x.Photos).FirstOrDefaultAsync(x => x.Id == id && x.UserId == http.User.Id(), ct);
             if (r is null) return Errors.NotFound();
             if (r.Status is not ReportStatus.Open) return Errors.BadRequest("Only reports that are still searching can be edited.");
             var error = await ApplyFields(r, body.Title ?? r.Title, body.Category ?? r.CategoryText, body.Description ?? r.Description,
                 body.LocationName ?? (body.LocationText is null ? r.LocationName : null), body.LocationText ?? r.LocationText,
-                body.EventDate, body.EventTime, db, clock, ct, keepWhenMissing: r);
+                body.EventDate, body.EventTime, db, photos, clock, ct, keepWhenMissing: r);
             if (error is not null) return error;
             r.UpdatedAt = clock.GetUtcNow();
             await db.SaveChangesAsync(ct);
@@ -156,7 +161,11 @@ public static class ReportEndpoints
                 return Errors.BadRequest("This one is with the RSA desk, so it stays.");
             var hasChat = await db.Conversations.AnyAsync(c => c.Match!.LostId == id || c.Match!.FoundId == id, ct);
             if (hasChat) return Errors.BadRequest("This report has a chat, so it stays. You can close it instead.");
-            foreach (var p in r.Photos) photos.Delete(p.StorageKey);
+            foreach (var p in r.Photos)
+            {
+                photos.Delete(p.StorageKey);
+                if (p.CoveredKey is not null) photos.Delete(p.CoveredKey);
+            }
             db.Reports.Remove(r);
             await db.SaveChangesAsync(ct);
             return Results.NoContent();
@@ -176,8 +185,9 @@ public static class ReportEndpoints
         api.MapGet("/photos/{id:guid}", async (Guid id, HttpContext http, ZarqaDb db, PhotoStore photos, CancellationToken ct) =>
         {
             var photo = await db.Photos.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id, ct);
-            if (photo is null || !await PhotoAccess.CanViewAsync(db, http.User.Id(), photo, ct)) return Errors.NotFound();
-            var path = photos.PathFor(photo.StorageKey);
+            var key = photo is null ? null : await PhotoAccess.KeyToServeAsync(db, http.User.Id(), photo, ct);
+            if (key is null) return Errors.NotFound();
+            var path = photos.PathFor(key);
             if (!File.Exists(path)) return Errors.NotFound();
             http.Response.Headers.CacheControl = "private, max-age=86400";
             return Results.File(path, "image/jpeg");
@@ -188,7 +198,8 @@ public static class ReportEndpoints
 
     /// <summary>Validates and copies the editable fields. Null result means OK.</summary>
     private static async Task<IResult?> ApplyFields(Report r, string? title, string? category, string? description, string? locationName,
-        string? locationText, string? eventDate, string? eventTime, ZarqaDb db, TimeProvider clock, CancellationToken ct, Report? keepWhenMissing = null)
+        string? locationText, string? eventDate, string? eventTime, ZarqaDb db, PhotoStore photos, TimeProvider clock, CancellationToken ct,
+        Report? keepWhenMissing = null)
     {
         title = Clean(title);
         category = Clean(category);
@@ -235,7 +246,19 @@ public static class ReportEndpoints
         // Only the user's own words count: Zarqa's own label "Wallets & cards" would make every wallet a card report
         // (owner decision 2026-10-27). A category typed by an older two-field client still counts.
         r.IsSensitive = Categories.IsSensitive(Categories.All.Contains(category) ? null : category, title, description);
-        foreach (var p in r.Photos) p.IsSensitive = r.IsSensitive;
+        foreach (var p in r.Photos)
+        {
+            // A photo that becomes a card photo gets covered; one that stops being one needs no copy.
+            // Card photos posted before covering existed (state None) stay private, as their uploaders were told.
+            if (r.IsSensitive && !p.IsSensitive) p.CoverState = CoverState.Pending;
+            if (!r.IsSensitive && p.IsSensitive)
+            {
+                if (p.CoveredKey is not null) photos.Delete(p.CoveredKey);
+                p.CoveredKey = null;
+                p.CoverState = CoverState.None;
+            }
+            p.IsSensitive = r.IsSensitive;
+        }
         return null;
     }
 
@@ -298,21 +321,36 @@ public static class ReportEndpoints
 /// <summary>Who may see a photo. Found items are never browsable: only people a match connects.</summary>
 public static class PhotoAccess
 {
-    public static async Task<bool> CanViewAsync(ZarqaDb db, Guid viewer, Photo photo, CancellationToken ct)
+    /// <summary>
+    /// The file this viewer may see, or null. The uploader gets their original; anyone else gets a card/ID
+    /// photo only as its covered copy (numbers and barcodes covered, decisions.md 2026-10-27), never the original.
+    /// </summary>
+    public static async Task<string?> KeyToServeAsync(ZarqaDb db, Guid viewer, Photo photo, CancellationToken ct)
     {
         var report = await db.Reports.AsNoTracking().FirstAsync(r => r.Id == photo.ReportId, ct);
-        if (report.UserId == viewer) return true;
-        if (await db.Users.AnyAsync(u => u.Id == viewer && u.IsAdmin, ct)) return !photo.IsSensitive;
-        // RSA staff check items against descriptions at the desk; card/ID photos stay with the uploader.
-        if (!photo.IsSensitive && await db.Users.AnyAsync(u => u.Id == viewer && db.RsaMembers.Any(m => m.Email == u.Email), ct)) return true;
-        // Card/ID photos stay with the uploader for the pilot: the chat is where ownership gets proven.
-        if (photo.IsSensitive) return false;
+        if (report.UserId == viewer) return photo.StorageKey;
+        var key = SharedKey(photo);
+        if (key is null) return null;
+        if (await db.Users.AnyAsync(u => u.Id == viewer && u.IsAdmin, ct)) return key;
+        // RSA staff check items against descriptions at the desk.
+        if (await db.Users.AnyAsync(u => u.Id == viewer && db.RsaMembers.Any(m => m.Email == u.Email), ct)) return key;
 
-        return report.Kind == ReportKind.Found
-            // The lost-side owner sees the found item's photos for a match they're deciding on or confirmed.
+        var allowed = report.Kind == ReportKind.Found
+            // The lost-side owner sees the found item's photos for a match they're deciding on or confirmed:
+            // for a card, the covered copy is how they tell whether it's theirs.
             ? await db.Matches.AnyAsync(m => m.FoundId == report.Id && m.Lost!.UserId == viewer
                 && (m.Status == MatchStatus.Suggested || m.Status == MatchStatus.Confirmed), ct)
             // The finder sees the lost report's photos once the owner has claimed it.
             : await db.Matches.AnyAsync(m => m.LostId == report.Id && m.Found!.UserId == viewer && m.Status == MatchStatus.Confirmed, ct);
+        return allowed ? key : null;
     }
+
+    /// <summary>What anyone but the uploader may see: a normal photo's original, or a card photo's covered copy.</summary>
+    public static string? SharedKey(Photo p) =>
+        !p.IsSensitive ? p.StorageKey
+        : p.CoverState == CoverState.Ready ? p.CoveredKey
+        : null;
+
+    /// <summary>Photo ids to list for people other than the uploader (the access check above still applies per photo).</summary>
+    public static Guid[] SharedIds(Report r) => r.Photos.Where(p => SharedKey(p) is not null).OrderBy(p => p.Position).Select(p => p.Id).ToArray();
 }

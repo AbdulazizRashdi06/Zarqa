@@ -17,6 +17,8 @@ public sealed class FakeModels
     public double LunaScore { get; set; } = 0.85;
 
     public ConcurrentBag<(string SchemaName, int Images)> LunaCalls { get; } = [];
+    /// <summary>Every image data URL Luna was sent.</summary>
+    public ConcurrentBag<string> LunaImages { get; } = [];
     public int JevCalls;
 
     public FakeEmbedder Embedder => new(this);
@@ -30,6 +32,7 @@ public sealed class FakeModels
         OverallLevel = 4;
         LunaScore = 0.85;
         LunaCalls.Clear();
+        LunaImages.Clear();
         JevCalls = 0;
     }
 }
@@ -60,6 +63,7 @@ public sealed class FakeLuna(FakeModels m) : ILuna
     public Task<LunaResult> ChatJsonAsync(string system, string text, IReadOnlyList<string> images, string schemaName, JsonObject schema, CancellationToken ct)
     {
         m.LunaCalls.Add((schemaName, images.Count));
+        foreach (var i in images) m.LunaImages.Add(i);
         var json = schemaName switch
         {
             "advocate_for" => """{"argument":"Same blue metal bottle with a cat sticker.","strength":"strong"}""",

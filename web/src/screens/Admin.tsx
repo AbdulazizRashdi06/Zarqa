@@ -77,7 +77,8 @@ export default function Admin() {
     {!loading && !reports.filter(r => !status || r.status === status).length && <p>{t('admin.empty')}</p>}
     {reports.filter(r => !status || r.status === status).map(r => <Ticket className={s.card} key={r.id}>
       <h2>{r.title}</h2><p>{r.kind} · {r.status}<br />{r.owner}<br />{r.location}</p><p>{r.description}</p>
-      {r.isSensitive ? <p>{t('admin.sensitive')}</p> : <div className={s.photos}>{r.photoIds.map(id => <img key={id} src={`/api/photos/${id}`} alt={t('admin.photo', { title: r.title })} loading="lazy" />)}</div>}
+      <div className={s.photos}>{r.photoIds.map(id => <img key={id} src={`/api/photos/${id}`} alt={t('admin.photo', { title: r.title })} loading="lazy" />)}</div>
+      {r.isSensitive && <p>{t(r.photoIds.length > 0 ? 'admin.covered' : 'admin.sensitive')}</p>}
       <div className={s.actions}>
         <button disabled={busy || ['Closed', 'Returned', 'Expired'].includes(r.status)} onClick={() => moderate(`/admin/reports/${r.id}/close`, t('admin.closeConfirm', { title: r.title }))}>{t('admin.close')}</button>
         <button disabled={busy} onClick={() => moderate(`/admin/users/${r.ownerId}/${r.ownerBanned ? 'unban' : 'ban'}`, t(r.ownerBanned ? 'admin.unbanConfirm' : 'admin.banConfirm', { email: r.owner }))}>{t(r.ownerBanned ? 'admin.unban' : 'admin.ban')}</button>

@@ -104,3 +104,17 @@ test('a found report can go to the RSA and shows its drop code', async ({ page }
   await expect(page.getByText(/Take it to the RSA desk/).first()).toBeVisible()
   await page.screenshot({ path: 'test-results/rsa-drop-code-phone.png', fullPage: true })
 })
+
+test('a card handed in shows only its covered copy, with a note', async ({ page }) => {
+  await session(page)
+  const card = { ...item, title: 'Blue student card', isSensitive: true, photoIds: ['covered-photo'] }
+  const photos: string[] = []
+  await page.route('**/api/rsa/desk/*', route => route.fulfill({ json: { type: 'drop', item: card, claim: null } }))
+  await page.route('**/api/photos/**', route => { photos.push(route.request().url()); return route.fulfill({ status: 404 }) })
+  await page.goto('/rsa')
+  await page.getByLabel('Drop or pickup code').fill('K7P-4QM')
+  await page.getByRole('button', { name: 'Look it up' }).click()
+  await expect(page.getByText('numbers and barcodes covered')).toBeVisible()
+  await expect(page.getByRole('img', { name: /Blue student card/ })).toHaveCount(1)
+  expect(photos.every(u => u.endsWith('/api/photos/covered-photo'))).toBe(true)
+})

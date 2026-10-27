@@ -16,6 +16,10 @@ COPY server/Zarqa.Api/ Zarqa.Api/
 RUN dotnet publish Zarqa.Api/Zarqa.Api.csproj -c Release -o /out --no-restore
 
 FROM mcr.microsoft.com/dotnet/aspnet:10.0
+# Local OCR for covering numbers on card/ID photos (decisions.md, 2026-10-27). English + Arabic.
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends tesseract-ocr tesseract-ocr-eng tesseract-ocr-ara \
+    && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY --from=api /out ./
 COPY --from=web /web/dist ./wwwroot

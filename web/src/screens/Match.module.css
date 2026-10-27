@@ -118,6 +118,13 @@
   border: 3px solid var(--tan);
 }
 
+.coveredNote {
+  margin: -6px 0 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--ink-muted);
+}
+
 .reasons {
   display: flex;
   flex-direction: column;

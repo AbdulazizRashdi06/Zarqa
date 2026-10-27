@@ -13,6 +13,8 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 10.0.x
+      # The real-OCR test runs where Tesseract is installed (as in the API image).
+      - run: sudo apt-get update && sudo apt-get install -y --no-install-recommends tesseract-ocr tesseract-ocr-eng tesseract-ocr-ara fonts-dejavu-core
       - run: dotnet test server/Zarqa.slnx -c Release
 
   web:

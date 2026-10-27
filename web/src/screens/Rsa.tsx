@@ -55,9 +55,10 @@ function ItemCard({ item, children }: { item: Item; children?: ReactNode }) {
     <Ticket className={l.card}>
       <MonoLabel color="var(--ink-muted)">{[item.code, t(`rsa.state.${item.state}` as StringKey)].filter(Boolean).join(' · ')}</MonoLabel>
       <h2 className={s.itemTitle}>{item.title}</h2>
-      {item.isSensitive ? <p>{t('rsa.sensitive')}</p> : item.photoIds.length > 0 && (
+      {item.photoIds.length > 0 && (
         <div className={l.photos}>{item.photoIds.map((id) => <img key={id} src={`/api/photos/${id}`} alt={t('rsa.photo', { title: item.title })} loading="lazy" />)}</div>
       )}
+      {item.isSensitive && <p>{t(item.photoIds.length > 0 ? 'rsa.covered' : 'rsa.sensitive')}</p>}
       {item.description && <p>{item.description}</p>}
       <p className={s.meta}>
         {[item.locationText || null, item.eventDate ? relativeDay(item.eventDate) : null, t('rsa.finder', { name: item.finderName })].filter(Boolean).join(' · ')}
