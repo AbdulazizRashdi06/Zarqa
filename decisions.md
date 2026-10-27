@@ -10,6 +10,7 @@ The decisions made while turning the uni matching prototype into a real app, and
 
 - The cut-off (0.65), the advocate prompts and the shortlist are unchanged. The benchmark's copy (`benchmark/src/reviewers/debate.js`) has the same wording.
 - **Not re-measured.** The owner asked not to run the benchmark, so the 97% recall / 100% precision figures describe the old wording. Expect higher recall on thin reports, and **more wrong suggestions**. The saved 1,000-report run had 24 pairs where Jev said at least "unclear" but scored under 0.65: 1 true, 23 wrong (3 of them lookalike traps). Not all of those will flip, but that is the direction. The pilot's confirm/reject outcomes are the check.
+- **Live result (2026-10-27).** After deploying, both wallet reports were queued again. The pair is now a suggested match at **0.736**. It was reviewed from each side, and the other review scored **0.555**: the same pair can land on either side of 0.65 from run to run, because the model output varies. Reviewing from both sides gives a thin pair two chances.
 - `/admin` has **Re-check open reports**, which queues every open report again after a matching change. Pairs already suggested, confirmed or rejected are not reviewed again.
 - **Open item:** the category name "Wallets & cards" contains "cards", so every wallet report counts as a card report, and its photos never reach a model. That keeps the strongest wallet evidence away from matching. Changing it needs the owner's decision under the card-photo rule.
 
