@@ -240,11 +240,14 @@ public class CardCoverTests
     {
         var ocr = new TesseractOcr(Microsoft.Extensions.Options.Options.Create(new CoverOptions()), Microsoft.Extensions.Logging.Abstractions.NullLogger<TesseractOcr>.Instance);
         if (!ocr.IsAvailable) return; // Not installed on this machine: covered by CI.
+        // SkiaSharp's no-dependency Linux build has no font lookup, so load a font file directly.
+        var fontFile = new[] { "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", @"C:\Windows\Fonts\arial.ttf" }.FirstOrDefault(File.Exists);
+        Assert.NotNull(fontFile);
         using var bmp = new SKBitmap(1200, 760);
         using (var canvas = new SKCanvas(bmp))
         {
             canvas.Clear(SKColors.White);
-            using var font = new SKFont(SKTypeface.FromFamilyName("DejaVu Sans") ?? SKTypeface.Default, 56);
+            using var font = new SKFont(SKTypeface.FromFile(fontFile), 56);
             using var ink = new SKPaint { Color = SKColors.Black, IsAntialias = true };
             canvas.DrawText("GUtech Student Card", 80, 120, font, ink);
             canvas.DrawText("Name: Sara", 80, 260, font, ink);
