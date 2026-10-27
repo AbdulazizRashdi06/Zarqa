@@ -6,6 +6,10 @@ import { chatJson } from "../openai.js";
 import { dateRelation, matchAliases, truncate } from "../text.js";
 import { usage } from "./luna.js";
 
+// Same as the app (decisions.md, 2026-10-27): similarity over proof. Runs before this change used the old wording.
+export const SIMILARITY_RULE =
+  "Judge by similarity, not proof: if the item type, colour and place agree and nothing concrete contradicts them, lean towards the same item. Missing details (no brand, marks, photos or time) are not evidence of different items; only concrete contradictions are.";
+
 // luna-debate: two Luna advocates argue the case, Jev decides.
 // The FOR advocate makes the strongest honest case that both reports describe the same
 // physical item; the AGAINST advocate makes the strongest honest case that they don't.
@@ -39,7 +43,7 @@ export const DEBATE_LEVELS = [
 const QUESTIONS = {
   same_item: {
     type: "noul",
-    instructions: "Weighing both advocates' cases against the two reports, do the LOST and FOUND reports describe the same physical item?",
+    instructions: "Weighing both advocates' cases against the two reports, do the LOST and FOUND reports describe the same physical item? " + SIMILARITY_RULE,
   },
   stronger_case: {
     type: "choice",
@@ -48,7 +52,7 @@ const QUESTIONS = {
   },
   overall: {
     type: "score",
-    instructions: "How likely is it that the found item is exactly the item described in the lost report?",
+    instructions: "How likely is it that the found item is exactly the item described in the lost report? " + SIMILARITY_RULE,
     criteria: DEBATE_LEVELS,
   },
 };

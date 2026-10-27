@@ -358,5 +358,8 @@
   "rsa.team.remove": "Remove",
   "rsa.team.removeConfirm": "Remove {email} from the RSA desk?",
   "rsa.team.you": "you",
-  "rsa.loading": "Loading…"
+  "rsa.loading": "Loading…",
+  "admin.rematch": "Re-check open reports",
+  "admin.rematchConfirm": "Run matching again for every open report? Pairs that were already suggested or rejected stay as they are.",
+  "admin.rematchDone": "Queued {n} open reports. Matches show up in the next few minutes."
 }
