@@ -28,6 +28,15 @@ public class AdminAndRetentionTests(TestApp app) : IClassFixture<TestApp>
         var troll = await app.SignedIn("troll@gutech.edu.om");
         var report = (await Json(await troll.PostAsync("/api/reports", Form("found", "Totally real item", "Other")))).GetProperty("id").GetGuid();
 
+        // Re-check queues every open report again (after a matching change).
+        await using (var jobs = app.Db())
+            await jobs.MatchJobs.Where(j => j.ReportId == report).ExecuteUpdateAsync(x => x.SetProperty(j => j.CompletedAt, DateTimeOffset.UtcNow));
+        var queued = (await Json(await admin.PostAsync("/api/admin/rematch", null))).GetProperty("queued").GetInt32();
+        Assert.True(queued >= 1);
+        await using (var jobs = app.Db())
+            Assert.True(await jobs.MatchJobs.AnyAsync(j => j.ReportId == report && j.CompletedAt == null));
+        Assert.Equal(HttpStatusCode.Forbidden, (await troll.PostAsync("/api/admin/rematch", null)).StatusCode);
+
         var listed = await Json(await admin.GetAsync("/api/admin/reports"));
         var row = listed.EnumerateArray().First(r => r.GetProperty("id").GetGuid() == report);
         Assert.Equal("troll@gutech.edu.om", row.GetProperty("owner").GetString());

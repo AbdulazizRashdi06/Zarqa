@@ -2,6 +2,17 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-10-27: Jev judges by similarity, not proof
+
+**Decision (owner).** Two reports of a black wallet at GU2 should match. In the pilot they didn't: both advocates called their case weak, Jev answered "unclear, could be either", and the pair scored 0.48 against the 0.65 cut-off. Both Jev questions (`same_item`, `overall`) now end with a fixed instruction:
+
+> Judge by similarity, not proof: if the item type, colour and place agree and nothing concrete contradicts them, lean towards the same item. Missing details (no brand, marks, photos or time) are not evidence of different items; only concrete contradictions are.
+
+- The cut-off (0.65), the advocate prompts and the shortlist are unchanged. The benchmark's copy (`benchmark/src/reviewers/debate.js`) has the same wording.
+- **Not re-measured.** The owner asked not to run the benchmark, so the 97% recall / 100% precision figures describe the old wording. Expect higher recall on thin reports, and **more wrong suggestions**. The saved 1,000-report run had 24 pairs where Jev said at least "unclear" but scored under 0.65: 1 true, 23 wrong (3 of them lookalike traps). Not all of those will flip, but that is the direction. The pilot's confirm/reject outcomes are the check.
+- `/admin` has **Re-check open reports**, which queues every open report again after a matching change. Pairs already suggested, confirmed or rejected are not reviewed again.
+- **Open item:** the category name "Wallets & cards" contains "cards", so every wallet report counts as a card report, and its photos never reach a model. That keeps the strongest wallet evidence away from matching. Changing it needs the owner's decision under the card-photo rule.
+
 ## 2026-10-26: The RSA desk
 
 **Decision.** After the owner met the campus RSA office, Zarqa got an RSA desk:

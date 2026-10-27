@@ -21,6 +21,7 @@ export default function Admin() {
   const [logLoaded, setLogLoaded] = useState(false)
   const [status, setStatus] = useState('')
   const [error, setError] = useState('')
+  const [notice, setNotice] = useState('')
   const [busy, setBusy] = useState(false)
   const [loading, setLoading] = useState(true)
   const logVersion = useRef(0)
@@ -44,6 +45,14 @@ export default function Admin() {
       setStats(a); setReports(b)
     } catch (e) { explain(e) } finally { setBusy(false) }
   }
+  async function rematch() {
+    if (busy || !window.confirm(t('admin.rematchConfirm'))) return
+    setBusy(true); setError(''); setNotice('')
+    try {
+      const r = await api<{ queued: number }>('/admin/rematch', { method: 'POST' })
+      setNotice(t('admin.rematchDone', { n: r.queued }))
+    } catch (e) { explain(e) } finally { setBusy(false) }
+  }
   async function loadLog(id: string) {
     const version = ++logVersion.current
     setLogReport(id); setLogs([]); setLogLoaded(false); setError('')
@@ -57,6 +66,8 @@ export default function Admin() {
     <h1>{t('admin.title')}</h1>
     {error && <p role="alert" className={s.error}>{error}</p>}
     {loading && <p role="status">{t('admin.loading')}</p>}
+    <div className={s.actions}><button type="button" disabled={busy} onClick={rematch}>{t('admin.rematch')}</button></div>
+    {notice && <p role="status" className={s.notice}>{notice}</p>}
     {stats && <>
       <div className={s.tiles}>{metrics.map(key => <div className={s.tile} key={key}><strong>{key.startsWith('spend') ? `$${stats[key].toFixed(4)}` : stats[key]}</strong><span>{t(`admin.${key}` as StringKey)}</span></div>)}</div>
       <Ticket className={s.card}>{(['reports', 'matches', 'decidedBy'] as const).map(key => <section key={key}><h2>{t(`admin.${key}` as StringKey)}</h2>{stats[key].map((g, i) => <p key={i}>{[g.kind, g.status, g.by].filter(Boolean).join(' / ')}: {g.count}</p>)}</section>)}</Ticket>

@@ -73,12 +73,18 @@ public sealed class DebateReviewer(ILuna luna, IJev jev, AliasIndex aliases)
         "Almost certainly the same physical item",
     ];
 
+    /// <summary>
+    /// Owner decision (2026-10-27, decisions.md): a lost-and-found match rests on similarity, so thin reports
+    /// ("black wallet" at GU2) shouldn't be held back for lacking proof. Not re-measured on the benchmark.
+    /// </summary>
+    public const string SimilarityRule = "Judge by similarity, not proof: if the item type, colour and place agree and nothing concrete contradicts them, lean towards the same item. Missing details (no brand, marks, photos or time) are not evidence of different items; only concrete contradictions are.";
+
     private static JsonObject Questions() => new()
     {
         ["same_item"] = new JsonObject
         {
             ["type"] = "noul",
-            ["instructions"] = "Weighing both advocates' cases against the two reports, do the LOST and FOUND reports describe the same physical item?",
+            ["instructions"] = "Weighing both advocates' cases against the two reports, do the LOST and FOUND reports describe the same physical item? " + SimilarityRule,
         },
         ["stronger_case"] = new JsonObject
         {
@@ -94,7 +100,7 @@ public sealed class DebateReviewer(ILuna luna, IJev jev, AliasIndex aliases)
         ["overall"] = new JsonObject
         {
             ["type"] = "score",
-            ["instructions"] = "How likely is it that the found item is exactly the item described in the lost report?",
+            ["instructions"] = "How likely is it that the found item is exactly the item described in the lost report? " + SimilarityRule,
             ["criteria"] = new JsonArray(Levels.Select(l => (JsonNode)JsonValue.Create(l)!).ToArray()),
         },
     };

@@ -73,6 +73,14 @@ public static class AdminEndpoints
         admin.MapPost("/users/{id:guid}/ban", (Guid id, ZarqaDb db, CancellationToken ct) => SetBanned(db, id, true, ct));
         admin.MapPost("/users/{id:guid}/unban", (Guid id, ZarqaDb db, CancellationToken ct) => SetBanned(db, id, false, ct));
 
+        // After a matching change: review every open report again. Pairs already suggested, confirmed or rejected stay as they are.
+        admin.MapPost("/rematch", async (ZarqaDb db, Matching.MatchQueue queue, CancellationToken ct) =>
+        {
+            var ids = await db.Reports.Where(r => r.Status == ReportStatus.Open).Select(r => r.Id).ToListAsync(ct);
+            foreach (var id in ids) await queue.EnqueueAsync(id, ct);
+            return Results.Ok(new { queued = ids.Count });
+        });
+
         admin.MapGet("/log", async (Guid? reportId, ZarqaDb db, CancellationToken ct) =>
         {
             var q = db.ReviewLogs.AsNoTracking().AsQueryable();
