@@ -21,6 +21,8 @@ public sealed partial class CardCover(IOcrEngine ocr)
     public const float SureConfidence = 80;
     /// <summary>A copy that's mostly covered says nothing: keep the photo private instead.</summary>
     public const double MaxCoveredShare = 0.7;
+    /// <summary>The re-check in the other three orientations: real Tesseract reads upside-down letters as digits at up to ~65.</summary>
+    public const float SidewaysConfidence = 70;
     public static readonly SKColor Ink = new(0x22, 0x1F, 0x1A);
 
     public async Task<CoverResult> CoverAsync(byte[] jpeg, CancellationToken ct)
@@ -71,7 +73,12 @@ public sealed partial class CardCover(IOcrEngine ocr)
             {
                 using var rotated = Rotate(check, degrees);
                 using var work = Scale(rotated, scale);
-                if ((await ocr.ReadAsync(work, ct)).Any(w => w.Text.Any(char.IsDigit))) return CoverResult.Fail("digits still readable");
+                var left = (await ocr.ReadAsync(work, ct)).Where(w => w.Text.Any(char.IsDigit)
+                    // A cover block itself reads as "1" or "|"; that's not a leak.
+                    && InkShare(work, w.Box) < 0.5
+                    // Sideways or upside down, letters get misread as digits; count only confident reads there.
+                    && (degrees == 0 || w.Confidence >= SidewaysConfidence));
+                if (left.Any()) return CoverResult.Fail($"digits still readable ({degrees}°)");
             }
             return new CoverResult(output, "covered");
         }
@@ -200,6 +207,22 @@ public sealed partial class CardCover(IOcrEngine ocr)
                 gray[y * image.Width + x] = (byte)((src[i] * 299 + src[i + 1] * 587 + src[i + 2] * 114) / 1000);
             }
         return gray;
+    }
+
+    /// <summary>Share of a box (in this image's pixels) that is the cover colour.</summary>
+    public static double InkShare(SKBitmap image, SKRectI box)
+    {
+        var r = SKRectI.Intersect(box, new SKRectI(0, 0, image.Width, image.Height));
+        if (r.IsEmpty) return 0;
+        int ink = 0, n = 0;
+        for (var y = r.Top; y < r.Bottom; y += 2)
+            for (var x = r.Left; x < r.Right; x += 2)
+            {
+                var c = image.GetPixel(x, y);
+                if (Math.Abs(c.Red - Ink.Red) < 16 && Math.Abs(c.Green - Ink.Green) < 16 && Math.Abs(c.Blue - Ink.Blue) < 16) ink++;
+                n++;
+            }
+        return n == 0 ? 0 : (double)ink / n;
     }
 
     /// <summary>Words on the same line: their vertical extents overlap by at least half the shorter one.</summary>

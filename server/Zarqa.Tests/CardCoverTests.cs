@@ -107,7 +107,7 @@ public sealed class FakeOcr : IOcrEngine
     public bool IsAvailable { get; set; } = true;
     public SyntheticCard? Card { get; set; }
     public bool Throw { get; set; }
-    /// <summary>Simulates a digit the covering missed: it is read on every pass.</summary>
+    /// <summary>Simulates a digit the covering missed: the first read doesn't see it, the re-check does.</summary>
     public bool AlwaysSeesDigit { get; set; }
     public int Calls;
 
@@ -116,11 +116,12 @@ public sealed class FakeOcr : IOcrEngine
         Interlocked.Increment(ref Calls);
         if (Throw) throw new OcrException("tesseract exited with 1");
         var words = new List<OcrWord>();
-        if (AlwaysSeesDigit) words.Add(new OcrWord("7", 40, new SKRectI(5, 5, 20, 20)));
         var mark = image.GetPixel(4, 4);
         if (Card is null || image.Width != SyntheticCard.Width || mark.Red < 180 || mark.Green > 90) return Task.FromResult<IReadOnlyList<OcrWord>>(words);
         foreach (var (text, box) in Card.Words)
             if (SyntheticCard.InkShare(image, box) < 0.5) words.Add(new OcrWord(text, 91, box));
+        // A digit the first read missed (so it was never covered) turns up when the covered copy is re-checked.
+        if (AlwaysSeesDigit && words.Count < Card.Words.Count) words.Add(new OcrWord("7", 90, new SKRectI(1100, 40, 1130, 80)));
         return Task.FromResult<IReadOnlyList<OcrWord>>(words);
     }
 }
@@ -215,7 +216,7 @@ public class CardCoverTests
         var card = SyntheticCard.Student();
         var (result, covered) = Cover(card, new FakeOcr { Card = card, AlwaysSeesDigit = true });
         Assert.Null(covered);
-        Assert.Equal("digits still readable", result.Reason);
+        Assert.StartsWith("digits still readable", result.Reason);
     }
 
     [Fact]
