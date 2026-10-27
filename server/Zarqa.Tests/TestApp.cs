@@ -26,6 +26,7 @@ public sealed class TestApp : WebApplicationFactory<Program>, IAsyncLifetime
     public CapturingEmailSender Emails { get; } = new();
     public FakeModels Models { get; } = new();
     public FakePush Push { get; } = new();
+    public FakeOcr Ocr { get; } = new();
     public string PhotoRoot { get; } = Path.Combine(Path.GetTempPath(), $"zarqa-photos-{Guid.NewGuid():N}");
 
     public async Task InitializeAsync()
@@ -67,6 +68,7 @@ public sealed class TestApp : WebApplicationFactory<Program>, IAsyncLifetime
         // Tests drive the matching worker step by step (MatchWorker.RunOneAsync).
         builder.UseSetting("Matching:Worker", "false");
         builder.UseSetting("Retention:Worker", "false");
+        builder.UseSetting("Cover:Worker", "false");
         builder.UseSetting("Admin:Emails", "admin@gutech.edu.om");
         builder.ConfigureServices(s =>
         {
@@ -75,6 +77,7 @@ public sealed class TestApp : WebApplicationFactory<Program>, IAsyncLifetime
             s.Replace(ServiceDescriptor.Transient<Zarqa.Api.Matching.ILuna>(_ => Models.Luna));
             s.Replace(ServiceDescriptor.Transient<Zarqa.Api.Matching.IJev>(_ => Models.Jev));
             s.Replace(ServiceDescriptor.Singleton<Zarqa.Api.Notifications.IPushSender>(Push));
+            s.Replace(ServiceDescriptor.Singleton<Zarqa.Api.Photos.IOcrEngine>(Ocr));
         });
     }
 

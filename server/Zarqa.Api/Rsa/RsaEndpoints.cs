@@ -218,7 +218,7 @@ public static class RsaEndpoints
     };
 
     private static ItemDto ToItem(Report r) => new(r.Id, RsaCodes.Format(r.DropCode), r.Title, r.Description, r.CategoryNorm, r.LocationText,
-        r.EventDate?.ToString("yyyy-MM-dd"), r.IsSensitive, r.IsSensitive ? [] : r.Photos.OrderBy(p => p.Position).Select(p => p.Id).ToArray(),
+        r.EventDate?.ToString("yyyy-MM-dd"), r.IsSensitive, PhotoAccess.SharedIds(r),
         State(r), r.User is null ? "GUtech student" : MeEndpoints.DisplayName(r.User), r.CreatedAt, r.RsaReceivedAt);
 
     // Staff check the item against what the owner wrote, so they see the owner's own words and first name.

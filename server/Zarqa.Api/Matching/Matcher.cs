@@ -6,6 +6,8 @@ using Pgvector.EntityFrameworkCore;
 using Zarqa.Api.Data;
 using Zarqa.Api.Photos;
 
+using Zarqa.Api.Reports;
+
 namespace Zarqa.Api.Matching;
 
 public enum MatchOutcome { Done, Retry, Postponed, NotConfigured }
@@ -181,7 +183,8 @@ public sealed class Matcher(
         "",
         r.EventDate?.ToString("yyyy-MM-dd"),
         r.IsSensitive,
-        r.Photos.OrderBy(p => p.Position).Select(p => photos.PathFor(p.StorageKey)).ToList());
+        // Card/ID photos only as their covered copy, never the original (owner decision 2026-10-27).
+        r.Photos.OrderBy(p => p.Position).Select(PhotoAccess.SharedKey).OfType<string>().Select(photos.PathFor).ToList());
 
     public static string MatchText(Report r) =>
         r.Description.StartsWith(r.Title, StringComparison.OrdinalIgnoreCase) ? r.Description

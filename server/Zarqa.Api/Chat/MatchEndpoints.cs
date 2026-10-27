@@ -4,6 +4,8 @@ using Zarqa.Api.Data;
 using Zarqa.Api.Matching;
 using Zarqa.Api.Rsa;
 
+using Zarqa.Api.Reports;
+
 namespace Zarqa.Api.Chat;
 
 /// <summary>The lost owner's decision on a suggested match (design: Match screen).</summary>
@@ -14,7 +16,8 @@ public static class MatchEndpoints
 
     public const string Opening = "You two matched. Ask a question only the owner would know, and meet somewhere public.";
 
-    public record SideDto(Guid Id, string Title, string Description, string? CategoryKey, string LocationText, string? EventDate, string? EventTime, Guid[] PhotoIds, DateTimeOffset CreatedAt);
+    public record SideDto(Guid Id, string Title, string Description, string? CategoryKey, string LocationText, string? EventDate, string? EventTime, Guid[] PhotoIds, DateTimeOffset CreatedAt,
+        bool IsSensitive);
     /// <summary>AtRsa: the finder handed it to the RSA desk, so "It's mine" gives a pickup code instead of a chat.</summary>
     public record MatchDto(Guid Id, string Status, double FinalScore, string Strength, string[] Reasons, DateTimeOffset CreatedAt, SideDto Lost, SideDto Found,
         Guid? ConversationId, bool AtRsa, bool RsaReceived, string? PickupCode, bool Collected);
@@ -91,5 +94,5 @@ public static class MatchEndpoints
             .FirstOrDefaultAsync(m => m.Id == id && m.Lost!.UserId == me, ct);
 
     private static SideDto Side(Report r) => new(r.Id, r.Title, r.Description, r.CategoryNorm, r.LocationText, r.EventDate?.ToString("yyyy-MM-dd"),
-        r.EventTime?.ToString("HH:mm"), r.IsSensitive ? [] : r.Photos.OrderBy(p => p.Position).Select(p => p.Id).ToArray(), r.CreatedAt);
+        r.EventTime?.ToString("HH:mm"), PhotoAccess.SharedIds(r), r.CreatedAt, r.IsSensitive);
 }

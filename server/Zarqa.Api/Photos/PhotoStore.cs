@@ -38,6 +38,12 @@ public sealed class PhotoStore(Microsoft.Extensions.Options.IOptions<PhotoOption
             return null;
         }
 
+        return await SaveJpegAsync(jpeg, ct);
+    }
+
+    /// <summary>Stores a JPEG this app made itself (e.g. a covered card photo). Returns the storage key.</summary>
+    public async Task<string> SaveJpegAsync(byte[] jpeg, CancellationToken ct)
+    {
         var key = $"{DateTime.UtcNow:yyyy/MM}/{Guid.NewGuid():N}.jpg";
         var path = PathFor(key);
         Directory.CreateDirectory(Path.GetDirectoryName(path)!);

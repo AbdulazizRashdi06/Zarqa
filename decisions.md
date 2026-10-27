@@ -2,6 +2,17 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-10-27: Card photos: numbers covered locally
+
+**Decision (owner).** A card or ID photo should help the owner recognise their card, so new card photos get a **covered copy**. Local OCR covers the numbers, and only that copy is shown or sent anywhere.
+- **What's covered:** every word with a digit (Latin or Arabic-Indic), the whole row for a card or ID number (6 or more digits on a line), machine-readable (MRZ) lines edge to edge, and barcodes and QR codes, which are found as clusters of sharp edges. **Names, faces, logos and signatures stay visible.** The owner chose this over "name only", because the point is to recognise the card.
+- **Engine:** Tesseract 5 (Debian `tesseract-ocr`, English + Arabic) inside the API image, as a CLI process, with no network service. One run at a time, one thread, a 20 s limit per pass. A photo takes up to 8 passes: 4 rotations to read it, then 4 to re-check.
+- **Fails closed:** no readable text, more than 70% to cover, any OCR error, or **any digit still read on the covered copy in any orientation**, and there is no copy at all. The photo stays private to the uploader, as before. Raised bank-card numbers will often land here. OCR text is never logged.
+- **Who sees the covered copy:** the lost-side owner **while deciding on a suggestion**, before "It's mine" (owner's choice: that is when it helps). Also the finder after a claim, RSA staff and admins. Same rules as non-card photos. Accepted risk: a wrong suggestion shows a stranger the card's name and face.
+- **Models:** the owner said yes to Luna seeing the covered copy. `Matcher.ToInput` passes covered copies only; originals never reach a model. When a report's photos are covered, it is matched again so the reviewers see them.
+- **Not retroactive:** card photos posted before this stay private, because their uploaders were told so.
+- **Not measured:** the covering was tested on synthetic cards only (drawn in code). No real IDs were used or committed. Check the first live covered copies by hand.
+
 ## 2026-10-27: Jev judges by similarity, not proof
 
 **Decision (owner).** Two reports of a black wallet at GU2 should match. In the pilot they didn't: both advocates called their case weak, Jev answered "unclear, could be either", and the pair scored 0.48 against the 0.65 cut-off. Both Jev questions (`same_item`, `overall`) now end with a fixed instruction:
@@ -278,6 +289,7 @@ Bare floor names such as "2nd floor" are left out because several places share t
 - [ ] **Replace the benchmark's reconstructed `luna` baseline** with the real `processReport` code (prompt and overlap weights).
 - [ ] **Measure real API latency.** Benchmark Luna timings include Codex CLI start-up.
 - [x] **Pilot model access.** OpenAI API embeddings, Luna through a private ChatGPT-authenticated Codex service on the VPS, and direct Jev are configured and live-tested. API-key inference remains the recommended default for production automation; this owner-selected route uses ChatGPT plan allowance.
-- [x] **ID and bank card reports in the app.** Photos skip every model and are visible only to the uploader; matching uses text alone.
+- [x] **ID and bank card reports in the app.** Originals are visible only to the uploader and skip every model; since 2026-10-27 a locally covered copy (numbers and barcodes covered) is shown to a possible owner and sent to Luna.
+- [ ] **Check covered card photos on real cards** (by hand, on the live site, without committing them): how often covering fails closed, and whether anything readable slips through.
 - [x] **Pilot Privacy and Terms drafts** are public; legal review remains required before wide launch.
 - [x] **Jev access for this pilot.** The owner's direct TypeSafe API route succeeded in the live matching test. Keep the plain-Luna fallback for provider failures.

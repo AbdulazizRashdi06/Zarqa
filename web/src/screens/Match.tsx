@@ -8,7 +8,7 @@ import { api, ApiError } from '../lib/api'
 import { clockTime, relativeDay } from '../lib/dates'
 import s from './Match.module.css'
 
-type Side = { id: string; title: string; description: string; categoryKey: string | null; locationText: string; eventDate: string | null; eventTime: string | null; photoIds: string[]; createdAt: string }
+type Side = { id: string; title: string; description: string; categoryKey: string | null; locationText: string; eventDate: string | null; eventTime: string | null; photoIds: string[]; createdAt: string; isSensitive: boolean }
 type MatchView = {
   id: string
   status: 'Suggested' | 'Confirmed' | 'Rejected' | 'Expired'
@@ -168,6 +168,7 @@ export default function Match() {
           ))}
         </div>
       )}
+      {match.found.isSensitive && match.found.photoIds.length > 0 && <p className={s.coveredNote}>{t('match.covered')}</p>}
 
       {match.reasons.length > 0 && (
         <div className={s.reasons}>

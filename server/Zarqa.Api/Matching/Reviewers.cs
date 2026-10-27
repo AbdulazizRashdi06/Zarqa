@@ -285,18 +285,19 @@ public static class JevReaders
     }
 }
 
-/// <summary>Photos the reviewers may see: the first 2 per report, never a card/ID report's.</summary>
+/// <summary>
+/// Photos the reviewers may see: the first 2 per report. For a card/ID report the matcher passes only the
+/// covered copies (numbers and barcodes covered locally), so originals never reach a model.
+/// </summary>
 public static class Photos
 {
     public const int PerReport = 2;
 
-    public static int CountFor(MatchInput r) => r.IsSensitive ? 0 : Math.Min(PerReport, r.PhotoPaths.Count(File.Exists));
+    public static int CountFor(MatchInput r) => Math.Min(PerReport, r.PhotoPaths.Count(File.Exists));
 
     public static IReadOnlyList<string> DataUrls(MatchInput lost, MatchInput found) =>
         [.. Urls(lost), .. Urls(found)];
 
     private static IEnumerable<string> Urls(MatchInput r) =>
-        r.IsSensitive
-            ? []
-            : r.PhotoPaths.Where(File.Exists).Take(PerReport).Select(p => $"data:image/jpeg;base64,{Convert.ToBase64String(File.ReadAllBytes(p))}");
+        r.PhotoPaths.Where(File.Exists).Take(PerReport).Select(p => $"data:image/jpeg;base64,{Convert.ToBase64String(File.ReadAllBytes(p))}");
 }

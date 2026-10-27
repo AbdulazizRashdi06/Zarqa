@@ -59,7 +59,11 @@ public sealed class Retention(ZarqaDb db, PhotoStore photos, IEmailSender email,
         await db.Messages.Where(m => chatIds.Contains(m.ConversationId)).ExecuteDeleteAsync(ct);
         await db.ConversationReads.Where(r => chatIds.Contains(r.ConversationId)).ExecuteDeleteAsync(ct);
         await db.Conversations.Where(c => chatIds.Contains(c.Id)).ExecuteDeleteAsync(ct);
-        foreach (var key in await db.Photos.Where(p => ids.Contains(p.ReportId)).Select(p => p.StorageKey).ToListAsync(ct)) photos.Delete(key);
+        foreach (var p in await db.Photos.Where(p => ids.Contains(p.ReportId)).Select(p => new { p.StorageKey, p.CoveredKey }).ToListAsync(ct))
+        {
+            photos.Delete(p.StorageKey);
+            if (p.CoveredKey is not null) photos.Delete(p.CoveredKey);
+        }
         await db.MatchJobs.Where(j => ids.Contains(j.ReportId)).ExecuteDeleteAsync(ct);
         await db.Reports.Where(r => ids.Contains(r.Id)).ExecuteDeleteAsync(ct); // photos and matches cascade
     }

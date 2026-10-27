@@ -86,7 +86,7 @@ public class MatchingTests : IClassFixture<TestApp>, IAsyncLifetime
     }
 
     [Fact]
-    public async Task Card_photos_never_reach_a_model()
+    public async Task Uncovered_card_photos_never_reach_a_model()
     {
         var (lost, found, _) = await PostPair("onyx", category: "Cards & IDs", photos: 1);
         await app.DrainMatchingAsync();
