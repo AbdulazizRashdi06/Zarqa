@@ -38,6 +38,7 @@ The mascot is a girl inspired by Zarqa Al-Yamama: cream veil, blue eyes, two bra
 - `scripts/generate.py` fills the prompt and generates the image through the Codex CLI's image generation. It needs Pillow for the transparency check. Output goes to `mascot-output/`: the PNG, the exact prompt, a preview on white and the Codex log.
 - Judge images by `<name>.preview.jpg`. Some viewers show the transparent PNG with a dark glow that isn't really there.
 - Known drift: the gold cuffs on her braids sometimes disappear.
+- Animations: the **`zarqa-mascot-animation` skill** ([SKILL.md](.claude/skills/zarqa-mascot-animation/SKILL.md)) reuses the same locked prompt. Its routes are: procedural motion of an existing still (no redrawing, and it also writes CSS), Codex keyframe sprite sheets, and video-model clips from a start frame to an end frame on green, keyed back to transparent. The default is Gemini Omni Flash (`GEMINI_API_KEY` in `benchmark/.env`, which needs a billed project; the free tier allows 0 requests). Veo 3.1 Lite and Seedance on fal.ai use `FAL_KEY`. Google shut down Veo in the Gemini API on 2026-10-22. The user adds keys; only mascot art is ever sent.
 
 ## Running and deploying
 
