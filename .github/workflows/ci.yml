@@ -34,7 +34,7 @@ jobs:
       - run: npm run build
       - run: npx playwright install --with-deps chromium
       - run: npx playwright test
-      - run: node --test ../deploy/codex/gateway.test.mjs
+      - run: node --test ../deploy/codex/gateway.test.mjs ../deploy/codex/gateway.terra.test.mjs
 
   image:
     runs-on: ubuntu-latest

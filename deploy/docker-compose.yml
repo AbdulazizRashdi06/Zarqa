@@ -60,7 +60,7 @@ services:
     cap_drop: [ALL]
     # Up to CODEX_MAX_RUNNING (4) Codex processes at once; each needs roughly 150 MB and ~25 threads.
     mem_limit: 1g
-    pids_limit: 256
+    pids_limit: 1024   # Live value since 2026-10-24: 256 ran out when killed runs left codex processes behind.
 
   postgres:
     image: pgvector/pgvector:pg17
