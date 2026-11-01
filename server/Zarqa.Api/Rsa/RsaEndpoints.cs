@@ -1,8 +1,10 @@
 using System.Globalization;
+using System.Text.Json.Nodes;
 using Microsoft.EntityFrameworkCore;
 using Zarqa.Api.Auth;
 using Zarqa.Api.Data;
 using Zarqa.Api.Matching;
+using Zarqa.Api.Photos;
 using Zarqa.Api.Reports;
 using Zarqa.Api.Users;
 
@@ -31,6 +33,9 @@ public static class RsaEndpoints
     public record ChatThreadDto(Guid Id, string ItemTitle, string LostName, string FoundName, string Status, List<ChatMessageDto> Messages);
 
     public record TeamBody(string? Email);
+
+    /// <summary>HandOver: the item is on the shelf and the person is at the desk, so they take it now.</summary>
+    public record ManualMatchBody(string? Email, string? Text, bool HandOver);
 
     public static void MapRsa(this RouteGroupBuilder api)
     {
@@ -127,6 +132,69 @@ public static class RsaEndpoints
             var list = await Items(db).AsNoTracking().Where(r => r.Kind == ReportKind.Found)
                 .OrderByDescending(r => r.CreatedAt).Take(300).ToListAsync(ct);
             return list.Select(ToItem);
+        });
+
+        // Manual match (owner request, 2026-11-01): someone asks at the desk for an item, maybe without ever reporting it.
+        // Staff pick the found report and type the person's email and what they described; Zarqa files the lost report
+        // for them. On the shelf it can be handed over at once; otherwise they get a suggestion to claim, as usual.
+        rsa.MapPost("/found/{id:guid}/match", async (Guid id, ManualMatchBody body, HttpContext http, ZarqaDb db, PhotoStore photos,
+            TimeProvider clock, MatchQueue queue, INotifier notifier, IConfiguration config, CancellationToken ct) =>
+        {
+            var found = await db.Reports.FirstOrDefaultAsync(r => r.Id == id && r.Kind == ReportKind.Found, ct);
+            if (found is null) return Errors.NotFound();
+            if (found.Status != ReportStatus.Open) return Errors.BadRequest("This item is already on its way back to someone.");
+            var email = EmailRules.NormalizeSignInEmail(body.Email, config["Auth:AllowedEmails"]);
+            if (email is null) return Errors.BadRequest("Use their GUtech email address.");
+            var parts = ReportText.Split(body.Text);
+            if (parts is null) return Errors.BadRequest("Write down what they're looking for.");
+            if (body.HandOver && !(found.DropAtRsa && found.RsaReceivedAt is not null))
+                return Errors.BadRequest("Only items on the shelf can be handed over now.");
+
+            var now = clock.GetUtcNow();
+            var owner = await db.Users.FirstOrDefaultAsync(u => u.Email == email, ct);
+            if (owner is null)
+            {
+                // They sign in later with the same email and the usual code; this grants nothing else.
+                owner = new User { Email = email, CreatedAt = now };
+                db.Users.Add(owner);
+            }
+            if (owner.IsBanned) return Errors.BadRequest("That account is banned.");
+            if (owner.Id == found.UserId) return Errors.BadRequest("That's the person who found it.");
+
+            var lost = new Report { User = owner, Kind = ReportKind.Lost, CategoryText = "", Title = "", LocationText = "", CreatedAt = now, UpdatedAt = now };
+            var error = await ReportEndpoints.ApplyFields(lost, parts.Title, parts.Category, parts.Description, null, null, null, null, db, photos, clock, ct);
+            if (error is not null) return error;
+            var match = new Match
+            {
+                Lost = lost, FoundId = found.Id, FinalScore = 1, DecidedBy = MatchDecider.RsaStaff, CreatedAt = now,
+                Reasons = ["Matched by the RSA desk: they described it in person."],
+            };
+            if (body.HandOver)
+            {
+                match.Status = MatchStatus.Confirmed;
+                match.ResolvedAt = match.CollectedAt = now;
+                match.CollectedBy = http.User.Id();
+                lost.Status = found.Status = ReportStatus.Returned;
+                found.UpdatedAt = now;
+                await ReportEndpoints.ExpireOpenMatches(db, found.Id, now, ct);
+            }
+            db.Reports.Add(lost);
+            db.Matches.Add(match);
+            db.ReviewLogs.Add(new ReviewLog
+            {
+                ReportId = found.Id, CounterpartId = lost.Id, Step = "rsa_manual", CreatedAt = now,
+                Payload = new JsonObject { ["staff"] = http.User.Id().ToString(), ["handOver"] = body.HandOver }.ToJsonString(),
+            });
+            await db.SaveChangesAsync(ct);
+
+            if (body.HandOver) await notifier.CollectedAsync(match.Id, ct);
+            else
+            {
+                await notifier.MatchCreatedAsync(match.Id, ct);
+                // Their new report also looks for other found items, like any other report.
+                await queue.EnqueueAsync(lost.Id, ct);
+            }
+            return Results.Ok(new { handedOver = body.HandOver, title = lost.Title });
         });
 
         // An item the RSA gives away or passes on after nobody claimed it.

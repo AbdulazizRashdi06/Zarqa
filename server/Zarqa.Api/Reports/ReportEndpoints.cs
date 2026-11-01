@@ -197,7 +197,7 @@ public static class ReportEndpoints
     public record PatchBody(string? Title, string? Category, string? Description, string? LocationName, string? LocationText, string? EventDate, string? EventTime);
 
     /// <summary>Validates and copies the editable fields. Null result means OK.</summary>
-    private static async Task<IResult?> ApplyFields(Report r, string? title, string? category, string? description, string? locationName,
+    internal static async Task<IResult?> ApplyFields(Report r, string? title, string? category, string? description, string? locationName,
         string? locationText, string? eventDate, string? eventTime, ZarqaDb db, PhotoStore photos, TimeProvider clock, CancellationToken ct,
         Report? keepWhenMissing = null)
     {

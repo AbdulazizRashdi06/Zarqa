@@ -2,6 +2,15 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-01: RSA staff match items by hand
+
+**Decision (owner).** Someone may ask at the RSA desk for an item they never reported in Zarqa. On the Found tab, staff can **Match to someone** on any open found item (with the finder, on its way, or on the shelf). They type the person's GUtech email and what the person described.
+- Zarqa files a **lost report for that person** from the description, using the same text rules as the Home form. If the email has no account yet, a user record is made. They sign in later with the usual emailed code, and it grants nothing else. The email must pass the same sign-in rule (GUtech domain or `AUTH_ALLOWED_EMAILS`). It can't be the finder or a banned account.
+- **On the shelf, person at the desk:** "hand it over now" (ticked by default) marks the match confirmed and collected and both reports Returned, and tells the finder. The confirmation reminds staff to check the student ID.
+- **Otherwise:** the match is a normal suggestion (`DecidedBy = RsaStaff`, score 1.0, so "Big chance") with the reason "Matched by the RSA desk". The person gets the usual match email, then taps "Could be mine": they get a chat with the finder, or a pickup code if it's held for the RSA. Their new report is also queued, so it looks for other found items too.
+- Every manual match writes an `rsa_manual` row (staff id, hand-over or not) to the review log, so Admin can see who matched what.
+- **Not done:** staff can't attach the match to a lost report the person already posted. A second report is filed instead, and the old one stays open. The Privacy page says staff can file a report for you.
+
 ## 2026-11-01: "Could be mine" and a "not the same item" exit for both users
 
 **Decision (owner).** On the Match screen, "It's mine" is now **"Could be mine"**, since the owner is not yet sure. It still opens the chat. The hint under it says that either person can say in the chat that it's not the same item, and Zarqa keeps looking, so nobody has to report it again.

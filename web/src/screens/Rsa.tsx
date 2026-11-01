@@ -144,20 +144,81 @@ function DeskTab() {
   )
 }
 
-/** Every found report, read-only: staff can look over any item that has been posted. */
+/** Every found report. Staff can match an open one to someone who asks at the desk, reported or not. */
 function FoundTab() {
   const [items, setItems] = useState<Item[] | null>(null)
   const [error, setError] = useState('')
-  useEffect(() => { api<Item[]>('/rsa/found').then(setItems).catch((e) => setError(explain(e))) }, [])
+  const [done, setDone] = useState('')
+  const [open, setOpen] = useState<string | null>(null)
+  const load = useCallback(() => api<Item[]>('/rsa/found').then(setItems).catch((e) => setError(explain(e))), [])
+  useEffect(() => { load() }, [load])
 
   return (
     <>
       <p>{t('rsa.found.note')}</p>
       {error && <p role="alert" className={l.error}>{error}</p>}
+      {done && <p role="status" className={l.notice}>{done}</p>}
       {!items && !error && <p role="status">{t('rsa.loading')}</p>}
       {items?.length === 0 && <p>{t('rsa.found.empty')}</p>}
-      {items?.map((item) => <ItemCard key={item.id} item={item} />)}
+      {items?.map((item) => (
+        <ItemCard key={item.id} item={item}>
+          {(item.state === 'finder' || item.state === 'expected' || item.state === 'held') && (open === item.id ? (
+            <MatchForm item={item} onCancel={() => setOpen(null)} onDone={(message) => { setOpen(null); setDone(message); void load() }} />
+          ) : (
+            <div className={l.actions}>
+              <button type="button" className={s.secondary} onClick={() => { setOpen(item.id); setDone('') }}>{t('rsa.match.open')}</button>
+            </div>
+          ))}
+        </ItemCard>
+      ))}
     </>
+  )
+}
+
+/** Zarqa files a lost report for the person with what they described. On the shelf, staff can hand it over at once. */
+function MatchForm({ item, onCancel, onDone }: { item: Item; onCancel: () => void; onDone: (message: string) => void }) {
+  const held = item.state === 'held'
+  const [email, setEmail] = useState('')
+  const [text, setText] = useState('')
+  const [handOver, setHandOver] = useState(held)
+  const [error, setError] = useState('')
+  const [busy, setBusy] = useState(false)
+
+  async function submit(e: FormEvent) {
+    e.preventDefault()
+    const address = email.trim()
+    if (busy || !address || !text.trim()) return
+    if (handOver && !window.confirm(t('rsa.match.handOverConfirm', { title: item.title, email: address }))) return
+    setBusy(true); setError('')
+    try {
+      await api(`/rsa/found/${item.id}/match`, { body: { email: address, text: text.trim(), handOver } })
+      onDone(handOver ? t('rsa.match.handedOver', { title: item.title }) : t('rsa.match.sent', { email: address }))
+    } catch (err) { setError(explain(err)) } finally { setBusy(false) }
+  }
+
+  return (
+    <form onSubmit={submit} className={s.matchForm}>
+      <p className={s.meta}>{t('rsa.match.note')}</p>
+      <label>
+        {t('rsa.match.email')}
+        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="off" placeholder="name@gutech.edu.om" />
+      </label>
+      <label>
+        {t('rsa.match.text')}
+        <textarea value={text} onChange={(e) => setText(e.target.value)} maxLength={500} rows={3} placeholder={t('rsa.match.textHint')} />
+      </label>
+      {held && (
+        <label className={s.check}>
+          <input type="checkbox" checked={handOver} onChange={(e) => setHandOver(e.target.checked)} />
+          {t('rsa.match.handOver')}
+        </label>
+      )}
+      {error && <p role="alert" className={s.formError}>{error}</p>}
+      <div className={l.actions}>
+        <button type="submit" disabled={busy || !email.trim() || !text.trim()}>{handOver ? t('rsa.match.submitHandOver') : t('rsa.match.submit')}</button>
+        <button type="button" className={s.secondary} onClick={onCancel}>{t('rsa.match.cancel')}</button>
+      </div>
+    </form>
   )
 }
 

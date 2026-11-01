@@ -218,6 +218,56 @@ public class RsaFlowTests(TestApp app) : IClassFixture<TestApp>
     }
 
     [Fact]
+    public async Task Staff_match_someone_who_asks_at_the_desk()
+    {
+        var rsa = await Staff("manual");
+        var finder = await app.SignedIn("finder.manual@gutech.edu.om", "Omar");
+        var plain = await app.SignedIn("plain.manual@gutech.edu.om");
+
+        // Kept by its finder: the person never reported it, gets a suggestion and claims it as usual.
+        var kept = (await Json(await finder.PostAsync("/api/reports", Form("found", "Silver ring", "Jewellery")))).GetProperty("id").GetGuid();
+        var body = new { email = "Walkin.Ring@gutech.edu.om", text = "Silver ring with a small dent, lost near the library", handOver = false };
+        Assert.Equal(HttpStatusCode.Forbidden, (await plain.PostAsJsonAsync($"/api/rsa/found/{kept}/match", body)).StatusCode);
+        Assert.Equal(HttpStatusCode.BadRequest, (await rsa.PostAsJsonAsync($"/api/rsa/found/{kept}/match", body with { email = "someone@gmail.com" })).StatusCode);
+        Assert.Equal(HttpStatusCode.BadRequest, (await rsa.PostAsJsonAsync($"/api/rsa/found/{kept}/match", body with { handOver = true })).StatusCode);
+        Assert.Equal(HttpStatusCode.BadRequest, (await rsa.PostAsJsonAsync($"/api/rsa/found/{kept}/match", body with { email = "finder.manual@gutech.edu.om" })).StatusCode);
+        Assert.Equal(HttpStatusCode.OK, (await rsa.PostAsJsonAsync($"/api/rsa/found/{kept}/match", body)).StatusCode);
+
+        Guid suggested;
+        await using (var db = app.Db())
+        {
+            var m = await db.Matches.Include(x => x.Lost).ThenInclude(r => r!.User).SingleAsync(x => x.FoundId == kept);
+            Assert.Equal(MatchStatus.Suggested, m.Status);
+            Assert.Equal(MatchDecider.RsaStaff, m.DecidedBy);
+            Assert.Equal("walkin.ring@gutech.edu.om", m.Lost!.User!.Email);
+            Assert.Equal(ReportStatus.Open, m.Lost.Status);
+            Assert.True(await db.ReviewLogs.AnyAsync(l => l.ReportId == kept && l.Step == "rsa_manual"));
+            suggested = m.Id;
+        }
+        var walkIn = await app.SignedIn("walkin.ring@gutech.edu.om");
+        Assert.Equal("big", (await Json(await walkIn.GetAsync($"/api/matches/{suggested}"))).GetProperty("strength").GetString());
+        Assert.NotEqual(Guid.Empty, (await Json(await walkIn.PostAsync($"/api/matches/{suggested}/confirm", null))).GetProperty("conversationId").GetGuid());
+        // Now in a chat: it can't be matched to a second person.
+        Assert.Equal(HttpStatusCode.BadRequest, (await rsa.PostAsJsonAsync($"/api/rsa/found/{kept}/match", body with { email = "other.ring@gutech.edu.om" })).StatusCode);
+
+        // On the shelf, with the person at the desk: handed over at once.
+        var shelf = await Json(await finder.PostAsync("/api/reports", DropForm("Black umbrella", "Other")));
+        var shelfId = shelf.GetProperty("id").GetGuid();
+        await rsa.PostAsync($"/api/rsa/drop/{shelf.GetProperty("dropCode").GetString()}/receive", null);
+        var now = new { email = "walkin.umbrella@gutech.edu.om", text = "Black umbrella with a wooden handle", handOver = true };
+        Assert.Equal(HttpStatusCode.OK, (await rsa.PostAsJsonAsync($"/api/rsa/found/{shelfId}/match", now)).StatusCode);
+        await using (var db = app.Db())
+        {
+            var m = await db.Matches.Include(x => x.Lost).Include(x => x.Found).SingleAsync(x => x.FoundId == shelfId);
+            Assert.Equal(MatchStatus.Confirmed, m.Status);
+            Assert.NotNull(m.CollectedAt);
+            Assert.Equal(ReportStatus.Returned, m.Found!.Status);
+            Assert.Equal(ReportStatus.Returned, m.Lost!.Status);
+        }
+        Assert.Equal(HttpStatusCode.BadRequest, (await rsa.PostAsJsonAsync($"/api/rsa/found/{shelfId}/match", now)).StatusCode);
+    }
+
+    [Fact]
     public async Task Staff_add_colleagues_and_removal_takes_effect_at_once()
     {
         // The owner (an admin) adds the first person; staff add colleagues.
