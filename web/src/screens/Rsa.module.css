@@ -24,7 +24,7 @@
 .team button { min-height: 44px; padding: 8px 12px; border-radius: 10px; font: inherit; color: var(--ink) !important; }
 .matchForm { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
 .matchForm label { display: flex; flex-direction: column; gap: 4px; font-weight: 600; }
-.matchForm input[type='email'], .matchForm textarea { background: var(--paper); color: var(--ink); border: 1px solid var(--ink-muted); border-radius: 10px; padding: 10px 12px; font: inherit; min-height: 44px; }
+.matchForm input[type='email'] { background: var(--paper); color: var(--ink); border: 1px solid var(--ink-muted); border-radius: 10px; padding: 10px 12px; font: inherit; min-height: 44px; }
 .matchForm .check { flex-direction: row; align-items: center; gap: 10px; min-height: 44px; }
 .matchForm .check input { width: 22px; height: 22px; accent-color: var(--ink); }
 .formError { color: #9b3a22; font-weight: 600; margin: 0; }

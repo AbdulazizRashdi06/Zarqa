@@ -226,7 +226,7 @@ public class RsaFlowTests(TestApp app) : IClassFixture<TestApp>
 
         // Kept by its finder: the person never reported it, gets a suggestion and claims it as usual.
         var kept = (await Json(await finder.PostAsync("/api/reports", Form("found", "Silver ring", "Jewellery")))).GetProperty("id").GetGuid();
-        var body = new { email = "Walkin.Ring@gutech.edu.om", text = "Silver ring with a small dent, lost near the library", handOver = false };
+        var body = new { email = "Walkin.Ring@gutech.edu.om", handOver = false };
         Assert.Equal(HttpStatusCode.Forbidden, (await plain.PostAsJsonAsync($"/api/rsa/found/{kept}/match", body)).StatusCode);
         Assert.Equal(HttpStatusCode.BadRequest, (await rsa.PostAsJsonAsync($"/api/rsa/found/{kept}/match", body with { email = "someone@gmail.com" })).StatusCode);
         Assert.Equal(HttpStatusCode.BadRequest, (await rsa.PostAsJsonAsync($"/api/rsa/found/{kept}/match", body with { handOver = true })).StatusCode);
@@ -241,6 +241,8 @@ public class RsaFlowTests(TestApp app) : IClassFixture<TestApp>
             Assert.Equal(MatchDecider.RsaStaff, m.DecidedBy);
             Assert.Equal("walkin.ring@gutech.edu.om", m.Lost!.User!.Email);
             Assert.Equal(ReportStatus.Open, m.Lost.Status);
+            // Only the email was typed: the report carries the found item's own words.
+            Assert.Equal("Silver ring", m.Lost.Title);
             Assert.True(await db.ReviewLogs.AnyAsync(l => l.ReportId == kept && l.Step == "rsa_manual"));
             suggested = m.Id;
         }
@@ -254,7 +256,7 @@ public class RsaFlowTests(TestApp app) : IClassFixture<TestApp>
         var shelf = await Json(await finder.PostAsync("/api/reports", DropForm("Black umbrella", "Other")));
         var shelfId = shelf.GetProperty("id").GetGuid();
         await rsa.PostAsync($"/api/rsa/drop/{shelf.GetProperty("dropCode").GetString()}/receive", null);
-        var now = new { email = "walkin.umbrella@gutech.edu.om", text = "Black umbrella with a wooden handle", handOver = true };
+        var now = new { email = "walkin.umbrella@gutech.edu.om", handOver = true };
         Assert.Equal(HttpStatusCode.OK, (await rsa.PostAsJsonAsync($"/api/rsa/found/{shelfId}/match", now)).StatusCode);
         await using (var db = app.Db())
         {

@@ -175,11 +175,10 @@ function FoundTab() {
   )
 }
 
-/** Zarqa files a lost report for the person with what they described. On the shelf, staff can hand it over at once. */
+/** Only the person's email: Zarqa files a lost report for them. On the shelf, staff can hand it over at once. */
 function MatchForm({ item, onCancel, onDone }: { item: Item; onCancel: () => void; onDone: (message: string) => void }) {
   const held = item.state === 'held'
   const [email, setEmail] = useState('')
-  const [text, setText] = useState('')
   const [handOver, setHandOver] = useState(held)
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
@@ -187,11 +186,11 @@ function MatchForm({ item, onCancel, onDone }: { item: Item; onCancel: () => voi
   async function submit(e: FormEvent) {
     e.preventDefault()
     const address = email.trim()
-    if (busy || !address || !text.trim()) return
+    if (busy || !address) return
     if (handOver && !window.confirm(t('rsa.match.handOverConfirm', { title: item.title, email: address }))) return
     setBusy(true); setError('')
     try {
-      await api(`/rsa/found/${item.id}/match`, { body: { email: address, text: text.trim(), handOver } })
+      await api(`/rsa/found/${item.id}/match`, { body: { email: address, handOver } })
       onDone(handOver ? t('rsa.match.handedOver', { title: item.title }) : t('rsa.match.sent', { email: address }))
     } catch (err) { setError(explain(err)) } finally { setBusy(false) }
   }
@@ -203,10 +202,6 @@ function MatchForm({ item, onCancel, onDone }: { item: Item; onCancel: () => voi
         {t('rsa.match.email')}
         <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="off" placeholder="name@gutech.edu.om" />
       </label>
-      <label>
-        {t('rsa.match.text')}
-        <textarea value={text} onChange={(e) => setText(e.target.value)} maxLength={500} rows={3} placeholder={t('rsa.match.textHint')} />
-      </label>
       {held && (
         <label className={s.check}>
           <input type="checkbox" checked={handOver} onChange={(e) => setHandOver(e.target.checked)} />
@@ -215,7 +210,7 @@ function MatchForm({ item, onCancel, onDone }: { item: Item; onCancel: () => voi
       )}
       {error && <p role="alert" className={s.formError}>{error}</p>}
       <div className={l.actions}>
-        <button type="submit" disabled={busy || !email.trim() || !text.trim()}>{handOver ? t('rsa.match.submitHandOver') : t('rsa.match.submit')}</button>
+        <button type="submit" disabled={busy || !email.trim()}>{handOver ? t('rsa.match.submitHandOver') : t('rsa.match.submit')}</button>
         <button type="button" className={s.secondary} onClick={onCancel}>{t('rsa.match.cancel')}</button>
       </div>
     </form>

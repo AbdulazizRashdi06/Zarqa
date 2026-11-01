@@ -118,11 +118,12 @@ test('staff match someone at the desk to a found item', async ({ page }) => {
   // On the shelf: "hand it over now" starts ticked.
   await expect(page.getByRole('checkbox', { name: /hand it over now/ })).toBeChecked()
   await page.getByLabel('Their GUtech email').fill('maryam@student.gutech.edu.om')
-  await page.getByLabel('What they described').fill('Black umbrella with a wooden handle')
+  // The email is all staff type.
+  await expect(page.getByRole('textbox')).toHaveCount(1)
   await page.screenshot({ path: 'test-results/rsa-manual-match-phone.png', fullPage: true })
   await page.getByRole('button', { name: 'Hand it over' }).click()
   await expect(page.getByText('Handed over. The Black umbrella is marked returned.')).toBeVisible()
-  expect(sent).toEqual({ url: expect.stringContaining('/api/rsa/found/held/match'), email: 'maryam@student.gutech.edu.om', text: 'Black umbrella with a wooden handle', handOver: true })
+  expect(sent).toEqual({ url: expect.stringContaining('/api/rsa/found/held/match'), email: 'maryam@student.gutech.edu.om', handOver: true })
 })
 
 test('a found report can go to the RSA and shows its drop code', async ({ page }) => {
