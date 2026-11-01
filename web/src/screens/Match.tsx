@@ -13,18 +13,24 @@ type MatchView = {
   id: string
   status: 'Suggested' | 'Confirmed' | 'Rejected' | 'Expired'
   finalScore: number
-  strength: 'strong' | 'likely'
+  /** How sure the suggestion sounds to the owner: small (55–64), looks like it (65–79), big (80+). */
+  strength: Level | 'strong' | 'likely'
   reasons: string[]
   createdAt: string
   lost: Side
   found: Side
   conversationId: string | null
-  /** Held for the RSA desk: "It's mine" gives a pickup code instead of a chat. */
+  /** Held for the RSA desk: "Could be mine" gives a pickup code instead of a chat. */
   atRsa: boolean
   rsaReceived: boolean
   pickupCode: string | null
   collected: boolean
 }
+
+type Level = 'small' | 'looks' | 'big'
+/** Before 2026-11-01 the API said strong/likely; a server not yet redeployed may still send them. */
+const levelOf = (strength: MatchView['strength']): Level =>
+  strength === 'big' || strength === 'strong' ? 'big' : strength === 'looks' || strength === 'likely' ? 'looks' : 'small'
 
 const when = (x: Side) =>
   [x.locationText || null, x.eventDate ? `${relativeDay(x.eventDate)}${x.eventTime ? ` · ~${clockTime(x.eventTime)}` : ''}` : null].filter(Boolean).join(' · ')
@@ -78,6 +84,9 @@ export default function Match() {
     }
   }
 
+  const level = levelOf(match?.strength ?? 'small')
+  const label = t(`match.${level}`)
+
   if (!match) {
     return (
       <main className={s.page}>
@@ -130,10 +139,11 @@ export default function Match() {
       <BackHeader to="/reports" label={t('match.spottedAt', { time: spottedAt })} />
 
       <div className={s.mascot} aria-hidden="true">
-        <Sticker rotate={6} style={{ marginBottom: -6, position: 'relative', zIndex: 1 }}>
-          {t('match.spotted')}
+        {/* Her face and the sticker say how sure Zarqa is: confused, happy or really happy. */}
+        <Sticker rotate={6} style={{ marginBottom: -6, position: 'relative', zIndex: 1, fontSize: 13, whiteSpace: 'nowrap' }}>
+          {label}
         </Sticker>
-        <img src="/mascot/happy.webp" alt="" />
+        <img src={`/mascot/match-${level}.webp`} alt="" />
       </div>
 
       <h1 className={s.title}>
@@ -155,8 +165,7 @@ export default function Match() {
           <span className={s.tagName}>{match.found.title}</span>
           <span className={s.tagMeta}>{when(match.found)}</span>
         </LuggageTag>
-        <div className={s.stamp} role="img" aria-label={match.strength === 'strong' ? t('match.strong') : t('match.likely')}>
-          <span className={s.stampSmall} aria-hidden="true">{match.strength === 'strong' ? 'STRONG' : 'LIKELY'}</span>
+        <div className={s.stamp} role="img" aria-label={label}>
           <span className={s.stampBig} aria-hidden="true">MATCH</span>
         </div>
       </div>

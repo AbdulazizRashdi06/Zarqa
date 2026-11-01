@@ -199,6 +199,25 @@ public class RsaFlowTests(TestApp app) : IClassFixture<TestApp>
     }
 
     [Fact]
+    public async Task Staff_see_every_found_report_and_no_lost_ones()
+    {
+        var plain = await app.SignedIn("plain.found@gutech.edu.om");
+        Assert.Equal(HttpStatusCode.Forbidden, (await plain.GetAsync("/api/rsa/found")).StatusCode);
+
+        var rsa = await Staff("found");
+        var finder = await app.SignedIn("finder.found@gutech.edu.om", "Omar");
+        var kept = (await Json(await finder.PostAsync("/api/reports", Form("found", "Silver ring", "Jewellery")))).GetProperty("id").GetGuid();
+        var dropped = (await Json(await finder.PostAsync("/api/reports", DropForm("Red umbrella", "Other")))).GetProperty("id").GetGuid();
+        var lost = (await Json(await finder.PostAsync("/api/reports", Form("lost", "My keys", "Keys")))).GetProperty("id").GetGuid();
+
+        var list = (await Json(await rsa.GetAsync("/api/rsa/found"))).EnumerateArray().ToList();
+        // Kept by the finder is not "on its way" to the desk.
+        Assert.Equal("finder", list.First(i => i.GetProperty("id").GetGuid() == kept).GetProperty("state").GetString());
+        Assert.Equal("expected", list.First(i => i.GetProperty("id").GetGuid() == dropped).GetProperty("state").GetString());
+        Assert.DoesNotContain(list, i => i.GetProperty("id").GetGuid() == lost);
+    }
+
+    [Fact]
     public async Task Staff_add_colleagues_and_removal_takes_effect_at_once()
     {
         // The owner (an admin) adds the first person; staff add colleagues.

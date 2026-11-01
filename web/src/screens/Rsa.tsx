@@ -10,7 +10,7 @@ import s from './Rsa.module.css'
 
 type Item = {
   id: string; code: string | null; title: string; description: string; locationText: string; eventDate: string | null
-  isSensitive: boolean; photoIds: string[]; state: 'expected' | 'held' | 'claimed' | 'collected' | 'closed'; finderName: string
+  isSensitive: boolean; photoIds: string[]; state: 'expected' | 'held' | 'claimed' | 'collected' | 'closed' | 'finder' | 'chatting' | 'returned'; finderName: string
   createdAt: string; receivedAt: string | null
 }
 type Claim = { code: string; ownerName: string; title: string; description: string; locationText: string; eventDate: string | null; claimedAt: string }
@@ -20,7 +20,7 @@ type ChatMessage = { id: number; kind: string; from: 'lost' | 'found' | null; te
 type Thread = { id: string; itemTitle: string; lostName: string; foundName: string; status: string; messages: ChatMessage[] }
 type Member = { email: string; addedAt: string }
 
-const tabs = ['desk', 'shelf', 'chats', 'team'] as const
+const tabs = ['desk', 'shelf', 'found', 'chats', 'team'] as const
 type Tab = (typeof tabs)[number]
 const explain = (e: unknown) => (e instanceof ApiError ? e.message : t('common.error'))
 
@@ -43,6 +43,7 @@ export default function Rsa() {
       <section role="tabpanel" id={`rsa-panel-${tab}`} aria-labelledby={`rsa-tab-${tab}`} className={s.panel}>
         {tab === 'desk' && <DeskTab />}
         {tab === 'shelf' && <ShelfTab />}
+        {tab === 'found' && <FoundTab />}
         {tab === 'chats' && <ChatsTab />}
         {tab === 'team' && <TeamTab myEmail={me.email} />}
       </section>
@@ -139,6 +140,23 @@ function DeskTab() {
           </ItemCard>
         </>
       )}
+    </>
+  )
+}
+
+/** Every found report, read-only: staff can look over any item that has been posted. */
+function FoundTab() {
+  const [items, setItems] = useState<Item[] | null>(null)
+  const [error, setError] = useState('')
+  useEffect(() => { api<Item[]>('/rsa/found').then(setItems).catch((e) => setError(explain(e))) }, [])
+
+  return (
+    <>
+      <p>{t('rsa.found.note')}</p>
+      {error && <p role="alert" className={l.error}>{error}</p>}
+      {!items && !error && <p role="status">{t('rsa.loading')}</p>}
+      {items?.length === 0 && <p>{t('rsa.found.empty')}</p>}
+      {items?.map((item) => <ItemCard key={item.id} item={item} />)}
     </>
   )
 }

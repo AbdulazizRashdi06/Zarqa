@@ -121,6 +121,14 @@ public static class RsaEndpoints
             return list.Select(ToItem);
         });
 
+        // Every found report, handed in or not, newest first, for staff to look over (read-only).
+        rsa.MapGet("/found", async (ZarqaDb db, CancellationToken ct) =>
+        {
+            var list = await Items(db).AsNoTracking().Where(r => r.Kind == ReportKind.Found)
+                .OrderByDescending(r => r.CreatedAt).Take(300).ToListAsync(ct);
+            return list.Select(ToItem);
+        });
+
         // An item the RSA gives away or passes on after nobody claimed it.
         rsa.MapPost("/items/{id:guid}/close", async (Guid id, ZarqaDb db, TimeProvider clock, CancellationToken ct) =>
         {
@@ -209,11 +217,15 @@ public static class RsaEndpoints
         return c is null ? null : await Claims(db).FirstOrDefaultAsync(m => m.PickupCode == c && m.Status == MatchStatus.Confirmed && m.CollectedAt == null, ct);
     }
 
-    public static string State(Report r) => r.Status switch
+    /// <summary>Where the item is. The Found tab also lists items the RSA never held: those are with their finder.</summary>
+    public static string State(Report r) => (r.DropAtRsa, r.Status) switch
     {
-        ReportStatus.Pickup => "claimed",
-        ReportStatus.Open => r.RsaReceivedAt is null ? "expected" : "held",
-        ReportStatus.Returned => "collected",
+        (true, ReportStatus.Pickup) => "claimed",
+        (true, ReportStatus.Open) => r.RsaReceivedAt is null ? "expected" : "held",
+        (true, ReportStatus.Returned) => "collected",
+        (false, ReportStatus.Open) => "finder",
+        (false, ReportStatus.InChat) => "chatting",
+        (false, ReportStatus.Returned) => "returned",
         _ => "closed",
     };
 

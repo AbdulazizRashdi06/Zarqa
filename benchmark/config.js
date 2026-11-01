@@ -45,8 +45,9 @@ export const PROPOSED = {
   dateToleranceDays: 1,
   // luna-debate: show a match when 0.5·same_item + 0.5·overall >= this. Was 0.60; raised to 0.65
   // on 2026-10-01 after reviewing the size-1,000 false matches (all scored 0.60–0.66), so the
-  // 0.65 results on the campus set are partly tuned on that set.
-  debateThreshold: 0.65,
+  // 0.65 results on the campus set are partly tuned on that set. Lowered to 0.55 on 2026-11-01 to
+  // match the app (owner decision, not tuned on any data); earlier results describe 0.65.
+  debateThreshold: 0.55,
 };
 
 export const RUNTIME = {

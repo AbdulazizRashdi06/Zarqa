@@ -5,7 +5,7 @@
 .card { padding: 20px; color: var(--ink); }
 .card section + section { border-top: 2px dashed var(--paper-line); padding-top: 18px; }
 .card a { color: var(--ink); }
-.notice { border-left: 4px solid var(--tan); padding: 12px; background: var(--surface); }
+.notice { border: 1px solid var(--tan); padding: 12px; background: var(--surface); }
 .actions { display: flex; flex-wrap: wrap; gap: 8px; }
 .actions button, .actions a, .page select, .page input { min-height: 44px; padding: 10px 12px; border-radius: 10px; font: inherit; }
 .actions button { background: var(--tan); color: var(--ink); border: 0; font-weight: 700; }

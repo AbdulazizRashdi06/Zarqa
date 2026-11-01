@@ -18,8 +18,9 @@ The real app is being **built from scratch**: an ASP.NET Core (.NET 10) backend 
   1. Embedding retrieval: vector search, top 25.
   2. The existing preliminary-score shortlist: ≥ 0.56, top 10.
   3. Two gpt-6-luna advocates, one arguing for a match and one against, run in parallel and see the photos.
-  4. Jev (TypeSafe's typed-decision model) decides. A match is shown when `0.5·same_item + 0.5·overall ≥ 0.65`.
-   Since 2026-10-27 both Jev questions say "judge by similarity, not proof" (owner decision; not re-measured on the benchmark, see decisions.md).
+  4. Jev (TypeSafe's typed-decision model) decides. A match is shown when `0.5·same_item + 0.5·overall ≥ 0.55` (lowered from 0.65 on 2026-11-01; see decisions.md).
+   Both Jev questions and both advocates end with a fixed instruction to read item names in context and not treat missing details as evidence against a match (owner decisions 2026-10-27 and 2026-10-31; not re-measured on the benchmark, see decisions.md).
+   After changing the cut-off or prompts, press **Re-check open reports** on `/admin` once it's deployed. Pairs that were reviewed but not matched are only reviewed again when one of their reports is queued.
 - **Fallback:** plain gpt-6-luna review when Jev is unavailable. Jev is in early access.
 - **Recall is the deciding metric.** A missed match means someone never gets their item back. Precision is secondary.
 - **Design for 100–1,000 active reports.** GUtech has about 2,000 people, so 10,000 is unrealistic.

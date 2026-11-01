@@ -85,6 +85,23 @@ test('the RSA desk has no serious accessibility violations', async ({ page }) =>
   }
 })
 
+test('the Found tab lists every found report with where it is', async ({ page }) => {
+  await session(page)
+  await page.route('**/api/rsa/found', route => route.fulfill({ json: [
+    { ...item, id: 'kept', code: null, title: 'Silver ring', state: 'finder' },
+    { ...item, id: 'chat', code: null, title: 'Casio watch', state: 'chatting' },
+    item,
+  ] }))
+  await page.goto('/rsa')
+  await page.getByRole('tab', { name: 'Found' }).click()
+  await expect(page.getByText('With the finder')).toBeVisible()
+  await expect(page.getByText('Owner and finder chatting')).toBeVisible()
+  await expect(page.getByText(/K7P-4QM · On its way/)).toBeVisible()
+  // Read-only: no actions on this tab.
+  await expect(page.getByRole('tabpanel').getByRole('button')).toHaveCount(0)
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+})
+
 test('a found report can go to the RSA and shows its drop code', async ({ page }) => {
   await session(page, false)
   const posted = { id: 'found', kind: 'found', title: 'Blue metal bottle', category: '', categoryKey: 'bottle', description: 'Dent near the lid', locationName: null, locationText: 'GU1 Library', eventDate: null, eventTime: null, status: 'Open', pill: 'Bring to RSA', isSensitive: false, photoIds: [], matchId: null, conversationId: null, createdAt: '2026-10-26T08:00:00Z', dropAtRsa: true, dropCode: 'K7P-4QM', rsaReceived: false, pickupMatchId: null }

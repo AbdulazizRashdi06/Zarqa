@@ -47,7 +47,7 @@ internal static class PromptParts
 /// <summary>luna-debate (benchmark/src/reviewers/debate.js): two Luna advocates argue, Jev decides.</summary>
 public sealed class DebateReviewer(ILuna luna, IJev jev, AliasIndex aliases)
 {
-    public const double Threshold = 0.65;
+    public const double Threshold = 0.55;
 
     private static readonly Dictionary<string, string> Sides = new()
     {
@@ -57,6 +57,7 @@ public sealed class DebateReviewer(ILuna luna, IJev jev, AliasIndex aliases)
 
     private const string Common = """
         This is a university lost-and-found app. Use only evidence in the reports and photos: item type, colour, brand/model, distinctive marks, place (location aliases name the same place), and timing (an item cannot be found before it was lost).
+        People describe the same kind of item in different ways and often give very few details. Interpret item names in context; different words, levels of detail, or singular and plural forms alone neither prove nor disprove a match. Missing specifics are not evidence against a match. A missed real match may prevent an item being returned, while the owner can reject a wrong suggestion, so prefer recall when the evidence makes a match plausible. Still weigh concrete contradictions honestly.
         Cite concrete details, say how strong each point is, and do not invent facts. If the evidence on your side is weak, say so plainly. At most 120 words.
         """;
 
@@ -74,10 +75,10 @@ public sealed class DebateReviewer(ILuna luna, IJev jev, AliasIndex aliases)
     ];
 
     /// <summary>
-    /// Owner decision (2026-10-27, decisions.md): a lost-and-found match rests on similarity, so thin reports
-    /// ("black wallet" at GU2) shouldn't be held back for lacking proof. Not re-measured on the benchmark.
+    /// Owner decisions (2026-10-27 and 2026-10-31, decisions.md): read item names in context and don't hold thin
+    /// reports ("black wallet" at GU2) back for lacking proof. The advocates get the same text. Not re-measured on the benchmark.
     /// </summary>
-    public const string SimilarityRule = "Judge by similarity, not proof: if the item type, colour and place agree and nothing concrete contradicts them, lean towards the same item. Missing details (no brand, marks, photos or time) are not evidence of different items; only concrete contradictions are.";
+    public const string SimilarityRule = "People describe the same kind of item in different ways and often give very few details. Interpret item names in context; different words, levels of detail, or singular and plural forms alone neither prove nor disprove a match. Missing specifics are not evidence against a match. A missed real match may prevent an item being returned, while the owner can reject a wrong suggestion, so prefer recall when the evidence makes a match plausible. Still weigh concrete contradictions honestly.";
 
     private static JsonObject Questions() => new()
     {
@@ -175,6 +176,7 @@ public sealed class DebateReviewer(ILuna luna, IJev jev, AliasIndex aliases)
 /// <summary>Plain gpt-6-luna review (benchmark/src/reviewers/luna.js): the fallback when Jev is unavailable.</summary>
 public sealed class LunaReviewer(ILuna luna, AliasIndex aliases)
 {
+    /// <summary>Benchmarked for this cautious prompt; the 2026-11-01 drop to 0.55 applies to the Jev debate only.</summary>
     public const double Threshold = 0.72;
 
     private const string System = """

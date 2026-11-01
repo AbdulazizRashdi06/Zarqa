@@ -14,7 +14,7 @@ public enum MatchOutcome { Done, Retry, Postponed, NotConfigured }
 
 /// <summary>
 /// luna-debate for one report (decisions.md): embed → vector top 25 → prescore shortlist (≥ 0.56, top 10)
-/// → two Luna advocates + Jev (≥ 0.65), or a plain Luna review (≥ 0.72) when Jev is unavailable.
+/// → two Luna advocates + Jev (≥ 0.55), or a plain Luna review (≥ 0.72) when Jev is unavailable.
 /// Runs in both directions: a new found report is checked against open lost reports and vice versa.
 /// </summary>
 public sealed class Matcher(
