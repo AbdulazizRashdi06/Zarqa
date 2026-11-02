@@ -29,7 +29,7 @@ public class ChatFlowTests(TestApp app) : IClassFixture<TestApp>
 
         // Only the lost owner sees the match.
         var view = await Json(await owner.GetAsync($"/api/matches/{match}"));
-        Assert.Equal("strong", view.GetProperty("strength").GetString());
+        Assert.Equal("big", view.GetProperty("strength").GetString());
         Assert.Equal("AirPods Pro case", view.GetProperty("lost").GetProperty("title").GetString());
         Assert.Equal(HttpStatusCode.NotFound, (await finder.GetAsync($"/api/matches/{match}")).StatusCode);
 
@@ -123,7 +123,7 @@ public class ChatFlowTests(TestApp app) : IClassFixture<TestApp>
     {
         var (owner, _, lost, _, match) = await MatchedPair("reject", score: 0.7);
         var view = await Json(await owner.GetAsync($"/api/matches/{match}"));
-        Assert.Equal("likely", view.GetProperty("strength").GetString());
+        Assert.Equal("looks", view.GetProperty("strength").GetString());
         // The owner can read the finder's own words, not only the reasons.
         Assert.False(string.IsNullOrEmpty(view.GetProperty("found").GetProperty("description").GetString()));
         Assert.Equal(HttpStatusCode.NoContent, (await owner.PostAsync($"/api/matches/{match}/reject", null)).StatusCode);

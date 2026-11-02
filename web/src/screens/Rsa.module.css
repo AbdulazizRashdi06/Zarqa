@@ -1,4 +1,4 @@
-.tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; background: var(--surface); padding: 4px; border-radius: 14px; }
+.tabs { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 6px; background: var(--surface); padding: 4px; border-radius: 14px; }
 .tab { min-height: 44px; border: 0; border-radius: 10px; background: transparent; color: var(--paper); font: 14px var(--font-mono); letter-spacing: 1px; text-transform: uppercase; cursor: pointer; }
 .tab[aria-selected='true'] { background: var(--tan); color: var(--ink); font-weight: 700; }
 .panel { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
@@ -22,4 +22,10 @@
 .team { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
 .team li { display: flex; justify-content: space-between; align-items: center; gap: 8px; background: var(--paper); color: var(--ink); border-radius: 14px; padding: 8px 8px 8px 14px; overflow-wrap: anywhere; }
 .team button { min-height: 44px; padding: 8px 12px; border-radius: 10px; font: inherit; color: var(--ink) !important; }
+.matchForm { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+.matchForm label { display: flex; flex-direction: column; gap: 4px; font-weight: 600; }
+.matchForm input[type='email'] { background: var(--paper); color: var(--ink); border: 1px solid var(--ink-muted); border-radius: 10px; padding: 10px 12px; font: inherit; min-height: 44px; }
+.matchForm .check { flex-direction: row; align-items: center; gap: 10px; min-height: 44px; }
+.matchForm .check input { width: 22px; height: 22px; accent-color: var(--ink); }
+.formError { color: #9b3a22; font-weight: 600; margin: 0; }
 .codeInput::placeholder { color: var(--chevron); opacity: 0.45; }

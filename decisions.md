@@ -2,6 +2,55 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-02: Sample data and "Delete everything" on /admin
+
+**Decision (owner).** Admins can fill the app with sample data for demos, remove it again, and wipe all data.
+- **Fill sample data** (`POST /api/admin/sample`) adds 9 made-up people on the reserved `sample.invalid` domain with 15 reports in every state: a Big-chance suggestion held at the RSA desk, a chat with a suggested handover, a returned item, a pickup waiting with a code, a Small-chance suggestion, and open reports and drop-offs. Filling again replaces the set.
+- **Sample data is kept apart.** It is never matched in either direction (`Matcher` skips it and leaves it out of the pool), Re-check skips it, and nothing is emailed to `.invalid` addresses (`ResendEmailSender`). Nobody can sign in as a sample person, because `.invalid` fails the sign-in rule. No model calls are made.
+- **Delete sample data** (`DELETE /api/admin/sample`) runs account deletion for each sample person, so a real report matched to one goes back to searching.
+- **Delete everything** (`POST /api/admin/delete-everything`, body `{ "confirm": "DELETE" }`) deletes every report, photo, chat, match log, queued job, sign-in code and non-admin account. Admins, the RSA team list, app settings and the campus map stay. Only the nightly backup can undo it.
+- **Verified:** server build, web lint and build, and the admin page at 390 px with a mocked API. `SampleDataTests` (both classes) need Postgres and run in CI.
+
+## 2026-11-01: RSA staff match items by hand
+
+**Decision (owner).** Someone may ask at the RSA desk for an item they never reported in Zarqa. On the Found tab, staff can **Match to someone** on any open found item (with the finder, on its way, or on the shelf). They type **only the person's GUtech email**. The owner said the email is enough to keep track, so staff don't write down what the person said.
+- Zarqa files a **lost report for that person** that copies the found item's words (title, category, description, place). It is not queued for matching, because with the finder's words it would only turn up look-alikes. If the email has no account yet, a user record is made. They sign in later with the usual emailed code, and it grants nothing else. The email must pass the same sign-in rule (GUtech domain or `AUTH_ALLOWED_EMAILS`). It can't be the finder or a banned account.
+- **On the shelf, person at the desk:** "hand it over now" (ticked by default) marks the match confirmed and collected and both reports Returned, and tells the finder. The confirmation reminds staff to check the student ID.
+- **Otherwise:** the match is a normal suggestion (`DecidedBy = RsaStaff`, score 1.0, so "Big chance") with the reason "Matched by the RSA desk". The person gets the usual match email, then taps "Could be mine": they get a chat with the finder, or a pickup code if it's held for the RSA.
+- Every manual match writes an `rsa_manual` row (staff id, hand-over or not) to the review log, so Admin can see who matched what.
+- **Not done:** staff can't attach the match to a lost report the person already posted. A second report is filed instead, and the old one stays open. The Privacy page says staff can file a report for you.
+
+## 2026-11-01: "Could be mine" and a "not the same item" exit for both users
+
+**Decision (owner).** On the Match screen, "It's mine" is now **"Could be mine"**, since the owner is not yet sure. It still opens the chat. The hint under it says that either person can say in the chat that it's not the same item, and Zarqa keeps looking, so nobody has to report it again.
+- The chat's "Not the same item after all?" control was already there for **both** the owner and the finder. It closes the chat, sets the match to Rejected, returns both reports to Open and queues them for matching again. This change only rewords the match copy to point at it.
+- The pair is not suggested again: a pair is reviewed once (see 2026-10-02).
+- **RSA items** (pickup codes, no chat) have no equivalent exit for the owner. The owner can still say "Not mine" before claiming, and staff mark "Not theirs" at the desk. Add an owner-side exit there if the owner should be able to undo a claim.
+
+## 2026-11-01: Suggest from 55%, three confidence levels, RSA sees all found items
+
+**Decision (owner).**
+- **Cut-off lowered from 0.65 to 0.55** for the two-advocate Jev debate. A pair scoring 0.55 or more is suggested to the lost owner. Recall is the deciding metric, so a lower cut-off trades more wrong suggestions for fewer missed matches. The shortlist (≥ 0.56) is unchanged. The benchmark's `debateThreshold` follows (0.55).
+- **The plain Luna fallback stays at 0.72.** It was first lowered too, but its score comes from a different, cautious prompt on its own scale, and the owner only set levels for the debate score. Its matches therefore show as "Looks like it" or "Big chance".
+- **Existing reports:** pairs that were reviewed but not matched are only reviewed again when one of their reports is queued. After deploying, press **Re-check open reports** on `/admin` so open reports are checked against 0.55.
+- **Three confidence labels** on the Match screen, a fixed display rule and not tuned: **Small chance** (0.55–0.649), **Looks like it** (0.65–0.799), **Big chance** (0.80+). Replaces the old Strong/Likely labels, which were at 0.80.
+- **RSA desk: Found tab.** Staff can read every found report (newest first, up to 300), including those not handed to the RSA. It is read-only. Card and ID photos show only their covered copy, as before, and the original stays with the uploader.
+
+**Not measured.** The benchmark numbers (97% recall / 100% precision) describe the 0.65 cut-off on the campus set. The 0.55 cut-off has not been benchmarked, so expect more suggestions and more wrong ones. The pilot's confirm/reject outcomes are the check. The 0.55 cut-off is a new, owner-chosen value, not one tuned on benchmark data. The shortlist floor (0.56 = max(0.55, 0.72 − 0.16)) is unchanged.
+
+**Shown with Zarqa (owner, same day).** The confidence label was too small inside the round stamp. The label now sits on the sticker next to Zarqa at the top of the Match screen, and her picture changes with it: **confused** (small chance), **happy with a thumbs-up** (looks like it), **really happy** (big chance). The stamp says only MATCH, and its accessible name is still the label. The images were made with the `zarqa-mascot` skill (`web/public/mascot/match-{small,looks,big}.webp`; full-size PNGs and prompts in `mascot-output/match-*`). All three were checked against the character sheet.
+
+**Found in review (2026-11-01).** The RSA Found tab first showed items kept by their finder as "On its way" to the desk, and items in an active chat as "Closed". It now shows "With the finder", "Owner and finder chatting" and "Returned" (`RsaEndpoints.FoundState`). The privacy page said staff see only items handed in at the desk; it now says they can see every found report.
+
+**Verified.** `ConfidenceTests` covers the three bands. The database-backed tests (`ChatFlowTests` for the new labels) could not run here, because Docker was not running (Testcontainers). The web lint and build pass.
+
+## 2026-10-31: Interpret item names in context
+
+**Decision (owner feedback).** A LOST report for black Soundcore wireless headphones and a FOUND report for a black earbud with a visible Soundcore logo should have produced a suggestion. Jev scored the pair 0.4625 despite both Luna advocates noting the logo. The owner identified the wording difference between the item names as the issue.
+- Give both advocates and Jev the same instruction to interpret item names in context. People often use different words and provide few details; wording and missing specifics alone neither prove nor disprove a match. The owner prefers a wrong suggestion that can be rejected over a missed real match, while concrete contradictions still count. No item names are hard-coded as equivalent, and there are no examples in the prompt.
+- The retrieval, shortlist, question framing, score formula and 0.65 cutoff are unchanged. The benchmark copy has the same wording. The full benchmark was not rerun, so prior recall/precision figures do not describe this wording. The example itself prompted the change, so a replay of it is not an honest holdout accuracy measurement.
+- **Terra judge experiment, not deployed:** with both Luna advocates seeing the real found photo and the updated shared instruction, GPT-6.1 Terra judged their arguments at **0.67375** (`same_item` 0.69; normalized `overall` 0.6575). The owner required a score above 0.70 before deployment, so the live Jev judge remains in place. This single pair is not a benchmark or a calibrated accuracy estimate.
+
 ## 2026-10-27: Card photos: numbers covered locally
 
 **Decision (owner).** A card or ID photo should help the owner recognise their card, so new card photos get a **covered copy**. Local OCR covers the numbers, and only that copy is shown or sent anywhere.

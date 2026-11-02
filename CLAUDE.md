@@ -18,8 +18,9 @@ The real app is being **built from scratch**: an ASP.NET Core (.NET 10) backend 
   1. Embedding retrieval: vector search, top 25.
   2. The existing preliminary-score shortlist: ≥ 0.56, top 10.
   3. Two gpt-6-luna advocates, one arguing for a match and one against, run in parallel and see the photos.
-  4. Jev (TypeSafe's typed-decision model) decides. A match is shown when `0.5·same_item + 0.5·overall ≥ 0.65`.
-   Since 2026-10-27 both Jev questions say "judge by similarity, not proof" (owner decision; not re-measured on the benchmark, see decisions.md).
+  4. Jev (TypeSafe's typed-decision model) decides. A match is shown when `0.5·same_item + 0.5·overall ≥ 0.55` (lowered from 0.65 on 2026-11-01; see decisions.md).
+   Both Jev questions and both advocates end with a fixed instruction to read item names in context and not treat missing details as evidence against a match (owner decisions 2026-10-27 and 2026-10-31; not re-measured on the benchmark, see decisions.md).
+   After changing the cut-off or prompts, press **Re-check open reports** on `/admin` once it's deployed. Pairs that were reviewed but not matched are only reviewed again when one of their reports is queued.
 - **Fallback:** plain gpt-6-luna review when Jev is unavailable. Jev is in early access.
 - **Recall is the deciding metric.** A missed match means someone never gets their item back. Precision is secondary.
 - **Design for 100–1,000 active reports.** GUtech has about 2,000 people, so 10,000 is unrealistic.
@@ -38,6 +39,7 @@ The mascot is a girl inspired by Zarqa Al-Yamama: cream veil, blue eyes, two bra
 - `scripts/generate.py` fills the prompt and generates the image through the Codex CLI's image generation. It needs Pillow for the transparency check. Output goes to `mascot-output/`: the PNG, the exact prompt, a preview on white and the Codex log.
 - Judge images by `<name>.preview.jpg`. Some viewers show the transparent PNG with a dark glow that isn't really there.
 - Known drift: the gold cuffs on her braids sometimes disappear.
+- Animations: the **`zarqa-mascot-animation` skill** ([SKILL.md](.claude/skills/zarqa-mascot-animation/SKILL.md)) reuses the same locked prompt. Its routes are: procedural motion of an existing still (no redrawing, and it also writes CSS), Codex keyframe sprite sheets, and video-model clips from a start frame to an end frame on green, keyed back to transparent. The default is Gemini Omni Flash (`GEMINI_API_KEY` in `benchmark/.env`, which needs a billed project; the free tier allows 0 requests). Veo 3.1 Lite and Seedance on fal.ai use `FAL_KEY`. Google shut down Veo in the Gemini API on 2026-10-22. The user adds keys; only mascot art is ever sent.
 
 ## Running and deploying
 

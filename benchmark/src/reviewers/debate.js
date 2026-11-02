@@ -6,9 +6,10 @@ import { chatJson } from "../openai.js";
 import { dateRelation, matchAliases, truncate } from "../text.js";
 import { usage } from "./luna.js";
 
-// Same as the app (decisions.md, 2026-10-27): similarity over proof. Runs before this change used the old wording.
+// Same as the app (decisions.md, 2026-10-27 and 2026-10-31): read item names in context, similarity over proof.
+// Runs before these changes used older wording.
 export const SIMILARITY_RULE =
-  "Judge by similarity, not proof: if the item type, colour and place agree and nothing concrete contradicts them, lean towards the same item. Missing details (no brand, marks, photos or time) are not evidence of different items; only concrete contradictions are.";
+  "People describe the same kind of item in different ways and often give very few details. Interpret item names in context; different words, levels of detail, or singular and plural forms alone neither prove nor disprove a match. Missing specifics are not evidence against a match. A missed real match may prevent an item being returned, while the owner can reject a wrong suggestion, so prefer recall when the evidence makes a match plausible. Still weigh concrete contradictions honestly.";
 
 // luna-debate: two Luna advocates argue the case, Jev decides.
 // The FOR advocate makes the strongest honest case that both reports describe the same
@@ -19,7 +20,8 @@ const SIDES = {
   for: "You are the advocate FOR a match. Make the strongest honest case that the LOST and FOUND reports describe the same physical item.",
   against: "You are the advocate AGAINST a match. Make the strongest honest case that the LOST and FOUND reports describe different items.",
 };
-const COMMON = `This is a university lost-and-found app. Use only evidence in the reports and photos: item type, colour, brand/model, distinctive marks, place (location aliases name the same place), and timing (an item cannot be found before it was lost).
+export const COMMON = `This is a university lost-and-found app. Use only evidence in the reports and photos: item type, colour, brand/model, distinctive marks, place (location aliases name the same place), and timing (an item cannot be found before it was lost).
+${SIMILARITY_RULE}
 Cite concrete details, say how strong each point is, and do not invent facts. If the evidence on your side is weak, say so plainly. At most 120 words.`;
 
 const ADVOCATE_SCHEMA = {

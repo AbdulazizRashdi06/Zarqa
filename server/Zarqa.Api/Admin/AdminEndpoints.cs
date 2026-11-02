@@ -76,9 +76,31 @@ public static class AdminEndpoints
         // After a matching change: review every open report again. Pairs already suggested, confirmed or rejected stay as they are.
         admin.MapPost("/rematch", async (ZarqaDb db, Matching.MatchQueue queue, CancellationToken ct) =>
         {
-            var ids = await db.Reports.Where(r => r.Status == ReportStatus.Open).Select(r => r.Id).ToListAsync(ct);
+            var ids = await db.Reports.Where(r => r.Status == ReportStatus.Open && !r.User!.Email.EndsWith(SampleData.EmailSuffix)).Select(r => r.Id).ToListAsync(ct);
             foreach (var id in ids) await queue.EnqueueAsync(id, ct);
             return Results.Ok(new { queued = ids.Count });
+        });
+
+        // Sample data for demos (SampleData): fill replaces any earlier set; delete removes only sample people and their posts.
+        admin.MapPost("/sample", async (ZarqaDb db, Retention retention, TimeProvider clock, CancellationToken ct) =>
+            Results.Ok(await SampleData.FillAsync(db, retention, clock, ct)));
+        admin.MapDelete("/sample", async (ZarqaDb db, Retention retention, CancellationToken ct) =>
+            Results.Ok(new { users = await SampleData.DeleteAsync(db, retention, ct) }));
+
+        // Wipes every report, chat, photo and non-admin account. Admins, RSA staff emails, settings and the campus map stay.
+        admin.MapPost("/delete-everything", async (DeleteEverything body, ZarqaDb db, Retention retention, ILogger<Retention> log, CancellationToken ct) =>
+        {
+            if (body.Confirm != DeleteEverything.Word) return Errors.BadRequest($"Type {DeleteEverything.Word} to confirm.");
+            var reportIds = await db.Reports.Select(r => r.Id).ToListAsync(ct);
+            await retention.DeleteReportsAsync(reportIds, ct);
+            var userIds = await db.Users.Where(u => !u.IsAdmin).Select(u => u.Id).ToListAsync(ct);
+            foreach (var id in userIds) await retention.DeleteUserAsync(id, ct);
+            await db.ConversationReads.ExecuteDeleteAsync(ct);
+            await db.ReviewLogs.ExecuteDeleteAsync(ct);
+            await db.MatchJobs.ExecuteDeleteAsync(ct);
+            await db.LoginCodes.ExecuteDeleteAsync(ct);
+            log.LogWarning("Admin deleted everything: {Reports} reports, {Users} accounts", reportIds.Count, userIds.Count);
+            return Results.Ok(new { reports = reportIds.Count, users = userIds.Count });
         });
 
         admin.MapGet("/log", async (Guid? reportId, ZarqaDb db, CancellationToken ct) =>
@@ -89,6 +111,11 @@ public static class AdminEndpoints
                 .Select(l => new { l.Id, l.ReportId, l.CounterpartId, l.Step, l.Payload, l.CostUsd, l.CreatedAt })
                 .ToListAsync(ct);
         });
+    }
+
+    public sealed record DeleteEverything(string? Confirm)
+    {
+        public const string Word = "DELETE";
     }
 
     private static async Task<IResult> SetBanned(ZarqaDb db, Guid id, bool banned, CancellationToken ct)

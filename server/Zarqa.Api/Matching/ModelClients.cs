@@ -21,7 +21,7 @@ public sealed class ModelOptions
     public string? TypeSafeApiKey { get; set; }
     public string LunaModel { get; set; } = "gpt-6-luna";
     public string EmbeddingModel { get; set; } = "text-embedding-3-small";
-    /// <summary>Pinned: jev-latest moves silently and would shift the 0.65 cut-off.</summary>
+    /// <summary>Pinned: jev-latest moves silently and would shift the 0.55 cut-off.</summary>
     public string JevModel { get; set; } = "jev-1.13.0";
     public string JevOpenRouterModel { get; set; } = "typesafe/jev-1.13";
     public string LunaImageDetail { get; set; } = "low";

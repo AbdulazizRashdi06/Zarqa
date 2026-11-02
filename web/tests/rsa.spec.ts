@@ -85,6 +85,47 @@ test('the RSA desk has no serious accessibility violations', async ({ page }) =>
   }
 })
 
+test('the Found tab lists every found report with where it is', async ({ page }) => {
+  await session(page)
+  await page.route('**/api/rsa/found', route => route.fulfill({ json: [
+    { ...item, id: 'kept', code: null, title: 'Silver ring', state: 'finder' },
+    { ...item, id: 'chat', code: null, title: 'Casio watch', state: 'chatting' },
+    item,
+  ] }))
+  await page.goto('/rsa')
+  await page.getByRole('tab', { name: 'Found' }).click()
+  await expect(page.getByText('With the finder')).toBeVisible()
+  await expect(page.getByText('Owner and finder chatting')).toBeVisible()
+  await expect(page.getByText(/K7P-4QM · On its way/)).toBeVisible()
+  // Open items can be matched to someone at the desk; one already in a chat can't.
+  await expect(page.getByRole('button', { name: 'Match to someone' })).toHaveCount(2)
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+  // All five tabs stay on one row at 390px.
+  const tops = await page.getByRole('tab').evaluateAll(tabs => tabs.map(tab => tab.getBoundingClientRect().top))
+  expect(new Set(tops).size).toBe(1)
+})
+
+test('staff match someone at the desk to a found item', async ({ page }) => {
+  await session(page)
+  page.on('dialog', d => d.accept())
+  const held = { ...item, id: 'held', title: 'Black umbrella', state: 'held', receivedAt: '2026-10-26T08:30:00Z' }
+  let sent: unknown = null
+  await page.route('**/api/rsa/found', route => route.fulfill({ json: [{ ...item, id: 'kept', code: null, title: 'Silver ring', state: 'finder' }, held] }))
+  await page.route('**/api/rsa/found/*/match', route => { sent = { url: route.request().url(), ...route.request().postDataJSON() }; return route.fulfill({ json: { handedOver: true, title: 'Black umbrella' } }) })
+  await page.goto('/rsa')
+  await page.getByRole('tab', { name: 'Found' }).click()
+  await page.getByRole('button', { name: 'Match to someone' }).nth(1).click()
+  // On the shelf: "hand it over now" starts ticked.
+  await expect(page.getByRole('checkbox', { name: /hand it over now/ })).toBeChecked()
+  await page.getByLabel('Their GUtech email').fill('maryam@student.gutech.edu.om')
+  // The email is all staff type.
+  await expect(page.getByRole('textbox')).toHaveCount(1)
+  await page.screenshot({ path: 'test-results/rsa-manual-match-phone.png', fullPage: true })
+  await page.getByRole('button', { name: 'Hand it over' }).click()
+  await expect(page.getByText('Handed over. The Black umbrella is marked returned.')).toBeVisible()
+  expect(sent).toEqual({ url: expect.stringContaining('/api/rsa/found/held/match'), email: 'maryam@student.gutech.edu.om', handOver: true })
+})
+
 test('a found report can go to the RSA and shows its drop code', async ({ page }) => {
   await session(page, false)
   const posted = { id: 'found', kind: 'found', title: 'Blue metal bottle', category: '', categoryKey: 'bottle', description: 'Dent near the lid', locationName: null, locationText: 'GU1 Library', eventDate: null, eventTime: null, status: 'Open', pill: 'Bring to RSA', isSensitive: false, photoIds: [], matchId: null, conversationId: null, createdAt: '2026-10-26T08:00:00Z', dropAtRsa: true, dropCode: 'K7P-4QM', rsaReceived: false, pickupMatchId: null }

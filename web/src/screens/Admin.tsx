@@ -24,6 +24,7 @@ export default function Admin() {
   const [notice, setNotice] = useState('')
   const [busy, setBusy] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [wipeWord, setWipeWord] = useState('')
   const logVersion = useRef(0)
   const explain = (e: unknown) => setError(e instanceof ApiError ? e.message : t('common.error'))
   useEffect(() => {
@@ -53,6 +54,29 @@ export default function Admin() {
       setNotice(t('admin.rematchDone', { n: r.queued }))
     } catch (e) { explain(e) } finally { setBusy(false) }
   }
+  async function refresh() {
+    const [a, b] = await Promise.all([api<Stats>('/admin/stats'), api<Report[]>('/admin/reports')])
+    setStats(a); setReports(b)
+  }
+  async function sample(method: 'POST' | 'DELETE') {
+    if (busy || !window.confirm(t(method === 'POST' ? 'admin.sample.fillConfirm' : 'admin.sample.deleteConfirm'))) return
+    setBusy(true); setError(''); setNotice('')
+    try {
+      const r = await api<{ users: number; reports?: number }>('/admin/sample', { method })
+      setNotice(method === 'POST' ? t('admin.sample.filled', { reports: r.reports ?? 0, users: r.users }) : t('admin.sample.deleted'))
+      await refresh()
+    } catch (e) { explain(e) } finally { setBusy(false) }
+  }
+  async function deleteEverything() {
+    if (busy || wipeWord !== 'DELETE') return
+    setBusy(true); setError(''); setNotice('')
+    try {
+      const r = await api<{ reports: number; users: number }>('/admin/delete-everything', { body: { confirm: wipeWord } })
+      setNotice(t('admin.wipe.done', { reports: r.reports, users: r.users }))
+      setWipeWord('')
+      await refresh()
+    } catch (e) { explain(e) } finally { setBusy(false) }
+  }
   async function loadLog(id: string) {
     const version = ++logVersion.current
     setLogReport(id); setLogs([]); setLogLoaded(false); setError('')
@@ -68,6 +92,20 @@ export default function Admin() {
     {loading && <p role="status">{t('admin.loading')}</p>}
     <div className={s.actions}><button type="button" disabled={busy} onClick={rematch}>{t('admin.rematch')}</button></div>
     {notice && <p role="status" className={s.notice}>{notice}</p>}
+    <section aria-labelledby="sample-title">
+      <h2 id="sample-title">{t('admin.sample.title')}</h2>
+      <p>{t('admin.sample.note')}</p>
+      <div className={s.actions}>
+        <button type="button" disabled={busy} onClick={() => sample('POST')}>{t('admin.sample.fill')}</button>
+        <button type="button" disabled={busy} onClick={() => sample('DELETE')}>{t('admin.sample.delete')}</button>
+      </div>
+    </section>
+    <section aria-labelledby="wipe-title" className={s.danger}>
+      <h2 id="wipe-title">{t('admin.wipe.title')}</h2>
+      <p>{t('admin.wipe.note')}</p>
+      <label>{t('admin.wipe.label')}<input id="wipe-word" value={wipeWord} autoComplete="off" onChange={e => setWipeWord(e.target.value)} /></label>
+      <div className={s.actions}><button type="button" className={s.dangerButton} disabled={busy || wipeWord !== 'DELETE'} onClick={deleteEverything}>{t('admin.wipe.button')}</button></div>
+    </section>
     {stats && <>
       <div className={s.tiles}>{metrics.map(key => <div className={s.tile} key={key}><strong>{key.startsWith('spend') ? `$${stats[key].toFixed(4)}` : stats[key]}</strong><span>{t(`admin.${key}` as StringKey)}</span></div>)}</div>
       <Ticket className={s.card}>{(['reports', 'matches', 'decidedBy'] as const).map(key => <section key={key}><h2>{t(`admin.${key}` as StringKey)}</h2>{stats[key].map((g, i) => <p key={i}>{[g.kind, g.status, g.by].filter(Boolean).join(' / ')}: {g.count}</p>)}</section>)}</Ticket>

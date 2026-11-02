@@ -11,14 +11,17 @@ namespace Zarqa.Api.Chat;
 /// <summary>The lost owner's decision on a suggested match (design: Match screen).</summary>
 public static class MatchEndpoints
 {
-    /// <summary>Fixed display rule (decisions.md), not tuned.</summary>
-    public const double StrongAt = 0.80;
+    /// <summary>Fixed display bands (decisions.md, 2026-11-01), not tuned: how sure a suggestion sounds to the owner.</summary>
+    public const double LooksLikeAt = 0.65;
+    public const double BigChanceAt = 0.80;
+
+    public static string Confidence(double score) => score >= BigChanceAt ? "big" : score >= LooksLikeAt ? "looks" : "small";
 
     public const string Opening = "You two matched. Ask a question only the owner would know, and meet somewhere public.";
 
     public record SideDto(Guid Id, string Title, string Description, string? CategoryKey, string LocationText, string? EventDate, string? EventTime, Guid[] PhotoIds, DateTimeOffset CreatedAt,
         bool IsSensitive);
-    /// <summary>AtRsa: the finder handed it to the RSA desk, so "It's mine" gives a pickup code instead of a chat.</summary>
+    /// <summary>AtRsa: the finder handed it to the RSA desk, so "Could be mine" gives a pickup code instead of a chat.</summary>
     public record MatchDto(Guid Id, string Status, double FinalScore, string Strength, string[] Reasons, DateTimeOffset CreatedAt, SideDto Lost, SideDto Found,
         Guid? ConversationId, bool AtRsa, bool RsaReceived, string? PickupCode, bool Collected);
 
@@ -31,7 +34,7 @@ public static class MatchEndpoints
             var m = await Load(db, id, http.User.Id(), ct);
             if (m is null) return Errors.NotFound();
             var conversation = await db.Conversations.Where(c => c.MatchId == m.Id).Select(c => (Guid?)c.Id).FirstOrDefaultAsync(ct);
-            return Results.Ok(new MatchDto(m.Id, m.Status.ToString(), m.FinalScore, m.FinalScore >= StrongAt ? "strong" : "likely", m.Reasons, m.CreatedAt,
+            return Results.Ok(new MatchDto(m.Id, m.Status.ToString(), m.FinalScore, Confidence(m.FinalScore), m.Reasons, m.CreatedAt,
                 Side(m.Lost!), Side(m.Found!), conversation, m.Found!.DropAtRsa, m.Found.RsaReceivedAt is not null,
                 m.Status == MatchStatus.Confirmed ? RsaCodes.Format(m.PickupCode) : null, m.CollectedAt is not null));
         });

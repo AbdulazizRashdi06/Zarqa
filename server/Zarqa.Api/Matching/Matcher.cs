@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Pgvector;
 using Pgvector.EntityFrameworkCore;
+using Zarqa.Api.Admin;
 using Zarqa.Api.Data;
 using Zarqa.Api.Photos;
 
@@ -14,7 +15,7 @@ public enum MatchOutcome { Done, Retry, Postponed, NotConfigured }
 
 /// <summary>
 /// luna-debate for one report (decisions.md): embed → vector top 25 → prescore shortlist (≥ 0.56, top 10)
-/// → two Luna advocates + Jev (≥ 0.65), or a plain Luna review (≥ 0.72) when Jev is unavailable.
+/// → two Luna advocates + Jev (≥ 0.55), or a plain Luna review (≥ 0.72) when Jev is unavailable.
 /// Runs in both directions: a new found report is checked against open lost reports and vice versa.
 /// </summary>
 public sealed class Matcher(
@@ -44,6 +45,8 @@ public sealed class Matcher(
         if (!IsConfigured) return MatchOutcome.NotConfigured;
         var report = await db.Reports.Include(r => r.Photos).FirstOrDefaultAsync(r => r.Id == reportId, ct);
         if (report is null || report.Status != ReportStatus.Open) return MatchOutcome.Done;
+        // Sample data (admin demo) is never matched, in either direction.
+        if (await db.Users.AnyAsync(u => u.Id == report.UserId && u.Email.EndsWith(SampleData.EmailSuffix), ct)) return MatchOutcome.Done;
         if (await SpentTodayAsync(ct) >= models.Value.DailySpendCapUsd)
         {
             log.LogWarning("Daily model spend cap reached; matching for report {Report} postponed", reportId);
@@ -69,7 +72,7 @@ public sealed class Matcher(
         // 2. Vector search over open counterparts of other people.
         var other = report.Kind == ReportKind.Lost ? ReportKind.Found : ReportKind.Lost;
         var pool = await db.Reports.Include(r => r.Photos)
-            .Where(r => r.Kind == other && r.UserId != report.UserId && r.Embedding != null
+            .Where(r => r.Kind == other && r.UserId != report.UserId && r.Embedding != null && !r.User!.Email.EndsWith(SampleData.EmailSuffix)
                         && (r.Status == ReportStatus.Open || r.Status == ReportStatus.InChat || r.Status == ReportStatus.Pickup))
             .OrderBy(r => r.Embedding!.CosineDistance(report.Embedding))
             .Take(VectorLimit)
