@@ -39,3 +39,21 @@ test("jev readers accept documented response variants", () => {
   // bare 0-based score in the middle → 0.5
   assert.equal(readScore({ score: 2 }, OVERALL_LEVELS).normalized, 0.5);
 });
+
+test("terra judge: answers read like Jev's and feed the same debate score", async () => {
+  const { terraAnswers, debateScore, DEBATE_LEVELS } = await import("../src/reviewers/debate.js");
+  const a = terraAnswers({
+    same_item_probability: 0.8,
+    stronger_case: "for",
+    overall_probabilities: { clearly_different: 0, probably_different: 0, unclear: 0.2, probably_same: 0.6, almost_certainly_same: 0.2 },
+  });
+  const f = { sameItem: readNoul(a.same_item), overall: readScore(a.overall, DEBATE_LEVELS).normalized };
+  assert.equal(f.sameItem, 0.8);
+  assert.equal(f.overall, 0.75); // expected level 3.0 of 0..4
+  assert.equal(readChoice(a.stronger_case, ["for", "against", "balanced"]).choice, "for");
+  assert.ok(Math.abs(debateScore(f) - 0.775) < 1e-9);
+  // Out-of-range or missing numbers are clamped, never NaN.
+  const bad = terraAnswers({ same_item_probability: 1.4, stronger_case: "balanced", overall_probabilities: {} });
+  assert.equal(readNoul(bad.same_item), 1);
+  assert.equal(readScore(bad.overall, DEBATE_LEVELS).normalized, 0);
+});

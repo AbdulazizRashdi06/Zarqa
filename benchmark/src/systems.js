@@ -143,7 +143,7 @@ async function jevSystem(query, db, ctx, { withPhoto, cascade }) {
 }
 
 /** luna-debate: vector retrieval and luna-vector's shortlist; two Luna advocates argue, Jev decides. */
-async function debateSystem(query, db, ctx) {
+async function debateSystem(query, db, ctx, { judge = "jev" } = {}) {
   const ledger = new Ledger();
   const vec = await embedQuery(query, "text", ctx, ledger);
   const pool = vectorPool(query, vec, "text", db, ledger);
@@ -153,7 +153,7 @@ async function debateSystem(query, db, ctx) {
     "review",
     list,
     async (x) => {
-      const r = await debateReview(x.lost, x.found, x.prelim, ctx);
+      const r = await debateReview(x.lost, x.found, x.prelim, ctx, { judge });
       if (!r.failed) return { ...r, reviewer: "debate" };
       const l = await lunaReview(x.lost, x.found, x.prelim, ctx);
       return { ...l, reviewer: l.call ? "luna-fallback" : "fallback", debateError: r.error, extraCalls: r.extraCalls };
@@ -187,4 +187,5 @@ export const PIPELINES = {
   "jev-photo": (q, db, ctx) => jevSystem(q, db, ctx, { withPhoto: true, cascade: false }),
   "jev-cascade": (q, db, ctx) => jevSystem(q, db, ctx, { withPhoto: true, cascade: true }),
   "luna-debate": (q, db, ctx) => debateSystem(q, db, ctx),
+  "luna-debate-terra": (q, db, ctx) => debateSystem(q, db, ctx, { judge: "terra" }),
 };

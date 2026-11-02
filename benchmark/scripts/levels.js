@@ -31,7 +31,9 @@ if (!sysRuns.length) throw new Error(`no ${a.system} runs in ${a.run}`);
 for (const size of [...new Set(sysRuns.map((r) => r.size))].sort((x, y) => x - y)) {
   // A pair seen from both sides keeps its highest suggested score.
   const shown = new Map();
+  const reviewers = {};
   for (const r of sysRuns.filter((r) => r.size === size)) {
+    for (const p of r.pairs ?? []) reviewers[p.reviewer] = (reviewers[p.reviewer] || 0) + 1;
     for (const p of r.visible ?? []) {
       const k = `${p.lostId}|${p.foundId}`;
       if (!shown.has(k) || p.finalScore > shown.get(k).finalScore) shown.set(k, p);
@@ -51,6 +53,9 @@ for (const size of [...new Set(sysRuns.map((r) => r.size))].sort((x, y) => x - y
   const truePairs = run.pairs.filter((p) => p.isMatch).length;
   const found = rows.reduce((s, r) => s + r.right, 0);
   console.log(`\n== ${a.system}, ${size} reports: ${found}/${truePairs} true pairs suggested, ${shown.size} suggestions ==`);
+  // Anything but "debate" means an advocate or the judge failed (e.g. a Codex usage limit) and a fallback decided.
+  const failed = Object.entries(reviewers).filter(([k]) => k !== "debate");
+  console.log(`reviews: ${reviewers.debate || 0} by the debate` + (failed.length ? `, FALLBACK ${failed.map(([k, n]) => `${k} ${n}`).join(", ")} (failed calls: rerun to retry them)` : ", no failures"));
   console.log("level           right  wrong (traps)  share right");
   for (const r of rows) {
     const n = r.right + r.wrong;

@@ -81,12 +81,14 @@ export async function embed(texts, { useCache = true } = {}) {
  * One structured-output Luna call: a text prompt plus optional photos (local file paths).
  * Returns {parsed, inputTokens, cachedInputTokens, outputTokens, latencyMs, fromCache}.
  */
-export async function chatJson({ system, text, imagePaths = [], imageDetail, schemaName, schema, useCache = true }) {
+export async function chatJson({ system, text, imagePaths = [], imageDetail, schemaName, schema, model, useCache = true }) {
+  // `model` picks another model on the same route (the Terra judge); default is Luna.
   if (lunaProvider() === "codex") {
-    return codexJson({ model: process.env.LUNA_MODEL || MODELS.luna, system, text, imagePaths, schema, useCache });
+    return codexJson({ model: model || process.env.LUNA_MODEL || MODELS.luna, system, text, imagePaths, schema, useCache });
   }
-  const r = apiRoute("luna");
-  if (!r) throw new Error("No Luna API configured (set LUNA_PROVIDER=codex to use the Codex CLI).");
+  const route = apiRoute("luna");
+  if (!route) throw new Error("No Luna API configured (set LUNA_PROVIDER=codex to use the Codex CLI).");
+  const r = model ? { ...route, model } : route;
   const content = [{ type: "text", text }];
   for (const url of await photoDataUrls({ photos: imagePaths }, "/", imagePaths.length)) {
     content.push({ type: "image_url", image_url: { url, detail: imageDetail } });

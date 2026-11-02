@@ -23,7 +23,10 @@ node scripts/levels.js --run results/<dir>                 # luna-debate suggest
 node scripts/false-matches.js export|score --runs <dirs>   # blind labelling of false matches
 node scripts/inspect-jev.js                                # Jev answers + blocking rule for each true pair
 LUNA_PROVIDER=none node scripts/count-reviews.js           # how many Luna reviews a run will need
+bash ../deploy/bench-on-vps.sh [logs|result]               # run on the VPS through the Codex gateway (from the owner's PC; see the script)
 ```
+
+Through the shared Codex gateway, calls can wait in its queue: set `BENCH_TIMEOUT_MS` (the VPS script uses 900000) and keep `--parallel 2 --review-concurrency 2` so at most 8 requests are in flight (its queue limit is 40). Run `luna-debate` and `luna-debate-terra` together: the advocate calls are identical, so the second system replays them from the cache and only adds judge calls.
 
 Run options: `--systems`, `--sizes`, `--max-queries`, `--parallel` (reports at once), `--review-concurrency` (reviews per report), `--weights <json>`, `--filler-days`, `--no-cache`.
 
@@ -47,6 +50,7 @@ Run options: `--systems`, `--sizes`, `--max-queries`, `--parallel` (reports at o
 | `jev-photo` | vector top 25 | Jev; adds a one-off vision call per report (`src/photoAttributes.js`) |
 | `jev-cascade` | vector top 25 | Jev; unsure pairs go to Luna |
 | `luna-debate` | vector top 25 | two Luna advocates (for/against) in parallel, then Jev decides (`src/reviewers/debate.js`); cut-off `PROPOSED.debateThreshold` |
+| `luna-debate-terra` | vector top 25 | same advocates; GPT-6.1 Terra (`MODELS.terra`) answers Jev's three questions as one structured call, read into the same features, score and cut-off. Text only, like Jev. Runs on the Luna route (gateway, API or Codex CLI). Priced at Luna's rates as a placeholder |
 
 The preliminary score (`src/prescore.js`) is a reconstruction of production's formula: cosine + category/text/location/date boosts.
 

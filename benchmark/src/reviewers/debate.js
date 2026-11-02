@@ -1,6 +1,6 @@
 import { existsSync } from "node:fs";
 import path from "node:path";
-import { CURRENT, OFFLINE_ESTIMATE, PROPOSED, RUNTIME } from "../../config.js";
+import { CURRENT, MODELS, OFFLINE_ESTIMATE, PROPOSED, RUNTIME } from "../../config.js";
 import { askJev, readChoice, readNoul, readScore } from "../jevClient.js";
 import { chatJson } from "../openai.js";
 import { dateRelation, matchAliases, truncate } from "../text.js";
@@ -12,6 +12,7 @@ export const SIMILARITY_RULE =
   "People describe the same kind of item in different ways and often give very few details. Interpret item names in context; different words, levels of detail, or singular and plural forms alone neither prove nor disprove a match. Missing specifics are not evidence against a match. A missed real match may prevent an item being returned, while the owner can reject a wrong suggestion, so prefer recall when the evidence makes a match plausible. Still weigh concrete contradictions honestly.";
 
 // luna-debate: two Luna advocates argue the case, Jev decides.
+// luna-debate-terra: the same advocates, but GPT-6.1 Terra answers Jev's three questions (terraJudge).
 // The FOR advocate makes the strongest honest case that both reports describe the same
 // physical item; the AGAINST advocate makes the strongest honest case that they don't.
 // Both see the same text and photos. Jev reads both cases and answers typed questions.
@@ -59,6 +60,55 @@ const QUESTIONS = {
   },
 };
 
+// ---- Terra judge: Jev's questions, asked of GPT-6.1 Terra as one structured answer ----
+// Only the judge changes: same state (reports, timing, both cases), same question wording, and
+// answers read into the same features, so debateScore and the cut-off apply unchanged.
+// Text only, like Jev. Probabilities are normalised in code.
+const LEVEL_KEYS = ["clearly_different", "probably_different", "unclear", "probably_same", "almost_certainly_same"];
+const TERRA_SYSTEM = `You are the judge in a university lost-and-found app. Two advocates have argued whether a LOST report and a FOUND report describe the same physical item. Read the reports and both cases, then answer three questions.
+same_item: ${QUESTIONS.same_item.instructions} Give the probability (0 to 1) that the answer is yes.
+stronger_case: ${QUESTIONS.stronger_case.instructions} "for" = ${QUESTIONS.stronger_case.criteria.for}; "against" = ${QUESTIONS.stronger_case.criteria.against}; "balanced" = ${QUESTIONS.stronger_case.criteria.balanced}.
+overall: ${QUESTIONS.overall.instructions} Give a probability (0 to 1) for each level; they should sum to 1. Levels: ${LEVEL_KEYS.map((k, i) => `${k} = "${DEBATE_LEVELS[i]}"`).join("; ")}.`;
+
+const TERRA_SCHEMA = {
+  type: "object",
+  additionalProperties: false,
+  required: ["same_item_probability", "stronger_case", "overall_probabilities"],
+  properties: {
+    same_item_probability: { type: "number" },
+    stronger_case: { type: "string", enum: ["for", "against", "balanced"] },
+    overall_probabilities: {
+      type: "object",
+      additionalProperties: false,
+      required: LEVEL_KEYS,
+      properties: Object.fromEntries(LEVEL_KEYS.map((k) => [k, { type: "number" }])),
+    },
+  },
+};
+
+/** Terra's answer in the shapes the Jev readers accept. */
+export function terraAnswers(parsed) {
+  const clamp = (v) => (typeof v === "number" && Number.isFinite(v) ? Math.min(1, Math.max(0, v)) : 0);
+  return {
+    same_item: { noul: clamp(parsed.same_item_probability) },
+    stronger_case: { choice: parsed.stronger_case },
+    overall: { probabilities: LEVEL_KEYS.map((k) => clamp(parsed.overall_probabilities?.[k])) },
+  };
+}
+
+async function askTerra(state, ctx) {
+  const res = await chatJson({
+    system: TERRA_SYSTEM,
+    text: JSON.stringify(state),
+    schemaName: "debate_judge",
+    schema: TERRA_SCHEMA,
+    model: MODELS.terra,
+    useCache: ctx.useCache,
+  });
+  // Priced as a "luna" call (Luna's rates as a placeholder); `model` says what it really was.
+  return { answers: terraAnswers(res.parsed), call: { kind: "luna", model: MODELS.terra, ...usage(res) } };
+}
+
 const brief = (r) => ({
   ...(r.title ? { title: r.title } : {}),
   ...(r.category ? { category: r.category } : {}),
@@ -93,7 +143,7 @@ export function debateScore(f) {
   return 0.5 * f.sameItem + 0.5 * f.overall;
 }
 
-export async function debateReview(lost, found, prelim, ctx, { threshold = PROPOSED.debateThreshold } = {}) {
+export async function debateReview(lost, found, prelim, ctx, { threshold = PROPOSED.debateThreshold, judge = "jev" } = {}) {
   let pro, con;
   try {
     [pro, con] = await Promise.all([advocate("for", lost, found, ctx), advocate("against", lost, found, ctx)]);
@@ -112,6 +162,12 @@ export async function debateReview(lost, found, prelim, ctx, { threshold = PROPO
   if (ctx.offline) {
     answers = { same_item: { noul: prelim.score }, stronger_case: { choice: "balanced" }, overall: { score: prelim.score * 4 } };
     jevCall = { kind: "jev", estimated: true, ...OFFLINE_ESTIMATE.jev };
+  } else if (judge === "terra") {
+    try {
+      ({ answers, call: jevCall } = await askTerra(state, ctx));
+    } catch (err) {
+      return { failed: true, error: `terra failed: ${err.message}`, call: null, extraCalls: [pro.call, con.call] };
+    }
   } else {
     try {
       const res = await askJev(state, QUESTIONS, { useCache: ctx.useCache });
@@ -137,8 +193,8 @@ export async function debateReview(lost, found, prelim, ctx, { threshold = PROPO
     explanation: `For (${pro.strength}): ${pro.argument}\nAgainst (${con.strength}): ${con.argument}`,
     matchedFields: [],
     riskFlags: features.stronger === "against" ? ["case_against_stronger"] : [],
-    features,
-    // The advocates run in parallel, then Jev: the critical path is the slower advocate plus Jev.
+    features: { ...features, judge },
+    // The advocates run in parallel, then the judge: the critical path is the slower advocate plus Jev.
     latencyMs: Math.max(pro.call.latencyMs || 0, con.call.latencyMs || 0) + (jevCall.latencyMs || 0),
     call: jevCall,
     extraCalls: [pro.call, con.call],

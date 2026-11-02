@@ -2,6 +2,14 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-02: Benchmark a Terra judge next to Jev
+
+**Request (owner).** Rerun the benchmark with the new system and compare a GPT-6.1 Terra judge with Jev, reported by the three confidence levels.
+- **`luna-debate-terra`** (benchmark only, not the app): the same advocates, shortlist, score formula and 0.55 cut-off. Only the judge changes. Terra gets Jev's exact state and question wording and answers in one structured call (P(same item), stronger case, probabilities over the five levels); `0.5·same_item + 0.5·overall` is computed from those as for Jev. Text only, like Jev. Gateway default reasoning effort (medium).
+- **`benchmark/scripts/levels.js`** splits suggestions into Small chance / Looks like it / Big chance (the fixed display rule) and counts right, wrong and trap suggestions in each, plus any reviews that fell back because a call failed.
+- **`deploy/bench-on-vps.sh`** runs it on the VPS through the private Codex gateway, so the server's existing ChatGPT login is used and nobody signs in. No key is sent to the gateway; embeddings use the server's OpenAI key and Jev its TypeSafe key, read from `deploy/.env` on the server. It shares the gateway with live matching while it runs.
+- **Checked here without models:** every request the benchmark sends was accepted by the gateway's own `parseChat` (stand-in server), no `Authorization` header reached it, photos passed, and the unit tests pass. **Not run yet:** this cloud session has no SSH key and outbound SSH is blocked, so the owner starts the run from their PC. The 2026-10-31 Terra bar (above 0.70 on the Soundcore pair) still decides deployment; this run only adds evidence.
+
 ## 2026-11-02: Sample data and "Delete everything" on /admin
 
 **Decision (owner).** Admins can fill the app with sample data for demos, remove it again, and wipe all data.

@@ -5,6 +5,7 @@ export const MODELS = {
   luna: "gpt-6-luna",
   jev: "jev-1.13.0", // pinned: jev-latest moves silently and would shift thresholds
   jevOpenRouter: "typesafe/jev-1.13", // same model through OpenRouter's decisions endpoint
+  terra: "gpt-6.1-terra", // luna-debate-terra: judges the advocates' cases instead of Jev
 };
 // A proxy (e.g. a local Codex auth tunnel) may expose Luna under another model name.
 if (process.env.LUNA_MODEL) MODELS.luna = process.env.LUNA_MODEL;
@@ -16,6 +17,7 @@ export const PRICES = {
   lunaInput: 0.10,
   lunaCachedInput: 0.01,
   lunaOutput: 0.50,
+  // Terra judge calls are priced at Luna's rates as a placeholder (no Terra price recorded here).
   jevInput: 0.042,
   jevOutput: 0,
   firestoreRead: 0.06 / 100_000,
@@ -53,7 +55,8 @@ export const PROPOSED = {
 export const RUNTIME = {
   reviewConcurrency: 10, // reviews for one report run in parallel, like Promise.all
   lunaImageDetail: "low", // "low" | "high" | "auto" — set to what production uses
-  requestTimeoutMs: 60_000,
+  // Through the shared Codex gateway a call can wait in its queue for minutes: BENCH_TIMEOUT_MS raises this.
+  requestTimeoutMs: Number(process.env.BENCH_TIMEOUT_MS || 60_000),
 };
 
 // Firestore time can't be measured offline, so it is modelled. Replace with numbers
@@ -76,4 +79,4 @@ export const OFFLINE_ESTIMATE = {
   jev: { inputTokens: 750, outputTokens: 0, latencyMs: 150 },
 };
 
-export const SYSTEMS = ["luna", "luna-vector", "jev", "jev-photo", "jev-cascade", "luna-debate"];
+export const SYSTEMS = ["luna", "luna-vector", "jev", "jev-photo", "jev-cascade", "luna-debate", "luna-debate-terra"];
