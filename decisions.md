@@ -8,7 +8,21 @@ The decisions made while turning the uni matching prototype into a real app, and
 - **`luna-debate-terra`** (benchmark only, not the app): the same advocates, shortlist, score formula and 0.55 cut-off. Only the judge changes. Terra gets Jev's exact state and question wording and answers in one structured call (P(same item), stronger case, probabilities over the five levels); `0.5·same_item + 0.5·overall` is computed from those as for Jev. Text only, like Jev. Gateway default reasoning effort (medium).
 - **`benchmark/scripts/levels.js`** splits suggestions into Small chance / Looks like it / Big chance (the fixed display rule) and counts right, wrong and trap suggestions in each, plus any reviews that fell back because a call failed.
 - **`deploy/bench-on-vps.sh`** runs it on the VPS through the private Codex gateway, so the server's existing ChatGPT login is used and nobody signs in. No key is sent to the gateway; embeddings use the server's OpenAI key and Jev its TypeSafe key, read from `deploy/.env` on the server. It shares the gateway with live matching while it runs.
-- **Checked here without models:** every request the benchmark sends was accepted by the gateway's own `parseChat` (stand-in server), no `Authorization` header reached it, photos passed, and the unit tests pass. **Not run yet:** this cloud session has no SSH key and outbound SSH is blocked, so the owner starts the run from their PC. The 2026-10-31 Terra bar (above 0.70 on the Soundcore pair) still decides deployment; this run only adds evidence.
+- **Checked first without models:** every request the benchmark sends was accepted by the gateway's own `parseChat` (stand-in server), no `Authorization` header reached it, photos passed, and the unit tests pass.
+- **Run on the VPS, 2026-11-02 05:44–06:36 UTC** (100 reports, 78 measured, 32 true pairs, 18 traps; `results/2026-11-02T05-44-25-930Z`). 692 debate reviews per judge, **no fallbacks**. Both judges saw the same cached advocate arguments.
+
+  | Judge | Recall | Shown | Wrong (traps) | Big chance right / wrong | Looks like it | Small chance | Lowest true pair |
+  |---|---|---|---|---|---|---|---|
+  | Jev (live) | **32/32** | 41 | 9 (5) | 14 / 0 | 18 / 6 (5) | 0 / 3 (0) | 0.699 (Shayla) |
+  | Terra | **32/32** | 37 | 5 (4) | 20 / 0 | 12 / 2 (2) | 0 / 3 (2) | 0.689 (blue pen) |
+
+  - **Big chance was always right** for both judges. Terra put 20 true pairs there, Jev 14.
+  - **Every true pair scored ≥ 0.689**, so in this run Small chance held only wrong suggestions. The band still exists to catch true pairs that score low on real reports.
+  - **Traps shown at Looks like it:** Jev showed Bank Muscat card vs debit card (0.755), laptop vs Dell laptop (0.701), sunglasses vs glasses (0.693), grey backpack vs grey backpack (0.680) and Dell laptop vs black Dell laptop (0.651). Terra showed only the card (0.735) and the glasses (0.726); it scored the laptop and backpack traps in Small chance (0.646, 0.639).
+  - **Compared with 2026-10-03** (97% recall, 0/18 traps at ≥ 0.65): at ≥ 0.65, Jev now shows 5 traps and Terra 2. Both runs used text-embedding-3-small and the same 100 reports. The likely cause is the 2026-10-27/31 instruction not to treat missing details as evidence against a match, which was expected to add wrong suggestions (see 2026-10-31). The two instruction versions weren't run side by side, so this is a hypothesis. This is also the first benchmark of the 0.55 cut-off: recall held at 32/32, with 3 wrong suggestions per judge between 0.55 and 0.65.
+  - **Cost and speed:** Terra adds one Codex call per review, so 26.6 Codex calls per report against Jev's 17.7 Codex + 8.9 TypeSafe calls. Its p50 was 80 s against Jev's 52 s under benchmark load. Terra's dollar cost uses Luna rates as a placeholder; it actually ran on the ChatGPT plan.
+  - **Honesty:** 0.55 and the level bands are owner-chosen fixed rules, not tuned on this data. Recall is an upper bound, because the same writer wrote both sides of each pair, and with 32 pairs one pair is about 3 points.
+- **Not changed:** the live judge stays Jev. The 2026-10-31 bar for Terra (above 0.70 on the Soundcore pair; it got 0.67375) still decides deployment, and this run is extra evidence for the owner, not a switch.
 
 ## 2026-11-02: Sample data and "Delete everything" on /admin
 

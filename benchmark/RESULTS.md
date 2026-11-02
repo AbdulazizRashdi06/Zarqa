@@ -108,6 +108,27 @@ With the hard rules on, recall stays at 81–88% whatever the cut-off.
 - **Luna:** 4,740 gpt-6-luna calls through Codex (ChatGPT plan allowance, $0 billed). Throughput was 13 → 87 calls/min as parallelism rose; no throttling seen at 28 concurrent.
 - **Jev:** 2,805 calls (TypeSafe key). At roughly 750 input tokens each, that's well under $0.10.
 
+## 6. Jev vs Terra judge, by confidence level (2026-11-02)
+
+Run on the VPS with the app's real setup: one text per report (`--shape one`), text-embedding-3-small, the current advocate and Jev instructions, and the 0.55 cut-off. Size 100 only. Both judges read the same cached Luna advocate arguments. 692 reviews each, no fallbacks.
+
+| Judge | Recall | Precision | Shown | Wrong | Traps | $/report | p50 | p95 | Codex calls/report | Jev calls/report |
+|---|---|---|---|---|---|---|---|---|---|---|
+| luna-debate (Jev) | **100%** | 78% | 41 | 9 | 5/18 | 0.00883 | 52.4 s | 62.0 s | 17.7 | 8.9 |
+| luna-debate-terra | **100%** | 86% | 37 | 5 | 4/18 | 0.01188* | 80.5 s | 92.7 s | 26.6 | 0 |
+
+\* Terra is priced at Luna's rates as a placeholder.
+
+| Level | Jev right / wrong (traps) | Terra right / wrong (traps) |
+|---|---|---|
+| Big chance (≥ 0.80) | 14 / 0 (0) | 20 / 0 (0) |
+| Looks like it (0.65–0.799) | 18 / 6 (5) | 12 / 2 (2) |
+| Small chance (0.55–0.649) | 0 / 3 (0) | 0 / 3 (2) |
+
+- **No missed pairs.** The lowest true-pair scores were 0.699 (Jev) and 0.689 (Terra), so neither judge needed the Small chance band in this run.
+- **Traps:** both judges showed Bank Muscat card vs debit card and sunglasses vs glasses at Looks like it. Jev also showed both laptop traps and the grey backpack there. Terra scored the laptop and backpack traps in Small chance.
+- **Not comparable to the 2026-10-03 run** (97% / 97%, 0/18 traps at ≥ 0.65): that run used the earlier advocate and Jev instructions and a 0.65 cut-off, with the same embeddings and reports. The cut-off and level bands are owner-chosen fixed rules, not tuned here.
+
 ## Result folders
 
 | Folder (`results/2026-10-01T…`) | Contents |
@@ -119,3 +140,4 @@ With the hard rules on, recall stays at 81–88% whatever the cut-off.
 | `07-07-20-226Z`, `07-12-38-433Z` | luna-debate @0.60 at 100 / 1,000 |
 | `07-54-56-687Z` | luna-debate @0.65 at 100 and 1,000 |
 | `results/jev-sweep.csv`, `jev-honest.json`, `debate-sweep.json` | sweeps |
+| `results/2026-11-02T05-44-25-930Z` | luna-debate (Jev) and luna-debate-terra at 100, run on the VPS (section 6) |
