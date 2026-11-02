@@ -24,6 +24,8 @@ public sealed class ResendEmailSender(HttpClient http, IOptions<EmailOptions> op
 
     public async Task SendAsync(string email, string subject, string html, string text, CancellationToken ct)
     {
+        // .invalid is reserved and never delivers (RFC 2606): sample data and test fixtures use it.
+        if (email.EndsWith(".invalid", StringComparison.OrdinalIgnoreCase)) return;
         using var request = new HttpRequestMessage(HttpMethod.Post, "https://api.resend.com/emails")
         {
             Content = JsonContent.Create(new

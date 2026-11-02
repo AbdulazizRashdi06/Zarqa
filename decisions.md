@@ -2,6 +2,15 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-02: Sample data and "Delete everything" on /admin
+
+**Decision (owner).** Admins can fill the app with sample data for demos, remove it again, and wipe all data.
+- **Fill sample data** (`POST /api/admin/sample`) adds 9 made-up people on the reserved `sample.invalid` domain with 15 reports in every state: a Big-chance suggestion held at the RSA desk, a chat with a suggested handover, a returned item, a pickup waiting with a code, a Small-chance suggestion, and open reports and drop-offs. Filling again replaces the set.
+- **Sample data is kept apart.** It is never matched in either direction (`Matcher` skips it and leaves it out of the pool), Re-check skips it, and nothing is emailed to `.invalid` addresses (`ResendEmailSender`). Nobody can sign in as a sample person, because `.invalid` fails the sign-in rule. No model calls are made.
+- **Delete sample data** (`DELETE /api/admin/sample`) runs account deletion for each sample person, so a real report matched to one goes back to searching.
+- **Delete everything** (`POST /api/admin/delete-everything`, body `{ "confirm": "DELETE" }`) deletes every report, photo, chat, match log, queued job, sign-in code and non-admin account. Admins, the RSA team list, app settings and the campus map stay. Only the nightly backup can undo it.
+- **Verified:** server build, web lint and build, and the admin page at 390 px with a mocked API. `SampleDataTests` (both classes) need Postgres and run in CI.
+
 ## 2026-11-01: RSA staff match items by hand
 
 **Decision (owner).** Someone may ask at the RSA desk for an item they never reported in Zarqa. On the Found tab, staff can **Match to someone** on any open found item (with the finder, on its way, or on the shelf). They type **only the person's GUtech email**. The owner said the email is enough to keep track, so staff don't write down what the person said.

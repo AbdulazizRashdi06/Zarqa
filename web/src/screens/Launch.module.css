@@ -20,3 +20,6 @@
 .page pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 12px; }
 .page summary { min-height: 44px; cursor: pointer; padding: 12px 0; overflow-wrap: anywhere; }
 .page label { display: flex; flex-direction: column; gap: 8px; }
+.danger { border: 1px solid #f0a58c; border-radius: 12px; padding: 12px; display: grid; gap: 8px; }
+.actions .dangerButton { background: #f0a58c; }
+.actions .dangerButton:disabled { opacity: .5; }

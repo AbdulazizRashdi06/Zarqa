@@ -380,5 +380,18 @@
   "rsa.loading": "Loading…",
   "admin.rematch": "Re-check open reports",
   "admin.rematchConfirm": "Run matching again for every open report? Pairs that were already suggested or rejected stay as they are.",
-  "admin.rematchDone": "Queued {n} open reports. Matches show up in the next few minutes."
+  "admin.rematchDone": "Queued {n} open reports. Matches show up in the next few minutes.",
+  "admin.sample.title": "Sample data",
+  "admin.sample.note": "Made-up people, reports, matches, chats and RSA items for showing Zarqa off. They're never matched with real reports and never emailed.",
+  "admin.sample.fill": "Fill sample data",
+  "admin.sample.fillConfirm": "Add sample data? Any earlier sample data is replaced.",
+  "admin.sample.filled": "Added {reports} sample reports from {users} made-up people.",
+  "admin.sample.delete": "Delete sample data",
+  "admin.sample.deleteConfirm": "Delete all sample data? Real reports stay as they are.",
+  "admin.sample.deleted": "Sample data deleted.",
+  "admin.wipe.title": "Delete everything",
+  "admin.wipe.note": "Deletes every report, chat, photo and account except admins. RSA staff emails stay on the team. This can't be undone here; only the nightly backup can bring it back.",
+  "admin.wipe.label": "Type DELETE to confirm",
+  "admin.wipe.button": "Delete everything",
+  "admin.wipe.done": "Deleted {reports} reports and {users} accounts."
 }
