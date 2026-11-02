@@ -19,6 +19,7 @@ node scripts/build-campus.js                               # rebuild data/campus
 node scripts/calibrate.js --run results/<dir>              # fit Jev weights, out-of-sample report
 node scripts/sweep-jev.js --runs results/<a>,results/<b>   # Jev cut-off sweep + honest cut-off
 node scripts/sweep-debate.js --runs results/<dir>          # luna-debate scoring + honest cut-off
+node scripts/levels.js --run results/<dir>                 # luna-debate suggestions by app level (Small / Looks like it / Big)
 node scripts/false-matches.js export|score --runs <dirs>   # blind labelling of false matches
 node scripts/inspect-jev.js                                # Jev answers + blocking rule for each true pair
 LUNA_PROVIDER=none node scripts/count-reviews.js           # how many Luna reviews a run will need
