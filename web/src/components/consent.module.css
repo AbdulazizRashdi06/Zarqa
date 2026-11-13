@@ -1,0 +1,100 @@
+.check {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 4px 0;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--text-soft);
+  cursor: pointer;
+}
+
+.check input {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  accent-color: var(--tan);
+}
+
+.check a {
+  color: var(--tan-light);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* One-time prompt for accounts made before consent was recorded: a sheet over the app, not a page. */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: rgba(20, 22, 30, 0.72);
+  animation: fade 180ms ease;
+}
+
+.sheet {
+  width: 100%;
+  max-width: 480px;
+  padding: 22px 20px 26px;
+  border-radius: 18px 18px 0 0;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: rise 240ms var(--ease-out);
+}
+
+.sheet h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.sheet h2:focus {
+  outline: none;
+}
+
+.sheet p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--text-soft);
+}
+
+.signOut {
+  align-self: center;
+  padding: 8px 12px;
+  border: none;
+  background: none;
+  color: var(--tan-light);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes rise {
+  from {
+    translate: 0 24px;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet {
+    animation: fade 180ms ease;
+  }
+}

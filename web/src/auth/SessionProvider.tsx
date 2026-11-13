@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react'
 import { Navigate, useLocation } from 'react-router'
+import { ConsentPrompt } from '../components/ConsentPrompt'
 import { Wordmark } from '../components/ui'
 import { api, ApiError } from '../lib/api'
 import { SessionContext, useSession, type Me } from './session'
@@ -42,15 +43,20 @@ function Splash() {
   )
 }
 
-/** Signed-in users only. Consent comes first (/consent), then a user without a first name goes to /welcome. */
+/** Signed-in users only; a user without a first name goes to /welcome first. Accounts without recorded consent get a one-time prompt on top. */
 export function RequireSession({ children }: { children: ReactNode }) {
   const { me, loading } = useSession()
   const { pathname } = useLocation()
   if (loading) return <Splash />
   if (!me) return <Navigate to="/signin" replace />
-  if (me.needsConsent) return pathname === '/consent' ? children : <Navigate to="/consent" replace />
-  if (pathname === '/consent') return <Navigate to="/" replace />
   if (!me.firstName && pathname !== '/welcome') return <Navigate to="/welcome" replace />
+  if (me.needsConsent)
+    return (
+      <>
+        {children}
+        <ConsentPrompt />
+      </>
+    )
   return children
 }
 

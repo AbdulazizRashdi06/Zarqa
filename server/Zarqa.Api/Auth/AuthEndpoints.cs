@@ -13,7 +13,8 @@ public static class AuthEndpoints
     public const string VerifyLimit = "auth-verify";
 
     public record RequestCodeBody(string? Email);
-    public record VerifyBody(string? Email, string? Code);
+    /// <param name="ConsentVersion">Sent when the sign-in box (18+, Terms, Privacy, processing outside Oman) was ticked.</param>
+    public record VerifyBody(string? Email, string? Code, string? ConsentVersion = null);
 
     public static void MapAuth(this RouteGroupBuilder api)
     {
@@ -92,6 +93,11 @@ public static class AuthEndpoints
             var admins = (config["Admin:Emails"] ?? "").Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
             user.IsAdmin = admins.Contains(address, StringComparer.OrdinalIgnoreCase);
             user.LastSeenAt = now;
+            if (body.ConsentVersion == Users.Consent.Current && user.ConsentVersion != Users.Consent.Current)
+            {
+                user.ConsentVersion = Users.Consent.Current;
+                user.ConsentedAt = now;
+            }
             await db.SaveChangesAsync(ct);
 
             var identity = new ClaimsIdentity([new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())], CookieAuthenticationDefaults.AuthenticationScheme);
