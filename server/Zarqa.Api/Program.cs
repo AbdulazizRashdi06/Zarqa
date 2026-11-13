@@ -151,7 +151,18 @@ if (!app.Environment.IsEnvironment("Testing"))
 app.UseForwardedHeaders();
 app.UseExceptionHandler();
 app.UseDefaultFiles();
-app.UseStaticFiles();
+// Hashed build files never change; the page and the service worker must be checked every time so updates arrive.
+var staticFiles = new StaticFileOptions
+{
+    OnPrepareResponse = ctx =>
+    {
+        var path = ctx.Context.Request.Path.Value ?? "";
+        ctx.Context.Response.Headers.CacheControl = path.StartsWith("/assets/", StringComparison.Ordinal)
+            ? "public, max-age=31536000, immutable"
+            : "no-cache";
+    },
+};
+app.UseStaticFiles(staticFiles);
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseRateLimiter();
@@ -185,7 +196,7 @@ api.MapRsa();
 
 // Unknown /api paths are 404s; everything else is the PWA's client-side routing.
 api.MapFallback(() => Results.NotFound());
-app.MapFallbackToFile("index.html");
+app.MapFallbackToFile("index.html", staticFiles);
 
 app.Run();
 

@@ -49,7 +49,8 @@ public static partial class Categories
     /// <summary>Card/ID report: its photos never go to a model. Same rule as the PWA's notice. Pass the user's words, not a label from <see cref="All"/>.</summary>
     public static bool IsSensitive(params string?[] texts) => texts.Any(t => t is not null && SensitiveRe().IsMatch(t));
 
-    [GeneratedRegex(@"\b(cards?|ids?|license|licence|passport|bank)\b", RegexOptions.IgnoreCase)]
+    // Arabic words take prefixes and suffixes (البطاقة, بطاقتي), so they match as stems, not whole words.
+    [GeneratedRegex(@"\b(cards?|ids?|i\.d|license|licence|passport|bank|atm|visa|mastercard|debit|credit|mulkiya|iqama)\b|بطاق|هوي[ةت]|جواز|رخص[ةت]|ملكي[ةت]|بنك|مصرف|صراف", RegexOptions.IgnoreCase)]
     private static partial Regex SensitiveRe();
 
     private static List<string> Words(string? s) =>

@@ -75,6 +75,15 @@ public class CategoryTests
     [InlineData("Passport", true)]
     [InlineData("Student ID", true)]
     [InlineData("Tech", false)]
+    [InlineData("ATM card", true)]
+    [InlineData("Mastercard", true)]
+    [InlineData("my mulkiya", true)]
+    [InlineData("I.D. holder", true)]
+    [InlineData("وجدت بطاقة بنكية", true)]
+    [InlineData("البطاقة الشخصية", true)]
+    [InlineData("هويتي", true)]
+    [InlineData("جواز سفر", true)]
+    [InlineData("محفظة سوداء", false)]
     [InlineData("Idea notebook", false)] // "id" only counts as a whole word
     public void Spots_card_and_id_reports(string text, bool sensitive) => Assert.Equal(sensitive, Categories.IsSensitive(text));
 }
