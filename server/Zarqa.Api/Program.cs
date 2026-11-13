@@ -129,8 +129,8 @@ builder.Services.AddRateLimiter(o =>
             _ => new FixedWindowRateLimiterOptions { PermitLimit = permits, Window = TimeSpan.FromMinutes(15) });
     // Per network address. Campus Wi-Fi puts many students behind one address, so these are generous;
     // abuse is held back per email (3 codes / 15 min) and per code (5 tries). Override with Auth:RequestCodePerIp / Auth:VerifyPerIp.
-    var codesPerIp = builder.Configuration.GetValue("Auth:RequestCodePerIp", 100);
-    var verifiesPerIp = builder.Configuration.GetValue("Auth:VerifyPerIp", 300);
+    var codesPerIp = builder.Configuration.GetValue("Auth:RequestCodePerIp", 300);
+    var verifiesPerIp = builder.Configuration.GetValue("Auth:VerifyPerIp", 900);
     o.AddPolicy(AuthEndpoints.RequestCodeLimit, http => PerIp(http, codesPerIp));
     o.AddPolicy(AuthEndpoints.VerifyLimit, http => PerIp(http, verifiesPerIp));
 });
