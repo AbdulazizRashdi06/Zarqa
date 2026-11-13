@@ -13,8 +13,10 @@ public class EmailTests
     {
         var m = SignInCodeEmail.Build("042917");
         Assert.Equal("Your Zarqa code: 042917", m.Subject);
-        Assert.Contains("042 917", m.Html);
-        Assert.Contains("042 917", m.Text);
+        // No space inside the code, so one long-press or paste takes all six digits.
+        Assert.Contains("<span>042</span><span style=\"margin-left:14px;\">917</span>", m.Html);
+        Assert.Contains("code is 042917", m.Text);
+        Assert.DoesNotContain("042 917", m.Html);
         Assert.DoesNotContain("href=", m.Html);
     }
 

@@ -39,8 +39,16 @@ export function useSession(): Session {
 
 // Where a signed-out visitor was heading (a push or email link), so sign-in can take them there.
 const RETURN_KEY = 'zarqa.returnTo'
+// The page someone signed out from on purpose: the next person to sign in starts on Home, not there.
+let leftFrom: string | null = null
+
+/** Called on sign-out with the page it happened on (null again once someone is signed in). */
+export function signedOutFrom(path: string | null) {
+  leftFrom = path
+}
 
 export function rememberReturnPath(path: string) {
+  if (path === leftFrom) return
   try {
     if (path !== '/' && path !== '/welcome' && path.startsWith('/') && !path.startsWith('//')) sessionStorage.setItem(RETURN_KEY, path)
   } catch {

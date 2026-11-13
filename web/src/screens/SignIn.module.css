@@ -57,6 +57,7 @@
 
 /* Welcome: full-height Zarqa waving beside her bubble */
 .wave {
+  display: block;
   flex-shrink: 0;
   width: clamp(104px, 31vw, 132px);
   margin-left: -6px;
@@ -111,6 +112,22 @@
   flex-shrink: 0;
 }
 
+/* What Zarqa is, in one plain line. Short screens (keyboard-sized) keep only the form. */
+.intro {
+  position: relative;
+  z-index: 1;
+  margin: -6px 0 0;
+  max-width: 30ch;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--text-soft);
+}
+@media (max-height: 599px) {
+  .intro {
+    display: none;
+  }
+}
+
 .form {
   margin: auto 0 0;
   display: flex;
@@ -139,7 +156,7 @@
   color: var(--paper);
 }
 .input::placeholder {
-  color: var(--slate);
+  color: var(--text-muted);
 }
 
 .help {
@@ -175,6 +192,16 @@
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+.haveCode {
+  align-self: flex-start;
+  padding: 4px 0;
+}
+.resent {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-soft);
+}
 .linkBtn:disabled {
   color: var(--text-muted);
   text-decoration: none;
@@ -191,7 +218,7 @@
 .box {
   height: 62px;
   border-radius: 12px;
-  border: 2px solid var(--slate);
+  border: 2px solid var(--chevron);
   background: var(--surface);
   display: flex;
   align-items: center;
@@ -204,8 +231,11 @@
     border-color 140ms ease,
     background-color 140ms ease;
 }
+/* Only while the hidden input has focus: the box that takes the next digit is the focus ring. */
 .boxActive {
   border-color: var(--tan);
+  outline: 2px solid var(--tan-light);
+  outline-offset: 2px;
 }
 .boxFilled {
   background: var(--slate);
@@ -248,8 +278,9 @@
   color: var(--text-soft);
 }
 .sentTo b {
+  display: block;
   color: var(--paper);
-  word-break: break-all;
+  overflow-wrap: anywhere;
 }
 .row {
   display: flex;

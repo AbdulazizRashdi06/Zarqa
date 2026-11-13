@@ -79,7 +79,9 @@ test('sign-in needs the consent box, and the code step records it', async ({ pag
   await page.goto('/signin')
   await page.locator('#email').fill('test@gutech.edu.om')
   const send = page.getByRole('button', { name: 'Send me a code', exact: true })
-  await expect(send).toBeDisabled()
+  // Without the tick the button says why instead of sitting there disabled.
+  await send.click()
+  await expect(page.getByRole('alert')).toHaveText('Tick the box to agree to the Terms and Privacy first.')
   // The words are links to the pages; the box is what says yes.
   await expect(page.getByRole('link', { name: 'Terms', exact: true })).toHaveAttribute('href', '/terms')
   await page.getByRole('checkbox').check()
@@ -99,7 +101,9 @@ test('an account without recorded consent is asked once, in a sheet', async ({ p
   const sheet = page.getByRole('dialog', { name: 'Quick one' })
   await expect(sheet).toBeVisible()
   const go = sheet.getByRole('button', { name: 'Continue', exact: true })
-  await expect(go).toBeDisabled()
+  await go.click()
+  await expect(sheet.getByRole('alert')).toHaveText('Tick the box to agree to the Terms and Privacy first.')
+  expect(consented).toBeNull()
   await sheet.getByRole('checkbox').check()
   await page.waitForTimeout(400)
   await page.screenshot({ path: 'test-results/consent-sheet-phone.png' })

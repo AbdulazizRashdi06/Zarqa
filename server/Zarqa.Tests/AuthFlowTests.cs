@@ -96,13 +96,35 @@ public class AuthFlowTests(TestApp app) : IClassFixture<TestApp>
     }
 
     [Fact]
+    public async Task An_earlier_code_still_works_after_a_resend_and_wrong_tries_are_shared()
+    {
+        var http = app.Client();
+        const string email = "slowmail@gutech.edu.om";
+        await http.PostAsJsonAsync("/api/auth/request-code", new { email });
+        var first = app.Emails.LastCodeFor(email);
+        await http.PostAsJsonAsync("/api/auth/request-code", new { email });
+        var second = app.Emails.LastCodeFor(email);
+        var wrong = Enumerable.Range(0, 10).Select(i => new string((char)('0' + i), 6)).First(c => c != first && c != second);
+
+        var miss = await http.PostAsJsonAsync("/api/auth/verify", new { email, code = wrong });
+        Assert.Equal("Wrong code. 4 tries left.", await Error(miss));
+
+        // The first email arrived late: its code still signs in, and then neither code works again.
+        Assert.Equal(HttpStatusCode.OK, (await http.PostAsJsonAsync("/api/auth/verify", new { email, code = first })).StatusCode);
+        var replay = await app.Client().PostAsJsonAsync("/api/auth/verify", new { email, code = second });
+        Assert.Equal("That code has expired. Ask for a new one.", await Error(replay));
+    }
+
+    [Fact]
     public async Task Limits_codes_per_email()
     {
         var http = app.Client();
         const string email = "spam@gutech.edu.om";
         for (var i = 0; i < 3; i++)
             Assert.Equal(HttpStatusCode.OK, (await http.PostAsJsonAsync("/api/auth/request-code", new { email })).StatusCode);
-        Assert.Equal(HttpStatusCode.TooManyRequests, (await http.PostAsJsonAsync("/api/auth/request-code", new { email })).StatusCode);
+        var limited = await http.PostAsJsonAsync("/api/auth/request-code", new { email });
+        Assert.Equal(HttpStatusCode.TooManyRequests, limited.StatusCode);
+        Assert.Contains("Type the one in your inbox", await Error(limited));
     }
 
     [Fact]

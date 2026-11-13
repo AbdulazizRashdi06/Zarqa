@@ -11,10 +11,12 @@ public static class SignInCodeEmail
     {
         // Code in the subject so phones show it in the notification.
         var subject = $"Your Zarqa code: {code}";
-        var spaced = $"{code[..3]} {code[3..]}";
+        // No space inside the code: one long-press selects all six digits, and a paste fills every box.
+        // The gap in the HTML is a margin between two spans.
+        var split = $"""<span>{code[..3]}</span><span style="margin-left:14px;">{code[3..]}</span>""";
 
         var text = $"""
-            Your Zarqa sign-in code is {spaced}
+            Your Zarqa sign-in code is {code}
 
             It works for 10 minutes. If you didn't ask for it, ignore this email: nobody can sign in without the code.
 
@@ -32,7 +34,7 @@ public static class SignInCodeEmail
                     <tr><td style="padding:0 4px 20px;font-family:Impact,'Arial Narrow Bold',sans-serif;font-size:30px;letter-spacing:1px;color:#F2EEE8;">ZARQA <span style="color:#BD9777;">&#9673;</span></td></tr>
                     <tr><td style="background:#F2EEE8;border-radius:20px;padding:28px 24px;font-family:Arial,Helvetica,sans-serif;color:#222634;">
                       <div style="font-family:'Courier New',monospace;font-size:12px;font-weight:bold;letter-spacing:2px;color:#8A6A4F;">YOUR SIGN-IN CODE</div>
-                      <div style="font-family:Impact,'Arial Narrow Bold',sans-serif;font-size:44px;letter-spacing:4px;line-height:1.1;margin:10px 0 14px;white-space:nowrap;">{spaced}</div>
+                      <div style="font-family:Impact,'Arial Narrow Bold',sans-serif;font-size:44px;letter-spacing:4px;line-height:1.1;margin:10px 0 14px;white-space:nowrap;">{split}</div>
                       <div style="font-size:15px;line-height:1.5;">It works for 10 minutes. Type it into Zarqa and you're in.</div>
                       <div style="border-top:2px dashed #CFC6BA;margin:22px 0 16px;"></div>
                       <div style="font-size:13px;line-height:1.5;color:#5E6472;">Didn't ask for this? Ignore it. Nobody can sign in without the code.</div>

@@ -6,8 +6,61 @@ import { BigButton, Wordmark, ZarqaBubble } from '../components/ui'
 import s from '../components/states.module.css'
 import { t } from '../i18n'
 import { api, ApiError, setUnauthorizedHandler } from '../lib/api'
+import { clearDraft } from '../lib/draft'
+import { clearSignIn } from './signinDraft'
 import { disablePushOnThisDevice } from '../lib/push'
-import { clearReturnPath, rememberReturnPath, returnPath, SessionContext, useSession, type Me } from './session'
+import { clearReturnPath, rememberReturnPath, returnPath, SessionContext, signedOutFrom, useSession, type Me } from './session'
+
+// Which account this browser last signed in as: an unfinished report (text and photos, maybe of a card) must
+// never be shown to the next person who signs in on the same phone.
+const LAST_USER_KEY = 'zarqa.lastUser'
+// Sign out was tapped while the logout request couldn't get through: finish it on the next start.
+const LOGOUT_PENDING_KEY = 'zarqa.logoutPending'
+
+/** A different account than last time on this browser: its unfinished report must not carry over. */
+function noteUser(id: string) {
+  let last: string | null = null
+  try {
+    last = localStorage.getItem(LAST_USER_KEY)
+  } catch {
+    // Storage blocked: treat it as a change; clearing costs nothing.
+  }
+  if (last !== id) clearDraft()
+  try {
+    localStorage.setItem(LAST_USER_KEY, id)
+    localStorage.removeItem(LOGOUT_PENDING_KEY)
+  } catch {
+    // Not remembered: the next sign-in clears the draft again, which is the safe side.
+  }
+}
+
+function logoutPending(): boolean {
+  try {
+    return localStorage.getItem(LOGOUT_PENDING_KEY) === '1'
+  } catch {
+    return false
+  }
+}
+
+/** Tells the server. Stays pending (tried again on the next start) unless the server cleared the cookie. */
+async function finishLogout() {
+  try {
+    await api('/auth/logout', { method: 'POST' })
+  } catch (e) {
+    // 401: there was no session left to end.
+    if (!(e instanceof ApiError) || e.status !== 401) return
+  }
+  setLogoutPending(false)
+}
+
+function setLogoutPending(pending: boolean) {
+  try {
+    if (pending) localStorage.setItem(LOGOUT_PENDING_KEY, '1')
+    else localStorage.removeItem(LOGOUT_PENDING_KEY)
+  } catch {
+    // ignore
+  }
+}
 
 export function SessionProvider({ children }: { children: ReactNode }) {
   const [me, setMe] = useState<Me | null>(null)
@@ -15,14 +68,29 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   const [unreachable, setUnreachable] = useState(false)
   const [signedOut, setSignedOut] = useState(false)
   const meRef = useRef<Me | null>(null)
+  const pendingLogout = useRef<Promise<void> | null>(null)
 
   const updateMe = useCallback((next: Me | null) => {
+    if (next && next.id !== meRef.current?.id) noteUser(next.id)
+    if (next) signedOutFrom(null)
     meRef.current = next
     setMe(next)
     if (next) setSignedOut(false)
   }, [])
 
   const refresh = useCallback(async () => {
+    if (logoutPending()) {
+      // Signed out offline last time: the cookie may still be there. Finish the job (once, even when two
+      // starts race), and stay signed out on this device either way.
+      pendingLogout.current ??= finishLogout().finally(() => {
+        pendingLogout.current = null
+      })
+      await pendingLogout.current
+      updateMe(null)
+      setUnreachable(false)
+      setLoading(false)
+      return
+    }
     try {
       updateMe(await api<Me>('/me'))
       setUnreachable(false)
@@ -44,16 +112,28 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     setUnauthorizedHandler(() => {
       if (!meRef.current) return
+      // The next person to sign in on this browser must not find this account's unfinished report.
+      clearDraft()
       setSignedOut(true)
       updateMe(null)
     })
     return () => setUnauthorizedHandler(null)
   }, [updateMe])
 
+  /**
+   * Every sign-out goes through here. Never fails: the user asked to leave, so this device forgets the account
+   * even if the server can't be told yet (it is told on the next start).
+   */
   const signOut = useCallback(async () => {
-    // Stop this phone showing the account's alerts (chat text, pickup codes) after it signs out.
+    // Stop this phone showing the account's alerts (chat text, pickup codes), while still signed in to say so.
     await disablePushOnThisDevice().catch(() => undefined)
-    await api('/auth/logout', { method: 'POST' })
+    // The unfinished report and the sign-in form belong to this account: nothing carries over to the next one.
+    clearDraft()
+    clearSignIn()
+    setLogoutPending(true)
+    await finishLogout()
+    clearReturnPath()
+    signedOutFrom(window.location.pathname + window.location.search)
     updateMe(null)
   }, [updateMe])
 
