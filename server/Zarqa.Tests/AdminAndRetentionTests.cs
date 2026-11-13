@@ -104,6 +104,58 @@ public class AdminAndRetentionTests(TestApp app) : IClassFixture<TestApp>
         Assert.Equal(ReportStatus.Expired, (await check.Reports.FirstAsync(r => r.Id == stale)).Status);
         Assert.False(await check.Reports.AnyAsync(r => r.Id == finished));
         Assert.Equal(ReportStatus.Open, (await check.Reports.FirstAsync(r => r.Id == fresh)).Status);
-        Assert.Contains(app.Emails.Sent, e => e.To == "retention@gutech.edu.om" && e.Subject.Contains("Old scarf"));
+        Assert.Contains(app.Emails.Sent, e => e.To == "retention@gutech.edu.om" && e.Subject == "Your lost report has expired: Old scarf");
+    }
+
+    [Fact]
+    public void Expiry_email_is_worded_for_each_kind_and_keeps_the_title_out_of_sentences()
+    {
+        var lost = Retention.ExpiryEmail(new Report { Kind = ReportKind.Lost, Title = "I lost my black wallet", Description = "", CategoryText = "", CategoryNorm = "", LocationText = "", LocationName = "" });
+        Assert.Equal("Your lost report has expired: I lost my black wallet", lost.Subject);
+        Assert.Contains("STILL LOOKING?", lost.Html);
+        Assert.Contains("“I lost my black wallet”", lost.Text);
+        Assert.Contains(Zarqa.Api.Notifications.NoticeEmail.OwnReportFooter, lost.Text);
+        Assert.DoesNotContain("Match alerts", lost.Text);
+
+        var found = Retention.ExpiryEmail(new Report { Kind = ReportKind.Found, Title = "Blue <b>bottle</b>", Description = "", CategoryText = "", CategoryNorm = "", LocationText = "", LocationName = "" });
+        Assert.Equal("Your found report has expired: Blue <b>bottle</b>", found.Subject);
+        Assert.Contains("STILL HAVE IT?", found.Html);
+        Assert.Contains("RSA desk", found.Text);
+        Assert.DoesNotContain("still looking", found.Text, StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain("<b>bottle", found.Html);
+    }
+
+    [Fact]
+    public async Task Admin_search_stats_and_log_name_the_other_report()
+    {
+        var admin = await app.SignedIn("admin@gutech.edu.om");
+        var owner = await app.SignedIn("searcher@gutech.edu.om");
+        var lost = (await Json(await owner.PostAsync("/api/reports", Form("lost", "Zebra_pattern 100% umbrella", "Other")))).GetProperty("id").GetGuid();
+        var other = await app.SignedIn("other.finder@gutech.edu.om");
+        var found = (await Json(await other.PostAsync("/api/reports", Form("found", "Striped umbrella", "Other")))).GetProperty("id").GetGuid();
+
+        // Search runs on the server across title and owner email; % and _ are literal.
+        var byTitle = await Json(await admin.GetAsync("/api/admin/reports?q=zebra_pattern%20100%25"));
+        Assert.Equal([lost], byTitle.EnumerateArray().Select(r => r.GetProperty("id").GetGuid()).ToArray());
+        Assert.Empty((await Json(await admin.GetAsync("/api/admin/reports?q=zebra%25umbrella"))).EnumerateArray());
+        var byEmail = await Json(await admin.GetAsync("/api/admin/reports?q=OTHER.FINDER"));
+        Assert.Contains(byEmail.EnumerateArray(), r => r.GetProperty("id").GetGuid() == found && !r.GetProperty("ownerIsAdmin").GetBoolean());
+        Assert.Equal(HttpStatusCode.Forbidden, (await owner.GetAsync("/api/admin/reports?q=zebra")).StatusCode);
+
+        var stats = await Json(await admin.GetAsync("/api/admin/stats"));
+        Assert.True(stats.GetProperty("admins").GetInt32() >= 1);
+        Assert.Equal(0, stats.GetProperty("sampleUsers").GetInt32());
+        Assert.Equal(0, stats.GetProperty("sampleReports").GetInt32());
+
+        await using (var db = app.Db())
+        {
+            db.ReviewLogs.Add(new ReviewLog { ReportId = found, CounterpartId = lost, Step = "review", Payload = "{\"finalScore\":0.9}", CreatedAt = DateTimeOffset.UtcNow });
+            await db.SaveChangesAsync();
+        }
+        var log = await Json(await admin.GetAsync($"/api/admin/log?reportId={lost}"));
+        var entry = log.EnumerateArray().First(l => l.GetProperty("step").GetString() == "review");
+        Assert.Equal("Striped umbrella", entry.GetProperty("counterpartTitle").GetString());
+        Assert.Equal("found", entry.GetProperty("counterpartKind").GetString());
+        Assert.Equal(HttpStatusCode.Forbidden, (await owner.GetAsync($"/api/admin/log?reportId={lost}")).StatusCode);
     }
 }
