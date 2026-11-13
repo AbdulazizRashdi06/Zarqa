@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type FormEvent, type KeyboardEvent } from 'react'
+import { useLocation, useNavigate as useRouterNavigate } from 'react-router'
 import { Link } from '../lib/nav'
 import { useNavigate } from '../lib/transition'
 import { useSession } from '../auth/session'
@@ -10,7 +11,7 @@ import { zarqaMotion } from '../components/zarqaMotion'
 import { t, tm, type StringKey } from '../i18n'
 import { api, apiForm, ApiError } from '../lib/api'
 import { muscatNow } from '../lib/dates'
-import { clearDraft, loadFields, loadPhotos, saveFields, savePhotos } from '../lib/draft'
+import { clearDraft, loadFields, loadPhotos, saveFields, savePhotos, type DraftFields } from '../lib/draft'
 import { readPhoto } from '../lib/images'
 import { isSensitiveText, partOfDay, type Mode } from '../lib/rules'
 import type { HomeSummary, Report } from '../lib/types'
@@ -43,7 +44,22 @@ function formatTime(time: string) {
 /** The server refuses dates more than a year back, so the picker stops there too. */
 const yearBefore = (date: string) => `${Number(date.slice(0, 4)) - 1}${date.slice(4)}`
 
-const toPicked = (blob: Blob): PickedPhoto => ({ blob, url: URL.createObjectURL(blob) })
+/** location.state.repost from "Post it again", checked field by field (it may be partial). */
+function readRepost(state: unknown): Partial<DraftFields> | null {
+  const r = (state as { repost?: unknown } | null)?.repost
+  if (!r || typeof r !== 'object') return null
+  const v = r as Record<string, unknown>
+  const str = (x: unknown) => (typeof x === 'string' ? x : undefined)
+  return {
+    mode: v.mode === 'lost' || v.mode === 'found' ? v.mode : undefined,
+    text: str(v.text)?.slice(0, MAX_TEXT),
+    locQuery: str(v.locQuery)?.slice(0, 120),
+    placeName: str(v.placeName) ?? null,
+    knowsWhen: false,
+  }
+}
+
+const toPicked =(blob: Blob): PickedPhoto => ({ blob, url: URL.createObjectURL(blob) })
 
 const coarsePointer = () => window.matchMedia?.('(pointer: coarse)').matches ?? false
 const reducedMotion = () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false
@@ -54,7 +70,13 @@ export default function Home() {
   // The draft belongs to this account: another account on the same browser never sees it.
   const owner = me?.id ?? ''
   const now = useMemo(() => muscatNow(), [])
-  const draft = useMemo(() => loadFields(owner), [owner])
+  // "Post it again" from a report page hands its text over once; it wins over a stored draft.
+  const location = useLocation()
+  const [repost] = useState(() => readRepost(location.state))
+  const draft = useMemo(() => {
+    const stored = loadFields(owner)
+    return repost ?? stored
+  }, [owner, repost])
   const [mode, setMode] = useState<Mode>(draft.mode ?? 'lost')
   // One box: what it is plus every detail. The server and the matcher work from this one text.
   const [text, setText] = useState(draft.text ?? '')
@@ -75,7 +97,7 @@ export default function Home() {
   const [pending, setPending] = useState(0)
   const [photoNote, setPhotoNote] = useState('')
   // Came back to an unfinished form: say so, with a way to start over.
-  const [restored, setRestored] = useState(Boolean(draft.text || draft.locQuery))
+  const [restored, setRestored] = useState(!repost && Boolean(draft.text || draft.locQuery))
   const [busy, setBusy] = useState(false)
   // An error is about the form as it was sent: once anything in it changes (or consent is given), it no longer shows.
   const formKey = JSON.stringify([mode, text, locQuery, placeName, knowsWhen, date, time, dropAtRsa, photos.map((p) => p.url), me?.needsConsent])
@@ -94,6 +116,7 @@ export default function Home() {
   const timeInput = useRef<HTMLInputElement>(null)
   const locLabel = useRef<HTMLLabelElement>(null)
   const navigate = useNavigate()
+  const routerNavigate = useRouterNavigate()
 
   const loadSummary = useCallback(() => {
     // A failed refresh keeps the counts we had.
@@ -126,10 +149,16 @@ export default function Home() {
       .catch(() => setPlaces([]))
   }, [])
 
-  // Bring back photos from an unfinished draft.
+  // The repost is one-shot: clear it so a reload or Back doesn't fill the form again. No page slide: same page.
+  const hasRepostState = Boolean((location.state as { repost?: unknown } | null)?.repost)
+  useEffect(() => {
+    if (hasRepostState) void routerNavigate(location.pathname, { replace: true, state: null })
+  }, [hasRepostState, location.pathname, routerNavigate])
+
+  // Bring back photos from an unfinished draft (not under a repost: those photos belong to another report's draft).
   useEffect(() => {
     let live = true
-    loadPhotos(owner).then((blobs) => {
+    ;(repost ? Promise.resolve([] as Blob[]) : loadPhotos(owner)).then((blobs) => {
       if (!live) return
       if (blobs.length) setRestored(true)
       setPhotos((p) => (p.length ? p : blobs.slice(0, MAX_PHOTOS).map(toPicked)))
@@ -138,7 +167,7 @@ export default function Home() {
     return () => {
       live = false
     }
-  }, [owner])
+  }, [owner, repost])
 
   useEffect(() => {
     saveFields(owner, { mode, text, locQuery, placeName, knowsWhen, date, time, dropAtRsa })

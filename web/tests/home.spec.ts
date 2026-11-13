@@ -125,6 +125,57 @@ test('no report goes out while consent is missing', async ({ page }) => {
   expect(posts).toHaveLength(0)
 })
 
+test('a 403 for missing consent reloads the session, opens the consent sheet and keeps the form', async ({ page }) => {
+  let needsConsent = false
+  let meCalls = 0
+  await home(page, () => {
+    meCalls++
+    return user('user-a', { needsConsent })
+  })
+  await page.route('**/api/reports', (route) => {
+    needsConsent = true
+    return route.fulfill({ status: 403, json: { error: 'Agree to the Terms and Privacy first.' } })
+  })
+  await page.goto('/')
+  await page.getByLabel('What did you lose?').fill('Blue bottle')
+  await page.locator('input[type=file]').setInputFiles({ name: 'p.png', mimeType: 'image/png', buffer: PNG })
+  await expect(page.getByRole('img', { name: 'Photo 1' })).toBeVisible()
+  const before = meCalls
+  await page.getByRole('button', { name: 'Find my stuff' }).click()
+  await expect.poll(() => meCalls).toBeGreaterThan(before)
+  await expect(page.getByRole('checkbox').or(page.getByRole('dialog')).first()).toBeVisible()
+  await expect(page.getByLabel('What did you lose?')).toHaveValue('Blue bottle')
+  await expect(page.getByRole('img', { name: 'Photo 1' })).toBeVisible()
+})
+
+test('a 403 for another reason shows the server message and keeps the form', async ({ page }) => {
+  await home(page, () => user('user-a'))
+  await page.route('**/api/reports', (route) => route.fulfill({ status: 403, json: { error: 'This account is blocked. See Help.' } }))
+  await page.goto('/')
+  await page.getByLabel('What did you lose?').fill('Blue bottle')
+  await page.getByRole('button', { name: 'Find my stuff' }).click()
+  await expect(page.getByRole('alert').filter({ hasText: 'This account is blocked. See Help.' })).toBeVisible()
+  await expect(page.getByLabel('What did you lose?')).toHaveValue('Blue bottle')
+})
+
+test('"Post it again" fills the form from the report once, over a stored draft', async ({ page }) => {
+  await home(page, () => user('user-a'))
+  await page.goto('/')
+  await page.getByLabel('What did you lose?').fill('Old draft text')
+  // ReportDetail navigates to / with state.repost: arrive on Home from another page with the history entry the router would push.
+  await page.goto('/tips')
+  await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
+  await page.evaluate(() => {
+    history.pushState({ usr: { repost: { mode: 'found', text: 'Blue bottle with stickers', locQuery: 'GU1 Library', placeName: 'GU1 Library' } }, key: 'rp', idx: 1 }, '', '/')
+    dispatchEvent(new PopStateEvent('popstate', { state: history.state }))
+  })
+  await expect(page.getByLabel('What did you find?')).toHaveValue('Blue bottle with stickers')
+  await expect(page.getByRole('combobox')).toHaveValue('GU1 Library')
+  await expect(page.getByText('Picked up where you left off.')).toHaveCount(0)
+  // One-shot: the state is cleared, so a reload shows the (now saved) form, not a second repost.
+  await expect.poll(() => page.evaluate(() => (history.state as { usr?: unknown } | null)?.usr ?? null)).toBeNull()
+})
+
 test('Enter in the place field never posts the report', async ({ page }) => {
   const posts: string[] = []
   await home(page, () => user('user-a'), posts)
