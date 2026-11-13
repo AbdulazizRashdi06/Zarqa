@@ -20,9 +20,21 @@ public static class RsaEndpoints
     public const string Policy = "rsa";
 
     public record ItemDto(Guid Id, string? Code, string Title, string Description, string? CategoryKey, string LocationText, string? EventDate,
-        bool IsSensitive, Guid[] PhotoIds, string State, string FinderName, DateTimeOffset CreatedAt, DateTimeOffset? ReceivedAt);
+        bool IsSensitive, Guid[] PhotoIds, string State, string FinderName, DateTimeOffset CreatedAt, DateTimeOffset? ReceivedAt)
+    {
+        /// <summary>When the report last changed: for finished items, when it was collected, closed or expired.</summary>
+        public DateTimeOffset UpdatedAt { get; init; }
 
-    public record ClaimDto(string Code, string OwnerName, string Title, string Description, string LocationText, string? EventDate, DateTimeOffset ClaimedAt);
+        /// <summary>Emails the desk already sent this item to (manual matches still waiting for an answer).</summary>
+        public string[] SuggestedTo { get; init; } = [];
+    }
+
+    /// <summary>OwnerEmail: staff compare it with the student ID at the desk (only after the pickup code matched).</summary>
+    public record ClaimDto(string Code, string OwnerName, string Title, string Description, string LocationText, string? EventDate, DateTimeOffset ClaimedAt,
+        string? OwnerEmail);
+
+    /// <summary>What Zarqa knows about an address typed at the desk, before staff send a match to it.</summary>
+    public record PersonDto(string Email, bool HasAccount, string? Name);
 
     public record DeskDto(string Type, ItemDto Item, ClaimDto? Claim);
 
@@ -131,7 +143,21 @@ public static class RsaEndpoints
         {
             var list = await Items(db).AsNoTracking().Where(r => r.Kind == ReportKind.Found)
                 .OrderByDescending(r => r.CreatedAt).Take(300).ToListAsync(ct);
-            return list.Select(ToItem);
+            var ids = list.Select(r => r.Id).ToList();
+            var sent = (await db.Matches.AsNoTracking()
+                    .Where(m => ids.Contains(m.FoundId) && m.DecidedBy == MatchDecider.RsaStaff && m.Status == MatchStatus.Suggested)
+                    .Select(m => new { m.FoundId, m.Lost!.User!.Email }).ToListAsync(ct))
+                .ToLookup(x => x.FoundId, x => x.Email);
+            return list.Select(r => ToItem(r) with { SuggestedTo = sent[r.Id].Distinct().ToArray() });
+        });
+
+        // Before a manual match: is this address already on Zarqa? Staff check the spelling with the person if not.
+        rsa.MapGet("/person", async (string? email, ZarqaDb db, IConfiguration config, CancellationToken ct) =>
+        {
+            var address = EmailRules.NormalizeSignInEmail(email, config["Auth:AllowedEmails"]);
+            if (address is null) return Errors.BadRequest("Use their GUtech email address.");
+            var user = await db.Users.AsNoTracking().FirstOrDefaultAsync(u => u.Email == address, ct);
+            return Results.Ok(new PersonDto(address, user is not null, user?.FirstName));
         });
 
         // Manual match (owner request, 2026-11-01): someone asks at the desk for an item, maybe without ever reporting it.
@@ -159,6 +185,10 @@ public static class RsaEndpoints
             }
             if (owner.IsBanned) return Errors.BadRequest("That account is banned.");
             if (owner.Id == found.UserId) return Errors.BadRequest("That's the person who found it.");
+            // A second tap (or a second send) must not file a second lost report for the same person and item.
+            if (owner.Id != Guid.Empty && await db.Matches.AnyAsync(m => m.FoundId == found.Id && m.Lost!.UserId == owner.Id
+                    && m.Status == MatchStatus.Suggested, ct))
+                return Errors.BadRequest("Already sent to them. They can claim it in Zarqa.");
 
             var lost = new Report { User = owner, Kind = ReportKind.Lost, CategoryText = "", Title = "", LocationText = "", CreatedAt = now, UpdatedAt = now };
             var error = await ReportEndpoints.ApplyFields(lost, found.Title, found.CategoryText, found.Description, null, found.LocationText,
@@ -200,6 +230,8 @@ public static class RsaEndpoints
             if (r is null) return Errors.NotFound();
             if (r.Status == ReportStatus.Pickup) return Errors.BadRequest("Someone has claimed it. Hand it over or mark it not theirs first.");
             if (r.Status != ReportStatus.Open) return Errors.BadRequest("This one is already finished.");
+            // Only what the desk actually holds: an item still on its way is the finder's report, and it expires by itself.
+            if (r.RsaReceivedAt is null) return Errors.BadRequest("It was never handed in, so there's nothing to give away. It expires by itself.");
             var now = clock.GetUtcNow();
             r.Status = ReportStatus.Closed;
             r.UpdatedAt = now;
@@ -290,16 +322,18 @@ public static class RsaEndpoints
         (false, ReportStatus.Open) => "finder",
         (false, ReportStatus.InChat) => "chatting",
         (false, ReportStatus.Returned) => "returned",
+        (_, ReportStatus.Expired) => "expired",
         _ => "closed",
     };
 
     private static ItemDto ToItem(Report r) => new(r.Id, RsaCodes.Format(r.DropCode), r.Title, r.Description, r.CategoryNorm, r.LocationText,
         r.EventDate?.ToString("yyyy-MM-dd"), r.IsSensitive, PhotoAccess.SharedIds(r),
-        State(r), r.User is null ? "GUtech student" : MeEndpoints.DisplayName(r.User), r.CreatedAt, r.RsaReceivedAt);
+        State(r), r.User is null ? "GUtech student" : MeEndpoints.DisplayName(r.User), r.CreatedAt, r.RsaReceivedAt) { UpdatedAt = r.UpdatedAt };
 
-    // Staff check the item against what the owner wrote, so they see the owner's own words and first name.
+    // Staff check the item against what the owner wrote, so they see the owner's own words, first name and GUtech email
+    // (to compare with their student ID).
     private static ClaimDto ToClaim(Match m) => new(RsaCodes.Format(m.PickupCode)!, m.Lost!.User?.FirstName ?? "GUtech student", m.Lost.Title,
-        m.Lost.Description, m.Lost.LocationText, m.Lost.EventDate?.ToString("yyyy-MM-dd"), m.ResolvedAt ?? m.CreatedAt);
+        m.Lost.Description, m.Lost.LocationText, m.Lost.EventDate?.ToString("yyyy-MM-dd"), m.ResolvedAt ?? m.CreatedAt, m.Lost.User?.Email);
 
     private static async Task<Dictionary<Guid, User>> Users(ZarqaDb db, List<Conversation> list, CancellationToken ct)
     {
