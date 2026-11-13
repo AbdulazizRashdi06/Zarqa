@@ -60,29 +60,31 @@ public class MatchingTests : IClassFixture<TestApp>, IAsyncLifetime
     }
 
     [Fact]
-    public async Task Low_jev_score_means_no_match()
+    public async Task Low_terra_score_means_no_match()
     {
         app.Models.SameItem = 0.2;
-        app.Models.OverallLevel = 1; // 0.5·0.2 + 0.5·0.25 = 0.225 < 0.65
+        app.Models.OverallLevel = 1; // 0.5·0.2 + 0.5·0.25 = 0.225 < 0.55
         var (lost, found, _) = await PostPair("quartz");
         await app.DrainMatchingAsync();
 
         await using var db = app.Db();
         Assert.False(await db.Matches.AnyAsync(m => m.LostId == lost && m.FoundId == found));
-        Assert.True(app.Models.JevCalls > 0);
+        Assert.Contains("gpt-6.1-terra", app.Models.JudgeModels);
     }
 
     [Fact]
-    public async Task Without_jev_the_plain_luna_review_decides()
+    public async Task Without_terra_the_deepseek_judge_decides_the_debate()
     {
-        app.Models.JevConfigured = false;
+        app.Models.TerraConfigured = false;
         var (lost, found, _) = await PostPair("garnet");
         await app.DrainMatchingAsync();
 
         await using var db = app.Db();
         var match = await db.Matches.SingleAsync(m => m.LostId == lost && m.FoundId == found);
-        Assert.Equal(MatchDecider.LunaFallback, match.DecidedBy);
-        Assert.Equal(0, app.Models.JevCalls);
+        Assert.Equal(MatchDecider.Debate, match.DecidedBy);
+        Assert.Equal(0.95, match.FinalScore, 3);
+        Assert.Contains(DeepSeekChat.Model, app.Models.JudgeModels);
+        Assert.DoesNotContain("gpt-6.1-terra", app.Models.JudgeModels);
     }
 
     [Fact]

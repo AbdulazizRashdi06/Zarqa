@@ -2,6 +2,15 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-10: Terra debate with a DeepSeek fallback
+
+**Decision (owner).** Use the benchmark's `luna-debate-terra` prompts in the app. Two GPT-6 Luna advocates see the report text and permitted photos. GPT-6.1 Terra reads their arguments and the report text. The score remains `0.5 × same_item + 0.5 × overall`, with a 0.55 cutoff. Retrieval and the shortlist keep their existing settings.
+
+- Each failed advocate or judge call can fall back independently to DeepSeek V4.1 Flash 1017 (`deepseek-flash`). DeepSeek uses JSON mode with local validation. The judge is text only on both routes, and both advocates use the existing photo access rules. If a stage still fails, the worker retries the job.
+- The API reads `DEEPSEEK_API_KEY` on the VPS. The Codex gateway handles the primary models and receives neither that key nor the embeddings key. The matching ledger records the model used for each stage. DeepSeek cost estimates use its peak token rates for the spend cap.
+- `MATCHING_USE_TERRA=false` restores the Jev route. The Terra benchmark measures the primary route, and the DeepSeek check used synthetic reports and a test photo to verify the API contract.
+- **Deployed on 2026-11-10.** The release image produced a real synthetic match at 0.97925 in a disposable database. Its review log confirmed two `gpt-6-luna` advocates and a `gpt-6.1-terra` judge. After cutover, the public health check passed and the live API confirmed the Terra and DeepSeek settings. The prior image was kept as `zarqa-api:before-terra-t9gy8e`.
+
 ## 2026-11-02: Sample data and "Delete everything" on /admin
 
 **Decision (owner).** Admins can fill the app with sample data for demos, remove it again, and wipe all data.

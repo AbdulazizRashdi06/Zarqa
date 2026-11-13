@@ -1,8 +1,10 @@
 import { useEffect, useId, useState } from 'react'
-import { useNavigate, useParams } from 'react-router'
+import { useParams } from 'react-router'
+import { useNavigate } from '../lib/transition'
 import { ItemIcon } from '../components/ItemThumb'
 import { ChevronDown } from '../components/icons'
 import { BackHeader, BigButton, LuggageTag, MonoLabel, Sticker, Ticket, ZarqaBubble } from '../components/ui'
+import { zarqaMotion } from '../components/zarqaMotion'
 import { t } from '../i18n'
 import { api, ApiError } from '../lib/api'
 import { clockTime, relativeDay } from '../lib/dates'
@@ -87,6 +89,14 @@ export default function Match() {
   const level = levelOf(match?.strength ?? 'small')
   const label = t(`match.${level}`)
 
+  // The stamp lands 0.8s into the reveal (Match.module.css): a tap you can feel, where the phone allows it.
+  const revealing = match?.status === 'Suggested'
+  useEffect(() => {
+    if (!revealing || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const timer = setTimeout(() => navigator.vibrate?.(14), 830)
+    return () => clearTimeout(timer)
+  }, [revealing])
+
   if (!match) {
     return (
       <main className={s.page}>
@@ -108,12 +118,12 @@ export default function Match() {
     return (
       <main className={s.page}>
         <BackHeader to="/reports" />
-        <h1 className={s.title}>
+        <h1 className={s.title} data-enter="headline">
           {match.collected ? t('match.pickup.collected') : t('match.pickup.h1')}
         </h1>
         {!match.collected && (
           <>
-            <Ticket>
+            <Ticket data-enter="pop" style={{ '--delay': '120ms' }}>
               <div className={s.pickup}>
                 <MonoLabel color="var(--ink-muted)">{t('match.pickup.label')}</MonoLabel>
                 <p className={s.pickupCode} aria-label={match.pickupCode.split('').join(' ')}>{match.pickupCode}</p>
@@ -140,16 +150,18 @@ export default function Match() {
 
       <div className={s.mascot} aria-hidden="true">
         {/* Her face and the sticker say how sure Zarqa is: confused, happy or really happy. */}
-        <Sticker rotate={6} style={{ marginBottom: -6, position: 'relative', zIndex: 1, fontSize: 13, whiteSpace: 'nowrap' }}>
-          {label}
-        </Sticker>
-        <img src={`/mascot/match-${level}.webp`} alt="" />
+        <span className={s.verdict}>
+          <Sticker rotate={6} style={{ fontSize: 13, whiteSpace: 'nowrap' }}>
+            {label}
+          </Sticker>
+        </span>
+        {/* Sure: an excited wiggle. Likely: she just breathes. Unsure: she sways, thinking it over. */}
+        <img src={`/mascot/match-${level}.webp`} alt="" className={zarqaMotion(level === 'big' ? 'wiggle' : level === 'looks' ? 'breathe' : 'sway')} />
       </div>
 
       <h1 className={s.title}>
-        {t('match.h1')}
-        <br />
-        <span style={{ color: 'var(--tan)' }}>{t('match.h2')}</span>
+        <span data-enter="headline" style={{ display: 'block' }}>{t('match.h1')}</span>
+        <span data-enter="headline" style={{ display: 'block', color: 'var(--tan)', '--i': 2 }}>{t('match.h2')}</span>
       </h1>
 
       <div className={s.tags}>
@@ -173,7 +185,14 @@ export default function Match() {
       {match.found.photoIds.length > 0 && (
         <div className={s.photos} role="group" aria-label={t('match.theirPhotos')}>
           {match.found.photoIds.map((p, i) => (
-            <img key={p} src={`/api/photos/${p}`} alt={t('match.photoN', { n: i + 1, total: match.found.photoIds.length })} className={s.photo} />
+            <img
+              key={p}
+              src={`/api/photos/${p}`}
+              alt={t('match.photoN', { n: i + 1, total: match.found.photoIds.length })}
+              className={s.photo}
+              data-enter="pop"
+              style={{ '--delay': '700ms', '--i': i }}
+            />
           ))}
         </div>
       )}
@@ -182,7 +201,7 @@ export default function Match() {
       {match.reasons.length > 0 && (
         <div className={s.reasons}>
           {match.reasons.map((r, i) => (
-            <div key={r} className={s.reason}>
+            <div key={r} className={s.reason} data-enter style={{ '--delay': '800ms', '--i': i }}>
               <span className={s.reasonNum}>0{i + 1}</span>
               {r}
             </div>

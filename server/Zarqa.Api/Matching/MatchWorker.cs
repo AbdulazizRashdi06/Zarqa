@@ -43,7 +43,7 @@ public sealed class MatchWorker(IServiceScopeFactory scopes, TimeProvider clock,
         {
             if (now - _lastNotConfiguredLog > TimeSpan.FromHours(1))
             {
-                log.LogWarning("Matching is waiting for model keys (OPENAI_API_KEY or OPENROUTER_API_KEY; TYPESAFE_API_KEY for Jev). Jobs stay queued.");
+                log.LogWarning("Matching is waiting for an embeddings route and debate models. Jobs stay queued.");
                 _lastNotConfiguredLog = now;
             }
             return false;

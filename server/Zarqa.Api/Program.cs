@@ -53,6 +53,8 @@ builder.Services.AddSingleton(_ => new AliasIndex(Seeder.LoadLocations().Select(
 builder.Services.AddHttpClient<IEmbedder, OpenAiEmbedder>(c => c.Timeout = TimeSpan.FromSeconds(60));
 // Long enough for a review that waits its turn in the Codex gateway's queue.
 builder.Services.AddHttpClient<ILuna, OpenAiLuna>(c => c.Timeout = TimeSpan.FromMinutes(5));
+builder.Services.AddHttpClient<ITerra, OpenAiTerra>(c => c.Timeout = TimeSpan.FromMinutes(5));
+builder.Services.AddHttpClient<IDeepSeek, DeepSeekChat>(c => c.Timeout = TimeSpan.FromSeconds(90));
 builder.Services.AddHttpClient<IJev, TypeSafeJev>(c => c.Timeout = TimeSpan.FromSeconds(60));
 builder.Services.AddScoped<DebateReviewer>();
 builder.Services.AddScoped<LunaReviewer>();

@@ -91,6 +91,28 @@
   gap: 4px;
   margin-bottom: 14px;
 }
+/* The bubble comes out of her mouth corner, a beat after she pops in. */
+@keyframes bubbleIn {
+  from {
+    opacity: 0;
+    scale: 0.9;
+    translate: -6px 4px;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+.bubble {
+  transform-origin: 0 100%;
+  animation: fadeIn 200ms ease 120ms backwards;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .bubble {
+    animation: bubbleIn 260ms var(--ease-out) 160ms backwards;
+  }
+}
 .bubbleName {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -125,6 +147,56 @@
 .big:disabled {
   opacity: 0.6;
   cursor: default;
+}
+.big {
+  transition:
+    scale 160ms var(--ease-out),
+    opacity 160ms ease;
+}
+/* The arrow leans into the press. */
+.bigCircle {
+  transition: translate 200ms var(--ease-out);
+}
+.big:not(:disabled):active .bigCircle {
+  translate: 4px 0;
+}
+@media (hover: hover) and (pointer: fine) {
+  .big:not(:disabled):hover .bigCircle {
+    translate: 3px 0;
+  }
+}
+/* A changed label (POST IT -> POSTING...) comes through a quick blur instead of snapping. */
+@keyframes labelSwap {
+  from {
+    opacity: 0;
+    filter: blur(3px);
+    translate: 0 4px;
+  }
+}
+.bigLabelSwap {
+  animation: labelSwap 220ms var(--ease-out);
+}
+/* Busy: the arrow becomes a fast spinner, which reads as a fast app. */
+@keyframes spin {
+  to {
+    rotate: 1turn;
+  }
+}
+.spinner {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2.6px solid currentColor;
+  border-right-color: transparent;
+  animation: spin 600ms linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bigLabelSwap {
+    animation: none;
+  }
+  .spinner {
+    animation-duration: 1200ms;
+  }
 }
 .bigLabel {
   font-family: var(--font-display);
@@ -190,6 +262,18 @@
   justify-content: center;
 }
 
+@keyframes badgeIn {
+  from {
+    opacity: 0;
+    scale: 0.6;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .badge {
+    animation: badgeIn 260ms var(--ease-out) 200ms backwards;
+  }
+}
+
 .backHeader {
   display: flex;
   align-items: center;
@@ -212,17 +296,34 @@
   display: flex;
   background: var(--slate);
   justify-content: flex-start;
-  transition: background 0.15s;
+  transition: background-color 200ms ease;
 }
 .switch[aria-checked='true'] {
   background: var(--tan);
-  justify-content: flex-end;
 }
+/* The knob slides across and squashes a little while it's held, like a real switch. */
 .switchKnob {
   width: 26px;
   height: 26px;
   border-radius: 13px;
   background: var(--paper);
+  transition:
+    translate 200ms var(--ease-out),
+    scale 160ms var(--ease-out);
+}
+.switch[aria-checked='true'] .switchKnob {
+  translate: 22px 0;
+}
+.switch:active {
+  scale: 1;
+}
+.switch:active .switchKnob {
+  scale: 1.12 0.92;
+}
+@media (prefers-reduced-motion: reduce) {
+  .switchKnob {
+    transition: none;
+  }
 }
 
 /* Report status pill */
@@ -237,9 +338,32 @@
   border-radius: 999px;
 }
 .pillDot {
+  position: relative;
   width: 7px;
   height: 7px;
   border-radius: 4px;
+}
+/* Still looking: the dot pings like a radar. */
+@keyframes ping {
+  0% {
+    opacity: 0.7;
+    scale: 1;
+  }
+  70%,
+  100% {
+    opacity: 0;
+    scale: 3.2;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .pillLive::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: inherit;
+    animation: ping 2200ms var(--ease-out) infinite;
+  }
 }
 
 /* Initial-letter avatar */

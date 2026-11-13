@@ -8,4 +8,4 @@ sed '/^LUNA_BASE_URL=/d; /^MATCHING_ENABLED=/d' deploy/.env > deploy/.env.new
 printf '%s\n' 'LUNA_BASE_URL=http://codex:8090/v1' 'MATCHING_ENABLED=true' >> deploy/.env.new
 mv deploy/.env.new deploy/.env
 docker compose -f deploy/docker-compose.yml --env-file deploy/.env up -d api codex >/dev/null
-echo 'Matching enabled: OpenAI embeddings, Codex Luna reviews and direct Jev.'
+echo 'Matching enabled: OpenAI embeddings and Codex routing for debate models.'

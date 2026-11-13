@@ -10,7 +10,11 @@ import '@fontsource/figtree/latin-800.css'
 import '@fontsource/jetbrains-mono/latin-500.css'
 import '@fontsource/jetbrains-mono/latin-700.css'
 import './index.css'
+import './motion.css'
 import App from './App.tsx'
+
+// iOS Safari only shows :active (the press feedback in motion.css) when something listens for touches.
+document.addEventListener('touchstart', () => {}, { passive: true })
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

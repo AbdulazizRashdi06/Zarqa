@@ -26,6 +26,13 @@
   color: var(--paper);
   text-decoration: none;
 }
+/* Closed chats sit back. A class, not an inline opacity, so the entrance fade still shows. */
+.closed > * {
+  opacity: 0.6;
+}
+.row:active {
+  scale: 0.98;
+}
 .text {
   flex-grow: 1;
   min-width: 0;
@@ -102,6 +109,7 @@
   width: min(72vw, 290px);
   height: auto;
   align-self: center;
+  --zo: 50% 92%;
 }
 .emptyText {
   margin: 0;

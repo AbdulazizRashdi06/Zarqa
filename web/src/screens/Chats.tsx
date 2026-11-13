@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router'
+import { Link } from '../lib/nav'
 import { Avatar, BackHeader, ZarqaBubble } from '../components/ui'
+import { zarqaMotion } from '../components/zarqaMotion'
 import { t } from '../i18n'
 import { api } from '../lib/api'
 import { campusDate, relativeDay } from '../lib/dates'
@@ -48,12 +49,12 @@ export default function Chats() {
       </h1>
 
       <div className={s.list}>
-        {(chats ?? []).map((c) => {
+        {(chats ?? []).map((c, i) => {
           const closed = c.status === 'Closed'
           const returned = c.status === 'Returned'
           const line = `${c.itemTitle} · ${c.status === 'Returned' ? t('chats.returned') : c.status === 'Closed' ? t('chats.closed') : c.myRole === 'lost' ? t('chats.youLost') : t('chats.youFound')}`
           return (
-            <Link key={c.id} to={`/chats/${c.id}`} className={s.row} style={closed ? { opacity: 0.6 } : undefined}>
+            <Link key={c.id} to={`/chats/${c.id}`} className={`${s.row} ${closed ? s.closed : ''}`} data-enter style={{ '--i': Math.min(i, 8) }}>
               <Avatar name={c.otherName} photoUrl={c.otherAvatarUrl} size={52} background={closed ? 'var(--text-faint)' : returned ? 'var(--sage)' : c.myRole === 'lost' ? 'var(--sage)' : 'var(--tan)'} />
               <span className={s.text}>
                 <span className={s.top}>
@@ -65,7 +66,8 @@ export default function Chats() {
                   <span className={s.last} style={c.unread ? { fontWeight: 700, color: 'var(--paper)' } : undefined}>
                     {c.lastMessage}
                   </span>
-                  {c.unread > 0 && <span className={s.badge}>{c.unread}</span>}
+                  {/* Keyed by its number, so a new message makes the badge pop again. */}
+                  {c.unread > 0 && <span key={c.unread} className={s.badge} data-enter="pop">{c.unread}</span>}
                 </span>
               </span>
             </Link>
@@ -75,8 +77,8 @@ export default function Chats() {
 
       {chats && chats.length === 0 && (
         <div className={s.empty}>
-          <img src="/mascot/empty-sad.webp" alt="" className={s.emptyArt} />
-          <p className={s.emptyText}>{t('chats.empty')}</p>
+          <img src="/mascot/empty-sad.webp" alt="" className={`${s.emptyArt} ${zarqaMotion('sway')}`} />
+          <p className={s.emptyText} data-enter style={{ '--delay': '200ms' }}>{t('chats.empty')}</p>
         </div>
       )}
 

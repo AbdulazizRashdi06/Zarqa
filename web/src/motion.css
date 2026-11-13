@@ -1,0 +1,204 @@
+/* Zarqa motion system.
+ *
+ * Rules (after Emil Kowalski's design-engineering notes):
+ * - Things you tap answer at once: a 160ms press, never a delay before the UI reacts.
+ * - Entering = strong ease-out. Moving on screen = ease-in-out. Never ease-in.
+ * - UI motion stays under ~300ms. Only rare moments (a match, an item returned, first sign-in) get a show.
+ * - Animate transform and opacity only. The individual `translate` / `scale` / `rotate` properties are used
+ *   so motion stacks on top of the tilts the design already has.
+ * - Nothing starts from scale(0), and nothing blocks a tap while it animates.
+ * - Reduced motion keeps the fades and drops the movement.
+ */
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  /* Springs are only for the playful things: Zarqa, stickers and luggage tags. Buttons, switches, badges,
+     messages and form bits use --ease-out. Overshoot fallback where linear() is missing. */
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --spring-soft: cubic-bezier(0.3, 1.25, 0.5, 1);
+}
+@supports (animation-timing-function: linear(0, 1)) {
+  :root {
+    --spring: linear(0, 0.089, 0.295, 0.539, 0.766, 0.945, 1.066, 1.13, 1.148, 1.135, 1.104, 1.068, 1.035, 1.008, 0.99, 0.981, 0.978, 0.98, 0.985, 0.99, 0.995, 0.999, 1.001, 1.003, 1.003, 1.003, 1);
+    --spring-soft: linear(0, 0.075, 0.242, 0.435, 0.616, 0.766, 0.878, 0.955, 1.003, 1.028, 1.037, 1.038, 1.033, 1.025, 1.018, 1.012, 1.007, 1.003, 1.001, 0.999, 1);
+  }
+}
+
+/* ---- Press: every button and link gives a little under the thumb ---- */
+:where(button, a, [role='option']) {
+  transition: scale 160ms var(--ease-out);
+}
+:where(button:not(:disabled), a):active {
+  scale: 0.97;
+}
+
+/* ---- Entrances: <div data-enter style={{ '--i': n }}> staggers by 45ms per step ---- */
+@keyframes z-fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes z-rise {
+  from {
+    opacity: 0;
+    translate: 0 10px;
+  }
+}
+@keyframes z-pop {
+  from {
+    opacity: 0;
+    scale: 0.9;
+  }
+}
+/* Big Anton lines: come up out of a soft blur */
+@keyframes z-headline {
+  from {
+    opacity: 0;
+    translate: 0 0.35em;
+    filter: blur(6px);
+  }
+}
+/* A quick "no": for wrong codes and missing fields */
+@keyframes z-shake {
+  20% {
+    translate: -6px 0;
+  }
+  45% {
+    translate: 5px 0;
+  }
+  70% {
+    translate: -3px 0;
+  }
+  90% {
+    translate: 1px 0;
+  }
+}
+/* Fast spinner: reads as a fast app */
+@keyframes z-spin {
+  to {
+    rotate: 1turn;
+  }
+}
+
+[data-enter] {
+  animation: z-fade 200ms ease backwards;
+  animation-delay: calc(var(--i, 0) * 45ms + var(--delay, 0ms));
+}
+@media (prefers-reduced-motion: no-preference) {
+  [data-enter] {
+    animation: z-rise 380ms var(--ease-out) backwards;
+    animation-delay: calc(var(--i, 0) * 45ms + var(--delay, 0ms));
+  }
+  [data-enter='pop'] {
+    animation-name: z-pop;
+    animation-duration: 300ms;
+  }
+  /* Stickers land with a little bounce. */
+  [data-enter='sticker'] {
+    animation-name: z-pop;
+    animation-duration: 420ms;
+    animation-timing-function: var(--spring-soft);
+  }
+  [data-enter='headline'] {
+    animation-name: z-headline;
+    animation-duration: 520ms;
+  }
+  [data-shake] {
+    animation: z-shake 320ms var(--ease-out);
+  }
+}
+
+/* ---- Page changes (lib/nav.tsx starts them; browser back/swipe is left alone) ---- */
+@keyframes z-nav-in {
+  from {
+    opacity: 0;
+    transform: translateX(36px);
+  }
+}
+@keyframes z-nav-out {
+  to {
+    opacity: 0;
+    transform: translateX(-36px);
+  }
+}
+@keyframes z-nav-in-back {
+  from {
+    opacity: 0;
+    transform: translateX(-36px);
+  }
+}
+@keyframes z-nav-out-back {
+  to {
+    opacity: 0;
+    transform: translateX(36px);
+  }
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  mix-blend-mode: normal;
+  animation: none;
+}
+/* Reduced motion: a plain cross-fade */
+:root[data-nav]::view-transition-old(root) {
+  animation: 120ms ease both z-nav-fade-out;
+}
+:root[data-nav]::view-transition-new(root) {
+  animation: 180ms ease both z-fade;
+}
+@keyframes z-nav-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  /* The old page leaves faster than the new one arrives. */
+  :root[data-nav]::view-transition-old(root) {
+    animation: 160ms var(--ease-out) both z-nav-out;
+  }
+  :root[data-nav]::view-transition-new(root) {
+    animation: 320ms var(--ease-drawer) both z-nav-in;
+  }
+  :root[data-nav='back']::view-transition-old(root) {
+    animation-name: z-nav-out-back;
+  }
+  :root[data-nav='back']::view-transition-new(root) {
+    animation-name: z-nav-in-back;
+  }
+
+  /* A report card grows into its ticket (and back): same paper, so only the height changes. */
+  ::view-transition-group(report-ticket) {
+    animation-duration: 380ms;
+    animation-timing-function: var(--ease-drawer);
+    overflow: clip;
+    border-radius: 22px;
+  }
+  ::view-transition-old(report-ticket),
+  ::view-transition-new(report-ticket) {
+    width: 100%;
+    height: 100%;
+    object-fit: none;
+    object-position: top center;
+  }
+  ::view-transition-old(report-ticket) {
+    animation-duration: 140ms;
+  }
+  /* A ticket with no card to grow from (opened straight after posting, or its card is gone) rides with the page. */
+  :root[data-nav]::view-transition-new(report-ticket):only-child {
+    animation: 320ms var(--ease-drawer) both z-nav-in;
+  }
+  :root[data-nav]::view-transition-old(report-ticket):only-child {
+    animation: 160ms var(--ease-out) both z-nav-out;
+  }
+  :root[data-nav='back']::view-transition-new(report-ticket):only-child {
+    animation-name: z-nav-in-back;
+  }
+  :root[data-nav='back']::view-transition-old(report-ticket):only-child {
+    animation-name: z-nav-out-back;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*) {
+    animation-duration: 0.01ms;
+  }
+}

@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react'
-import { useNavigate } from 'react-router'
+import { useNavigate } from '../lib/transition'
 import { useSession, type Me } from '../auth/session'
 import { BigButton, Wordmark, ZarqaBubble } from '../components/ui'
 import { t } from '../i18n'
@@ -20,8 +20,8 @@ export default function Welcome() {
     setBusy(true)
     setError('')
     try {
-      setMe(await api<Me>('/me', { method: 'PATCH', body: { firstName: name } }))
-      navigate('/', { replace: true })
+      const saved = await api<Me>('/me', { method: 'PATCH', body: { firstName: name } })
+      navigate('/', { replace: true, dir: 'forward', prepare: () => setMe(saved) })
     } catch (err) {
       setError(err instanceof ApiError ? err.message : t('common.error'))
     } finally {
@@ -35,13 +35,24 @@ export default function Welcome() {
         <Wordmark size={26} />
       </div>
 
-      <h1 className={s.codeTitle} style={{ marginTop: 40 }}>
+      <h1 className={s.codeTitle} style={{ marginTop: 40 }} data-enter="headline">
         {t('welcome.h1')}
         <br />
         <span style={{ color: 'var(--tan)' }}>{t('welcome.h2')}</span>
       </h1>
 
-      <ZarqaBubble mascot="portrait" alt="Zarqa" width={96}>
+      {/* First sign-in, once per person: Zarqa unclasps her hands and waves hello. A 3 s clip made with the
+          zarqa-mascot-animation skill (video route), played once; reduced motion gets its last frame as a still. */}
+      <ZarqaBubble
+        mascot="portrait"
+        alt={t('welcome.waveAlt')}
+        art={
+          <picture className={s.wave}>
+            <source media="(prefers-reduced-motion: reduce)" srcSet="/mascot/anim/welcome-wave-still.webp" />
+            <img src="/mascot/anim/welcome-wave.webp" alt={t('welcome.waveAlt')} width={246} height={420} />
+          </picture>
+        }
+      >
         {t('welcome.zarqa')}
       </ZarqaBubble>
 
@@ -65,7 +76,7 @@ export default function Welcome() {
           </p>
         )}
         <div style={{ marginTop: 8 }}>
-          <BigButton type="submit" label={busy ? t('welcome.saving') : t('welcome.go')} disabled={busy || !name.trim()} />
+          <BigButton type="submit" label={busy ? t('welcome.saving') : t('welcome.go')} busy={busy} disabled={busy || !name.trim()} />
         </div>
         <p id="name-help" className={s.help}>
           {t('welcome.help')}

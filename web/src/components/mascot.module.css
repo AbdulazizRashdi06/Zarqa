@@ -1,0 +1,218 @@
+/* Zarqa's motion. The loops are the zarqa-mascot-animation skill's `motion` presets (animate.py motion --motion
+ * breathe|sway|bob|wiggle|bounce on design/mascot art), merged here as CSS: they move the still, nothing is redrawn.
+ * The pivot is her feet, or the cut edge of a bust: set --zo where the art sits differently.
+ * The skill's `pop` starts from nothing, so the entrance below is ours: it starts at 85% and springs up.
+ * Entrances use `scale`/`translate`, loops use `transform`, so one can run on top of the other. */
+.z {
+  transform-origin: var(--zo, 50% 98%);
+}
+
+
+@keyframes breathe {
+  0% { transform: none; }
+  4.17% { transform: scale(0.9999, 1.0002); }
+  8.33% { transform: scale(0.9996, 1.0009); }
+  12.5% { transform: scale(0.9991, 1.0021); }
+  16.67% { transform: scale(0.9985, 1.0035); }
+  20.83% { transform: scale(0.9978, 1.0052); }
+  25% { transform: scale(0.997, 1.007); }
+  29.17% { transform: scale(0.9962, 1.0088); }
+  33.33% { transform: scale(0.9955, 1.0105); }
+  37.5% { transform: scale(0.9949, 1.0119); }
+  41.67% { transform: scale(0.9944, 1.0131); }
+  45.83% { transform: scale(0.9941, 1.0138); }
+  50% { transform: scale(0.994, 1.014); }
+  54.17% { transform: scale(0.9941, 1.0138); }
+  58.33% { transform: scale(0.9944, 1.0131); }
+  62.5% { transform: scale(0.9949, 1.0119); }
+  66.67% { transform: scale(0.9955, 1.0105); }
+  70.83% { transform: scale(0.9962, 1.0088); }
+  75% { transform: scale(0.997, 1.007); }
+  79.17% { transform: scale(0.9978, 1.0052); }
+  83.33% { transform: scale(0.9985, 1.0035); }
+  87.5% { transform: scale(0.9991, 1.0021); }
+  91.67% { transform: scale(0.9996, 1.0009); }
+  95.83% { transform: scale(0.9999, 1.0002); }
+  100% { transform: none; }
+}
+
+@keyframes sway {
+  0% { transform: none; }
+  4.17% { transform: rotate(0.647deg); }
+  8.33% { transform: rotate(1.25deg); }
+  12.5% { transform: rotate(1.768deg); }
+  16.67% { transform: rotate(2.165deg); }
+  20.83% { transform: rotate(2.415deg); }
+  25% { transform: rotate(2.5deg); }
+  29.17% { transform: rotate(2.415deg); }
+  33.33% { transform: rotate(2.165deg); }
+  37.5% { transform: rotate(1.768deg); }
+  41.67% { transform: rotate(1.25deg); }
+  45.83% { transform: rotate(0.647deg); }
+  50% { transform: none; }
+  54.17% { transform: rotate(-0.647deg); }
+  58.33% { transform: rotate(-1.25deg); }
+  62.5% { transform: rotate(-1.768deg); }
+  66.67% { transform: rotate(-2.165deg); }
+  70.83% { transform: rotate(-2.415deg); }
+  75% { transform: rotate(-2.5deg); }
+  79.17% { transform: rotate(-2.415deg); }
+  83.33% { transform: rotate(-2.165deg); }
+  87.5% { transform: rotate(-1.768deg); }
+  91.67% { transform: rotate(-1.25deg); }
+  95.83% { transform: rotate(-0.647deg); }
+  100% { transform: none; }
+}
+
+@keyframes bob {
+  0% { transform: none; }
+  4.17% { transform: translate(0%, -0.04%); }
+  8.33% { transform: translate(0%, -0.158%); }
+  12.5% { transform: translate(0%, -0.344%); }
+  16.67% { transform: translate(0%, -0.588%); }
+  20.83% { transform: translate(0%, -0.872%); }
+  25% { transform: translate(0%, -1.176%); }
+  29.17% { transform: translate(0%, -1.48%); }
+  33.33% { transform: translate(0%, -1.764%); }
+  37.5% { transform: translate(0%, -2.007%); }
+  41.67% { transform: translate(0%, -2.194%); }
+  45.83% { transform: translate(0%, -2.312%); }
+  50% { transform: translate(0%, -2.352%); }
+  54.17% { transform: translate(0%, -2.312%); }
+  58.33% { transform: translate(0%, -2.194%); }
+  62.5% { transform: translate(0%, -2.007%); }
+  66.67% { transform: translate(0%, -1.764%); }
+  70.83% { transform: translate(0%, -1.48%); }
+  75% { transform: translate(0%, -1.176%); }
+  79.17% { transform: translate(0%, -0.872%); }
+  83.33% { transform: translate(0%, -0.588%); }
+  87.5% { transform: translate(0%, -0.344%); }
+  91.67% { transform: translate(0%, -0.158%); }
+  95.83% { transform: translate(0%, -0.04%); }
+  100% { transform: none; }
+}
+
+@keyframes wiggle {
+  0% { transform: none; }
+  4.17% { transform: rotate(1.035deg); }
+  8.33% { transform: none; }
+  12.5% { transform: rotate(-2.828deg); }
+  16.67% { transform: none; }
+  20.83% { transform: rotate(3.864deg); }
+  25% { transform: none; }
+  29.17% { transform: rotate(-3.864deg); }
+  33.33% { transform: none; }
+  37.5% { transform: rotate(2.828deg); }
+  41.67% { transform: none; }
+  45.83% { transform: rotate(-1.035deg); }
+  50% { transform: none; }
+  54.17% { transform: none; }
+  58.33% { transform: none; }
+  62.5% { transform: none; }
+  66.67% { transform: none; }
+  70.83% { transform: none; }
+  75% { transform: none; }
+  79.17% { transform: none; }
+  83.33% { transform: none; }
+  87.5% { transform: none; }
+  91.67% { transform: none; }
+  95.83% { transform: none; }
+  100% { transform: none; }
+}
+
+@keyframes bounce {
+  0% { transform: none; }
+  4.17% { transform: scale(1.0282, 0.9598); }
+  8.33% { transform: scale(1.0334, 0.9522); }
+  12.5% { transform: translate(0%, -0.315%) scale(1.01, 0.9865); }
+  16.67% { transform: translate(0%, -2.694%) scale(0.9873, 1.0255); }
+  20.83% { transform: translate(0%, -4.631%) scale(0.9825, 1.035); }
+  25% { transform: translate(0%, -6.126%) scale(0.9866, 1.0268); }
+  29.17% { transform: translate(0%, -7.179%) scale(0.9975, 1.0051); }
+  33.33% { transform: translate(0%, -7.789%); }
+  37.5% { transform: translate(0%, -7.957%); }
+  41.67% { transform: translate(0%, -7.683%); }
+  45.83% { transform: translate(0%, -6.966%); }
+  50% { transform: translate(0%, -5.808%); }
+  54.17% { transform: translate(0%, -4.207%); }
+  58.33% { transform: translate(0%, -2.164%); }
+  62.5% { transform: scale(1.0188, 0.9732); }
+  66.67% { transform: scale(1.0424, 0.9394); }
+  70.83% { transform: scale(1.0486, 0.9306); }
+  75% { transform: scale(1.0346, 0.9505); }
+  79.17% { transform: scale(1.0064, 0.9909); }
+  83.33% { transform: none; }
+  87.5% { transform: none; }
+  91.67% { transform: none; }
+  95.83% { transform: none; }
+  100% { transform: none; }
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    scale: 0.85;
+    translate: 0 6%;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+.enter {
+  animation: fadeIn 200ms ease backwards;
+  animation-delay: var(--z-delay, 0ms);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .enter {
+    animation: enter 520ms var(--spring) backwards;
+    animation-delay: var(--z-delay, 0ms);
+  }
+  /* Calm loops for a figure that just stands there */
+  .breathe {
+    animation: breathe 3200ms linear infinite;
+  }
+  .sway {
+    animation: sway 5200ms linear infinite;
+  }
+  .bob {
+    animation: bob 2600ms linear infinite;
+  }
+  /* One-shot reactions */
+  .wiggle {
+    animation: wiggle 1200ms linear 1;
+  }
+  .bounce {
+    animation: bounce 1000ms linear 2;
+  }
+  /* Pop in, then settle into the loop */
+  .enter.breathe {
+    animation:
+      enter 520ms var(--spring) backwards,
+      breathe 3200ms linear infinite;
+    animation-delay: var(--z-delay, 0ms), calc(var(--z-delay, 0ms) + 520ms);
+  }
+  .enter.sway {
+    animation:
+      enter 520ms var(--spring) backwards,
+      sway 5200ms linear infinite;
+    animation-delay: var(--z-delay, 0ms), calc(var(--z-delay, 0ms) + 520ms);
+  }
+  .enter.wiggle {
+    animation:
+      enter 520ms var(--spring) backwards,
+      wiggle 1200ms linear 1,
+      breathe 3200ms linear infinite;
+    animation-delay: var(--z-delay, 0ms), calc(var(--z-delay, 0ms) + 420ms), calc(var(--z-delay, 0ms) + 1620ms);
+  }
+  .enter.bounce {
+    animation:
+      enter 520ms var(--spring) backwards,
+      bounce 1000ms linear 2,
+      breathe 3200ms linear infinite;
+    animation-delay: var(--z-delay, 0ms), calc(var(--z-delay, 0ms) + 420ms), calc(var(--z-delay, 0ms) + 2420ms);
+  }
+}

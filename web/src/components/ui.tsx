@@ -1,6 +1,8 @@
-import type { CSSProperties, ReactNode } from 'react'
-import { Link } from 'react-router'
+import { useState, type CSSProperties, type HTMLAttributes, type ReactNode } from 'react'
+import { Link } from '../lib/nav'
+import type { Dir } from '../lib/transition'
 import { ArrowRight, ChevronLeft } from './icons'
+import { zarqaMotion, type ZarqaMotion } from './zarqaMotion'
 import s from './ui.module.css'
 
 type Css = CSSProperties & Record<`--${string}`, string | number>
@@ -43,9 +45,9 @@ export function LuggageTag({
   )
 }
 
-export function Ticket({ children, className, style }: { children: ReactNode; className?: string; style?: CSSProperties }) {
+export function Ticket({ children, className, ...rest }: HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className={`${s.ticket} ${className ?? ''}`} style={style}>
+    <div {...rest} className={`${s.ticket} ${className ?? ''}`}>
       {children}
     </div>
   )
@@ -69,23 +71,31 @@ export type Mascot = 'thinking' | 'happy' | 'wink' | 'reading' | 'question' | 'p
 
 const mascotSrc = (m: Mascot) => `/mascot/${m}.webp`
 
-/** Zarqa with a speech bubble. `quiet` is the smaller, softer tip style (Chats, chat system messages). */
+
+/**
+ * Zarqa with a speech bubble. `quiet` is the smaller, softer tip style (Chats, chat system messages).
+ * `art` replaces the still with something else of her (the waving clip on Welcome).
+ */
 export function ZarqaBubble({
   mascot,
   alt,
   width = 92,
   quiet,
+  motion = 'breathe',
+  art,
   children,
 }: {
   mascot: Mascot
   alt: string
   width?: number
   quiet?: boolean
+  motion?: ZarqaMotion
+  art?: ReactNode
   children: ReactNode
 }) {
   return (
     <div className={`${s.bubbleRow} ${quiet ? s.bubbleQuiet : ''}`}>
-      <img src={mascotSrc(mascot)} alt={alt} width={width} style={{ flexShrink: 0, height: 'auto' }} />
+      {art ?? <img src={mascotSrc(mascot)} alt={alt} width={width} className={zarqaMotion(motion)} style={{ flexShrink: 0, height: 'auto' }} />}
       <div className={s.bubble}>
         <span className={s.bubbleName}>ZARQA</span>
         <span className={s.bubbleText}>{children}</span>
@@ -104,17 +114,29 @@ type BigButtonProps = {
   onClick?: () => void
   type?: 'button' | 'submit'
   disabled?: boolean
+  /** Working on it: the arrow turns into a spinner. */
+  busy?: boolean
 }
 
-export function BigButton({ label, variant = 'tan', accent = 'var(--tan)', labelSize, to, onClick, type = 'button', disabled }: BigButtonProps) {
+export function BigButton({ label, variant = 'tan', accent = 'var(--tan)', labelSize, to, onClick, type = 'button', disabled, busy }: BigButtonProps) {
   const cls = `${s.big} ${variant === 'tan' ? s.bigTan : s.bigDark}`
+  // The label it first showed: only a changed label (POST IT -> POSTING...) animates in.
+  const [firstLabel] = useState(label)
   const inner = (
     <>
-      <span className={s.bigLabel} style={labelSize ? { fontSize: labelSize } : undefined}>
+      <span
+        key={typeof label === 'string' ? label : undefined}
+        className={`${s.bigLabel} ${label !== firstLabel ? s.bigLabelSwap : ''}`}
+        style={labelSize ? { fontSize: labelSize } : undefined}
+      >
         {label}
       </span>
       <span className={s.bigCircle} style={variant === 'dark' ? { background: accent } : undefined}>
-        <ArrowRight size={22} color={variant === 'tan' ? 'var(--tan)' : 'var(--ink)'} />
+        {busy ? (
+          <span className={s.spinner} style={{ color: variant === 'tan' ? 'var(--tan)' : 'var(--ink)' }} />
+        ) : (
+          <ArrowRight size={22} color={variant === 'tan' ? 'var(--tan)' : 'var(--ink)'} />
+        )}
       </span>
     </>
   )
@@ -138,6 +160,7 @@ export function RoundButton({
   label,
   badge,
   background,
+  dir,
   children,
 }: {
   to?: string
@@ -145,6 +168,8 @@ export function RoundButton({
   label: string
   badge?: number
   background?: string
+  /** Page-slide direction for a link (lib/nav.tsx). */
+  dir?: Dir
   children: ReactNode
 }) {
   const content = (
@@ -156,7 +181,7 @@ export function RoundButton({
   const style = background ? { background } : undefined
   if (to) {
     return (
-      <Link to={to} aria-label={label} className={s.roundBtn} style={style}>
+      <Link to={to} dir={dir} aria-label={label} className={s.roundBtn} style={style}>
         {content}
       </Link>
     )
@@ -172,7 +197,7 @@ export function RoundButton({
 export function BackHeader({ to = '/', label, right }: { to?: string; label?: ReactNode; right?: ReactNode }) {
   return (
     <header className={s.backHeader}>
-      <RoundButton to={to} label="Back">
+      <RoundButton to={to} label="Back" dir="back">
         <ChevronLeft size={20} />
       </RoundButton>
       {right ?? (label ? <span className={s.label}>{label}</span> : null)}
@@ -205,7 +230,7 @@ export function StatusPill({ status }: { status: PillStatus }) {
   const c = pillColors[status]
   return (
     <span className={s.pill} style={{ background: c.bg, color: c.fg }}>
-      <span className={s.pillDot} style={{ background: c.dot }} />
+      <span className={`${s.pillDot} ${status === 'Searching' ? s.pillLive : ''}`} style={{ background: c.dot }} />
       {status}
     </span>
   )

@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react'
-import { Link, useNavigate } from 'react-router'
+import { Link } from '../lib/nav'
+import { useNavigate } from '../lib/transition'
 import { useSession, type Me } from '../auth/session'
 import { BigButton, MonoLabel, Wordmark, ZarqaBubble } from '../components/ui'
+import { zarqaMotion } from '../components/zarqaMotion'
 import { t } from '../i18n'
 import { api, ApiError } from '../lib/api'
 import s from './SignIn.module.css'
@@ -59,19 +61,29 @@ export default function SignIn() {
 
   return (
     <main className={s.page}>
-      <img src="/mascot/lookout.webp" fetchPriority="high" alt="Zarqa shading her eyes, looking far into the distance" className={s.hero} />
+      {/* She slides in from the edge, then keeps scanning the horizon: a slow sway from the mascot skill's preset. */}
+      <div className={s.hero}>
+        <img src="/mascot/lookout.webp" fetchPriority="high" alt="Zarqa shading her eyes, looking far into the distance" className={zarqaMotion('sway', false)} />
+      </div>
 
+      {/* The first screen anyone sees, once per phone: the headline arrives line by line. */}
       <h1 className={s.title}>
-        {t('signin.h1')}
-        <br />
-        <span className={s.outline}>{t('signin.h2')}</span>
-        <br />
-        <img src="/logo.webp" alt={t('signin.h3')} className={s.titleLogo} />
+        <span className={s.line} data-enter="headline" style={{ '--delay': '80ms' }}>
+          {t('signin.h1')}
+        </span>{' '}
+        <span className={s.line} data-enter="headline" style={{ '--delay': '170ms' }}>
+          <span className={s.outline}>{t('signin.h2')}</span>
+        </span>{' '}
+        <span className={s.line} data-enter="headline" style={{ '--delay': '260ms' }}>
+          <img src="/logo.webp" alt={t('signin.h3')} className={s.titleLogo} />
+        </span>
       </h1>
 
-      <p className={s.legend}>{t('signin.legend')}</p>
+      <p className={s.legend} data-enter style={{ '--delay': '380ms' }}>
+        {t('signin.legend')}
+      </p>
 
-      <form className={s.form} onSubmit={sendCode} noValidate>
+      <form className={s.form} onSubmit={sendCode} noValidate data-enter style={{ '--delay': '440ms' }}>
         <label htmlFor="email" className={s.label}>
           {t('signin.emailLabel')}
         </label>
@@ -90,19 +102,19 @@ export default function SignIn() {
           aria-describedby="email-help"
         />
         {error && (
-          <p className={s.error} role="alert">
+          <p key={error} className={s.error} role="alert" data-shake>
             {error}
           </p>
         )}
         <div style={{ marginTop: 8 }}>
-          <BigButton type="submit" label={busy ? t('signin.sending') : t('signin.send')} disabled={busy || !email.trim()} />
+          <BigButton type="submit" label={busy ? t('signin.sending') : t('signin.send')} busy={busy} disabled={busy || !email.trim()} />
         </div>
         <p id="email-help" className={s.help}>
           {t('signin.help')}
         </p>
       </form>
 
-      <nav className={s.links} aria-label="About">
+      <nav className={s.links} aria-label="About" data-enter style={{ '--delay': '500ms' }}>
         <Link to="/terms">{t('signin.terms')}</Link>
         <Link to="/privacy">{t('signin.privacy')}</Link>
         <Link to="/help">{t('signin.helpLink')}</Link>
@@ -132,6 +144,17 @@ function CodeStep({
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
+  const boxes = useRef<HTMLDivElement>(null)
+
+  /** Wrong code: the boxes shake their head, and the phone buzzes where it can. */
+  function sayNo() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    boxes.current?.animate(
+      [{ translate: '0' }, { translate: '-8px 0' }, { translate: '7px 0' }, { translate: '-4px 0' }, { translate: '2px 0' }, { translate: '0' }],
+      { duration: 360, easing: 'cubic-bezier(0.23, 1, 0.32, 1)' },
+    )
+    navigator.vibrate?.(30)
+  }
 
   async function verify(value: string) {
     if (busy) return
@@ -140,11 +163,11 @@ function CodeStep({
     try {
       await api('/auth/verify', { body: { email, code: value } })
       const me = await api<Me>('/me')
-      setMe(me)
-      navigate(me.firstName ? '/' : '/welcome', { replace: true })
+      navigate(me.firstName ? '/' : '/welcome', { replace: true, dir: 'forward', prepare: () => setMe(me) })
     } catch (err) {
       setError(err instanceof ApiError ? err.message : t('common.error'))
       setCode('')
+      sayNo()
       inputRef.current?.focus()
     } finally {
       setBusy(false)
@@ -171,12 +194,12 @@ function CodeStep({
         </div>
       )}
 
-      <h1 className={s.codeTitle} style={{ marginTop: testCode ? 0 : 40 }}>
+      <h1 className={s.codeTitle} style={{ marginTop: testCode ? 0 : 40 }} data-enter="headline">
         {t('signin.code.h1')}
         <br />
         <span style={{ color: 'var(--tan)' }}>{t('signin.code.h2')}</span>
       </h1>
-      <p className={s.sentTo}>
+      <p className={s.sentTo} data-enter style={{ '--i': 2 }}>
         {t('signin.code.sentTo')} <b>{email}</b>
       </p>
 
@@ -190,10 +213,11 @@ function CodeStep({
         <label htmlFor="code" className={s.label}>
           {t('signin.code.label')}
         </label>
-        <div className={s.code}>
+        <div className={s.code} ref={boxes}>
           {Array.from({ length: 6 }, (_, i) => (
-            <span key={i} aria-hidden="true" className={`${s.box} ${i === Math.min(code.length, 5) ? s.boxActive : ''}`}>
-              {code[i] ?? ''}
+            <span key={i} aria-hidden="true" className={`${s.box} ${i === Math.min(code.length, 5) ? s.boxActive : ''} ${code[i] ? s.boxFilled : ''}`}>
+              {/* Each digit pops into its box as it is typed. */}
+              {code[i] && <span className={s.digit}>{code[i]}</span>}
             </span>
           ))}
           <input
@@ -216,7 +240,7 @@ function CodeStep({
           </p>
         )}
         <div style={{ marginTop: 8 }}>
-          <BigButton type="submit" label={busy ? t('signin.code.checking') : t('signin.code.go')} disabled={busy || code.length !== 6} />
+          <BigButton type="submit" label={busy ? t('signin.code.checking') : t('signin.code.go')} busy={busy} disabled={busy || code.length !== 6} />
         </div>
         <div className={s.row}>
           <button type="button" className={s.linkBtn} onClick={back}>

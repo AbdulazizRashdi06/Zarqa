@@ -1,6 +1,7 @@
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using Microsoft.Extensions.Options;
 
 namespace Zarqa.Api.Matching;
 
@@ -31,7 +32,7 @@ internal static class PromptParts
         if (r.Category.Length > 0) o["category"] = r.Category;
         o["description"] = TextRules.Truncate(r.Description, 500);
         o["location"] = r.Location;
-        if (r.EventDate is not null) o["eventDate"] = r.EventDate;
+        o["eventDate"] = r.EventDate;
         return o;
     }
 
@@ -44,10 +45,14 @@ internal static class PromptParts
     public static JsonObject Schema(string json) => JsonNode.Parse(json)!.AsObject();
 }
 
-/// <summary>luna-debate (benchmark/src/reviewers/debate.js): two Luna advocates argue, Jev decides.</summary>
-public sealed class DebateReviewer(ILuna luna, IJev jev, AliasIndex aliases)
+/// <summary>luna-debate-terra: two Luna advocates and a Terra judge, with DeepSeek available for each stage.</summary>
+public sealed class DebateReviewer(ILuna luna, ITerra terra, IDeepSeek deepSeek, IJev jev, AliasIndex aliases,
+    IOptions<ModelOptions> options, ILogger<DebateReviewer> log)
 {
     public const double Threshold = 0.55;
+    public bool IsConfigured => options.Value.UseTerraJudge
+        ? (luna.IsConfigured || deepSeek.IsConfigured) && (terra.IsConfigured || deepSeek.IsConfigured)
+        : luna.IsConfigured;
 
     private static readonly Dictionary<string, string> Sides = new()
     {
@@ -55,15 +60,17 @@ public sealed class DebateReviewer(ILuna luna, IJev jev, AliasIndex aliases)
         ["against"] = "You are the advocate AGAINST a match. Make the strongest honest case that the LOST and FOUND reports describe different items.",
     };
 
-    private const string Common = """
+    private const string Common = $$"""
         This is a university lost-and-found app. Use only evidence in the reports and photos: item type, colour, brand/model, distinctive marks, place (location aliases name the same place), and timing (an item cannot be found before it was lost).
-        People describe the same kind of item in different ways and often give very few details. Interpret item names in context; different words, levels of detail, or singular and plural forms alone neither prove nor disprove a match. Missing specifics are not evidence against a match. A missed real match may prevent an item being returned, while the owner can reject a wrong suggestion, so prefer recall when the evidence makes a match plausible. Still weigh concrete contradictions honestly.
+        {{SimilarityRule}}
         Cite concrete details, say how strong each point is, and do not invent facts. If the evidence on your side is weak, say so plainly. At most 120 words.
         """;
 
     private const string AdvocateSchema = """
         {"type":"object","additionalProperties":false,"required":["argument","strength"],"properties":{"argument":{"type":"string"},"strength":{"type":"string","enum":["weak","moderate","strong"]}}}
         """;
+    private const string AdvocateExample = """{"argument":"Both reports mention the same distinctive sticker.","strength":"strong"}""";
+    private const string JudgeExample = """{"same_item_probability":0.62,"stronger_case":"for","overall_probabilities":{"clearly_different":0.05,"probably_different":0.1,"unclear":0.25,"probably_same":0.5,"almost_certainly_same":0.1}}""";
 
     public static readonly string[] Levels =
     [
@@ -80,35 +87,54 @@ public sealed class DebateReviewer(ILuna luna, IJev jev, AliasIndex aliases)
     /// </summary>
     public const string SimilarityRule = "People describe the same kind of item in different ways and often give very few details. Interpret item names in context; different words, levels of detail, or singular and plural forms alone neither prove nor disprove a match. Missing specifics are not evidence against a match. A missed real match may prevent an item being returned, while the owner can reject a wrong suggestion, so prefer recall when the evidence makes a match plausible. Still weigh concrete contradictions honestly.";
 
+    private const string SameItemQuestion = "Weighing both advocates' cases against the two reports, do the LOST and FOUND reports describe the same physical item? " + SimilarityRule;
+    private const string StrongerQuestion = "Which advocate's case is better supported by the concrete evidence in the reports?";
+    private const string OverallQuestion = "How likely is it that the found item is exactly the item described in the lost report? " + SimilarityRule;
+    private const string ForCriterion = "The case FOR a match is better supported";
+    private const string AgainstCriterion = "The case AGAINST a match is better supported";
+    private const string BalancedCriterion = "Both cases are about equally supported";
+    private static readonly string[] LevelKeys = ["clearly_different", "probably_different", "unclear", "probably_same", "almost_certainly_same"];
+
+    private static readonly string TerraSystem = $$"""
+        You are the judge in a university lost-and-found app. Two advocates have argued whether a LOST report and a FOUND report describe the same physical item. Read the reports and both cases, then answer three questions.
+        same_item: {{SameItemQuestion}} Give the probability (0 to 1) that the answer is yes.
+        stronger_case: {{StrongerQuestion}} "for" = {{ForCriterion}}; "against" = {{AgainstCriterion}}; "balanced" = {{BalancedCriterion}}.
+        overall: {{OverallQuestion}} Give a probability (0 to 1) for each level; they should sum to 1. Levels: {{string.Join("; ", LevelKeys.Zip(Levels, (key, label) => $"{key} = \"{label}\""))}}.
+        """.ReplaceLineEndings("\n");
+
+    private const string JudgeSchema = """
+        {"type":"object","additionalProperties":false,"required":["same_item_probability","stronger_case","overall_probabilities"],"properties":{"same_item_probability":{"type":"number"},"stronger_case":{"type":"string","enum":["for","against","balanced"]},"overall_probabilities":{"type":"object","additionalProperties":false,"required":["clearly_different","probably_different","unclear","probably_same","almost_certainly_same"],"properties":{"clearly_different":{"type":"number"},"probably_different":{"type":"number"},"unclear":{"type":"number"},"probably_same":{"type":"number"},"almost_certainly_same":{"type":"number"}}}}}
+        """;
+
     private static JsonObject Questions() => new()
     {
         ["same_item"] = new JsonObject
         {
             ["type"] = "noul",
-            ["instructions"] = "Weighing both advocates' cases against the two reports, do the LOST and FOUND reports describe the same physical item? " + SimilarityRule,
+            ["instructions"] = SameItemQuestion,
         },
         ["stronger_case"] = new JsonObject
         {
             ["type"] = "choice",
-            ["instructions"] = "Which advocate's case is better supported by the concrete evidence in the reports?",
+            ["instructions"] = StrongerQuestion,
             ["criteria"] = new JsonObject
             {
-                ["for"] = "The case FOR a match is better supported",
-                ["against"] = "The case AGAINST a match is better supported",
-                ["balanced"] = "Both cases are about equally supported",
+                ["for"] = ForCriterion,
+                ["against"] = AgainstCriterion,
+                ["balanced"] = BalancedCriterion,
             },
         },
         ["overall"] = new JsonObject
         {
             ["type"] = "score",
-            ["instructions"] = "How likely is it that the found item is exactly the item described in the lost report? " + SimilarityRule,
+            ["instructions"] = OverallQuestion,
             ["criteria"] = new JsonArray(Levels.Select(l => (JsonNode)JsonValue.Create(l)!).ToArray()),
         },
     };
 
     public static double Score(double sameItem, double overall) => 0.5 * sameItem + 0.5 * overall;
 
-    /// <summary>Null when an advocate failed (try again later); throws <see cref="ModelCallException"/> when Jev fails (use the fallback).</summary>
+    /// <summary>Null when an advocate failed, so the worker can retry. Judge failures are handled by the matcher.</summary>
     public async Task<Review?> ReviewAsync(MatchInput lost, MatchInput found, IReadOnlyList<string> images, CancellationToken ct)
     {
         var text =
@@ -119,14 +145,22 @@ public sealed class DebateReviewer(ILuna luna, IJev jev, AliasIndex aliases)
         LunaResult pro, con;
         try
         {
-            var calls = new[] { "for", "against" }.Select(side =>
-                luna.ChatJsonAsync($"{Sides[side]}\n{Common.ReplaceLineEndings("\n")}", text, images, $"advocate_{side}", PromptParts.Schema(AdvocateSchema), ct)).ToArray();
-            var results = await Task.WhenAll(calls);
+            var results = await Task.WhenAll(AdvocateAsync("for"), AdvocateAsync("against"));
             (pro, con) = (results[0], results[1]);
         }
-        catch (Exception e) when (e is ModelCallException or HttpRequestException or TaskCanceledException or JsonException && !ct.IsCancellationRequested)
+        catch (Exception e) when (IsModelFailure(e, ct))
         {
+            log.LogWarning("Debate advocates unavailable; matching will retry");
             return null;
+        }
+
+        Task<LunaResult> AdvocateAsync(string side)
+        {
+            var system = $"{Sides[side]}\n{Common.ReplaceLineEndings("\n")}";
+            var name = $"advocate_{side}";
+            return options.Value.UseTerraJudge
+                ? WithFallbackAsync(luna, system, text, images, name, AdvocateSchema, AdvocateExample, ValidAdvocate, ct)
+                : luna.ChatJsonAsync(system, text, images, name, PromptParts.Schema(AdvocateSchema), ct);
         }
 
         var state = new JsonObject
@@ -138,33 +172,110 @@ public sealed class DebateReviewer(ILuna luna, IJev jev, AliasIndex aliases)
             ["case_against"] = new JsonObject { ["argument"] = Str(con.Parsed, "argument"), ["self_rated_strength"] = Str(con.Parsed, "strength") },
         };
 
+        if (options.Value.UseTerraJudge)
+        {
+            var judged = await WithFallbackAsync(terra, TerraSystem, PromptParts.Stringify(state), [], "debate_judge",
+                JudgeSchema, JudgeExample, answer => ReadJudge(answer) is not null, ct);
+            var result = ReadJudge(judged.Parsed)!.Value;
+            return Complete(result.SameItem, result.Overall, result.Stronger, judged.Parsed, judged.Model ?? options.Value.TerraModel,
+                judged.InputTokens, judged.OutputTokens, judged.LatencyMs, judged.CostUsd, "judgeAnswers");
+        }
+
         var answer = await jev.AskAsync(state, Questions(), ct);
         var a = answer.Answers;
         var sameItem = JevReaders.Noul(Get(a, "same_item")) ?? 0;
         var overall = JevReaders.Score(Get(a, "overall"), Levels.Length) ?? 0;
         var stronger = JevReaders.Choice(Get(a, "stronger_case"), ["for", "against", "balanced"]) ?? "balanced";
-        var score = Score(sameItem, overall);
+        return Complete(sameItem, overall, stronger, a, options.Value.JevModel, answer.InputTokens, answer.OutputTokens,
+            answer.LatencyMs, answer.CostUsd, "jevAnswers");
 
-        var log = new JsonObject
+        Review Complete(double sameItem, double overall, string stronger, JsonElement answers, string judgeModel,
+            int judgeIn, int judgeOut, long judgeMs, decimal judgeCost, string answerKey)
         {
-            ["for"] = new JsonObject { ["argument"] = Str(pro.Parsed, "argument"), ["strength"] = Str(pro.Parsed, "strength") },
-            ["against"] = new JsonObject { ["argument"] = Str(con.Parsed, "argument"), ["strength"] = Str(con.Parsed, "strength") },
-            ["jevAnswers"] = JsonNode.Parse(a.GetRawText()),
-            ["sameItem"] = sameItem,
-            ["overall"] = overall,
-            ["stronger"] = stronger,
-            ["finalScore"] = score,
-            ["timing"] = state["timing"]!.GetValue<string>(),
-            ["tokens"] = new JsonObject
+            var score = Score(sameItem, overall);
+            var details = new JsonObject
             {
-                ["lunaIn"] = pro.InputTokens + con.InputTokens,
-                ["lunaOut"] = pro.OutputTokens + con.OutputTokens,
-                ["jevIn"] = answer.InputTokens,
-            },
-            ["latencyMs"] = Math.Max(pro.LatencyMs, con.LatencyMs) + answer.LatencyMs,
+                ["for"] = AdvocateLog(pro),
+                ["against"] = AdvocateLog(con),
+                ["judgeModel"] = judgeModel,
+                [answerKey] = JsonNode.Parse(answers.GetRawText()),
+                ["sameItem"] = sameItem,
+                ["overall"] = overall,
+                ["stronger"] = stronger,
+                ["finalScore"] = score,
+                ["timing"] = state["timing"]!.GetValue<string>(),
+                ["tokens"] = new JsonObject
+                {
+                    ["advocatesIn"] = pro.InputTokens + con.InputTokens,
+                    ["advocatesOut"] = pro.OutputTokens + con.OutputTokens,
+                    ["judgeIn"] = judgeIn,
+                    ["judgeOut"] = judgeOut,
+                },
+                ["latencyMs"] = Math.Max(pro.LatencyMs, con.LatencyMs) + judgeMs,
+            };
+            return new Review(score >= Threshold, score, sameItem, overall, "debate", details, pro.CostUsd + con.CostUsd + judgeCost);
+        }
+
+        JsonObject AdvocateLog(LunaResult result) => new()
+        {
+            ["argument"] = Str(result.Parsed, "argument"),
+            ["strength"] = Str(result.Parsed, "strength"),
+            ["model"] = result.Model ?? options.Value.LunaModel,
         };
-        return new Review(score >= Threshold, score, sameItem, overall, "debate", log, pro.CostUsd + con.CostUsd + answer.CostUsd);
     }
+
+    private async Task<LunaResult> WithFallbackAsync(IStructuredChat primary, string system, string text,
+        IReadOnlyList<string> images, string name, string schema, string example, Func<JsonElement, bool> valid, CancellationToken ct)
+    {
+        var started = System.Diagnostics.Stopwatch.StartNew();
+        if (primary.IsConfigured)
+        {
+            try { return await CallAsync(primary, system); }
+            catch (Exception e) when (deepSeek.IsConfigured && IsModelFailure(e, ct))
+            {
+                log.LogWarning("Primary debate model failed for {Stage}; using DeepSeek", name);
+            }
+        }
+        ct.ThrowIfCancellationRequested();
+        if (!deepSeek.IsConfigured) throw new ModelCallException($"No provider configured for {name}.");
+        var fallback = await CallAsync(deepSeek, $"{system}\nExample JSON response (illustrative values only): {example}");
+        return fallback with { LatencyMs = started.ElapsedMilliseconds };
+
+        async Task<LunaResult> CallAsync(IStructuredChat model, string prompt)
+        {
+            ct.ThrowIfCancellationRequested();
+            var result = await model.ChatJsonAsync(prompt, text, images, name, PromptParts.Schema(schema), ct);
+            if (!valid(result.Parsed)) throw new ModelCallException($"Invalid JSON for {name}.");
+            return result;
+        }
+    }
+
+    internal static bool IsModelFailure(Exception e, CancellationToken ct) =>
+        !ct.IsCancellationRequested && e is ModelCallException or HttpRequestException or OperationCanceledException or JsonException;
+
+    private static bool ValidAdvocate(JsonElement answer) =>
+        !string.IsNullOrWhiteSpace(Str(answer, "argument")) && Str(answer, "strength") is "weak" or "moderate" or "strong";
+
+    private static (double SameItem, double Overall, string Stronger)? ReadJudge(JsonElement answer)
+    {
+        var sameItem = Probability(Get(answer, "same_item_probability"));
+        var stronger = Str(answer, "stronger_case");
+        if (sameItem is null || stronger is not ("for" or "against" or "balanced") || Get(answer, "overall_probabilities") is not { } levels)
+            return null;
+        var total = 0d;
+        var weighted = 0d;
+        for (var i = 0; i < LevelKeys.Length; i++)
+        {
+            if (Probability(Get(levels, LevelKeys[i])) is not { } p) return null;
+            total += p;
+            weighted += p * i;
+        }
+        return total > 0 ? (sameItem.Value, weighted / total / (LevelKeys.Length - 1), stronger) : null;
+    }
+
+    private static double? Probability(JsonElement? value) =>
+        value is { ValueKind: JsonValueKind.Number } p && p.TryGetDouble(out var number) && double.IsFinite(number)
+            ? Math.Clamp(number, 0, 1) : null;
 
     private static JsonElement? Get(JsonElement e, string name) =>
         e.ValueKind == JsonValueKind.Object && e.TryGetProperty(name, out var v) ? v : null;

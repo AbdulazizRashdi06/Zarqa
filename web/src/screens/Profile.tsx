@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link, useNavigate } from 'react-router'
+import { Link } from '../lib/nav'
+import { useNavigate } from '../lib/transition'
 import { useSession, type Me } from '../auth/session'
 import { Camera, ChevronRight, SignOut } from '../components/icons'
 import { Avatar, BackHeader, Switch } from '../components/ui'
@@ -7,6 +8,7 @@ import { t } from '../i18n'
 import { api, apiForm, ApiError } from '../lib/api'
 import { shrinkPhoto } from '../lib/images'
 import { enablePush, pushState } from '../lib/push'
+import { useCountUp } from '../lib/useCountUp'
 import s from './Profile.module.css'
 
 type Stats = { posts: number; gotBack: number; helpedReturn: number }
@@ -18,6 +20,10 @@ export default function Profile() {
   const [error, setError] = useState('')
   const [deleting, setDeleting] = useState(false)
   const fileInput = useRef<HTMLInputElement>(null)
+  // The three numbers count up when they arrive.
+  const posts = useCountUp(stats?.posts)
+  const gotBack = useCountUp(stats?.gotBack)
+  const helped = useCountUp(stats?.helpedReturn)
 
   useEffect(() => {
     api<Stats>('/me/stats').then(setStats).catch(() => setStats(null))
@@ -84,15 +90,15 @@ export default function Profile() {
 
       <div className={s.stats}>
         <div className={s.stat}>
-          <span className={s.statNum}>{stats?.posts ?? '–'}</span>
+          <span className={s.statNum}>{posts ?? '–'}</span>
           <span className={s.statLabel}>{t('profile.posts')}</span>
         </div>
         <div className={`${s.stat} ${s.statMid}`}>
-          <span className={s.statNum}>{stats?.gotBack ?? '–'}</span>
+          <span className={s.statNum}>{gotBack ?? '–'}</span>
           <span className={s.statLabel}>{t('profile.gotBack')}</span>
         </div>
         <div className={s.stat}>
-          <span className={s.statNum} style={{ color: 'var(--tan)' }}>{stats?.helpedReturn ?? '–'}</span>
+          <span className={s.statNum} style={{ color: 'var(--tan)' }}>{helped ?? '–'}</span>
           <span className={s.statLabel}>{t('profile.helped')}</span>
         </div>
       </div>

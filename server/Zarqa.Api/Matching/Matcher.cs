@@ -14,14 +14,13 @@ namespace Zarqa.Api.Matching;
 public enum MatchOutcome { Done, Retry, Postponed, NotConfigured }
 
 /// <summary>
-/// luna-debate for one report (decisions.md): embed → vector top 25 → prescore shortlist (≥ 0.56, top 10)
-/// → two Luna advocates + Jev (≥ 0.55), or a plain Luna review (≥ 0.72) when Jev is unavailable.
+/// Embed → vector top 25 → prescore shortlist (≥ 0.56, top 10) → Luna advocates and Terra judge (≥ 0.55).
+/// Each debate stage can fall back to DeepSeek. Jev remains available as a rollout switch.
 /// Runs in both directions: a new found report is checked against open lost reports and vice versa.
 /// </summary>
 public sealed class Matcher(
     ZarqaDb db,
     IEmbedder embedder,
-    ILuna luna,
     IJev jev,
     DebateReviewer debate,
     LunaReviewer lunaReviewer,
@@ -38,7 +37,7 @@ public sealed class Matcher(
     /// <summary>max(floor 0.55, 0.72 − 0.16): the shortlist luna-debate was benchmarked with.</summary>
     public const double ShortlistThreshold = 0.56;
 
-    public bool IsConfigured => embedder.IsConfigured && luna.IsConfigured;
+    public bool IsConfigured => embedder.IsConfigured && debate.IsConfigured;
 
     public async Task<MatchOutcome> ProcessAsync(Guid reportId, CancellationToken ct)
     {
@@ -153,18 +152,22 @@ public sealed class Matcher(
         return retry ? MatchOutcome.Retry : MatchOutcome.Done;
     }
 
-    /// <summary>The debate when Jev is available; otherwise (or if Jev fails) the plain Luna review.</summary>
     private async Task<Review?> ReviewAsync(MatchInput lost, MatchInput found, CancellationToken ct)
     {
         var images = Photos.DataUrls(lost, found);
-        if (jev.IsConfigured)
+        if (models.Value.UseTerraJudge || jev.IsConfigured)
         {
             try
             {
                 return await debate.ReviewAsync(lost, found, images, ct);
             }
-            catch (Exception e) when (e is ModelCallException or HttpRequestException or TaskCanceledException && !ct.IsCancellationRequested)
+            catch (Exception e) when (DebateReviewer.IsModelFailure(e, ct))
             {
+                if (models.Value.UseTerraJudge)
+                {
+                    log.LogWarning("Debate judge unavailable; matching will retry");
+                    return null;
+                }
                 log.LogWarning("Jev failed, using the plain Luna review: {Message}", e.Message);
             }
         }

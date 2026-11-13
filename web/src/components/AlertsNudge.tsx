@@ -34,7 +34,7 @@ export function AlertsNudge() {
   }
 
   return (
-    <div className={s.card} role="note">
+    <div className={s.card} role="note" data-enter style={{ '--delay': '300ms' }}>
       <div className={s.text}>
         <span className={s.label}>{t('alerts.label')}</span>
         <span>{state === 'needs-install' ? t('alerts.install') : t('alerts.body')}</span>
