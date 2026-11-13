@@ -10,7 +10,7 @@ self.addEventListener('push', (event) => {
     self.registration.showNotification(data.title || 'Zarqa', {
       body: data.body || '',
       icon: '/icons/icon-192.png',
-      badge: '/icons/icon-192.png',
+      // No badge: Android draws it from the alpha channel only, and the full-colour icon would be a white square.
       tag: data.tag || undefined,
       renotify: !!data.tag,
       data: { url: data.url || '/' },
@@ -18,18 +18,27 @@ self.addEventListener('push', (event) => {
   )
 })
 
+// An open app moves to the page itself (lib/nav.tsx listens), so nothing on screen is reloaded or lost.
 self.addEventListener('notificationclick', (event) => {
   event.notification.close()
   const url = new URL((event.notification.data && event.notification.data.url) || '/', self.location.origin).href
   event.waitUntil(
-    self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((windows) => {
-      for (const w of windows) {
-        if (w.url.startsWith(self.location.origin) && 'focus' in w) {
-          w.navigate(url)
-          return w.focus()
+    (async () => {
+      const windows = await self.clients.matchAll({ type: 'window', includeUncontrolled: true })
+      const open = windows.find((w) => w.url.startsWith(self.location.origin))
+      if (!open) return self.clients.openWindow(url)
+      if (open.url === url) return open.focus()
+      // A window this worker controls can route in place; any other is sent to the URL.
+      const controlled = (await self.clients.matchAll({ type: 'window' })).some((w) => w.id === open.id)
+      if (controlled) open.postMessage({ type: 'navigate', url })
+      else {
+        try {
+          await open.navigate(url)
+        } catch {
+          return self.clients.openWindow(url)
         }
       }
-      return self.clients.openWindow(url)
-    }),
+      return open.focus()
+    })(),
   )
 })

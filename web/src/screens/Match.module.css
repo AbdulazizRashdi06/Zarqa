@@ -1,3 +1,8 @@
+/* This screen pads for the iPhone home indicator itself (index.css #root). */
+:global(#root):has(> .page) {
+  padding-bottom: 0;
+}
+
 .page {
   position: relative;
   flex-grow: 1;

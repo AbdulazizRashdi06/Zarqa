@@ -1,4 +1,15 @@
 /* Zarqa visual system: design/HANDOFF.md. Dark only. */
+
+/* Anton: the headlines wait for it (block) instead of drawing in a phone's system sans and reflowing.
+   vite.config.ts preloads the file, so the wait is short. */
+@font-face {
+  font-family: 'Anton';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url('../node_modules/@fontsource/anton/files/anton-latin-400-normal.woff2') format('woff2');
+}
+
 :root {
   /* surfaces */
   --ground: #222634;
@@ -23,7 +34,7 @@
   --ink: #222634;
   --ink-muted: #5e6472;
 
-  --font-display: 'Anton', Impact, sans-serif;
+  --font-display: 'Anton', Impact, 'Arial Narrow', sans-serif-condensed, sans-serif;
   --font-body: 'Figtree', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
@@ -36,6 +47,8 @@
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: transparent;
+  /* No double-tap zoom (pinch zoom still works), so quick taps stay taps. */
+  touch-action: manipulation;
 }
 
 *,
@@ -48,19 +61,40 @@ html,
 body {
   margin: 0;
   background: var(--ground);
+  /* Nothing may make the page scroll sideways (a mascot hanging off the edge, a long word). */
+  overflow-x: clip;
 }
 
-/* Phone-first: the design is 390px wide; wider screens get a centred column. */
+/* Phone-first: the design is 390px wide; wider screens get a centred column.
+   The bottom padding keeps the last control clear of the iPhone home indicator. Screens that pin their own
+   bottom bar (Chat, Match) add the inset themselves and opt out with :global(#root):has(> .page). */
 #root {
   max-width: 480px;
   min-height: 100dvh;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Desk screens (RSA, Admin) on a PC: put data-layout="wide" on the page's root <main>. */
+@media (min-width: 900px) {
+  #root:has(> [data-layout='wide']) {
+    max-width: 1100px;
+  }
+}
+
+/* For a moment after a page change, taps are held so a double tap can't land on the new page (lib/nav.tsx). */
+:root[data-settling] #root {
+  pointer-events: none;
 }
 
 a {
   color: var(--tan-light);
+}
+/* Inline links can't scale on press (motion.css), so they dim instead. */
+:where(a):active {
+  opacity: 0.6;
 }
 
 button,
@@ -78,6 +112,17 @@ button {
   outline: 2px solid var(--tan-light);
   outline-offset: 2px;
 }
+/* Paper surfaces: the light ring disappears there. Add class="on-paper" to paper elements outside a Ticket. */
+.on-paper {
+  color-scheme: light;
+}
+.on-paper :focus-visible {
+  outline-color: var(--ink);
+}
+/* The page heading lib/nav.tsx focuses after a page change: focused for screen readers, no ring. */
+[data-route-focus]:focus {
+  outline: none;
+}
 
 ::selection {
   background: var(--tan);
@@ -91,6 +136,17 @@ textarea {
 
 img {
   max-width: 100%;
+}
+
+/* Text a user wrote (components/states.tsx UserText): Arabic runs right to left, long words wrap. */
+.user-text {
+  unicode-bidi: plaintext;
+  overflow-wrap: anywhere;
+}
+/* Long words, emails and links wrap instead of overflowing (for text that isn't user-written). */
+.wrap {
+  overflow-wrap: anywhere;
+  min-width: 0;
 }
 
 .visually-hidden {

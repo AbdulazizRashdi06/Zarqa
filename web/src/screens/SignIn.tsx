@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { Link } from '../lib/nav'
 import { useNavigate } from '../lib/transition'
-import { useSession, type Me } from '../auth/session'
+import { returnPath, useSession, type Me } from '../auth/session'
 import { ConsentCheck } from '../components/ConsentCheck'
 import { BigButton, MonoLabel, Wordmark, ZarqaBubble } from '../components/ui'
 import { zarqaMotion } from '../components/zarqaMotion'
@@ -166,7 +166,7 @@ function CodeStep({
       // The code step is only reachable with the consent box ticked, so this records it with the sign-in.
       await api('/auth/verify', { body: { email, code: value, consentVersion: CONSENT_VERSION } })
       const me = await api<Me>('/me')
-      navigate(me.firstName ? '/' : '/welcome', { replace: true, dir: 'forward', prepare: () => setMe(me) })
+      navigate(me.firstName ? (returnPath() ?? '/') : '/welcome', { replace: true, dir: 'forward', prepare: () => setMe(me) })
     } catch (err) {
       setError(err instanceof ApiError ? err.message : t('common.error'))
       setCode('')

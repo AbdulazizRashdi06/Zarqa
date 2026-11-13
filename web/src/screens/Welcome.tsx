@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react'
 import { useNavigate } from '../lib/transition'
-import { useSession, type Me } from '../auth/session'
+import { returnPath, useSession, type Me } from '../auth/session'
 import { BigButton, Wordmark, ZarqaBubble } from '../components/ui'
 import { t } from '../i18n'
 import { api, ApiError } from '../lib/api'
@@ -21,7 +21,7 @@ export default function Welcome() {
     setError('')
     try {
       const saved = await api<Me>('/me', { method: 'PATCH', body: { firstName: name } })
-      navigate('/', { replace: true, dir: 'forward', prepare: () => setMe(saved) })
+      navigate(returnPath() ?? '/', { replace: true, dir: 'forward', prepare: () => setMe(saved) })
     } catch (err) {
       setError(err instanceof ApiError ? err.message : t('common.error'))
     } finally {

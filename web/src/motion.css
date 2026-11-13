@@ -144,7 +144,7 @@
   animation: 120ms ease both z-nav-fade-out;
 }
 :root[data-nav]::view-transition-new(root) {
-  animation: 180ms ease both z-fade;
+  animation: 160ms ease both z-fade;
 }
 @keyframes z-nav-fade-out {
   to {
@@ -152,12 +152,12 @@
   }
 }
 @media (prefers-reduced-motion: no-preference) {
-  /* The old page leaves faster than the new one arrives. */
+  /* The old page leaves faster than the new one arrives. Kept short: the transition overlay holds taps. */
   :root[data-nav]::view-transition-old(root) {
-    animation: 160ms var(--ease-out) both z-nav-out;
+    animation: 140ms var(--ease-out) both z-nav-out;
   }
   :root[data-nav]::view-transition-new(root) {
-    animation: 320ms var(--ease-drawer) both z-nav-in;
+    animation: 220ms var(--ease-drawer) both z-nav-in;
   }
   :root[data-nav='back']::view-transition-old(root) {
     animation-name: z-nav-out-back;

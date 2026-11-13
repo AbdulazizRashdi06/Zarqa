@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <!-- resizes-content: on Android the page shrinks above the keyboard instead of sliding the header off screen. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
     <meta name="theme-color" content="#222634" />
     <meta name="description" content="The GUtech lost & found. Post what you lost or found, Zarqa matches the two." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -11,9 +12,13 @@
     <link rel="preload" as="image" href="/logo.webp" type="image/webp" />
     <link rel="preload" as="image" href="/mascot/lookout.webp" type="image/webp" fetchpriority="high" />
     <title>Zarqa</title>
+    <!-- Drawn before the script arrives; React replaces the logo inside #root. -->
+    <style>
+      html, body { margin: 0; background: #222634; }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"><div style="flex-grow: 1; min-height: 100dvh; display: flex; align-items: center; justify-content: center"><img src="/logo.webp" alt="Zarqa" height="40" style="height: 40px; width: auto; display: block" /></div></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

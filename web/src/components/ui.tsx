@@ -1,4 +1,6 @@
 import { useState, type CSSProperties, type HTMLAttributes, type ReactNode } from 'react'
+import { t } from '../i18n'
+import { useBack } from '../lib/back'
 import { Link } from '../lib/nav'
 import type { Dir } from '../lib/transition'
 import { ArrowRight, ChevronLeft } from './icons'
@@ -106,7 +108,8 @@ export function ZarqaBubble({
 
 type BigButtonProps = {
   label: ReactNode
-  variant?: 'tan' | 'dark'
+  /** tan = primary. dark = on a paper Ticket. surface = a secondary or final action on the dark page (outlined bar). */
+  variant?: 'tan' | 'dark' | 'surface'
   /** Arrow circle colour for the dark variant (the Lost/Found accent). */
   accent?: string
   labelSize?: number
@@ -119,7 +122,8 @@ type BigButtonProps = {
 }
 
 export function BigButton({ label, variant = 'tan', accent = 'var(--tan)', labelSize, to, onClick, type = 'button', disabled, busy }: BigButtonProps) {
-  const cls = `${s.big} ${variant === 'tan' ? s.bigTan : s.bigDark}`
+  const cls = `${s.big} ${variant === 'tan' ? s.bigTan : variant === 'surface' ? s.bigSurface : s.bigDark}`
+  const arrow = variant === 'tan' ? 'var(--tan)' : variant === 'surface' ? 'var(--text)' : 'var(--ink)'
   // The label it first showed: only a changed label (POST IT -> POSTING...) animates in.
   const [firstLabel] = useState(label)
   const inner = (
@@ -132,11 +136,7 @@ export function BigButton({ label, variant = 'tan', accent = 'var(--tan)', label
         {label}
       </span>
       <span className={s.bigCircle} style={variant === 'dark' ? { background: accent } : undefined}>
-        {busy ? (
-          <span className={s.spinner} style={{ color: variant === 'tan' ? 'var(--tan)' : 'var(--ink)' }} />
-        ) : (
-          <ArrowRight size={22} color={variant === 'tan' ? 'var(--tan)' : 'var(--ink)'} />
-        )}
+        {busy ? <span className={s.spinner} style={{ color: arrow }} /> : <ArrowRight size={22} color={arrow} />}
       </span>
     </>
   )
@@ -148,7 +148,7 @@ export function BigButton({ label, variant = 'tan', accent = 'var(--tan)', label
     )
   }
   return (
-    <button type={type} className={cls} onClick={onClick} disabled={disabled}>
+    <button type={type} className={cls} onClick={onClick} disabled={disabled} aria-busy={busy || undefined}>
       {inner}
     </button>
   )
@@ -179,27 +179,42 @@ export function RoundButton({
     </>
   )
   const style = background ? { background } : undefined
+  // The badge is drawn, not read: say it in the name ("Chats, 2 unread").
+  const name = badge ? t('common.unread', { label, n: badge }) : label
   if (to) {
     return (
-      <Link to={to} dir={dir} aria-label={label} className={s.roundBtn} style={style}>
+      <Link to={to} dir={dir} aria-label={name} className={s.roundBtn} style={style}>
         {content}
       </Link>
     )
   }
   return (
-    <button type="button" aria-label={label} className={s.roundBtn} style={style} onClick={onClick}>
+    <button type="button" aria-label={name} className={s.roundBtn} style={style} onClick={onClick}>
       {content}
     </button>
   )
 }
 
-/** Back circle on the left, small mono label on the right. */
-export function BackHeader({ to = '/', label, right }: { to?: string; label?: ReactNode; right?: ReactNode }) {
+/**
+ * Back circle on the left, small mono label on the right. Back goes back through history when the page before
+ * is `to` (or, with `previous`, any in-app page), like the phone's back button; otherwise it replaces this page
+ * with `to` (lib/nav.tsx useBack).
+ */
+export function BackHeader({ to = '/', label, right, previous }: { to?: string; label?: ReactNode; right?: ReactNode; previous?: boolean }) {
+  const back = useBack()
   return (
     <header className={s.backHeader}>
-      <RoundButton to={to} label="Back" dir="back">
+      <Link
+        to={to}
+        aria-label={t('common.back')}
+        className={s.roundBtn}
+        onClick={(e) => {
+          e.preventDefault()
+          back(to, previous)
+        }}
+      >
         <ChevronLeft size={20} />
-      </RoundButton>
+      </Link>
       {right ?? (label ? <span className={s.label}>{label}</span> : null)}
     </header>
   )
@@ -215,7 +230,7 @@ export function Switch({ checked, onChange, label }: { checked: boolean; onChang
 
 export type PillStatus = 'Searching' | 'Possible match' | 'Chatting' | 'Returned' | 'Bring to RSA' | 'At the RSA' | 'Ready to collect' | 'Claimed at RSA'
 
-const pillColors: Record<PillStatus, { bg: string; fg: string; dot: string }> = {
+const pillColors: Record<string, { bg: string; fg: string; dot: string } | undefined> = {
   Searching: { bg: '#E4DED6', fg: '#3F4652', dot: '#7D898C' },
   'Possible match': { bg: '#222634', fg: '#E3C4A8', dot: '#BD9777' },
   Chatting: { bg: '#D3DBDC', fg: '#222634', dot: '#434E5F' },
@@ -226,8 +241,11 @@ const pillColors: Record<PillStatus, { bg: string; fg: string; dot: string }> = 
   'Claimed at RSA': { bg: '#D3DBDC', fg: '#222634', dot: '#434E5F' },
 }
 
+// A pill the app doesn't know yet (a newer server) still draws, in the neutral style.
+const neutralPill = { bg: '#E4DED6', fg: '#3F4652', dot: '#7D898C' }
+
 export function StatusPill({ status }: { status: PillStatus }) {
-  const c = pillColors[status]
+  const c = pillColors[status] ?? neutralPill
   return (
     <span className={s.pill} style={{ background: c.bg, color: c.fg }}>
       <span className={`${s.pillDot} ${status === 'Searching' ? s.pillLive : ''}`} style={{ background: c.dot }} />
