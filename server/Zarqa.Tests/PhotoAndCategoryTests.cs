@@ -84,6 +84,21 @@ public class CategoryTests
     [InlineData("هويتي", true)]
     [InlineData("جواز سفر", true)]
     [InlineData("محفظة سوداء", false)]
+    [InlineData("لقيت بطاقة بنك مسقط باسم أحمد قرب الكانتين", true)]
+    [InlineData("ATM, name Fatma", true)]
+    [InlineData("debit mastercard", true)]
+    [InlineData("mulkiya for a white Toyota", true)]
+    [InlineData("Omani resident I.D.", true)]
+    [InlineData("power bank, white Anker", false)]
+    [InlineData("Powerbank 10000mAh", false)]
+    [InlineData("SanDisk SD card 64GB", false)]
+    [InlineData("micro SD card in a case", false)]
+    [InlineData("Ooredoo SIM card", false)]
+    [InlineData("memory card", false)]
+    [InlineData("Arabic flash cards", false)]
+    [InlineData("deck of playing cards", false)]
+    [InlineData("Power bank and my student ID", true)] // only the phrase is ignored
+    [InlineData("SIM card holder with a bank card", true)]
     [InlineData("Idea notebook", false)] // "id" only counts as a whole word
     public void Spots_card_and_id_reports(string text, bool sensitive) => Assert.Equal(sensitive, Categories.IsSensitive(text));
 }
