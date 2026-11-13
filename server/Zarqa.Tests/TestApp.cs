@@ -88,6 +88,7 @@ public sealed class TestApp : WebApplicationFactory<Program>, IAsyncLifetime
         var http = Client();
         (await http.PostAsJsonAsync("/api/auth/request-code", new { email })).EnsureSuccessStatusCode();
         (await http.PostAsJsonAsync("/api/auth/verify", new { email, code = Emails.LastCodeFor(email.ToLowerInvariant()) })).EnsureSuccessStatusCode();
+        (await http.PostAsJsonAsync("/api/me/consent", new { version = Zarqa.Api.Users.Consent.Current })).EnsureSuccessStatusCode();
         (await http.PatchAsJsonAsync("/api/me", new { firstName })).EnsureSuccessStatusCode();
         return http;
     }

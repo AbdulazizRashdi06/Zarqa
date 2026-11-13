@@ -42,12 +42,14 @@ function Splash() {
   )
 }
 
-/** Signed-in users only; a user without a first name goes to /welcome first. */
+/** Signed-in users only. Consent comes first (/consent), then a user without a first name goes to /welcome. */
 export function RequireSession({ children }: { children: ReactNode }) {
   const { me, loading } = useSession()
   const { pathname } = useLocation()
   if (loading) return <Splash />
   if (!me) return <Navigate to="/signin" replace />
+  if (me.needsConsent) return pathname === '/consent' ? children : <Navigate to="/consent" replace />
+  if (pathname === '/consent') return <Navigate to="/" replace />
   if (!me.firstName && pathname !== '/welcome') return <Navigate to="/welcome" replace />
   return children
 }

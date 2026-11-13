@@ -660,6 +660,14 @@ namespace Zarqa.Api.Data.Migrations
                         .HasColumnType("text")
                         .HasColumnName("avatar_photo_key");
 
+                    b.Property<string>("ConsentVersion")
+                        .HasColumnType("text")
+                        .HasColumnName("consent_version");
+
+                    b.Property<DateTimeOffset?>("ConsentedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("consented_at");
+
                     b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at");

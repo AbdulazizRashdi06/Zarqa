@@ -8,9 +8,11 @@ namespace Zarqa.Api.Users;
 
 public static partial class MeEndpoints
 {
-    public record MeDto(Guid Id, string Email, string? FirstName, string? SuggestedFirstName, bool ShowFirstName, bool MatchAlerts, string Locale, string? AvatarUrl, bool IsAdmin, bool IsRsa);
+    public record MeDto(Guid Id, string Email, string? FirstName, string? SuggestedFirstName, bool ShowFirstName, bool MatchAlerts, string Locale, string? AvatarUrl, bool IsAdmin, bool IsRsa, bool NeedsConsent);
 
     public record PatchMeBody(string? FirstName, bool? ShowFirstName, bool? MatchAlerts);
+
+    public record ConsentBody(string? Version);
 
     /// <summary>A first name: letters in any script (Arabic too), spaces, hyphens, apostrophes.</summary>
     [GeneratedRegex(@"^\p{L}[\p{L}\p{M}' -]{0,39}$")]
@@ -37,6 +39,18 @@ public static partial class MeEndpoints
             }
             if (body.ShowFirstName is { } show) user.ShowFirstName = show;
             if (body.MatchAlerts is { } alerts) user.MatchAlerts = alerts;
+            await db.SaveChangesAsync(ct);
+            return Results.Ok(ToDto(user, http.User));
+        });
+
+        // Records agreement to the current Terms and Privacy (with processing outside Oman). Withdrawing consent is
+        // "Delete my account": the service can't work without it.
+        me.MapPost("/consent", async (ConsentBody body, HttpContext http, ZarqaDb db, TimeProvider clock, CancellationToken ct) =>
+        {
+            if (body.Version != Consent.Current) return Errors.BadRequest("The terms have changed. Reload the page to see the latest version.");
+            var user = await db.Users.FirstAsync(u => u.Id == http.User.Id(), ct);
+            user.ConsentVersion = Consent.Current;
+            user.ConsentedAt = clock.GetUtcNow();
             await db.SaveChangesAsync(ct);
             return Results.Ok(ToDto(user, http.User));
         });
@@ -96,7 +110,7 @@ public static partial class MeEndpoints
     /// <summary>RSA access is a claim set per request (see Program.cs), so it's read from the principal.</summary>
     private static MeDto ToDto(User u, System.Security.Claims.ClaimsPrincipal p) =>
         new(u.Id, u.Email, u.FirstName, u.FirstName is null ? EmailRules.GuessFirstName(u.Email) : null, u.ShowFirstName, u.MatchAlerts, u.Locale,
-            AvatarUrl(u), u.IsAdmin, p.HasClaim(c => c.Type == Rsa.RsaEndpoints.Policy));
+            AvatarUrl(u), u.IsAdmin, p.HasClaim(c => c.Type == Rsa.RsaEndpoints.Policy), u.ConsentVersion != Consent.Current);
 
     /// <summary>Cache-busting URL of a user's avatar, or null.</summary>
     public static string? AvatarUrl(User u) =>

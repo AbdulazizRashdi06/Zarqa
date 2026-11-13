@@ -29,6 +29,9 @@ public static class ReportEndpoints
         reports.MapPost("", async (HttpRequest req, ZarqaDb db, PhotoStore photos, TimeProvider clock, MatchQueue queue, CancellationToken ct) =>
         {
             var me = req.HttpContext.User.Id();
+            // No processing without recorded consent (PDPL Art. 10). The app asks first; this guards the API.
+            if (!await db.Users.AnyAsync(u => u.Id == me && u.ConsentVersion != null, ct))
+                return Errors.Forbidden("Agree to the Terms and Privacy first.");
             var now = clock.GetUtcNow();
             var today = await db.Reports.CountAsync(r => r.UserId == me && r.CreatedAt > now.AddDays(-1), ct);
             if (today >= MaxPostsPerDay) return Errors.TooMany("That's a lot of posts for one day. Try again tomorrow.");
