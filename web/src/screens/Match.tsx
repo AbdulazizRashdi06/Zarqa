@@ -419,7 +419,7 @@ export default function Match() {
       {suggested && (
         <>
           {match.taken ? (
-            <div className={s.takenNote}>
+            <div className={`${s.bar} ${s.takenNote}`}>
               <ZarqaBubble mascot="reading" alt="" width={56} quiet>
                 {t('match.taken')}
               </ZarqaBubble>

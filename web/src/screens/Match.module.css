@@ -240,7 +240,7 @@
 .tagName {
   flex-shrink: 0;
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: clamp(19px, 5.8vw, 22px);
   line-height: 1.05;
   text-transform: uppercase;
   overflow: hidden;
@@ -489,7 +489,7 @@
 .pickup p { margin: 0; line-height: 1.5; }
 .pickupCode { font: clamp(40px, 14vw, 56px)/1 var(--font-display); letter-spacing: 4px; white-space: nowrap; margin: 6px 0 4px !important; }
 /* Not at the desk yet: the code is real but there's nothing to collect, so it reads as on hold. */
-.pickupCodeWaiting { opacity: 0.45; }
+.pickupCodeWaiting { color: var(--ink-muted); }
 .pickupItem { font-weight: 700; }
 
 /* Full-screen photo viewer (native <dialog>: focus trap, Esc closes). */
