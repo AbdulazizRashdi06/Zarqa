@@ -49,7 +49,13 @@ export function ConsentPrompt() {
       else d.setAttribute('open', '')
     }
     title.current?.focus()
+    // Chrome lets a second Esc close a dialog even though its cancel is refused: open it again straight away.
+    const reopen = () => {
+      if (d.isConnected && !d.open && typeof d.showModal === 'function') d.showModal()
+    }
+    d.addEventListener('close', reopen)
     return () => {
+      d.removeEventListener('close', reopen)
       if (d.open) d.close()
       // The page behind gets focus back once the sheet is gone.
       requestAnimationFrame(() => {

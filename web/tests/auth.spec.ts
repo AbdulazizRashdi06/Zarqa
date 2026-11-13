@@ -70,15 +70,38 @@ test('too many codes opens the code boxes for the address instead of a dead end'
   await expect(page.getByRole('alert')).toContainText('Type the one in your inbox')
 })
 
-test('the consent sheet is modal: nothing behind it takes focus', async ({ page }) => {
+test('the consent sheet is modal: nothing behind it takes focus, a click or a post, and Esc does not skip it', async ({ page }) => {
+  const posts: string[] = []
   await page.route('**/api/me', route => route.fulfill({ json: { ...me, needsConsent: true } }))
-  await page.route('**/api/me/stats', route => route.fulfill({ json: { posts: 0, gotBack: 0, helpedReturn: 0 } }))
-  await page.goto('/profile')
-  await expect(page.getByRole('dialog', { name: 'Quick one' })).toBeVisible()
-  for (let i = 0; i < 8; i++) {
-    await page.keyboard.press('Shift+Tab')
-    expect(await page.evaluate(() => !document.activeElement || document.activeElement === document.body || !!document.activeElement.closest('dialog'))).toBe(true)
+  await page.route('**/api/home', route => route.fulfill({ json: {} }))
+  await page.route('**/api/reports**', route => {
+    if (route.request().method() === 'POST') posts.push(route.request().url())
+    return route.fulfill({ json: [] })
+  })
+  await page.goto('/')
+  const sheet = page.getByRole('dialog', { name: 'Quick one' })
+  await expect(sheet).toBeVisible()
+  const inSheet = () => page.evaluate(() => !document.activeElement || document.activeElement === document.body || !!document.activeElement.closest('dialog'))
+
+  // Tab and Shift+Tab stay in the sheet.
+  for (const key of ['Tab', 'Shift+Tab']) {
+    for (let i = 0; i < 8; i++) {
+      await page.keyboard.press(key)
+      expect(await inSheet()).toBe(true)
+    }
   }
+  // The form behind can't be focused, even from script, and a tap on its submit button never reaches it.
+  const submit = page.locator('main form button[type="submit"]').first()
+  expect(await submit.evaluate(b => { (b as HTMLButtonElement).focus(); return document.activeElement === b })).toBe(false)
+  const box = await submit.boundingBox()
+  if (box) await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2)
+  await page.keyboard.press('Enter')
+  // Esc, twice (Chrome closes a dialog on the second Esc unless it is reopened), leaves the sheet up.
+  await page.keyboard.press('Escape')
+  await page.keyboard.press('Escape')
+  await expect(sheet).toBeVisible()
+  expect(await submit.evaluate(b => { (b as HTMLButtonElement).focus(); return document.activeElement === b })).toBe(false)
+  expect(posts).toEqual([])
 })
 
 test('sign out works without a connection and finishes the logout on the next start', async ({ page }) => {
@@ -98,4 +121,32 @@ test('sign out works without a connection and finishes the logout on the next st
   await page.reload()
   await expect(page.locator('#email')).toBeVisible()
   expect(logouts).toBe(1)
+})
+
+test('an unfinished report never reaches the next account on this browser', async ({ page }) => {
+  let who = 'owner'
+  await page.route('**/api/me', route => route.fulfill({ json: { ...me, id: who, email: `${who}@gutech.edu.om` } }))
+  await page.route('**/api/me/stats', route => route.fulfill({ json: { posts: 0, gotBack: 0, helpedReturn: 0 } }))
+  await page.route('**/api/home', route => route.fulfill({ json: {} }))
+  await page.route('**/api/auth/logout', route => route.fulfill({ status: 204 }))
+  const typed = 'Blue wallet with a library book inside'
+
+  // Another account signs in on the same browser: the draft is gone before Home opens.
+  await page.goto('/')
+  await page.locator('#item-text').fill(typed)
+  await page.waitForTimeout(300)
+  await page.reload()
+  await expect(page.locator('#item-text')).toHaveValue(typed)
+  who = 'someone-else'
+  await page.reload()
+  await expect(page.locator('#item-text')).toHaveValue('')
+
+  // Signing out clears it too, even when the same account comes back.
+  await page.locator('#item-text').fill(typed)
+  await page.waitForTimeout(300)
+  await page.goto('/profile')
+  await page.getByRole('button', { name: /^sign out$/i }).click()
+  await expect(page).toHaveURL(/\/signin$/)
+  await page.goto('/')
+  await expect(page.locator('#item-text')).toHaveValue('')
 })
