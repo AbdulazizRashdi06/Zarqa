@@ -42,7 +42,7 @@ const RETURN_KEY = 'zarqa.returnTo'
 
 export function rememberReturnPath(path: string) {
   try {
-    if (path !== '/' && path.startsWith('/') && !path.startsWith('//')) sessionStorage.setItem(RETURN_KEY, path)
+    if (path !== '/' && path !== '/welcome' && path.startsWith('/') && !path.startsWith('//')) sessionStorage.setItem(RETURN_KEY, path)
   } catch {
     // Private mode: they land on Home instead.
   }
