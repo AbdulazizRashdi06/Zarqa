@@ -30,20 +30,121 @@
   padding: 0;
 }
 .nameCol {
+  flex: 1;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 6px;
   min-width: 0;
   padding-bottom: 4px;
+  /* The name scales to the room it has, so long first names stay whole on one line. */
+  container-type: inline-size;
 }
 .name {
   margin: 0;
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: 48px;
-  line-height: 0.9;
+  /* --chars: letters in the longest word (set in Profile.tsx). Anton capitals are 0.47-0.58em wide; 0.62 leaves room. */
+  font-size: clamp(28px, calc(100cqi / (var(--chars, 6) * 0.62)), 48px);
+  line-height: 0.95;
   text-transform: uppercase;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+  max-width: 100%;
+}
+.textButton {
+  min-height: var(--tap);
+  margin: -8px 0 -10px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--tan-light);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.textButton:disabled {
+  opacity: 0.5;
+}
+
+/* Changing the first name, inline under the name */
+.nameForm {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: -6px;
+}
+.nameInput {
+  min-height: 52px;
+  padding: 0 14px;
+  border-radius: 14px;
+  border: 2px solid var(--tan);
+  background: var(--surface);
+  color: var(--text);
+  font: 700 18px var(--font-body);
+}
+.nameActions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.saveButton {
+  min-height: var(--tap);
+  padding: 0 18px;
+  border: none;
+  border-radius: 14px;
+  background: var(--tan);
+  color: var(--ink);
+  font-weight: 800;
+  font-size: 15px;
+}
+.saveButton:disabled {
+  opacity: 0.5;
+}
+
+/* Who sees the photo, and Remove photo */
+.photoNote {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: -8px;
+}
+.photoNote .textButton {
+  flex-shrink: 0;
+  margin: 0;
+}
+.avatarWrap[data-busy] img {
+  opacity: 0.55;
+}
+.avatarBusy {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(34, 38, 52, 0.35);
+}
+@keyframes spin {
+  to {
+    rotate: 1turn;
+  }
+}
+.spinner {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 3px solid currentColor;
+  border-right-color: transparent;
+  animation: spin 600ms linear infinite;
+}
+.avatarBusy .spinner {
+  color: var(--paper);
+}
+.changePhoto:disabled {
+  opacity: 0.6;
 }
 .role {
   font-family: var(--font-mono);
@@ -77,6 +178,30 @@
   line-height: 1;
   /* Steady width while the number counts up */
   font-variant-numeric: tabular-nums;
+}
+.statHelped {
+  /* The approved mockup's darker tan: readable on paper (tan itself is 2.3:1). */
+  color: #8a6a4f;
+}
+.statsFailed {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 4px 14px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.retry {
+  flex-shrink: 0;
+  min-height: var(--tap);
+  padding: 0 14px;
+  border: 1.5px solid var(--ink);
+  border-radius: 12px;
+  background: none;
+  color: var(--ink);
+  font-weight: 800;
 }
 .statLabel {
   font-family: var(--font-mono);
@@ -112,6 +237,32 @@
 .row {
   min-height: 60px;
 }
+/* The alerts row and what this phone can do with them, under one divider */
+.rowGroup {
+  border-bottom: 1px solid var(--line);
+}
+.rowGroup .row {
+  border-bottom: none;
+}
+.deviceNote {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin: -4px 0 14px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--surface);
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--text-soft);
+}
+.rowError {
+  padding: 8px 0;
+}
+.staffLink {
+  color: var(--tan-light);
+}
 .rowText {
   flex-grow: 1;
   display: flex;
@@ -137,8 +288,13 @@
 .changePhoto:active {
   scale: 0.9;
 }
-.signOut {
+.bottom {
   margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.signOut {
   min-height: 56px;
   border-radius: 16px;
   border: 2px solid var(--paper);
@@ -152,12 +308,9 @@
   justify-content: center;
   gap: 10px;
 }
-
-.error {
-  margin: 0;
-  font-size: 14px;
-  font-weight: 700;
-  color: #f0a58c;
+.signOut:disabled,
+.deleteLink:disabled {
+  opacity: 0.6;
 }
 
 /* Account deletion: quiet, clearly a warning, never bigger than Sign out */

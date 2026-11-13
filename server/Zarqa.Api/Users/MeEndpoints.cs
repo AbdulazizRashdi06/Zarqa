@@ -47,7 +47,7 @@ public static partial class MeEndpoints
         // "Delete my account": the service can't work without it.
         me.MapPost("/consent", async (ConsentBody body, HttpContext http, ZarqaDb db, TimeProvider clock, CancellationToken ct) =>
         {
-            if (body.Version != Consent.Current) return Errors.BadRequest("The terms have changed. Reload the page to see the latest version.");
+            if (body.Version != Consent.Current) return Errors.BadRequest("The Terms have changed. Close Zarqa and open it again to see the latest version.");
             var user = await db.Users.FirstAsync(u => u.Id == http.User.Id(), ct);
             user.ConsentVersion = Consent.Current;
             user.ConsentedAt = clock.GetUtcNow();
@@ -81,25 +81,30 @@ public static partial class MeEndpoints
             var key = await photos.SaveAsync(stream, PhotoStore.AvatarEdge, ct);
             if (key is null) return Errors.BadRequest("That file isn't a photo we can read.");
             var user = await db.Users.FirstAsync(u => u.Id == req.HttpContext.User.Id(), ct);
-            if (user.AvatarPhotoKey is not null) photos.Delete(user.AvatarPhotoKey);
+            var old = user.AvatarPhotoKey;
             user.AvatarPhotoKey = key;
             await db.SaveChangesAsync(ct);
+            // The old file goes only once nothing points at it any more.
+            if (old is not null) photos.Delete(old);
             return Results.Ok(ToDto(user, req.HttpContext.User));
         }).DisableAntiforgery();
 
         me.MapDelete("/avatar", async (HttpContext http, ZarqaDb db, PhotoStore photos, CancellationToken ct) =>
         {
+            // "Remove photo": the stored file is deleted too, not just unlinked.
             var user = await db.Users.FirstAsync(u => u.Id == http.User.Id(), ct);
-            if (user.AvatarPhotoKey is not null) photos.Delete(user.AvatarPhotoKey);
+            var old = user.AvatarPhotoKey;
             user.AvatarPhotoKey = null;
             await db.SaveChangesAsync(ct);
+            if (old is not null) photos.Delete(old);
             return Results.Ok(ToDto(user, http.User));
         });
 
         api.MapGet("/avatars/{id:guid}", async (Guid id, ZarqaDb db, PhotoStore photos, HttpContext http, CancellationToken ct) =>
         {
-            var key = await db.Users.Where(u => u.Id == id).Select(u => u.AvatarPhotoKey).FirstOrDefaultAsync(ct);
-            if (key is null) return Errors.NotFound();
+            var user = await db.Users.Where(u => u.Id == id).Select(u => new { u.AvatarPhotoKey, u.ShowFirstName }).FirstOrDefaultAsync(ct);
+            // Hiding your first name hides your photo too: only you see it then.
+            if (user?.AvatarPhotoKey is not { } key || (!user.ShowFirstName && http.User.Id() != id)) return Errors.NotFound();
             var path = photos.PathFor(key);
             if (!File.Exists(path)) return Errors.NotFound();
             http.Response.Headers.CacheControl = "private, max-age=604800";
@@ -110,11 +115,14 @@ public static partial class MeEndpoints
     /// <summary>RSA access is a claim set per request (see Program.cs), so it's read from the principal.</summary>
     private static MeDto ToDto(User u, System.Security.Claims.ClaimsPrincipal p) =>
         new(u.Id, u.Email, u.FirstName, u.FirstName is null ? EmailRules.GuessFirstName(u.Email) : null, u.ShowFirstName, u.MatchAlerts, u.Locale,
-            AvatarUrl(u), u.IsAdmin, p.HasClaim(c => c.Type == Rsa.RsaEndpoints.Policy), u.ConsentVersion != Consent.Current);
+            OwnAvatarUrl(u), u.IsAdmin, p.HasClaim(c => c.Type == Rsa.RsaEndpoints.Policy), u.ConsentVersion != Consent.Current);
 
     /// <summary>Cache-busting URL of a user's avatar, or null.</summary>
-    public static string? AvatarUrl(User u) =>
+    private static string? OwnAvatarUrl(User u) =>
         u.AvatarPhotoKey is null ? null : $"/api/avatars/{u.Id}?v={Path.GetFileNameWithoutExtension(u.AvatarPhotoKey)[..8]}";
+
+    /// <summary>The avatar other people see: none while the user hides their first name (they appear as "GUtech student").</summary>
+    public static string? AvatarUrl(User u) => u.ShowFirstName ? OwnAvatarUrl(u) : null;
 
     /// <summary>The name other people see: the first name, or "GUtech student" when hidden.</summary>
     public static string DisplayName(User u) => u.ShowFirstName && u.FirstName is not null ? u.FirstName : "GUtech student";

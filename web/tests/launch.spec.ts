@@ -25,18 +25,19 @@ test('account deletion requires both confirmations and keeps session on failure'
     return route.fulfill({ json: me })
   })
   await page.goto('/profile')
-  let dialogs = 0
-  const cancelSecond = async (dialog: import('@playwright/test').Dialog) => { dialogs++; if (dialogs === 1) await dialog.accept(); else await dialog.dismiss() }
-  page.on('dialog', cancelSecond)
+  // Two in-app steps; keeping the account at the second one deletes nothing.
   await page.getByRole('button', { name: 'Delete my account' }).click()
-  expect(dialogs).toBe(2); expect(deletes).toBe(0)
-  page.off('dialog', cancelSecond)
-  page.on('dialog', dialog => dialog.accept())
+  await page.getByRole('dialog', { name: 'Delete your account?' }).getByRole('button', { name: 'Continue' }).click()
+  await page.getByRole('dialog', { name: 'This can’t be undone' }).getByRole('button', { name: 'Keep my account' }).click()
+  expect(deletes).toBe(0)
   await page.getByRole('button', { name: 'Delete my account' }).click()
-  await expect(page.getByText('Please retry deletion.')).toBeVisible()
+  await page.getByRole('dialog', { name: 'Delete your account?' }).getByRole('button', { name: 'Continue' }).click()
+  const final = page.getByRole('dialog', { name: 'This can’t be undone' })
+  await final.getByRole('button', { name: 'Delete for good' }).click()
+  await expect(final.getByText('Please retry deletion.')).toBeVisible()
   await expect(page).toHaveURL(/\/profile$/)
   await page.route('**/api/me', route => route.request().method() === 'DELETE' ? route.fulfill({ status: 204 }) : route.fulfill({ json: me }))
-  await page.getByRole('button', { name: 'Delete my account' }).click()
+  await final.getByRole('button', { name: 'Delete for good' }).click()
   await expect(page).toHaveURL(/\/signin$/)
 })
 test('non-admin cannot open admin screen', async ({ page }) => {
