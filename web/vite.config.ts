@@ -32,7 +32,7 @@ export default defineConfig({
     react(),
     preloadFonts(),
     VitePWA({
-      // The app decides when a new version goes live (lib/pwa.ts): between pages or in the background.
+      // The app decides when a new version goes live (lib/pwa.ts): at the next in-app page change, or the next start.
       registerType: 'prompt',
       injectRegister: false,
       includeAssets: ['favicon.svg', 'mascot/*.webp', 'push-sw.js'],
@@ -57,6 +57,9 @@ export default defineConfig({
         navigateFallbackDenylist: [/^\/api\//],
         // Push and notification-click handlers (public/push-sw.js).
         importScripts: ['push-sw.js'],
+        // The first install takes over the page that installed it (same version), so a notification tap moves that
+        // page instead of opening a second window. An update still waits for lib/pwa.ts, which then reloads.
+        clientsClaim: true,
         // The animated clips are big and each plays once: fetched when needed, not stored with the app shell.
         // Icons and logo.png (the original of logo.webp) are never drawn by the page.
         globIgnores: ['mascot/*.png', 'mascot/anim/**', 'icons/**', 'logo.png'],

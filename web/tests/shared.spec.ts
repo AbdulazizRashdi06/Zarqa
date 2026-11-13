@@ -39,11 +39,88 @@ test('a 401 mid-session signs out, says so, and returns to the page after signin
   expect(await page.evaluate(() => sessionStorage.getItem('zarqa.returnTo'))).toBe('/reports')
 })
 
-test('a page that crashes on an unexpected value shows a way out instead of a blank screen', async ({ page }) => {
+test('a page that crashes shows a way out instead of a blank screen, and Back home recovers', async ({ page }) => {
+  // An object where the screen expects text: React can't render it, so the report list really crashes.
+  await app(page, [{ ...report, title: { en: 'Black AirPods case' } }])
+  await page.goto('/reports')
+  await expect(page.getByRole('heading', { level: 1, name: 'Something broke' })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Reload' })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Back home' })).toBeVisible()
+  await page.getByRole('button', { name: 'Back home' }).click()
+  await expect(page).toHaveURL(/\/$/)
+  await expect(page.getByLabel('What did you lose?')).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Something broke' })).toHaveCount(0)
+})
+
+test('unexpected values a screen can handle render normally', async ({ page }) => {
   await app(page, [{ ...report, photoIds: undefined, pill: 'Some new pill' }])
   await page.goto('/reports')
-  await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
-  await expect(page.getByRole('button', { name: /reload|back home/i }).or(page.getByRole('link', { name: /black airpods case/i })).first()).toBeVisible()
+  await expect(page.getByRole('link', { name: /black airpods case/i })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Something broke' })).toHaveCount(0)
+})
+
+// The service worker module is swapped for a stand-in that records what the app asks of it.
+async function stubPwa(page: Page) {
+  await page.route(/virtual:pwa-register/, (route) =>
+    route.fulfill({
+      contentType: 'application/javascript',
+      body: `export function registerSW(options) {
+        window.__pwa = { options, applied: 0 }
+        return async () => { window.__pwa.applied++ }
+      }`,
+    }),
+  )
+  await page.addInitScript(() => sessionStorage.setItem('loads', String(Number(sessionStorage.getItem('loads') ?? 0) + 1)))
+}
+const setVisibility = (page: Page, state: 'hidden' | 'visible') =>
+  page.evaluate((state) => {
+    Object.defineProperty(document, 'visibilityState', { configurable: true, get: () => state })
+    Object.defineProperty(document, 'hidden', { configurable: true, get: () => state === 'hidden' })
+    document.dispatchEvent(new Event('visibilitychange'))
+  }, state)
+const applied = (page: Page) => page.evaluate(() => (window as unknown as { __pwa: { applied: number } }).__pwa.applied)
+// How many times this tab has loaded the app; -1 while a reload is under way.
+const loads = (page: Page) => page.evaluate(() => Number(sessionStorage.getItem('loads'))).catch(() => -1)
+
+test('a waiting app update never goes live while the page is hidden, only at the next page change', async ({ page }) => {
+  await stubPwa(page)
+  await app(page)
+  await page.goto('/')
+  await page.getByLabel('What did you lose?').fill('Blue bottle')
+  await expect.poll(() => page.evaluate(() => Boolean((window as unknown as { __pwa?: unknown }).__pwa))).toBe(true)
+  await page.evaluate(() => (window as unknown as { __pwa: { options: { onNeedRefresh: () => void } } }).__pwa.options.onNeedRefresh())
+  // The camera or the mail app hides the page: the form must still be there when the user comes back.
+  await setVisibility(page, 'hidden')
+  await page.waitForTimeout(200)
+  await setVisibility(page, 'visible')
+  expect(await applied(page)).toBe(0)
+  await expect(page.getByLabel('What did you lose?')).toHaveValue('Blue bottle')
+  await page.getByRole('link', { name: /my reports/i }).click()
+  await expect(page).toHaveURL(/\/reports$/)
+  await expect.poll(() => applied(page)).toBe(1)
+  // The version this tab asked for took over: now it reloads.
+  await page.evaluate(() => (window as unknown as { __pwa: { options: { onNeedReload: () => void } } }).__pwa.options.onNeedReload())
+  await expect.poll(() => loads(page)).toBe(2)
+})
+
+test('another tab putting the new version live does not reload this one mid-form', async ({ page }) => {
+  await stubPwa(page)
+  await app(page)
+  await page.goto('/')
+  await page.getByLabel('What did you lose?').fill('Blue bottle')
+  await expect.poll(() => page.evaluate(() => Boolean((window as unknown as { __pwa?: unknown }).__pwa))).toBe(true)
+  await page.evaluate(() => {
+    const pwa = (window as unknown as { __pwa: { options: { onNeedRefresh: () => void; onNeedReload: () => void } } }).__pwa
+    pwa.options.onNeedRefresh()
+    pwa.options.onNeedReload()
+  })
+  await page.waitForTimeout(300)
+  expect(await loads(page)).toBe(1)
+  await expect(page.getByLabel('What did you lose?')).toHaveValue('Blue bottle')
+  // It picks the new version up at its own next page change.
+  await page.getByRole('link', { name: /my reports/i }).click()
+  await expect.poll(() => loads(page)).toBe(2)
+  await expect(page).toHaveURL(/\/reports$/)
 })
 
 test('page changes set the title and move focus to the new heading; Back goes back through history', async ({ page }) => {

@@ -192,8 +192,9 @@ public sealed class Matcher(
         // Card/ID photos only as their covered copy, never the original (owner decision 2026-10-27).
         r.Photos.OrderBy(p => p.Position).Select(PhotoAccess.SharedKey).OfType<string>().Select(photos.PathFor).ToList());
 
+    // An app report's name is cut from its text (ReportText.Split), so the text already contains it.
     public static string MatchText(Report r) =>
-        r.Description.StartsWith(r.Title, StringComparison.OrdinalIgnoreCase) ? r.Description
+        r.Description.Contains(r.Title, StringComparison.OrdinalIgnoreCase) ? r.Description
         : r.Description.Length == 0 ? r.Title
         : $"{r.Title}. {r.Description}";
 
