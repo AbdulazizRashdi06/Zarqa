@@ -37,7 +37,7 @@ export default function Placeholder({
           {zarqa}
         </ZarqaBubble>
         {action}
-        {!back && <BigButton to="/" label="Back home" />}
+        {!back && <BigButton to="/" label={t('common.backHome')} />}
       </div>
     </main>
   )
