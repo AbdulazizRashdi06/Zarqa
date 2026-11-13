@@ -121,6 +121,45 @@ public class RsaFlowTests(TestApp app) : IClassFixture<TestApp>
     }
 
     [Fact]
+    public async Task The_owner_can_take_back_an_uncollected_pickup_and_others_see_it_free_up()
+    {
+        var rsa = await Staff("release");
+        var (owner, _, lost, found, _, match) = await DroppedPair("release");
+        // A second student was suggested the same found item.
+        var other = await app.SignedIn("other.release@gutech.edu.om", "Aisha");
+        var otherLost = (await Json(await other.PostAsync("/api/reports", Form("lost", "Blue bottle", "Bottles")))).GetProperty("id").GetGuid();
+        Guid otherMatch;
+        await using (var db = app.Db())
+        {
+            var m = new Match { LostId = otherLost, FoundId = found, FinalScore = 0.7, Reasons = ["Same kind of item: bottle"], CreatedAt = DateTimeOffset.UtcNow };
+            db.Matches.Add(m);
+            await db.SaveChangesAsync();
+            otherMatch = m.Id;
+        }
+        Assert.False((await Json(await other.GetAsync($"/api/matches/{otherMatch}"))).GetProperty("taken").GetBoolean());
+
+        var pickup = (await Json(await owner.PostAsync($"/api/matches/{match}/confirm", null))).GetProperty("pickupCode").GetString()!;
+        Assert.True((await Json(await other.GetAsync($"/api/matches/{otherMatch}"))).GetProperty("taken").GetBoolean());
+        // Only the lost owner can release it, and only while it's a live pickup.
+        Assert.Equal(HttpStatusCode.NotFound, (await other.PostAsync($"/api/matches/{match}/release", null)).StatusCode);
+        Assert.Equal(HttpStatusCode.BadRequest, (await other.PostAsync($"/api/matches/{otherMatch}/release", null)).StatusCode);
+
+        Assert.Equal(HttpStatusCode.NoContent, (await owner.PostAsync($"/api/matches/{match}/release", null)).StatusCode);
+        await using (var db = app.Db())
+        {
+            Assert.All(await db.Reports.Where(r => r.Id == lost || r.Id == found).ToListAsync(), r => Assert.Equal(ReportStatus.Open, r.Status));
+            Assert.Equal(MatchStatus.Rejected, (await db.Matches.FirstAsync(m => m.Id == match)).Status);
+            Assert.True(await db.MatchJobs.AnyAsync(j => j.ReportId == lost && j.CompletedAt == null));
+        }
+        var closed = await Json(await owner.GetAsync($"/api/matches/{match}"));
+        Assert.Equal("Rejected", closed.GetProperty("status").GetString());
+        Assert.Equal(JsonValueKindNull, closed.GetProperty("pickupCode").ValueKind);
+        Assert.Equal(HttpStatusCode.BadRequest, (await rsa.GetAsync($"/api/rsa/desk/{pickup}")).StatusCode);
+        Assert.Equal(HttpStatusCode.BadRequest, (await owner.PostAsync($"/api/matches/{match}/release", null)).StatusCode);
+        Assert.False((await Json(await other.GetAsync($"/api/matches/{otherMatch}"))).GetProperty("taken").GetBoolean());
+    }
+
+    [Fact]
     public async Task A_finder_can_choose_the_rsa_later_and_kept_items_still_chat()
     {
         var finder = await app.SignedIn("finder.later@gutech.edu.om", "Omar");
