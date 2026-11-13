@@ -20,10 +20,16 @@ public static class MatchEndpoints
     public const string Opening = "You two matched. Ask a question only the owner would know, and meet somewhere public.";
 
     public record SideDto(Guid Id, string Title, string Description, string? CategoryKey, string LocationText, string? EventDate, string? EventTime, Guid[] PhotoIds, DateTimeOffset CreatedAt,
-        bool IsSensitive);
-    /// <summary>AtRsa: the finder handed it to the RSA desk, so "Could be mine" gives a pickup code instead of a chat.</summary>
+        bool IsSensitive, bool HasPrivatePhoto);
+    /// <summary>
+    /// AtRsa: the finder is taking it (or took it, RsaReceived) to the RSA desk, so "Could be mine" gives a pickup code instead of a chat.
+    /// Taken: still suggested, but someone else has claimed the found item for now.
+    /// </summary>
     public record MatchDto(Guid Id, string Status, double FinalScore, string Strength, string[] Reasons, DateTimeOffset CreatedAt, SideDto Lost, SideDto Found,
-        Guid? ConversationId, bool AtRsa, bool RsaReceived, string? PickupCode, bool Collected);
+        Guid? ConversationId, bool AtRsa, bool RsaReceived, string? PickupCode, bool Collected, bool Taken);
+
+    public const string TakenAtRsa = "Someone else has already claimed this one at the RSA desk. If it turns out not to be theirs, it opens up here again.";
+    public const string TakenInChat = "Someone else is already talking to the finder about this one. If it turns out not to be theirs, it opens up here again.";
 
     public static void MapMatches(this RouteGroupBuilder api)
     {
@@ -34,9 +40,12 @@ public static class MatchEndpoints
             var m = await Load(db, id, http.User.Id(), ct);
             if (m is null) return Errors.NotFound();
             var conversation = await db.Conversations.Where(c => c.MatchId == m.Id).Select(c => (Guid?)c.Id).FirstOrDefaultAsync(ct);
+            // The found photos are only served for an open or claimed match (PhotoAccess), so only list them then.
+            var live = m.Status is MatchStatus.Suggested or MatchStatus.Confirmed;
             return Results.Ok(new MatchDto(m.Id, m.Status.ToString(), m.FinalScore, Confidence(m.FinalScore), m.Reasons, m.CreatedAt,
-                Side(m.Lost!), Side(m.Found!), conversation, m.Found!.DropAtRsa, m.Found.RsaReceivedAt is not null,
-                m.Status == MatchStatus.Confirmed ? RsaCodes.Format(m.PickupCode) : null, m.CollectedAt is not null));
+                Side(m.Lost!, true), Side(m.Found!, live), conversation, m.Found!.DropAtRsa, m.Found.RsaReceivedAt is not null,
+                m.Status == MatchStatus.Confirmed ? RsaCodes.Format(m.PickupCode) : null, m.CollectedAt is not null,
+                m.Status == MatchStatus.Suggested && m.Found.Status != ReportStatus.Open));
         });
 
         matches.MapPost("/{id:guid}/confirm", async (Guid id, HttpContext http, ZarqaDb db, TimeProvider clock, INotifier notifier, CancellationToken ct) =>
@@ -49,9 +58,7 @@ public static class MatchEndpoints
             if (m.Status == MatchStatus.Confirmed && m.PickupCode is not null) return Results.Ok(new { pickupCode = RsaCodes.Format(m.PickupCode) });
             if (m.Status != MatchStatus.Suggested) return Errors.BadRequest("This match isn't open any more.");
             if (m.Found!.Status != ReportStatus.Open)
-                return Errors.BadRequest(m.Found.DropAtRsa
-                    ? "Someone else has already claimed this one at the RSA desk. Zarqa will tell you if it frees up."
-                    : "Someone else is already talking to the finder about this one. Zarqa will tell you if it frees up.");
+                return Errors.BadRequest(m.Found.DropAtRsa ? TakenAtRsa : TakenInChat);
 
             var now = clock.GetUtcNow();
             if (m.Found.DropAtRsa)
@@ -89,6 +96,28 @@ public static class MatchEndpoints
             await db.SaveChangesAsync(ct);
             return Results.NoContent();
         });
+
+        // "Not mine after all" on an RSA pickup the owner hasn't collected: the owner's side of the desk's "Not theirs"
+        // (RsaEndpoints), like "Not the same item" in a chat. Both reports go back to searching.
+        matches.MapPost("/{id:guid}/release", async (Guid id, HttpContext http, ZarqaDb db, TimeProvider clock, MatchQueue queue, CancellationToken ct) =>
+        {
+            var m = await Load(db, id, http.User.Id(), ct);
+            if (m is null) return Errors.NotFound();
+            if (m.Status != MatchStatus.Confirmed || m.PickupCode is null || m.CollectedAt is not null)
+                return Errors.BadRequest("This pickup isn't open any more.");
+            var now = clock.GetUtcNow();
+            m.Status = MatchStatus.Rejected;
+            m.ResolvedAt = now;
+            foreach (var r in new[] { m.Lost!, m.Found! }.Where(r => r.Status == ReportStatus.Pickup))
+            {
+                r.Status = ReportStatus.Open;
+                r.UpdatedAt = now;
+            }
+            await db.SaveChangesAsync(ct);
+            await queue.EnqueueAsync(m.LostId, ct);
+            await queue.EnqueueAsync(m.FoundId, ct);
+            return Results.NoContent();
+        });
     }
 
     /// <summary>Only the lost owner ever sees a match: the finder never browses lost reports.</summary>
@@ -96,6 +125,8 @@ public static class MatchEndpoints
         db.Matches.Include(m => m.Lost).ThenInclude(r => r!.Photos).Include(m => m.Found).ThenInclude(r => r!.Photos)
             .FirstOrDefaultAsync(m => m.Id == id && m.Lost!.UserId == me, ct);
 
-    private static SideDto Side(Report r) => new(r.Id, r.Title, r.Description, r.CategoryNorm, r.LocationText, r.EventDate?.ToString("yyyy-MM-dd"),
-        r.EventTime?.ToString("HH:mm"), PhotoAccess.SharedIds(r), r.CreatedAt, r.IsSensitive);
+    /// <summary>HasPrivatePhoto: a photo exists that only its uploader may see (a card photo not covered yet), so the owner knows to ask.</summary>
+    private static SideDto Side(Report r, bool photos) => new(r.Id, r.Title, r.Description, r.CategoryNorm, r.LocationText, r.EventDate?.ToString("yyyy-MM-dd"),
+        r.EventTime?.ToString("HH:mm"), photos ? PhotoAccess.SharedIds(r) : [], r.CreatedAt, r.IsSensitive,
+        photos && r.Photos.Any(p => PhotoAccess.SharedKey(p) is null));
 }

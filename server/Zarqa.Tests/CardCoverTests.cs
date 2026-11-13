@@ -395,6 +395,7 @@ public class CardCoverFlowTests(TestApp app) : IClassFixture<TestApp>
         var match = await Json(await owner.GetAsync($"/api/matches/{matchId}"));
         Assert.Equal(photoId, match.GetProperty("found").GetProperty("photoIds")[0].GetGuid());
         Assert.True(match.GetProperty("found").GetProperty("isSensitive").GetBoolean());
+        Assert.False(match.GetProperty("found").GetProperty("hasPrivatePhoto").GetBoolean());
         Assert.Equal(coveredBytes, await owner.GetByteArrayAsync($"/api/photos/{photoId}"));
         Assert.Equal(coveredBytes, await admin.GetByteArrayAsync($"/api/photos/{photoId}"));
         Assert.Equal(coveredBytes, await rsa.GetByteArrayAsync($"/api/photos/{photoId}"));
