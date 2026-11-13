@@ -81,7 +81,7 @@ try {
   const lost = await post(owner, 'lost'), found = await post(finder, 'found')
   let match
   if (realModels) {
-    console.log('Waiting for the real embedding, Luna and Jev pipeline...')
+    console.log('Waiting for the real embedding, Luna advocates and debate judge...')
     const deadline = Date.now() + 240000
     while (Date.now() < deadline) {
       const reports = await (await owner.context.request.get(`${url}/api/reports/mine`)).json()
@@ -95,7 +95,7 @@ try {
       throw new Error('No real match appeared within four minutes')
     }
     const decision = await sql(`SELECT decided_by || ' score=' || final_score FROM matches WHERE id='${match}' AND lost_id='${lost}' AND found_id='${found}';`)
-    if (!decision.startsWith('Debate')) throw new Error(`Expected direct Jev debate; got ${decision}`)
+    if (!decision.startsWith('Debate')) throw new Error(`Expected a debate decision; got ${decision}`)
     console.log('Real model match:', decision)
   } else {
     match = randomUUID()
@@ -131,7 +131,7 @@ try {
   const stats = await (await owner.context.request.get(`${url}/api/me/stats`)).json()
   const helped = await (await finder.context.request.get(`${url}/api/me/stats`)).json()
   if (stats.gotBack !== 1 || helped.helpedReturn !== 1) throw new Error('Return stats did not update')
-  console.log(`PASS: public pages, real code verification, two reports, ${realModels ? 'real Jev debate' : 'synthetic'} match, claim, chat, confirmed handover, return and both stats at 390x844.`)
+  console.log(`PASS: public pages, real code verification, two reports, ${realModels ? 'real debate' : 'synthetic'} match, claim, chat, confirmed handover, return and both stats at 390x844.`)
   // Also exercise the new deletion UI against the real endpoint.
   await owner.page.goto(`${url}/profile`)
   let confirmations = 0
