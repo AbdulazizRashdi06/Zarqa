@@ -43,7 +43,7 @@
   pointer-events: none;
   /* Bust art, cut off at the bottom: she breathes from that edge. */
   --zo: 55% 100%;
-  /* The one that isn't showing: gone quickly, a little down and to the right. */
+  /* The one that isn't showing: gone quickly, a little down. */
   opacity: 0;
   transition: opacity 140ms ease;
 }
@@ -53,7 +53,8 @@
 }
 @media (prefers-reduced-motion: no-preference) {
   .helloMascot {
-    translate: 16px 8px;
+    /* Down, not sideways: moving right would push her past the screen edge (sideways scroll). */
+    translate: 0 10px;
     scale: 0.93;
     transition:
       opacity 140ms ease,
@@ -76,6 +77,11 @@
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--tan);
+  /* A long first name stops before Zarqa's veil instead of running across it. */
+  max-width: calc(100% - 0.72 * clamp(140px, 40vw, 172px));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .headline {
   margin: 0;
@@ -86,6 +92,12 @@
   letter-spacing: 0.5px;
   text-transform: uppercase;
   overflow-wrap: anywhere;
+}
+/* Phones: "WHAT WENT" ends before her magnifying glass, so she keeps her own column. */
+@media (max-width: 400px) {
+  .headline {
+    font-size: clamp(36px, 11.4vw, 62px);
+  }
 }
 
 /* MY REPORTS: one line, louder only when a match is waiting */
@@ -236,6 +248,13 @@
   font-weight: 500;
   line-height: 1.4;
   resize: none;
+  max-height: 320px;
+}
+.textarea[aria-invalid='true'] {
+  border-bottom-color: #a3341f;
+}
+.fieldError {
+  margin-top: -4px;
 }
 
 .photos {
@@ -279,6 +298,10 @@
   flex-direction: column;
   gap: 4px;
 }
+.noticeLead {
+  font-size: 14px;
+  font-weight: 700;
+}
 
 .locWrap {
   position: relative;
@@ -290,6 +313,10 @@
   left: 0;
   pointer-events: none;
   display: flex;
+}
+/* Lifted to the top of the screen when the phone keyboard opens, with a little air above. */
+.locLabel {
+  scroll-margin-top: 12px;
 }
 .locInput {
   composes: input;
@@ -363,10 +390,19 @@
   letter-spacing: 1.5px;
   color: var(--ink-muted);
 }
+.whenBox:focus-within {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+/* Room for the clear button, so it never sits on the time. */
+.whenBoxClear {
+  padding-right: 40px;
+}
 .whenValue {
   font-family: var(--font-display);
-  font-size: 24px;
+  font-size: clamp(16px, 5vw, 24px);
   line-height: 1;
+  white-space: nowrap;
   text-transform: uppercase;
 }
 .whenPick {
@@ -405,6 +441,18 @@
   margin-left: auto;
   align-self: center;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+/* What the switch means right now: NOT SURE / I KNOW. */
+.switchState {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: var(--ink-muted);
+  white-space: nowrap;
 }
 
 .photoSlot {
@@ -422,6 +470,38 @@
 @media (prefers-reduced-motion: no-preference) {
   .photoNew {
     animation: photoIn 300ms var(--ease-out);
+  }
+}
+/* A photo still being read: a dashed slot with a small spinner. */
+.photoPending {
+  height: 76px;
+  border-radius: 10px;
+  border: 2px dashed var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.photoSpinner {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 3px solid var(--ink);
+  border-right-color: transparent;
+  animation: photoSpin 700ms linear infinite;
+}
+@keyframes photoSpin {
+  to {
+    rotate: 1turn;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .photoSpinner {
+    animation: photoPulse 1.2s ease-in-out infinite alternate;
+  }
+}
+@keyframes photoPulse {
+  to {
+    opacity: 0.35;
   }
 }
 .photoEmpty {
@@ -467,6 +547,30 @@
   font-size: 14px;
   font-weight: 700;
   color: #b4472b;
+}
+
+/* "Picked up where you left off. Start over" at the top of a restored form. */
+.draftRow {
+  margin: -6px 0 -10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+.draftClear {
+  flex-shrink: 0;
+  min-height: var(--tap);
+  padding: 0 2px;
+  border: none;
+  background: none;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .hint {
@@ -552,6 +656,15 @@
   }
   .flash {
     animation: flash 420ms var(--ease-out);
+  }
+}
+
+@media (max-width: 330px) {
+  .modeTag {
+    padding-left: 28px;
+  }
+  .modeBig {
+    font-size: 34px;
   }
 }
 

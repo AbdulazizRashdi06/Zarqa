@@ -21,6 +21,28 @@ public class ReportTextTests
     }
 
     [Theory]
+    [InlineData("Hi, I lost my black wallet", "Black wallet")]
+    [InlineData("Please help! My AirPods case, white", "AirPods case")]
+    [InlineData("URGENT: lost keys", "Keys")]
+    [InlineData("Hi guys, please help. Blue bottle", "Blue bottle")]
+    [InlineData("I lost my black wallet near the library", "Black wallet near the library")]
+    [InlineData("I've found someone's student ID card", "Student ID card")]
+    [InlineData("Found a wallet", "Wallet")]
+    [InlineData("Lost: grey hoodie, size M", "Grey hoodie")]
+    [InlineData("My keys", "Keys")]
+    [InlineData("السلام عليكم، لقيت بطاقة بنك", "بطاقة بنك")]
+    [InlineData("Foundation makeup pouch", "Foundation makeup pouch")] // "found" only as a whole word
+    [InlineData("Hijab, black", "Hijab")]
+    [InlineData("Hi!", "Hi")] // nothing left after the greeting: keep the text
+    [InlineData("I lost", "I lost")]
+    public void Name_skips_greetings_and_lead_ins(string text, string title)
+    {
+        var parts = ReportText.Split(text)!;
+        Assert.Equal(title, parts.Title);
+        Assert.Equal(text, parts.Description);
+    }
+
+    [Theory]
     [InlineData("")]
     [InlineData("   ")]
     [InlineData(null)]
