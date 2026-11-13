@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Link } from '../lib/nav'
 import { Avatar, BackHeader, ZarqaBubble } from '../components/ui'
+import { LoadError, LoadingState, UserText } from '../components/states'
 import { zarqaMotion } from '../components/zarqaMotion'
 import { t } from '../i18n'
-import { api } from '../lib/api'
-import { campusDate, relativeDay } from '../lib/dates'
+import { api, ApiError } from '../lib/api'
+import { campusDate, clockTime, relativeDay } from '../lib/dates'
 import s from './Chats.module.css'
 
 export type ConversationItem = {
@@ -19,23 +20,37 @@ export type ConversationItem = {
   unread: number
 }
 
+/** Today: "9:32 PM" (the same 12-hour clock as handover times); otherwise "Yesterday" or "24 Sep". */
 function stamp(iso: string) {
   const day = campusDate(iso)
   return relativeDay(day) === 'Today'
-    ? new Date(iso).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Muscat' })
+    ? clockTime(new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', hourCycle: 'h23', timeZone: 'Asia/Muscat' }).format(new Date(iso)))
     : relativeDay(day)
 }
 
 /** design/screens/Chats.dc.html */
 export default function Chats() {
   const [chats, setChats] = useState<ConversationItem[] | null>(null)
+  const [failed, setFailed] = useState<{ message?: string } | null>(null)
+  const [retrying, setRetrying] = useState(false)
+
+  // A failed refresh keeps the list it already has; only a first load that fails shows the error.
+  const load = useCallback(
+    () =>
+      api<ConversationItem[]>('/conversations')
+        .then((list) => {
+          setChats(list ?? [])
+          setFailed(null)
+        })
+        .catch((e) => setFailed({ message: e instanceof ApiError && e.status !== 0 ? e.message : undefined })),
+    [],
+  )
 
   useEffect(() => {
-    const load = () => api<ConversationItem[]>('/conversations').then(setChats).catch(() => setChats((c) => c ?? []))
-    load()
-    const timer = setInterval(load, 15000)
+    void load()
+    const timer = setInterval(() => void load(), 15000)
     return () => clearInterval(timer)
-  }, [])
+  }, [load])
 
   const unread = (chats ?? []).reduce((n, c) => n + c.unread, 0)
 
@@ -48,26 +63,45 @@ export default function Chats() {
         <span style={{ color: 'var(--tan)' }}>{t('chats.h2')}</span>
       </h1>
 
+      {!chats && failed && (
+        <LoadError
+          message={failed.message}
+          busy={retrying}
+          onRetry={() => {
+            setRetrying(true)
+            void load().finally(() => setRetrying(false))
+          }}
+        />
+      )}
+      {!chats && !failed && <LoadingState />}
+
       <div className={s.list}>
         {(chats ?? []).map((c, i) => {
           const closed = c.status === 'Closed'
           const returned = c.status === 'Returned'
-          const line = `${c.itemTitle} · ${c.status === 'Returned' ? t('chats.returned') : c.status === 'Closed' ? t('chats.closed') : c.myRole === 'lost' ? t('chats.youLost') : t('chats.youFound')}`
+          const state = returned ? t('chats.returned') : closed ? t('chats.closed') : c.myRole === 'lost' ? t('chats.youLost') : t('chats.youFound')
           return (
             <Link key={c.id} to={`/chats/${c.id}`} className={`${s.row} ${closed ? s.closed : ''}`} data-enter style={{ '--i': Math.min(i, 8) }}>
-              <Avatar name={c.otherName} photoUrl={c.otherAvatarUrl} size={52} background={closed ? 'var(--text-faint)' : returned ? 'var(--sage)' : c.myRole === 'lost' ? 'var(--sage)' : 'var(--tan)'} />
+              <Avatar name={c.otherName} photoUrl={c.otherAvatarUrl} size={52} background={closed ? 'var(--slate)' : returned ? 'var(--sage)' : c.myRole === 'lost' ? 'var(--sage)' : 'var(--tan)'} />
               <span className={s.text}>
                 <span className={s.top}>
-                  <span className={s.name}>{c.otherName}</span>
+                  <UserText className={s.name}>{c.otherName}</UserText>
                   <span className={s.time}>{stamp(c.lastAt)}</span>
                 </span>
-                <span className={s.item}>{line}</span>
+                {/* Only the title shortens; the role or status after it always shows. */}
+                <span className={s.item}>
+                  <UserText className={s.itemTitle}>{c.itemTitle}</UserText>
+                  <span className={s.itemState}>· {state}</span>
+                </span>
                 <span className={s.bottom}>
-                  <span className={s.last} style={c.unread ? { fontWeight: 700, color: 'var(--paper)' } : undefined}>
-                    {c.lastMessage}
-                  </span>
+                  <UserText className={`${s.last} ${c.unread ? s.lastUnread : ''}`}>{c.lastMessage}</UserText>
                   {/* Keyed by its number, so a new message makes the badge pop again. */}
-                  {c.unread > 0 && <span key={c.unread} className={s.badge} data-enter="pop">{c.unread}</span>}
+                  {c.unread > 0 && (
+                    <span key={c.unread} className={s.badge} data-enter="pop">
+                      <span aria-hidden="true">{c.unread}</span>
+                      <span className="visually-hidden">{t('chats.unreadCount', { n: c.unread })}</span>
+                    </span>
+                  )}
                 </span>
               </span>
             </Link>
