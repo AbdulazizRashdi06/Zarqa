@@ -23,12 +23,13 @@ public static class AuthEndpoints
         auth.MapPost("/request-code", async (RequestCodeBody body, ZarqaDb db, IEmailSender email, TimeProvider clock, IConfiguration config, CancellationToken ct) =>
         {
             var address = EmailRules.NormalizeSignInEmail(body.Email, config["Auth:AllowedEmails"]);
-            if (address is null) return Errors.BadRequest("Use your GUtech email or an approved testing email.");
+            if (address is null) return Errors.BadRequest("That's not a GUtech email. Use the one ending in gutech.edu.om.");
 
             var now = clock.GetUtcNow();
             var recent = await db.LoginCodes.CountAsync(c => c.Email == address && c.CreatedAt > now - LoginCodes.Window, ct);
             if (recent >= LoginCodes.MaxPerWindow)
-                return Errors.TooMany("Too many codes for this email. Wait 15 minutes and try again.");
+                // The codes already sent still work (any live code is accepted), so point at those first.
+                return Errors.TooMany("We've already sent you 3 codes. Type the one in your inbox (check junk too), or wait 15 minutes for another.");
 
             var code = LoginCodes.Generate();
             var login = new LoginCode
@@ -65,23 +66,26 @@ public static class AuthEndpoints
             if (address is null || !LoginCodes.IsWellFormed(code)) return Errors.BadRequest("Enter the 6-digit code from your email.");
 
             var now = clock.GetUtcNow();
-            // Only the newest live code counts; asking for a new one retires the old.
-            var login = await db.LoginCodes
-                .Where(c => c.Email == address && c.UsedAt == null && c.ExpiresAt > now)
-                .OrderByDescending(c => c.CreatedAt)
-                .FirstOrDefaultAsync(ct);
-            if (login is null || login.Attempts >= LoginCodes.MaxAttempts)
+            // Every live code for the address works (at most 3 per 15 minutes), so a slow first email still signs
+            // the user in after they asked for another. Wrong tries count against all of them together: the
+            // guess budget stays 5 per code request.
+            var live = await db.LoginCodes
+                .Where(c => c.Email == address && c.UsedAt == null && c.ExpiresAt > now && c.Attempts < LoginCodes.MaxAttempts)
+                .ToListAsync(ct);
+            if (live.Count == 0)
                 return Errors.BadRequest("That code has expired. Ask for a new one.");
 
-            login.Attempts++;
-            if (!LoginCodes.Verify(login.CodeHash, address, code!))
+            var login = live.FirstOrDefault(c => LoginCodes.Verify(c.CodeHash, address, code!));
+            if (login is null)
             {
+                foreach (var c in live) c.Attempts++;
                 await db.SaveChangesAsync(ct);
-                var left = LoginCodes.MaxAttempts - login.Attempts;
+                var left = LoginCodes.MaxAttempts - live.Min(c => c.Attempts);
                 return Errors.BadRequest(left > 0 ? $"Wrong code. {left} {(left == 1 ? "try" : "tries")} left." : "Wrong code. Ask for a new one.");
             }
 
-            login.UsedAt = now;
+            // Signing in retires every code that was sent.
+            foreach (var c in live) c.UsedAt = now;
             var user = await db.Users.FirstOrDefaultAsync(u => u.Email == address, ct);
             if (user is null)
             {
