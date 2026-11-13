@@ -17,10 +17,14 @@ before=$("${SSH[@]}" 'sha256sum /opt/zarqa/deploy/Caddyfile 2>/dev/null' || true
 
 echo "Uploading source..."
 # Local photo uploads (Data/photos) never leave the dev machine.
+# server/ and web/ are replaced whole, so a file deleted here is deleted there too: a leftover screen once
+# broke the build (2026-11-13). deploy/ is merged instead, because the server's .env lives in it.
 tar -czf - \
-  --exclude='node_modules' --exclude='dist' --exclude='dev-dist' \
+  --exclude='node_modules' --exclude='dist' --exclude='dev-dist' --exclude='test-results' --exclude='.ux-review' \
   --exclude='bin' --exclude='obj' --exclude='.env' --exclude='server/Zarqa.Api/Data/photos' \
-  server web deploy | "${SSH[@]}" 'cd /opt/zarqa && tar -xzf -'
+  server web deploy | "${SSH[@]}" 'set -e; cd /opt/zarqa && rm -rf .incoming && mkdir .incoming && tar -xzf - -C .incoming \
+    && test -d .incoming/server && test -d .incoming/web && test -d .incoming/deploy \
+    && rm -rf server web && mv .incoming/server .incoming/web . && cp -a .incoming/deploy/. deploy/ && rm -rf .incoming'
 
 echo "Building and restarting..."
 "${SSH[@]}" 'cd /opt/zarqa && docker compose -f deploy/docker-compose.yml --env-file deploy/.env up -d --build --remove-orphans && docker image prune -f >/dev/null'
