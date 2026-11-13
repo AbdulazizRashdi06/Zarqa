@@ -439,3 +439,89 @@ test('at a desk PC the pickup puts the owner and the item side by side, with the
   await expect(page.getByRole('tab', { name: 'Shelf' })).toBeFocused()
   await expect(page.getByRole('tab', { name: 'Shelf' })).toHaveAttribute('aria-selected', 'true')
 })
+
+const focusIsOnBody = (page: Page) => page.evaluate(() => document.activeElement === document.body || document.activeElement === null)
+
+test('after a Found-tab match or hand-over the keyboard stays on the list, not the page body', async ({ page }) => {
+  await session(page)
+  const items = [
+    { ...item, id: 'kept', code: null, title: 'Silver ring', state: 'finder', suggestedTo: [] as string[] },
+    { ...item, id: 'shelf', code: 'ACD-EFG', title: 'Black umbrella', state: 'held', receivedAt: '2026-10-26T08:30:00Z' },
+  ]
+  await page.route('**/api/rsa/found', route => route.fulfill({ json: items }))
+  await page.route('**/api/rsa/person*', route => route.fulfill({ json: { email: 'maryam@gutech.edu.om', hasAccount: true, name: 'Maryam' } }))
+  await page.route('**/api/rsa/found/kept/match', route => {
+    items[0] = { ...items[0], suggestedTo: ['maryam@gutech.edu.om'] }
+    return route.fulfill({ json: { handedOver: false, title: 'Silver ring' } })
+  })
+  await page.route('**/api/rsa/found/shelf/match', route => {
+    // Handed over: it leaves the "Open" list when the list reloads.
+    items[1] = { ...items[1], state: 'collected' }
+    return route.fulfill({ json: { handedOver: true, title: 'Black umbrella' } })
+  })
+  await page.goto('/rsa?tab=found')
+
+  // A plain send: the card stays, so focus is back on its button.
+  const ring = page.getByRole('button', { name: 'Match to someone: Silver ring' })
+  await ring.focus()
+  await page.keyboard.press('Enter')
+  await page.getByLabel('Their GUtech email').fill('maryam@gutech.edu.om')
+  await page.keyboard.press('Enter')
+  await page.getByRole('dialog').getByRole('button', { name: 'Send them the match' }).press('Enter')
+  await expect(page.getByText('Already sent to: maryam@gutech.edu.om')).toBeVisible()
+  await expect(ring).toBeFocused()
+  await expect(ring).toHaveText('Match to someone else')
+
+  // A hand-over: the card leaves the list, so focus goes to the count line above it.
+  await page.getByRole('button', { name: 'Match to someone: Black umbrella' }).press('Enter')
+  await page.getByLabel('Their GUtech email').fill('maryam@gutech.edu.om')
+  await page.keyboard.press('Enter')
+  await page.getByRole('dialog').getByRole('button', { name: 'Hand it over' }).press('Enter')
+  await expect(page.getByRole('heading', { name: 'Black umbrella' })).toHaveCount(0)
+  await expect(page.getByText('1 item', { exact: true })).toBeFocused()
+  expect(await focusIsOnBody(page)).toBe(false)
+  // Tab carries on from the list, not from the top of the page.
+  await page.keyboard.press('Tab')
+  await expect(ring).toBeFocused()
+})
+
+test('after closing a shelf item the keyboard lands on the line that says what was closed', async ({ page }) => {
+  await session(page)
+  let closes = 0
+  const shelf = [
+    { ...item, id: 'held', title: 'Lab coat', state: 'held', receivedAt: '2026-10-26T08:30:00Z' },
+    { ...item, id: 'other', title: 'Grey hoodie', state: 'held', receivedAt: '2026-10-26T08:30:00Z' },
+  ]
+  await page.route('**/api/rsa/items', route => route.fulfill({ json: shelf.filter(i => closes === 0 || i.id !== 'held') }))
+  await page.route('**/api/rsa/items/held/close', route => { closes++; return route.fulfill({ status: 204 }) })
+  await page.goto('/rsa?tab=shelf')
+  await page.getByRole('button', { name: 'Give away or close: Lab coat' }).press('Enter')
+  await page.getByRole('dialog').getByRole('button', { name: 'Give away / close' }).press('Enter')
+  await expect(page.getByRole('heading', { name: 'Lab coat' })).toHaveCount(0)
+  const done = page.getByRole('status').filter({ hasText: 'Closed' })
+  await expect(done).toContainText('Lab coat')
+  await expect.poll(() => done.evaluate(el => el.parentElement!.contains(document.activeElement))).toBe(true)
+  expect(await focusIsOnBody(page)).toBe(false)
+})
+
+test('closing a photo puts focus back on the photo that opened it', async ({ page }) => {
+  await session(page)
+  const card = { ...item, title: 'Blue student card', isSensitive: true, photoIds: ['covered-photo'] }
+  await page.route('**/api/rsa/desk/*', route => route.fulfill({ json: { type: 'drop', item: card, claim: null } }))
+  await page.route('**/api/photos/**', route => route.fulfill({ status: 404 }))
+  await page.goto('/rsa')
+  await page.getByLabel('Drop or pickup code').fill('K7P-4QM')
+  await page.keyboard.press('Enter')
+  const open = page.getByRole('button', { name: 'Open photo 1 of Blue student card' })
+
+  await open.press('Enter')
+  await expect(page.getByRole('dialog')).toBeVisible()
+  await page.keyboard.press('Escape')
+  await expect(page.getByRole('dialog')).toHaveCount(0)
+  await expect(open).toBeFocused()
+
+  await open.press('Enter')
+  await page.getByRole('button', { name: 'Close photo' }).press('Enter')
+  await expect(page.getByRole('dialog')).toHaveCount(0)
+  await expect(open).toBeFocused()
+})

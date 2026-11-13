@@ -132,6 +132,24 @@ function useAsk() {
   return { sheet, open }
 }
 
+/**
+ * After an action removes or replaces the button that started it, focus would fall to the page body. The returned function
+ * names where it should go instead; for a few seconds, each render puts it there whenever focus is on the body (never taking it
+ * from somewhere else), so a list that reloads under it still leaves the keyboard in place.
+ */
+function useRefocus() {
+  const pending = useRef<{ find: () => HTMLElement | null; until: number } | null>(null)
+  useEffect(() => {
+    const p = pending.current
+    if (!p) return
+    if (Date.now() > p.until) { pending.current = null; return }
+    const at = document.activeElement
+    if (at && at !== document.body && at.isConnected) return
+    p.find()?.focus()
+  })
+  return (find: () => HTMLElement | null) => { pending.current = { find, until: Date.now() + 5000 } }
+}
+
 /** The RSA desk: hand-ins, pickups, the shelf, read-only chats and the team. Not in the design; built in the ticket style. */
 export default function Rsa() {
   const { me } = useSession()
@@ -195,13 +213,17 @@ export default function Rsa() {
 /** Photos open full size (the covered copy for cards: the API never serves staff anything else). */
 function PhotoViewer({ id, title, onClose }: { id: string; title: string; onClose: () => void }) {
   const ref = useRef<HTMLDialogElement>(null)
+  // Taken while rendering, before the dialog takes focus (an effect that runs twice in development would see the dialog).
+  const [opener] = useState(() => document.activeElement as HTMLElement | null)
   useEffect(() => {
+    // Closing unmounts the dialog while it is open, so the browser restores nothing: focus goes back to the photo here.
     const d = ref.current
     if (d && !d.open) {
       if (typeof d.showModal === 'function') d.showModal()
       else d.setAttribute('open', '')
     }
-  }, [])
+    return () => { if (opener?.isConnected) opener.focus() }
+  }, [opener])
   return (
     <dialog ref={ref} className={s.viewer} aria-label={t('rsa.photo', { title })} onCancel={(e) => { e.preventDefault(); onClose() }} onClick={onClose}>
       <img src={`/api/photos/${id}`} alt={t('rsa.photo', { title })} />
@@ -260,13 +282,13 @@ function ItemCard({ item, children, heading: H = 'h2', large, showAge }: { item:
 }
 
 /** A short status line inside a card (paper): readable on the ticket, announced politely. */
-function CardNote({ children, live }: { children: ReactNode; live?: boolean }) {
-  return <p className={s.cardNote} role={live ? 'status' : undefined}>{children}</p>
+function CardNote({ children, live, focusId }: { children: ReactNode; live?: boolean; focusId?: string }) {
+  return <p className={s.cardNote} role={live ? 'status' : undefined} data-note={focusId} tabIndex={focusId ? -1 : undefined}>{children}</p>
 }
 
 /** The desk's last action, at the top of the tab: names the item and code so a wrong one is noticed at once. */
-function LastAction({ children }: { children: ReactNode }) {
-  return <div className={s.noticeWrap}><Notice>{children}</Notice></div>
+function LastAction({ children, focusRef }: { children: ReactNode; focusRef?: RefObject<HTMLDivElement | null> }) {
+  return <div ref={focusRef} className={s.noticeWrap} tabIndex={focusRef ? -1 : undefined}><Notice>{children}</Notice></div>
 }
 
 function dropHeading(item: Item): StringKey {
@@ -504,6 +526,8 @@ function FoundTab({ active }: { active: boolean }) {
   const [filter, setFilter] = useState<FoundFilter>('open')
   const [open, setOpen] = useState<string | null>(null)
   const [notes, setNotes] = useState<Record<string, string>>({})
+  const countRef = useRef<HTMLParagraphElement>(null)
+  const refocus = useRefocus()
 
   if (list.failed) return <LoadError onRetry={list.retry} busy={list.retrying} />
   if (!list.data) return <LoadingState />
@@ -522,7 +546,7 @@ function FoundTab({ active }: { active: boolean }) {
           { id: 'all', label: t('rsa.found.filter.all') },
         ]} />
       </div>
-      <p className={s.count} role="status">{countLabel(shown.length)}</p>
+      <p ref={countRef} className={s.count} role="status" tabIndex={-1}>{countLabel(shown.length)}</p>
       {list.data.length === 0 ? <p>{t('rsa.found.empty')}</p> : shown.length === 0 && <p>{t('rsa.search.none')}</p>}
       <div className={s.grid}>
         {shown.map((item) => {
@@ -530,16 +554,20 @@ function FoundTab({ active }: { active: boolean }) {
           return (
             <ItemCard key={item.id} item={item}>
               {sent.length > 0 && <CardNote>{t('rsa.match.sentTo', { emails: sent.join(', ') })}</CardNote>}
-              {notes[item.id] && <CardNote live>{notes[item.id]}</CardNote>}
+              {notes[item.id] && <CardNote live focusId={item.id}>{notes[item.id]}</CardNote>}
               {canMatch(item) && (open === item.id ? (
                 <MatchForm item={item} onCancel={() => setOpen(null)} onDone={(message) => {
+                  // The form goes; focus goes to this card's button, or its result line, or (if the card left the
+                  // filtered list) the count line above it.
+                  const at = (a: string) => document.querySelector<HTMLElement>(`[${a}="${CSS.escape(item.id)}"]`)
+                  refocus(() => at('data-match') ?? at('data-note') ?? countRef.current)
                   setOpen(null)
                   setNotes((n) => ({ ...n, [item.id]: message }))
                   list.load()
                 }} />
               ) : (
                 <div className={l.actions}>
-                  <button type="button" className={s.secondary} aria-label={t('rsa.match.openLabel', { title: item.title })}
+                  <button type="button" className={s.secondary} data-match={item.id} aria-label={t('rsa.match.openLabel', { title: item.title })}
                     onClick={() => { setOpen(item.id); setNotes((n) => { const next = { ...n }; delete next[item.id]; return next }) }}>
                     {sent.length > 0 || notes[item.id] ? t('rsa.match.openAgain') : t('rsa.match.open')}
                   </button>
@@ -628,6 +656,8 @@ function ShelfTab({ active, onOwnerHere }: { active: boolean; onOwnerHere: (code
   const [query, setQuery] = useState('')
   const [old, setOld] = useState<'all' | 'old'>('all')
   const [last, setLast] = useState('')
+  const lastRef = useRef<HTMLDivElement>(null)
+  const refocus = useRefocus()
   const ask = useAsk()
 
   function close(item: Item) {
@@ -640,6 +670,8 @@ function ShelfTab({ active, onOwnerHere }: { active: boolean; onOwnerHere: (code
         // Closed: take it off the list now; a failed refresh afterwards doesn't undo that.
         list.setData((d) => d?.filter((x) => x.id !== item.id) ?? d)
         setLast(t('rsa.shelf.closed', { title: item.title }))
+        // Its button is gone with the card: focus goes to the line that says what was closed.
+        refocus(() => lastRef.current)
         list.load()
       },
     })
@@ -652,7 +684,7 @@ function ShelfTab({ active, onOwnerHere }: { active: boolean; onOwnerHere: (code
           {done ? t('rsa.shelf.active') : t('rsa.shelf.done')}
         </button>
       </div>
-      {last && <LastAction>{last}</LastAction>}
+      {last && <LastAction focusRef={lastRef}>{last}</LastAction>}
     </>
   )
   if (list.failed) return <>{header}<LoadError onRetry={list.retry} busy={list.retrying} /></>
