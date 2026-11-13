@@ -99,3 +99,42 @@ test('a failed load offers Try again, and long words never widen the page', asyn
   await expect(page.getByRole('heading', { level: 1 })).toContainText(/is this/i)
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390)
 })
+
+test('a private card photo is mentioned even when a covered photo is shown', async ({ page }) => {
+  await app(page, { ...base, found: side({ isSensitive: true, photoIds: ['p1'], hasPrivatePhoto: true }) })
+  await page.goto('/matches/m1')
+  await expect(page.getByRole('button', { name: "Finder's photo 1 of 1" })).toBeVisible()
+  await expect(page.getByText('Card photo: I covered its numbers and barcodes.')).toBeVisible()
+  await expect(page.getByText('The finder took a card photo, and it stays private.')).toBeVisible()
+})
+
+test('the "Not mine" sheet does not show an old "Could be mine" error', async ({ page }) => {
+  await app(page, base)
+  await page.route('**/api/matches/m1/confirm', (route) => route.fulfill({ status: 409, json: { error: "This match isn't open any more." } }))
+  await page.goto('/matches/m1')
+  await page.getByRole('button', { name: 'Could be mine' }).click()
+  await expect(page.getByRole('alert')).toContainText("This match isn't open any more.")
+  await page.getByRole('button', { name: 'Not mine, keep looking' }).click()
+  const sheet = page.getByRole('dialog', { name: "Sure it's not yours?" })
+  await expect(sheet).toBeVisible()
+  await expect(page.getByText("This match isn't open any more.")).toHaveCount(0)
+})
+
+test('closing the photo viewer returns focus to the photo that opened it', async ({ page }) => {
+  await app(page, { ...base, found: side({ photoIds: ['p1', 'p2'] }) })
+  await page.goto('/matches/m1')
+  const photo = page.getByRole('button', { name: "Finder's photo 2 of 2" })
+  await photo.focus()
+  await page.keyboard.press('Enter')
+  await expect(page.getByRole('dialog', { name: "Finder's photo 2 of 2" })).toBeVisible()
+  await page.keyboard.press('Escape')
+  await expect(page.getByRole('dialog')).toHaveCount(0)
+  await expect(photo).toBeFocused()
+
+  await page.keyboard.press('Enter')
+  const close = page.getByRole('dialog').getByRole('button', { name: 'Close' })
+  await expect(close).toBeFocused()
+  await page.keyboard.press('Enter')
+  await expect(page.getByRole('dialog')).toHaveCount(0)
+  await expect(photo).toBeFocused()
+})
