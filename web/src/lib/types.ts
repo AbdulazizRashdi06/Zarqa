@@ -1,4 +1,4 @@
-export type Pill = 'Searching' | 'Possible match' | 'Chatting' | 'Returned' | 'Closed' | 'Bring to RSA' | 'At the RSA' | 'Ready to collect' | 'Claimed at RSA'
+export type Pill = 'Searching' | 'Possible match' | 'Chatting' | 'Returned' | 'Closed' | 'Expired' | 'Bring to RSA' | 'At the RSA' | 'Ready to collect' | 'Claimed at RSA'
 
 export type Report = {
   id: string
@@ -24,6 +24,8 @@ export type Report = {
   rsaReceived: boolean
   /** Lost report claimed at the RSA desk: the match holding the pickup code. */
   pickupMatchId: string | null
+  /** Card photos, uploader only: covering running, every photo covered, or at least one stays private. */
+  coverState?: 'Pending' | 'Ready' | 'Private' | null
 }
 
 export type HomeSummary = { active: number; matchesWaiting: number; unreadChats: number; postsLeft: number }

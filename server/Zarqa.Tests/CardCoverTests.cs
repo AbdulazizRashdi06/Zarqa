@@ -368,6 +368,7 @@ public class CardCoverFlowTests(TestApp app) : IClassFixture<TestApp>
         Assert.True(found.GetProperty("isSensitive").GetBoolean());
         var photoId = found.GetProperty("photoIds")[0].GetGuid();
         Assert.Equal(CoverState.Pending, (await PhotoRow(photoId)).CoverState);
+        Assert.Equal("Pending", found.GetProperty("coverState").GetString());
 
         // Before covering, nobody else sees anything.
         Assert.Equal(HttpStatusCode.NotFound, (await admin.GetAsync($"/api/photos/{photoId}")).StatusCode);
@@ -375,6 +376,8 @@ public class CardCoverFlowTests(TestApp app) : IClassFixture<TestApp>
         Assert.Equal(1, await DrainCoversAsync());
         var row = await PhotoRow(photoId);
         Assert.Equal(CoverState.Ready, row.CoverState);
+        var foundNow = await Json(await finder.GetAsync($"/api/reports/{found.GetProperty("id").GetGuid()}"));
+        Assert.Equal("Ready", foundNow.GetProperty("coverState").GetString());
         var coveredBytes = await File.ReadAllBytesAsync(Path.Combine(app.PhotoRoot, row.CoveredKey!));
         var originalBytes = await File.ReadAllBytesAsync(Path.Combine(app.PhotoRoot, row.StorageKey));
 
@@ -424,6 +427,8 @@ public class CardCoverFlowTests(TestApp app) : IClassFixture<TestApp>
             await DrainCoversAsync();
             var row = await PhotoRow(photoId);
             Assert.Equal((CoverState.Failed, (string?)null), (row.CoverState, row.CoveredKey));
+            var mine = await Json(await finder.GetAsync($"/api/reports/{found.GetProperty("id").GetGuid()}"));
+            Assert.Equal("Private", mine.GetProperty("coverState").GetString());
             var admin = await app.SignedIn("admin@gutech.edu.om");
             Assert.Equal(HttpStatusCode.NotFound, (await admin.GetAsync($"/api/photos/{photoId}")).StatusCode);
             Assert.Equal(HttpStatusCode.OK, (await finder.GetAsync($"/api/photos/{photoId}")).StatusCode);
