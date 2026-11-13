@@ -11,6 +11,8 @@ public static class AuthEndpoints
 {
     public const string RequestCodeLimit = "auth-request-code";
     public const string VerifyLimit = "auth-verify";
+    /// <summary>First key of the per-address advisory lock in /auth/verify (the second is the address's hash).</summary>
+    private const int VerifyLockClass = 0x5A_41_56; // "ZAV"
 
     public record RequestCodeBody(string? Email);
     /// <param name="ConsentVersion">Sent when the sign-in box (18+, Terms, Privacy, processing outside Oman) was ticked.</param>
@@ -29,7 +31,12 @@ public static class AuthEndpoints
             var recent = await db.LoginCodes.CountAsync(c => c.Email == address && c.CreatedAt > now - LoginCodes.Window, ct);
             if (recent >= LoginCodes.MaxPerWindow)
                 // The codes already sent still work (any live code is accepted), so point at those first.
-                return Errors.TooMany("We've already sent you 3 codes. Type the one in your inbox (check junk too), or wait 15 minutes for another.");
+                // reason "codes_sent" tells the app codes exist for this address (the per-IP limiter's 429 has none).
+                return Results.Json(new
+                {
+                    error = "We've already sent you 3 codes. Type the one in your inbox (check junk too), or wait 15 minutes for another.",
+                    reason = "codes_sent",
+                }, statusCode: StatusCodes.Status429TooManyRequests);
 
             var code = LoginCodes.Generate();
             var login = new LoginCode
@@ -65,6 +72,12 @@ public static class AuthEndpoints
             var code = body.Code?.Trim();
             if (address is null || !LoginCodes.IsWellFormed(code)) return Errors.BadRequest("Enter the 6-digit code from your email.");
 
+            // One check at a time per address: parallel guesses must each see the attempts the last one used, or a
+            // burst of them would all read Attempts=0 and the 5-tries limit wouldn't hold. The lock ends with the
+            // transaction (commit, or rollback on any return without one). /request-code never takes it.
+            await using var tx = await db.Database.BeginTransactionAsync(ct);
+            await db.Database.ExecuteSqlInterpolatedAsync($"SELECT pg_advisory_xact_lock({VerifyLockClass}, hashtext({address}))", ct);
+
             var now = clock.GetUtcNow();
             // Every live code for the address works (at most 3 per 15 minutes), so a slow first email still signs
             // the user in after they asked for another. Wrong tries count against all of them together: the
@@ -80,6 +93,7 @@ public static class AuthEndpoints
             {
                 foreach (var c in live) c.Attempts++;
                 await db.SaveChangesAsync(ct);
+                await tx.CommitAsync(ct);
                 var left = LoginCodes.MaxAttempts - live.Min(c => c.Attempts);
                 return Errors.BadRequest(left > 0 ? $"Wrong code. {left} {(left == 1 ? "try" : "tries")} left." : "Wrong code. Ask for a new one.");
             }
@@ -103,6 +117,7 @@ public static class AuthEndpoints
                 user.ConsentedAt = now;
             }
             await db.SaveChangesAsync(ct);
+            await tx.CommitAsync(ct);
 
             var identity = new ClaimsIdentity([new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())], CookieAuthenticationDefaults.AuthenticationScheme);
             await http.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity),

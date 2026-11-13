@@ -95,8 +95,9 @@ export default function SignIn() {
       return true
     } catch (err) {
       const message = err instanceof ApiError ? err.message : t('common.error')
-      if (!resend && err instanceof ApiError && err.status === 429) {
-        // Codes already went to this address and still work: go and type one instead of waiting.
+      if (!resend && err instanceof ApiError && err.status === 429 && err.reason === 'codes_sent') {
+        // Codes already went to this address and still work: go and type one instead of waiting. Any other 429
+        // (too many requests from this network) sent nothing, so it stays on the email form.
         setSentTo(address)
         setError(message)
         toCodeStep()
@@ -113,13 +114,18 @@ export default function SignIn() {
       <CodeStep
         email={sentTo}
         testCode={testCode}
+        consented={accepted}
         cooldown={cooldown}
         resending={busy}
         resend={() => sendCode()}
         back={() => {
           setError('')
-          if (resumed) setResumed(false)
-          else back('/signin')
+          if (resumed) {
+            // Opened on someone's half-finished sign-in: whoever asks for another email ticks the box themselves.
+            setResumed(false)
+            setAccepted(false)
+            saveTick(false)
+          } else back('/signin')
         }}
         resendError={error}
       />
@@ -226,6 +232,7 @@ export default function SignIn() {
 function CodeStep({
   email,
   testCode,
+  consented,
   cooldown,
   resending,
   resend,
@@ -234,13 +241,15 @@ function CodeStep({
 }: {
   email: string
   testCode: string | null
+  /** The consent box is ticked right now (it can be unticked after a code was sent, then "I already have a code"). */
+  consented: boolean
   cooldown: number
   resending: boolean
   resend: () => Promise<boolean>
   back: () => void
   resendError: string
 }) {
-  const { setMe, refresh } = useSession()
+  const { setMe, refresh, forgetPendingLogout } = useSession()
   const navigate = useNavigate()
   const [code, setCode] = useState('')
   const [error, setError] = useState('')
@@ -268,9 +277,11 @@ function CodeStep({
     setResent(false)
     let signedIn = false
     try {
-      // The code step is only reachable with the consent box ticked, so this records it with the sign-in.
-      await api('/auth/verify', { body: { email, code: value, consentVersion: CONSENT_VERSION } })
+      // Consent is recorded with the sign-in only while the box is ticked; otherwise the consent sheet asks.
+      await api('/auth/verify', { body: { email, code: value, consentVersion: consented ? CONSENT_VERSION : undefined } })
       signedIn = true
+      // A new session exists: a sign-out still waiting from before (made offline) must not end this one.
+      forgetPendingLogout()
       clearSignIn()
       const me = await api<Me>('/me')
       navigate(me.firstName ? (returnPath() ?? '/') : '/welcome', { replace: true, dir: 'forward', prepare: () => setMe(me) })

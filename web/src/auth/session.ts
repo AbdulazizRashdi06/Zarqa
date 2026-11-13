@@ -27,6 +27,8 @@ export type Session = {
   setMe: (me: Me | null) => void
   refresh: () => Promise<void>
   signOut: () => Promise<void>
+  /** A sign-in just succeeded: drop a logout still pending from an earlier offline sign-out. */
+  forgetPendingLogout: () => void
 }
 
 export const SessionContext = createContext<Session | null>(null)
