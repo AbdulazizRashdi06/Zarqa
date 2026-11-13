@@ -1,3 +1,5 @@
+using Zarqa.Api.Data;
+using Zarqa.Api.Matching;
 using Zarqa.Api.Reports;
 
 namespace Zarqa.Tests;
@@ -40,6 +42,40 @@ public class ReportTextTests
         var parts = ReportText.Split(text)!;
         Assert.Equal(title, parts.Title);
         Assert.Equal(text, parts.Description);
+    }
+
+    // The derived name is only for display: app reports still match on their one text alone (decisions.md, 2026-10-02).
+    [Theory]
+    [InlineData("Hi, I lost my black wallet near the library, it has a cat sticker")]
+    [InlineData("I lost my black wallet near the library")]
+    [InlineData("Found a blue Hydro Flask bottle outside the cafeteria")]
+    [InlineData("found an iPhone 13 with a cracked screen in B-Building")]
+    [InlineData("Hello everyone!! Missing: grey hoodie, size M")]
+    [InlineData("Please help! My AirPods case, white")]
+    [InlineData("URGENT:   lost keys \n on a red lanyard")]
+    [InlineData("We've just left our charger in lecture hall 3")]
+    [InlineData("I've found someone's student ID card")]
+    [InlineData("السلام عليكم، لقيت بطاقة بنك")]
+    [InlineData("مرحبا فقدت محفظة سوداء قرب المكتبة")]
+    [InlineData("Silver MacBook Air 15 inch with a sticker of the Omani flag on the back and a dent near the corner")]
+    [InlineData("I lost my Supercalifragilisticexpialidociouslylongbrandnamethatkeepsgoingandgoing pencil case")]
+    [InlineData("Found a x😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀 sticker book")]
+    [InlineData("éclair-shaped keychain (pink) — found near the gym")]
+    [InlineData("Hi!")]
+    [InlineData("I lost")]
+    [InlineData("hoodie")]
+    public void App_reports_match_on_their_text_alone(string text)
+    {
+        var parts = ReportText.Split(text.Replace("\\n", "\n"))!;
+        var report = new Report { Title = parts.Title, CategoryText = parts.Category, LocationText = "", Description = parts.Description };
+        Assert.Equal(parts.Description, Matcher.MatchText(report));
+    }
+
+    [Fact]
+    public void A_report_without_a_description_matches_on_its_name()
+    {
+        var report = new Report { Title = "Blue bottle", CategoryText = "Bottles", LocationText = "", Description = "" };
+        Assert.Equal("Blue bottle", Matcher.MatchText(report));
     }
 
     [Theory]
