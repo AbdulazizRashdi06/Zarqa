@@ -126,6 +126,7 @@ export default function ReportDetail() {
       knowsWhen: false,
       date: '',
       time: '',
+      dropAtRsa: false,
     }
     navigate('/', { state: { repost } })
   }
