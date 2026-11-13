@@ -8,7 +8,7 @@ import { t } from '../i18n'
 import { api, ApiError, setUnauthorizedHandler } from '../lib/api'
 import { clearDraft } from '../lib/draft'
 import { clearSignIn } from './signinDraft'
-import { disablePushOnThisDevice } from '../lib/push'
+import { disablePushOnThisDevice, refreshPush } from '../lib/push'
 import { clearReturnPath, rememberReturnPath, returnPath, SessionContext, signedOutFrom, useSession, type Me } from './session'
 
 // Which account this browser last signed in as: an unfinished report (text and photos, maybe of a card) must
@@ -71,7 +71,12 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   const pendingLogout = useRef<Promise<void> | null>(null)
 
   const updateMe = useCallback((next: Me | null) => {
-    if (next && next.id !== meRef.current?.id) noteUser(next.id)
+    if (next && next.id !== meRef.current?.id) {
+      noteUser(next.id)
+      // Signed in (or someone else did): this phone gets alerts again if it was allowed to before. Signing out
+      // removed its subscription. In the background, and it never fails the sign-in.
+      void refreshPush().catch(() => undefined)
+    }
     if (next) signedOutFrom(null)
     meRef.current = next
     setMe(next)
@@ -137,6 +142,11 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     updateMe(null)
   }, [updateMe])
 
+  const forgetPendingLogout = useCallback(() => {
+    setLogoutPending(false)
+    pendingLogout.current = null
+  }, [])
+
   useEffect(() => {
     // Load the session once on mount; state changes only after the request resolves.
     // oxlint-disable-next-line react/set-state-in-effect
@@ -160,8 +170,8 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   }, [unreachable, refresh])
 
   const value = useMemo(
-    () => ({ me, loading, unreachable, signedOut, setMe: updateMe, refresh, signOut }),
-    [me, loading, unreachable, signedOut, updateMe, refresh, signOut],
+    () => ({ me, loading, unreachable, signedOut, setMe: updateMe, refresh, signOut, forgetPendingLogout }),
+    [me, loading, unreachable, signedOut, updateMe, refresh, signOut, forgetPendingLogout],
   )
   return <SessionContext.Provider value={value}>{children}</SessionContext.Provider>
 }

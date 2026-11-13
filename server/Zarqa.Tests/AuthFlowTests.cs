@@ -124,7 +124,43 @@ public class AuthFlowTests(TestApp app) : IClassFixture<TestApp>
             Assert.Equal(HttpStatusCode.OK, (await http.PostAsJsonAsync("/api/auth/request-code", new { email })).StatusCode);
         var limited = await http.PostAsJsonAsync("/api/auth/request-code", new { email });
         Assert.Equal(HttpStatusCode.TooManyRequests, limited.StatusCode);
-        Assert.Contains("Type the one in your inbox", await Error(limited));
+        var body = await limited.Content.ReadFromJsonAsync<JsonElement>();
+        Assert.Contains("Type the one in your inbox", body.GetProperty("error").GetString());
+        // Marks it as this address's limit (codes exist), unlike the per-IP limiter's 429.
+        Assert.Equal("codes_sent", body.GetProperty("reason").GetString());
+    }
+
+    [Fact]
+    public async Task A_burst_of_parallel_guesses_gets_five_tries_in_total()
+    {
+        const string email = "burst@gutech.edu.om";
+        var http = app.Client();
+        var codes = new List<string>();
+        for (var i = 0; i < 3; i++)
+        {
+            (await http.PostAsJsonAsync("/api/auth/request-code", new { email })).EnsureSuccessStatusCode();
+            codes.Add(app.Emails.LastCodeFor(email));
+        }
+        var guesses = Enumerable.Range(0, 1_000_000).Select(i => i.ToString("D6")).Where(c => !codes.Contains(c)).Take(40).ToList();
+
+        // Each guess from its own client, all at once, like a script hammering the endpoint. The address is
+        // written differently each time: the lock is on the normalised address.
+        var answers = await Task.WhenAll(guesses.Select(async (g, i) =>
+        {
+            var r = await app.Client().PostAsJsonAsync("/api/auth/verify", new { email = i % 2 == 0 ? email : " Burst@GUtech.edu.om ", code = g });
+            Assert.Equal(HttpStatusCode.BadRequest, r.StatusCode);
+            return await Error(r);
+        }));
+
+        // Only 5 guesses were ever compared with the codes; every later one found them used up.
+        Assert.Equal(5, answers.Count(a => a.StartsWith("Wrong code.")));
+        Assert.Equal(4, answers.Count(a => a.EndsWith("left.")));
+        Assert.Equal(guesses.Count - 5, answers.Count(a => a == "That code has expired. Ask for a new one."));
+        await using (var db = app.Db())
+            Assert.All(await db.LoginCodes.Where(c => c.Email == email).ToListAsync(), c => Assert.Equal(5, c.Attempts));
+
+        foreach (var code in codes)
+            Assert.Equal("That code has expired. Ask for a new one.", await Error(await app.Client().PostAsJsonAsync("/api/auth/verify", new { email, code })));
     }
 
     [Fact]
