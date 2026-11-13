@@ -33,8 +33,12 @@ test('account deletion requires both confirmations and keeps session on failure'
   await page.getByRole('button', { name: 'Delete my account' }).click()
   await page.getByRole('dialog', { name: 'Delete your account?' }).getByRole('button', { name: 'Continue' }).click()
   const final = page.getByRole('dialog', { name: 'This can’t be undone' })
+  // The final step ignores taps for a moment after it appears, so one double tap can't pass both confirmations.
+  await page.waitForTimeout(700)
   await final.getByRole('button', { name: 'Delete for good' }).click()
   await expect(final.getByText('Please retry deletion.')).toBeVisible()
+  // The error inside the sheet keeps the error colour instead of the sheet's body-text grey.
+  await expect(final.getByRole('alert')).toHaveCSS('color', 'rgb(242, 169, 154)')
   await expect(page).toHaveURL(/\/profile$/)
   await page.route('**/api/me', route => route.request().method() === 'DELETE' ? route.fulfill({ status: 204 }) : route.fulfill({ json: me }))
   await final.getByRole('button', { name: 'Delete for good' }).click()

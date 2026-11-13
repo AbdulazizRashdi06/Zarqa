@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState, type CSSProperties, type FormEvent } from 'react'
 import { Link } from '../lib/nav'
 import { useNavigate } from '../lib/transition'
-import { useSession, type Me } from '../auth/session'
+import { clearReturnPath, signedOutFrom, useSession, type Me } from '../auth/session'
 import { Camera, ChevronRight, SignOut } from '../components/icons'
 import { ConfirmSheet, InlineError, UserText } from '../components/states'
 import { Avatar, BackHeader, Switch } from '../components/ui'
@@ -9,11 +9,14 @@ import { t } from '../i18n'
 import { api, apiForm, ApiError } from '../lib/api'
 import { clearDraft } from '../lib/draft'
 import { shrinkPhoto } from '../lib/images'
-import { disablePushOnThisDevice, enablePush, pushState, type PushState } from '../lib/push'
+import { disablePushOnThisDevice, enablePush, pushState, refreshPush, type PushState } from '../lib/push'
 import { useCountUp } from '../lib/useCountUp'
 import s from './Profile.module.css'
 
 type Stats = { posts: number; gotBack: number; helpedReturn: number }
+
+// How long the final "Delete for good" step ignores taps after it appears.
+const FINAL_STEP_PAUSE_MS = 600
 
 const message = (e: unknown) => (e instanceof ApiError ? e.message : t('common.error'))
 
@@ -48,6 +51,8 @@ export default function Profile() {
   const [sheet, setSheet] = useState<null | 'photo' | 'delete' | 'deleteFinal'>(null)
   const [deleting, setDeleting] = useState(false)
   const [deleteError, setDeleteError] = useState('')
+  // When the final deletion step appeared (or last ignored a tap): a double tap on "Continue" must not also delete.
+  const finalTapAt = useRef(0)
   const fileInput = useRef<HTMLInputElement>(null)
   // The three numbers count up when they arrive.
   const posts = useCountUp(stats?.posts)
@@ -182,11 +187,16 @@ export default function Profile() {
       await api('/me', { method: 'DELETE' })
       // An unfinished report (maybe a card photo) must not wait in this browser for the next person.
       clearDraft()
+      // Like signing out: the next person to sign in in this tab starts on Home, not on this Profile.
+      clearReturnPath()
+      signedOutFrom(window.location.pathname + window.location.search)
       setMe(null)
       navigate('/signin', { replace: true })
     } catch (e) {
       setDeleteError(message(e))
       setDeleting(false)
+      // The account is still here: this phone keeps getting its alerts (no-op unless alerts were allowed).
+      void refreshPush()
     }
   }
 
@@ -424,8 +434,16 @@ export default function Profile() {
         error={sheet === 'photo' ? photoError : deleteError}
         onConfirm={() => {
           if (sheet === 'photo') void removePhoto()
-          else if (sheet === 'deleteFinal') void deleteAccount()
-          else setSheet('deleteFinal')
+          else if (sheet === 'deleteFinal') {
+            // The button sits where "Continue" was: a tap within 600 ms of the step appearing (or of an ignored tap,
+            // so a held Enter or a burst of taps never gets through) is the first confirmation's, not this one's.
+            const now = performance.now()
+            if (now - finalTapAt.current < FINAL_STEP_PAUSE_MS) finalTapAt.current = now
+            else void deleteAccount()
+          } else {
+            finalTapAt.current = performance.now()
+            setSheet('deleteFinal')
+          }
         }}
         onCancel={() => setSheet(null)}
       />
