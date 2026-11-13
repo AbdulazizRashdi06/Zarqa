@@ -47,11 +47,17 @@ public static partial class Categories
     }
 
     /// <summary>Card/ID report: its photos never go to a model. Same rule as the PWA's notice. Pass the user's words, not a label from <see cref="All"/>.</summary>
-    public static bool IsSensitive(params string?[] texts) => texts.Any(t => t is not null && SensitiveRe().IsMatch(t));
+    public static bool IsSensitive(params string?[] texts) =>
+        texts.Any(t => t is not null && SensitiveRe().IsMatch(NotCardRe().Replace(t, " ")));
 
     // Arabic words take prefixes and suffixes (البطاقة, بطاقتي), so they match as stems, not whole words.
     [GeneratedRegex(@"\b(cards?|ids?|i\.d|license|licence|passport|bank|atm|visa|mastercard|debit|credit|mulkiya|iqama)\b|بطاق|هوي[ةت]|جواز|رخص[ةت]|ملكي[ةت]|بنك|مصرف|صراف", RegexOptions.IgnoreCase)]
     private static partial Regex SensitiveRe();
+
+    // Things called "card" or "bank" that aren't ID or bank cards. Only the phrase is removed, so
+    // "SIM card and my ID" still counts. Same list as the PWA (web/src/lib/rules.ts).
+    [GeneratedRegex(@"\b(power ?banks?|(micro ?)?sd ?cards?|sim ?cards?|memory ?cards?|graphics ?cards?|flash ?cards?|playing ?cards?)\b", RegexOptions.IgnoreCase)]
+    private static partial Regex NotCardRe();
 
     private static List<string> Words(string? s) =>
         string.IsNullOrWhiteSpace(s) ? [] : WordRe().Split(s.ToLowerInvariant()).Where(w => w.Length > 0).ToList();
