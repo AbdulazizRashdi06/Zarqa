@@ -1,15 +1,28 @@
 .page { padding: 16px var(--gutter) 32px; display: flex; flex-direction: column; gap: 20px; min-width: 0; }
 .page h1 { font: 48px/1.05 var(--font-display); text-transform: uppercase; margin: 0; }
-.page h2 { font: 24px/1.2 var(--font-display); margin: 0 0 8px; }
+.page h2 { font: 24px/1.2 var(--font-display); text-transform: uppercase; letter-spacing: .5px; margin: 0 0 8px; overflow-wrap: anywhere; }
 .page p { line-height: 1.6; margin: 0 0 16px; overflow-wrap: anywhere; }
 .card { padding: 20px; color: var(--ink); }
 .card section + section { border-top: 2px dashed var(--paper-line); padding-top: 18px; }
 .card a { color: var(--ink); }
-.notice { border: 1px solid var(--tan); padding: 12px; background: var(--surface); }
+.card ul { margin: 0 0 16px; padding-left: 20px; line-height: 1.5; }
+.card li + li { margin-top: 8px; }
+.card li::marker { color: var(--tan-dark); }
+.card p.lead { margin-bottom: 8px; }
+/* A notice reads on the dark page and, with its own colours, inside a paper card too. */
+.notice { border: 1px solid var(--slate); border-radius: 14px; padding: 12px 14px; background: var(--surface); color: var(--text); }
+.card .notice { background: transparent; border: 2px solid var(--tan-dark); color: var(--ink); font-weight: 600; }
+.contact { display: flex; flex-direction: column; gap: 4px; }
+.contactLabel { font: 700 11px var(--font-mono); letter-spacing: 1.5px; color: var(--ink-muted); }
+.contact a { display: flex; align-items: center; min-height: 44px; overflow-wrap: anywhere; }
+.infoLinks { display: flex; flex-wrap: wrap; gap: 4px 20px; }
+.infoLinks a { display: flex; align-items: center; min-height: 44px; color: var(--tan-light); }
 .actions { display: flex; flex-wrap: wrap; gap: 8px; }
 .actions button, .actions a, .page select, .page input { min-height: 44px; padding: 10px 12px; border-radius: 10px; font: inherit; }
 .actions button { background: var(--tan); color: var(--ink); border: 0; font-weight: 700; }
-.actions a { color: var(--tan); }
+/* Disabled (empty field, request running) must look it. */
+.actions button:disabled { opacity: .5; cursor: default; }
+.actions a { color: var(--tan-light); }
 .tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .tile { background: var(--paper); color: var(--ink); border-radius: 16px; padding: 14px; overflow-wrap: anywhere; }
 .tile strong { display: block; font: 32px var(--font-display); }
