@@ -72,6 +72,22 @@ public class ReportTextTests
     }
 
     [Fact]
+    public void A_report_named_before_this_change_still_matches_on_its_text_alone()
+    {
+        // Older app reports were named by the start of their text, greeting and all.
+        var report = new Report { Title = "Hi", CategoryText = "", LocationText = "", Description = "Hi, I lost my black wallet near the library" };
+        Assert.Equal(report.Description, Matcher.MatchText(report));
+    }
+
+    [Fact]
+    public void A_separately_typed_name_is_kept_even_when_its_letters_appear_inside_the_description()
+    {
+        // "open" contains "pen": the name must still be put in front, as it always was for two-field reports.
+        var report = new Report { Title = "Pen", CategoryText = "", LocationText = "", Description = "Left it in the open study area by B-building" };
+        Assert.Equal("Pen. Left it in the open study area by B-building", Matcher.MatchText(report));
+    }
+
+    [Fact]
     public void A_report_without_a_description_matches_on_its_name()
     {
         var report = new Report { Title = "Blue bottle", CategoryText = "Bottles", LocationText = "", Description = "" };

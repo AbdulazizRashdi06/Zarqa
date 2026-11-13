@@ -105,8 +105,9 @@ function Chat({ id }: { id: string }) {
   const atBottom = useRef(true)
   const sendingRef = useRef(false)
   const busyRef = useRef(false)
-  // Counts what our own sends and ticket actions brought back. A poll sent before one of them finished carries an
-  // older snapshot, so its answer is dropped (the next poll asks again) instead of undoing what we just did.
+  // Counts what our own ticket actions brought back. A poll sent before one of them finished carries an older
+  // snapshot of the tickets, so its answer is dropped (the next poll asks again) instead of undoing what we just
+  // did. Plain sends don't count: messages merge by id, and dropping polls while typing would hold back replies.
   const actionSeq = useRef(0)
   const log = useRef<HTMLDivElement>(null)
   const input = useRef<HTMLTextAreaElement>(null)
@@ -252,7 +253,6 @@ function Chat({ id }: { id: string }) {
     if (fromDraft) setDraft('')
     try {
       merge([await api<Msg>(`/conversations/${id}/messages`, { body: { text: body } })])
-      actionSeq.current++
     } catch (e) {
       setError(errOf(e))
       if (fromDraft) setDraft((d) => d || text)

@@ -123,6 +123,28 @@ test('another tab putting the new version live does not reload this one mid-form
   await expect(page).toHaveURL(/\/reports$/)
 })
 
+test('a tab opened on a first visit still reloads into the update it asked for, and never on the first takeover', async ({ page }) => {
+  await stubPwa(page)
+  await app(page)
+  await page.goto('/')
+  await page.getByLabel('What did you lose?').fill('Blue bottle')
+  await expect.poll(() => page.evaluate(() => Boolean((window as unknown as { __pwa?: unknown }).__pwa))).toBe(true)
+  const workerChanged = () => page.evaluate(() => navigator.serviceWorker.dispatchEvent(new Event('controllerchange')))
+  // The first worker claiming the page is not an update: nothing reloads, now or at the next page change.
+  await workerChanged()
+  await page.waitForTimeout(200)
+  expect(await loads(page)).toBe(1)
+  await expect(page.getByLabel('What did you lose?')).toHaveValue('Blue bottle')
+  // A new version waits; the page change asks for it; the worker changes. The plugin stays silent for such a tab.
+  await page.evaluate(() => (window as unknown as { __pwa: { options: { onNeedRefresh: () => void } } }).__pwa.options.onNeedRefresh())
+  await page.getByRole('link', { name: /my reports/i }).click()
+  await expect(page).toHaveURL(/\/reports$/)
+  await expect.poll(() => applied(page)).toBe(1)
+  expect(await loads(page)).toBe(1)
+  await workerChanged()
+  await expect.poll(() => loads(page)).toBe(2)
+})
+
 test('page changes set the title and move focus to the new heading; Back goes back through history', async ({ page }) => {
   await app(page)
   await page.route('**/api/reports/r1', (route) => route.fulfill({ json: report }))

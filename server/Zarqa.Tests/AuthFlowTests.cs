@@ -144,18 +144,26 @@ public class AuthFlowTests(TestApp app) : IClassFixture<TestApp>
         var guesses = Enumerable.Range(0, 1_000_000).Select(i => i.ToString("D6")).Where(c => !codes.Contains(c)).Take(40).ToList();
 
         // Each guess from its own client, all at once, like a script hammering the endpoint. The address is
-        // written differently each time: the lock is on the normalised address.
-        var answers = await Task.WhenAll(guesses.Select(async (g, i) =>
+        // written differently each time: the lock is on the normalised address. A guess that arrives while
+        // another is being checked is turned away (429) without being compared.
+        var answers = (await Task.WhenAll(guesses.Take(30).Select(async (g, i) =>
         {
             var r = await app.Client().PostAsJsonAsync("/api/auth/verify", new { email = i % 2 == 0 ? email : " Burst@GUtech.edu.om ", code = g });
-            Assert.Equal(HttpStatusCode.BadRequest, r.StatusCode);
+            Assert.Contains(r.StatusCode, new[] { HttpStatusCode.BadRequest, HttpStatusCode.TooManyRequests });
             return await Error(r);
-        }));
+        }))).ToList();
+        Assert.True(answers.Count(a => a.StartsWith("Wrong code.")) <= 5, "more than 5 parallel guesses were compared");
+        // Then one at a time, until the codes are used up.
+        foreach (var g in guesses.Skip(30))
+            answers.Add(await Error(await app.Client().PostAsJsonAsync("/api/auth/verify", new { email, code = g })));
 
-        // Only 5 guesses were ever compared with the codes; every later one found them used up.
+        // Only 5 guesses were ever compared with the codes, in the burst and after it together; every other one was
+        // turned away or found the codes used up.
         Assert.Equal(5, answers.Count(a => a.StartsWith("Wrong code.")));
         Assert.Equal(4, answers.Count(a => a.EndsWith("left.")));
-        Assert.Equal(guesses.Count - 5, answers.Count(a => a == "That code has expired. Ask for a new one."));
+        Assert.All(answers.Where(a => !a.StartsWith("Wrong code.")), a =>
+            Assert.Contains(a, new[] { "That code has expired. Ask for a new one.", "Slow down a little and try again in a moment." }));
+        Assert.Equal("That code has expired. Ask for a new one.", answers[^1]);
         await using (var db = app.Db())
             Assert.All(await db.LoginCodes.Where(c => c.Email == email).ToListAsync(), c => Assert.Equal(5, c.Attempts));
 

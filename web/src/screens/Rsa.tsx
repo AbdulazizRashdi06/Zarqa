@@ -147,6 +147,16 @@ function useRefocus() {
     if (at && at !== document.body && at.isConnected) return
     p.find()?.focus()
   })
+  // The next tap or key press is the user moving on: stop steering focus, or it would jump away from what they opened.
+  useEffect(() => {
+    const clear = () => { pending.current = null }
+    document.addEventListener('pointerdown', clear, true)
+    document.addEventListener('keydown', clear, true)
+    return () => {
+      document.removeEventListener('pointerdown', clear, true)
+      document.removeEventListener('keydown', clear, true)
+    }
+  }, [])
   return (find: () => HTMLElement | null) => { pending.current = { find, until: Date.now() + 5000 } }
 }
 

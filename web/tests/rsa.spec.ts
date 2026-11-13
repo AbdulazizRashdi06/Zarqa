@@ -485,6 +485,38 @@ test('after a Found-tab match or hand-over the keyboard stays on the list, not t
   await expect(ring).toBeFocused()
 })
 
+test.describe('on a touch tablet', () => {
+  test.use({ hasTouch: true, isMobile: true })
+
+  test('opening another match form right after a send is not pulled back to the first card', async ({ page }) => {
+    await session(page)
+    const items = [
+      { ...item, id: 'kept', code: null, title: 'Silver ring', state: 'finder', suggestedTo: [] as string[] },
+      { ...item, id: 'shelf', code: 'ACD-EFG', title: 'Black umbrella', state: 'held', receivedAt: '2026-10-26T08:30:00Z' },
+    ]
+    await page.route('**/api/rsa/found', route => route.fulfill({ json: items }))
+    await page.route('**/api/rsa/person*', route => route.fulfill({ json: { email: 'maryam@gutech.edu.om', hasAccount: true, name: 'Maryam' } }))
+    await page.route('**/api/rsa/found/kept/match', route => {
+      items[0] = { ...items[0], suggestedTo: ['maryam@gutech.edu.om'] }
+      return route.fulfill({ json: { handedOver: false, title: 'Silver ring' } })
+    })
+    await page.goto('/rsa?tab=found')
+    const ring = page.getByRole('button', { name: 'Match to someone: Silver ring' })
+    await ring.tap()
+    await page.getByLabel('Their GUtech email').fill('maryam@gutech.edu.om')
+    await page.getByLabel('Their GUtech email').press('Enter')
+    await page.getByRole('dialog').getByRole('button', { name: 'Send them the match' }).tap()
+    await expect(page.getByText('Already sent to: maryam@gutech.edu.om')).toBeVisible()
+
+    // Straight on to the next card: its button is replaced by the form, and focus must not jump back to the ring.
+    await page.getByRole('button', { name: 'Match to someone: Black umbrella' }).tap()
+    await expect(page.getByLabel('Their GUtech email')).toBeVisible()
+    await page.waitForTimeout(400)
+    await expect(ring).not.toBeFocused()
+    await expect(page.getByText('2 items', { exact: true })).not.toBeFocused()
+  })
+})
+
 test('after closing a shelf item the keyboard lands on the line that says what was closed', async ({ page }) => {
   await session(page)
   let closes = 0

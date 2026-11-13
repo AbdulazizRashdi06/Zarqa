@@ -75,8 +75,13 @@ public static class AuthEndpoints
             // One check at a time per address: parallel guesses must each see the attempts the last one used, or a
             // burst of them would all read Attempts=0 and the 5-tries limit wouldn't hold. The lock ends with the
             // transaction (commit, or rollback on any return without one). /request-code never takes it.
+            // A check that finds the address busy is turned away instead of waiting: a queue of waiting checks would
+            // each hold a database connection, and one person never checks two codes at the same instant.
             await using var tx = await db.Database.BeginTransactionAsync(ct);
-            await db.Database.ExecuteSqlInterpolatedAsync($"SELECT pg_advisory_xact_lock({VerifyLockClass}, hashtext({address}))", ct);
+            var mine = await db.Database
+                .SqlQuery<bool>($"SELECT pg_try_advisory_xact_lock({VerifyLockClass}, hashtext({address})) AS \"Value\"")
+                .SingleAsync(ct);
+            if (!mine) return Errors.TooMany("Slow down a little and try again in a moment.");
 
             var now = clock.GetUtcNow();
             // Every live code for the address works (at most 3 per 15 minutes), so a slow first email still signs

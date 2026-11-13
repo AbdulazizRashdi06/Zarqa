@@ -234,6 +234,42 @@ test('a slow poll sent before a confirm does not bring the old buttons back', as
   await expect(log(page).getByRole('button', { name: 'Confirm' })).toHaveCount(0)
 })
 
+test('sending a message does not hold back a reply that a slow poll is already carrying', async ({ page }) => {
+  const chat = new FakeChat()
+  await chat.install(page)
+  // The first poll is slow and answers with what the server had when it arrived; later polls never answer, so
+  // only that first one can bring the reply in.
+  let polls = 0
+  let caught: () => void = () => {}
+  const inFlight = new Promise<void>((r) => (caught = r))
+  let release: () => void = () => {}
+  const released = new Promise<void>((r) => (release = r))
+  let finish: () => void = () => {}
+  const finished = new Promise<void>((r) => (finish = r))
+  await page.route((u) => u.pathname === '/api/conversations/c1' && u.searchParams.has('after'), async (r) => {
+    if (polls++ > 0) {
+      await finished
+      return r.abort().catch(() => undefined)
+    }
+    chat.add({ text: 'Is it the one with the green tie?' })
+    const snapshot = JSON.parse(JSON.stringify(chat.thread(Number(new URL(r.request().url()).searchParams.get('after')))))
+    caught()
+    await released
+    return r.fulfill({ json: snapshot })
+  })
+  await page.goto('/chats/c1')
+  await expect(log(page).getByText('Hi! I think I found your AirPods case.')).toBeVisible()
+  await inFlight
+
+  await page.getByRole('textbox', { name: 'Message' }).fill('Yes, that is mine')
+  await page.getByRole('button', { name: 'Send', exact: true }).click()
+  await expect(log(page).getByText('Yes, that is mine')).toBeVisible()
+  release()
+  await expect(log(page).getByText('Is it the one with the green tie?')).toBeVisible({ timeout: 2000 })
+  await expect(log(page).getByText('Yes, that is mine')).toHaveCount(1)
+  finish()
+})
+
 test.describe('on a touch phone', () => {
   test.use({ hasTouch: true, isMobile: true })
 
