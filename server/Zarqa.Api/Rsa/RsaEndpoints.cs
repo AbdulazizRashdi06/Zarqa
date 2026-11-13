@@ -185,8 +185,9 @@ public static class RsaEndpoints
             }
             if (owner.IsBanned) return Errors.BadRequest("That account is banned.");
             if (owner.Id == found.UserId) return Errors.BadRequest("That's the person who found it.");
-            // A second tap (or a second send) must not file a second lost report for the same person and item.
-            if (owner.Id != Guid.Empty && await db.Matches.AnyAsync(m => m.FoundId == found.Id && m.Lost!.UserId == owner.Id
+            // A second tap (or a second send) must not file a second lost report for the same person and item. A hand-over
+            // is never blocked by this: the person is at the desk, and handing over expires the waiting suggestion below.
+            if (!body.HandOver && owner.Id != Guid.Empty && await db.Matches.AnyAsync(m => m.FoundId == found.Id && m.Lost!.UserId == owner.Id
                     && m.Status == MatchStatus.Suggested, ct))
                 return Errors.BadRequest("Already sent to them. They can claim it in Zarqa.");
 

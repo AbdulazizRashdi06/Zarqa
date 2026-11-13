@@ -49,6 +49,62 @@ public class RsaDeskTests(TestApp app) : IClassFixture<TestApp>
     }
 
     [Fact]
+    public async Task Someone_with_a_waiting_suggestion_can_still_be_handed_the_item_at_the_desk()
+    {
+        var rsa = await Staff("handover");
+        var finder = await app.SignedIn("finder.handover@gutech.edu.om", "Omar");
+        var maryam = await app.SignedIn("maryam.handover@gutech.edu.om", "Maryam");
+        var lost = (await Json(await maryam.PostAsync("/api/reports", Form("lost", "Brown wallet", "Wallets")))).GetProperty("id").GetGuid();
+
+        async Task<Guid> Shelved(string title)
+        {
+            var found = await Json(await finder.PostAsync("/api/reports", DropForm(title, "Wallets")));
+            await rsa.PostAsync($"/api/rsa/drop/{found.GetProperty("dropCode").GetString()}/receive", null);
+            return found.GetProperty("id").GetGuid();
+        }
+
+        // 1. The desk sent the suggestion earlier; 2. the matcher did.
+        var staffSent = await Shelved("Brown leather wallet");
+        var send = new { email = "maryam.handover@gutech.edu.om", handOver = false };
+        Assert.Equal(HttpStatusCode.OK, (await rsa.PostAsJsonAsync($"/api/rsa/found/{staffSent}/match", send)).StatusCode);
+        Assert.Equal(HttpStatusCode.BadRequest, (await rsa.PostAsJsonAsync($"/api/rsa/found/{staffSent}/match", send)).StatusCode);
+
+        var matcherSent = await Shelved("Wallet, brown");
+        await using (var db = app.Db())
+        {
+            db.Matches.Add(new Match { LostId = lost, FoundId = matcherSent, FinalScore = 0.9, CreatedAt = DateTimeOffset.UtcNow });
+            await db.SaveChangesAsync();
+        }
+
+        foreach (var found in new[] { staffSent, matcherSent })
+        {
+            var waiting = await WaitingMatch(found);
+            var now = send with { handOver = true };
+            var res = await rsa.PostAsJsonAsync($"/api/rsa/found/{found}/match", now);
+            Assert.Equal(HttpStatusCode.OK, res.StatusCode);
+            Assert.True((await Json(res)).GetProperty("handedOver").GetBoolean());
+            await using (var db = app.Db())
+            {
+                Assert.Equal(ReportStatus.Returned, (await db.Reports.SingleAsync(r => r.Id == found)).Status);
+                Assert.Equal(MatchStatus.Expired, (await db.Matches.SingleAsync(m => m.Id == waiting)).Status);
+                Assert.False(await db.Matches.AnyAsync(m => m.FoundId == found && m.Status == MatchStatus.Suggested));
+                var given = await db.Matches.SingleAsync(m => m.FoundId == found && m.Status == MatchStatus.Confirmed);
+                Assert.NotNull(given.CollectedAt);
+            }
+            // Handed over once only.
+            Assert.Equal(HttpStatusCode.BadRequest, (await rsa.PostAsJsonAsync($"/api/rsa/found/{found}/match", now)).StatusCode);
+            await using (var db = app.Db())
+                Assert.Equal(1, await db.Matches.CountAsync(m => m.FoundId == found && m.Status == MatchStatus.Confirmed));
+        }
+    }
+
+    private async Task<Guid> WaitingMatch(Guid found)
+    {
+        await using var db = app.Db();
+        return (await db.Matches.SingleAsync(m => m.FoundId == found && m.Status == MatchStatus.Suggested)).Id;
+    }
+
+    [Fact]
     public async Task Staff_cannot_close_an_item_that_was_never_handed_in()
     {
         var rsa = await Staff("close");
