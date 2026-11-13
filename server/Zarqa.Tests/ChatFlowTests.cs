@@ -109,6 +109,61 @@ public class ChatFlowTests(TestApp app) : IClassFixture<TestApp>
     }
 
     [Fact]
+    public async Task Polls_carry_ticket_changes_and_each_side_sees_its_own_report()
+    {
+        var (owner, finder, lost, found, match) = await MatchedPair("poll");
+        var chatId = (await Json(await owner.PostAsync($"/api/matches/{match}/confirm", null))).GetProperty("conversationId").GetGuid();
+
+        // Each person sees the title of the report they posted, and a link to it and to the match.
+        var ownerThread = await Json(await owner.GetAsync($"/api/conversations/{chatId}"));
+        Assert.Equal("AirPods Pro case", ownerThread.GetProperty("itemTitle").GetString());
+        Assert.Equal(lost, ownerThread.GetProperty("myReportId").GetGuid());
+        Assert.Equal(match, ownerThread.GetProperty("matchId").GetGuid());
+        var finderThread = await Json(await finder.GetAsync($"/api/conversations/{chatId}"));
+        Assert.Equal("White earbuds case", finderThread.GetProperty("itemTitle").GetString());
+        Assert.Equal(found, finderThread.GetProperty("myReportId").GetGuid());
+        Assert.Equal("White earbuds case", (await Json(await finder.GetAsync("/api/conversations")))[0].GetProperty("itemTitle").GetString());
+
+        // The finder suggests a time; the owner's poll after it still carries the ticket once the owner confirms.
+        var tomorrow = DateTime.UtcNow.AddDays(1).ToString("yyyy-MM-dd");
+        var first = (await Json(await finder.PostAsJsonAsync($"/api/conversations/{chatId}/handover", new { date = tomorrow, time = "14:30", place = "Library" }))).GetProperty("id").GetInt64();
+        await owner.PostAsync($"/api/handovers/{first}/confirm", null);
+        var poll = (await Json(await finder.GetAsync($"/api/conversations/{chatId}?after={first}"))).GetProperty("messages");
+        Assert.Contains(poll.EnumerateArray(), m => m.GetProperty("id").GetInt64() == first && m.GetProperty("handoverStatus").GetString() == "confirmed");
+
+        // A newer confirmed plan replaces the earlier confirmed one.
+        var second = (await Json(await owner.PostAsJsonAsync($"/api/conversations/{chatId}/handover", new { date = tomorrow, time = "16:00", place = "Cafeteria" }))).GetProperty("id").GetInt64();
+        await finder.PostAsync($"/api/handovers/{second}/confirm", null);
+        var all = (await Json(await owner.GetAsync($"/api/conversations/{chatId}"))).GetProperty("messages").EnumerateArray().ToList();
+        Assert.Equal("replaced", all.Single(m => m.GetProperty("id").GetInt64() == first).GetProperty("handoverStatus").GetString());
+        Assert.Equal("confirmed", all.Single(m => m.GetProperty("id").GetInt64() == second).GetProperty("handoverStatus").GetString());
+
+        // Taking back your own "it's back" leaves a line for the other person.
+        var ask = (await Json(await owner.PostAsync($"/api/conversations/{chatId}/returned", null))).GetProperty("id").GetInt64();
+        await owner.PostAsync($"/api/returns/{ask}/decline", null);
+        var last = (await Json(await finder.GetAsync($"/api/conversations/{chatId}"))).GetProperty("messages").EnumerateArray().Last();
+        Assert.Equal("system", last.GetProperty("kind").GetString());
+    }
+
+    [Fact]
+    public async Task A_hidden_name_hides_the_photo_too()
+    {
+        var (owner, finder, _, _, match) = await MatchedPair("anon");
+        var chatId = (await Json(await owner.PostAsync($"/api/matches/{match}/confirm", null))).GetProperty("conversationId").GetGuid();
+        await using (var db = app.Db())
+        {
+            var u = await db.Users.FirstAsync(x => x.Email == "finder.anon@gutech.edu.om");
+            u.ShowFirstName = false;
+            u.AvatarPhotoKey = "abcdef0123456789.webp";
+            await db.SaveChangesAsync();
+        }
+        var thread = await Json(await owner.GetAsync($"/api/conversations/{chatId}"));
+        Assert.Equal("GUtech student", thread.GetProperty("otherName").GetString());
+        Assert.Equal(System.Text.Json.JsonValueKind.Null, thread.GetProperty("otherAvatarUrl").ValueKind);
+        Assert.Equal(System.Text.Json.JsonValueKind.Null, (await Json(await owner.GetAsync("/api/conversations")))[0].GetProperty("otherAvatarUrl").ValueKind);
+    }
+
+    [Fact]
     public async Task Strangers_cannot_read_a_chat()
     {
         var (owner, _, _, _, match) = await MatchedPair("private");

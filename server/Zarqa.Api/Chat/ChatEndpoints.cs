@@ -19,7 +19,9 @@ public static class ChatEndpoints
     public record MessageDto(long Id, string Kind, bool Mine, string Text, DateTimeOffset At,
         string? HandoverAt, string? HandoverPlace, string? HandoverStatus, bool CanConfirm);
 
-    public record ThreadDto(Guid Id, string OtherName, string? OtherAvatarUrl, string ItemTitle, string MyRole, string Status, List<MessageDto> Messages);
+    /// <summary>ItemTitle is the viewer's own report (the owner's lost one, the finder's found one); MyReportId links to it.</summary>
+    public record ThreadDto(Guid Id, string OtherName, string? OtherAvatarUrl, string ItemTitle, string MyRole, string Status, List<MessageDto> Messages,
+        Guid MatchId, Guid MyReportId);
 
     public record SendBody(string? Text);
     public record HandoverBody(string? Date, string? Time, string? Place);
@@ -33,6 +35,7 @@ public static class ChatEndpoints
             var me = http.User.Id();
             var list = await db.Conversations.AsNoTracking()
                 .Include(c => c.Match).ThenInclude(m => m!.Lost)
+                .Include(c => c.Match).ThenInclude(m => m!.Found)
                 .Where(c => c.LostUserId == me || c.FoundUserId == me)
                 .ToListAsync(ct);
             var others = await OtherUsers(db, list, me, ct);
@@ -43,7 +46,8 @@ public static class ChatEndpoints
                 var read = await db.ConversationReads.Where(r => r.UserId == me && r.ConversationId == c.Id).Select(r => (long?)r.LastReadMessageId).FirstOrDefaultAsync(ct) ?? 0;
                 var unread = await db.Messages.CountAsync(m => m.ConversationId == c.Id && m.Id > read && m.SenderId != me, ct);
                 var other = others[c.LostUserId == me ? c.FoundUserId : c.LostUserId];
-                result.Add(new ConversationDto(c.Id, MeEndpoints.DisplayName(other), MeEndpoints.AvatarUrl(other), c.Match!.Lost!.Title,
+                var mine = c.LostUserId == me ? c.Match!.Lost! : c.Match!.Found!;
+                result.Add(new ConversationDto(c.Id, MeEndpoints.DisplayName(other), OtherAvatar(other), mine.Title,
                     c.LostUserId == me ? "lost" : "found", c.Status.ToString(), last is null ? null : Preview(last, me), last?.CreatedAt ?? c.CreatedAt, unread));
             }
             return result.OrderByDescending(c => c.Status == "Active").ThenByDescending(c => c.LastAt);
@@ -55,10 +59,16 @@ public static class ChatEndpoints
             var c = await Mine(db, id, me, ct);
             if (c is null) return Errors.NotFound();
             var other = await db.Users.AsNoTracking().FirstAsync(u => u.Id == (c.LostUserId == me ? c.FoundUserId : c.LostUserId), ct);
-            var lostTitle = await db.Reports.Where(r => r.Id == c.Match!.LostId).Select(r => r.Title).FirstAsync(ct);
-            var messages = await db.Messages.AsNoTracking().Where(m => m.ConversationId == id && m.Id > (after ?? 0)).OrderBy(m => m.Id).ToListAsync(ct);
-            return Results.Ok(new ThreadDto(c.Id, MeEndpoints.DisplayName(other), MeEndpoints.AvatarUrl(other), lostTitle,
-                c.LostUserId == me ? "lost" : "found", c.Status.ToString(), messages.Select(m => ToDto(m, me)).ToList()));
+            var myReportId = c.LostUserId == me ? c.Match!.LostId : c.Match!.FoundId;
+            var myTitle = await db.Reports.Where(r => r.Id == myReportId).Select(r => r.Title).FirstAsync(ct);
+            // A poll (?after=) also returns every handover and return ticket, so a status the other person changed
+            // (confirmed, replaced, declined, withdrawn) reaches an open chat; the client replaces them by id.
+            var since = after ?? 0;
+            var messages = await db.Messages.AsNoTracking()
+                .Where(m => m.ConversationId == id && (m.Id > since || m.Kind == MessageKind.Handover || m.Kind == MessageKind.Return))
+                .OrderBy(m => m.Id).ToListAsync(ct);
+            return Results.Ok(new ThreadDto(c.Id, MeEndpoints.DisplayName(other), OtherAvatar(other), myTitle,
+                c.LostUserId == me ? "lost" : "found", c.Status.ToString(), messages.Select(m => ToDto(m, me)).ToList(), c.MatchId, myReportId));
         });
 
         chats.MapPost("/{id:guid}/messages", async (Guid id, SendBody body, HttpContext http, ZarqaDb db, TimeProvider clock, INotifier notifier, CancellationToken ct) =>
@@ -116,6 +126,9 @@ public static class ChatEndpoints
             if (m.SenderId == me) return Errors.BadRequest("The other person confirms your suggestion.");
             if (m.HandoverStatus != HandoverStatus.Suggested) return Errors.BadRequest("That suggestion was replaced. Check the newest one.");
             m.HandoverStatus = HandoverStatus.Confirmed;
+            // Only the newest confirmed plan stands: an earlier confirmed one is replaced, so two never both say "See you there".
+            foreach (var old in await db.Messages.Where(x => x.ConversationId == m.ConversationId && x.Id != m.Id && x.Kind == MessageKind.Handover && x.HandoverStatus == HandoverStatus.Confirmed).ToListAsync(ct))
+                old.HandoverStatus = HandoverStatus.Replaced;
             await db.SaveChangesAsync(ct);
             await notifier.HandoverAsync(m.Id, ct);
             return Results.Ok(ToDto(m, me));
@@ -179,8 +192,12 @@ public static class ChatEndpoints
             if (m is null || await Mine(db, m.ConversationId, me, ct) is null) return Errors.NotFound();
             if (m.HandoverStatus != HandoverStatus.Suggested) return Errors.BadRequest("That request isn't open any more.");
             m.HandoverStatus = HandoverStatus.Replaced;
-            if (m.SenderId != me)
-                db.Messages.Add(new Message { ConversationId = m.ConversationId, Kind = MessageKind.System, Body = "Not back yet. Keep chatting and sort out the handover.", CreatedAt = clock.GetUtcNow() });
+            // Either way a line says so, so the other person's push and list preview don't point at a ticket that's gone.
+            db.Messages.Add(new Message
+            {
+                ConversationId = m.ConversationId, Kind = MessageKind.System, CreatedAt = clock.GetUtcNow(),
+                Body = m.SenderId != me ? "Not back yet. Keep chatting and sort out the handover." : "That was taken back. It's not marked returned yet.",
+            });
             await db.SaveChangesAsync(ct);
             return Results.Ok(ToDto(m, me));
         }).RequireAuthorization();
@@ -213,6 +230,9 @@ public static class ChatEndpoints
 
     private static async Task<Conversation?> Mine(ZarqaDb db, Guid id, Guid me, CancellationToken ct) =>
         await db.Conversations.Include(c => c.Match).FirstOrDefaultAsync(c => c.Id == id && (c.LostUserId == me || c.FoundUserId == me), ct);
+
+    /// <summary>Someone who hides their first name is "GUtech student" with no photo either.</summary>
+    private static string? OtherAvatar(User u) => u.ShowFirstName ? MeEndpoints.AvatarUrl(u) : null;
 
     private static Task<Message?> PendingReturn(ZarqaDb db, Guid conversationId, CancellationToken ct) =>
         db.Messages.FirstOrDefaultAsync(m => m.ConversationId == conversationId && m.Kind == MessageKind.Return && m.HandoverStatus == HandoverStatus.Suggested, ct);

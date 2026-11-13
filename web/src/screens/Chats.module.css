@@ -26,9 +26,12 @@
   color: var(--paper);
   text-decoration: none;
 }
-/* Closed chats sit back. A class, not an inline opacity, so the entrance fade still shows. */
-.closed > * {
-  opacity: 0.6;
+/* Closed chats sit back through quieter colours (grey avatar, muted lines), not opacity, so text keeps its contrast. */
+.closed .name {
+  color: var(--text-soft);
+}
+.closed .item {
+  color: var(--text-muted);
 }
 .row:active {
   scale: 0.98;
@@ -64,9 +67,18 @@
   letter-spacing: 1.2px;
   color: var(--tan);
   text-transform: uppercase;
+  display: flex;
+  gap: 4px;
+  min-width: 0;
   white-space: nowrap;
+}
+.itemTitle {
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.itemState {
+  flex-shrink: 0;
 }
 .bottom {
   display: flex;
@@ -82,6 +94,10 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.lastUnread {
+  font-weight: 700;
+  color: var(--paper);
 }
 .badge {
   min-width: 22px;
