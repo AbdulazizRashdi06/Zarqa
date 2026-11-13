@@ -83,7 +83,6 @@ public static class ChatEndpoints
             var m = new Message { ConversationId = id, SenderId = me, Kind = MessageKind.Text, Body = text, CreatedAt = clock.GetUtcNow() };
             db.Messages.Add(m);
             await db.SaveChangesAsync(ct);
-            await MarkRead(db, me, id, m.Id, ct);
             await notifier.MessageAsync(m.Id, ct);
             return Results.Ok(ToDto(m, me));
         });
@@ -113,7 +112,6 @@ public static class ChatEndpoints
             };
             db.Messages.Add(m);
             await db.SaveChangesAsync(ct);
-            await MarkRead(db, me, id, m.Id, ct);
             await notifier.HandoverAsync(m.Id, ct);
             return Results.Ok(ToDto(m, me));
         });
@@ -134,6 +132,8 @@ public static class ChatEndpoints
             return Results.Ok(ToDto(m, me));
         }).RequireAuthorization();
 
+        // Only this marks a chat read (the app calls it after a poll has shown the messages). Sending doesn't: a reply
+        // that arrived a moment before your own message would otherwise count as read without ever being shown.
         chats.MapPost("/{id:guid}/read", async (Guid id, ReadBody body, HttpContext http, ZarqaDb db, CancellationToken ct) =>
         {
             var me = http.User.Id();
@@ -156,7 +156,6 @@ public static class ChatEndpoints
             var m = new Message { ConversationId = id, SenderId = me, Kind = MessageKind.Return, Body = body, HandoverStatus = HandoverStatus.Suggested, CreatedAt = clock.GetUtcNow() };
             db.Messages.Add(m);
             await db.SaveChangesAsync(ct);
-            await MarkRead(db, me, id, m.Id, ct);
             await notifier.MessageAsync(m.Id, ct);
             return Results.Ok(ToDto(m, me));
         });

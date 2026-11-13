@@ -150,17 +150,53 @@ public class ChatFlowTests(TestApp app) : IClassFixture<TestApp>
     {
         var (owner, finder, _, _, match) = await MatchedPair("anon");
         var chatId = (await Json(await owner.PostAsync($"/api/matches/{match}/confirm", null))).GetProperty("conversationId").GetGuid();
+
+        // Name shown: the photo is shown too, in the thread and in the list.
+        await using (var db = app.Db())
+        {
+            var u = await db.Users.FirstAsync(x => x.Email == "finder.anon@gutech.edu.om");
+            u.AvatarPhotoKey = "abcdef0123456789.webp";
+            await db.SaveChangesAsync();
+        }
+        var shown = await Json(await owner.GetAsync($"/api/conversations/{chatId}"));
+        Assert.Equal("Omar", shown.GetProperty("otherName").GetString());
+        Assert.StartsWith("/api/avatars/", shown.GetProperty("otherAvatarUrl").GetString());
+        Assert.StartsWith("/api/avatars/", (await Json(await owner.GetAsync("/api/conversations")))[0].GetProperty("otherAvatarUrl").GetString());
+
+        // Name hidden: no name and no photo anywhere in the chat API.
         await using (var db = app.Db())
         {
             var u = await db.Users.FirstAsync(x => x.Email == "finder.anon@gutech.edu.om");
             u.ShowFirstName = false;
-            u.AvatarPhotoKey = "abcdef0123456789.webp";
             await db.SaveChangesAsync();
         }
         var thread = await Json(await owner.GetAsync($"/api/conversations/{chatId}"));
+        Assert.DoesNotContain("Omar", thread.GetRawText());
+        Assert.DoesNotContain("/api/avatars/", thread.GetRawText());
+        Assert.DoesNotContain("/api/avatars/", (await Json(await owner.GetAsync($"/api/conversations/{chatId}?after=0"))).GetRawText());
+        Assert.DoesNotContain("/api/avatars/", (await Json(await owner.GetAsync("/api/conversations"))).GetRawText());
         Assert.Equal("GUtech student", thread.GetProperty("otherName").GetString());
         Assert.Equal(System.Text.Json.JsonValueKind.Null, thread.GetProperty("otherAvatarUrl").ValueKind);
         Assert.Equal(System.Text.Json.JsonValueKind.Null, (await Json(await owner.GetAsync("/api/conversations")))[0].GetProperty("otherAvatarUrl").ValueKind);
+    }
+
+    [Fact]
+    public async Task Sending_does_not_mark_a_reply_you_have_not_seen_as_read()
+    {
+        var (owner, finder, _, _, match) = await MatchedPair("race");
+        var chatId = (await Json(await owner.PostAsync($"/api/matches/{match}/confirm", null))).GetProperty("conversationId").GetGuid();
+        var opening = (await Json(await finder.GetAsync($"/api/conversations/{chatId}"))).GetProperty("messages")[0].GetProperty("id").GetInt64();
+        await finder.PostAsJsonAsync($"/api/conversations/{chatId}/read", new { lastMessageId = opening });
+
+        // The owner's reply lands a moment before the finder sends: it stays unread for the finder.
+        await owner.PostAsJsonAsync($"/api/conversations/{chatId}/messages", new { text = "I'm at the library entrance" });
+        var sent = (await Json(await finder.PostAsJsonAsync($"/api/conversations/{chatId}/messages", new { text = "On my way" }))).GetProperty("id").GetInt64();
+        Assert.Equal(1, (await Json(await finder.GetAsync("/api/conversations")))[0].GetProperty("unread").GetInt32());
+
+        // The finder's next poll still carries it.
+        var poll = (await Json(await finder.GetAsync($"/api/conversations/{chatId}?after={opening}"))).GetProperty("messages").EnumerateArray().ToList();
+        Assert.Contains(poll, m => !m.GetProperty("mine").GetBoolean() && m.GetProperty("text").GetString() == "I'm at the library entrance");
+        Assert.Contains(poll, m => m.GetProperty("id").GetInt64() == sent);
     }
 
     [Fact]

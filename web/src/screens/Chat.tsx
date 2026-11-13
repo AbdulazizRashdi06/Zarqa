@@ -115,6 +115,8 @@ function Chat({ id }: { id: string }) {
     setThread((th) => {
       if (!th) return th
       const byId = new Map(th.messages.map((m) => [m.id, m]))
+      // Every poll re-sends the tickets; only re-render when something really changed.
+      if (incoming.every((m) => JSON.stringify(byId.get(m.id)) === JSON.stringify(m))) return th
       for (const m of incoming) byId.set(m.id, m)
       return { ...th, messages: [...byId.values()].sort((a, b) => a.id - b.id) }
     })
@@ -133,7 +135,15 @@ function Chat({ id }: { id: string }) {
     let alive = true
     let timer: ReturnType<typeof setInterval> | undefined
     let fails = 0
+    // One request at a time: on slow Wi-Fi a poll can outlast the interval.
+    let inFlight = false
+    const stop = () => {
+      clearInterval(timer)
+      timer = undefined
+    }
     async function load(first: boolean): Promise<boolean> {
+      if (inFlight) return false
+      inFlight = true
       try {
         const th = await api<Thread>(`/conversations/${id}${first ? '' : `?after=${lastId.current}`}`)
         if (!alive) return false
@@ -148,7 +158,7 @@ function Chat({ id }: { id: string }) {
           merge(messages)
           // The other person confirmed our "it's back": celebrate on this side too, once.
           if (status.current === 'Active' && th.status === 'Returned') celebrate()
-          setThread((cur) => (cur ? { ...cur, status: th.status } : cur))
+          setThread((cur) => (cur && cur.status !== th.status ? { ...cur, status: th.status } : cur))
         }
         status.current = th.status
         const newest = messages.reduce((n, m) => Math.max(n, m.id), 0)
@@ -156,14 +166,21 @@ function Chat({ id }: { id: string }) {
           lastId.current = newest
           void api(`/conversations/${id}/read`, { method: 'POST', body: { lastMessageId: newest } }).catch(() => {})
         }
-        return true
+        // A closed chat never changes again: stop asking.
+        if (th.status !== 'Active') stop()
+        return th.status === 'Active'
       } catch (e) {
         if (!alive) return false
-        if (first) {
-          if (e instanceof ApiError && e.status === 404) setGone(true)
-          else setLoadError({ message: e instanceof ApiError && e.status !== 0 ? e.message : undefined })
-        } else if (++fails >= 2) setOffline(true)
+        if (e instanceof ApiError && e.status === 404) {
+          // Gone (the other person deleted their account): say so instead of "Reconnecting…" forever.
+          stop()
+          setThread(null)
+          setGone(true)
+        } else if (first) setLoadError({ message: e instanceof ApiError && e.status !== 0 ? e.message : undefined })
+        else if (++fails >= 2) setOffline(true)
         return false
+      } finally {
+        inFlight = false
       }
     }
     void load(true).then((ok) => {
@@ -171,7 +188,7 @@ function Chat({ id }: { id: string }) {
     })
     return () => {
       alive = false
-      clearInterval(timer)
+      stop()
     }
   }, [id, merge, celebrate, attempt])
 
@@ -235,6 +252,11 @@ function Chat({ id }: { id: string }) {
     } finally {
       sendingRef.current = false
       setSending(false)
+      // A disabled Send button drops keyboard focus to the page; put it back in the message box.
+      if (fromDraft)
+        requestAnimationFrame(() => {
+          if (document.activeElement === document.body) input.current?.focus({ preventScroll: true })
+        })
     }
   }
 
@@ -402,7 +424,7 @@ function Chat({ id }: { id: string }) {
                   <img src="/mascot/reading.webp" alt="" width={52} />
                   <div className={s.systemBubble}>
                     <span className={s.zarqa} aria-hidden="true">
-                      ZARQA
+                      {t('chat.zarqa').toUpperCase()}
                     </span>
                     <span>{m.text}</span>
                   </div>
@@ -648,7 +670,8 @@ function Chat({ id }: { id: string }) {
                     setDraft(e.target.value)
                     if (error) setError(null)
                   }}
-                  onFocus={() => setTyping(true)}
+                  // Only with an on-screen keyboard (touch): then the rows above give the messages their room back.
+                  onFocus={() => setTyping(window.matchMedia('(pointer: coarse)').matches)}
                   onBlur={() => setTyping(false)}
                   onKeyDown={(e) => {
                     // Enter sends on a computer keyboard (Shift+Enter for a new line); on a phone it's a new line.
@@ -716,7 +739,7 @@ function Chat({ id }: { id: string }) {
           {/* Her gold coins go up behind her as she lands. */}
           <CoinBurst origin={[0.5, 0.4]} delay={420} />
           {/* The owner's iPhone art, untouched: the hop is the mascot skill's bounce preset on the still. */}
-          <img src="/mascot/phone.webp" alt="Zarqa holding up a returned item" className={`${s.overlayMascot} ${zarqaMotion('bounce')}`} />
+          <img src="/mascot/phone.webp" alt={t('chat.returned.alt')} className={`${s.overlayMascot} ${zarqaMotion('bounce')}`} />
           <span className={`${s.overlayItem} user-text`} dir="auto" data-enter style={{ '--delay': '420ms' }}>
             {thread.itemTitle}
           </span>

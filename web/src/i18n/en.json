@@ -243,6 +243,7 @@
   "chat.plan.send": "Send",
   "chat.plan.cancel": "Cancel",
   "chat.returned.title": "RETURNED.",
+  "chat.returned.alt": "Zarqa holding up a returned item",
   "chat.returned.body": "Back where it belongs. Zarqa saw this coming three days ago.",
   "chat.returned.home": "Back home",
   "chat.returned.keep": "See the chat",
