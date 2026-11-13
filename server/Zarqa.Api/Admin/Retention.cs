@@ -30,9 +30,8 @@ public sealed class Retention(ZarqaDb db, PhotoStore photos, IEmailSender email,
             r.Status = ReportStatus.Expired;
             r.UpdatedAt = now;
             await Reports.ReportEndpoints.ExpireOpenMatches(db, r.Id, now, ct);
-            var (html, text) = NoticeEmail.Build("STILL LOOKING?", $"Your {r.Kind.ToString().ToLowerInvariant()} report \"{r.Title}\" has expired",
-                "It's been 60 days, so Zarqa stopped matching it. If you're still looking, post it again on the home screen and I'll keep watching.");
-            try { await email.SendAsync(r.User!.Email, $"Still looking for your {r.Title}?", html, text, ct); }
+            var (subject, html, text) = ExpiryEmail(r);
+            try { await email.SendAsync(r.User!.Email, subject, html, text, ct); }
             catch (Exception e) when (!ct.IsCancellationRequested) { log.LogWarning("Expiry email failed: {Message}", e.Message); }
         }
         await db.SaveChangesAsync(ct);
@@ -48,6 +47,18 @@ public sealed class Retention(ZarqaDb db, PhotoStore photos, IEmailSender email,
         await db.MatchJobs.Where(j => j.CompletedAt != null && j.CompletedAt < now.AddDays(-30)).ExecuteDeleteAsync(ct);
 
         if (stale.Count > 0 || old.Count > 0) log.LogInformation("Retention: expired {Expired} reports, deleted {Deleted}", stale.Count, old.Count);
+    }
+
+    /// <summary>The "your report has expired" email. The title is quoted on its own line, never built into a sentence.</summary>
+    public static (string Subject, string Html, string Text) ExpiryEmail(Report r)
+    {
+        var (label, headline, body) = r.Kind == ReportKind.Found
+            ? ("STILL HAVE IT?", "Your found report has expired",
+               "It's been 60 days with no owner, so Zarqa stopped matching it. If you still have it, post it again on the home screen or take it to the RSA desk.")
+            : ("STILL LOOKING?", "Your lost report has expired",
+               "It's been 60 days, so Zarqa stopped matching it. If you're still looking, post it again on the home screen and I'll keep watching.");
+        var (html, text) = NoticeEmail.Build(label, headline, body, item: r.Title);
+        return ($"{headline}: {r.Title}", html, text);
     }
 
     /// <summary>Deletes reports with everything hanging off them: photos on disk, matches, chats and messages.</summary>

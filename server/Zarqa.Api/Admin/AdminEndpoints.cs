@@ -24,6 +24,10 @@ public static class AdminEndpoints
             return Results.Ok(new
             {
                 users = await db.Users.CountAsync(ct),
+                // Breakdown of `users`, so the page can leave made-up people out of the tiles and say what a wipe removes.
+                admins = await db.Users.CountAsync(u => u.IsAdmin, ct),
+                sampleUsers = await db.Users.CountAsync(u => u.Email.EndsWith(SampleData.EmailSuffix), ct),
+                sampleReports = await db.Reports.CountAsync(r => r.User!.Email.EndsWith(SampleData.EmailSuffix), ct),
                 newUsers30d = await db.Users.CountAsync(u => u.CreatedAt > monthAgo, ct),
                 reports,
                 matches,
@@ -36,11 +40,17 @@ public static class AdminEndpoints
             });
         });
 
-        admin.MapGet("/reports", async (string? status, ZarqaDb db, CancellationToken ct) =>
+        // q searches title, description and owner email, so the 200 limit applies after filtering.
+        admin.MapGet("/reports", async (string? status, string? q, ZarqaDb db, CancellationToken ct) =>
         {
-            var q = db.Reports.AsNoTracking().Include(r => r.User).Include(r => r.Photos).AsQueryable();
-            if (Enum.TryParse<ReportStatus>(status, true, out var s)) q = q.Where(r => r.Status == s);
-            var list = await q.OrderByDescending(r => r.CreatedAt).Take(200).ToListAsync(ct);
+            var query = db.Reports.AsNoTracking().Include(r => r.User).Include(r => r.Photos).AsQueryable();
+            if (Enum.TryParse<ReportStatus>(status, true, out var s)) query = query.Where(r => r.Status == s);
+            if (!string.IsNullOrWhiteSpace(q))
+            {
+                var like = "%" + q.Trim().Replace("\\", "\\\\").Replace("%", "\\%").Replace("_", "\\_") + "%";
+                query = query.Where(r => EF.Functions.ILike(r.Title, like, "\\") || EF.Functions.ILike(r.Description, like, "\\") || EF.Functions.ILike(r.User!.Email, like, "\\"));
+            }
+            var list = await query.OrderByDescending(r => r.CreatedAt).Take(200).ToListAsync(ct);
             return list.Select(r => new
             {
                 r.Id,
@@ -54,6 +64,7 @@ public static class AdminEndpoints
                 owner = r.User!.Email,
                 ownerId = r.UserId,
                 ownerBanned = r.User.IsBanned,
+                ownerIsAdmin = r.User.IsAdmin,
                 photoIds = PhotoAccess.SharedIds(r),
                 r.CreatedAt,
             });
@@ -107,9 +118,19 @@ public static class AdminEndpoints
         {
             var q = db.ReviewLogs.AsNoTracking().AsQueryable();
             if (reportId is { } rid) q = q.Where(l => l.ReportId == rid || l.CounterpartId == rid);
-            return await q.OrderByDescending(l => l.Id).Take(100)
+            var logs = await q.OrderByDescending(l => l.Id).Take(100)
                 .Select(l => new { l.Id, l.ReportId, l.CounterpartId, l.Step, l.Payload, l.CostUsd, l.CreatedAt })
                 .ToListAsync(ct);
+            // Name the other report in each entry (its title and kind are already on the admin reports list).
+            var otherIds = logs.Select(l => reportId is { } id && l.CounterpartId == id ? l.ReportId : l.CounterpartId).OfType<Guid>().Distinct().ToList();
+            var others = await db.Reports.AsNoTracking().Where(r => otherIds.Contains(r.Id))
+                .ToDictionaryAsync(r => r.Id, r => new { r.Title, Kind = r.Kind.ToString().ToLowerInvariant() }, ct);
+            return logs.Select(l =>
+            {
+                var other = reportId is { } id && l.CounterpartId == id ? l.ReportId : l.CounterpartId;
+                var o = other is { } oid && others.TryGetValue(oid, out var found) ? found : null;
+                return new { l.Id, l.ReportId, l.CounterpartId, l.Step, l.Payload, l.CostUsd, l.CreatedAt, counterpartTitle = o?.Title, counterpartKind = o?.Kind };
+            }).ToList();
         });
     }
 
