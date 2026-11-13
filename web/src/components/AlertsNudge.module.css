@@ -37,6 +37,19 @@
   letter-spacing: 0.5px;
   text-transform: uppercase;
 }
+.on:disabled {
+  opacity: 0.7;
+}
+/* After turning alerts on from the card: one quiet line in its place. */
+.done {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--sage);
+}
 .later {
   min-height: 40px;
   padding: 0 12px;

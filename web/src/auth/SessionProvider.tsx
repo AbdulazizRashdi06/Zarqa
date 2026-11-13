@@ -6,6 +6,7 @@ import { BigButton, Wordmark, ZarqaBubble } from '../components/ui'
 import s from '../components/states.module.css'
 import { t } from '../i18n'
 import { api, ApiError, setUnauthorizedHandler } from '../lib/api'
+import { clearDraft } from '../lib/draft'
 import { disablePushOnThisDevice } from '../lib/push'
 import { clearReturnPath, rememberReturnPath, returnPath, SessionContext, useSession, type Me } from './session'
 
@@ -53,6 +54,8 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   const signOut = useCallback(async () => {
     // Stop this phone showing the account's alerts (chat text, pickup codes) after it signs out.
     await disablePushOnThisDevice().catch(() => undefined)
+    // An unfinished report (maybe a photo of an ID card) doesn't stay on a shared browser.
+    clearDraft()
     await api('/auth/logout', { method: 'POST' })
     updateMe(null)
   }, [updateMe])
