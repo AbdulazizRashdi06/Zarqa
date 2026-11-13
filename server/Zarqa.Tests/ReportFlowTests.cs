@@ -163,6 +163,43 @@ public class ReportFlowTests(TestApp app) : IClassFixture<TestApp>
     }
 
     [Fact]
+    public async Task Editing_with_the_one_text_box_renames_the_report_and_only_while_it_is_searching()
+    {
+        var http = await app.SignedIn("edit.text@gutech.edu.om");
+        var report = await Json(await http.PostAsync("/api/reports", TextForm("lost", "Libary bottle, blue")));
+        var id = report.GetProperty("id").GetGuid();
+
+        var edited = await http.PatchAsync($"/api/reports/{id}",
+            JsonContent.Create(new { text = "Blue water bottle, green cable tie on the handle", locationText = "Library" }));
+        Assert.Equal(HttpStatusCode.OK, edited.StatusCode);
+        var body = await Json(edited);
+        Assert.Equal("Blue water bottle", body.GetProperty("title").GetString());
+        Assert.Equal("Blue water bottle, green cable tie on the handle", body.GetProperty("description").GetString());
+        Assert.Equal("Library", body.GetProperty("locationText").GetString());
+
+        var empty = await http.PatchAsync($"/api/reports/{id}", JsonContent.Create(new { text = "  " }));
+        Assert.Equal(HttpStatusCode.BadRequest, empty.StatusCode);
+
+        Assert.Equal(HttpStatusCode.NoContent, (await http.PostAsync($"/api/reports/{id}/close", null)).StatusCode);
+        var closed = await http.PatchAsync($"/api/reports/{id}", JsonContent.Create(new { text = "Blue bottle" }));
+        Assert.Equal(HttpStatusCode.BadRequest, closed.StatusCode);
+        Assert.Equal("Closed", (await Json(await http.GetAsync($"/api/reports/{id}"))).GetProperty("pill").GetString());
+    }
+
+    [Fact]
+    public async Task An_expired_report_says_so_instead_of_closed()
+    {
+        var http = await app.SignedIn("expired.pill@gutech.edu.om");
+        var id = (await Json(await http.PostAsync("/api/reports", TextForm("lost", "Grey scarf")))).GetProperty("id").GetGuid();
+        await using (var db = app.Db())
+        {
+            (await db.Reports.FirstAsync(r => r.Id == id)).Status = ReportStatus.Expired;
+            await db.SaveChangesAsync();
+        }
+        Assert.Equal("Expired", (await Json(await http.GetAsync($"/api/reports/{id}"))).GetProperty("pill").GetString());
+    }
+
+    [Fact]
     public async Task Refuses_future_dates()
     {
         var http = await app.SignedIn("future@gutech.edu.om");

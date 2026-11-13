@@ -11,3 +11,16 @@ export const reportsCache: { userId: string | null; reports: Report[] | null; op
   reports: null,
   openedId: null,
 }
+
+/**
+ * Forget one-shot location state ("Posted!", "Closed.") on the current history entry, so Back, Forward or a reload
+ * don't show it again. react-router keeps it in history.state.usr; replacing it there changes nothing on screen.
+ */
+export function clearHistoryState() {
+  try {
+    const state = window.history.state as { usr?: unknown } | null
+    if (state && state.usr != null) window.history.replaceState({ ...state, usr: null }, '')
+  } catch {
+    // Not fatal: the message would just show again after a reload.
+  }
+}
