@@ -5,7 +5,6 @@ import { RouteSettled } from './lib/nav'
 import Admin from './screens/Admin'
 import Info from './screens/Info'
 import Chat from './screens/Chat'
-import Consent from './screens/Consent'
 import Chats from './screens/Chats'
 import Home from './screens/Home'
 import Match from './screens/Match'
@@ -25,7 +24,6 @@ export default function App() {
       <SessionProvider>
         <Routes>
           <Route path="/signin" element={<GuestOnly><SignIn /></GuestOnly>} />
-          <Route path="/consent" element={<RequireSession><Consent /></RequireSession>} />
           <Route path="/welcome" element={<RequireSession><Welcome /></RequireSession>} />
           <Route path="/" element={<RequireSession><Home /></RequireSession>} />
           <Route path="/reports" element={<RequireSession><Reports /></RequireSession>} />

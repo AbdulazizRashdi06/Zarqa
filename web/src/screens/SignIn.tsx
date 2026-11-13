@@ -2,10 +2,12 @@ import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { Link } from '../lib/nav'
 import { useNavigate } from '../lib/transition'
 import { useSession, type Me } from '../auth/session'
+import { ConsentCheck } from '../components/ConsentCheck'
 import { BigButton, MonoLabel, Wordmark, ZarqaBubble } from '../components/ui'
 import { zarqaMotion } from '../components/zarqaMotion'
 import { t } from '../i18n'
 import { api, ApiError } from '../lib/api'
+import { CONSENT_VERSION } from '../lib/consent'
 import s from './SignIn.module.css'
 
 const RESEND_AFTER = 30
@@ -13,6 +15,7 @@ const RESEND_AFTER = 30
 export default function SignIn() {
   const [step, setStep] = useState<'email' | 'code'>('email')
   const [email, setEmail] = useState('')
+  const [accepted, setAccepted] = useState(false)
   const [sentTo, setSentTo] = useState('')
   const [testCode, setTestCode] = useState<string | null>(null)
   const [error, setError] = useState('')
@@ -101,13 +104,14 @@ export default function SignIn() {
           aria-invalid={!!error}
           aria-describedby="email-help"
         />
+        <ConsentCheck checked={accepted} onChange={setAccepted} />
         {error && (
           <p key={error} className={s.error} role="alert" data-shake>
             {error}
           </p>
         )}
         <div style={{ marginTop: 8 }}>
-          <BigButton type="submit" label={busy ? t('signin.sending') : t('signin.send')} busy={busy} disabled={busy || !email.trim()} />
+          <BigButton type="submit" label={busy ? t('signin.sending') : t('signin.send')} busy={busy} disabled={busy || !email.trim() || !accepted} />
         </div>
         <p id="email-help" className={s.help}>
           {t('signin.help')}
@@ -115,8 +119,6 @@ export default function SignIn() {
       </form>
 
       <nav className={s.links} aria-label="About" data-enter style={{ '--delay': '500ms' }}>
-        <Link to="/terms">{t('signin.terms')}</Link>
-        <Link to="/privacy">{t('signin.privacy')}</Link>
         <Link to="/help">{t('signin.helpLink')}</Link>
       </nav>
     </main>
@@ -161,7 +163,8 @@ function CodeStep({
     setBusy(true)
     setError('')
     try {
-      await api('/auth/verify', { body: { email, code: value } })
+      // The code step is only reachable with the consent box ticked, so this records it with the sign-in.
+      await api('/auth/verify', { body: { email, code: value, consentVersion: CONSENT_VERSION } })
       const me = await api<Me>('/me')
       navigate(me.firstName ? '/' : '/welcome', { replace: true, dir: 'forward', prepare: () => setMe(me) })
     } catch (err) {

@@ -40,4 +40,19 @@ public class ConsentTests(TestApp app) : IClassFixture<TestApp>
         var posted = await http.PostAsync("/api/reports", ReportFlowTests.Form("lost", "Blue bottle", "Bottle"));
         Assert.Equal(HttpStatusCode.OK, posted.StatusCode);
     }
+
+    [Fact]
+    public async Task Ticking_the_sign_in_box_records_consent_with_the_code()
+    {
+        const string email = "consent.signin@gutech.edu.om";
+        var http = app.Client();
+        (await http.PostAsJsonAsync("/api/auth/request-code", new { email })).EnsureSuccessStatusCode();
+        (await http.PostAsJsonAsync("/api/auth/verify", new { email, code = app.Emails.LastCodeFor(email), consentVersion = Consent.Current })).EnsureSuccessStatusCode();
+
+        Assert.False((await http.GetFromJsonAsync<JsonElement>("/api/me")).GetProperty("needsConsent").GetBoolean());
+        await using var db = app.Db();
+        var user = await db.Users.SingleAsync(u => u.Email == email);
+        Assert.Equal(Consent.Current, user.ConsentVersion);
+        Assert.NotNull(user.ConsentedAt);
+    }
 }
