@@ -1,7 +1,10 @@
 import { useCallback, useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react'
-import { useNavigate, useParams } from 'react-router'
+import { useParams } from 'react-router'
+import { useNavigate } from '../lib/transition'
 import { ArrowRight, Check, ChevronLeft } from '../components/icons'
+import { CoinBurst } from '../components/CoinBurst'
 import { Avatar, BigButton, LuggageTag, RoundButton, TearLine } from '../components/ui'
+import { zarqaMotion } from '../components/zarqaMotion'
 import { t } from '../i18n'
 import { api, ApiError } from '../lib/api'
 import { clockTime, muscatNow, relativeDay } from '../lib/dates'
@@ -32,7 +35,11 @@ export default function Chat() {
   const [error, setError] = useState('')
   const [planning, setPlanning] = useState(false)
   const [returned, setReturned] = useState(false)
+  const [leaving, setLeaving] = useState(false)
+  // Newest message id when the chat opened: only what arrives after that animates in.
+  const [openedAt, setOpenedAt] = useState<number | null>(null)
   const lastId = useRef(0)
+  const scrolled = useRef(false)
   const bottom = useRef<HTMLDivElement>(null)
 
   const merge = useCallback((incoming: Msg[]) => {
@@ -52,8 +59,10 @@ export default function Chat() {
       try {
         const th = await api<Thread>(`/conversations/${id}${first ? '' : `?after=${lastId.current}`}`)
         if (!alive) return
-        if (first) setThread(th)
-        else {
+        if (first) {
+          setThread(th)
+          setOpenedAt(th.messages.at(-1)?.id ?? 0)
+        } else {
           merge(th.messages)
           setThread((cur) => {
             // The other person confirmed our "it's back": celebrate on this side too.
@@ -78,9 +87,14 @@ export default function Chat() {
     }
   }, [id, merge])
 
+  const messageCount = thread?.messages.length ?? 0
   useEffect(() => {
-    bottom.current?.scrollIntoView({ block: 'end' })
-  }, [thread?.messages.length])
+    if (!messageCount) return
+    // Jump to the end when the chat opens; glide there for each new message.
+    const glide = scrolled.current && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    bottom.current?.scrollIntoView({ block: 'end', behavior: glide ? 'smooth' : 'auto' })
+    scrolled.current = true
+  }, [messageCount])
 
   async function send(text: string) {
     const body = text.trim()
@@ -125,6 +139,7 @@ export default function Chat() {
   const returnPending = thread.messages.some((m) => m.kind === 'return' && m.handoverStatus === 'suggested')
   const handoverSet = thread.messages.some((m) => m.kind === 'handover' && m.handoverStatus === 'confirmed')
   const awaitingMe = thread.messages.some((m) => m.kind === 'handover' && m.handoverStatus === 'suggested' && m.canConfirm)
+  const fresh = (m: Msg) => (openedAt !== null && m.id > openedAt ? s.fresh : '')
 
   return (
     <main className={s.page}>
@@ -151,7 +166,7 @@ export default function Chat() {
         {visible.map((m) => {
           if (m.kind === 'system')
             return (
-              <div key={m.id} className={s.system}>
+              <div key={m.id} className={`${s.system} ${fresh(m)}`}>
                 <img src="/mascot/reading.webp" alt="Zarqa" width={52} />
                 <div className={s.systemBubble}>
                   <span className={s.zarqa}>ZARQA</span>
@@ -162,12 +177,12 @@ export default function Chat() {
           if (m.kind === 'return') {
             if (m.handoverStatus === 'replaced') return null
             return (
-              <div key={m.id} className={`${s.ticket} ${s.returnTicket}`} style={{ alignSelf: m.mine ? 'flex-end' : 'flex-start' }}>
+              <div key={m.id} className={`${s.ticket} ${s.returnTicket} ${fresh(m)}`} data-mine={m.mine} style={{ alignSelf: m.mine ? 'flex-end' : 'flex-start' }}>
                 <span className={s.ticketLabel}>{m.mine ? t('chat.return.you') : t('chat.return.they', { name: thread.otherName.toUpperCase() })}</span>
                 <span className={s.returnText}>{m.text}</span>
                 <TearLine inset={16} notch={22} />
                 {m.handoverStatus === 'confirmed' ? (
-                  <div className={s.confirmed}>
+                  <div className={s.confirmed} data-enter="pop">
                     <Check size={18} color="var(--ink)" />
                     {t('chat.return.done')}
                   </div>
@@ -195,7 +210,7 @@ export default function Chat() {
             const [date, time] = m.handoverAt.split('T')
             const dayLabel = relativeDay(date)
             return (
-              <div key={m.id} className={s.ticket} style={{ alignSelf: m.mine ? 'flex-end' : 'flex-start' }}>
+              <div key={m.id} className={`${s.ticket} ${fresh(m)}`} data-mine={m.mine} style={{ alignSelf: m.mine ? 'flex-end' : 'flex-start' }}>
                 <span className={s.ticketLabel}>{m.handoverStatus === 'confirmed' ? t('chat.handover.confirmed') : t('chat.handover.suggested')}</span>
                 <div className={s.ticketWhen}>
                   <span className={s.ticketTime}>{clockTime(time)}</span>
@@ -205,7 +220,7 @@ export default function Chat() {
                 </div>
                 <TearLine inset={16} notch={22} />
                 {m.handoverStatus === 'confirmed' ? (
-                  <div className={s.confirmed}>
+                  <div className={s.confirmed} data-enter="pop">
                     <img src="/mascot/wink.webp" alt="Zarqa winking" width={34} />
                     {t('chat.handover.seeYou')}
                   </div>
@@ -225,7 +240,7 @@ export default function Chat() {
             )
           }
           return (
-            <div key={m.id} className={m.mine ? s.meWrap : s.themWrap}>
+            <div key={m.id} className={`${m.mine ? s.meWrap : s.themWrap} ${fresh(m)}`} data-mine={m.mine}>
               <div className={m.mine ? s.me : s.them}>{m.text}</div>
               <span className={s.at}>{timeOf(m.at)}</span>
             </div>
@@ -309,13 +324,24 @@ export default function Chat() {
       )}
 
       {returned && (
-        <ReturnedDialog onClose={() => setReturned(false)} className={s.overlay}>
-          <img src="/mascot/phone.webp" alt="Zarqa holding up a returned item" className={s.overlayMascot} />
-          <span className={s.overlayItem}>{thread.itemTitle}</span>
+        <ReturnedDialog
+          className={s.overlay}
+          leaving={leaving}
+          onClose={() => setLeaving(true)}
+          onLeft={() => {
+            setReturned(false)
+            setLeaving(false)
+          }}
+        >
+          {/* Her gold coins go up behind her as she lands. */}
+          <CoinBurst origin={[0.5, 0.4]} delay={420} />
+          {/* The owner's iPhone art, untouched: the hop is the mascot skill's bounce preset on the still. */}
+          <img src="/mascot/phone.webp" alt="Zarqa holding up a returned item" className={`${s.overlayMascot} ${zarqaMotion('bounce')}`} />
+          <span className={s.overlayItem} data-enter style={{ '--delay': '420ms' }}>{thread.itemTitle}</span>
           <h2 id="returned-title" tabIndex={-1} className={s.overlayTitle}>{t('chat.returned.title')}</h2>
-          <p className={s.overlayText}>{thread.myRole === 'found' ? t('chat.returned.body.found', { name: thread.otherName }) : t('chat.returned.body')}</p>
+          <p className={s.overlayText} data-enter style={{ '--delay': '560ms' }}>{thread.myRole === 'found' ? t('chat.returned.body.found', { name: thread.otherName }) : t('chat.returned.body')}</p>
           <BigButton to="/" label={t('chat.returned.home')} />
-          <button type="button" className={s.keep} onClick={() => setReturned(false)}>
+          <button type="button" className={s.keep} onClick={() => setLeaving(true)}>
             {t('chat.returned.keep')}
           </button>
         </ReturnedDialog>
@@ -334,6 +360,7 @@ function HandoverForm({ onSend, onCancel }: { onSend: (date: string, time: strin
   return (
     <form
       className={s.plan}
+      data-enter
       onSubmit={async (e) => {
         e.preventDefault()
         setBusy(true)
@@ -359,12 +386,26 @@ function HandoverForm({ onSend, onCancel }: { onSend: (date: string, time: strin
   )
 }
 
-/** Modal celebration: takes focus, keeps Tab inside, closes on Escape. */
-function ReturnedDialog({ children, className, onClose }: { children: ReactNode; className: string; onClose: () => void }) {
+/** Modal celebration: takes focus, keeps Tab inside, closes on Escape. It fades out (`leaving`) before `onLeft` removes it. */
+function ReturnedDialog({
+  children,
+  className,
+  leaving,
+  onClose,
+  onLeft,
+}: {
+  children: ReactNode
+  className: string
+  leaving: boolean
+  onClose: () => void
+  onLeft: () => void
+}) {
   const box = useRef<HTMLDivElement>(null)
   useEffect(() => {
     const before = document.activeElement as HTMLElement | null
     box.current?.querySelector<HTMLElement>('h2')?.focus()
+    // A happy double tap you can feel, where the phone allows it.
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) navigator.vibrate?.([14, 80, 26])
     return () => before?.focus()
   }, [])
   return (
@@ -374,6 +415,10 @@ function ReturnedDialog({ children, className, onClose }: { children: ReactNode;
       aria-modal="true"
       aria-labelledby="returned-title"
       className={className}
+      data-leaving={leaving || undefined}
+      onAnimationEnd={(e) => {
+        if (leaving && e.target === e.currentTarget) onLeft()
+      }}
       onKeyDown={(e) => {
         if (e.key === 'Escape') onClose()
         if (e.key !== 'Tab' || !box.current) return

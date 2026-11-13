@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router'
 import { GuestOnly, RequireSession, SessionProvider } from './auth/SessionProvider'
 import { t } from './i18n'
+import { RouteSettled } from './lib/nav'
 import Admin from './screens/Admin'
 import Info from './screens/Info'
 import Chat from './screens/Chat'
@@ -19,6 +20,7 @@ import Welcome from './screens/Welcome'
 export default function App() {
   return (
     <BrowserRouter>
+      <RouteSettled />
       <SessionProvider>
         <Routes>
           <Route path="/signin" element={<GuestOnly><SignIn /></GuestOnly>} />

@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
-import { useLocation, useNavigate, useParams } from 'react-router'
+import { useLocation, useParams } from 'react-router'
+import { useNavigate } from '../lib/transition'
 import { BackHeader, BigButton, MonoLabel, StatusPill, Ticket, ZarqaBubble, type PillStatus } from '../components/ui'
 import { t } from '../i18n'
 import { api, ApiError } from '../lib/api'
 import { campusDate, clockTime, relativeDay } from '../lib/dates'
+import { reportsCache } from '../lib/reportsCache'
 import type { Report } from '../lib/types'
 import s from './ReportDetail.module.css'
 
@@ -11,10 +13,17 @@ import s from './ReportDetail.module.css'
 export default function ReportDetail() {
   const { id } = useParams()
   const navigate = useNavigate()
-  const [report, setReport] = useState<Report | null>(null)
+  const state = useLocation().state as { posted?: string; report?: Report } | null
+  // Opened from its card, the report came along: show it at once and refresh it underneath.
+  const [report, setReport] = useState<Report | null>(state?.report && state.report.id === id ? state.report : null)
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
-  const justPosted = (useLocation().state as { posted?: string } | null)?.posted === 'rsa'
+  const justPosted = state?.posted === 'rsa'
+
+  useEffect(() => {
+    // Going back, this ticket shrinks into its card on My Reports.
+    reportsCache.openedId = id ?? null
+  }, [id])
 
   useEffect(() => {
     api<Report>(`/reports/${id}`)
@@ -28,6 +37,8 @@ export default function ReportDetail() {
     setError('')
     try {
       await api(path, { method })
+      // The list changed: My Reports should load it again instead of showing this report's old card.
+      reportsCache.openedId = null
       navigate('/reports', { replace: true })
     } catch (e) {
       setError(e instanceof ApiError ? e.message : t('common.error'))
@@ -42,6 +53,7 @@ export default function ReportDetail() {
     setError('')
     try {
       setReport(await api<Report>(`/reports/${report.id}/rsa`, { method: 'POST' }))
+      reportsCache.reports = null
     } catch (e) {
       setError(e instanceof ApiError ? e.message : t('common.error'))
     } finally {
@@ -68,7 +80,7 @@ export default function ReportDetail() {
     <main className={s.page}>
       <BackHeader to="/reports" label={relativeDay(campusDate(report.createdAt)).toUpperCase()} />
 
-      <Ticket>
+      <Ticket style={{ viewTransitionName: 'report-ticket' }}>
         <div className={s.body}>
           <div className={s.top}>
             <span className={s.tag} style={{ background: accent }}>
@@ -80,8 +92,8 @@ export default function ReportDetail() {
 
           {report.photoIds.length > 0 && (
             <div className={s.photos}>
-              {report.photoIds.map((p) => (
-                <img key={p} src={`/api/photos/${p}`} alt="" className={s.photo} />
+              {report.photoIds.map((p, i) => (
+                <img key={p} src={`/api/photos/${p}`} alt="" className={s.photo} data-enter="pop" style={{ '--i': i, '--delay': '160ms' }} />
               ))}
             </div>
           )}
@@ -99,13 +111,13 @@ export default function ReportDetail() {
       </Ticket>
 
       {justPosted && (
-        <ZarqaBubble mascot="wink" alt="Zarqa winking" width={64}>
+        <ZarqaBubble mascot="wink" alt="Zarqa winking" width={64} motion="wiggle">
           {t('reports.posted.rsa')}
         </ZarqaBubble>
       )}
 
       {report.dropAtRsa && report.dropCode && report.status !== 'Returned' && report.status !== 'Closed' && report.status !== 'Expired' && (
-        <Ticket>
+        <Ticket data-enter="pop" style={{ '--delay': '140ms' }}>
           <div className={s.body}>
             <MonoLabel color="var(--ink-muted)">{t('detail.rsa.label')}</MonoLabel>
             <p className={s.code} aria-label={report.dropCode.split('').join(' ')}>{report.dropCode}</p>

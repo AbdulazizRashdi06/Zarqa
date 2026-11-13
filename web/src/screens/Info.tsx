@@ -1,4 +1,4 @@
-import { Link } from 'react-router'
+import { Link } from '../lib/nav'
 import { useSession } from '../auth/session'
 import { BackHeader, Ticket } from '../components/ui'
 import { t, type StringKey } from '../i18n'

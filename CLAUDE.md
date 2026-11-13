@@ -18,10 +18,10 @@ The real app is being **built from scratch**: an ASP.NET Core (.NET 10) backend 
   1. Embedding retrieval: vector search, top 25.
   2. The existing preliminary-score shortlist: ≥ 0.56, top 10.
   3. Two gpt-6-luna advocates, one arguing for a match and one against, run in parallel and see the photos.
-  4. Jev (TypeSafe's typed-decision model) decides. A match is shown when `0.5·same_item + 0.5·overall ≥ 0.55` (lowered from 0.65 on 2026-11-01; see decisions.md).
-   Both Jev questions and both advocates end with a fixed instruction to read item names in context and not treat missing details as evidence against a match (owner decisions 2026-10-27 and 2026-10-31; not re-measured on the benchmark, see decisions.md).
+  4. gpt-6.1-terra judges the two arguments (text only; since 2026-11-10). A match is shown when `0.5·same_item + 0.5·overall ≥ 0.55` (lowered from 0.65 on 2026-11-01; see decisions.md). Each failed advocate or judge call falls back to DeepSeek Flash (`DEEPSEEK_API_KEY`). `MATCHING_USE_TERRA=false` restores the Jev judge.
+   The judge questions and both advocates end with a fixed instruction to read item names in context and not treat missing details as evidence against a match (owner decisions 2026-10-27 and 2026-10-31; not re-measured on the benchmark, see decisions.md).
    After changing the cut-off or prompts, press **Re-check open reports** on `/admin` once it's deployed. Pairs that were reviewed but not matched are only reviewed again when one of their reports is queued.
-- **Fallback:** plain gpt-6-luna review when Jev is unavailable. Jev is in early access.
+- **Fallback:** plain gpt-6-luna review when no debate route is configured.
 - **Recall is the deciding metric.** A missed match means someone never gets their item back. Precision is secondary.
 - **Design for 100–1,000 active reports.** GUtech has about 2,000 people, so 10,000 is unrealistic.
 
@@ -40,6 +40,14 @@ The mascot is a girl inspired by Zarqa Al-Yamama: cream veil, blue eyes, two bra
 - Judge images by `<name>.preview.jpg`. Some viewers show the transparent PNG with a dark glow that isn't really there.
 - Known drift: the gold cuffs on her braids sometimes disappear.
 - Animations: the **`zarqa-mascot-animation` skill** ([SKILL.md](.claude/skills/zarqa-mascot-animation/SKILL.md)) reuses the same locked prompt. Its routes are: procedural motion of an existing still (no redrawing, and it also writes CSS), Codex keyframe sprite sheets, and video-model clips from a start frame to an end frame on green, keyed back to transparent. The default is Gemini Omni Flash (`GEMINI_API_KEY` in `benchmark/.env`, which needs a billed project; the free tier allows 0 requests). Veo 3.1 Lite and Seedance on fal.ai use `FAL_KEY`. Google shut down Veo in the Gemini API on 2026-10-22. The user adds keys; only mascot art is ever sent.
+
+## Motion (2026-11-10)
+
+- The rules and tokens are at the top of `web/src/motion.css` (after Emil Kowalski's design-engineering notes): press feedback on every button and link, strong ease-out, UI motion under ~300ms, transform/opacity only, nothing from `scale(0)`, nothing that delays a tap, bounce only on Zarqa, stickers and luggage tags, and reduced motion keeps fades but drops movement. Only rare moments get a show: the match reveal, the "returned" celebration, first sign-in and Welcome.
+- Entrances: `data-enter` (`"pop"`, `"headline"`, `"sticker"`) with `style={{ '--i': n }}` or `'--delay'`. Use the `translate`/`scale`/`rotate` properties, not `transform`, so motion stacks on the design's tilts.
+- Page changes: import `Link` from `web/src/lib/nav` and `useNavigate` from `web/src/lib/transition`, not from `react-router`. They slide the page with a view transition (`dir` overrides forward/back). Browser back and swipe are deliberately not animated.
+- Zarqa: `zarqaMotion('breathe' | 'sway' | 'bob' | 'wiggle' | 'bounce')` gives a still an entrance and a loop. The keyframes in `mascot.module.css` are the mascot-animation skill's `motion` presets; set `--zo` for her pivot. Real clips go in `web/public/mascot/anim/` (not precached), each with a still for reduced motion.
+- `web/tests/motion.spec.ts` checks the page slide, the match reveal and that reduced motion has no movement.
 
 ## Running and deploying
 

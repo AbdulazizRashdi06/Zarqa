@@ -75,6 +75,8 @@
   font-family: var(--font-display);
   font-size: 44px;
   line-height: 1;
+  /* Steady width while the number counts up */
+  font-variant-numeric: tabular-nums;
 }
 .statLabel {
   font-family: var(--font-mono);
@@ -132,6 +134,9 @@
   color: var(--tan);
 }
 
+.changePhoto:active {
+  scale: 0.9;
+}
 .signOut {
   margin-top: auto;
   min-height: 56px;

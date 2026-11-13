@@ -22,9 +22,50 @@
   top: 44px;
   right: -26px;
   width: 256px;
-  height: auto;
   z-index: 0;
   pointer-events: none;
+  animation: fadeIn 300ms ease backwards;
+}
+.hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* The art fades out at the bottom: she sways from there. */
+  --zo: 58% 100%;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes heroIn {
+  from {
+    opacity: 0;
+    translate: 44px 12px;
+    rotate: 5deg;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero {
+    transform-origin: 60% 100%;
+    animation: heroIn 800ms var(--ease-out) backwards;
+  }
+}
+.line {
+  display: block;
+}
+
+/* Welcome: full-height Zarqa waving beside her bubble */
+.wave {
+  flex-shrink: 0;
+  width: clamp(104px, 31vw, 132px);
+  margin-left: -6px;
+  animation: fadeIn 260ms ease backwards;
+}
+.wave img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .title {
@@ -158,8 +199,28 @@
   font-family: var(--font-display);
   font-size: 32px;
 }
+.box {
+  transition:
+    border-color 140ms ease,
+    background-color 140ms ease;
+}
 .boxActive {
   border-color: var(--tan);
+}
+.boxFilled {
+  background: var(--slate);
+}
+@keyframes digitIn {
+  from {
+    opacity: 0;
+    scale: 0.6;
+    translate: 0 8px;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .digit {
+    animation: digitIn 180ms var(--ease-out);
+  }
 }
 .codeInput {
   position: absolute;

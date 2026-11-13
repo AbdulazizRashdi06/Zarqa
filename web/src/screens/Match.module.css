@@ -21,6 +21,30 @@
   width: 128px;
   height: auto;
 }
+/* Zarqa is the last beat of the reveal: she pops up once the stamp has landed. */
+.mascot {
+  --z-delay: 900ms;
+}
+@keyframes verdictIn {
+  from {
+    opacity: 0;
+    scale: 0.7;
+    rotate: -14deg;
+    translate: 0 10px;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+.verdict {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  margin-bottom: -6px;
+  animation: fadeIn 200ms ease 300ms backwards;
+}
 
 .title {
   margin: 0;
@@ -51,15 +75,101 @@
   left: -4px;
   top: 10px;
   width: calc(50% + 6px);
-  transform: rotate(-6deg);
+  rotate: -6deg;
   background: var(--paper);
 }
 .foundTag {
   right: -4px;
   top: 44px;
   width: calc(50% + 10px);
-  transform: rotate(5deg);
+  rotate: 5deg;
   background: var(--tan);
+}
+
+/* The reveal, about a second, once per match: your tag flies in from the left, theirs from the right,
+   they overlap, and the MATCH stamp comes down on the pair. Rare and worth it, so it gets a show.
+   Nothing waits on it: the buttons below work from the first frame. */
+@keyframes lostIn {
+  from {
+    opacity: 0;
+    translate: -70% 24px;
+    rotate: -22deg;
+  }
+}
+@keyframes foundIn {
+  from {
+    opacity: 0;
+    translate: 70% 30px;
+    rotate: 20deg;
+  }
+}
+/* A stamp speeds up into the paper, squashes on impact, then settles. */
+@keyframes stampDown {
+  0% {
+    opacity: 0;
+    scale: 2.3;
+    rotate: -34deg;
+  }
+  45% {
+    opacity: 1;
+    scale: 0.88;
+    rotate: -12deg;
+    animation-timing-function: var(--ease-out);
+  }
+  70% {
+    scale: 1.07;
+    animation-timing-function: var(--ease-out);
+  }
+  100% {
+    scale: 1;
+  }
+}
+/* The ring of ink the stamp throws off */
+@keyframes stampRing {
+  from {
+    opacity: 0.7;
+    scale: 1;
+  }
+  to {
+    opacity: 0;
+    scale: 1.9;
+  }
+}
+/* Both tags jump when it lands. */
+@keyframes thud {
+  30% {
+    translate: 0 4px;
+  }
+}
+.tags {
+  animation: fadeIn 240ms ease backwards;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .tags {
+    animation: thud 260ms var(--ease-out) 800ms;
+  }
+  .lostTag {
+    animation: lostIn 620ms var(--spring-soft) 80ms backwards;
+  }
+  .foundTag {
+    animation: foundIn 620ms var(--spring-soft) 200ms backwards;
+  }
+  .stamp {
+    animation: stampDown 420ms cubic-bezier(0.5, 0, 0.9, 0.4) 640ms backwards;
+  }
+  .stamp::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    border: 3px solid var(--paper);
+    opacity: 0;
+    animation: stampRing 520ms var(--ease-out) 830ms backwards;
+    pointer-events: none;
+  }
+  .verdict {
+    animation: verdictIn 460ms var(--spring) 1080ms backwards;
+  }
 }
 .tagName {
   font-family: var(--font-display);
@@ -85,7 +195,7 @@
   border-radius: 46px;
   background: var(--ground);
   border: 3px solid var(--paper);
-  transform: rotate(-14deg);
+  rotate: -14deg;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -183,6 +293,23 @@
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
+/* Opens under its button, so it grows from the top. */
+@keyframes wordsIn {
+  from {
+    opacity: 0;
+    scale: 0.98;
+    translate: 0 -6px;
+  }
+}
+.wordsText {
+  transform-origin: 50% 0;
+  animation: fadeIn 160ms ease;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .wordsText {
+    animation: wordsIn 220ms var(--ease-out);
+  }
+}
 .wordsToggle {
   width: 100%;
   min-height: var(--tap);
@@ -211,4 +338,5 @@
 .pickup { padding: 22px 20px; color: var(--ink); display: flex; flex-direction: column; gap: 6px; }
 .pickup p { margin: 0; line-height: 1.5; }
 .pickupCode { font: 56px/1 var(--font-display); letter-spacing: 4px; margin: 6px 0 4px !important; }
+.photo { transition: scale 160ms var(--ease-out); }
 .pickupItem { font-weight: 700; }

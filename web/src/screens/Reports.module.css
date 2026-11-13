@@ -31,6 +31,13 @@
   font-weight: 700;
   letter-spacing: 1.2px;
 }
+.filter {
+  transition:
+    scale 160ms var(--ease-out),
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
+}
 .filter[aria-pressed='true'] {
   background: var(--paper);
   border-color: var(--paper);
@@ -53,6 +60,10 @@
   border-radius: 18px;
   padding: 12px 14px 12px 12px;
   text-decoration: none;
+}
+/* A card is a big target: it gives a little less than a button does. */
+.card:active {
+  scale: 0.98;
 }
 .cardText {
   flex-grow: 1;
@@ -101,6 +112,8 @@
   width: min(72vw, 290px);
   height: auto;
   align-self: center;
+  /* Sitting on the ground: she rocks from where she sits, slowly. */
+  --zo: 50% 92%;
 }
 .emptyText {
   margin: 0;

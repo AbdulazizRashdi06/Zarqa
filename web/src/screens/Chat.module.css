@@ -188,6 +188,32 @@
   border-radius: 20px 20px 4px 20px;
   font-weight: 600;
 }
+/* A message that arrives while the chat is open grows out of its own corner: mine from the right, theirs from the left.
+   The history that was already there when the chat opened does not animate. */
+@keyframes msgIn {
+  from {
+    opacity: 0;
+    scale: 0.9;
+    translate: 0 10px;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+.fresh {
+  transform-origin: 0 100%;
+  animation: fadeIn 180ms ease;
+}
+.fresh[data-mine='true'] {
+  transform-origin: 100% 100%;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .fresh {
+    animation: msgIn 240ms var(--ease-out);
+  }
+}
 .at {
   font-family: var(--font-mono);
   font-size: 10px;
@@ -337,8 +363,23 @@
   justify-content: center;
   padding: 0;
 }
+.send {
+  transition:
+    scale 160ms var(--ease-out),
+    opacity 160ms ease;
+}
+.send:not(:disabled):active {
+  scale: 0.92;
+}
 .send:disabled {
   opacity: 0.5;
+}
+.returnAsk {
+  transition:
+    scale 160ms var(--ease-out),
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease;
 }
 .notIt {
   align-self: center;
@@ -407,6 +448,47 @@
   width: 228px;
   height: auto;
   margin-bottom: -4px;
+  --z-delay: 120ms;
+}
+/* The celebration: the screen dims, Zarqa pops up and hops, her coins fly, and the title lands out of a blur.
+   Seen once per returned item, so it is allowed to be a show. The buttons are there from the start. */
+@keyframes overlayIn {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes overlayOut {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes titleSlam {
+  from {
+    opacity: 0;
+    scale: 1.45;
+    filter: blur(8px);
+  }
+}
+.overlay {
+  animation: overlayIn 220ms ease;
+}
+.overlay[data-leaving] {
+  animation: overlayOut 160ms ease forwards;
+}
+.overlay canvas {
+  z-index: -1;
+}
+.overlayTitle {
+  animation: overlayIn 200ms ease 300ms backwards;
+}
+/* It takes focus so screen readers announce it; it isn't a control, so no ring around the word. */
+.overlayTitle:focus {
+  outline: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .overlayTitle {
+    animation: titleSlam 460ms var(--ease-out) 380ms backwards;
+  }
 }
 .overlayItem {
   font-family: var(--font-mono);

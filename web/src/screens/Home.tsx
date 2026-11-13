@@ -1,9 +1,11 @@
 import { useEffect, useMemo, useRef, useState, type FormEvent, type KeyboardEvent } from 'react'
-import { Link, useNavigate } from 'react-router'
+import { Link } from '../lib/nav'
+import { useNavigate } from '../lib/transition'
 import { useSession } from '../auth/session'
 import { AlertsNudge } from '../components/AlertsNudge'
 import { ArrowRight, Camera, ChatBubble, Close, Lock, Pin, TagIcon } from '../components/icons'
 import { Avatar, BigButton, LuggageTag, MonoLabel, RoundButton, Sticker, Switch, TearLine, Ticket, Wordmark } from '../components/ui'
+import { zarqaMotion } from '../components/zarqaMotion'
 import { t, tm, type StringKey } from '../i18n'
 import { api, apiForm, ApiError } from '../lib/api'
 import { muscatNow } from '../lib/dates'
@@ -59,6 +61,9 @@ export default function Home() {
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
   const [summary, setSummary] = useState<HomeSummary | null>(null)
+  // Counts that restart a small animation: the headline when Lost/Found flips, Zarqa's camera when a photo lands.
+  const [flips, setFlips] = useState(0)
+  const [snaps, setSnaps] = useState(0)
   const fileInput = useRef<HTMLInputElement>(null)
   const textBox = useRef<HTMLTextAreaElement>(null)
   const navigate = useNavigate()
@@ -101,6 +106,7 @@ export default function Home() {
     try {
       const picked = await Promise.all([...files].slice(0, room).map(async (f) => toPicked(await shrinkPhoto(f))))
       setPhotos((p) => [...p, ...picked].slice(0, MAX_PHOTOS))
+      setSnaps((n) => n + 1)
       setError('')
     } catch {
       setError(t('form.photoError'))
@@ -210,18 +216,23 @@ export default function Home() {
             {partOfDay()}
             {firstName && `, ${firstName}`}
           </span>
-          <h1 className={s.headline}>
+          <h1 key={mode} className={s.headline} data-enter={flips ? 'headline' : undefined} style={{ animationDuration: '280ms' }}>
             {tm('home.headA', mode)}
             <br />
             <span style={{ color: accent }}>{tm('home.headB', mode)}</span>
           </h1>
         </div>
         {/* Zarqa keeps watch beside the headline: looking out for lost things, pleased about found ones. */}
-        <img
-          src={mode === 'lost' ? '/mascot/home-searching.webp' : '/mascot/home-found-keys.webp'}
-          alt=""
-          className={s.helloMascot}
-        />
+        {/* Both are always there, so flipping Lost/Found swaps her without a flash, and a quick double flip just reverses. */}
+        {(['lost', 'found'] as const).map((m) => (
+          <img
+            key={m}
+            src={m === 'lost' ? '/mascot/home-searching.webp' : '/mascot/home-found-keys.webp'}
+            alt=""
+            data-on={m === mode}
+            className={`${s.helloMascot} ${zarqaMotion('breathe', false)}`}
+          />
+        ))}
       </div>
 
       <div className={s.modes}>
@@ -234,8 +245,12 @@ export default function Home() {
               aria-pressed={on}
               aria-label={t(`home.mode.${m}.small` as StringKey)}
               className={s.modeBtn}
-              onClick={() => setMode(m)}
-              style={{ transform: on ? `rotate(${m === 'lost' ? -2.5 : 2.5}deg)` : undefined }}
+              onClick={() => {
+                if (m === mode) return
+                setMode(m)
+                setFlips((n) => n + 1)
+              }}
+              style={{ rotate: on ? `${m === 'lost' ? -2.5 : 2.5}deg` : undefined }}
             >
               <LuggageTag
                 className={s.modeTag}
@@ -257,12 +272,12 @@ export default function Home() {
         <TagIcon size={20} color="var(--text)" />
         <span className={s.reportsTitle}>{t('home.myReports')}</span>
         {summary && (
-          <span className={s.reportsCount} aria-label={t('home.reportsMeta', { active: summary.active })}>
+          <span className={s.reportsCount} data-enter="pop" aria-label={t('home.reportsMeta', { active: summary.active })}>
             {summary.active}
           </span>
         )}
         {waiting > 0 && (
-          <span className={s.reportsSticker}>
+          <span className={s.reportsSticker} data-enter="sticker" style={{ '--delay': '250ms' }}>
             <Sticker>{t('home.reportsWaiting', { n: waiting })}</Sticker>
           </span>
         )}
@@ -271,7 +286,9 @@ export default function Home() {
 
       <div className={s.ticketWrap}>
         {/* Zarqa peeks over the ticket, camera ready, ready to snap the item. */}
-        <img src="/mascot/home-camera-peek.webp" alt="" className={s.peek} />
+        {/* She rises from behind the paper when Home opens, and snaps her camera when a photo lands. */}
+        <img key={snaps} src="/mascot/home-camera-peek.webp" alt="" className={`${s.peek} ${snaps ? s.peekSnap : ''}`} />
+        {snaps > 0 && <span key={`flash-${snaps}`} aria-hidden="true" className={s.flash} />}
       <Ticket>
         <form className={s.form} onSubmit={submit} noValidate>
           <div className={s.field}>
@@ -283,7 +300,7 @@ export default function Home() {
             </div>
             <div className={s.photos} role="group" aria-labelledby="photos-label">
               {photos.map((p, i) => (
-                <div key={p.url} className={s.photoSlot} style={{ transform: `rotate(${TILTS[i]}deg)` }}>
+                <div key={p.url} className={`${s.photoSlot} ${photosLoaded ? s.photoNew : ''}`} style={{ transform: `rotate(${TILTS[i]}deg)` }}>
                   <img src={p.url} alt={t('form.photoN', { n: i + 1 })} className={s.photoImg} />
                   <button type="button" className={s.photoRemove} aria-label={t('form.removePhoto')} onClick={() => removePhoto(i)}>
                     <span className={s.xDot}>
@@ -338,7 +355,7 @@ export default function Home() {
               {t('form.text.hint')}
             </span>
             {showCardNotice && (
-              <div className={s.notice} role="note">
+              <div className={s.notice} role="note" data-enter="pop">
                 <Lock size={22} color="var(--tan)" />
                 <div className={s.noticeBody}>
                   <MonoLabel color="var(--tan)">{tm('form.cardNotice.title', mode)}</MonoLabel>
@@ -410,7 +427,7 @@ export default function Home() {
               </span>
             </div>
             {knowsWhen && (
-              <div className={s.when}>
+              <div className={s.when} data-enter style={{ animationDuration: '260ms' }}>
                 <label className={s.whenBox}>
                   <span className={s.whenLabel}>{t('form.date')}</span>
                   <span className={s.whenValue}>{formatDate(date, now.date)}</span>
@@ -444,14 +461,14 @@ export default function Home() {
                   <Switch checked={dropAtRsa} onChange={setDropAtRsa} label={t('form.rsa')} />
                 </span>
               </div>
-              {dropAtRsa && <span className={s.hint}>{t('form.rsa.note')}</span>}
+              {dropAtRsa && <span className={s.hint} data-enter style={{ animationDuration: '260ms' }}>{t('form.rsa.note')}</span>}
             </div>
           )}
 
           <TearLine />
 
           {error && (
-            <p className={s.error} role="alert">
+            <p key={error} className={s.error} role="alert" data-shake>
               {error}
             </p>
           )}
@@ -460,6 +477,7 @@ export default function Home() {
             variant="dark"
             accent={accent}
             label={busy ? t('form.posting') : tm('form.submit', mode)}
+            busy={busy}
             labelSize={28}
             disabled={busy || postsLeft === 0}
           />

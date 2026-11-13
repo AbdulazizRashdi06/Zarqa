@@ -30,7 +30,8 @@ export default defineConfig({
         navigateFallbackDenylist: [/^\/api\//],
         // Push and notification-click handlers (public/push-sw.js).
         importScripts: ['push-sw.js'],
-        globIgnores: ['mascot/*.png'],
+        // The animated clips are big and each plays once: fetched when needed, not stored with the app shell.
+        globIgnores: ['mascot/*.png', 'mascot/anim/**'],
         globPatterns: ['**/*.{js,css,html,svg,png,webp,woff2}'],
       },
     }),
