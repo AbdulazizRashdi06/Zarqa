@@ -6,8 +6,44 @@ import { BigButton, Wordmark, ZarqaBubble } from '../components/ui'
 import s from '../components/states.module.css'
 import { t } from '../i18n'
 import { api, ApiError, setUnauthorizedHandler } from '../lib/api'
+import { clearDraft } from '../lib/draft'
 import { disablePushOnThisDevice } from '../lib/push'
 import { clearReturnPath, rememberReturnPath, returnPath, SessionContext, useSession, type Me } from './session'
+
+// Which account this browser last signed in as: an unfinished report (text and photos, maybe of a card) must
+// never be shown to the next person who signs in on the same phone.
+const LAST_USER_KEY = 'zarqa.lastUser'
+// Sign out was tapped while the logout request couldn't get through: finish it on the next start.
+const LOGOUT_PENDING_KEY = 'zarqa.logoutPending'
+
+function noteUser(id: string) {
+  try {
+    if (localStorage.getItem(LAST_USER_KEY) !== id) {
+      clearDraft()
+      localStorage.setItem(LAST_USER_KEY, id)
+    }
+    localStorage.removeItem(LOGOUT_PENDING_KEY)
+  } catch {
+    // Storage blocked: the draft lives in the same storage, so there is nothing to protect.
+  }
+}
+
+function logoutPending(): boolean {
+  try {
+    return localStorage.getItem(LOGOUT_PENDING_KEY) === '1'
+  } catch {
+    return false
+  }
+}
+
+function setLogoutPending(pending: boolean) {
+  try {
+    if (pending) localStorage.setItem(LOGOUT_PENDING_KEY, '1')
+    else localStorage.removeItem(LOGOUT_PENDING_KEY)
+  } catch {
+    // ignore
+  }
+}
 
 export function SessionProvider({ children }: { children: ReactNode }) {
   const [me, setMe] = useState<Me | null>(null)
@@ -18,11 +54,26 @@ export function SessionProvider({ children }: { children: ReactNode }) {
 
   const updateMe = useCallback((next: Me | null) => {
     meRef.current = next
+    if (next) noteUser(next.id)
     setMe(next)
     if (next) setSignedOut(false)
   }, [])
 
   const refresh = useCallback(async () => {
+    if (logoutPending()) {
+      // Signed out offline last time: the cookie may still be there. Finish the job, and stay signed out
+      // on this device either way.
+      try {
+        await api('/auth/logout', { method: 'POST' })
+        setLogoutPending(false)
+      } catch {
+        // Tried again next start.
+      }
+      updateMe(null)
+      setUnreachable(false)
+      setLoading(false)
+      return
+    }
     try {
       updateMe(await api<Me>('/me'))
       setUnreachable(false)
@@ -50,10 +101,16 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     return () => setUnauthorizedHandler(null)
   }, [updateMe])
 
+  /** Never fails: the user asked to leave, so this device forgets the account even if the server can't be told yet. */
   const signOut = useCallback(async () => {
     // Stop this phone showing the account's alerts (chat text, pickup codes) after it signs out.
     await disablePushOnThisDevice().catch(() => undefined)
-    await api('/auth/logout', { method: 'POST' })
+    try {
+      await api('/auth/logout', { method: 'POST' })
+    } catch {
+      setLogoutPending(true)
+    }
+    clearDraft()
     updateMe(null)
   }, [updateMe])
 
