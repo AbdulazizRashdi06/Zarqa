@@ -9,31 +9,28 @@ namespace Zarqa.Tests;
 public sealed class FakeModels
 {
     public bool LunaConfigured { get; set; } = true;
-    public bool JevConfigured { get; set; } = true;
-    /// <summary>Jev's P(same item) and the index (0..4) of its most likely "overall" level.</summary>
+    public bool TerraConfigured { get; set; } = true;
+    /// <summary>The judge's P(same item) and the index (0..4) of its most likely overall level.</summary>
     public double SameItem { get; set; } = 0.9;
     public int OverallLevel { get; set; } = 4;
-    /// <summary>Plain-Luna review score when Jev isn't used.</summary>
-    public double LunaScore { get; set; } = 0.85;
-
     public ConcurrentBag<(string SchemaName, int Images)> LunaCalls { get; } = [];
     /// <summary>Every image data URL Luna was sent.</summary>
     public ConcurrentBag<string> LunaImages { get; } = [];
-    public int JevCalls;
+    public ConcurrentBag<string> JudgeModels { get; } = [];
 
     public FakeEmbedder Embedder => new(this);
     public FakeLuna Luna => new(this);
-    public FakeJev Jev => new(this);
+    public FakeJudge Terra => new(this, Fallback: false);
+    public FakeJudge DeepSeek => new(this, Fallback: true);
 
     public void Reset()
     {
-        LunaConfigured = JevConfigured = true;
+        LunaConfigured = TerraConfigured = true;
         SameItem = 0.9;
         OverallLevel = 4;
-        LunaScore = 0.85;
         LunaCalls.Clear();
         LunaImages.Clear();
-        JevCalls = 0;
+        JudgeModels.Clear();
     }
 }
 
@@ -69,28 +66,30 @@ public sealed class FakeLuna(FakeModels m) : ILuna
             "advocate_for" => """{"argument":"Same blue metal bottle with a cat sticker.","strength":"strong"}""",
             "advocate_against" => """{"argument":"Little against it.","strength":"weak"}""",
             "match_reasons" => """{"reasons":["Both mention a cat sticker","Both are blue metal"]}""",
-            "match_review" => $$"""{"isLikelyMatch":true,"finalScore":{{m.LunaScore}},"explanation":"looks the same","matchedFields":[],"riskFlags":[]}""",
             _ => "{}",
         };
         return Task.FromResult(new LunaResult(JsonDocument.Parse(json).RootElement.Clone(), 1000, 0, 100, 5));
     }
 }
 
-public sealed class FakeJev(FakeModels m) : IJev
+public sealed class FakeJudge(FakeModels m, bool Fallback) : ITerra, IDeepSeek
 {
-    public bool IsConfigured => m.JevConfigured;
+    public bool IsConfigured => Fallback || m.TerraConfigured;
 
-    public Task<JevResult> AskAsync(JsonObject state, JsonObject questions, CancellationToken ct)
+    public Task<LunaResult> ChatJsonAsync(string system, string text, IReadOnlyList<string> images, string schemaName, JsonObject schema, CancellationToken ct)
     {
-        Interlocked.Increment(ref m.JevCalls);
-        var probs = new double[5];
-        probs[m.OverallLevel] = 1;
+        Assert.Equal("debate_judge", schemaName);
+        Assert.Empty(images);
+        var model = Fallback ? DeepSeekChat.Model : "gpt-6.1-terra";
+        m.JudgeModels.Add(model);
+        var levels = new[] { "clearly_different", "probably_different", "unclear", "probably_same", "almost_certainly_same" };
         var answers = new JsonObject
         {
-            ["same_item"] = new JsonObject { ["noul"] = m.SameItem },
-            ["stronger_case"] = new JsonObject { ["choice"] = "for" },
-            ["overall"] = new JsonObject { ["probabilities"] = new JsonArray(probs.Select(p => (JsonNode)p).ToArray()) },
+            ["same_item_probability"] = m.SameItem,
+            ["stronger_case"] = "for",
+            ["overall_probabilities"] = new JsonObject(levels.Select((level, i) =>
+                KeyValuePair.Create<string, JsonNode?>(level, JsonValue.Create(i == m.OverallLevel ? 1 : 0)))),
         };
-        return Task.FromResult(new JevResult(JsonDocument.Parse(answers.ToJsonString()).RootElement.Clone(), 500, 0, 5));
+        return Task.FromResult(new LunaResult(JsonSerializer.SerializeToElement(answers), 500, 0, 50, 5) { Model = model });
     }
 }

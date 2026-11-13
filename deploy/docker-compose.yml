@@ -30,6 +30,8 @@ services:
       Models__LunaBaseUrl: ${LUNA_BASE_URL:-}
       Models__OpenRouterApiKey: ${OPENROUTER_API_KEY:-}
       Models__TypeSafeApiKey: ${TYPESAFE_API_KEY:-}
+      Models__DeepSeekApiKey: ${DEEPSEEK_API_KEY:-}
+      Models__UseTerraJudge: ${MATCHING_USE_TERRA:-true}
       Models__DailySpendCapUsd: ${MODEL_DAILY_CAP_USD:-2}
       Matching__Worker: ${MATCHING_ENABLED:-true}
       # Comma-separated admin emails (Profile shows an Admin link for them).

@@ -75,7 +75,8 @@ public sealed class TestApp : WebApplicationFactory<Program>, IAsyncLifetime
             s.Replace(ServiceDescriptor.Singleton<IEmailSender>(Emails));
             s.Replace(ServiceDescriptor.Transient<Zarqa.Api.Matching.IEmbedder>(_ => Models.Embedder));
             s.Replace(ServiceDescriptor.Transient<Zarqa.Api.Matching.ILuna>(_ => Models.Luna));
-            s.Replace(ServiceDescriptor.Transient<Zarqa.Api.Matching.IJev>(_ => Models.Jev));
+            s.Replace(ServiceDescriptor.Transient<Zarqa.Api.Matching.ITerra>(_ => Models.Terra));
+            s.Replace(ServiceDescriptor.Transient<Zarqa.Api.Matching.IDeepSeek>(_ => Models.DeepSeek));
             s.Replace(ServiceDescriptor.Singleton<Zarqa.Api.Notifications.IPushSender>(Push));
             s.Replace(ServiceDescriptor.Singleton<Zarqa.Api.Photos.IOcrEngine>(Ocr));
         });
