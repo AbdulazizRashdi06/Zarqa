@@ -94,7 +94,91 @@ test('deleting the account clears the report draft left in this browser', async 
   await page.evaluate(() => sessionStorage.setItem('zarqa.draft', JSON.stringify({ mode: 'lost', text: 'My bank card' })))
   await page.getByRole('button', { name: 'Delete my account' }).click()
   await page.getByRole('dialog', { name: 'Delete your account?' }).getByRole('button', { name: 'Continue' }).click()
+  // The final step ignores taps for a moment after it appears (see the double-tap case below).
+  await page.waitForTimeout(700)
   await page.getByRole('dialog', { name: 'This can’t be undone' }).getByRole('button', { name: 'Delete for good' }).click()
   await expect(page).toHaveURL(/\/signin$/)
   expect(await page.evaluate(() => sessionStorage.getItem('zarqa.draft'))).toBeNull()
+})
+
+test('a double tap on Continue does not also delete the account', async ({ page }) => {
+  await session(page)
+  let deletes = 0
+  await page.route('**/api/me', (route) => {
+    if (route.request().method() !== 'DELETE') return route.fulfill({ json: me })
+    deletes++
+    return route.fulfill({ status: 204 })
+  })
+  await page.goto('/profile')
+  await page.getByRole('button', { name: 'Delete my account' }).click()
+  await page.getByRole('dialog', { name: 'Delete your account?' }).getByRole('button', { name: 'Continue' }).dblclick()
+  const final = page.getByRole('dialog', { name: 'This can’t be undone' })
+  await expect(final).toBeVisible()
+  // A quick third tap (or a held Enter) is still the same gesture: it restarts the pause instead of deleting.
+  await final.getByRole('button', { name: 'Delete for good' }).click()
+  await page.waitForTimeout(300)
+  await expect(final).toBeVisible()
+  expect(deletes).toBe(0)
+  await expect(page).toHaveURL(/\/profile$/)
+  // A deliberate tap after the pause deletes; the keyboard works too.
+  await page.waitForTimeout(700)
+  await final.getByRole('button', { name: 'Delete for good' }).focus()
+  await page.keyboard.press('Enter')
+  await expect(page).toHaveURL(/\/signin$/)
+  expect(deletes).toBe(1)
+})
+
+test('after deleting the account, the next sign-in in this tab starts on Home, not Profile', async ({ page }) => {
+  await session(page)
+  await page.route('**/api/me', (route) => (route.request().method() === 'DELETE' ? route.fulfill({ status: 204 }) : route.fallback()))
+  await page.goto('/profile')
+  await page.getByRole('button', { name: 'Delete my account' }).click()
+  await page.getByRole('dialog', { name: 'Delete your account?' }).getByRole('button', { name: 'Continue' }).click()
+  await page.waitForTimeout(700)
+  await page.getByRole('dialog', { name: 'This can’t be undone' }).getByRole('button', { name: 'Delete for good' }).click()
+  await expect(page).toHaveURL(/\/signin$/)
+  await expect(page.locator('#email')).toBeVisible()
+  expect(await page.evaluate(() => sessionStorage.getItem('zarqa.returnTo'))).toBeNull()
+  // Someone signs in in the same tab (the mocked /api/me now answers with a session): they land on Home.
+  await page.reload()
+  await expect(page).toHaveURL(/:\d+\/$/)
+})
+
+test('a failed account deletion keeps this phone subscribed to alerts', async ({ page }) => {
+  await page.addInitScript(() => {
+    Object.defineProperty(Notification, 'permission', { get: () => 'granted' })
+    const sub = {
+      endpoint: 'https://push.invalid/this-phone',
+      toJSON: () => ({ endpoint: 'https://push.invalid/this-phone', keys: { p256dh: 'p', auth: 'a' } }),
+      unsubscribe: async () => {
+        current = null
+        return true
+      },
+    }
+    let current: typeof sub | null = sub
+    const pushManager = { getSubscription: async () => current, subscribe: async () => (current = sub) }
+    const registration = { pushManager, update: async () => undefined, addEventListener() {}, removeEventListener() {} }
+    Object.defineProperty(navigator, 'serviceWorker', {
+      configurable: true,
+      value: { ready: Promise.resolve(registration), getRegistration: async () => registration, register: async () => registration, addEventListener() {}, removeEventListener() {}, controller: null },
+    })
+  })
+  await session(page)
+  const calls: string[] = []
+  await page.route('**/api/push/key', (route) => route.fulfill({ json: { publicKey: 'BAAA' } }))
+  await page.route(/\/api\/push\/(un)?subscribe$/, (route) => {
+    calls.push(new URL(route.request().url()).pathname)
+    return route.fulfill({ status: 204 })
+  })
+  await page.route('**/api/me', (route) =>
+    route.request().method() === 'DELETE' ? route.fulfill({ status: 500, json: { error: 'Please retry deletion.' } }) : route.fallback(),
+  )
+  await page.goto('/profile')
+  await page.getByRole('button', { name: 'Delete my account' }).click()
+  await page.getByRole('dialog', { name: 'Delete your account?' }).getByRole('button', { name: 'Continue' }).click()
+  await page.waitForTimeout(700)
+  const final = page.getByRole('dialog', { name: 'This can’t be undone' })
+  await final.getByRole('button', { name: 'Delete for good' }).click()
+  await expect(final.getByRole('alert').filter({ hasText: 'Please retry deletion.' })).toBeVisible()
+  await expect.poll(() => calls).toEqual(['/api/push/unsubscribe', '/api/push/subscribe'])
 })
