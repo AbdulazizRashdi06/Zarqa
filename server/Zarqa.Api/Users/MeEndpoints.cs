@@ -81,18 +81,22 @@ public static partial class MeEndpoints
             var key = await photos.SaveAsync(stream, PhotoStore.AvatarEdge, ct);
             if (key is null) return Errors.BadRequest("That file isn't a photo we can read.");
             var user = await db.Users.FirstAsync(u => u.Id == req.HttpContext.User.Id(), ct);
-            if (user.AvatarPhotoKey is not null) photos.Delete(user.AvatarPhotoKey);
+            var old = user.AvatarPhotoKey;
             user.AvatarPhotoKey = key;
             await db.SaveChangesAsync(ct);
+            // The old file goes only once nothing points at it any more.
+            if (old is not null) photos.Delete(old);
             return Results.Ok(ToDto(user, req.HttpContext.User));
         }).DisableAntiforgery();
 
         me.MapDelete("/avatar", async (HttpContext http, ZarqaDb db, PhotoStore photos, CancellationToken ct) =>
         {
+            // "Remove photo": the stored file is deleted too, not just unlinked.
             var user = await db.Users.FirstAsync(u => u.Id == http.User.Id(), ct);
-            if (user.AvatarPhotoKey is not null) photos.Delete(user.AvatarPhotoKey);
+            var old = user.AvatarPhotoKey;
             user.AvatarPhotoKey = null;
             await db.SaveChangesAsync(ct);
+            if (old is not null) photos.Delete(old);
             return Results.Ok(ToDto(user, http.User));
         });
 

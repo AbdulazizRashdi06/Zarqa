@@ -44,7 +44,8 @@ export default function Profile() {
   const [nameError, setNameError] = useState('')
   const [signingOut, setSigningOut] = useState(false)
   const [signOutError, setSignOutError] = useState('')
-  const [deleteStep, setDeleteStep] = useState<0 | 1 | 2>(0)
+  // The one confirmation sheet: remove the photo, or the two steps of deleting the account.
+  const [sheet, setSheet] = useState<null | 'photo' | 'delete' | 'deleteFinal'>(null)
   const [deleting, setDeleting] = useState(false)
   const [deleteError, setDeleteError] = useState('')
   const fileInput = useRef<HTMLInputElement>(null)
@@ -133,6 +134,7 @@ export default function Profile() {
     setPhotoBusy(true)
     try {
       setMe(await api<Me>('/me/avatar', { method: 'DELETE' }))
+      setSheet(null)
     } catch (e) {
       setPhotoError(message(e))
     } finally {
@@ -160,8 +162,8 @@ export default function Profile() {
     setSigningOut(true)
     setSignOutError('')
     try {
+      // signOut() also stops this phone's alerts and clears the report draft.
       await signOut()
-      clearDraft()
       navigate('/signin', { replace: true })
     } catch (e) {
       // Still signed in on the server: say so rather than pretend.
@@ -265,12 +267,20 @@ export default function Profile() {
       <div className={s.photoNote}>
         <span className={s.rowSub}>{t(me.showFirstName ? 'profile.photoSeen' : 'profile.photoHidden')}</span>
         {me.avatarUrl && (
-          <button type="button" className={s.textButton} disabled={photoBusy || busy} onClick={() => void removePhoto()}>
+          <button
+            type="button"
+            className={s.textButton}
+            disabled={photoBusy || busy}
+            onClick={() => {
+              setPhotoError('')
+              setSheet('photo')
+            }}
+          >
             {t('profile.removePhoto')}
           </button>
         )}
       </div>
-      <InlineError>{photoError}</InlineError>
+      {sheet !== 'photo' && <InlineError>{photoError}</InlineError>}
 
       <div className={s.stats}>
         {statsFailed ? (
@@ -390,24 +400,34 @@ export default function Profile() {
           disabled={busy}
           onClick={() => {
             setDeleteError('')
-            setDeleteStep(1)
+            setSheet('delete')
           }}
         >
           {t('profile.delete')}
         </button>
       </div>
 
-      {/* One sheet, two steps (the owner's two confirmations): what goes and what stays, then "for good". */}
+      {/* Deleting takes two steps (the owner's two confirmations): what goes and what stays, then "for good". */}
       <ConfirmSheet
-        open={deleteStep > 0}
-        title={t(deleteStep === 2 ? 'profile.deleteFinal.title' : 'profile.deleteSheet.title')}
-        body={t(deleteStep === 2 ? 'profile.deleteFinal.body' : 'profile.deleteSheet.body')}
-        confirmLabel={t(deleteStep === 2 ? (deleting ? 'profile.deleting' : 'profile.deleteFinal.go') : 'profile.deleteSheet.next')}
-        cancelLabel={t('profile.deleteSheet.keep')}
-        busy={deleting}
-        error={deleteError}
-        onConfirm={() => (deleteStep === 2 ? void deleteAccount() : setDeleteStep(2))}
-        onCancel={() => setDeleteStep(0)}
+        open={sheet !== null}
+        title={t(sheet === 'photo' ? 'profile.removePhoto.title' : sheet === 'deleteFinal' ? 'profile.deleteFinal.title' : 'profile.deleteSheet.title')}
+        body={t(sheet === 'photo' ? 'profile.removePhoto.body' : sheet === 'deleteFinal' ? 'profile.deleteFinal.body' : 'profile.deleteSheet.body')}
+        confirmLabel={
+          sheet === 'photo'
+            ? t('profile.removePhoto.go')
+            : sheet === 'deleteFinal'
+              ? t(deleting ? 'profile.deleting' : 'profile.deleteFinal.go')
+              : t('profile.deleteSheet.next')
+        }
+        cancelLabel={t(sheet === 'photo' ? 'profile.removePhoto.keep' : 'profile.deleteSheet.keep')}
+        busy={sheet === 'photo' ? photoBusy : deleting}
+        error={sheet === 'photo' ? photoError : deleteError}
+        onConfirm={() => {
+          if (sheet === 'photo') void removePhoto()
+          else if (sheet === 'deleteFinal') void deleteAccount()
+          else setSheet('deleteFinal')
+        }}
+        onCancel={() => setSheet(null)}
       />
     </main>
   )

@@ -54,7 +54,7 @@ export default function Info({ page }: { page: InfoPage }) {
   const back = useBack()
   // Back returns to whichever in-app page opened this one; on a direct visit it goes home or to sign-in.
   const fallback = me ? '/profile' : loading ? '/' : '/signin'
-  return <main className={s.page}>
+  return <main className={`${s.page} ${s.info}`}>
     <BackHeader to={fallback} previous label={t('info.navigation').toUpperCase()} />
     <h1>{t(`info.${page}.title` as StringKey)}</h1>
     {(page === 'privacy' || page === 'terms') && <p className={s.notice}>{t(`info.review.${page}` as StringKey)}</p>}

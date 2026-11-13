@@ -1,6 +1,8 @@
 .page { padding: 16px var(--gutter) 32px; display: flex; flex-direction: column; gap: 20px; min-width: 0; }
 .page h1 { font: 48px/1.05 var(--font-display); text-transform: uppercase; margin: 0; }
-.page h2 { font: 24px/1.2 var(--font-display); text-transform: uppercase; letter-spacing: .5px; margin: 0 0 8px; overflow-wrap: anywhere; }
+.page h2 { font: 24px/1.2 var(--font-display); margin: 0 0 8px; overflow-wrap: anywhere; }
+/* Info pages: section headings in the app's uppercase display style. */
+.info h2 { text-transform: uppercase; letter-spacing: .5px; }
 .page p { line-height: 1.6; margin: 0 0 16px; overflow-wrap: anywhere; }
 .card { padding: 20px; color: var(--ink); }
 .card section + section { border-top: 2px dashed var(--paper-line); padding-top: 18px; }

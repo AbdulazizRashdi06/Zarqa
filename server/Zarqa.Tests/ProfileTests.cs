@@ -53,10 +53,33 @@ public class ProfileTests(TestApp app) : IClassFixture<TestApp>
         Assert.Equal(HttpStatusCode.NotFound, (await owner.GetAsync($"/api/avatars/{finderId}")).StatusCode);
         Assert.Equal(HttpStatusCode.OK, (await finder.GetAsync($"/api/avatars/{finderId}")).StatusCode);
 
-        // Removing the photo.
+        // Removing the photo: gone for everyone, file included, even with the name shown again.
+        string key;
+        await using (var db = app.Db()) key = db.Users.Single(u => u.Id == finderId).AvatarPhotoKey!;
+        Assert.True(File.Exists(Path.Combine(app.PhotoRoot, key)));
         var removed = await Json(await finder.DeleteAsync("/api/me/avatar"));
         Assert.Equal(System.Text.Json.JsonValueKind.Null, removed.GetProperty("avatarUrl").ValueKind);
+        Assert.False(File.Exists(Path.Combine(app.PhotoRoot, key)));
+        await finder.PatchAsJsonAsync("/api/me", new { showFirstName = true });
         Assert.Equal(HttpStatusCode.NotFound, (await finder.GetAsync($"/api/avatars/{finderId}")).StatusCode);
+        Assert.Equal(HttpStatusCode.NotFound, (await owner.GetAsync($"/api/avatars/{finderId}")).StatusCode);
+        thread = await Json(await owner.GetAsync($"/api/conversations/{chatId}"));
+        Assert.Equal("Omar", thread.GetProperty("otherName").GetString());
+        Assert.Equal(System.Text.Json.JsonValueKind.Null, thread.GetProperty("otherAvatarUrl").ValueKind);
+    }
+
+    [Fact]
+    public async Task A_new_photo_replaces_the_old_file()
+    {
+        var http = await app.SignedIn("avatar.replace@gutech.edu.om", "Salim");
+        var first = await Json(await http.PostAsync("/api/me/avatar", AvatarForm()));
+        var id = first.GetProperty("id").GetGuid();
+        string oldKey;
+        await using (var db = app.Db()) oldKey = db.Users.Single(u => u.Id == id).AvatarPhotoKey!;
+        var second = await Json(await http.PostAsync("/api/me/avatar", AvatarForm()));
+        Assert.NotEqual(first.GetProperty("avatarUrl").GetString(), second.GetProperty("avatarUrl").GetString());
+        Assert.False(File.Exists(Path.Combine(app.PhotoRoot, oldKey)));
+        Assert.Equal(HttpStatusCode.OK, (await http.GetAsync(second.GetProperty("avatarUrl").GetString())).StatusCode);
     }
 
     [Fact]
