@@ -5,7 +5,7 @@ import { t, type StringKey } from '../i18n'
 import s from './Launch.module.css'
 
 export type InfoPage = 'terms' | 'privacy' | 'help' | 'tips'
-const sections = { terms: 4, privacy: 7, help: 3, tips: 4 }
+const sections = { terms: 6, privacy: 10, help: 3, tips: 4 }
 export default function Info({ page }: { page: InfoPage }) {
   const { me } = useSession()
   return <main className={s.page}>

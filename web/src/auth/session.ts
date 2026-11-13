@@ -13,6 +13,8 @@ export type Me = {
   isAdmin: boolean
   /** RSA desk staff (admins too). */
   isRsa: boolean
+  /** Hasn't agreed to the current Terms/Privacy yet (PDPL consent): the app shows /consent first. */
+  needsConsent?: boolean
 }
 
 export type Session = {

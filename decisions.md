@@ -2,6 +2,14 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-13: Terms, Privacy and recorded consent for Oman's PDPL
+
+**Decision (owner).** Rewrite Terms and Privacy against Oman's Personal Data Protection Law (Royal Decree 6/2022) and its Executive Regulations (Ministerial Decision 34/2024), fully enforceable since 5 February 2026. Written from law-firm summaries and the Ministry's pages, not a lawyer's review.
+- **Recorded consent.** Consent is the PDPL's basis for processing (Art. 10), and processing outside Oman needs express consent too (Regulations Art. 37). After sign-in, everyone sees `/consent` with three required boxes: 18 or older, agree to Terms and Privacy, agree to processing outside Oman. The server stores `consent_version` and `consented_at` on the user, and `POST /api/reports` refuses users with no recorded consent. Changing either text in substance means bumping `Consent.Current` (server) and `CONSENT_VERSION` (web) together; everyone is asked again. Withdrawing consent is "Delete my account".
+- **18 or older.** The PDPL needs a guardian's consent for children. Instead of collecting that, Zarqa is 18+, and under-18s use the RSA desk in person.
+- **Privacy notice (Art. 14) now names** the controller and data protection officer (the operator, by role), purposes, who sees what, each provider and country (Contabo in Europe; OpenAI and Resend in the US; DeepSeek in China and TypeSafe as backups), retention, the Art. 11 rights with a 45-day free reply, complaints to the Ministry (Art. 12), breach notice to the Ministry and users within 72 hours, and no marketing (Art. 22). OpenRouter was dropped from the list: no key is configured.
+- **Not done (owner):** naming the operator in the notice instead of "a GUtech student"; written processor agreements with the providers; a record of processing activities (Regulations Arts. 27–28); a transfer impact assessment (Art. 39); checking whether MTCIT requires registration or an external audit for this service. Legal review is still recommended before a wider rollout beyond the pilot.
+
 ## 2026-11-10: Terra debate with a DeepSeek fallback
 
 **Decision (owner).** Use the benchmark's `luna-debate-terra` prompts in the app. Two GPT-6 Luna advocates see the report text and permitted photos. GPT-6.1 Terra reads their arguments and the report text. The score remains `0.5 × same_item + 0.5 × overall`, with a 0.55 cutoff. Retrieval and the shortlist keep their existing settings.

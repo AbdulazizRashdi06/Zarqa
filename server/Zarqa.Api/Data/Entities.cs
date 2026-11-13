@@ -33,6 +33,9 @@ public class User
     public bool IsBanned { get; set; }
     public DateTimeOffset CreatedAt { get; set; }
     public DateTimeOffset? LastSeenAt { get; set; }
+    /// <summary>Which Terms/Privacy version the user agreed to (Consent.Current), and when: proof of consent under Oman's PDPL.</summary>
+    public string? ConsentVersion { get; set; }
+    public DateTimeOffset? ConsentedAt { get; set; }
 }
 
 public class LoginCode

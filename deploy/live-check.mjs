@@ -45,6 +45,10 @@ async function signIn(role) {
   await page.locator('#email').fill(email)
   await page.getByRole('button', { name: t('signin.send'), exact: true }).click()
   await page.locator('#code').fill(code)
+  // Recorded PDPL consent comes before the name step.
+  await page.waitForURL('**/consent')
+  for (const box of await page.getByRole('checkbox').all()) await box.check()
+  await page.getByRole('button', { name: t('consent.go'), exact: true }).click()
   await page.waitForURL('**/welcome')
   await page.locator('#first-name').fill(`Smoke ${role}`)
   await page.getByRole('button', { name: t('welcome.go'), exact: true }).click()
