@@ -1,31 +1,93 @@
+/* The H1 is smaller here than on the info pages, so the code box and its result fit in the first view. */
+.title.title { font-size: 40px; }
 .tabs { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 6px; background: var(--surface); padding: 4px; border-radius: 14px; }
 .tab { min-height: 44px; border: 0; border-radius: 10px; background: transparent; color: var(--paper); font: 14px var(--font-mono); letter-spacing: 1px; text-transform: uppercase; cursor: pointer; }
 .tab[aria-selected='true'] { background: var(--tan); color: var(--ink); font-weight: 700; }
+/* Five tabs on a 320px phone: no letter-spacing, so the labels stay apart. */
+@media (max-width: 359px) {
+  .tab { font-size: 12px; letter-spacing: 0; }
+}
 .panel { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.panel[hidden], .panel [hidden] { display: none !important; }
+/* Disabled and busy buttons look it (the shared .actions buttons don't). */
+.panel button:disabled { opacity: 0.5; cursor: default; }
 .lookup { display: flex; flex-direction: column; gap: 8px; }
-.lookup input { background: var(--paper); color: var(--ink); border: 0; }
+.lookup input { background: var(--paper); color: var(--ink); border: 0; color-scheme: light; }
 .codeInput { font: 32px/1 var(--font-display) !important; letter-spacing: 4px; text-transform: uppercase; }
+.codeInput::placeholder { color: var(--chevron); opacity: 0.45; }
 .meta { font: 12px/1.5 var(--font-mono); color: var(--ink-muted); margin: 0 0 12px; overflow-wrap: anywhere; }
-.panel > .meta, .lookup .meta { color: var(--text-soft); }
-.itemTitle { margin: 6px 0 10px !important; }
-.owner { font: 28px/1.1 var(--font-display); margin: 4px 0 14px !important; }
+.panel > .meta, .lookup .meta, .onDark { color: var(--text-soft); }
+.card { min-width: 0; overflow-wrap: anywhere; }
+.itemTitle { margin: 6px 0 10px !important; font: 24px/1.2 var(--font-display); overflow-wrap: anywhere; }
+.owner { font: 28px/1.1 var(--font-display); margin: 4px 0 4px !important; }
+.ownerEmail { font: 14px/1.4 var(--font-mono); margin: 0 0 14px !important; overflow-wrap: anywhere; }
+.age { font-weight: 600; margin: 0 0 12px !important; }
+/* A note inside a paper card: ink on paper with a tan edge (the page's dark .notice is unreadable there). */
+.cardNote { margin: 0 0 12px !important; padding: 10px 12px; border: 2px solid var(--tan-dark); border-radius: 12px; color: var(--ink); font-weight: 600; background: transparent; }
+.noticeWrap > * { margin: 0; }
+.readOnly { border: 1px solid var(--tan); border-radius: 14px; padding: 12px; background: var(--surface); color: var(--text); margin: 0 !important; }
 .secondary { background: transparent !important; color: inherit !important; border: 2px solid var(--tan) !important; }
-.chatRow { display: flex; flex-direction: column; gap: 4px; text-align: left; background: var(--paper); color: var(--ink); border: 0; border-radius: 16px; padding: 14px 16px; font: inherit; cursor: pointer; min-height: 44px; }
-.chatRow .meta { margin: 0; }
+.primary { flex: 1 1 100%; }
+.result { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.result > h2 { margin: 0; }
+/* Focused only so screen readers read the result out; it isn't a control. */
+.result > h2:focus, .threadTitle:focus { outline: none; }
+.pickup { display: grid; gap: 16px; align-items: start; }
+.pickupItem { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+/* "It's not theirs" sits well apart from "Hand it over", so a slip of the thumb can't reach it. */
+.pickupActions { display: flex; flex-direction: column; gap: 28px; }
+.photoButton { padding: 0; border: 0; background: none; border-radius: 12px; cursor: zoom-in; flex-shrink: 0; }
+.photoButton img { display: block; }
+.photosLarge .photoButton:first-child img { width: min(100%, 280px); height: 220px; object-fit: contain; background: var(--paper-line); }
+.viewer { width: min(96vw, 900px); max-height: 92dvh; padding: 12px; border: 0; border-radius: 16px; background: var(--ground); color: var(--text); }
+.viewer::backdrop { background: rgb(0 0 0 / 0.8); }
+.viewer img { display: block; width: 100%; max-height: calc(92dvh - 90px); object-fit: contain; }
+.viewerClose { margin-top: 10px; width: 100%; min-height: 44px; border: 2px solid var(--tan); border-radius: 10px; background: transparent; color: var(--text); font: inherit; font-weight: 700; cursor: pointer; }
+.filters { display: flex; flex-direction: column; gap: 10px; }
+.search { display: flex; flex-direction: column; gap: 6px; font-weight: 600; }
+.search input { min-height: 44px; padding: 10px 12px; border-radius: 10px; border: 0; background: var(--paper); color: var(--ink); color-scheme: light; font: inherit; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { min-height: 44px; padding: 8px 14px; border-radius: 999px; border: 2px solid var(--tan); background: transparent; color: var(--text); font: inherit; font-weight: 600; cursor: pointer; }
+.chip[aria-pressed='true'] { background: var(--tan); color: var(--ink); }
+.count { font: 12px/1.5 var(--font-mono); color: var(--text-soft); margin: 0 !important; text-transform: uppercase; letter-spacing: 1px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 16px; align-items: start; }
+.group { display: flex; flex-direction: column; gap: 12px; }
+.groupTitle { margin: 0 !important; }
+.chatList, .threadView { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.chatRow { display: flex; flex-direction: column; gap: 4px; text-align: left; background: var(--paper); color: var(--ink); border: 0; border-radius: 16px; padding: 14px 16px; font: inherit; cursor: pointer; min-height: 44px; min-width: 0; overflow-wrap: anywhere; }
+.chatRow .meta, .rowMeta { margin: 0 !important; }
 .preview { overflow-wrap: anywhere; }
+.threadTitle { margin: 0 !important; }
 .thread { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
 .msg { display: flex; flex-direction: column; gap: 4px; padding: 10px 12px; border-radius: 14px; max-width: 88%; overflow-wrap: anywhere; line-height: 1.45; }
-.msgWho { font: 11px var(--font-mono); opacity: 0.75; }
+.msgWho { font: 11px var(--font-mono); }
 .fromLost { background: var(--tan); color: var(--ink); align-self: flex-end; }
 .fromFound { background: var(--paper); color: var(--ink); align-self: flex-start; }
 .fromZarqa { background: var(--surface); color: var(--paper); align-self: center; max-width: 100%; }
+.fromZarqa .msgWho { color: var(--text-soft); }
 .team { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-.team li { display: flex; justify-content: space-between; align-items: center; gap: 8px; background: var(--paper); color: var(--ink); border-radius: 14px; padding: 8px 8px 8px 14px; overflow-wrap: anywhere; }
-.team button { min-height: 44px; padding: 8px 12px; border-radius: 10px; font: inherit; color: var(--ink) !important; }
+.team li { display: flex; justify-content: space-between; align-items: center; gap: 8px; background: var(--paper); color: var(--ink); border-radius: 14px; padding: 8px 8px 8px 14px; }
+.memberEmail { min-width: 0; overflow-wrap: anywhere; }
+.team button { min-height: 44px; padding: 8px 12px; border-radius: 10px; font: inherit; color: var(--ink) !important; white-space: nowrap; overflow-wrap: normal; flex-shrink: 0; cursor: pointer; }
 .matchForm { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
 .matchForm label { display: flex; flex-direction: column; gap: 4px; font-weight: 600; }
 .matchForm input[type='email'] { background: var(--paper); color: var(--ink); border: 1px solid var(--ink-muted); border-radius: 10px; padding: 10px 12px; font: inherit; min-height: 44px; }
 .matchForm .check { flex-direction: row; align-items: center; gap: 10px; min-height: 44px; }
 .matchForm .check input { width: 22px; height: 22px; accent-color: var(--ink); }
-.formError { color: #9b3a22; font-weight: 600; margin: 0; }
-.codeInput::placeholder { color: var(--chevron); opacity: 0.45; }
+
+/* At a desk PC (data-layout="wide" lets the page grow to 1100px): the owner's words and the item side by side, the
+   action row under both, and the lists in columns. */
+@media (min-width: 900px) {
+  .title.title { font-size: 36px; }
+  .pickup { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .pickupActions { flex-direction: row; justify-content: space-between; align-items: center; }
+  .primary { flex: 0 1 auto; min-width: 260px; }
+  .filters { flex-direction: row; align-items: flex-end; flex-wrap: wrap; }
+  .search { flex: 1 1 320px; }
+  /* Code box and its button on one row. */
+  .lookup { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 12px; align-items: end; }
+  .lookup > label { grid-column: 1; grid-row: 1; }
+  .lookup > div { grid-column: 2; grid-row: 1; }
+  .lookup > div button { min-height: 56px; min-width: 160px; }
+  .lookup > .meta { grid-column: 1; grid-row: 2; margin: 0; }
+}
