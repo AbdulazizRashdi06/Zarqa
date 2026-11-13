@@ -378,7 +378,7 @@
   "detail.rsa.held": "The RSA desk has it. Nothing else to do: the owner collects it there.",
   "detail.rsa.claimed": "The owner has a pickup code and will collect it from the RSA desk.",
   "detail.rsa.waiting": "The owner is waiting for this. Take it to the RSA desk and show this code.",
-  "detail.rsa.instead": "Drop it at the RSA instead",
+  "detail.rsa.instead": "Drop it at the RSA desk instead",
   "detail.rsa.insteadTitle": "Drop it at the RSA desk?",
   "detail.rsa.insteadBody": "You'll get a drop code to show there, and the owner collects it from the desk. You can't switch back to meeting them.",
   "detail.rsa.insteadGo": "Yes, the RSA desk",

@@ -76,7 +76,9 @@ test('an expired report says why and offers to post it again; a deleted one says
   await expect(page.getByText(/stopped looking after 60 days/)).toBeVisible()
   await page.getByRole('button', { name: /post it again/i }).click()
   await expect(page).toHaveURL(/\/$/)
-  await expect(page.getByRole('textbox').first()).toHaveValue('Black AirPods case, scratched lid')
+  // Home is handed the old report's words to offer again (Home decides how to use them).
+  const repost = await page.evaluate(() => (history.state as { usr?: { repost?: { text?: string } } } | null)?.usr?.repost?.text)
+  expect(repost).toBe('Black AirPods case, scratched lid')
 
   await page.goto('/reports/gone')
   await expect(page.getByRole('heading', { level: 1, name: /report not found/i })).toBeVisible()

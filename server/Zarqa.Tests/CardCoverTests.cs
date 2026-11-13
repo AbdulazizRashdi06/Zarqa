@@ -404,14 +404,21 @@ public class CardCoverFlowTests(TestApp app) : IClassFixture<TestApp>
         Assert.Equal(originalBytes, await finder.GetByteArrayAsync($"/api/photos/{photoId}"));
         Assert.Equal(HttpStatusCode.NotFound, (await stranger.GetAsync($"/api/photos/{photoId}")).StatusCode);
 
-        // Edited so it's no longer a card: the covered copy goes, and the photo is an ordinary one.
+        // Reworded so the text no longer says "card": the photo is still a card photo. Nobody else ever gets the
+        // original, only the covered copy, and the report stays a card report.
         var coveredPath = Path.Combine(app.PhotoRoot, row.CoveredKey!);
         var patched = await finder.PatchAsync($"/api/reports/{found.GetProperty("id").GetGuid()}",
             System.Net.Http.Json.JsonContent.Create(new { title = "Blue lanyard", category = "Accessories", description = "Blue lanyard found in the library" }));
         patched.EnsureSuccessStatusCode();
+        Assert.True((await Json(patched)).GetProperty("isSensitive").GetBoolean());
         row = await PhotoRow(photoId);
-        Assert.Equal((CoverState.None, (string?)null), (row.CoverState, row.CoveredKey));
-        Assert.False(File.Exists(coveredPath));
+        Assert.True(row.IsSensitive);
+        Assert.Equal(CoverState.Ready, row.CoverState);
+        Assert.True(File.Exists(coveredPath));
+        Assert.Equal(coveredBytes, await owner.GetByteArrayAsync($"/api/photos/{photoId}"));
+        Assert.Equal(coveredBytes, await admin.GetByteArrayAsync($"/api/photos/{photoId}"));
+        Assert.Equal(originalBytes, await finder.GetByteArrayAsync($"/api/photos/{photoId}"));
+        Assert.Equal(HttpStatusCode.NotFound, (await stranger.GetAsync($"/api/photos/{photoId}")).StatusCode);
     }
 
     [Fact]

@@ -7,7 +7,7 @@ import { ConfirmSheet, InlineError, LoadError, LoadingState, Notice, UserText } 
 import { t, type StringKey } from '../i18n'
 import { api, ApiError } from '../lib/api'
 import { campusDate, clockTime, muscatNow, relativeDay } from '../lib/dates'
-import { clearDraft, saveFields } from '../lib/draft'
+import type { DraftFields } from '../lib/draft'
 import { clearHistoryState, reportsCache } from '../lib/reportsCache'
 import type { Report } from '../lib/types'
 import s from './ReportDetail.module.css'
@@ -103,6 +103,7 @@ export default function ReportDetail() {
       else await api(`/reports/${report.id}`, { method: 'DELETE' })
       // The list changed: My Reports should load it again instead of showing this report's old card.
       reportsCache.openedId = null
+      reportsCache.reports = null
       navigate('/reports', { replace: true, state: { notice: asking === 'close' ? 'closed' : 'deleted' } })
     } catch (e) {
       setError(message(e))
@@ -111,11 +112,13 @@ export default function ReportDetail() {
     }
   }
 
-  /** "Still looking?" on an expired report: Home opens with this report's words and place filled in. */
+  /**
+   * "Still looking?" on an expired report: opens Home and hands it this report's words and place as `repost`
+   * (the Home form's own draft shape). Home owns its draft, so it decides whether to fill the form from it.
+   */
   function postAgain() {
     if (!report) return
-    clearDraft()
-    saveFields({
+    const repost: DraftFields = {
       mode: report.kind,
       text: report.description || report.title,
       locQuery: report.locationText,
@@ -123,8 +126,8 @@ export default function ReportDetail() {
       knowsWhen: false,
       date: '',
       time: '',
-    })
-    navigate('/')
+    }
+    navigate('/', { state: { repost } })
   }
 
   if (loadFailed === 'gone') {
