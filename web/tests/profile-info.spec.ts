@@ -180,5 +180,8 @@ test('a failed account deletion keeps this phone subscribed to alerts', async ({
   const final = page.getByRole('dialog', { name: 'This can’t be undone' })
   await final.getByRole('button', { name: 'Delete for good' }).click()
   await expect(final.getByRole('alert').filter({ hasText: 'Please retry deletion.' })).toBeVisible()
-  await expect.poll(() => calls).toEqual(['/api/push/unsubscribe', '/api/push/subscribe'])
+  // Signing in already registers this phone once (calls before the unsubscribe); what matters is that the
+  // unsubscribe made for the deletion is followed by a new subscribe when the deletion fails.
+  await expect.poll(() => calls.slice(calls.lastIndexOf('/api/push/unsubscribe'))).toEqual(['/api/push/unsubscribe', '/api/push/subscribe'])
+  expect(calls.filter((c) => c === '/api/push/unsubscribe')).toHaveLength(1)
 })
