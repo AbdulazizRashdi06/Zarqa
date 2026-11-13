@@ -99,6 +99,38 @@ public class CategoryTests
     [InlineData("deck of playing cards", false)]
     [InlineData("Power bank and my student ID", true)] // only the phrase is ignored
     [InlineData("SIM card holder with a bank card", true)]
+    // The ignored phrases never hide a real card next to them.
+    [InlineData("bank card", true)]
+    [InlineData("SIM card holder with my ID", true)]
+    [InlineData("power bank and my bank card", true)]
+    [InlineData("memory card + ID card", true)]
+    [InlineData("SD card, visa", true)]
+    [InlineData("flash cards and my debit card", true)]
+    [InlineData("Bank Muscat power bank", true)]
+    [InlineData("sim card, credit card", true)]
+    [InlineData("SIM-card wallet", true)]
+    [InlineData("بطاقة بنك", true)]
+    [InlineData("بطاقة ذاكرة", true)] // memory card in Arabic: not excluded, a card when unsure
+    [InlineData("power bank مع بطاقة", true)]
+    // Arabic: informal spellings, vowel marks, tatweel, English glued to Arabic, invisible characters.
+    [InlineData("هويه", true)]
+    [InlineData("رخصه القياده", true)]
+    [InlineData("ملكيه السياره", true)]
+    [InlineData("لقيت كرت بنك", true)]
+    [InlineData("الكرت حقي", true)]
+    [InlineData("كارت صراف", true)]
+    [InlineData("فيزا", true)]
+    [InlineData("باسبور", true)]
+    [InlineData("بِطَاقَة", true)]
+    [InlineData("بطـــاقة", true)]
+    [InlineData("هـوية", true)]
+    [InlineData("الID حقي", true)]
+    [InlineData("لقيت ATM", true)]
+    [InlineData("I​D card", true)]
+    [InlineData("pass­port", true)]
+    [InlineData("ＩＤ", true)] // full-width letters
+    [InlineData("مذكرتي الزرقاء", false)] // "my notebook": كرت only on its own
+    [InlineData("ذكرت لونها أسود", false)] // "I mentioned"
     [InlineData("Idea notebook", false)] // "id" only counts as a whole word
     public void Spots_card_and_id_reports(string text, bool sensitive) => Assert.Equal(sensitive, Categories.IsSensitive(text));
 }

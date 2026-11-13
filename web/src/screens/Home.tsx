@@ -77,8 +77,8 @@ export default function Home() {
   // Came back to an unfinished form: say so, with a way to start over.
   const [restored, setRestored] = useState(Boolean(draft.text || draft.locQuery))
   const [busy, setBusy] = useState(false)
-  // An error is about the form as it was sent: once anything in it changes, it no longer shows.
-  const formKey = JSON.stringify([mode, text, locQuery, placeName, knowsWhen, date, time, dropAtRsa, photos.map((p) => p.url)])
+  // An error is about the form as it was sent: once anything in it changes (or consent is given), it no longer shows.
+  const formKey = JSON.stringify([mode, text, locQuery, placeName, knowsWhen, date, time, dropAtRsa, photos.map((p) => p.url), me?.needsConsent])
   const [sendError, setSendError] = useState({ message: '', formKey: '' })
   const error = sendError.formKey === formKey ? sendError.message : ''
   const setError = (message: string) => setSendError({ message, formKey })
@@ -217,6 +217,11 @@ export default function Home() {
       setError(t('form.photosBusy'))
       return
     }
+    // No report before consent is recorded (the server refuses it too): the consent sheet is open over this form.
+    if (me?.needsConsent) {
+      setError(t('form.consentFirst'))
+      return
+    }
     setBusy(true)
     setError('')
     const form = new FormData()
@@ -319,7 +324,11 @@ export default function Home() {
         <div className={s.helloText}>
           <span className={s.greeting}>
             {partOfDay()}
-            {firstName && `, ${firstName}`}
+            {firstName && (
+              <>
+                , <bdi>{firstName}</bdi>
+              </>
+            )}
           </span>
           <h1 key={mode} className={s.headline} data-enter={flips ? 'headline' : undefined} style={{ animationDuration: '280ms' }}>
             {tm('home.headA', mode)}
@@ -518,8 +527,8 @@ export default function Home() {
                 <div className={s.noticeBody}>
                   <MonoLabel color="var(--tan)">{tm('form.cardNotice.title', mode)}</MonoLabel>
                   <span className={s.noticeLead}>{tm('form.cardNotice.body', mode)}</span>
-                  {/* How card photos are handled only matters once there is a photo. */}
-                  {photos.length > 0 && <span>{tm('form.cardNotice.photo', mode)}</span>}
+                  {/* Always shown, photo or not: they should know what happens to a card photo before they add one. */}
+                  <span>{tm('form.cardNotice.photo', mode)}</span>
                 </div>
               </div>
             )}
@@ -592,7 +601,7 @@ export default function Home() {
                 <span className={s.switchState} aria-hidden="true">
                   {knowsWhen ? t('form.when.on') : t('form.when.off')}
                 </span>
-                <Switch checked={knowsWhen} onChange={setKnowsWhen} label={t('form.when.toggle')} />
+                <Switch checked={knowsWhen} onChange={setKnowsWhen} label={`${tm('form.when', mode)} ${t('form.when.toggle')}`} />
               </span>
             </label>
             {knowsWhen && (
