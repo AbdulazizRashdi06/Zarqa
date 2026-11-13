@@ -194,6 +194,69 @@ test('handover tickets update when the other person acts on them', async ({ page
   await expect(log(page).getByText('Library entrance')).toHaveCount(0)
 })
 
+test('a slow poll sent before a confirm does not bring the old buttons back', async ({ page }) => {
+  const chat = new FakeChat()
+  chat.add({ kind: 'handover', handoverAt: `${tomorrow()}T14:30`, handoverPlace: 'Library entrance', handoverStatus: 'suggested', canConfirm: true })
+  await chat.install(page)
+  // Hold the next poll: the server answers with what it had when the poll arrived (still "suggested").
+  let hold = true
+  let caught: () => void = () => {}
+  const inFlight = new Promise<void>((r) => (caught = r))
+  let release: () => void = () => {}
+  const released = new Promise<void>((r) => (release = r))
+  await page.route((u) => u.pathname === '/api/conversations/c1' && u.searchParams.has('after'), async (r) => {
+    if (!hold) return r.fallback()
+    hold = false
+    const snapshot = JSON.parse(JSON.stringify(chat.thread(Number(new URL(r.request().url()).searchParams.get('after')))))
+    caught()
+    await released
+    return r.fulfill({ json: snapshot })
+  })
+  await page.goto('/chats/c1')
+  const confirm = log(page).getByRole('button', { name: 'Confirm' })
+  await expect(confirm).toBeVisible()
+  await inFlight
+
+  await confirm.click()
+  await expect(log(page).getByText('Confirmed. See you there.')).toBeVisible()
+  release()
+  // Sample, not retry: a later poll would hide a stale overwrite again.
+  const seen: number[] = []
+  for (let i = 0; i < 15; i++) {
+    seen.push(await log(page).getByRole('button', { name: 'Confirm' }).count())
+    await page.waitForTimeout(50)
+  }
+  expect(seen.every((n) => n === 0)).toBe(true)
+  await expect(log(page).getByText('Confirmed. See you there.')).toBeVisible()
+  // Polling carries on with fresh data afterwards.
+  chat.add({ text: 'See you tomorrow!' })
+  await expect(log(page).getByText('See you tomorrow!')).toBeVisible(POLL)
+  await expect(log(page).getByRole('button', { name: 'Confirm' })).toHaveCount(0)
+})
+
+test.describe('on a touch phone', () => {
+  test.use({ hasTouch: true, isMobile: true })
+
+  test('the return and not-it actions come back after the handover form replaced a focused message box', async ({ page }) => {
+    const chat = new FakeChat()
+    await chat.install(page)
+    await page.goto('/chats/c1')
+    const ask = page.getByRole('button', { name: 'I got it back' })
+    const notIt = page.getByRole('button', { name: 'Not the same item after all?' })
+    await expect(ask).toBeVisible()
+
+    // The keyboard is up: the rows above the box make room.
+    await page.getByRole('textbox', { name: 'Message' }).tap()
+    await expect(ask).toHaveCount(0)
+    await expect(notIt).toHaveCount(0)
+    // The chip keeps focus in the box, so the box is still focused when the form replaces it.
+    await page.getByRole('button', { name: '+ Suggest a time' }).tap()
+    await page.getByRole('button', { name: 'Cancel' }).tap()
+    await expect(ask).toBeVisible()
+    await expect(notIt).toBeVisible()
+  })
+})
+
 test('a return ask confirmed here celebrates once, then the chat is read-only', async ({ page }) => {
   const chat = new FakeChat()
   chat.add({ kind: 'return', text: 'I handed it over. Did you get it back?', handoverStatus: 'suggested', canConfirm: true })

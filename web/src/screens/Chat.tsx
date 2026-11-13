@@ -105,6 +105,9 @@ function Chat({ id }: { id: string }) {
   const atBottom = useRef(true)
   const sendingRef = useRef(false)
   const busyRef = useRef(false)
+  // Counts what our own sends and ticket actions brought back. A poll sent before one of them finished carries an
+  // older snapshot, so its answer is dropped (the next poll asks again) instead of undoing what we just did.
+  const actionSeq = useRef(0)
   const log = useRef<HTMLDivElement>(null)
   const input = useRef<HTMLTextAreaElement>(null)
   const planChip = useRef<HTMLButtonElement>(null)
@@ -144,6 +147,7 @@ function Chat({ id }: { id: string }) {
     async function load(first: boolean): Promise<boolean> {
       if (inFlight) return false
       inFlight = true
+      const seq = actionSeq.current
       try {
         const th = await api<Thread>(`/conversations/${id}${first ? '' : `?after=${lastId.current}`}`)
         if (!alive) return false
@@ -151,6 +155,8 @@ function Chat({ id }: { id: string }) {
         fails = 0
         setOffline(false)
         setError((e) => (e?.network ? null : e))
+        // Older than something we did meanwhile: `lastId` stays put, so the next poll fetches all of it again.
+        if (!first && actionSeq.current !== seq) return true
         if (first) {
           setThread({ ...th, messages })
           setOpenedAt(messages.at(-1)?.id ?? 0)
@@ -246,6 +252,7 @@ function Chat({ id }: { id: string }) {
     if (fromDraft) setDraft('')
     try {
       merge([await api<Msg>(`/conversations/${id}/messages`, { body: { text: body } })])
+      actionSeq.current++
     } catch (e) {
       setError(errOf(e))
       if (fromDraft) setDraft((d) => d || text)
@@ -268,6 +275,7 @@ function Chat({ id }: { id: string }) {
     try {
       const res = await api<Msg | undefined>(path, { method: 'POST' })
       if (res && 'id' in res) merge([res])
+      actionSeq.current++
       after?.()
     } catch (e) {
       setError(errOf(e))
@@ -276,6 +284,13 @@ function Chat({ id }: { id: string }) {
       setBusy(null)
       refocus()
     }
+  }
+
+  /** Opens the handover form. It replaces the message box, which may go while focused (no blur), so typing ends here. */
+  function openPlan() {
+    setPlanError('')
+    setTyping(false)
+    setPlanning(true)
   }
 
   async function closeAsNotIt() {
@@ -519,10 +534,7 @@ function Chat({ id }: { id: string }) {
                         type="button"
                         className={s.otherBtn}
                         disabled={busy !== null}
-                        onClick={() => {
-                          setPlanError('')
-                          setPlanning(true)
-                        }}
+                        onClick={openPlan}
                       >
                         {t('chat.handover.another')}
                       </button>
@@ -603,6 +615,7 @@ function Chat({ id }: { id: string }) {
                 setPlanError('')
                 try {
                   merge([await api<Msg>(`/conversations/${id}/handover`, { body: { date, time, place } })])
+                  actionSeq.current++
                   setPlanning(false)
                   refocus(planChip)
                 } catch (e) {
@@ -633,10 +646,7 @@ function Chat({ id }: { id: string }) {
                     type="button"
                     className={`${s.chip} ${s.chipPlan}`}
                     onMouseDown={(e) => e.preventDefault()}
-                    onClick={() => {
-                      setPlanError('')
-                      setPlanning(true)
-                    }}
+                    onClick={openPlan}
                   >
                     {t('chat.suggestTime')}
                   </button>
