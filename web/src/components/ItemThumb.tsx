@@ -1,4 +1,4 @@
-import type { ReactElement } from 'react'
+import { useState, type ReactElement } from 'react'
 import { BagIcon, BottleIcon, BudsIcon, CalcIcon, CardIcon, KeyIcon, TagIcon } from './icons'
 
 type IconFn = (p: { size?: number; color?: string }) => ReactElement
@@ -27,6 +27,8 @@ export function ItemThumb({
   size?: number
 }) {
   const Icon = (categoryKey && byCategory[categoryKey]) || TagIcon
+  // A photo that won't load (deleted, offline) falls back to the icon instead of a broken-image box.
+  const [broken, setBroken] = useState<string | null>(null)
   return (
     <span
       style={{
@@ -41,8 +43,17 @@ export function ItemThumb({
         justifyContent: 'center',
       }}
     >
-      {photoId && !sensitive ? (
-        <img src={`/api/photos/${photoId}`} alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+      {photoId && !sensitive && broken !== photoId ? (
+        <img
+          src={`/api/photos/${photoId}`}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          width={size}
+          height={size}
+          onError={() => setBroken(photoId)}
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+        />
       ) : (
         <Icon size={Math.round(size / 2)} color="var(--ink)" />
       )}
