@@ -280,7 +280,14 @@ export default function Match() {
         )}
         <BigButton to="/reports" label={t('match.toReports')} />
         {!match.collected && (
-          <button type="button" className={s.notMine} onClick={() => setAsking('release')}>
+          <button
+            type="button"
+            className={s.notMine}
+            onClick={() => {
+              setError('')
+              setAsking('release')
+            }}
+          >
             {t('match.release.link')}
           </button>
         )}
@@ -387,7 +394,7 @@ export default function Match() {
         </div>
       )}
       {match.found.isSensitive && photoIds.length > 0 && <p className={s.coveredNote}>{t('match.covered')}</p>}
-      {match.found.hasPrivatePhoto && photoIds.length === 0 && (
+      {match.found.hasPrivatePhoto && (
         <p className={s.privateNote}>{match.atRsa ? t('match.privatePhoto.rsa') : t('match.privatePhoto')}</p>
       )}
 
@@ -439,7 +446,16 @@ export default function Match() {
               <p className={s.mineNote}>{match.atRsa ? (match.rsaReceived ? t('match.mineNote.rsaHeld') : t('match.mineNote.rsa')) : t('match.mineNote')}</p>
             </>
           )}
-          <button type="button" className={s.notMine} onClick={() => setAsking('reject')} disabled={busy !== null}>
+          <button
+            type="button"
+            className={s.notMine}
+            onClick={() => {
+              // The sheet shows only its own action's error, never an old "Could be mine" one.
+              setError('')
+              setAsking('reject')
+            }}
+            disabled={busy !== null}
+          >
             {t('match.notMine')}
           </button>
           <ConfirmSheet
@@ -494,13 +510,17 @@ function Viewer({ ids, start, onClose }: { ids: string[]; start: number; onClose
   const ref = useRef<HTMLDialogElement>(null)
   const touchX = useRef<number | null>(null)
   const go = useCallback((d: number) => setI((x) => Math.min(ids.length - 1, Math.max(0, x + d))), [ids.length])
+  // Closing unmounts the open dialog, which doesn't hand focus back: return it to the photo that opened it.
+  // Read before the first commit, because Close's autoFocus has taken focus by the time effects run.
+  const [opener] = useState(() => document.activeElement as HTMLElement | null)
   useEffect(() => {
     const d = ref.current
     if (d && !d.open) {
       if (typeof d.showModal === 'function') d.showModal()
       else d.setAttribute('open', '')
     }
-  }, [])
+    return () => opener?.focus()
+  }, [opener])
   return (
     <dialog
       ref={ref}
