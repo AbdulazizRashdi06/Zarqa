@@ -3,7 +3,8 @@ import type { Mode } from './rules'
 // The Home form survives a reload, a trip to another screen, a new tab or the phone killing the app.
 // Fields go to localStorage; photos are blobs, so they go to IndexedDB. Both are best effort.
 // Both carry the account they belong to (another account on this browser never sees them, and signing out
-// clears them) and the time they last changed (a draft left alone for a day is dropped).
+// clears them). The draft has one clock, the time in the fields record: a change to the text or the photos
+// resets it, and a draft left alone for a day is dropped whole, never the text without its photos.
 
 export type DraftFields = {
   mode: Mode
@@ -72,6 +73,22 @@ export function saveFields(owner: string, fields: DraftFields) {
   }
 }
 
+/** Restarts the draft's clock after a photo change. */
+function touchFields(owner: string) {
+  try {
+    const stored = readFields()
+    if (stored?.owner === owner) localStorage.setItem(KEY, JSON.stringify({ ...stored, savedAt: Date.now() } satisfies StoredFields))
+  } catch {
+    // ignore
+  }
+}
+
+/** Whether this account's draft is still alive by the fields' clock. */
+function fieldsFresh(owner: string) {
+  const stored = readFields()
+  return stored?.owner === owner && fresh(stored.savedAt)
+}
+
 function openDb(): Promise<IDBDatabase> {
   return new Promise((resolve, reject) => {
     const req = indexedDB.open(DB, 1)
@@ -122,7 +139,7 @@ export function loadPhotos(owner: string): Promise<Blob[]> {
   return queued(async () => {
     const stored = await readPhotos()
     if (stored === undefined) return []
-    if (!isStoredPhotos(stored) || stored.owner !== owner || !fresh(stored.savedAt)) {
+    if (!isStoredPhotos(stored) || stored.owner !== owner || !(fresh(stored.savedAt) || fieldsFresh(owner))) {
       await writePhotos(null)
       return []
     }
@@ -133,12 +150,18 @@ export function loadPhotos(owner: string): Promise<Blob[]> {
 export function savePhotos(owner: string, blobs: Blob[]): Promise<void> {
   if (!owner) return Promise.resolve()
   return queued(async () => {
-    if (!blobs.length) return await writePhotos(null)
-    const sig = signature(blobs)
     const stored = await readPhotos()
+    if (!blobs.length) {
+      if (stored === undefined) return
+      await writePhotos(null)
+      if (isStoredPhotos(stored) && stored.owner === owner) touchFields(owner)
+      return
+    }
+    const sig = signature(blobs)
     // Unchanged (the restored set): keep the old time, so only real edits keep a draft alive.
     if (isStoredPhotos(stored) && stored.owner === owner && stored.sig === sig) return
     await writePhotos({ owner, savedAt: Date.now(), sig, blobs })
+    touchFields(owner)
   }).catch(() => {
     // Not kept; the user can add them again.
   })

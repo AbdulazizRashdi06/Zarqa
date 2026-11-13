@@ -113,6 +113,70 @@ test('the same account gets its draft back, RSA choice included, and can start o
   expect((await storedDraft(page)).fields ?? '').not.toContain('Blue bottle')
 })
 
+// Seeds a draft for user-a whose text and photos were last saved the given number of hours ago.
+// Seeded from a page without the form, so nothing on Home can save over it, then Home is opened.
+const seedDraft = async (page: Page, fieldsHoursAgo: number, photosHoursAgo: number) => {
+  await page.goto('/help')
+  // Once the session has noted who is signed in, it won't clear the draft as another account's.
+  await expect.poll(() => page.evaluate(() => localStorage.getItem('zarqa.lastUser'))).toBe('user-a')
+  await page.evaluate(
+    async ([fieldsAgo, photosAgo, png]) => {
+      const hour = 60 * 60 * 1000
+      const fields = { mode: 'lost', text: 'Blue bottle', locQuery: '', placeName: null, knowsWhen: false, date: '2020-01-01', time: '', dropAtRsa: false }
+      localStorage.setItem('zarqa.draft', JSON.stringify({ owner: 'user-a', savedAt: Date.now() - fieldsAgo * hour, fields }))
+      const blob = new Blob([Uint8Array.from(atob(png), (c) => c.charCodeAt(0))], { type: 'image/png' })
+      await new Promise<void>((resolve) => {
+        const req = indexedDB.open('zarqa-draft', 1)
+        req.onupgradeneeded = () => req.result.createObjectStore('photos')
+        req.onsuccess = () => {
+          const tx = req.result.transaction('photos', 'readwrite')
+          const record = { owner: 'user-a', savedAt: Date.now() - photosAgo * hour, sig: `1#${blob.size}:${blob.type}`, blobs: [blob] }
+          tx.objectStore('photos').put(record, 'list')
+          tx.oncomplete = () => {
+            req.result.close()
+            resolve()
+          }
+        }
+      })
+    },
+    [fieldsHoursAgo, photosHoursAgo, PNG.toString('base64')] as const,
+  )
+  await page.goto('/')
+}
+
+test('a draft has one clock: text edited an hour ago keeps day-old photos with it', async ({ page }) => {
+  await home(page, () => user('user-a'))
+  await seedDraft(page, 1, 25)
+  await expect(page.getByLabel('What did you lose?')).toHaveValue('Blue bottle')
+  await expect(page.getByText('Picked up where you left off.')).toBeVisible()
+  await expect(page.getByRole('img', { name: 'Photo 1' })).toBeVisible()
+  await expect.poll(async () => (await storedDraft(page)).photos).toEqual({ owner: 'user-a', count: 1 })
+})
+
+test('a draft has one clock: adding a photo keeps the text alive too', async ({ page }) => {
+  await home(page, () => user('user-a'))
+  await seedDraft(page, 23, 23)
+  await expect(page.getByRole('img', { name: 'Photo 1' })).toBeVisible()
+  // Restoring changes nothing, so the text keeps its old time until something is edited.
+  const start = Date.now()
+  expect(JSON.parse((await storedDraft(page)).fields ?? '{}').savedAt).toBeLessThan(start - 22 * 60 * 60 * 1000)
+  await page.locator('input[type=file]').setInputFiles({ name: 'p.png', mimeType: 'image/png', buffer: PNG })
+  await expect(page.getByRole('img', { name: 'Photo 2' })).toBeVisible()
+  await expect.poll(async () => (await storedDraft(page)).photos).toEqual({ owner: 'user-a', count: 2 })
+  await expect.poll(async () => JSON.parse((await storedDraft(page)).fields ?? '{}').savedAt).toBeGreaterThanOrEqual(start - 1000)
+  const fields = JSON.parse((await storedDraft(page)).fields ?? '{}')
+  expect(fields.owner).toBe('user-a')
+  expect(fields.fields.text).toBe('Blue bottle')
+})
+
+test('a draft left alone for a day is dropped, text and photos together', async ({ page }) => {
+  await home(page, () => user('user-a'))
+  await seedDraft(page, 25, 25)
+  await expect(page.getByLabel('What did you lose?')).toHaveValue('')
+  await expect(page.getByRole('img', { name: 'Photo 1' })).toHaveCount(0)
+  await expect.poll(async () => (await storedDraft(page)).photos).toBeNull()
+})
+
 test('no report goes out while consent is missing', async ({ page }) => {
   const posts: string[] = []
   await home(page, () => user('user-a', { needsConsent: true }), posts)
