@@ -41,9 +41,9 @@ async function search(query, page) {
   const url = `https://api.openverse.org/v1/images/?${new URLSearchParams({ q: query, license: "cc0,pdm,by,by-sa", source: "flickr", page_size: "20", page: String(page), mature: "false" })}`;
   // Openverse searches time out now and then: try a few times before giving up on a query.
   for (let attempt = 0; attempt < 3; attempt++) {
-    const res = await fetch(url, { headers: { "user-agent": UA } }).catch(() => null);
+    const res = await fetch(url, { headers: { "user-agent": UA }, signal: AbortSignal.timeout(45_000) }).catch(() => null); // a search with no time limit once hung for 20 minutes
     if (res?.ok) return (await res.json()).results;
-    await sleep(15_000 * (attempt + 1));
+    await sleep(8_000 * (attempt + 1));
   }
   return null;
 }
