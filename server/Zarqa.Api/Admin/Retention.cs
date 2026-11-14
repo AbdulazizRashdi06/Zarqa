@@ -105,24 +105,57 @@ public sealed class Retention(ZarqaDb db, PhotoStore photos, IEmailSender email,
     }
 }
 
-/// <summary>Runs <see cref="Retention"/> shortly after start, then daily.</summary>
+/// <summary>
+/// Runs <see cref="Retention"/> shortly after start, then daily. The same loop wakes every
+/// <see cref="Matching.HeldMatches.CheckEvery"/> to release held matches nobody decided in 48 hours: it runs even while
+/// matching is paused, which the match worker does not.
+/// </summary>
 public sealed class RetentionWorker(IServiceScopeFactory scopes, TimeProvider clock, ILogger<RetentionWorker> log) : BackgroundService
 {
+    /// <summary>How long after start the first pass waits.</summary>
+    public static readonly TimeSpan StartDelay = TimeSpan.FromMinutes(2);
+
+    /// <summary>How often <see cref="Retention"/> runs.</summary>
+    public static readonly TimeSpan RetentionEvery = TimeSpan.FromDays(1);
+
+    private DateTimeOffset _nextRetention = DateTimeOffset.MinValue;
+
     protected override async Task ExecuteAsync(CancellationToken stop)
     {
-        await Task.Delay(TimeSpan.FromMinutes(2), clock, stop).ContinueWith(_ => { }, CancellationToken.None);
+        await Task.Delay(StartDelay, clock, stop).ContinueWith(_ => { }, CancellationToken.None);
         while (!stop.IsCancellationRequested)
         {
-            try
-            {
-                using var scope = scopes.CreateScope();
-                await scope.ServiceProvider.GetRequiredService<Retention>().RunAsync(stop);
-            }
-            catch (Exception e) when (!stop.IsCancellationRequested)
-            {
-                log.LogError(e, "Retention run failed");
-            }
-            await Task.Delay(TimeSpan.FromDays(1), clock, stop).ContinueWith(_ => { }, CancellationToken.None);
+            await TickAsync(stop);
+            await Task.Delay(Matching.HeldMatches.CheckEvery, clock, stop).ContinueWith(_ => { }, CancellationToken.None);
+        }
+    }
+
+    /// <summary>
+    /// One pass of the loop: release the held matches that are due, and run retention when a day has gone by since
+    /// its last run (always on the first pass). Public for tests.
+    /// </summary>
+    public async Task TickAsync(CancellationToken stop)
+    {
+        try
+        {
+            using var scope = scopes.CreateScope();
+            var released = await scope.ServiceProvider.GetRequiredService<Matching.HeldMatches>().ReleaseDueAsync(stop);
+            if (released > 0) log.LogInformation("Released {Count} held matches nobody reviewed in time", released);
+        }
+        catch (Exception e) when (!stop.IsCancellationRequested)
+        {
+            log.LogError(e, "Releasing held matches failed");
+        }
+        if (clock.GetUtcNow() < _nextRetention) return;
+        _nextRetention = clock.GetUtcNow() + RetentionEvery;
+        try
+        {
+            using var scope = scopes.CreateScope();
+            await scope.ServiceProvider.GetRequiredService<Retention>().RunAsync(stop);
+        }
+        catch (Exception e) when (!stop.IsCancellationRequested)
+        {
+            log.LogError(e, "Retention run failed");
         }
     }
 }

@@ -8,7 +8,12 @@ public enum ReportKind { Lost, Found }
 /// <summary>Pickup: the owner claimed an item held at the RSA desk and collects it there (no chat).</summary>
 public enum ReportStatus { Open, InChat, Returned, Closed, Expired, Pickup }
 
-public enum MatchStatus { Suggested, Confirmed, Rejected, Expired }
+/// <summary>
+/// Held: a low-scoring debate match waiting for an admin to approve or reject it (Matching.HeldMatches); nobody else can see it.
+/// Withheld: a held match that ended without the owner ever seeing it: an admin rejected it, or one of its reports left
+/// the pool first. Like Rejected, the pair is never reviewed or suggested again, and the owner cannot open it.
+/// </summary>
+public enum MatchStatus { Suggested, Confirmed, Rejected, Expired, Held, Withheld }
 
 /// <summary>RsaStaff: matched by hand at the RSA desk, after someone described their item in person.</summary>
 public enum MatchDecider { Debate, LunaFallback, RsaStaff }
@@ -79,6 +84,15 @@ public class Report
     public bool IsSensitive { get; set; }
     public ReportStatus Status { get; set; } = ReportStatus.Open;
     public Vector? Embedding { get; set; }
+    /// <summary>
+    /// Plain-English rendering of the report's text, made by a model and used only to find and rank candidates
+    /// (decisions.md, 2026-11-14). Never shown to users; the reviewers read the person's own words.
+    /// </summary>
+    public string? SearchEnglish { get; set; }
+    /// <summary>The place in English, from the same call. Empty when no place was given.</summary>
+    public string? SearchPlace { get; set; }
+    /// <summary>SHA-256 (hex) of the text and place the rendering was made from: an edit changes it, and the next matching run renders again.</summary>
+    public string? SearchHash { get; set; }
     public DateTimeOffset CreatedAt { get; set; }
     public DateTimeOffset UpdatedAt { get; set; }
     public List<Photo> Photos { get; set; } = [];

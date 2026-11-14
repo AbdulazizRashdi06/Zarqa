@@ -215,6 +215,27 @@ public class CardCoverTests
         Assert.Equal("no readable text", result.Reason);
     }
 
+    // A real bank card (2026-11-14): OCR read the bank's name and the holder's, and none of the raised digits.
+    // The copy came out with nothing covered and passed the re-check, because the re-check couldn't read them either.
+    [Fact]
+    public void A_card_whose_numbers_ocr_cannot_read_gets_no_copy()
+    {
+        var card = new SyntheticCard().Word("Bank", 420, 60, 140).Word("Muscat", 580, 60, 180).Word("SARA", 420, 560, 140).Word("AL", 580, 560, 70);
+        var (result, covered) = Cover(card);
+        Assert.Null(covered);
+        Assert.Equal("no card number found to cover", result.Reason);
+    }
+
+    [Fact]
+    public void Reading_only_a_short_number_is_not_enough_for_a_copy()
+    {
+        // The expiry date is read and would be covered, but the card number was missed.
+        var card = new SyntheticCard().Word("Bank", 420, 60, 140).Word("Muscat", 580, 60, 180).Word("12/29", 420, 430, 140).Word("SARA", 420, 560, 140);
+        var (result, covered) = Cover(card);
+        Assert.Null(covered);
+        Assert.Equal("no card number found to cover", result.Reason);
+    }
+
     [Fact]
     public void A_digit_found_on_the_recheck_is_covered_too()
     {

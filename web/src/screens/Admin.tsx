@@ -5,6 +5,7 @@ import { ConfirmSheet, InlineError, LoadError, LoadingState, UserText } from '..
 import { BackHeader, Ticket } from '../components/ui'
 import { t, type StringKey } from '../i18n'
 import { api, ApiError } from '../lib/api'
+import { clockTime, dayMonth } from '../lib/dates'
 import s from './Launch.module.css'
 import a from './Admin.module.css'
 
@@ -17,6 +18,12 @@ type Report = {
   id: string; kind: string; title: string; description: string; location: string; status: string; isSensitive: boolean
   owner: string; ownerId: string; ownerBanned: boolean; ownerIsAdmin?: boolean; photoIds?: string[]; createdAt?: string
 }
+type HeldSide = {
+  id: string; title: string; description: string; location: string; eventDate?: string | null; eventTime?: string | null
+  isSensitive: boolean; owner: string; photoIds?: string[]
+}
+/** A match held back for review: nobody but admins can see it until it is approved or 48 hours pass. */
+type Held = { id: string; score: number; reasons?: string[]; createdAt: string; releaseAt: string; lost: HeldSide; found: HeldSide }
 type Log = { id: number; step: string; payload: string; createdAt: string; costUsd: number | null; counterpartTitle?: string | null; counterpartKind?: string | null }
 type Result = { ok?: string; err?: string }
 /** key: where its result shows; action: which button shows the busy label. */
@@ -47,6 +54,8 @@ export default function Admin() {
   const [statsLoading, setStatsLoading] = useState(true)
   const [reports, setReports] = useState<Report[] | null>(null)
   const [reportsFailed, setReportsFailed] = useState(false)
+  const [held, setHeld] = useState<Held[] | null>(null)
+  const [heldFailed, setHeldFailed] = useState(false)
   const [status, setStatus] = useState('')
   const [query, setQuery] = useState('')
   const [logs, setLogs] = useState<Log[]>([])
@@ -67,6 +76,8 @@ export default function Admin() {
     .then(x => { setStats(x); setStatsFailed(false) }, () => setStatsFailed(true))
     .finally(() => setStatsLoading(false)), [])
   const loadStats = useCallback(() => { setStatsLoading(true); return fetchStats() }, [fetchStats])
+  const loadHeld = useCallback(() => api<Held[]>('/admin/held')
+    .then(list => { setHeld(list ?? []); setHeldFailed(false) }, () => setHeldFailed(true)), [])
   const loadReports = useCallback(async () => {
     const version = ++reportsVersion.current
     const params = new URLSearchParams()
@@ -80,11 +91,14 @@ export default function Admin() {
       if (version === reportsVersion.current) setReportsFailed(true)
     }
   }, [status, query])
-  const refresh = useCallback(() => Promise.all([loadStats(), loadReports()]), [loadStats, loadReports])
+  const refresh = useCallback(() => Promise.all([loadStats(), loadReports(), loadHeld()]), [loadStats, loadReports, loadHeld])
 
   useEffect(() => {
     if (me?.isAdmin) void fetchStats()
   }, [me?.isAdmin, fetchStats])
+  useEffect(() => {
+    if (me?.isAdmin) void loadHeld()
+  }, [me?.isAdmin, loadHeld])
   useEffect(() => {
     if (!me?.isAdmin) return
     // Typing in the search box waits a moment; the status filter and the first load go straight away.
@@ -127,6 +141,19 @@ export default function Admin() {
       key: `card:${r.id}`, action: `ban:${r.id}`, title: t(ban ? 'admin.banTitle' : 'admin.unbanTitle'), confirmLabel: t(ban ? 'admin.banGo' : 'admin.unbanGo'),
       body: t(ban ? 'admin.banConfirm' : 'admin.unbanConfirm', { email: r.owner }),
       run: async () => { await api(`/admin/users/${r.ownerId}/${ban ? 'ban' : 'unban'}`, { method: 'POST' }); void refresh(); return '' },
+    })
+  }
+  function askHeld(m: Held, approve: boolean) {
+    const verb = approve ? 'approve' : 'reject'
+    setAsk({
+      key: `held:${m.id}`, action: `${verb}:${m.id}`, title: t(approve ? 'admin.held.approveTitle' : 'admin.held.rejectTitle'),
+      confirmLabel: t(approve ? 'admin.held.approveGo' : 'admin.held.rejectGo'),
+      body: <><UserText>“{m.lost.title}”</UserText> · <UserText>“{m.found.title}”</UserText><br />{t(approve ? 'admin.held.approveConfirm' : 'admin.held.rejectConfirm')}</>,
+      // Whatever the answer, the list is read again: someone else, or the 48 hours, may have decided it first.
+      run: async () => {
+        try { await api(`/admin/held/${m.id}/${verb}`, { method: 'POST' }) } finally { void loadHeld(); void loadStats() }
+        return ''
+      },
     })
   }
   function askRematch() {
@@ -234,6 +261,50 @@ export default function Admin() {
         <button type="button" disabled={!!running} aria-busy={running === 'rematch' || undefined} onClick={askRematch}>{busyLabel('rematch', t('admin.rematch'), t('admin.rematching'))}</button>
       </div>
       {outcome('rematch')}
+    </section>
+
+    <section aria-labelledby="held-title" className={a.section}>
+      <h2 id="held-title">{t('admin.held.title')}{held && held.length > 0 ? ` (${held.length})` : ''}</h2>
+      <p className={a.note}>{t('admin.held.note')}</p>
+      {heldFailed && held && <InlineError>{t('common.loadError')}</InlineError>}
+      {heldFailed && !held ? <LoadError onRetry={() => void loadHeld()} />
+        : !held ? <LoadingState />
+        : !held.length ? <p>{t('admin.held.empty')}</p>
+        : <div className={a.list}>{held.map(m => <Ticket className={`${s.card} ${a.card}`} key={m.id} data-held={m.id}>
+          <p className={a.heldHead}>
+            <span className={a.tag}>{t('admin.held.tag')}</span> {t('admin.held.score', { score: m.score.toFixed(2) })}
+            <br />{t('admin.held.auto', { when: new Date(m.releaseAt).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' }) })}
+          </p>
+          {([['lost', m.lost], ['found', m.found]] as const).map(([kind, r]) => {
+            const photos = r.photoIds ?? []
+            return <section key={kind} className={a.side} aria-label={label('admin.kind', kind)}>
+              <span className={a.sideLabel}>{label('admin.kind', kind)}</span>
+              <UserText as="h3" className={a.cardTitle}>{r.title}</UserText>
+              {r.description && <UserText as="p">{r.description}</UserText>}
+              <p>
+                {r.location && <><UserText>{r.location}</UserText><br /></>}
+                {r.eventDate && <>{dayMonth(r.eventDate)}{r.eventTime ? `, ${clockTime(r.eventTime)}` : ''}<br /></>}
+                <span className="wrap">{r.owner}</span>
+              </p>
+              {photos.length > 0 && <div className={s.photos}>{photos.map(id => <button type="button" key={id} className={a.photo}
+                aria-label={t('admin.photoOpen', { title: r.title })} onClick={() => setViewer({ id, title: r.title })}>
+                <img src={`/api/photos/${id}`} alt="" loading="lazy" className={r.isSensitive ? a.contain : undefined} />
+              </button>)}</div>}
+              {r.isSensitive && <p>{t(photos.length > 0 ? 'admin.covered' : 'admin.sensitive')}</p>}
+            </section>
+          })}
+          {(m.reasons ?? []).length > 0 && <section className={a.side}>
+            <span className={a.sideLabel}>{t('admin.held.reasons')}</span>
+            <ul>{(m.reasons ?? []).map((reason, i) => <li key={i}><UserText>{reason}</UserText></li>)}</ul>
+          </section>}
+          <div className={`${s.actions} ${a.actions}`}>
+            <button type="button" disabled={!!running} aria-busy={running === `approve:${m.id}` || undefined} onClick={() => askHeld(m, true)}>
+              {busyLabel(`approve:${m.id}`, t('admin.held.approve'), t('admin.held.approving'))}</button>
+            <button type="button" disabled={!!running} aria-busy={running === `reject:${m.id}` || undefined} onClick={() => askHeld(m, false)}>
+              {busyLabel(`reject:${m.id}`, t('admin.held.reject'), t('admin.held.rejecting'))}</button>
+          </div>
+          {outcome(`held:${m.id}`, true)}
+        </Ticket>)}</div>}
     </section>
 
     <section aria-labelledby="email-title" className={a.section}>

@@ -2,10 +2,14 @@ const STOPWORDS = new Set(
   "a an the and or of in on at to for with my i it is was this that near by from lost found item some".split(" "),
 );
 
+// EDGE_LEGACY=1 reproduces the app as it was before the 2026-11-14 fixes below (the control arm of edge runs).
+export const LEGACY = process.env.EDGE_LEGACY === "1";
+
 export function tokens(text) {
-  return String(text || "")
-    .toLowerCase()
-    .normalize("NFKD")
+  const split = String(text || "").toLowerCase().normalize("NFKD");
+  // NFKD splits "أ" and "ü" into a letter plus a combining mark. Drop the marks, or they turn into spaces
+  // and break the word ("أسود" → "سود", "Hülle" → "hu" + "lle").
+  return (LEGACY ? split : split.replace(/\p{M}/gu, ""))
     .replace(/[^\p{L}\p{N}\s]/gu, " ")
     .split(/\s+/)
     .filter((t) => t.length > 1 && !STOPWORDS.has(t));
@@ -42,16 +46,18 @@ export function matchAliases(location, aliasIndex) {
   const text = ` ${norm(location)} `;
   const out = new Map();
   for (const [name, group] of aliasIndex) {
-    // Short aliases ("LRC") must match as a whole word; longer names may match inside a phrase.
-    if (text.includes(` ${name} `) || (name.length > 3 && text.includes(name))) out.set(group.canonical, group);
+    // A name matches as whole words only. Matching inside words made "Female Residences" also match
+    // Boys Dorms (alias "male residences").
+    if (text.includes(` ${name} `) || (LEGACY && name.length > 3 && text.includes(name))) out.set(group.canonical, group);
   }
   return [...out.values()];
 }
 
 /** Location tokens with every alias of every matched place added. */
 export function expandedLocationTokens(report, aliasIndex) {
-  const base = tokens(`${report.location || ""} ${report.campusZone || ""}`);
-  for (const g of matchAliases(report.location, aliasIndex)) for (const n of g.names) base.push(...tokens(n));
+  const place = report.rankLocation ?? report.location;
+  const base = tokens(`${place || ""} ${report.campusZone || ""}`);
+  for (const g of matchAliases(place, aliasIndex)) for (const n of g.names) base.push(...tokens(n));
   return base;
 }
 
@@ -86,13 +92,15 @@ export function photoAttributesText(attrs) {
 
 /** The structured string that gets embedded (same fields as processReport, plus optional photo attributes). */
 export function embeddingText(report, aliasIndex, { withPhotoAttributes = false } = {}) {
-  const aliases = matchAliases(report.location, aliasIndex).flatMap((g) => g.names);
+  // rankText / rankLocation: the person's words plus a plain-English rendering (src/normalize.js), when one exists.
+  const place = report.rankLocation ?? report.location;
+  const aliases = matchAliases(place, aliasIndex).flatMap((g) => g.names);
   const lines = [
     `type: ${report.type}`,
     `title: ${report.title || ""}`,
     `category: ${report.category || ""}`,
-    `description: ${report.description || ""}`,
-    `location: ${report.location || ""}`,
+    `description: ${report.rankText ?? report.description ?? ""}`,
+    `location: ${place || ""}`,
     `campus zone: ${report.campusZone || ""}`,
     aliases.length ? `location aliases: ${[...new Set(aliases)].join(", ")}` : "",
     `date: ${report.eventDate || ""}`,

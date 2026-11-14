@@ -11,8 +11,11 @@ namespace Zarqa.Api.Chat;
 /// <summary>The lost owner's decision on a suggested match (design: Match screen).</summary>
 public static class MatchEndpoints
 {
-    /// <summary>Fixed display bands (decisions.md, 2026-11-01), not tuned: how sure a suggestion sounds to the owner.</summary>
-    public const double LooksLikeAt = 0.65;
+    /// <summary>
+    /// Fixed display bands, not tuned: how sure a suggestion sounds to the owner. "Looks like it" started at 0.65 until the
+    /// owner moved it to 0.70 on 2026-11-14; below it is "Small chance", which includes held matches an admin let through.
+    /// </summary>
+    public const double LooksLikeAt = 0.70;
     public const double BigChanceAt = 0.80;
 
     public static string Confidence(double score) => score >= BigChanceAt ? "big" : score >= LooksLikeAt ? "looks" : "small";
@@ -120,10 +123,13 @@ public static class MatchEndpoints
         });
     }
 
-    /// <summary>Only the lost owner ever sees a match: the finder never browses lost reports.</summary>
+    /// <summary>
+    /// Only the lost owner ever sees a match: the finder never browses lost reports. A match held for review, or one an
+    /// admin rejected there, does not exist for the owner either: every route here answers 404, as it does for a stranger.
+    /// </summary>
     private static Task<Match?> Load(ZarqaDb db, Guid id, Guid me, CancellationToken ct) =>
         db.Matches.Include(m => m.Lost).ThenInclude(r => r!.Photos).Include(m => m.Found).ThenInclude(r => r!.Photos)
-            .FirstOrDefaultAsync(m => m.Id == id && m.Lost!.UserId == me, ct);
+            .FirstOrDefaultAsync(m => m.Id == id && m.Lost!.UserId == me && m.Status != MatchStatus.Held && m.Status != MatchStatus.Withheld, ct);
 
     /// <summary>HasPrivatePhoto: a photo exists that only its uploader may see (a card photo not covered yet), so the owner knows to ask.</summary>
     private static SideDto Side(Report r, bool photos) => new(r.Id, r.Title, r.Description, r.CategoryNorm, r.LocationText, r.EventDate?.ToString("yyyy-MM-dd"),

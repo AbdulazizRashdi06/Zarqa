@@ -91,6 +91,8 @@ public sealed class NotificationSender(ZarqaDb db, IPushSender push, IEmailSende
         var m = await db.Matches.Include(x => x.Lost).ThenInclude(r => r!.User).Include(x => x.Found).FirstOrDefaultAsync(x => x.Id == matchId, ct);
         var owner = m?.Lost?.User;
         if (m is null || owner is null || !owner.MatchAlerts) return;
+        // A match held for review is not the owner's to see yet: no push, no email, whoever asked for one.
+        if (m.Status is MatchStatus.Held or MatchStatus.Withheld) return;
         await PushAsync(owner.Id, new PushPayload("Zarqa spotted something 👀", $"Someone found something that might be yours: “{m.Lost!.Title}”. Tap to see.", $"/matches/{m.Id}", $"match-{m.Id}"), ct);
         var (html, text) = NoticeEmail.Build("ZARQA SPOTTED SOMETHING", "Could this be yours?", m.Found!.DropAtRsa
             ? "Someone found an item that might be yours and handed it to the RSA desk. Open Zarqa and check the match: if it's yours, you'll get a pickup code."

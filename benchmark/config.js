@@ -3,6 +3,7 @@
 export const MODELS = {
   embedding: "text-embedding-3-small",
   luna: "gpt-6-luna",
+  terra: "gpt-6.1-terra", // the app's debate judge since 2026-11-10
   jev: "jev-1.13.0", // pinned: jev-latest moves silently and would shift thresholds
   jevOpenRouter: "typesafe/jev-1.13", // same model through OpenRouter's decisions endpoint
 };
@@ -53,7 +54,7 @@ export const PROPOSED = {
 export const RUNTIME = {
   reviewConcurrency: 10, // reviews for one report run in parallel, like Promise.all
   lunaImageDetail: "low", // "low" | "high" | "auto" — set to what production uses
-  requestTimeoutMs: 60_000,
+  requestTimeoutMs: Number(process.env.REQUEST_TIMEOUT_MS) || 60_000, // raise when calls queue behind the Codex gateway
 };
 
 // Firestore time can't be measured offline, so it is modelled. Replace with numbers
@@ -76,4 +77,4 @@ export const OFFLINE_ESTIMATE = {
   jev: { inputTokens: 750, outputTokens: 0, latencyMs: 150 },
 };
 
-export const SYSTEMS = ["luna", "luna-vector", "jev", "jev-photo", "jev-cascade", "luna-debate"];
+export const SYSTEMS = ["luna", "luna-vector", "jev", "jev-photo", "jev-cascade", "luna-debate", "luna-debate-terra"];

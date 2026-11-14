@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Zarqa.Api.Auth;
 using Zarqa.Api.Data;
+using Zarqa.Api.Matching;
 using Zarqa.Api.Reports;
 
 namespace Zarqa.Api.Admin;
@@ -84,13 +85,39 @@ public static class AdminEndpoints
         admin.MapPost("/users/{id:guid}/ban", (Guid id, ZarqaDb db, CancellationToken ct) => SetBanned(db, id, true, ct));
         admin.MapPost("/users/{id:guid}/unban", (Guid id, ZarqaDb db, CancellationToken ct) => SetBanned(db, id, false, ct));
 
-        // After a matching change: review every open report again. Pairs already suggested, confirmed or rejected stay as they are.
+        // After a matching change: review every open report again. Pairs already suggested, held, confirmed or rejected stay as they are.
         admin.MapPost("/rematch", async (ZarqaDb db, Matching.MatchQueue queue, CancellationToken ct) =>
         {
             var ids = await db.Reports.Where(r => r.Status == ReportStatus.Open && !r.User!.Email.EndsWith(SampleData.EmailSuffix)).Select(r => r.Id).ToListAsync(ct);
             foreach (var id in ids) await queue.EnqueueAsync(id, ct);
             return Results.Ok(new { queued = ids.Count });
         });
+
+        // To review (owner decision 2026-11-14): debate matches that scored under 0.60 wait here before the owner sees them.
+        // Oldest first: those are released by themselves soonest. Photos follow the usual rule: card photos only as covered copies.
+        admin.MapGet("/held", async (ZarqaDb db, CancellationToken ct) =>
+        {
+            var list = await db.Matches.AsNoTracking()
+                .Include(m => m.Lost).ThenInclude(r => r!.Photos).Include(m => m.Lost).ThenInclude(r => r!.User)
+                .Include(m => m.Found).ThenInclude(r => r!.Photos).Include(m => m.Found).ThenInclude(r => r!.User)
+                .Where(m => m.Status == MatchStatus.Held).OrderBy(m => m.CreatedAt).Take(200).ToListAsync(ct);
+            return list.Select(m => new
+            {
+                m.Id,
+                score = m.FinalScore,
+                m.Reasons,
+                m.CreatedAt,
+                releaseAt = m.CreatedAt + HeldMatches.ReleaseAfter,
+                lost = HeldSide(m.Lost!),
+                found = HeldSide(m.Found!),
+            });
+        });
+
+        admin.MapPost("/held/{id:guid}/approve", async (Guid id, HttpContext http, HeldMatches held, CancellationToken ct) =>
+            await held.ApproveAsync(id, http.User.Id(), ct) ? Results.NoContent() : Errors.BadRequest(HeldGone));
+
+        admin.MapPost("/held/{id:guid}/reject", async (Guid id, HttpContext http, HeldMatches held, CancellationToken ct) =>
+            await held.RejectAsync(id, http.User.Id(), ct) ? Results.NoContent() : Errors.BadRequest(HeldGone));
 
         // Sends the admin one email through each configured provider on its own, so the backup sender is proven to
         // work (key, verified domain, this server's address allowed) before the day the first one runs out.
@@ -163,6 +190,21 @@ public static class AdminEndpoints
             }).ToList();
         });
     }
+
+    public const string HeldGone = "This one isn't waiting for review any more.";
+
+    private static object HeldSide(Report r) => new
+    {
+        r.Id,
+        r.Title,
+        r.Description,
+        location = r.LocationText,
+        eventDate = r.EventDate?.ToString("yyyy-MM-dd"),
+        eventTime = r.EventTime?.ToString("HH:mm"),
+        r.IsSensitive,
+        owner = r.User!.Email,
+        photoIds = PhotoAccess.SharedIds(r),
+    };
 
     public sealed record DeleteEverything(string? Confirm)
     {

@@ -1,6 +1,8 @@
 // The app's one-box report shape (server ReportText + Matcher.ToInput): one text, no title,
 // category guessed from keywords. Used by `run.js --shape one` and scripts/shortlist-experiment.js.
 
+import { LEGACY } from "./text.js";
+
 const KEYWORDS = [
   ["Wallets & cards", ["wallet", "purse", "card", "cards", "id", "ids", "license", "licence", "passport", "bank", "visa", "mastercard", "permit"]],
   ["Keys", ["key", "keys", "keychain", "keyring", "car key"]],
@@ -15,14 +17,22 @@ const KEYWORDS = [
   ["Other", ["other", "misc", "miscellaneous"]],
 ];
 
+// Things called "card" or "bank" that are not wallets or cards (the app's Categories.NotCardRe).
+const NOT_CARD = /\b(power ?banks?|(micro ?)?sd ?cards?|sim ?cards?|memory ?cards?|graphics ?cards?|flash ?cards?|playing ?cards?)\b/gi;
+const words = (text) => ` ${String(text || "").toLowerCase().split(/[^\p{L}\p{N}-]+/u).filter(Boolean).join(" ")} `;
+
 export function normalizeCategory(text) {
-  const joined = ` ${String(text || "").toLowerCase().split(/[^\p{L}\p{N}-]+/u).filter(Boolean).join(" ")} `;
-  for (const [cat, words] of KEYWORDS) if (words.some((w) => joined.includes(` ${w} `))) return cat;
+  const joined = words(text);
+  // "power bank" must not count as a bank card: those phrases are hidden from the wallet keywords only.
+  const forWallets = LEGACY ? joined : words(String(text || "").replace(NOT_CARD, " "));
+  for (const [cat, keys] of KEYWORDS) if (keys.some((w) => (cat === "Wallets & cards" ? forWallets : joined).includes(` ${w} `))) return cat;
   return "";
 }
 
 /** One text (what a student would type), category from keywords, no title. */
 export const toOne = (r) => {
-  const text = `${r.title}. ${r.description || ""}`.trim();
-  return { ...r, title: "", description: text, category: normalizeCategory(text) };
+  const text = (r.title ? `${r.title}. ${r.description || ""}` : r.description || "").trim();
+  // Like the app (Matcher.ToInput): the guessed category only feeds the prescore. It is not embedded and
+  // the models never see it. Runs before 2026-11-14 put it in `category`, which did both.
+  return { ...r, title: "", description: text, category: "", categoryKey: normalizeCategory(text) };
 };

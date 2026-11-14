@@ -1,0 +1,4982 @@
+[
+ {
+  "lostId": "R1-colour-01-L1",
+  "foundId": "R1-colour-01-F1",
+  "isMatch": true,
+  "lens": "colour",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "Navy backpack that a finder calls black, next to a genuinely black backpack found elsewhere.",
+  "why": "Finder calls navy 'black' and gives no brand or keychain, so the colour words disagree.",
+  "checkerNote": "Navy vs black is a close shade; library = 6th floor, same day, books and cables fit notes and charger. Brand and keychain not mentioned.",
+  "tags": [
+   "colour",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-colour-01-L1",
+  "foundId": "R1-colour-01-F2",
+  "isMatch": false,
+  "lens": "colour",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Navy backpack that a finder calls black, next to a genuinely black backpack found elsewhere.",
+  "why": "Dark backpack near the same date; only the brand (Nike vs Jansport) and contents separate them.",
+  "checkerNote": "Jansport vs Nike, contents (lunch box, gym towel) differ from notes and charger, different place, navy vs black.",
+  "tags": [
+   "colour",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-colour-02-L1",
+  "foundId": "R1-colour-02-F1",
+  "isMatch": true,
+  "lens": "colour",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "Space grey MacBook described as silver by the finder, versus a truly silver laptop of another brand.",
+  "why": "Space grey vs silver and room vs floor wording differ; the sticker is only vaguely mentioned.",
+  "checkerNote": "Space grey vs silver is a shade difference; Apple laptop with sticker, GU1 first floor matches room 102, same day.",
+  "tags": [
+   "colour",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-colour-02-L2",
+  "foundId": "R1-colour-02-F1",
+  "isMatch": false,
+  "lens": "colour",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Space grey MacBook described as silver by the finder, versus a truly silver laptop of another brand.",
+  "why": "Both say 'silver laptop' around the same days, but one is an HP and the found one is Apple.",
+  "checkerNote": "HP vs Apple laptop; also 4th floor vs first floor, and no sleeve or charger mentioned.",
+  "tags": [
+   "colour",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-colour-03-L1",
+  "foundId": "R1-colour-03-F1",
+  "isMatch": true,
+  "lens": "colour",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "Cream / white / beige confusion on tote bags, with dirt shifting the perceived colour.",
+  "why": "Cream vs 'white, a bit dirty' and studio vs GU2; the match hangs on the drawing contents.",
+  "checkerNote": "Cream vs white is a close shade; drawing contents match, UPAD Studio is in GU2, same day.",
+  "tags": [
+   "colour",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-colour-03-L1",
+  "foundId": "R1-colour-03-F2",
+  "isMatch": false,
+  "lens": "colour",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Cream / white / beige confusion on tote bags, with dirt shifting the perceived colour.",
+  "why": "Beige and cream are near-synonyms and both are totes in GU2, but the contents and zip do not fit.",
+  "checkerNote": "Contents are entirely different (laptop charger and makeup pouch vs sketchbook and pencil roll); different place, two days later.",
+  "tags": [
+   "colour",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-colour-04-L1",
+  "foundId": "R1-colour-04-F1",
+  "isMatch": true,
+  "lens": "colour",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "Burgundy wallet seen as brown in dim parking light, crossed with a really red wallet.",
+  "why": "Burgundy looked brown at dusk, and the finder never gives the name on the ID.",
+  "checkerNote": "Burgundy vs brown is a plausible shade/lighting difference (found after maghrib); parking, same day, uni ID inside.",
+  "tags": [
+   "colour",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-colour-04-L2",
+  "foundId": "R1-colour-04-F2",
+  "isMatch": true,
+  "lens": "colour",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Burgundy wallet seen as brown in dim parking light, crossed with a really red wallet.",
+  "why": "Wallet vs purse, red vs dark red, button vs clasp, and a vague route instead of a place.",
+  "checkerNote": "Long red wallet with gold button vs long dark red purse with clasp; same day, Main Entrance bench is plausible between canteen and bus.",
+  "tags": [
+   "colour",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-colour-04-L1",
+  "foundId": "R1-colour-04-F2",
+  "isMatch": false,
+  "lens": "colour",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "Burgundy wallet seen as brown in dim parking light, crossed with a really red wallet.",
+  "why": "Burgundy and dark red are almost the same word, but it is a long ladies purse, not a mens wallet.",
+  "checkerNote": "Colour is close (burgundy/dark red) but men's wallet vs ladies' long purse with clasp, parking vs Main Entrance, a day later, no card mentioned.",
+  "tags": [
+   "colour",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-colour-04-L2",
+  "foundId": "R1-colour-04-F1",
+  "isMatch": false,
+  "lens": "colour",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Burgundy wallet seen as brown in dim parking light, crossed with a really red wallet.",
+  "why": "Red vs brown a day apart could be dismissed or over-matched; the found one is a mens wallet with an ID from the evening before.",
+  "checkerNote": "Found the day before it was lost; red long wallet vs brown wallet; parking vs canteen; uni ID not mentioned by loser.",
+  "tags": [
+   "colour",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-colour-05-L1",
+  "foundId": "R1-colour-05-F1",
+  "isMatch": true,
+  "lens": "colour",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "Pink / rose gold / gold phones: the same phone named two ways and a different gold phone.",
+  "why": "Pink vs rose gold, and the finder missed the cat photo and the crack.",
+  "checkerNote": "Pink vs rose gold is a close shade; iPhone, clear/transparent case, Oman Hall = amphitheatre, same day. Cat photo not mentioned by finder.",
+  "tags": [
+   "colour",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-colour-05-L2",
+  "foundId": "R1-colour-05-F1",
+  "isMatch": false,
+  "lens": "colour",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Pink / rose gold / gold phones: the same phone named two ways and a different gold phone.",
+  "why": "Gold vs rose gold in the same hall a day apart, but Samsung without a cover vs an iPhone in a case.",
+  "checkerNote": "Samsung with no cover vs iPhone with a cover; found a day before it was lost.",
+  "tags": [
+   "colour",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-colour-06-L1",
+  "foundId": "R1-colour-06-F1",
+  "isMatch": true,
+  "lens": "colour",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "Teal bottle called green by one person, while a blue bottle from the same place is another item.",
+  "why": "Teal reported as green; a system that trusts colour words may reject it.",
+  "checkerNote": "Teal vs green is a close shade; steel/metal, big, sticker, Sports Hall = gym, same day.",
+  "tags": [
+   "colour",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-colour-06-L1",
+  "foundId": "R1-colour-06-F2",
+  "isMatch": false,
+  "lens": "colour",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Teal bottle called green by one person, while a blue bottle from the same place is another item.",
+  "why": "Teal could also be called blue and the place matches, but plastic with a straw lid is not a steel bottle.",
+  "checkerNote": "Plastic bottle with straw lid vs steel bottle; blue vs teal; no sticker or dent mentioned.",
+  "tags": [
+   "colour",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-colour-07-L1",
+  "foundId": "R1-colour-07-F1",
+  "isMatch": true,
+  "lens": "colour",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "Lilac vs light purple vs dark purple on AirPods cases.",
+  "why": "Different place names and 'earbuds' instead of AirPods; the single earbud is the real link.",
+  "checkerNote": "Lilac/light purple case with a single earbud matches; place differs (library vs Copy Centre), same day.",
+  "tags": [
+   "colour",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-colour-07-L1",
+  "foundId": "R1-colour-07-F2",
+  "isMatch": false,
+  "lens": "colour",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Lilac vs light purple vs dark purple on AirPods cases.",
+  "why": "Same place and both 'purple AirPods', but dark vs lilac, Pro vs 2nd gen, and both buds present.",
+  "checkerNote": "AirPods Pro with both buds inside vs 2nd gen with only the left one; dark purple vs lilac; bear keychain not mentioned.",
+  "tags": [
+   "colour",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-colour-08-L1",
+  "foundId": "R1-colour-08-F1",
+  "isMatch": true,
+  "lens": "colour",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "A case hides the phone's real colour: owner names the phone, finder names the cover.",
+  "why": "Owner says white, finder says black because of the cover; the card slot is the bridge.",
+  "checkerNote": "White phone in a black card-slot cover would look black; card in the back, bridge, same day.",
+  "tags": [
+   "colour",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-colour-08-L2",
+  "foundId": "R1-colour-08-F1",
+  "isMatch": false,
+  "lens": "colour",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "A case hides the phone's real colour: owner names the phone, finder names the cover.",
+  "why": "Colour and model words match exactly, but the lost one has no case or card and went missing a day earlier.",
+  "checkerNote": "Loser says no case; found phone has a card held in its back, which implies a card-slot case. Also GU1 vs bridge and a day later.",
+  "tags": [
+   "colour",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-colour-09-L1",
+  "foundId": "R1-colour-09-F1",
+  "isMatch": true,
+  "lens": "colour",
+  "kind": "stretch",
+  "conflict": "hard",
+  "idea": "Two-tone hoodie where each side names only one of the two colours.",
+  "why": "The hoodie has a grey body and blue sleeves; the owner says grey and the finder says blue.",
+  "checkerNote": "Grey hoodie vs explicitly blue jacket; also described as hanging for 2 days by 11-06, i.e. before the loss on 11-05.",
+  "tags": [
+   "colour",
+   "stretch"
+  ]
+ },
+ {
+  "lostId": "R1-colour-09-L1",
+  "foundId": "R1-colour-09-F2",
+  "isMatch": false,
+  "lens": "colour",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "Two-tone hoodie where each side names only one of the two colours.",
+  "why": "Grey hoodie, same day and area is the obvious match, but size L and no brand tag contradict M and H&M.",
+  "checkerNote": "Grey hoodie, labs, same day; size M vs L and H&M vs no brand tag are things a person could get wrong or a tag could be missing.",
+  "tags": [
+   "colour",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-colour-10-L1",
+  "foundId": "R1-colour-10-F1",
+  "isMatch": true,
+  "lens": "colour",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "Sun-faded black cap described as grey, against a new black cap.",
+  "why": "Owner remembers the cap as black; years of sun made it look dark grey to a stranger.",
+  "checkerNote": "Black vs dark grey fits an old faded cap; NY on front, Grass Pitch = football pitch, same day.",
+  "tags": [
+   "colour",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-colour-10-L1",
+  "foundId": "R1-colour-10-F2",
+  "isMatch": false,
+  "lens": "colour",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Sun-faded black cap described as grey, against a new black cap.",
+  "why": "The colour word matches better than the true match, but the logo is Adidas and the cap is new.",
+  "checkerNote": "Adidas logo and looks new vs old NY cap; different place.",
+  "tags": [
+   "colour",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-colour-11-L1",
+  "foundId": "R1-colour-11-F1",
+  "isMatch": true,
+  "lens": "colour",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Only one side mentions any colour on an otherwise standard exam calculator.",
+  "why": "The owner never said it was the blue edition, so nothing in the lost text supports the colour.",
+  "checkerNote": "Casio scientific calculator, GU1 second floor corridor is next to room 204, same day; loser gave no colour or cover detail.",
+  "tags": [
+   "colour",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-colour-11-L1",
+  "foundId": "R1-colour-11-F2",
+  "isMatch": false,
+  "lens": "colour",
+  "kind": "lookalike",
+  "conflict": "none",
+  "idea": "Only one side mentions any colour on an otherwise standard exam calculator.",
+  "why": "Same room, same day, same brand; only the name on the back shows it belongs to someone else, and the owner's name is unknown.",
+  "checkerNote": "Casio calculator in the same room on the same day; loser gave no colour or name, so the 'Ahmed' marking is not contradicted.",
+  "tags": [
+   "colour",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "R1-colour-12-L1",
+  "foundId": "R1-colour-12-F1",
+  "isMatch": true,
+  "lens": "colour",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Arabic colour word (kohli = navy) on one side, English on the other.",
+  "why": "Cross-language report where the dialect colour word 'كحلي' has to be read as navy / dark blue.",
+  "checkerNote": "Arabic report: small navy bag with makeup and an earphone, left in the GU1 girls' prayer room; matches dark blue pouch with makeup and earphones, same day and place.",
+  "tags": [
+   "colour",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-colour-12-L1",
+  "foundId": "R1-colour-12-F2",
+  "isMatch": false,
+  "lens": "colour",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "Arabic colour word (kohli = navy) on one side, English on the other.",
+  "why": "A small dark makeup bag a day later, but it is black, has no earphones and was found in the dorms.",
+  "checkerNote": "Navy vs black is a close shade and makeup-type contents overlap, but place differs (Female Residences vs GU1 prayer room), a day later, no earphones mentioned.",
+  "tags": [
+   "colour",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-colour-13-L1",
+  "foundId": "R1-colour-13-F1",
+  "isMatch": true,
+  "lens": "colour",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Arabizi colour slang (zaiti = olive) versus English 'army green', with a brown lookalike.",
+  "why": "'zaiti' is transliterated Arabic for olive, and sab3 is slang for the 7th floor smoking area.",
+  "checkerNote": "'Zaiti' = olive green; army green zip jacket, heavy thing in pocket fits car key, sab3 = 7th floor, same day.",
+  "tags": [
+   "colour",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-colour-13-L1",
+  "foundId": "R1-colour-13-F2",
+  "isMatch": false,
+  "lens": "colour",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Arabizi colour slang (zaiti = olive) versus English 'army green', with a brown lookalike.",
+  "why": "Khaki and olive overlap in everyday use and the place fits, but buttons instead of a zip and it is brown.",
+  "checkerNote": "Buttons vs zip, brown khaki vs olive green; same area but a day later.",
+  "tags": [
+   "colour",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-colour-14-L1",
+  "foundId": "R1-colour-14-F1",
+  "isMatch": true,
+  "lens": "colour",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Owner gives only 'dark' as the colour; two dark power banks of different actual colours turn up.",
+  "why": "'Dark colour' never says black, and the report is three days late.",
+  "checkerNote": "Anker, dark/black, white cable, cafeteria = Ground Canteen, same day.",
+  "tags": [
+   "colour",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-colour-14-L1",
+  "foundId": "R1-colour-14-F2",
+  "isMatch": false,
+  "lens": "colour",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "Owner gives only 'dark' as the colour; two dark power banks of different actual colours turn up.",
+  "why": "Navy also fits 'dark' with the same brand and place; only the missing cable and later date count against it.",
+  "checkerNote": "Dark Anker power bank in the same place, but no cable and found two days after the loss date.",
+  "tags": [
+   "colour",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-colour-15-L1",
+  "foundId": "R1-colour-15-F1",
+  "isMatch": false,
+  "lens": "colour",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Identical speaker model in two genuinely different colours, same place and day.",
+  "why": "Same model, place and night with a better model-name match; only red vs blue shows it is a different speaker.",
+  "checkerNote": "Red vs blue JBL Flip; same place and day otherwise.",
+  "tags": [
+   "colour",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-colour-15-L2",
+  "foundId": "R1-colour-15-F1",
+  "isMatch": true,
+  "lens": "colour",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Identical speaker model in two genuinely different colours, same place and day.",
+  "why": "The owner gives no model name and says strap where the finder says string.",
+  "checkerNote": "Blue JBL cylinder speaker with torn strap vs blue JBL Flip with broken string, Boys Dorms, same date (finder says 'friday night' though 11-07 is a Saturday, a minor wording slip).",
+  "tags": [
+   "colour",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-colour-16-L1",
+  "foundId": "R1-colour-16-F1",
+  "isMatch": true,
+  "lens": "colour",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Gold watch described as yellow metal, versus the same-brand watch in silver.",
+  "why": "The finder names no brand and says 'yellow metal' instead of gold.",
+  "checkerNote": "Gold vs yellow metal digital watch, found beside the sink in the wudu area of the GU2 prayer room, same day.",
+  "tags": [
+   "colour",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-colour-16-L1",
+  "foundId": "R1-colour-16-F2",
+  "isMatch": false,
+  "lens": "colour",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Gold watch described as yellow metal, versus the same-brand watch in silver.",
+  "why": "Brand, type and place all match word for word; the only difference is silver vs gold.",
+  "checkerNote": "Silver vs gold Casio; near the shoe rack rather than the wudu area, a day later.",
+  "tags": [
+   "colour",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-01-L1",
+  "foundId": "R1-word-meaning-01-F2",
+  "isMatch": true,
+  "lens": "word-meaning",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "\"Notebook\" means a laptop to one person and a paper notebook to another, both grey and both left in the library on the same day.",
+  "why": "Owner says \"notebook\", finder says \"laptop\", so the item words do not overlap although brand, colour and sticker agree.",
+  "checkerNote": "'Notebook' here is an HP laptop; grey, sticker, library all agree.",
+  "tags": [
+   "word-meaning",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-01-L2",
+  "foundId": "R1-word-meaning-01-F1",
+  "isMatch": true,
+  "lens": "word-meaning",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "\"Notebook\" means a laptop to one person and a paper notebook to another, both grey and both left in the library on the same day.",
+  "why": "Both just say grey notebook; the only link is notes versus handwriting with equations, and the place is written two ways.",
+  "checkerNote": "Grey paper notebook with equations, library (6th floor), same day.",
+  "tags": [
+   "word-meaning",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-01-L1",
+  "foundId": "R1-word-meaning-01-F1",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "\"Notebook\" means a laptop to one person and a paper notebook to another, both grey and both left in the library on the same day.",
+  "why": "Same word \"notebook\", same colour, place and day, but one is a computer and the other is paper.",
+  "checkerNote": "HP laptop vs paper notebook with handwriting.",
+  "tags": [
+   "word-meaning",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-01-L2",
+  "foundId": "R1-word-meaning-01-F2",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "\"Notebook\" means a laptop to one person and a paper notebook to another, both grey and both left in the library on the same day.",
+  "why": "Grey, library and same date all match; only \"spiral A4 notes\" versus \"HP laptop\" separates them.",
+  "checkerNote": "Spiral paper notebook vs HP laptop.",
+  "tags": [
+   "word-meaning",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-02-L1",
+  "foundId": "R1-word-meaning-02-F1",
+  "isMatch": true,
+  "lens": "word-meaning",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "\"Tablets\" as medicine versus \"tablet\" as a device, lost in the same canteen.",
+  "why": "Owner says \"tablets in a box\", finder says \"pill organiser\" and \"medicine\"; almost no shared words.",
+  "checkerNote": "Medicine tablets in a white box vs white pill organiser, canteen, same day.",
+  "tags": [
+   "word-meaning",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-02-L2",
+  "foundId": "R1-word-meaning-02-F2",
+  "isMatch": true,
+  "lens": "word-meaning",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "\"Tablets\" as medicine versus \"tablet\" as a device, lost in the same canteen.",
+  "why": "\"Tablet\" versus \"Tab\", and three different names for the same canteen.",
+  "checkerNote": "Samsung tablet with black cover, canteen, same day.",
+  "tags": [
+   "word-meaning",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-02-L1",
+  "foundId": "R1-word-meaning-02-F2",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "\"Tablets\" as medicine versus \"tablet\" as a device, lost in the same canteen.",
+  "why": "The word \"tablets\" pulls the pills towards the Samsung Tab.",
+  "checkerNote": "Medicine tablets vs Samsung tablet device.",
+  "tags": [
+   "word-meaning",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-02-L2",
+  "foundId": "R1-word-meaning-02-F1",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "\"Tablets\" as medicine versus \"tablet\" as a device, lost in the same canteen.",
+  "why": "Same place and close dates; a system keyed on \"tablet\" might link a device with medicine.",
+  "checkerNote": "Samsung tablet device vs pill organiser; found a day before the loss.",
+  "tags": [
+   "word-meaning",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-03-L1",
+  "foundId": "R1-word-meaning-03-F1",
+  "isMatch": true,
+  "lens": "word-meaning",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "\"iPad\" used as a generic word for a Huawei tablet while a real Apple iPad is found in the same hall.",
+  "why": "Owner calls her Huawei an \"ipad\"; the finder names the real brand, and pink/pen becomes rose/stylus.",
+  "checkerNote": "Pink/rose case with attached pen and place agree; 'ipad' vs Huawei MatePad could be a loose brand word.",
+  "tags": [
+   "word-meaning",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-03-L1",
+  "foundId": "R1-word-meaning-03-F2",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "\"iPad\" used as a generic word for a Huawei tablet while a real Apple iPad is found in the same hall.",
+  "why": "The literal word \"iPad\" matches the wrong item; the owner's pink cover and pen contradict \"no case\".",
+  "checkerNote": "Both iPad in Oman Hall same day, but lost had a pink cover and pen, found has no case; a cover can come off.",
+  "tags": [
+   "word-meaning",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-04-L1",
+  "foundId": "R1-word-meaning-04-F1",
+  "isMatch": true,
+  "lens": "word-meaning",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "\"AirPods\" for any earbuds, and \"pod\" for a single earbud versus a full set.",
+  "why": "Owner says \"airpods\" for JBL buds; brand words conflict although the black case matches.",
+  "checkerNote": "Black case, gym, same day; 'airpods' vs JBL earbuds could be a generic word.",
+  "tags": [
+   "word-meaning",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-04-L1",
+  "foundId": "R1-word-meaning-04-F2",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "\"AirPods\" for any earbuds, and \"pod\" for a single earbud versus a full set.",
+  "why": "The word \"AirPods\" matches exactly, but the owner's case is black and this one is white with a green cover.",
+  "checkerNote": "Black case vs white case with green silicone cover; a day apart.",
+  "tags": [
+   "word-meaning",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-04-L2",
+  "foundId": "R1-word-meaning-04-F3",
+  "isMatch": true,
+  "lens": "word-meaning",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "\"AirPods\" for any earbuds, and \"pod\" for a single earbud versus a full set.",
+  "why": "\"Pod\" versus \"earbud\"; the finder does not say which side it is.",
+  "checkerNote": "Single white earbud without case, Sports Hall, same day.",
+  "tags": [
+   "word-meaning",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-04-L2",
+  "foundId": "R1-word-meaning-04-F2",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "\"AirPods\" for any earbuds, and \"pod\" for a single earbud versus a full set.",
+  "why": "The owner still has the case and lost only one bud; the found item is a full set in its case.",
+  "checkerNote": "Owner lost only one bud and still has the case; found is a full case with a cover.",
+  "tags": [
+   "word-meaning",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-05-L1",
+  "foundId": "R1-word-meaning-05-F1",
+  "isMatch": true,
+  "lens": "word-meaning",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "\"Glasses\" as spectacles, sunglasses or drinking glasses, plus the Indian English \"specs\".",
+  "why": "\"Specs\" versus \"glasses\", \"case\" versus \"hard box\", \"musalla\" versus \"Prayer Room\".",
+  "checkerNote": "Black-frame glasses in brown case, GU1 prayer room, same day.",
+  "tags": [
+   "word-meaning",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-05-L1",
+  "foundId": "R1-word-meaning-05-F2",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "\"Glasses\" as spectacles, sunglasses or drinking glasses, plus the Indian English \"specs\".",
+  "why": "The finder means drinking glasses; only the word \"glasses\" could connect them.",
+  "checkerNote": "Spectacles vs drinking glasses with a plate.",
+  "tags": [
+   "word-meaning",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-05-L2",
+  "foundId": "R1-word-meaning-05-F1",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "\"Glasses\" as spectacles, sunglasses or drinking glasses, plus the Indian English \"specs\".",
+  "why": "Both say black glasses on the same day, but one is sunglasses lost near the parking and the other is prescription glasses in the prayer room.",
+  "checkerNote": "Black glasses same day, but dark Ray-Ban sunglasses lost in parking/car vs glasses in a brown box in the prayer room; owner unsure of place.",
+  "tags": [
+   "word-meaning",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-05-L2",
+  "foundId": "R1-word-meaning-05-F2",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "\"Glasses\" as spectacles, sunglasses or drinking glasses, plus the Indian English \"specs\".",
+  "why": "Shared word \"glasses\" only; sunglasses versus tableware.",
+  "checkerNote": "Sunglasses vs drinking glasses with blue pattern.",
+  "tags": [
+   "word-meaning",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-06-L2",
+  "foundId": "R1-word-meaning-06-F1",
+  "isMatch": true,
+  "lens": "word-meaning",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "\"Ring\" as jewellery versus a key ring, both silver.",
+  "why": "The finder gives almost no detail (no stone mentioned), so the match rests on sinks/washroom and the date.",
+  "checkerNote": "Silver ring by the washroom sinks in GU1, same day; stone just not mentioned.",
+  "tags": [
+   "word-meaning",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-06-L1",
+  "foundId": "R1-word-meaning-06-F2",
+  "isMatch": true,
+  "lens": "word-meaning",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "\"Ring\" as jewellery versus a key ring, both silver.",
+  "why": "The finder never says \"ring\" or \"silver\"; only the keys and red tag link them.",
+  "checkerNote": "Keys with red tag in GU1, same day.",
+  "tags": [
+   "word-meaning",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-06-L1",
+  "foundId": "R1-word-meaning-06-F1",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "\"Ring\" as jewellery versus a key ring, both silver.",
+  "why": "\"Silver ring\" appears in both, same building and day, but one is a key ring and the other is jewellery.",
+  "checkerNote": "Key ring with keys vs a finger ring.",
+  "tags": [
+   "word-meaning",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-06-L2",
+  "foundId": "R1-word-meaning-06-F2",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "\"Ring\" as jewellery versus a key ring, both silver.",
+  "why": "Same building and day, but jewellery versus keys, with no shared detail.",
+  "checkerNote": "Finger ring with blue stone vs bunch of keys.",
+  "tags": [
+   "word-meaning",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-07-L1",
+  "foundId": "R1-word-meaning-07-F2",
+  "isMatch": true,
+  "lens": "word-meaning",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "\"Charger\" can mean the plug, the cable or both; \"adapter\" and \"cable\" describe parts of the same thing.",
+  "why": "\"Charger\" versus \"power adapter\"; the owner does not mention the wattage or the drawn star.",
+  "checkerNote": "Apple laptop charger, room 204, same day.",
+  "tags": [
+   "word-meaning",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-07-L1",
+  "foundId": "R1-word-meaning-07-F1",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "\"Charger\" can mean the plug, the cable or both; \"adapter\" and \"cable\" describe parts of the same thing.",
+  "why": "Same room and white Apple-style USB-C, but the owner lost the whole laptop charger and this is a bare cable found a day later.",
+  "checkerNote": "Same room, but a whole laptop charger vs a cable with no plug head, a day later.",
+  "tags": [
+   "word-meaning",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-07-L2",
+  "foundId": "R1-word-meaning-07-F1",
+  "isMatch": true,
+  "lens": "word-meaning",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "\"Charger\" can mean the plug, the cable or both; \"adapter\" and \"cable\" describe parts of the same thing.",
+  "why": "The owner calls it an \"iphone cable\" while the finder says \"USB-C cable\"; a clerk might think iPhone means Lightning.",
+  "checkerNote": "Long white USB-C cable, room 204, same day.",
+  "tags": [
+   "word-meaning",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-07-L2",
+  "foundId": "R1-word-meaning-07-F2",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "\"Charger\" can mean the plug, the cable or both; \"adapter\" and \"cable\" describe parts of the same thing.",
+  "why": "Same room and white Apple accessory, but a phone cable versus a laptop power brick, and the dates are a day apart.",
+  "checkerNote": "Cable only vs 67W power adapter, found the day before the loss.",
+  "tags": [
+   "word-meaning",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-08-L1",
+  "foundId": "R1-word-meaning-08-F1",
+  "isMatch": true,
+  "lens": "word-meaning",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Pendrive, memory stick, flash and USB are one thing, and a \"pen\" is not a \"pen drive\".",
+  "why": "\"Pendrive\" versus \"memory stick\"; the finder gives no capacity and uses a different place name.",
+  "checkerNote": "Red and black SanDisk stick, 4th floor lab, same day.",
+  "tags": [
+   "word-meaning",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-08-L1",
+  "foundId": "R1-word-meaning-08-F2",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Pendrive, memory stick, flash and USB are one thing, and a \"pen\" is not a \"pen drive\".",
+  "why": "Both are USB sticks on the 4th floor, but brand, capacity and colour differ.",
+  "checkerNote": "SanDisk 32GB red/black vs Kingston 64GB silver.",
+  "tags": [
+   "word-meaning",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-08-L2",
+  "foundId": "R1-word-meaning-08-F1",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Pendrive, memory stick, flash and USB are one thing, and a \"pen\" is not a \"pen drive\".",
+  "why": "\"Pen\" may be linked to \"pendrive\" items on the same floor and day.",
+  "checkerNote": "Parker pen vs USB memory stick.",
+  "tags": [
+   "word-meaning",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-08-L2",
+  "foundId": "R1-word-meaning-08-F2",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Pendrive, memory stick, flash and USB are one thing, and a \"pen\" is not a \"pen drive\".",
+  "why": "Silver, the same floor and the pen/pen-drive confusion could create a false link.",
+  "checkerNote": "Parker pen vs USB flash drive.",
+  "tags": [
+   "word-meaning",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-09-L1",
+  "foundId": "R1-word-meaning-09-F1",
+  "isMatch": true,
+  "lens": "word-meaning",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "\"Purse\" means a man's wallet in Indian English but a handbag or ladies' purse to others.",
+  "why": "The owner writes \"purse\" and the finder writes \"mens wallet\"; the word choice suggests a different object.",
+  "checkerNote": "'Purse' can mean wallet; brown, cards and cash, student parking, same day.",
+  "tags": [
+   "word-meaning",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-09-L1",
+  "foundId": "R1-word-meaning-09-F2",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "\"Purse\" means a man's wallet in Indian English but a handbag or ladies' purse to others.",
+  "why": "The exact word \"purse\" plus brown matches the handbag instead of the wallet.",
+  "checkerNote": "Brown purse same day, but cards/cash vs makeup and Student Parking vs Girls Dorms Parking.",
+  "tags": [
+   "word-meaning",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-09-L2",
+  "foundId": "R1-word-meaning-09-F2",
+  "isMatch": true,
+  "lens": "word-meaning",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "\"Purse\" means a man's wallet in Indian English but a handbag or ladies' purse to others.",
+  "why": "\"Handbag\" versus \"ladies purse\", \"lipstick\" versus \"makeup\", and the owner only wrote \"parking\".",
+  "checkerNote": "Small brown bag with chain and makeup, a parking area, same day.",
+  "tags": [
+   "word-meaning",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-09-L2",
+  "foundId": "R1-word-meaning-09-F1",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "\"Purse\" means a man's wallet in Indian English but a handbag or ladies' purse to others.",
+  "why": "Brown, parking and the same day all agree, but a handbag versus a bifold wallet.",
+  "checkerNote": "Chain handbag with lipstick vs men's bifold wallet with ID.",
+  "tags": [
+   "word-meaning",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-10-L1",
+  "foundId": "R1-word-meaning-10-F1",
+  "isMatch": true,
+  "lens": "word-meaning",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "Jumper, sweater, sweatshirt and hoodie overlap, and the owner misremembers which hall.",
+  "why": "\"Jumper\" versus \"sweatshirt\", and the owner named the wrong hall (the lecture had been moved).",
+  "checkerNote": "Grey H&M sweatshirt same day; Germany Hall vs GU2 UPAD Hall are neighbouring halls.",
+  "tags": [
+   "word-meaning",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-10-L1",
+  "foundId": "R1-word-meaning-10-F2",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Jumper, sweater, sweatshirt and hoodie overlap, and the owner misremembers which hall.",
+  "why": "Grey top found in exactly the hall the owner named, but it is a Nike zip hoodie, not an H&M jumper.",
+  "checkerNote": "H&M jumper vs Nike zip hoodie.",
+  "tags": [
+   "word-meaning",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-10-L2",
+  "foundId": "R1-word-meaning-10-F2",
+  "isMatch": true,
+  "lens": "word-meaning",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Jumper, sweater, sweatshirt and hoodie overlap, and the owner misremembers which hall.",
+  "why": "The owner calls a zip hoodie a \"sweater\" and gives only \"GU2\" as the place.",
+  "checkerNote": "Grey Nike zip hoodie with earphones in pocket, GU2 area, same day.",
+  "tags": [
+   "word-meaning",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-10-L2",
+  "foundId": "R1-word-meaning-10-F1",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Jumper, sweater, sweatshirt and hoodie overlap, and the owner misremembers which hall.",
+  "why": "\"Sweater\" and \"sweatshirt\" look alike, both grey, same day and building, but the brand and hood differ.",
+  "checkerNote": "Nike hooded zip sweater vs H&M sweatshirt with no hood.",
+  "tags": [
+   "word-meaning",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-11-L1",
+  "foundId": "R1-word-meaning-11-F1",
+  "isMatch": true,
+  "lens": "word-meaning",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "\"Mobile cover\" (only the case) versus \"mobile\" or \"cell phone\" in a similar clear case.",
+  "why": "\"Mobile cover\" versus \"phone case\", \"card holder\" versus \"stick-on pocket\".",
+  "checkerNote": "Clear phone cover with card pocket, no phone, GUbridge, same day.",
+  "tags": [
+   "word-meaning",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-11-L1",
+  "foundId": "R1-word-meaning-11-F2",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "\"Mobile cover\" (only the case) versus \"mobile\" or \"cell phone\" in a similar clear case.",
+  "why": "\"Mobile\", \"clear cover\" and GUbridge all match, but the owner lost only the case.",
+  "checkerNote": "Only a cover was lost; found is an iPhone, a day later.",
+  "tags": [
+   "word-meaning",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-11-L2",
+  "foundId": "R1-word-meaning-11-F2",
+  "isMatch": true,
+  "lens": "word-meaning",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "\"Mobile cover\" (only the case) versus \"mobile\" or \"cell phone\" in a similar clear case.",
+  "why": "\"Cell phone\" versus \"iphone\", no model from the finder, and the owner's place is vague.",
+  "checkerNote": "Blue iPhone in clear case, between GU1 and GU2 / GUbridge, same day.",
+  "tags": [
+   "word-meaning",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-11-L2",
+  "foundId": "R1-word-meaning-11-F1",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "\"Mobile cover\" (only the case) versus \"mobile\" or \"cell phone\" in a similar clear case.",
+  "why": "A transparent case appears in both and the places are close, but one is a phone and the other an empty case found a day earlier.",
+  "checkerNote": "iPhone lost vs empty case found the day before.",
+  "tags": [
+   "word-meaning",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-12-L1",
+  "foundId": "R1-word-meaning-12-F1",
+  "isMatch": true,
+  "lens": "word-meaning",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "\"Bank\" as short for power bank versus a bank card.",
+  "why": "The owner only writes \"bank\"; the finder writes \"powerbank\" as one word.",
+  "checkerNote": "Black Anker power bank by the entrance sofas, same day.",
+  "tags": [
+   "word-meaning",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-12-L1",
+  "foundId": "R1-word-meaning-12-F2",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "\"Bank\" as short for power bank versus a bank card.",
+  "why": "\"Bank\" plus the same place and day could link a power bank to a bank card.",
+  "checkerNote": "Power bank vs debit card.",
+  "tags": [
+   "word-meaning",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-12-L2",
+  "foundId": "R1-word-meaning-12-F2",
+  "isMatch": true,
+  "lens": "word-meaning",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "\"Bank\" as short for power bank versus a bank card.",
+  "why": "\"Bank card\" versus \"debit card\"; the finder does not name the bank or colour, the owner does not give a name.",
+  "checkerNote": "Bank card left in the ATM at the main entrance, same day.",
+  "tags": [
+   "word-meaning",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-12-L2",
+  "foundId": "R1-word-meaning-12-F1",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "\"Bank\" as short for power bank versus a bank card.",
+  "why": "\"Bank\" and \"powerbank\" overlap as words, with the same place and day.",
+  "checkerNote": "Bank card vs power bank.",
+  "tags": [
+   "word-meaning",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-13-L1",
+  "foundId": "R1-word-meaning-13-F1",
+  "isMatch": true,
+  "lens": "word-meaning",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "\"Stanley\" used for any big tumbler while a real Stanley flask is also found.",
+  "why": "The owner says \"stanley\" but the finder explicitly says no brand; a brand check would reject it.",
+  "checkerNote": "Pink cup with handle, studio, same day; Stanley vs no brand name visible.",
+  "tags": [
+   "word-meaning",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-13-L1",
+  "foundId": "R1-word-meaning-13-F2",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "\"Stanley\" used for any big tumbler while a real Stanley flask is also found.",
+  "why": "The brand word matches exactly and the building is the same, but it is a green thermos, not a pink tumbler.",
+  "checkerNote": "Pink handled tumbler vs dark green thermos flask.",
+  "tags": [
+   "word-meaning",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-14-L1",
+  "foundId": "R1-word-meaning-14-F1",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "\"Cap\" as a hat versus the cap or lid of a bottle.",
+  "why": "\"Black cap\" at padel on the same date matches word for word, but it is a bottle lid.",
+  "checkerNote": "Nike hat vs screw cap of a water bottle.",
+  "tags": [
+   "word-meaning",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-14-L1",
+  "foundId": "R1-word-meaning-14-F2",
+  "isMatch": true,
+  "lens": "word-meaning",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "\"Cap\" as a hat versus the cap or lid of a bottle.",
+  "why": "\"Cap\" versus \"baseball hat\", \"nike\" versus \"white tick logo\", found the next morning and reported lost days later.",
+  "checkerNote": "Black Nike cap at the padel courts; found the next day.",
+  "tags": [
+   "word-meaning",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-15-L1",
+  "foundId": "R1-word-meaning-15-F1",
+  "isMatch": true,
+  "lens": "word-meaning",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "\"Band\" as a fitness band versus hair bands, and \"watch\" covering both a tracker and a classic watch.",
+  "why": "\"Band\" and \"mi band\" versus \"smart watch\" and \"xiaomi\"; the brand is written two ways.",
+  "checkerNote": "Black Mi Band (Xiaomi), gym changing area, same day.",
+  "tags": [
+   "word-meaning",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-15-L1",
+  "foundId": "R1-word-meaning-15-F2",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "\"Band\" as a fitness band versus hair bands, and \"watch\" covering both a tracker and a classic watch.",
+  "why": "\"Black band\" in the sports hall matches the hair bands literally.",
+  "checkerNote": "Fitness band vs hair bands.",
+  "tags": [
+   "word-meaning",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-15-L2",
+  "foundId": "R1-word-meaning-15-F1",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "\"Band\" as a fitness band versus hair bands, and \"watch\" covering both a tracker and a classic watch.",
+  "why": "Both are a \"watch\" in the Sports Hall on the same day, but a silver Casio versus a black Xiaomi tracker.",
+  "checkerNote": "Silver Casio with metal strap vs black Xiaomi with rubber strap.",
+  "tags": [
+   "word-meaning",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-15-L2",
+  "foundId": "R1-word-meaning-15-F2",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "\"Band\" as a fitness band versus hair bands, and \"watch\" covering both a tracker and a classic watch.",
+  "why": "Same place; \"strap\" and \"band\" are near-synonyms, but the objects are unrelated.",
+  "checkerNote": "Watch vs hair bands.",
+  "tags": [
+   "word-meaning",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-16-L1",
+  "foundId": "R1-word-meaning-16-F1",
+  "isMatch": true,
+  "lens": "word-meaning",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "\"Key\" as a car key, a small door or locker key, or a key from a keyboard.",
+  "why": "The finder does not say Toyota, the owner does not mention the keychain, and the place names share no words.",
+  "checkerNote": "Car key with remote, dirt parking after the wadi, same day; keychain just not mentioned.",
+  "tags": [
+   "word-meaning",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-16-L1",
+  "foundId": "R1-word-meaning-16-F2",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "\"Key\" as a car key, a small door or locker key, or a key from a keyboard.",
+  "why": "Both are just a \"key\", but a car remote key versus a small locker key in another place.",
+  "checkerNote": "Toyota remote key vs small locker key, found the day before in the labs.",
+  "tags": [
+   "word-meaning",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-16-L2",
+  "foundId": "R1-word-meaning-16-F1",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "\"Key\" as a car key, a small door or locker key, or a key from a keyboard.",
+  "why": "\"Key\" and \"black\" overlap, but a keyboard keycap is not a car key.",
+  "checkerNote": "Laptop keyboard key vs car key.",
+  "tags": [
+   "word-meaning",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-word-meaning-16-L2",
+  "foundId": "R1-word-meaning-16-F2",
+  "isMatch": false,
+  "lens": "word-meaning",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "\"Key\" as a car key, a small door or locker key, or a key from a keyboard.",
+  "why": "A \"key\" lost and found in the labs on the same day, but one is a keyboard keycap and the other a metal key.",
+  "checkerNote": "Black laptop keyboard key vs silver metal key.",
+  "tags": [
+   "word-meaning",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-language-01-L1",
+  "foundId": "R1-language-01-F1",
+  "isMatch": true,
+  "lens": "language",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Arabic-script loss report against an English found report for the same watch, with a second 'saa3a' that is a different kind of watch.",
+  "why": "Different scripts, the finder never says Casio and the owner never mentions the scratch or the taps explicitly.",
+  "checkerNote": "Silver metal-band watch left at the ablution taps in GU1 prayer room, same day.",
+  "tags": [
+   "language",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-language-01-L1",
+  "foundId": "R1-language-01-F2",
+  "isMatch": false,
+  "lens": "language",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Arabic-script loss report against an English found report for the same watch, with a second 'saa3a' that is a different kind of watch.",
+  "why": "Both are a 'saa3a' found near a wash/changing area within a day, but one is a silver Casio and the other a black Apple Watch.",
+  "checkerNote": "Casio with silver metal band vs Apple Watch with black strap, at the gym.",
+  "tags": [
+   "language",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-language-02-L1",
+  "foundId": "R1-language-02-F1",
+  "isMatch": true,
+  "lens": "language",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "Keys described in Arabizi, Arabic script, English and Hinglish (mafati7 / مفتاح / key / chabi) where two different key sets cross languages.",
+  "why": "Owner says student parking, finder says dirt parking, and 'midalya khanjar' has to be linked to 'tiny silver dagger thing'.",
+  "checkerNote": "Toyota key with small dagger charm matches; Student Parking vs Dirt Parking is a different but similar place.",
+  "tags": [
+   "language",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-language-02-L2",
+  "foundId": "R1-language-02-F2",
+  "isMatch": true,
+  "lens": "language",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "Keys described in Arabizi, Arabic script, English and Hinglish (mafati7 / مفتاح / key / chabi) where two different key sets cross languages.",
+  "why": "Hindi 'chabi' in Latin letters versus Arabic 'مفتاحين', location guess is wrong and the report came three days late.",
+  "checkerNote": "Two keys on a red neck strap match; boys dorms or bus vs canteen differs, loser was unsure of place.",
+  "tags": [
+   "language",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-language-02-L1",
+  "foundId": "R1-language-02-F2",
+  "isMatch": false,
+  "lens": "language",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Keys described in Arabizi, Arabic script, English and Hinglish (mafati7 / مفتاح / key / chabi) where two different key sets cross languages.",
+  "why": "Both say mafati7/مفتاح in the same days but one is a single car key with a remote and the other is two door keys on a lanyard.",
+  "checkerNote": "Toyota car key with fob vs two plain keys on a red lanyard.",
+  "tags": [
+   "language",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-language-02-L2",
+  "foundId": "R1-language-02-F1",
+  "isMatch": false,
+  "lens": "language",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Keys described in Arabizi, Arabic script, English and Hinglish (mafati7 / مفتاح / key / chabi) where two different key sets cross languages.",
+  "why": "A system that only sees 'keys lost around the same date' could pair room keys with a Toyota car key.",
+  "checkerNote": "Two room keys on a red strap vs a Toyota car key with dagger charm.",
+  "tags": [
+   "language",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-language-03-L1",
+  "foundId": "R1-language-03-F2",
+  "isMatch": true,
+  "lens": "language",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Arabizi '5atem' (ring, خاتم) against Arabic 'ختم' (rubber stamp), which look almost identical when transliterated.",
+  "why": "Arabizi with digits (5atem, fa'9a, fa9) must be read as ring, silver, stone; the finder calls the blue stone turquoise.",
+  "checkerNote": "Silver ring with blue/turquoise stone left at a GU1 2nd-floor washroom sink, same day.",
+  "tags": [
+   "language",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-language-03-L1",
+  "foundId": "R1-language-03-F1",
+  "isMatch": false,
+  "lens": "language",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Arabizi '5atem' (ring, خاتم) against Arabic 'ختم' (rubber stamp), which look almost identical when transliterated.",
+  "why": "ختم (stamp) and خاتم/5atem (ring) are one letter apart, both are small and 'blue' and found the same day.",
+  "checkerNote": "A finger ring vs an office ink stamp; different object.",
+  "tags": [
+   "language",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-language-04-L1",
+  "foundId": "R1-language-04-F1",
+  "isMatch": true,
+  "lens": "language",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Omani kumma spelled kumma/kuma/كمة and the Swahili kofia are the same type of cap, so two different caps collide across three languages.",
+  "why": "English with one Arabic word against a fully Arabic report; 'blue embroidery' versus 'نقش أزرق سماوي'.",
+  "checkerNote": "White kumma with blue embroidery, Mechatronics Lab, same day.",
+  "tags": [
+   "language",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-language-04-L2",
+  "foundId": "R1-language-04-F2",
+  "isMatch": true,
+  "lens": "language",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Omani kumma spelled kumma/kuma/كمة and the Swahili kofia are the same type of cap, so two different caps collide across three languages.",
+  "why": "The owner calls it a kofia from Zanzibar, the finder calls it an Omani kuma, and cream/brown is flipped to beige/brown.",
+  "checkerNote": "Brown and cream cap vs beige with brown pattern, workshops/labs, same day.",
+  "tags": [
+   "language",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-language-04-L1",
+  "foundId": "R1-language-04-F2",
+  "isMatch": false,
+  "lens": "language",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Omani kumma spelled kumma/kuma/كمة and the Swahili kofia are the same type of cap, so two different caps collide across three languages.",
+  "why": "Same word (kumma/kuma), same wing of labs, one day apart, but white-blue versus beige-brown.",
+  "checkerNote": "White with blue vs beige with brown; found the day before it was lost.",
+  "tags": [
+   "language",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-language-04-L2",
+  "foundId": "R1-language-04-F1",
+  "isMatch": false,
+  "lens": "language",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Omani kumma spelled kumma/kuma/كمة and the Swahili kofia are the same type of cap, so two different caps collide across three languages.",
+  "why": "A system that maps kofia to kumma correctly might then ignore the colour difference and the different lab.",
+  "checkerNote": "Brown and cream vs white with blue embroidery.",
+  "tags": [
+   "language",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-language-05-L1",
+  "foundId": "R1-language-05-F1",
+  "isMatch": true,
+  "lens": "language",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "A massar (Omani turban cloth) reported by its owner in Arabic and by a German staff member as a 'Schal'/scarf, with a real German scarf and a shayla as decoys.",
+  "why": "The finder does not know the word massar and files it as a scarf; مصر also reads as 'Egypt' to a naive system.",
+  "checkerNote": "Orange/red Kashmiri wool wrap folded on a seat in Oman Hall, same day.",
+  "tags": [
+   "language",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-language-05-L2",
+  "foundId": "R1-language-05-F1",
+  "isMatch": false,
+  "lens": "language",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "A massar (Omani turban cloth) reported by its owner in Arabic and by a German staff member as a 'Schal'/scarf, with a real German scarf and a shayla as decoys.",
+  "why": "Both literally say 'Schal' and wool, one day apart, but grey long with fringes versus orange/red square and a different hall.",
+  "checkerNote": "Grey long fringed scarf vs orange/red square paisley; found the day before the loss; different hall.",
+  "tags": [
+   "language",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-language-05-L1",
+  "foundId": "R1-language-05-F2",
+  "isMatch": false,
+  "lens": "language",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "A massar (Omani turban cloth) reported by its owner in Arabic and by a German staff member as a 'Schal'/scarf, with a real German scarf and a shayla as decoys.",
+  "why": "Both are head cloths found in Oman Hall the same day, but a black shayla with a silver line is not an orange massar.",
+  "checkerNote": "Orange/red masar vs light black shayla with silver line.",
+  "tags": [
+   "language",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-language-06-L1",
+  "foundId": "R1-language-06-F1",
+  "isMatch": true,
+  "lens": "language",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Prayer beads called tasbeeh, مسباح, sib7a, rosary and prayer beads, where two different sets were lost the same week.",
+  "why": "Urdu 'tasbeeh' and 'daane' against Arabic 'مسباح'; the finder never counts the beads.",
+  "checkerNote": "Brown wooden prayer beads with green tassel, GU2 prayer room, same day.",
+  "tags": [
+   "language",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-language-06-L2",
+  "foundId": "R1-language-06-F2",
+  "isMatch": true,
+  "lens": "language",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Prayer beads called tasbeeh, مسباح, sib7a, rosary and prayer beads, where two different sets were lost the same week.",
+  "why": "Four different names for the object (sib7a vs rosary/prayer beads) and the owner is unsure of the place.",
+  "checkerNote": "Black stone beads with silver tassel, GU1, same day.",
+  "tags": [
+   "language",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-language-06-L1",
+  "foundId": "R1-language-06-F2",
+  "isMatch": false,
+  "lens": "language",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Prayer beads called tasbeeh, مسباح, sib7a, rosary and prayer beads, where two different sets were lost the same week.",
+  "why": "Both are prayer beads with a tassel in the same week, differing only by brown wood versus black stone.",
+  "checkerNote": "Brown wood with green tassel vs black stone with silver tassel; found before the loss.",
+  "tags": [
+   "language",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-language-06-L2",
+  "foundId": "R1-language-06-F1",
+  "isMatch": false,
+  "lens": "language",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Prayer beads called tasbeeh, مسباح, sib7a, rosary and prayer beads, where two different sets were lost the same week.",
+  "why": "Arabizi sib7a and Arabic مسباح are the same word family, so a matcher may ignore material and tassel colour.",
+  "checkerNote": "Black stone with silver tassel vs brown wood with green tassel.",
+  "tags": [
+   "language",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-language-07-L1",
+  "foundId": "R1-language-07-F1",
+  "isMatch": true,
+  "lens": "language",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "An abaya described in Arabizi with a vague 'musalla' against an English report in a specific prayer room, plus a plain abaya in Arabic.",
+  "why": "'musalla' does not say GU1 or GU2, and ta6reez dahabi 3al akmam has to equal gold stitching on the cuffs.",
+  "checkerNote": "Black abaya with gold embroidery on the sleeves, hung up in a prayer room, same day.",
+  "tags": [
+   "language",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-language-07-L1",
+  "foundId": "R1-language-07-F2",
+  "isMatch": false,
+  "lens": "language",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "An abaya described in Arabizi with a vague 'musalla' against an English report in a specific prayer room, plus a plain abaya in Arabic.",
+  "why": "Nearly every abaya is black, so only 'سادة' (plain) versus gold embroidery and the laundry room separate them.",
+  "checkerNote": "Gold-embroidered sleeves vs explicitly plain abaya, in the dorm laundry room.",
+  "tags": [
+   "language",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-language-08-L1",
+  "foundId": "R1-language-08-F2",
+  "isMatch": true,
+  "lens": "language",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "The word نظارة / na9'ara covers both sunglasses and prescription glasses; German 'Brille' adds a third language for the other pair.",
+  "why": "Arabizi with 9' and 6 digits on one side, and the finder posted three days late.",
+  "checkerNote": "Black Ray-Ban sunglasses without case at the canteen, same day.",
+  "tags": [
+   "language",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-language-08-L2",
+  "foundId": "R1-language-08-F1",
+  "isMatch": true,
+  "lens": "language",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "The word نظارة / na9'ara covers both sunglasses and prescription glasses; German 'Brille' adds a third language for the other pair.",
+  "why": "German/English against Arabic script, 'Etui' versus 'علبة', and طبية versus reading glasses.",
+  "checkerNote": "Black-framed glasses in a brown case at the canteen, same day.",
+  "tags": [
+   "language",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-language-08-L1",
+  "foundId": "R1-language-08-F1",
+  "isMatch": false,
+  "lens": "language",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "The word نظارة / na9'ara covers both sunglasses and prescription glasses; German 'Brille' adds a third language for the other pair.",
+  "why": "Both are a black 'نظارة' at the canteen one day apart, but sunglasses without a case versus prescription glasses in a case.",
+  "checkerNote": "Sunglasses without a case vs prescription glasses in a brown case.",
+  "tags": [
+   "language",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-language-08-L2",
+  "foundId": "R1-language-08-F2",
+  "isMatch": false,
+  "lens": "language",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "The word نظارة / na9'ara covers both sunglasses and prescription glasses; German 'Brille' adds a third language for the other pair.",
+  "why": "Black frame, canteen, adjacent dates; only sun versus reading and the case distinguish them.",
+  "checkerNote": "Reading glasses in a case vs Ray-Ban sunglasses with no case, found the day before the loss.",
+  "tags": [
+   "language",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-language-09-L1",
+  "foundId": "R1-language-09-F1",
+  "isMatch": true,
+  "lens": "language",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Gulf dialect 'book / بوك' means wallet, so a lost 'boki' collides with an actual textbook.",
+  "why": "'boki' must be understood as 'my wallet', not a book, and bi6aqat as cards.",
+  "checkerNote": "Brown leather wallet with cards at the canteen till, same day.",
+  "tags": [
+   "language",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-language-09-L2",
+  "foundId": "R1-language-09-F2",
+  "isMatch": true,
+  "lens": "language",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Gulf dialect 'book / بوك' means wallet, so a lost 'boki' collides with an actual textbook.",
+  "why": "Owner says library, finder says 6th floor, and the found date is a day after the stated loss date.",
+  "checkerNote": "Brown thermodynamics book with sticky notes, library/6th floor, found a day after.",
+  "tags": [
+   "language",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-language-09-L1",
+  "foundId": "R1-language-09-F2",
+  "isMatch": false,
+  "lens": "language",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Gulf dialect 'book / بوك' means wallet, so a lost 'boki' collides with an actual textbook.",
+  "why": "'boki bni' looks like 'brown book' and the found item is literally a brown book on the same day.",
+  "checkerNote": "Wallet vs textbook.",
+  "tags": [
+   "language",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-language-09-L2",
+  "foundId": "R1-language-09-F1",
+  "isMatch": false,
+  "lens": "language",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Gulf dialect 'book / بوك' means wallet, so a lost 'boki' collides with an actual textbook.",
+  "why": "Both are 'brown' and a model that has learned book=wallet in Gulf dialect could over-apply it to a real book.",
+  "checkerNote": "Textbook vs wallet.",
+  "tags": [
+   "language",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-language-10-L1",
+  "foundId": "R1-language-10-F1",
+  "isMatch": true,
+  "lens": "language",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Hindi/Urdu 'dabba' (tiffin lunch box) against Gulf 'dabbat may' (big water bottle/jug).",
+  "why": "'dabba' and 'tiffin' are never used by the Arabic finder, who describes stacked steel containers with a handle.",
+  "checkerNote": "Three-tier steel food container with food inside, GU1 room 118, same day.",
+  "tags": [
+   "language",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-language-10-L1",
+  "foundId": "R1-language-10-F2",
+  "isMatch": false,
+  "lens": "language",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Hindi/Urdu 'dabba' (tiffin lunch box) against Gulf 'dabbat may' (big water bottle/jug).",
+  "why": "Both say 'dabba' in Latin letters, same corridor and day, but one is a steel lunch box and the other a blue water bottle.",
+  "checkerNote": "Steel tiffin vs blue 2-litre water bottle.",
+  "tags": [
+   "language",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-language-11-L1",
+  "foundId": "R1-language-11-F1",
+  "isMatch": true,
+  "lens": "language",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "German 'Handy' means mobile phone, while an English speaker's 'handy fan' is a different object.",
+  "why": "German 'Handy' and 'Hülle' against Arabic 'تلفون'; crack versus 'مشخوطة' (scratched).",
+  "checkerNote": "Black Samsung phone with damage at the bottom of the screen, left charging on the 4th floor, same day.",
+  "tags": [
+   "language",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-language-11-L1",
+  "foundId": "R1-language-11-F2",
+  "isMatch": false,
+  "lens": "language",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "German 'Handy' means mobile phone, while an English speaker's 'handy fan' is a different object.",
+  "why": "'Handy', black, charging at the wall, 4th floor and the same day all overlap, yet it is a handheld fan.",
+  "checkerNote": "Phone vs handheld fan.",
+  "tags": [
+   "language",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-language-12-L1",
+  "foundId": "R1-language-12-F1",
+  "isMatch": true,
+  "lens": "language",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Two small green Qurans (مصحف / Quran / Qur'an / mus7af) that differ only by a zip cover and a name inside.",
+  "why": "Arabic 'بسحّاب' must map to zip-up, and the found location is the entrance although it was lost on a bus.",
+  "checkerNote": "Small Quran in green zip cover left on the bus, same day.",
+  "tags": [
+   "language",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-language-12-L2",
+  "foundId": "R1-language-12-F2",
+  "isMatch": true,
+  "lens": "language",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Two small green Qurans (مصحف / Quran / Qur'an / mus7af) that differ only by a zip cover and a name inside.",
+  "why": "Three spellings of the same word across the reports and the finder hides most of the name.",
+  "checkerNote": "Green pocket Quran with a name starting with M inside, girls dorms, same day.",
+  "tags": [
+   "language",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-language-12-L1",
+  "foundId": "R1-language-12-F2",
+  "isMatch": false,
+  "lens": "language",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Two small green Qurans (مصحف / Quran / Qur'an / mus7af) that differ only by a zip cover and a name inside.",
+  "why": "Small green mushaf one day apart; only 'no zipper' and the name inside rule it out.",
+  "checkerNote": "Zip cover vs explicitly no zipper; found the day before the loss, different place.",
+  "tags": [
+   "language",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-language-12-L2",
+  "foundId": "R1-language-12-F1",
+  "isMatch": false,
+  "lens": "language",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "Two small green Qurans (مصحف / Quran / Qur'an / mus7af) that differ only by a zip cover and a name inside.",
+  "why": "Missing detail trap: the bus Quran report says nothing about a name, so it could look compatible with Maryam's.",
+  "checkerNote": "Both small green Qurans a day apart; girls dorms vs bus differs, zip cover and name not mentioned by the other side.",
+  "tags": [
+   "language",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-language-13-L1",
+  "foundId": "R1-language-13-F1",
+  "isMatch": true,
+  "lens": "language",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "'Musalla' means prayer mat for Urdu and Swahili speakers but prayer room on campus, so the word appears as item on one side and place on the other.",
+  "why": "Owner's 'musalla' is the item (prayer mat) and the Arabic finder calls it سجادة while using مصلى for the room.",
+  "checkerNote": "Dark green travel prayer mat in a small pouch, GU1, same day.",
+  "tags": [
+   "language",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-language-13-L1",
+  "foundId": "R1-language-13-F2",
+  "isMatch": false,
+  "lens": "language",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "'Musalla' means prayer mat for Urdu and Swahili speakers but prayer room on campus, so the word appears as item on one side and place on the other.",
+  "why": "Shares 'musalla', 'dark green', 'pouch', the place and the date, but the found thing is a power bank.",
+  "checkerNote": "Prayer mat vs power bank.",
+  "tags": [
+   "language",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-language-14-L1",
+  "foundId": "R1-language-14-F1",
+  "isMatch": true,
+  "lens": "language",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "'Oud / 3ood / عود' is both a perfume oil and a musical instrument, and an Indian finder calls the oil 'attar'.",
+  "why": "The finder never writes 'oud' at all; 'attar' and 'dehn 3ood' must be recognised as the same kind of perfume oil.",
+  "checkerNote": "Tiny oud oil bottle with gold cap, GU1 parking, same day.",
+  "tags": [
+   "language",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-language-14-L1",
+  "foundId": "R1-language-14-F2",
+  "isMatch": false,
+  "lens": "language",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "'Oud / 3ood / عود' is both a perfume oil and a musical instrument, and an Indian finder calls the oil 'attar'.",
+  "why": "Exact word match on عود / 3ood on the same day, but one is a tiny perfume bottle and the other a string instrument.",
+  "checkerNote": "Oud perfume oil vs oud musical instrument.",
+  "tags": [
+   "language",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-language-15-L1",
+  "foundId": "R1-language-15-F1",
+  "isMatch": true,
+  "lens": "language",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Dishdasha, thobe and kandura are the same garment under three names, with a white lab coat in a bag as the look-alike.",
+  "why": "Arabizi 'dishdashteen' (dual form) against 'two white thobes / kandura'; no shared content word except through translation.",
+  "checkerNote": "Two white dishdashas in a laundry bag at the boys dorms, same day.",
+  "tags": [
+   "language",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-language-15-L1",
+  "foundId": "R1-language-15-F2",
+  "isMatch": false,
+  "lens": "language",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Dishdasha, thobe and kandura are the same garment under three names, with a white lab coat in a bag as the look-alike.",
+  "why": "White garment in a plastic bag at the boys dorms a day later, but a lab coat is not a dishdasha and there is only one.",
+  "checkerNote": "Two dishdashas vs one lab coat.",
+  "tags": [
+   "language",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-language-16-L1",
+  "foundId": "R1-language-16-F2",
+  "isMatch": true,
+  "lens": "language",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Arabic 'سماعة' can mean earbuds, headphones or a speaker, so a short Arabic loss report is ambiguous between two English found reports.",
+  "why": "The owner meant a speaker but 'سماعة' is usually translated as earphone/headphone, so the speaker looks like the weaker candidate.",
+  "checkerNote": "Small white bluetooth speaker lost after training on the grass pitch, same day.",
+  "tags": [
+   "language",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-language-16-L1",
+  "foundId": "R1-language-16-F1",
+  "isMatch": false,
+  "lens": "language",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "Arabic 'سماعة' can mean earbuds, headphones or a speaker, so a short Arabic loss report is ambiguous between two English found reports.",
+  "why": "From the texts alone 'small white bluetooth سماعة' fits AirPods at least as well; only the place (pitch versus padel courts) hints otherwise.",
+  "checkerNote": "The Arabic word could mean earbuds or a speaker; white matches, but padel courts vs grass pitch differs.",
+  "tags": [
+   "language",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-01-L1",
+  "foundId": "R1-sloppy-writing-01-F1",
+  "isMatch": true,
+  "lens": "sloppy-writing",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Heavy typos on the item word itself (\"blak walet\") against a cleanly written found report, with an equally misspelled lost report about a different wallet.",
+  "why": "\"blak walet\" shares no correctly spelled word with \"leather wallet, dark colour\", and the finder never says black.",
+  "checkerNote": "Black/dark wallet with cards/ID and a little cash, same canteen, same day.",
+  "tags": [
+   "sloppy-writing",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-01-L2",
+  "foundId": "R1-sloppy-writing-01-F1",
+  "isMatch": false,
+  "lens": "sloppy-writing",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Heavy typos on the item word itself (\"blak walet\") against a cleanly written found report, with an equally misspelled lost report about a different wallet.",
+  "why": "Same typo style, same place and a day apart, but it is a coin pouch with no cards while the found one holds cards.",
+  "checkerNote": "Lost is a small zip coin purse with no cards; found is a men's leather wallet with cards, and was found the day before the loss.",
+  "tags": [
+   "sloppy-writing",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-02-L1",
+  "foundId": "R1-sloppy-writing-02-F1",
+  "isMatch": true,
+  "lens": "sloppy-writing",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Product name split or merged differently (\"air pods pro\" vs \"airpod\") and which part of the set was lost.",
+  "why": "\"air pods pro\" vs \"airpod\" tokenises differently and the place is written as library vs 6th floor.",
+  "checkerNote": "Single AirPod without case, library/6th floor, same day.",
+  "tags": [
+   "sloppy-writing",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-02-L1",
+  "foundId": "R1-sloppy-writing-02-F2",
+  "isMatch": false,
+  "lens": "sloppy-writing",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Product name split or merged differently (\"air pods pro\" vs \"airpod\") and which part of the set was lost.",
+  "why": "Both say airpod and case, but the owner still has the case and lost only one bud.",
+  "checkerNote": "Owner still has the case and lost only an earbud; found item is an empty case, in a different place.",
+  "tags": [
+   "sloppy-writing",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-03-L1",
+  "foundId": "R1-sloppy-writing-03-F2",
+  "isMatch": true,
+  "lens": "sloppy-writing",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "A dropped letter changes the item word (\"charger\" typed as \"charge\"), with two chargers found in the same room.",
+  "why": "\"charge\" and \"chargr\" are both misspelled, so the item word never matches exactly on either side.",
+  "checkerNote": "White charger with USB-C cable, room 204, same day.",
+  "tags": [
+   "sloppy-writing",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-03-L1",
+  "foundId": "R1-sloppy-writing-03-F1",
+  "isMatch": false,
+  "lens": "sloppy-writing",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "A dropped letter changes the item word (\"charger\" typed as \"charge\"), with two chargers found in the same room.",
+  "why": "Same room and day and the only correctly spelled \"charger\", but it is a black HP laptop brick, not a white phone charger.",
+  "checkerNote": "White USB-C charger versus a black HP laptop charger brick.",
+  "tags": [
+   "sloppy-writing",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-04-L1",
+  "foundId": "R1-sloppy-writing-04-F1",
+  "isMatch": true,
+  "lens": "sloppy-writing",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "All-caps panic report with almost no detail against a calm, detailed finder, plus an all-caps found report for another car key.",
+  "why": "The owner gives only the brand and emotion and \"PARKING\" names no specific car park; the tasbih is never mentioned.",
+  "checkerNote": "Toyota key in a parking area, same day; extra details not contradicted.",
+  "tags": [
+   "sloppy-writing",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-04-L1",
+  "foundId": "R1-sloppy-writing-04-F2",
+  "isMatch": false,
+  "lens": "sloppy-writing",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "All-caps panic report with almost no detail against a calm, detailed finder, plus an all-caps found report for another car key.",
+  "why": "Matching all-caps style, same day and both car keys in a parking, but Nissan is not Toyota.",
+  "checkerNote": "Toyota versus Nissan key.",
+  "tags": [
+   "sloppy-writing",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-05-L1",
+  "foundId": "R1-sloppy-writing-05-F1",
+  "isMatch": true,
+  "lens": "sloppy-writing",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Emoji-only lost reports with no words at all.",
+  "why": "The lost report has no words; the system must read 🎧 as headphones and 🖤 as black.",
+  "checkerNote": "Black headphones on the bus, same day.",
+  "tags": [
+   "sloppy-writing",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-05-L2",
+  "foundId": "R1-sloppy-writing-05-F1",
+  "isMatch": false,
+  "lens": "sloppy-writing",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Emoji-only lost reports with no words at all.",
+  "why": "Same day and same crying-emoji style, but it is about keys, not headphones.",
+  "checkerNote": "Keys versus headphones.",
+  "tags": [
+   "sloppy-writing",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-05-L1",
+  "foundId": "R1-sloppy-writing-05-F2",
+  "isMatch": false,
+  "lens": "sloppy-writing",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Emoji-only lost reports with no words at all.",
+  "why": "Both contain the same 🎧 emoji, but these are white wired earphones found in the gym, not black ones on a bus.",
+  "checkerNote": "Black headphones lost on bus versus white wired ones found in the gym.",
+  "tags": [
+   "sloppy-writing",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-06-L1",
+  "foundId": "R1-sloppy-writing-06-F1",
+  "isMatch": true,
+  "lens": "sloppy-writing",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "One-word reports with no place or date, where two people typed the identical single word.",
+  "why": "A single word with no place or date gives nothing to confirm on; it could be dismissed for lack of detail.",
+  "checkerNote": "Lost report gives no details, place or date; found two days before the report, which is consistent.",
+  "tags": [
+   "sloppy-writing",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-06-L2",
+  "foundId": "R1-sloppy-writing-06-F1",
+  "isMatch": false,
+  "lens": "sloppy-writing",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "One-word reports with no place or date, where two people typed the identical single word.",
+  "why": "Identical text to L1, so the texts cannot separate them; only the GU2 place hints that it is another wallet.",
+  "checkerNote": "Lost says GU2 on 23 Sep; found in Oman Hall on 22 Sep. Place and a one-day date difference could be misremembered.",
+  "tags": [
+   "sloppy-writing",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-07-L1",
+  "foundId": "R1-sloppy-writing-07-F1",
+  "isMatch": true,
+  "lens": "sloppy-writing",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Very long rambling story with the item buried in the middle, and the name on the item is not the reporter's.",
+  "why": "The item is one word inside 120 words of story, three possible places are given, and the name on it is the sister's, not the reporter's.",
+  "checkerNote": "Casio calculator with someone else's (sister's) name on it, probably left in Germany Hall, same day.",
+  "tags": [
+   "sloppy-writing",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-07-L2",
+  "foundId": "R1-sloppy-writing-07-F1",
+  "isMatch": false,
+  "lens": "sloppy-writing",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Very long rambling story with the item buried in the middle, and the name on the item is not the reporter's.",
+  "why": "Another same-day rambling calculator story, but it is a Sharp with a cat sticker lost in the Mechatronics Lab.",
+  "checkerNote": "Lost in the mechatronics lab, probably Sharp, cat sticker; found is a Casio with a written name in Germany Hall.",
+  "tags": [
+   "sloppy-writing",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-08-L1",
+  "foundId": "R1-sloppy-writing-08-F1",
+  "isMatch": true,
+  "lens": "sloppy-writing",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "The place is written inside the description while the location box says \"idk\" or \"see description\".",
+  "why": "The location box says \"idk\", so the place is missed unless \"musalla in gu2\" is read from the text and mapped to GU2 Prayer Room.",
+  "checkerNote": "Green Stanley, GU2 prayer room, same day.",
+  "tags": [
+   "sloppy-writing",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-08-L1",
+  "foundId": "R1-sloppy-writing-08-F2",
+  "isMatch": false,
+  "lens": "sloppy-writing",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "The place is written inside the description while the location box says \"idk\" or \"see description\".",
+  "why": "Both have useless location boxes and a green bottle on the same day, but this is a cheap plastic bottle at the Padel Courts.",
+  "checkerNote": "Green bottle same day, but found at the padel courts and described as plastic with a flip lid, not a Stanley; neither strictly rules it out.",
+  "tags": [
+   "sloppy-writing",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-09-L1",
+  "foundId": "R1-sloppy-writing-09-F1",
+  "isMatch": true,
+  "lens": "sloppy-writing",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Contact instructions (\"call me\", \"dm me\") written instead of any description of the item.",
+  "why": "Most of the lost text is contact information, and \"glasses\" vs \"specs\" is the only link.",
+  "checkerNote": "Glasses in the labs; owner is a mechatronics student, found in the Mechatronics Lab the same day.",
+  "tags": [
+   "sloppy-writing",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-09-L1",
+  "foundId": "R1-sloppy-writing-09-F2",
+  "isMatch": false,
+  "lens": "sloppy-writing",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "Contact instructions (\"call me\", \"dm me\") written instead of any description of the item.",
+  "why": "\"labs\" is literally the alias of Engineering Workshops and both reports ask for contact, but these are sunglasses, not prescription glasses.",
+  "checkerNote": "\"Glasses\" versus Ray-Ban sunglasses; the word is vague enough to cover both, same area and day.",
+  "tags": [
+   "sloppy-writing",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-10-L1",
+  "foundId": "R1-sloppy-writing-10-F1",
+  "isMatch": true,
+  "lens": "sloppy-writing",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Several unrelated items lost on different days are put in one report.",
+  "why": "The lab coat is the second of three items and was lost a week before the single date entered on the report.",
+  "checkerNote": "Lab coat lost \"last week\" before 22 Oct; found 14 Oct. Initials can't be checked against the report.",
+  "tags": [
+   "sloppy-writing",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-10-L1",
+  "foundId": "R1-sloppy-writing-10-F2",
+  "isMatch": true,
+  "lens": "sloppy-writing",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Several unrelated items lost on different days are put in one report.",
+  "why": "The lanyard is only mentioned in brackets as the third item, with a date three days off and no place.",
+  "checkerNote": "Blue lanyard with card holder, found a few days before the report, which covers several days.",
+  "tags": [
+   "sloppy-writing",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-10-L1",
+  "foundId": "R1-sloppy-writing-10-F3",
+  "isMatch": false,
+  "lens": "sloppy-writing",
+  "kind": "lookalike",
+  "conflict": "none",
+  "idea": "Several unrelated items lost on different days are put in one report.",
+  "why": "Cannot be told from the texts: the date matches exactly, but the owner's umbrella is a small purple folding one she never described.",
+  "checkerNote": "Umbrella, same day; lost report gives no details.",
+  "tags": [
+   "sloppy-writing",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-11-L1",
+  "foundId": "R1-sloppy-writing-11-F1",
+  "isMatch": true,
+  "lens": "sloppy-writing",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Voice-dictation errors and homophones (\"won\", \"roles\", \"pen sill\", \"kays\") damage the item name.",
+  "why": "\"apple pen sill\" must be heard as Apple Pencil, and the finder calls it a stylus with no brand.",
+  "checkerNote": "White Apple Pencil 2nd gen (flat side) versus white stylus flat on one side, library, same day.",
+  "tags": [
+   "sloppy-writing",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-11-L2",
+  "foundId": "R1-sloppy-writing-11-F1",
+  "isMatch": false,
+  "lens": "sloppy-writing",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Voice-dictation errors and homophones (\"won\", \"roles\", \"pen sill\", \"kays\") damage the item name.",
+  "why": "Shares the same dictated \"pen sill\", the library and the date, but it is a grey pencil case.",
+  "checkerNote": "Grey pencil case with pens and ruler versus a stylus.",
+  "tags": [
+   "sloppy-writing",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-12-L1",
+  "foundId": "R1-sloppy-writing-12-F1",
+  "isMatch": true,
+  "lens": "sloppy-writing",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Texting slang, dropped vowels and Arabizi (\"sha7en\", \"sab3\", \"yday\", \"blk\").",
+  "why": "\"pwr bank\", \"blk\", \"sha7en\" and \"sab3\" all need decoding before any word overlaps with the found report.",
+  "checkerNote": "Black Anker power bank with cable, smoking area, 29 Oct.",
+  "tags": [
+   "sloppy-writing",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-12-L1",
+  "foundId": "R1-sloppy-writing-12-F2",
+  "isMatch": false,
+  "lens": "sloppy-writing",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Texting slang, dropped vowels and Arabizi (\"sha7en\", \"sab3\", \"yday\", \"blk\").",
+  "why": "Same item type at the same place a day later, but a white Xiaomi instead of a black Anker.",
+  "checkerNote": "Black Anker versus white Xiaomi.",
+  "tags": [
+   "sloppy-writing",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-13-L1",
+  "foundId": "R1-sloppy-writing-13-F1",
+  "isMatch": true,
+  "lens": "sloppy-writing",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Autocorrect replaces the item word with a real but wrong word (\"ring\" becomes \"rink\", \"black\" becomes \"blank\").",
+  "why": "\"rink\" and \"blank\" are valid words, so nothing flags them as typos of ring and black.",
+  "checkerNote": "Silver ring with black stone left by a sink in the girls dorms, same day.",
+  "tags": [
+   "sloppy-writing",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-13-L1",
+  "foundId": "R1-sloppy-writing-13-F2",
+  "isMatch": false,
+  "lens": "sloppy-writing",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Autocorrect replaces the item word with a real but wrong word (\"ring\" becomes \"rink\", \"black\" becomes \"blank\").",
+  "why": "Both are silver rings removed for washing on the same day, but this is a plain men's band with no stone, in GU1.",
+  "checkerNote": "Ring with a black stone versus a plain band with no stone, in a different building.",
+  "tags": [
+   "sloppy-writing",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-14-L1",
+  "foundId": "R1-sloppy-writing-14-F1",
+  "isMatch": true,
+  "lens": "sloppy-writing",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "Both sides are sloppy, and the owner also names the wrong place and the finder calls the item by another word.",
+  "why": "\"hodie\" vs \"jaket with hood\", grey vs gray, and the owner wrongly remembers the gym when he left it at the Padel Courts.",
+  "checkerNote": "Grey Nike hooded top, same day, but lost in the gym and found at the padel courts.",
+  "tags": [
+   "sloppy-writing",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-14-L2",
+  "foundId": "R1-sloppy-writing-14-F1",
+  "isMatch": false,
+  "lens": "sloppy-writing",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Both sides are sloppy, and the owner also names the wrong place and the finder calls the item by another word.",
+  "why": "A grey hooded top a day apart, but Adidas, not Nike.",
+  "checkerNote": "Adidas versus Nike logo, and found the day before it was lost, in a different place.",
+  "tags": [
+   "sloppy-writing",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-14-L2",
+  "foundId": "R1-sloppy-writing-14-F2",
+  "isMatch": true,
+  "lens": "sloppy-writing",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Both sides are sloppy, and the owner also names the wrong place and the finder calls the item by another word.",
+  "why": "The found report is three words with no colour or brand, so there is almost nothing to confirm.",
+  "checkerNote": "Hoodie in the gym, same day; found report has no details.",
+  "tags": [
+   "sloppy-writing",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-14-L1",
+  "foundId": "R1-sloppy-writing-14-F2",
+  "isMatch": false,
+  "lens": "sloppy-writing",
+  "kind": "lookalike",
+  "conflict": "none",
+  "idea": "Both sides are sloppy, and the owner also names the wrong place and the finder calls the item by another word.",
+  "why": "Cannot be told from the texts: the place matches L1's wrong memory perfectly, but this is the Adidas hoodie.",
+  "checkerNote": "Hoodie in the gym, found a day after the loss; no details to contradict.",
+  "tags": [
+   "sloppy-writing",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-15-L1",
+  "foundId": "R1-sloppy-writing-15-F2",
+  "isMatch": true,
+  "lens": "sloppy-writing",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "A shortened word (\"usb\") names two clearly different objects in equally careless reports.",
+  "why": "The finder says \"flash stick\" and never \"usb\" or SanDisk, and found it the next morning.",
+  "checkerNote": "Flash drive at the copy centre, found the next day; red and black fits a SanDisk.",
+  "tags": [
+   "sloppy-writing",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-15-L1",
+  "foundId": "R1-sloppy-writing-15-F1",
+  "isMatch": false,
+  "lens": "sloppy-writing",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "A shortened word (\"usb\") names two clearly different objects in equally careless reports.",
+  "why": "Both say just \"usb\" at the same place on the same day, but \"white 1m\" is a cable, not a flash drive.",
+  "checkerNote": "\"usb, white 1m\" reads like a cable, not a flash drive with files, but the wording is vague; same place and day.",
+  "tags": [
+   "sloppy-writing",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-16-L1",
+  "foundId": "R1-sloppy-writing-16-F1",
+  "isMatch": true,
+  "lens": "sloppy-writing",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "A misspelled card report with a first name that is transliterated differently on each side.",
+  "why": "\"studnt id crd\" is heavily misspelled and Fatma vs Fatima looks like a different name to exact matching.",
+  "checkerNote": "Fatma/Fatima spelling variant, GU2 and UPAD Studio are the same building, same day.",
+  "tags": [
+   "sloppy-writing",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-sloppy-writing-16-L2",
+  "foundId": "R1-sloppy-writing-16-F1",
+  "isMatch": false,
+  "lens": "sloppy-writing",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "A misspelled card report with a first name that is transliterated differently on each side.",
+  "why": "A third spelling of the same common name on the same day, but she is a logistics student and the card says UPAD.",
+  "checkerNote": "Lost card belongs to a logistics student in the main building; found card says UPAD and was in the UPAD Studio.",
+  "tags": [
+   "sloppy-writing",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-01-L1",
+  "foundId": "R1-human-memory-errors-01-F1",
+  "isMatch": true,
+  "lens": "human-memory-errors",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "Owner names the last place they remember having it (library) but it was found in the canteen; a different wallet really was found in the library.",
+  "why": "Wrong fact is the place: owner says library, it was left in the canteen, so a location filter would reject the true match.",
+  "checkerNote": "Brown wallet with cards, same day; place differs (library vs canteen) but the owner only 'thinks' it was the library.",
+  "tags": [
+   "human-memory-errors",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-01-L1",
+  "foundId": "R1-human-memory-errors-01-F2",
+  "isMatch": false,
+  "lens": "human-memory-errors",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "Owner names the last place they remember having it (library) but it was found in the canteen; a different wallet really was found in the library.",
+  "why": "Place and day match exactly, but the colour and brand are really different (black Tommy Hilfiger vs brown leather).",
+  "checkerNote": "Same place and day; brown leather vs black is a possible dark-shade difference, and the brand is not mentioned by the owner.",
+  "tags": [
+   "human-memory-errors",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-02-L1",
+  "foundId": "R1-human-memory-errors-02-F1",
+  "isMatch": true,
+  "lens": "human-memory-errors",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "Owner states the wrong brand (Samsung) for earbuds that are really Huawei, while a real Samsung pair is found in the room the owner named.",
+  "why": "Wrong fact is the brand: owner says Samsung, the case says Huawei; the single remaining earbud is the real link.",
+  "checkerNote": "White case with one earbud matches; brand differs (Samsung vs Huawei) and the lab is a nearby place, both plausible slips.",
+  "tags": [
+   "human-memory-errors",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-02-L1",
+  "foundId": "R1-human-memory-errors-02-F2",
+  "isMatch": false,
+  "lens": "human-memory-errors",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Owner states the wrong brand (Samsung) for earbuds that are really Huawei, while a real Samsung pair is found in the room the owner named.",
+  "why": "Brand and room match the owner's words, but this case holds both buds, and the owner's has only one.",
+  "checkerNote": "Owner says only the left bud is inside and the right was lost long ago; found case has both buds.",
+  "tags": [
+   "human-memory-errors",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-03-L1",
+  "foundId": "R1-human-memory-errors-03-F1",
+  "isMatch": true,
+  "lens": "human-memory-errors",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "Finder guesses wrongly what the object is: calls a power bank an external hard drive, and someone else really lost a hard drive.",
+  "why": "Wrong fact is the finder's guess of the object type (hard drive instead of power bank); the cat sticker is the only shared detail.",
+  "checkerNote": "Finder guesses 'hard drive i think' for a heavy black device with USB ports and a cat sticker; object type is a plausible misidentification of a power bank.",
+  "tags": [
+   "human-memory-errors",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-03-L2",
+  "foundId": "R1-human-memory-errors-03-F1",
+  "isMatch": false,
+  "lens": "human-memory-errors",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "Finder guesses wrongly what the object is: calls a power bank an external hard drive, and someone else really lost a hard drive.",
+  "why": "The words 'black external hard drive' match almost exactly, but the found thing is really a power bank with a cat sticker and no sleeve.",
+  "checkerNote": "Black hard drive in GU1 a day apart; grey sleeve is absent, and the cat sticker and side USB ports are not in the owner's description.",
+  "tags": [
+   "human-memory-errors",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-04-L1",
+  "foundId": "R1-human-memory-errors-04-F1",
+  "isMatch": true,
+  "lens": "human-memory-errors",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "Finder calls a vape a USB stick, and a real blue USB drive was lost the same week.",
+  "why": "Wrong fact is the finder's guess of the object: it is a vape, not a USB; only the colour and the smoking area link them.",
+  "checkerNote": "Same place (sab3 = 7th floor) and day, blue; finder calls it a fat capless flash drive with a hole, a plausible misreading of a vape.",
+  "tags": [
+   "human-memory-errors",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-04-L2",
+  "foundId": "R1-human-memory-errors-04-F1",
+  "isMatch": false,
+  "lens": "human-memory-errors",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "Finder calls a vape a USB stick, and a real blue USB drive was lost the same week.",
+  "why": "Both say blue USB flash drive, but the found thing is really a vape found on the 7th floor, not a sliding SanDisk from the print shop.",
+  "checkerNote": "Blue capless flash drive fits a sliding type; place differs (Copy Centre vs 7th floor) and a day apart; 'fat' with a hole is slightly odd.",
+  "tags": [
+   "human-memory-errors",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-05-L1",
+  "foundId": "R1-human-memory-errors-05-F1",
+  "isMatch": true,
+  "lens": "human-memory-errors",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "Finder describes a hearing aid as an earbud; a single AirPod found nearby is the tempting wrong match.",
+  "why": "Wrong fact is the finder's object guess (earbud instead of hearing aid); beige/skin colour and the grey pouch match in different words.",
+  "checkerNote": "Same place and day, beige/skin colour, grey pouch/zip case; finder calls it an earbud, a plausible misidentification of a hearing aid.",
+  "tags": [
+   "human-memory-errors",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-05-L1",
+  "foundId": "R1-human-memory-errors-05-F2",
+  "isMatch": false,
+  "lens": "human-memory-errors",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Finder describes a hearing aid as an earbud; a single AirPod found nearby is the tempting wrong match.",
+  "why": "Same hall, same day, 'left' and a single in-ear device, but it is a white AirPod with no pouch.",
+  "checkerNote": "An AirPod Pro without a case is a different object from a beige hearing aid in a grey pouch.",
+  "tags": [
+   "human-memory-errors",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-06-L1",
+  "foundId": "R1-human-memory-errors-06-F1",
+  "isMatch": true,
+  "lens": "human-memory-errors",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "Owner reports weeks late with the wrong day, so the found date is before the stated loss date, while another Toyota key was found exactly on the stated day.",
+  "why": "Wrong fact is the day: owner guesses 20 Oct, it was found on 14 Oct, so the item appears found six days before it was lost.",
+  "checkerNote": "Toyota key, red lanyard, khanjar/dagger keychain all match; found 6 days before the stated lost date, but the owner's date is a vague 'maybe 2 weeks ago'.",
+  "tags": [
+   "human-memory-errors",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-06-L1",
+  "foundId": "R1-human-memory-errors-06-F2",
+  "isMatch": false,
+  "lens": "human-memory-errors",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Owner reports weeks late with the wrong day, so the found date is before the stated loss date, while another Toyota key was found exactly on the stated day.",
+  "why": "Brand and date match the owner's report perfectly, but this key really has no lanyard or keychain.",
+  "checkerNote": "Finder states key only, no keychain at all; owner's key has a red lanyard and khanjar keychain.",
+  "tags": [
+   "human-memory-errors",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-07-L1",
+  "foundId": "R1-human-memory-errors-07-F1",
+  "isMatch": true,
+  "lens": "human-memory-errors",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Owner describes only what an owner knows (lock screen, SIM, a crack) and the finder only the outside of a dead phone, so nothing overlaps.",
+  "why": "No fact is wrong, but the owner gives only inside knowledge and never says colour or case, so the texts share almost no words.",
+  "checkerNote": "Same place and day, nearly dead battery fits; colour and case not stated by the owner, nothing disagrees.",
+  "tags": [
+   "human-memory-errors",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-07-L2",
+  "foundId": "R1-human-memory-errors-07-F1",
+  "isMatch": false,
+  "lens": "human-memory-errors",
+  "kind": "lookalike",
+  "conflict": "none",
+  "idea": "Owner describes only what an owner knows (lock screen, SIM, a crack) and the finder only the outside of a dead phone, so nothing overlaps.",
+  "why": "Black phone, clear case, same hall and day; the found phone is an iPhone with no banknote in the case, which the finder would have seen.",
+  "checkerNote": "Black phone in clear case, same place and day; the 1 rial note is just not mentioned by the finder.",
+  "tags": [
+   "human-memory-errors",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-08-L1",
+  "foundId": "R1-human-memory-errors-08-F1",
+  "isMatch": true,
+  "lens": "human-memory-errors",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "Colour shade disagreement (teal vs green vs blue) on the same kind of tumbler.",
+  "why": "The differing fact is the colour shade: owner says teal, finder says green; the dent and studio agree.",
+  "checkerNote": "Same studio and day, dented Stanley; teal vs green is a close shade, handle vs straw are not exclusive.",
+  "tags": [
+   "human-memory-errors",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-08-L1",
+  "foundId": "R1-human-memory-errors-08-F2",
+  "isMatch": false,
+  "lens": "human-memory-errors",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "Colour shade disagreement (teal vs green vs blue) on the same kind of tumbler.",
+  "why": "Blue is as close to teal as green is, and the building matches, but this one has another person's name written on it and no dent.",
+  "checkerNote": "Teal vs blue is a close shade; a day later in the wider building; name on the bottom and the dent are each unmentioned by the other side.",
+  "tags": [
+   "human-memory-errors",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-09-L1",
+  "foundId": "R1-human-memory-errors-09-F1",
+  "isMatch": true,
+  "lens": "human-memory-errors",
+  "kind": "stretch",
+  "conflict": "hard",
+  "idea": "Owner miscounts keys on a ring; two similar Bayern keyrings exist and the counts cross over.",
+  "why": "Wrong facts are the number of keys (owner says 3, there are 5) and the place (lost on the pitch, not the dorms).",
+  "checkerNote": "3 keys vs 4 keys plus a locker key (5), and a different place and day; the key count does not fit.",
+  "tags": [
+   "human-memory-errors",
+   "stretch"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-09-L2",
+  "foundId": "R1-human-memory-errors-09-F2",
+  "isMatch": true,
+  "lens": "human-memory-errors",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "Owner miscounts keys on a ring; two similar Bayern keyrings exist and the counts cross over.",
+  "why": "Finder does not name the club and calls the carabiner a clip hook; the place is also swapped with the other pair.",
+  "checkerNote": "2 keys, blue carabiner/clip, football badge all match; place differs (pitch vs dorms), plausible since they are dorm keys.",
+  "tags": [
+   "human-memory-errors",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-09-L2",
+  "foundId": "R1-human-memory-errors-09-F1",
+  "isMatch": false,
+  "lens": "human-memory-errors",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Owner miscounts keys on a ring; two similar Bayern keyrings exist and the counts cross over.",
+  "why": "Bayern tag and the pitch match, but five keys with no carabiner is a real difference, not a miscount of two.",
+  "checkerNote": "2 keys with a blue carabiner vs a ring of 5 keys with no carabiner, despite same place and day.",
+  "tags": [
+   "human-memory-errors",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-09-L1",
+  "foundId": "R1-human-memory-errors-09-F2",
+  "isMatch": false,
+  "lens": "human-memory-errors",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "Owner miscounts keys on a ring; two similar Bayern keyrings exist and the counts cross over.",
+  "why": "Same dorms and a football badge, but two keys on a blue carabiner is not a ring of keys with a Bayern tag.",
+  "checkerNote": "Same place, a day apart; 3 keys on a ring vs 2 keys on a blue clip, a count that could be miscounted.",
+  "tags": [
+   "human-memory-errors",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-10-L1",
+  "foundId": "R1-human-memory-errors-10-F1",
+  "isMatch": true,
+  "lens": "human-memory-errors",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "Owner lists only the contents of a bag, finder only the outside, and the owner is one day off; another person lost a bag whose outside matches the finder's words.",
+  "why": "Wrong fact is the day (Monday 26th stated, really Tuesday 27th), and the owner never describes the outside the finder saw.",
+  "checkerNote": "Bag not described and finder did not open it; date off by one day ('monday i think') and Germany Hall vs GU2.",
+  "tags": [
+   "human-memory-errors",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-10-L2",
+  "foundId": "R1-human-memory-errors-10-F1",
+  "isMatch": false,
+  "lens": "human-memory-errors",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "Owner lists only the contents of a bag, finder only the outside, and the owner is one day off; another person lost a bag whose outside matches the finder's words.",
+  "why": "Text is nearly identical (black Nike backpack, same day), but the found bag has no pin and was in a lecture hall, not on the bus; from the texts alone this is close to indistinguishable.",
+  "checkerNote": "Black Nike backpack, same day; place differs (bus vs lecture hall back row), and the flag pin is not mentioned.",
+  "tags": [
+   "human-memory-errors",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-11-L1",
+  "foundId": "R1-human-memory-errors-11-F1",
+  "isMatch": true,
+  "lens": "human-memory-errors",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Finder calls prescription glasses with darkening lenses 'sunglasses'; real sunglasses of the same brand were also lost.",
+  "why": "Wrong fact is the finder's object guess: the lenses were dark outdoors so they look like sunglasses; the place box is also just 'outside'.",
+  "checkerNote": "Photochromic glasses in a brown case would look like sunglasses outdoors; same courts and day.",
+  "tags": [
+   "human-memory-errors",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-11-L2",
+  "foundId": "R1-human-memory-errors-11-F1",
+  "isMatch": false,
+  "lens": "human-memory-errors",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Finder calls prescription glasses with darkening lenses 'sunglasses'; real sunglasses of the same brand were also lost.",
+  "why": "The word sunglasses and the padel courts match better than the true owner's report, but these had no case and a gold aviator frame.",
+  "checkerNote": "Owner states no case; found item is in a brown hard case, and it is a day later.",
+  "tags": [
+   "human-memory-errors",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-12-L1",
+  "foundId": "R1-human-memory-errors-12-F1",
+  "isMatch": true,
+  "lens": "human-memory-errors",
+  "kind": "stretch",
+  "conflict": "hard",
+  "idea": "Owner gives the wrong calculator model; another student lost exactly the model the owner named.",
+  "why": "Wrong fact is the model: owner says ES Plus, it is an EX ClassWiz; the scratched letters on the back are the real link.",
+  "checkerNote": "Both state the model precisely: fx-991ES Plus vs fx-991EX ClassWiz. Place, day and scratched letters do match, so an owner misnaming their model is the only way this fits.",
+  "tags": [
+   "human-memory-errors",
+   "stretch"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-12-L2",
+  "foundId": "R1-human-memory-errors-12-F1",
+  "isMatch": false,
+  "lens": "human-memory-errors",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Owner gives the wrong calculator model; another student lost exactly the model the owner named.",
+  "why": "Same brand and day, but the model, the missing cover and the scratches are all real differences.",
+  "checkerNote": "Different model, owner says no marks and with cover; found one has scratched letters and no cover, different place.",
+  "tags": [
+   "human-memory-errors",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-13-L1",
+  "foundId": "R1-human-memory-errors-13-F1",
+  "isMatch": true,
+  "lens": "human-memory-errors",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Owner identifies a ring by an engraving inside that the finder never noticed; two other plain or silver rings are in play.",
+  "why": "No fact is wrong; the finder calls it plain because they did not look inside, which reads as a contradiction of the engraving.",
+  "checkerNote": "Same prayer room and day, near the wudu sinks; an inside engraving is compatible with a 'plain band' seen from outside.",
+  "tags": [
+   "human-memory-errors",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-13-L1",
+  "foundId": "R1-human-memory-errors-13-F2",
+  "isMatch": false,
+  "lens": "human-memory-errors",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "Owner identifies a ring by an engraving inside that the finder never noticed; two other plain or silver rings are in play.",
+  "why": "Silver ring, same building and day, also near water, but it has a blue stone the owner would have mentioned.",
+  "checkerNote": "Same day and building, but a blue stone is not in the owner's description and the washroom is not the prayer room.",
+  "tags": [
+   "human-memory-errors",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-13-L2",
+  "foundId": "R1-human-memory-errors-13-F1",
+  "isMatch": false,
+  "lens": "human-memory-errors",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "Owner identifies a ring by an engraving inside that the finder never noticed; two other plain or silver rings are in play.",
+  "why": "'Plain silver ring' matches the finder's words better than the true owner's report; only the place (sports hall vs prayer room) separates them.",
+  "checkerNote": "Plain silver ring matches; place differs (gym vs prayer room sinks) and a day apart.",
+  "tags": [
+   "human-memory-errors",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-14-L1",
+  "foundId": "R1-human-memory-errors-14-F1",
+  "isMatch": true,
+  "lens": "human-memory-errors",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Report posted five weeks late with no date and a useless place, describing the repair on the cable; a recent Apple phone charger is the nearer-in-time decoy.",
+  "why": "Missing date and vague place, with a five-week gap between the found report and the lost report; the taped cable is the link.",
+  "checkerNote": "Apple laptop charger with taped cable, found 4 October, fits 'start of october' somewhere at uni.",
+  "tags": [
+   "human-memory-errors",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-14-L1",
+  "foundId": "R1-human-memory-errors-14-F2",
+  "isMatch": false,
+  "lens": "human-memory-errors",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Report posted five weeks late with no date and a useless place, describing the repair on the cable; a recent Apple phone charger is the nearer-in-time decoy.",
+  "why": "Posted one day apart and both are white Apple chargers, but this is a small phone charger with an undamaged cable.",
+  "checkerNote": "A 20W phone charger is not a MacBook charger, and it was found on 9 November, over a month after the loss.",
+  "tags": [
+   "human-memory-errors",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-15-L1",
+  "foundId": "R1-human-memory-errors-15-F1",
+  "isMatch": true,
+  "lens": "human-memory-errors",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Finder does not recognise a medical item (insulin pen) and describes it as a thick pen or marker in a pouch; an ordinary pencil pouch is the decoy.",
+  "why": "Wrong fact is the finder's object guess (pen or marker instead of insulin pen); the needles are the giveaway a careless reader skips.",
+  "checkerNote": "Black pouch with a thick pen and needles, same canteen and day, fits an insulin pen in a cooling pouch.",
+  "tags": [
+   "human-memory-errors",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-15-L1",
+  "foundId": "R1-human-memory-errors-15-F2",
+  "isMatch": false,
+  "lens": "human-memory-errors",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Finder does not recognise a medical item (insulin pen) and describes it as a thick pen or marker in a pouch; an ordinary pencil pouch is the decoy.",
+  "why": "Black pouch with 'pens' in the canteen on the same day, but it is ordinary stationery.",
+  "checkerNote": "Pencil pouch with pens, highlighters and a ruler is a different item from an insulin pen pouch.",
+  "tags": [
+   "human-memory-errors",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-16-L1",
+  "foundId": "R1-human-memory-errors-16-F2",
+  "isMatch": true,
+  "lens": "human-memory-errors",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "A date gap that is real, not a memory slip (found 12 days before the owner last used it), next to a true match where the owner names the wrong place.",
+  "why": "Wrong fact is the place: owner assumes the entrance, it was left on the bus that morning.",
+  "checkerNote": "Black umbrella with wooden handle, same morning; place differs (bus vs entrance), though the owner is only guessing where it is.",
+  "tags": [
+   "human-memory-errors",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-human-memory-errors-16-L1",
+  "foundId": "R1-human-memory-errors-16-F1",
+  "isMatch": false,
+  "lens": "human-memory-errors",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "A date gap that is real, not a memory slip (found 12 days before the owner last used it), next to a true match where the owner names the wrong place.",
+  "why": "Description and place match word for word, but it was found 12 days before the owner used theirs in the rain, so the date gap is real.",
+  "checkerNote": "Found on 22 October and left in the stand since; the owner used theirs on the morning of 3 November.",
+  "tags": [
+   "human-memory-errors",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-01-L2",
+  "foundId": "R1-lookalikes-parts-numbers-01-F1",
+  "isMatch": true,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Two students lose the same Casio fx-991ES on the same day in the same building; only the slide cover and a name tell them apart.",
+  "why": "Owner gives only the building and a vague model, finder gives no model number, so it scores no higher than the other owner.",
+  "checkerNote": "Casio calculator, no cover, same day, GU1 room is inside GU1.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-01-L1",
+  "foundId": "R1-lookalikes-parts-numbers-01-F1",
+  "isMatch": false,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "Two students lose the same Casio fx-991ES on the same day in the same building; only the slide cover and a name tell them apart.",
+  "why": "Same model, same room, same day, but L1's calculator has its cover with initials and the found one has no lid; exact room match pulls towards the wrong owner.",
+  "checkerNote": "Lost one had the cover on; found one has no lid. Cover could have come off, same room and day.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-02-L1",
+  "foundId": "R1-lookalikes-parts-numbers-02-F2",
+  "isMatch": true,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "Model number confusion between Casio fx-82 and fx-991, where the finder of the right one omits the brand detail and the finder of the wrong one states a clear model.",
+  "why": "Finder is unsure of the model, omits the brand, gives a different place and a later date, yet the missing screw is the real identifier.",
+  "checkerNote": "Same model, grey, missing screw; found a day later and place is the wider building rather than Faculty of Sciences.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-02-L1",
+  "foundId": "R1-lookalikes-parts-numbers-02-F1",
+  "isMatch": false,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Model number confusion between Casio fx-82 and fx-991, where the finder of the right one omits the brand detail and the finder of the wrong one states a clear model.",
+  "why": "Same brand, same floor, same day, but fx-991ES Plus is not an fx-82MS; a system that reads only 'Casio calculator' will match them.",
+  "checkerNote": "Both state the model precisely: fx-82MS vs fx-991ES PLUS.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-03-L1",
+  "foundId": "R1-lookalikes-parts-numbers-03-F2",
+  "isMatch": true,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Part versus whole with AirPods: one person lost a single earbud, another lost only the empty case.",
+  "why": "Finder never says AirPod or right side, just 'white earbud', and the date is a day later.",
+  "checkerNote": "Single white earbud in Sports Hall, found the next day; right AirPod Pro is consistent.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-03-L2",
+  "foundId": "R1-lookalikes-parts-numbers-03-F1",
+  "isMatch": true,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Part versus whole with AirPods: one person lost a single earbud, another lost only the empty case.",
+  "why": "Finder titles it 'Airpods' as if the buds were there; owner says case only, so a part/whole check may reject it.",
+  "checkerNote": "Empty AirPods case with black silicone cover and carabiner/hook, same place and day.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-03-L1",
+  "foundId": "R1-lookalikes-parts-numbers-03-F1",
+  "isMatch": false,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Part versus whole with AirPods: one person lost a single earbud, another lost only the empty case.",
+  "why": "Both say AirPods at the gym on the same day, but L1 lost one bud and explicitly still has the case; F1 is an empty case.",
+  "checkerNote": "Lost a single earbud and still has the case; found item is an empty case.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-03-L2",
+  "foundId": "R1-lookalikes-parts-numbers-03-F2",
+  "isMatch": false,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Part versus whole with AirPods: one person lost a single earbud, another lost only the empty case.",
+  "why": "A case versus a single bud: same product family and place, different physical part.",
+  "checkerNote": "Lost an empty case with pods kept; found item is a single earbud.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-04-L1",
+  "foundId": "R1-lookalikes-parts-numbers-04-F1",
+  "isMatch": true,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "Key counts and stamped numbers: an owner miscounts keys on a ring, and a single dorm key differs from another only by transposed digits.",
+  "why": "Owner forgot the small padlock key so '2 keys' contradicts '3 keys', and 'khanjar' versus 'dagger' use different words; the place also differs.",
+  "checkerNote": "Khanjar/dagger keyring matches, but 2 keys vs 3 keys and Boys Dorms vs Student Parking; a small key could be miscounted.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-04-L2",
+  "foundId": "R1-lookalikes-parts-numbers-04-F2",
+  "isMatch": false,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "Key counts and stamped numbers: an owner miscounts keys on a ring, and a single dorm key differs from another only by transposed digits.",
+  "why": "Stamped number 214 versus 241: looks like a typo of the same key but they are two different room keys.",
+  "checkerNote": "Single key, same day and area; number 214 vs 241 could be a transposition by either person.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-04-L2",
+  "foundId": "R1-lookalikes-parts-numbers-04-F1",
+  "isMatch": false,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Key counts and stamped numbers: an owner miscounts keys on a ring, and a single dorm key differs from another only by transposed digits.",
+  "why": "Single bare key versus a ring of three with a keychain; both are just 'keys' near the dorms in the same two days.",
+  "checkerNote": "Single key with no keychain vs ring of 3 keys with dagger keyring, and found a day before the loss date.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-05-L1",
+  "foundId": "R1-lookalikes-parts-numbers-05-F1",
+  "isMatch": true,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Two identical-model Toyota car keys lost in the same week in different car parks; only what is attached to the key separates them.",
+  "why": "Owner's place box only says 'uni'; 'gym tag' versus 'membership tag with barcode' is the only link.",
+  "checkerNote": "Toyota key with blue gym/membership tag, GU1 parking, same day.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-05-L2",
+  "foundId": "R1-lookalikes-parts-numbers-05-F2",
+  "isMatch": true,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Two identical-model Toyota car keys lost in the same week in different car parks; only what is attached to the key separates them.",
+  "why": "Nothing unique in either text, and 'after the wadi' must be read as Dirt Parking.",
+  "checkerNote": "Toyota remote key with nothing attached, Dirt Parking equals after the wadi, same day.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-05-L1",
+  "foundId": "R1-lookalikes-parts-numbers-05-F2",
+  "isMatch": false,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "Two identical-model Toyota car keys lost in the same week in different car parks; only what is attached to the key separates them.",
+  "why": "Same make of key, one day apart, but L1's key has a blue tag and F2 has nothing attached.",
+  "checkerNote": "Lost key has a blue tag, found one has no keychain (tag could have come off); found a day later at a different parking, though owner walked everywhere.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-05-L2",
+  "foundId": "R1-lookalikes-parts-numbers-05-F1",
+  "isMatch": false,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Two identical-model Toyota car keys lost in the same week in different car parks; only what is attached to the key separates them.",
+  "why": "L2 says nothing is attached; F1 has a blue membership tag and was found in a different car park a day earlier.",
+  "checkerNote": "Lost key has nothing on it, found key has a blue membership tag, and it was found the day before the loss in a different parking.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-06-L1",
+  "foundId": "R1-lookalikes-parts-numbers-06-F1",
+  "isMatch": true,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "Black iPhones where the finder guesses the wrong model number for the right phone, while another lost report states the finder's guessed model.",
+  "why": "Finder guesses 'iPhone 14' while the owner says 13; a system trusting the model number would reject it despite the case, crack and cat.",
+  "checkerNote": "Clear case, top-corner crack, cat wallpaper and place all match; finder guesses iPhone 14 vs stated iPhone 13.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-06-L2",
+  "foundId": "R1-lookalikes-parts-numbers-06-F1",
+  "isMatch": false,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Black iPhones where the finder guesses the wrong model number for the right phone, while another lost report states the finder's guessed model.",
+  "why": "Model number, colour, place and day all agree, but L2 has no case and a family photo; F1 has a clear case, a crack and a cat lock screen.",
+  "checkerNote": "No case and family photo lock screen vs clear case, cracked screen and cat lock screen.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-07-L1",
+  "foundId": "R1-lookalikes-parts-numbers-07-F1",
+  "isMatch": true,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "Charger brick versus cable versus full set: a MacBook brick found without its cable, and a mass-identical iPhone charger.",
+  "why": "Owner lost brick plus cable, finder has the brick only and found it a day later; 'macbook charger' versus 'laptop adapter'.",
+  "checkerNote": "MacBook charger block with green tape in library matches; lost with cable, found without cable.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-07-L2",
+  "foundId": "R1-lookalikes-parts-numbers-07-F2",
+  "isMatch": true,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Charger brick versus cable versus full set: a MacBook brick found without its cable, and a mass-identical iPhone charger.",
+  "why": "A mass-identical item with no unique mark; only the wall socket, floor and day tie them, and '6th floor' must be read as the library.",
+  "checkerNote": "White phone charger with cable left plugged in the wall, library/6th floor, same day.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-07-L1",
+  "foundId": "R1-lookalikes-parts-numbers-07-F2",
+  "isMatch": false,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Charger brick versus cable versus full set: a MacBook brick found without its cable, and a mass-identical iPhone charger.",
+  "why": "Both are white Apple chargers with cable in the library on the same day, but F2 is a small 20W phone plug, not a laptop brick with green tape.",
+  "checkerNote": "MacBook charger block with green tape vs small 20W phone charger head.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-07-L2",
+  "foundId": "R1-lookalikes-parts-numbers-07-F1",
+  "isMatch": false,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Charger brick versus cable versus full set: a MacBook brick found without its cable, and a mass-identical iPhone charger.",
+  "why": "Phone charger with cable versus a laptop brick with no cable; 'white Apple charger, library' is all they share.",
+  "checkerNote": "iPhone charger with cable vs Apple laptop adapter with green tape and no cable.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-08-L1",
+  "foundId": "R1-lookalikes-parts-numbers-08-F1",
+  "isMatch": true,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "A wallet described as a whole versus a single card that fell out of it, plus a similar empty wallet found before the loss happened.",
+  "why": "The found card is the one that was inside the lost wallet, but the reports are about different object types (wallet versus card), so a category check splits them.",
+  "checkerNote": "Student ID named Khalid at the canteen on the same day, but lost item is a wallet containing it and only the card was found; card may have fallen out.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-08-L1",
+  "foundId": "R1-lookalikes-parts-numbers-08-F2",
+  "isMatch": false,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "A wallet described as a whole versus a single card that fell out of it, plus a similar empty wallet found before the loss happened.",
+  "why": "Brown wallet near a bus looks like an obvious match, but it was found on 19 Oct, two days before L1 was lost, and is posted the same day as the loss.",
+  "checkerNote": "Brown wallet was found two days before it was lost, and has no cards inside.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-09-L2",
+  "foundId": "R1-lookalikes-parts-numbers-09-F1",
+  "isMatch": true,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Laptop versus its sleeve: one person lost an empty sleeve, another lost a laptop inside a similar sleeve.",
+  "why": "Finder leads with 'laptop sleeve' and never mentions the sticker or the colour of the laptop; '4th floor' versus 'CS department' are the same place.",
+  "checkerNote": "HP laptop in grey cover, 4th floor equals CS department, same day.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-09-L1",
+  "foundId": "R1-lookalikes-parts-numbers-09-F2",
+  "isMatch": true,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "Laptop versus its sleeve: one person lost an empty sleeve, another lost a laptop inside a similar sleeve.",
+  "why": "'Felt sleeve' versus 'fabric laptop bag', the pocket is not mentioned and the found date is a day later.",
+  "checkerNote": "Empty grey sleeve in library matches; felt vs fabric and found a day after the loss date.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-09-L1",
+  "foundId": "R1-lookalikes-parts-numbers-09-F1",
+  "isMatch": false,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Laptop versus its sleeve: one person lost an empty sleeve, another lost a laptop inside a similar sleeve.",
+  "why": "F1's text starts with 'laptop sleeve grey' on the same day, but it contains an HP laptop; L1's sleeve is empty and the owner still has the laptop.",
+  "checkerNote": "Lost sleeve was explicitly empty (laptop is with owner); found sleeve contains an HP laptop, on a different floor.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-09-L2",
+  "foundId": "R1-lookalikes-parts-numbers-09-F2",
+  "isMatch": false,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Laptop versus its sleeve: one person lost an empty sleeve, another lost a laptop inside a similar sleeve.",
+  "why": "F2 is an empty sleeve; L2 lost a laptop in a grey cover, and the word 'laptop' plus 'grey' matches in both.",
+  "checkerNote": "Lost item is an HP laptop in a cover; found bag has nothing in it.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-10-L1",
+  "foundId": "R1-lookalikes-parts-numbers-10-F2",
+  "isMatch": true,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "Bottle size (500 ml versus 1 L) and bottle versus lid: a found bottle missing its lid, a lost lid from another bottle, and a smaller lookalike.",
+  "why": "The owner does not know the lid came off, the place differs (it was carried to the padel courts) and 'flask' versus 'water bottle'; the dent is the link.",
+  "checkerNote": "Big black dented flask matches, but found without cap, at Padel Courts instead of Sports Hall, a day later.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-10-L1",
+  "foundId": "R1-lookalikes-parts-numbers-10-F1",
+  "isMatch": false,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "Bottle size (500 ml versus 1 L) and bottle versus lid: a found bottle missing its lid, a lost lid from another bottle, and a smaller lookalike.",
+  "why": "Same colour, material, place and day, but 500 ml versus 1 litre and no dent mentioned.",
+  "checkerNote": "Black metal bottle at the gym same day, but 1 litre vs 500ml small one; size could be misjudged.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-10-L2",
+  "foundId": "R1-lookalikes-parts-numbers-10-F2",
+  "isMatch": false,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Bottle size (500 ml versus 1 L) and bottle versus lid: a found bottle missing its lid, a lost lid from another bottle, and a smaller lookalike.",
+  "why": "A lost lid and a found bottle with no lid at the same courts look like two halves of one item, but L2 still has the bottle; they are different objects.",
+  "checkerNote": "Lost only the lid and kept the bottle; found item is a bottle without its cap.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-11-L1",
+  "foundId": "R1-lookalikes-parts-numbers-11-F2",
+  "isMatch": true,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Capacity number confusion on identical SanDisk USB sticks left in the same Copy Centre computer area.",
+  "why": "Finder gives no brand or capacity and did not open it, so the folder name cannot be confirmed; F1 looks like the stronger match on brand.",
+  "checkerNote": "Black and red USB left in the PC at the Copy Centre, same day.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-11-L1",
+  "foundId": "R1-lookalikes-parts-numbers-11-F1",
+  "isMatch": false,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "Capacity number confusion on identical SanDisk USB sticks left in the same Copy Centre computer area.",
+  "why": "Same brand and same computer, but 128 GB versus 64 GB and found a day after the loss.",
+  "checkerNote": "SanDisk left in the PC at the Copy Centre, but 64GB vs 128GB printed on it and found a day after the loss date; owner reported two days later and could misremember.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-12-L1",
+  "foundId": "R1-lookalikes-parts-numbers-12-F2",
+  "isMatch": true,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Shoe size and brand inside a container: a drawstring bag described by its contents versus by the bag, with lookalike football boots.",
+  "why": "Owner describes the boots and barely mentions the bag (no colour); finder describes the bag and omits the brand.",
+  "checkerNote": "Black football boots size 43 in a string/drawstring bag at the pitch, found the next day.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-12-L1",
+  "foundId": "R1-lookalikes-parts-numbers-12-F1",
+  "isMatch": false,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "Shoe size and brand inside a container: a drawstring bag described by its contents versus by the bag, with lookalike football boots.",
+  "why": "Black Nike football boots on the same pitch on the same day, but size 41 versus 43 and no bag.",
+  "checkerNote": "Black Nike studded boots at the pitch same day, but size 43 vs 41 and no bag.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-12-L2",
+  "foundId": "R1-lookalikes-parts-numbers-12-F2",
+  "isMatch": false,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Shoe size and brand inside a container: a drawstring bag described by its contents versus by the bag, with lookalike football boots.",
+  "why": "Both are a blue string bag with football boots at the pitch, but L2's boots are white Puma with shin guards and F2 holds black size 43 boots and socks.",
+  "checkerNote": "Blue sack matches, but contents are white Puma boots and shin guards vs black boots and socks.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-12-L2",
+  "foundId": "R1-lookalikes-parts-numbers-12-F1",
+  "isMatch": false,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Shoe size and brand inside a container: a drawstring bag described by its contents versus by the bag, with lookalike football boots.",
+  "why": "Loose black Nike boots versus white Puma boots inside a bag; same pitch and day only.",
+  "checkerNote": "White Puma boots in a blue sack vs black Nike shoes with no bag.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-13-L1",
+  "foundId": "R1-lookalikes-parts-numbers-13-F1",
+  "isMatch": true,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "The same course textbook owned by many students, with a transposed room number on a true match and a name inside as the only separator.",
+  "why": "Room 201 versus 210: one of the two people mistyped, and a strict place check would treat them as different rooms.",
+  "checkerNote": "Stewart calculus book with the name Noor, same day; room 201 vs room 210 looks like a digit swap.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-13-L2",
+  "foundId": "R1-lookalikes-parts-numbers-13-F2",
+  "isMatch": true,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "The same course textbook owned by many students, with a transposed room number on a true match and a name inside as the only separator.",
+  "why": "Owner left the place box empty and reported 11 days late; finder gives no author or edition.",
+  "checkerNote": "Calculus book with heavy yellow highlighting, same day, no location given by loser.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-13-L2",
+  "foundId": "R1-lookalikes-parts-numbers-13-F1",
+  "isMatch": false,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "The same course textbook owned by many students, with a transposed room number on a true match and a name inside as the only separator.",
+  "why": "Same title and author, a day apart, but F1 has the name Noor inside and L2 says the book has no name.",
+  "checkerNote": "Lost book has no name; found book says Noor inside, and was found the day before the loss date.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-13-L1",
+  "foundId": "R1-lookalikes-parts-numbers-13-F2",
+  "isMatch": false,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "The same course textbook owned by many students, with a transposed room number on a true match and a name inside as the only separator.",
+  "why": "Same textbook in the same week; F2 is heavily highlighted and no name is mentioned, while L1 has a name and mentions no highlighting. The texts alone cannot fully rule it out.",
+  "checkerNote": "Calculus book, but found in the library a day later rather than room 201, and neither name nor highlighting is confirmed by the other report.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-14-L1",
+  "foundId": "R1-lookalikes-parts-numbers-14-F1",
+  "isMatch": true,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Identical university lanyards where only what hangs on them differs, and a bare lanyard that cannot be told apart from anyone's.",
+  "why": "'Lanyard' versus 'neck strap', and the building name versus the prayer room; only the first name links them.",
+  "checkerNote": "GUtech lanyard with ID card named Fatma, GU2 Prayer Room is in GU2, same day.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-14-L2",
+  "foundId": "R1-lookalikes-parts-numbers-14-F1",
+  "isMatch": false,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Identical university lanyards where only what hangs on them differs, and a bare lanyard that cannot be told apart from anyone's.",
+  "why": "Same lanyard, same building, same day, but F1 carries Fatma's card and L2's had a USB stick and a locker key.",
+  "checkerNote": "Lost lanyard carried a USB and locker key; found one carries a student card named Fatma.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-14-L2",
+  "foundId": "R1-lookalikes-parts-numbers-14-F2",
+  "isMatch": false,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "Identical university lanyards where only what hangs on them differs, and a bare lanyard that cannot be told apart from anyone's.",
+  "why": "Same studio one day apart, and the USB and key could have fallen off, but this is another student's bare lanyard; nothing in the texts separates them except that nothing is attached.",
+  "checkerNote": "Same studio, next day, but lost lanyard had a USB and locker key and the found one has nothing attached.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-14-L1",
+  "foundId": "R1-lookalikes-parts-numbers-14-F2",
+  "isMatch": false,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "Identical university lanyards where only what hangs on them differs, and a bare lanyard that cannot be told apart from anyone's.",
+  "why": "F2 has no card or holder; every GUtech lanyard is identical, so the lanyard word alone matches.",
+  "checkerNote": "Lost lanyard had an ID card in a holder; found one has nothing attached, a day later in the studio (within GU2).",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-15-L1",
+  "foundId": "R1-lookalikes-parts-numbers-15-F1",
+  "isMatch": true,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Container described by its contents and the reverse: glasses in a case, versus loose lookalike glasses.",
+  "why": "Finder reports a case and says 'spectacles' with no frame details; owner reports glasses and mentions the case last.",
+  "checkerNote": "Glasses in a hard brown case in Oman Hall/amphi, same day.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-15-L1",
+  "foundId": "R1-lookalikes-parts-numbers-15-F2",
+  "isMatch": false,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Container described by its contents and the reverse: glasses in a case, versus loose lookalike glasses.",
+  "why": "'Black glasses, Oman Hall, same day' matches word for word, but F2 is a thin metal frame with no case and L1 is thick plastic in a brown case.",
+  "checkerNote": "Thick black plastic frame in a hard case vs thin metal frame with no case.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-16-L1",
+  "foundId": "R1-lookalikes-parts-numbers-16-F2",
+  "isMatch": true,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Two people lose the same brand of black power bank in the same hall on the same day; capacity and an attached cable separate them.",
+  "why": "Finder gives no brand or capacity, only 'heavy' and the white wire; 'amphi' must be read as Oman Hall.",
+  "checkerNote": "Black power bank with short white cable attached, heavy fits 20000, same hall and day.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-16-L2",
+  "foundId": "R1-lookalikes-parts-numbers-16-F1",
+  "isMatch": true,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Two people lose the same brand of black power bank in the same hall on the same day; capacity and an attached cable separate them.",
+  "why": "A straightforward match that competes with the other Anker lost on the same day in the same hall.",
+  "checkerNote": "Anker 10000 left charging in Oman Hall, found in a wall socket, same day.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-16-L1",
+  "foundId": "R1-lookalikes-parts-numbers-16-F1",
+  "isMatch": false,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Two people lose the same brand of black power bank in the same hall on the same day; capacity and an attached cable separate them.",
+  "why": "Same brand, colour, hall and day, but 20000 versus 10000 mAh and no cable on F1.",
+  "checkerNote": "Anker 20000 stated vs PowerCore 10000 printed on the found one.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-lookalikes-parts-numbers-16-L2",
+  "foundId": "R1-lookalikes-parts-numbers-16-F2",
+  "isMatch": false,
+  "lens": "lookalikes-parts-numbers",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "Two people lose the same brand of black power bank in the same hall on the same day; capacity and an attached cable separate them.",
+  "why": "F2 names no brand or capacity so nothing contradicts outright; 'heavy' and the attached white cable point to the 20000 unit, not the slim 10000.",
+  "checkerNote": "Slim 10000 vs described as heavy; subjective wording, otherwise same place and day.",
+  "tags": [
+   "lookalikes-parts-numbers",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-01-L1",
+  "foundId": "R1-time-and-place-01-F1",
+  "isMatch": true,
+  "lens": "time-and-place",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "The same place named by floor on one side and by official name on the other, with a same-day lookalike in another room.",
+  "why": "\"6th floor\" and \"GU1 Library\" share no words, and the finder never mentions the model or the cat.",
+  "checkerNote": "Casio with a sticker on the cover, library (6th floor), same day. Grey is not contradicted.",
+  "tags": [
+   "time-and-place",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-01-L1",
+  "foundId": "R1-time-and-place-01-F2",
+  "isMatch": false,
+  "lens": "time-and-place",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "The same place named by floor on one side and by official name on the other, with a same-day lookalike in another room.",
+  "why": "Same brand and same day, but another room and no cover or sticker, which a system may read as merely missing detail.",
+  "checkerNote": "Found has no cover and was in the Mechatronics Lab, not the library. The owner was unsure of the place and a cover can come off.",
+  "tags": [
+   "time-and-place",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-02-L1",
+  "foundId": "R1-time-and-place-02-F1",
+  "isMatch": true,
+  "lens": "time-and-place",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "An item lost in the library is handed in a day later at the main entrance security desk, while a similar item is found in the library itself.",
+  "why": "The place and day differ because the item was handed in elsewhere, and the finder says \"earphones\" and \"rubber\" instead of airpods and silicone.",
+  "checkerNote": "Green cover and a single earpiece match. It was handed to the security desk the next day, which explains the different place.",
+  "tags": [
+   "time-and-place",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-02-L1",
+  "foundId": "R1-time-and-place-02-F2",
+  "isMatch": false,
+  "lens": "time-and-place",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "An item lost in the library is handed in a day later at the main entrance security desk, while a similar item is found in the library itself.",
+  "why": "Place and date match exactly, which may outweigh the missing cover and the fact that both buds are present.",
+  "checkerNote": "Found has no cover and both buds inside; lost has a green cover and only the right bud.",
+  "tags": [
+   "time-and-place",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-03-L1",
+  "foundId": "R1-time-and-place-03-F1",
+  "isMatch": true,
+  "lens": "time-and-place",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "An item lost on the bus is found where the buses stop in the parking, with a similar item found weeks before the loss.",
+  "why": "\"The bus\" is not a campus place, and \"khanjar\" versus \"dagger thing\" needs cultural knowledge to link.",
+  "checkerNote": "Toyota key with a dagger (khanjar) keychain, found where the buses stop, same day.",
+  "tags": [
+   "time-and-place",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-03-L1",
+  "foundId": "R1-time-and-place-03-F2",
+  "isMatch": false,
+  "lens": "time-and-place",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "An item lost on the bus is found where the buses stop in the parking, with a similar item found weeks before the loss.",
+  "why": "A Toyota key in a parking area looks plausible, but it was found almost four weeks before the loss and has no keychain.",
+  "checkerNote": "Found on 2026-09-24, almost a month before the loss, and has no keychain.",
+  "tags": [
+   "time-and-place",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-04-L1",
+  "foundId": "R1-time-and-place-04-F1",
+  "isMatch": true,
+  "lens": "time-and-place",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "The found date is one day before the stated loss date because the owner misremembered the day, alongside a lookalike found on the stated day.",
+  "why": "A strict timeline check rejects it because it was found before the stated loss, yet the owner said \"i think\" and was off by one day.",
+  "checkerNote": "Brown case, gold round frame and Oman Hall all match. Found is dated one day before the stated loss day, which the owner only gave as 'i think'.",
+  "tags": [
+   "time-and-place",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-04-L1",
+  "foundId": "R1-time-and-place-04-F2",
+  "isMatch": false,
+  "lens": "time-and-place",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "The found date is one day before the stated loss date because the owner misremembered the day, alongside a lookalike found on the stated day.",
+  "why": "Same hall and the exact stated day, but a black thick frame without a case.",
+  "checkerNote": "Black thick frame with no case, against a thin gold round frame in a brown case.",
+  "tags": [
+   "time-and-place",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-05-L1",
+  "foundId": "R1-time-and-place-05-F1",
+  "isMatch": false,
+  "lens": "time-and-place",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "A generic black bottle in the canteen is lost twice, weeks apart, with one owner posting weeks late with no date.",
+  "why": "Same item type and place, but it was found seven weeks before this owner lost theirs.",
+  "checkerNote": "Found on 2026-09-22, about seven weeks before the loss on 2026-11-09.",
+  "tags": [
+   "time-and-place",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-05-L1",
+  "foundId": "R1-time-and-place-05-F2",
+  "isMatch": true,
+  "lens": "time-and-place",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "A generic black bottle in the canteen is lost twice, weeks apart, with one owner posting weeks late with no date.",
+  "why": "The finder writes \"dark flask\" and \"cafeteria\" a day later, so only the dent and the size link them.",
+  "checkerNote": "Dark metal bottle with a dent, about 1 litre, canteen, found the next day.",
+  "tags": [
+   "time-and-place",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-05-L2",
+  "foundId": "R1-time-and-place-05-F1",
+  "isMatch": true,
+  "lens": "time-and-place",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "A generic black bottle in the canteen is lost twice, weeks apart, with one owner posting weeks late with no date.",
+  "why": "The lost report has no date and was posted seven weeks after the find, so only \"september sometime\" in the text places it.",
+  "checkerNote": "Black bottle lost in the cafe in September; black steel bottle found in the canteen on 2026-09-22.",
+  "tags": [
+   "time-and-place",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-05-L2",
+  "foundId": "R1-time-and-place-05-F2",
+  "isMatch": false,
+  "lens": "time-and-place",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "A generic black bottle in the canteen is lost twice, weeks apart, with one owner posting weeks late with no date.",
+  "why": "Posted one day apart with near-identical wording, and only \"september\" in the free text shows the timing is wrong.",
+  "checkerNote": "Lost in September but found on 2026-11-10, six weeks or more later. The owner calls it plain and mentions no dent.",
+  "tags": [
+   "time-and-place",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-06-L1",
+  "foundId": "R1-time-and-place-06-F1",
+  "isMatch": true,
+  "lens": "time-and-place",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "The owner types today as the event date although the loss was the previous Monday, and a different wallet is found on the typed date.",
+  "why": "The date field says the loss came eight days after the find, and only the text \"last week monday\" corrects it.",
+  "checkerNote": "Brown wallet with Salim's student card, gym. The lost date field (2026-11-10) is after the found date (2026-11-02), but the text says 'last week monday', which is 2026-11-02.",
+  "tags": [
+   "time-and-place",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-06-L1",
+  "foundId": "R1-time-and-place-06-F2",
+  "isMatch": false,
+  "lens": "time-and-place",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "The owner types today as the event date although the loss was the previous Monday, and a different wallet is found on the typed date.",
+  "why": "It matches the mistyped date and is a brown wallet at a sports area, but it holds no ID.",
+  "checkerNote": "Found has no ID, only a bank card and receipts, and was at the Padel Courts. Lost has a uni ID and cash and was at the Sports Hall.",
+  "tags": [
+   "time-and-place",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-07-L1",
+  "foundId": "R1-time-and-place-07-F1",
+  "isMatch": true,
+  "lens": "time-and-place",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "The owner gives a useless place (\"uni\") and no date, while the finder gives a specific spot.",
+  "why": "There is no usable place or date on the lost side, and the link is \"blue\" versus \"turquoise\" plus the hand-washing hint.",
+  "checkerNote": "Silver ring with a blue/turquoise stone found on a washroom sink, which fits taking it off to wash hands. Found the day before the report; no loss date given.",
+  "tags": [
+   "time-and-place",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-07-L1",
+  "foundId": "R1-time-and-place-07-F2",
+  "isMatch": false,
+  "lens": "time-and-place",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "The owner gives a useless place (\"uni\") and no date, while the finder gives a specific spot.",
+  "why": "Two equally vague places and a silver ring, but a plain engraved band with no stone.",
+  "checkerNote": "Plain engraved band with no stone, against a ring with a blue stone.",
+  "tags": [
+   "time-and-place",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-08-L1",
+  "foundId": "R1-time-and-place-08-F1",
+  "isMatch": true,
+  "lens": "time-and-place",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "An Arabic report with an Arabic place name against an English one, with a same-day lookalike in the other building's prayer room.",
+  "why": "The two reports are in different languages, and the place is \"المصلى\" against \"Prayer Room\".",
+  "checkerNote": "The Arabic report says a silver Casio watch left at the wash basins before Dhuhr prayer at the GU1 prayer room. Same item, place and day.",
+  "tags": [
+   "time-and-place",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-08-L1",
+  "foundId": "R1-time-and-place-08-F2",
+  "isMatch": false,
+  "lens": "time-and-place",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "An Arabic report with an Arabic place name against an English one, with a same-day lookalike in the other building's prayer room.",
+  "why": "Same day, same kind of spot and a silver watch, but it is in GU2 and a different brand.",
+  "checkerNote": "Finder states the brand is Fossil, not Casio, and it was at the GU2 prayer room, not GU1.",
+  "tags": [
+   "time-and-place",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-09-L1",
+  "foundId": "R1-time-and-place-09-F1",
+  "isMatch": true,
+  "lens": "time-and-place",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Slang place name (\"sab3\") against a floor name, with two similar black Nike hoodies lost on the same day in different buildings.",
+  "why": "\"sab3\" has to be known as the 7th-floor smoking area, and the find is a day later.",
+  "checkerNote": "Black Nike hoodie on a chair at sab3 (7th floor), found the next day.",
+  "tags": [
+   "time-and-place",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-09-L2",
+  "foundId": "R1-time-and-place-09-F1",
+  "isMatch": false,
+  "lens": "time-and-place",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Slang place name (\"sab3\") against a floor name, with two similar black Nike hoodies lost on the same day in different buildings.",
+  "why": "Black Nike hoodies one day apart, but this one is a pullover in GU1 and the lost one is a zip-up in the GU2 studio.",
+  "checkerNote": "Lost is a zip hoodie left in the UPAD Studio; found is a pullover on the GU1 7th floor.",
+  "tags": [
+   "time-and-place",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-09-L2",
+  "foundId": "R1-time-and-place-09-F2",
+  "isMatch": true,
+  "lens": "time-and-place",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Slang place name (\"sab3\") against a floor name, with two similar black Nike hoodies lost on the same day in different buildings.",
+  "why": "The finder calls it a \"jacket with hood\" two days later and mentions charcoal dust the owner never noticed.",
+  "checkerNote": "Black Nike zip hoodie in the UPAD Studio, found two days later; charcoal dust fits studio work.",
+  "tags": [
+   "time-and-place",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-09-L1",
+  "foundId": "R1-time-and-place-09-F2",
+  "isMatch": false,
+  "lens": "time-and-place",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "Slang place name (\"sab3\") against a floor name, with two similar black Nike hoodies lost on the same day in different buildings.",
+  "why": "Brand and colour match, but the building differs and the lost report does not say whether it has a zip.",
+  "checkerNote": "Different buildings: sab3 in GU1 against the UPAD Studio in GU2. Lost does not mention a zip, so the garment itself is not contradicted.",
+  "tags": [
+   "time-and-place",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-10-L1",
+  "foundId": "R1-time-and-place-10-F1",
+  "isMatch": true,
+  "lens": "time-and-place",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "The found report is posted almost a month before the lost report, the owner leaves the date empty, and a similar item is lost later.",
+  "why": "There are 26 days between the posts, no event date, and \"computer room first floor\" against a room number.",
+  "checkerNote": "Red and black SanDisk, first-floor computer room in GU1 'weeks ago'; found in a PC in GU1 room 102 on 2026-09-29.",
+  "tags": [
+   "time-and-place",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-10-L2",
+  "foundId": "R1-time-and-place-10-F1",
+  "isMatch": false,
+  "lens": "time-and-place",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "The found report is posted almost a month before the lost report, the owner leaves the date empty, and a similar item is lost later.",
+  "why": "Nearly identical description, but it was lost a month after the find and the capacity is 32gb, not 64gb.",
+  "checkerNote": "32 GB against 64 GB, lost on 2026-10-25 but found on 2026-09-29, and a different place.",
+  "tags": [
+   "time-and-place",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-11-L1",
+  "foundId": "R1-time-and-place-11-F1",
+  "isMatch": true,
+  "lens": "time-and-place",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "A landmark description (\"next to the coffee machine\") against an official place name, with a same-day lookalike on another floor.",
+  "why": "The lost place is a landmark and not a campus name, and \"coffee machine\" against \"vending machines\" is only a loose link.",
+  "checkerNote": "HP charger with a taped cable, ground floor by the coffee/vending machines, same day.",
+  "tags": [
+   "time-and-place",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-11-L1",
+  "foundId": "R1-time-and-place-11-F2",
+  "isMatch": false,
+  "lens": "time-and-place",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "A landmark description (\"next to the coffee machine\") against an official place name, with a same-day lookalike on another floor.",
+  "why": "Same brand and day and it was also left in a socket, but on the 4th floor and with no tape mentioned.",
+  "checkerNote": "Same brand and day, but found in the CS lab on the 4th floor, not by the coffee machine on the ground floor. No tape mentioned.",
+  "tags": [
+   "time-and-place",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-12-L1",
+  "foundId": "R1-time-and-place-12-F1",
+  "isMatch": true,
+  "lens": "time-and-place",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "The owner is unsure of both the day (a three-day range) and the place (dorms or bus), and a different bracelet is found on the bus inside that range.",
+  "why": "The event date field shows only the first day of the range, and the place is \"Female Residences or bus\" against \"Girls Dorms Parking\".",
+  "checkerNote": "Gold bracelet with a heart, found at the girls dorms gate on 2026-11-03, inside the Sunday-to-Tuesday window.",
+  "tags": [
+   "time-and-place",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-12-L1",
+  "foundId": "R1-time-and-place-12-F2",
+  "isMatch": false,
+  "lens": "time-and-place",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "The owner is unsure of both the day (a three-day range) and the place (dorms or bus), and a different bracelet is found on the bus inside that range.",
+  "why": "A gold bracelet on a bus inside the date range fits the owner's guess, but it has a name plate and no heart.",
+  "checkerNote": "Found has a name plate reading Maryam; lost has a small heart and no name plate.",
+  "tags": [
+   "time-and-place",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-13-L1",
+  "foundId": "R1-time-and-place-13-F1",
+  "isMatch": true,
+  "lens": "time-and-place",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "An item lost in September turns up during a clean-up seven weeks later, and a similar item is lost the day before the find.",
+  "why": "There are seven weeks between loss and find, the goggles are gone, and \"labs\" is an alias for the workshops.",
+  "checkerNote": "White coat with Aisha on the collar, workshop. Pockets were empty although the owner said goggles were inside. The seven-week gap is explained by it being behind the lockers until cleaning.",
+  "tags": [
+   "time-and-place",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-13-L2",
+  "foundId": "R1-time-and-place-13-F1",
+  "isMatch": false,
+  "lens": "time-and-place",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "An item lost in September turns up during a clean-up seven weeks later, and a similar item is lost the day before the find.",
+  "why": "A white lab coat lost one day before the find, and \"labs\" sounds like \"chemistry lab\", but the name in the collar rules it out.",
+  "checkerNote": "Lost coat has no name; found coat has Aisha written in the collar. Chemistry lab against the workshop.",
+  "tags": [
+   "time-and-place",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-14-L1",
+  "foundId": "R1-time-and-place-14-F1",
+  "isMatch": true,
+  "lens": "time-and-place",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "\"UPAD\" can mean the GU2 building or the UPAD Department in GU1, and an indistinguishable folder was found a week before the loss.",
+  "why": "The finder says \"big folder\" and \"architecture drawings\" rather than A3 or portfolio, and \"UPAD\" is ambiguous between two places.",
+  "checkerNote": "Black portfolio with architecture drawings at UPAD, found outside the hall the same day.",
+  "tags": [
+   "time-and-place",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-14-L1",
+  "foundId": "R1-time-and-place-14-F2",
+  "isMatch": false,
+  "lens": "time-and-place",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "\"UPAD\" can mean the GU2 building or the UPAD Department in GU1, and an indistinguishable folder was found a week before the loss.",
+  "why": "The texts are indistinguishable (black A3 folder at \"UPAD\"), and only the find date a week before the loss excludes it.",
+  "checkerNote": "Found on 2026-10-08, a week before the loss on 2026-10-15.",
+  "tags": [
+   "time-and-place",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-15-L1",
+  "foundId": "R1-time-and-place-15-F1",
+  "isMatch": true,
+  "lens": "time-and-place",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "The finder leaves the date empty and posts days later, with a same-day lookalike in the dirt parking and a second owner with the same kind of bag.",
+  "why": "The found report has no date and no brand, and it says \"sack bag\" and \"boots\" where the owner says \"drawstring bag\" and \"shoes\".",
+  "checkerNote": "White boots in a drawstring bag at the pitch; found report has no event date and was filed three days after the loss.",
+  "tags": [
+   "time-and-place",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-15-L2",
+  "foundId": "R1-time-and-place-15-F1",
+  "isMatch": false,
+  "lens": "time-and-place",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "The finder leaves the date empty and posts days later, with a same-day lookalike in the dirt parking and a second owner with the same kind of bag.",
+  "why": "Same pitch and same kind of bag with boots, but the boots are white, not orange, and there are no shin pads.",
+  "checkerNote": "Orange Nike boots against white boots.",
+  "tags": [
+   "time-and-place",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-15-L1",
+  "foundId": "R1-time-and-place-15-F2",
+  "isMatch": false,
+  "lens": "time-and-place",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "The finder leaves the date empty and posts days later, with a same-day lookalike in the dirt parking and a second owner with the same kind of bag.",
+  "why": "White Adidas on the same day and \"shoes\" matches \"trainers\", but these are loose trainers with no bag in the Dirt Parking.",
+  "checkerNote": "White Adidas, same day, but described as trainers with no bag and found in the Dirt Parking, not at the pitch.",
+  "tags": [
+   "time-and-place",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-16-L1",
+  "foundId": "R1-time-and-place-16-F1",
+  "isMatch": true,
+  "lens": "time-and-place",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "A German lost report naming two possible places against an English found report from the parking, with a same-day lookalike in another building.",
+  "why": "The reports are in different languages, and the place box says Germany Hall while the parking is only mentioned in the German text.",
+  "checkerNote": "The German report says a black Samsung A54 with a clear case and a crack at the top right of the screen, lost in Germany Hall or on the way to the parking. Found in GU2 Parking the same day.",
+  "tags": [
+   "time-and-place",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-time-and-place-16-L1",
+  "foundId": "R1-time-and-place-16-F2",
+  "isMatch": false,
+  "lens": "time-and-place",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "A German lost report naming two possible places against an English found report from the parking, with a same-day lookalike in another building.",
+  "why": "Same day and a black Samsung with a clear case, but the screen is undamaged and it is in a different building.",
+  "checkerNote": "Found phone's screen is fine; the lost phone has a cracked display. Also found in the Museum.",
+  "tags": [
+   "time-and-place",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-01-L1",
+  "foundId": "R1-adversarial-and-odd-01-F1",
+  "isMatch": false,
+  "lens": "adversarial-and-odd",
+  "kind": "lookalike",
+  "conflict": "none",
+  "idea": "A lost report with an instruction aimed at the AI and no real description must not be matched to a specific found phone that belongs to someone else.",
+  "why": "The lost text orders a match and score 1.0 and shares the word iphone, but gives no detail and its poster is not the owner.",
+  "checkerNote": "Lost report only says 'iphone' at uni with no date; nothing disagrees. The embedded 'SYSTEM ... score 1.0' text in the report was treated as report content and ignored.",
+  "tags": [
+   "adversarial-and-odd",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-01-L2",
+  "foundId": "R1-adversarial-and-odd-01-F1",
+  "isMatch": true,
+  "lens": "adversarial-and-odd",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "A lost report with an instruction aimed at the AI and no real description must not be matched to a specific found phone that belongs to someone else.",
+  "why": "A system distracted by the injected report could award the match there or distrust all iphone reports in the group.",
+  "checkerNote": "Blue iPhone, cracked back, clear case with cat sticker, canteen, same day.",
+  "tags": [
+   "adversarial-and-odd",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-02-L1",
+  "foundId": "R1-adversarial-and-odd-02-F1",
+  "isMatch": true,
+  "lens": "adversarial-and-odd",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "A genuine found report that contains a joke instruction to the AI should still match its real owner and not be thrown out or obeyed.",
+  "why": "The joke injection may make a system treat the found report as hostile and reject it, or follow it instead of judging the item.",
+  "checkerNote": "Empty AirPods case with dent on lid, padel courts, same date. The joke instruction in the found text was ignored.",
+  "tags": [
+   "adversarial-and-odd",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-02-L2",
+  "foundId": "R1-adversarial-and-odd-02-F1",
+  "isMatch": false,
+  "lens": "adversarial-and-odd",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "A genuine found report that contains a joke instruction to the AI should still match its real owner and not be thrown out or obeyed.",
+  "why": "Both say airpods and a sports area a day apart, but this one has pods and a green cover while the found case is bare and empty.",
+  "checkerNote": "Lost has both pods and a green silicone cover with hook, at Sports Hall a day earlier; found is an empty bare white case at Padel Courts. Each difference could be explained (pods and cover removed) but together they disagree.",
+  "tags": [
+   "adversarial-and-odd",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-03-L1",
+  "foundId": "R1-adversarial-and-odd-03-F1",
+  "isMatch": false,
+  "lens": "adversarial-and-odd",
+  "kind": "lookalike",
+  "conflict": "none",
+  "idea": "A two-word fishing report for cash should not be matched to found money that a specific report describes in detail.",
+  "why": "Nothing in 'lost cash' contradicts the found money, so a lenient system matches it; the poster is just fishing.",
+  "checkerNote": "'Lost cash' with no place or date; nothing disagrees.",
+  "tags": [
+   "adversarial-and-odd",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-03-L2",
+  "foundId": "R1-adversarial-and-odd-03-F1",
+  "isMatch": true,
+  "lens": "adversarial-and-odd",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "A two-word fishing report for cash should not be matched to found money that a specific report describes in detail.",
+  "why": "The finder deliberately withholds amount and receipt type, so the decisive details appear only on the lost side.",
+  "checkerNote": "Money wrapped in a receipt, Copy Centre, same day.",
+  "tags": [
+   "adversarial-and-odd",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-04-L1",
+  "foundId": "R1-adversarial-and-odd-04-F1",
+  "isMatch": true,
+  "lens": "adversarial-and-odd",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "A colour corrected inside the same sentence (not black, actually dark blue) must be read as the final value, not the first word.",
+  "why": "The found side never says Hydro Flask and says navy, while the lost text leads with the word black.",
+  "checkerNote": "Dark blue/navy metal bottle with dented base, gym, same day.",
+  "tags": [
+   "adversarial-and-odd",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-04-L1",
+  "foundId": "R1-adversarial-and-odd-04-F2",
+  "isMatch": false,
+  "lens": "adversarial-and-odd",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "A colour corrected inside the same sentence (not black, actually dark blue) must be read as the final value, not the first word.",
+  "why": "It matches the retracted words 'black hydro flask' and the place exactly, but the owner corrected the colour and theirs is dented.",
+  "checkerNote": "Owner corrected colour to dark blue and mentions a dent; found is black and 'looks new no scratches', a day later. Black vs dark blue is a close shade, dent could be overlooked.",
+  "tags": [
+   "adversarial-and-odd",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-05-L1",
+  "foundId": "R1-adversarial-and-odd-05-F1",
+  "isMatch": true,
+  "lens": "adversarial-and-odd",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "The place box says canteen but an edit in the text moves the loss to the library; the stale place field points at the wrong found item.",
+  "why": "The structured place disagrees with the found place and the finder never writes Casio or the model.",
+  "checkerNote": "Lost text corrects the place to the library (6th floor), name scratched on back; found has a name carved on the back at the library, same day. Location field still says canteen but the text overrides it.",
+  "tags": [
+   "adversarial-and-odd",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-05-L1",
+  "foundId": "R1-adversarial-and-odd-05-F2",
+  "isMatch": false,
+  "lens": "adversarial-and-odd",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "The place box says canteen but an edit in the text moves the loss to the library; the stale place field points at the wrong found item.",
+  "why": "Same model, same day, and it matches the uncorrected place box; only the edit and the pink tape versus scratched name separate them.",
+  "checkerNote": "Same model and day, but owner explicitly says it was the library not the canteen, and the found one has pink tape and no mention of a scratched name.",
+  "tags": [
+   "adversarial-and-odd",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-06-L1",
+  "foundId": "R1-adversarial-and-odd-06-F1",
+  "isMatch": true,
+  "lens": "adversarial-and-odd",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "A hedged report where the owner guesses colour and brand wrongly should still reach the real item and not the one that fits the guesses.",
+  "why": "The owner says grey or silver and the charger is black, a human mistake a strict system would treat as a colour conflict.",
+  "checkerNote": "Same room and day, round pin, HP is one of the owner's guesses; colour differs (grey/silver vs black brick) but the owner is unsure.",
+  "tags": [
+   "adversarial-and-odd",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-06-L1",
+  "foundId": "R1-adversarial-and-odd-06-F2",
+  "isMatch": false,
+  "lens": "adversarial-and-odd",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "A hedged report where the owner guesses colour and brand wrongly should still reach the real item and not the one that fits the guesses.",
+  "why": "It fits the hedged words grey and Lenovo, but it is USB-C rather than round pin and was in a different place.",
+  "checkerNote": "Grey Lenovo fits the guess, but type-c vs 'round pin i think', library vs room 102, and a day later.",
+  "tags": [
+   "adversarial-and-odd",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-07-L1",
+  "foundId": "R1-adversarial-and-odd-07-F1",
+  "isMatch": true,
+  "lens": "adversarial-and-odd",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "Sarcasm and jokes must not hide or invent details: one joke report holds a real key, another holds a real key of a different make.",
+  "why": "The sarcastic tone and a different parking name may lower confidence, and 'fluffy ball' versus 'pom pom' use different words.",
+  "checkerNote": "Toyota key with pink fluffy ball/pom pom, same day; only difference is GU1 Parking vs Student Parking, a nearby place.",
+  "tags": [
+   "adversarial-and-odd",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-07-L1",
+  "foundId": "R1-adversarial-and-odd-07-F2",
+  "isMatch": false,
+  "lens": "adversarial-and-odd",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Sarcasm and jokes must not hide or invent details: one joke report holds a real key, another holds a real key of a different make.",
+  "why": "Toyota key in the exact parking the owner named, one day earlier, but with a flag keychain and no pink ball.",
+  "checkerNote": "Found keychain is a small Oman flag, not a pink fluffy ball, and it was found the day before the loss.",
+  "tags": [
+   "adversarial-and-odd",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-07-L2",
+  "foundId": "R1-adversarial-and-odd-07-F1",
+  "isMatch": false,
+  "lens": "adversarial-and-odd",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Sarcasm and jokes must not hide or invent details: one joke report holds a real key, another holds a real key of a different make.",
+  "why": "The joke opening makes the report look like noise or like a generic car key; it is a Nissan key in a leather holder.",
+  "checkerNote": "Nissan key in black leather holder vs Toyota key with pink pom pom.",
+  "tags": [
+   "adversarial-and-odd",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-08-L1",
+  "foundId": "R1-adversarial-and-odd-08-F1",
+  "isMatch": false,
+  "lens": "adversarial-and-odd",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "A report that mostly lists what the item is NOT contains the very words (sunglasses, round) that pull it towards the wrong found item.",
+  "why": "The words sunglasses and black appear in both texts, same place and day, but the lost text negates sunglasses.",
+  "checkerNote": "Owner states explicitly not sunglasses and no case; found is Ray-Ban sunglasses in a brown case.",
+  "tags": [
+   "adversarial-and-odd",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-08-L1",
+  "foundId": "R1-adversarial-and-odd-08-F2",
+  "isMatch": true,
+  "lens": "adversarial-and-odd",
+  "kind": "must",
+  "conflict": "soft",
+  "idea": "A report that mostly lists what the item is NOT contains the very words (sunglasses, round) that pull it towards the wrong found item.",
+  "why": "Rectangle versus square and 'glasses' versus 'eyeglasses' differ, and the loud negations may dominate the comparison.",
+  "checkerNote": "Black frame eyeglasses, same prayer room and day; only 'rectangle' vs 'square' frame differs, a vague shape word.",
+  "tags": [
+   "adversarial-and-odd",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-09-L1",
+  "foundId": "R1-adversarial-and-odd-09-F1",
+  "isMatch": true,
+  "lens": "adversarial-and-odd",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "One found report lists two unrelated items, so each owner's report only matches half of it and a third ring report matches neither.",
+  "why": "Half the found text is about an umbrella, and the owner says turquoise and GU2 where the finder says blue and Germany Hall.",
+  "checkerNote": "Silver ring with turquoise vs blue stone, GU2 vs Germany Hall, same day; consistent.",
+  "tags": [
+   "adversarial-and-odd",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-09-L2",
+  "foundId": "R1-adversarial-and-odd-09-F1",
+  "isMatch": true,
+  "lens": "adversarial-and-odd",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "One found report lists two unrelated items, so each owner's report only matches half of it and a third ring report matches neither.",
+  "why": "The found report leads with a ring, so an umbrella report looks like a category mismatch.",
+  "checkerNote": "Small grey folding umbrella, Germany Hall, same day.",
+  "tags": [
+   "adversarial-and-odd",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-09-L3",
+  "foundId": "R1-adversarial-and-odd-09-F1",
+  "isMatch": false,
+  "lens": "adversarial-and-odd",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "One found report lists two unrelated items, so each owner's report only matches half of it and a third ring report matches neither.",
+  "why": "A ring lost at the same event in the same hall, but gold and plain while the found one is silver with a stone.",
+  "checkerNote": "Plain gold band with no stone vs silver ring with a blue stone.",
+  "tags": [
+   "adversarial-and-odd",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-10-L1",
+  "foundId": "R1-adversarial-and-odd-10-F1",
+  "isMatch": true,
+  "lens": "adversarial-and-odd",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "The same first name in four spellings (Mohammed, Muhammad, MOHAMED, Arabic) sits on a student card and on a bank card; the name must match across spellings but not across card types.",
+  "why": "Muhammad versus Mohammed could be read as a name mismatch, and the lost report gives no department.",
+  "checkerNote": "Student card, Muhammad/Mohammed spelling variant, between bus and GU1 vs Main Entrance, same day.",
+  "tags": [
+   "adversarial-and-odd",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-10-L2",
+  "foundId": "R1-adversarial-and-odd-10-F2",
+  "isMatch": true,
+  "lens": "adversarial-and-odd",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "The same first name in four spellings (Mohammed, Muhammad, MOHAMED, Arabic) sits on a student card and on a bank card; the name must match across spellings but not across card types.",
+  "why": "One side is Arabic and the other English, with the name in different scripts.",
+  "checkerNote": "Blue Bank Muscat card named Mohamed, GU1, same date; Arabic report says the same.",
+  "tags": [
+   "adversarial-and-odd",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-10-L1",
+  "foundId": "R1-adversarial-and-odd-10-F2",
+  "isMatch": false,
+  "lens": "adversarial-and-odd",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "The same first name in four spellings (Mohammed, Muhammad, MOHAMED, Arabic) sits on a student card and on a bank card; the name must match across spellings but not across card types.",
+  "why": "Same very common first name within a day in GU1, but one is a university ID and the other a bank card.",
+  "checkerNote": "University ID card vs bank card: different kind of object, and found the day before the loss.",
+  "tags": [
+   "adversarial-and-odd",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-10-L2",
+  "foundId": "R1-adversarial-and-odd-10-F1",
+  "isMatch": false,
+  "lens": "adversarial-and-odd",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "The same first name in four spellings (Mohammed, Muhammad, MOHAMED, Arabic) sits on a student card and on a bank card; the name must match across spellings but not across card types.",
+  "why": "The name matches across spellings and both are cards, but a student card is not a Bank Muscat card.",
+  "checkerNote": "Bank card vs student card: different kind of object.",
+  "tags": [
+   "adversarial-and-odd",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-11-L1",
+  "foundId": "R1-adversarial-and-odd-11-F2",
+  "isMatch": true,
+  "lens": "adversarial-and-odd",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Aisha, Aysha and Ayesha on bank cards from different banks and on a student card: a spelling variant can be the same card while the exact name can be a different one.",
+  "why": "The finder wrote the name from memory with a different spelling and did not name the bank.",
+  "checkerNote": "Green bank card, Aysha/Ayesha spelling variant, canteen, same day.",
+  "tags": [
+   "adversarial-and-odd",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-11-L1",
+  "foundId": "R1-adversarial-and-odd-11-F1",
+  "isMatch": false,
+  "lens": "adversarial-and-odd",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Aisha, Aysha and Ayesha on bank cards from different banks and on a student card: a spelling variant can be the same card while the exact name can be a different one.",
+  "why": "Same day, same canteen, both bank cards with the same first name, but different banks and colours.",
+  "checkerNote": "Bank Dhofar green vs Bank Nizwa purple-ish: different bank and colour.",
+  "tags": [
+   "adversarial-and-odd",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-11-L2",
+  "foundId": "R1-adversarial-and-odd-11-F1",
+  "isMatch": false,
+  "lens": "adversarial-and-odd",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Aisha, Aysha and Ayesha on bank cards from different banks and on a student card: a spelling variant can be the same card while the exact name can be a different one.",
+  "why": "The spelling Aisha matches exactly and 'purple' appears in both, but one is a student ID on a lanyard and the other a bank card.",
+  "checkerNote": "Student ID on a lanyard vs ATM card: different kind of object.",
+  "tags": [
+   "adversarial-and-odd",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-12-L1",
+  "foundId": "R1-adversarial-and-odd-12-F1",
+  "isMatch": false,
+  "lens": "adversarial-and-odd",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Salim and Salma differ by one letter but are different people's names; the card belongs to the report with the same name, not the closer place.",
+  "why": "Place, day and card type all agree and the names are one letter apart, so fuzzy name matching calls it a typo.",
+  "checkerNote": "Printed name Salim vs owner's name Salma.",
+  "tags": [
+   "adversarial-and-odd",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-12-L2",
+  "foundId": "R1-adversarial-and-odd-12-F1",
+  "isMatch": true,
+  "lens": "adversarial-and-odd",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Salim and Salma differ by one letter but are different people's names; the card belongs to the report with the same name, not the closer place.",
+  "why": "The real owner gives no place and reports two days late, so it scores lower than the wrong report.",
+  "checkerNote": "Student card named Salim, same day, lost place unknown.",
+  "tags": [
+   "adversarial-and-odd",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-13-L1",
+  "foundId": "R1-adversarial-and-odd-13-F1",
+  "isMatch": false,
+  "lens": "adversarial-and-odd",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "Ali versus Alia inside otherwise near-identical brown wallets: one added letter is a different person.",
+  "why": "Brown wallet with a gym card near GU2 and a name that looks like a truncation; only notes versus coins and the final letter differ.",
+  "checkerNote": "Gym card name Alia vs Ali, coins vs about 3 rial in notes, and a day and place apart. The name difference is one letter, so a misread is conceivable, but together the facts point to a different wallet.",
+  "tags": [
+   "adversarial-and-odd",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-13-L2",
+  "foundId": "R1-adversarial-and-odd-13-F1",
+  "isMatch": true,
+  "lens": "adversarial-and-odd",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Ali versus Alia inside otherwise near-identical brown wallets: one added letter is a different person.",
+  "why": "The owner never mentions the gym card and gives a different place name for the same building.",
+  "checkerNote": "Brown wallet, owner Alia from UPAD, only coins/baisa, same building and day.",
+  "tags": [
+   "adversarial-and-odd",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-14-L1",
+  "foundId": "R1-adversarial-and-odd-14-F1",
+  "isMatch": false,
+  "lens": "adversarial-and-odd",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "A vague report claiming any MacBook found on campus should lose to the report that knows the stickers.",
+  "why": "The fishing report has no date and no detail, so nothing contradicts it and it asserts ownership of any MacBook.",
+  "checkerNote": "Lost 'last month' with no details; found on 2026-11-08. Timing is vague and roughly a month off, nothing else to compare.",
+  "tags": [
+   "adversarial-and-odd",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-14-L2",
+  "foundId": "R1-adversarial-and-odd-14-F1",
+  "isMatch": true,
+  "lens": "adversarial-and-odd",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "A vague report claiming any MacBook found on campus should lose to the report that knows the stickers.",
+  "why": "The finder never writes the word MacBook and uses the library name where the owner writes 6th floor.",
+  "checkerNote": "Silver MacBook with NASA and robotics stickers, left charging on 6th floor/library, same day.",
+  "tags": [
+   "adversarial-and-odd",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-15-L1",
+  "foundId": "R1-adversarial-and-odd-15-F1",
+  "isMatch": false,
+  "lens": "adversarial-and-odd",
+  "kind": "trap",
+  "conflict": "hard",
+  "idea": "A lost report retracted inside its own text (nvm found it) should not be matched, even though a found item fits it perfectly.",
+  "why": "Brand, colour, place and day all agree, and the retraction is a short edit at the end that is easy to ignore.",
+  "checkerNote": "Owner's edit says they found the earbuds in their bag, so this item is no longer lost and cannot be the one found in Oman Hall.",
+  "tags": [
+   "adversarial-and-odd",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-15-L2",
+  "foundId": "R1-adversarial-and-odd-15-F1",
+  "isMatch": true,
+  "lens": "adversarial-and-odd",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "A lost report retracted inside its own text (nvm found it) should not be matched, even though a found item fits it perfectly.",
+  "why": "It was posted two days later than the retracted look-alike and uses a different word for the hall.",
+  "checkerNote": "Black JBL buds, one taped, Oman Hall/amphitheatre, same day.",
+  "tags": [
+   "adversarial-and-odd",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-16-L1",
+  "foundId": "R1-adversarial-and-odd-16-F2",
+  "isMatch": true,
+  "lens": "adversarial-and-odd",
+  "kind": "must",
+  "conflict": "none",
+  "idea": "Two different students named Mohammed each lost a student card in the same week; the name alone cannot decide which found card is whose.",
+  "why": "The only supporting evidence is the CS hint and the day; the name spelling differs and the owner gives no place.",
+  "checkerNote": "Card named Mohammed found in the CS department corridor on the lost date; owner is a CS student.",
+  "tags": [
+   "adversarial-and-odd",
+   "must"
+  ]
+ },
+ {
+  "lostId": "R1-adversarial-and-odd-16-L1",
+  "foundId": "R1-adversarial-and-odd-16-F1",
+  "isMatch": false,
+  "lens": "adversarial-and-odd",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "idea": "Two different students named Mohammed each lost a student card in the same week; the name alone cannot decide which found card is whose.",
+  "why": "Nearly indistinguishable from the texts: same name, same card type, one day apart; only the date and the missing CS link hint against it.",
+  "checkerNote": "Same name, but found on the grass pitch the day before the stated loss date; owner is unsure of where, so the date could be off by a day.",
+  "tags": [
+   "adversarial-and-odd",
+   "trap-soft"
+  ]
+ }
+]

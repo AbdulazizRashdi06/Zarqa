@@ -12,6 +12,17 @@ function report(over: Record<string, unknown> = {}) {
 async function session(page: Page) {
   await page.route('**/api/me', route => route.fulfill({ json: me }))
   await page.route('**/api/me/stats', route => route.fulfill({ json: { posts: 0, gotBack: 0, helpedReturn: 0 } }))
+  // Nothing held for review unless a test says so.
+  await page.route('**/api/admin/held', route => route.fulfill({ json: [] }))
+}
+function side(over: Record<string, unknown> = {}) {
+  return { id: 'l1', title: 'Grey scarf', description: 'I lost my grey wool scarf', location: 'GU1 Library', eventDate: '2026-11-12', eventTime: '14:30', isSensitive: false, owner: 'owner@gutech.edu.om', photoIds: [], ...over }
+}
+function heldMatch(over: Record<string, unknown> = {}) {
+  return {
+    id: 'm1', score: 0.57, reasons: ['Both are a grey scarf', 'Same spot: GU1 Library'], createdAt: '2026-11-13T08:00:00Z', releaseAt: '2026-11-15T08:00:00Z',
+    lost: side(), found: side({ id: 'f1', title: 'Scarf found near the stairs', description: 'Grey scarf, a bit worn', owner: 'finder@gutech.edu.om', photoIds: ['p9'] }), ...over,
+  }
 }
 
 test('a failed load offers Try again instead of an empty list, and keeps Delete everything off', async ({ page }) => {
@@ -185,4 +196,106 @@ test('on a laptop the admin page uses the width', async ({ page }) => {
   const a = await page.getByRole('heading', { name: 'Blue bottle' }).boundingBox()
   const b = await page.getByRole('heading', { name: 'Red umbrella' }).boundingBox()
   expect(Math.abs(a!.y - b!.y)).toBeLessThan(5)
+})
+
+test('To review shows both reports of a held match, and Approve and Reject ask first and run once', async ({ page }) => {
+  await session(page)
+  await page.route('**/api/admin/stats', route => route.fulfill({ json: { ...stats, matches: [{ status: 'Held', count: 2 }, { status: 'Withheld', count: 1 }] } }))
+  await page.route('**/api/admin/reports*', route => route.fulfill({ json: [] }))
+  await page.route('**/api/photos/p9', route => route.fulfill({ contentType: 'image/svg+xml', body: '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="63"><rect width="100" height="63" fill="#888"/></svg>' }))
+  const card2 = heldMatch({
+    id: 'm2', score: 0.555, reasons: [],
+    lost: side({ id: 'l2', title: 'My student ID card', description: long, isSensitive: true, eventDate: null, eventTime: null }),
+    found: side({ id: 'f2', title: 'Student ID', description: '', isSensitive: true, owner: 'finder2@gutech.edu.om' }),
+  })
+  let list = [heldMatch(), card2]
+  const calls: string[] = []
+  let failApprove = true
+  await page.route('**/api/admin/held', route => route.fulfill({ json: list }))
+  await page.route('**/api/admin/held/*/*', async route => {
+    const [id, verb] = route.request().url().split('/').slice(-2)
+    calls.push(`${route.request().method()} ${id} ${verb}`)
+    if (verb === 'approve' && failApprove) return route.fulfill({ status: 500, json: { error: 'Could not approve that one.' } })
+    await new Promise(r => setTimeout(r, 300))
+    list = list.filter(m => m.id !== id)
+    return route.fulfill({ status: 204 })
+  })
+  await page.goto('/admin')
+
+  await expect(page.getByRole('heading', { name: 'To review (2)' })).toBeVisible()
+  await expect(page.getByText('Waiting for review: 2')).toBeVisible()
+  await expect(page.getByText('Never shown: 1')).toBeVisible()
+  const first = page.locator('[data-held="m1"]')
+  await expect(first.getByText('Small chance')).toBeVisible()
+  await expect(first).toContainText('score 0.57')
+  await expect(first).toContainText('Shown by itself')
+  const lost = first.getByRole('region', { name: 'Lost' })
+  await expect(lost.getByRole('heading', { name: 'Grey scarf' })).toBeVisible()
+  await expect(lost).toContainText('I lost my grey wool scarf')
+  await expect(lost).toContainText('GU1 Library')
+  await expect(lost).toContainText('12 Nov, 2:30 PM')
+  await expect(lost).toContainText('owner@gutech.edu.om')
+  const found = first.getByRole('region', { name: 'Found' })
+  await expect(found.getByRole('heading', { name: 'Scarf found near the stairs' })).toBeVisible()
+  await expect(found).toContainText('finder@gutech.edu.om')
+  await expect(first).toContainText('Why Zarqa thinks so')
+  await expect(first).toContainText('Both are a grey scarf')
+  await found.getByRole('button', { name: 'Open photo of Scarf found near the stairs' }).click()
+  await expect(page.getByRole('dialog').getByRole('img', { name: 'Photo of Scarf found near the stairs' })).toBeVisible()
+  await page.getByRole('button', { name: 'Close photo' }).click()
+  // A card or ID with no covered copy shows no photo, and says why.
+  const second = page.locator('[data-held="m2"]')
+  await expect(second).toContainText('score 0.56')
+  await expect(second.getByText('the photo stays private to the uploader', { exact: false })).toHaveCount(2)
+  await expect(second.locator('img')).toHaveCount(0)
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+  // Buttons are big enough to tap.
+  for (const name of ['Approve', 'Reject']) expect((await first.getByRole('button', { name, exact: true }).boundingBox())!.height).toBeGreaterThanOrEqual(44)
+
+  // A failed approve says so on that card, and the match stays.
+  await first.getByRole('button', { name: 'Approve', exact: true }).click()
+  const sheet = page.getByRole('dialog')
+  await expect(sheet.getByRole('heading', { name: 'Show this match to the owner?' })).toBeVisible()
+  await expect(sheet).toContainText('They get the usual match alert now. It shows as Small chance.')
+  await sheet.getByRole('button', { name: 'Cancel' }).click()
+  expect(calls).toEqual([])
+  await first.getByRole('button', { name: 'Approve', exact: true }).click()
+  await page.getByRole('dialog').getByRole('button', { name: 'Approve it' }).click()
+  await expect(first.getByRole('alert')).toHaveText('Could not approve that one.')
+  await expect(first).toBeVisible()
+
+  // Approve: one request however often it is tapped, then the card is gone.
+  failApprove = false
+  calls.length = 0
+  await first.getByRole('button', { name: 'Approve', exact: true }).click()
+  const go = page.getByRole('dialog').getByRole('button', { name: 'Approve it' })
+  await go.click()
+  await go.click({ force: true, timeout: 300 }).catch(() => {})
+  await expect(first).toHaveCount(0)
+  await expect(page.getByRole('heading', { name: 'To review (1)' })).toBeVisible()
+  expect(calls).toEqual(['POST m1 approve'])
+
+  // Reject asks too, and says what it means.
+  await second.getByRole('button', { name: 'Reject', exact: true }).click()
+  await expect(page.getByRole('dialog').getByRole('heading', { name: 'Reject this match?' })).toBeVisible()
+  await expect(page.getByRole('dialog')).toContainText("The owner never sees it, and Zarqa won't suggest this pair again. Both reports keep searching.")
+  await page.getByRole('dialog').getByRole('button', { name: 'Reject it' }).click()
+  await expect(page.getByText('Nothing to review.')).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'To review', exact: true })).toBeVisible()
+  expect(calls).toEqual(['POST m1 approve', 'POST m2 reject'])
+})
+
+test('a To review list that fails to load offers Try again', async ({ page }) => {
+  await session(page)
+  await page.route('**/api/admin/stats', route => route.fulfill({ json: stats }))
+  await page.route('**/api/admin/reports*', route => route.fulfill({ json: [] }))
+  let fail = true
+  await page.route('**/api/admin/held', route => fail ? route.fulfill({ status: 500, json: { error: 'boom' } }) : route.fulfill({ json: [heldMatch()] }))
+  await page.goto('/admin')
+  const section = page.locator('section', { has: page.getByRole('heading', { name: 'To review' }) }).first()
+  await expect(section.getByRole('button', { name: 'Try again' })).toBeVisible()
+  await expect(page.getByText('Nothing to review.')).toHaveCount(0)
+  fail = false
+  await section.getByRole('button', { name: 'Try again' }).click()
+  await expect(page.locator('[data-held="m1"]')).toBeVisible()
 })

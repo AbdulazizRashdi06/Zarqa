@@ -295,10 +295,19 @@ public static class ReportEndpoints
         return cards.All(p => p.CoverState == CoverState.Ready) ? "Ready" : "Private";
     }
 
+    /// <summary>
+    /// A report left the pool: its waiting suggestions end. A match still held for an admin's review ends too, as
+    /// Withheld rather than Expired, because the owner never saw it and must not find it afterwards either.
+    /// </summary>
     public static async Task ExpireOpenMatches(ZarqaDb db, Guid reportId, DateTimeOffset now, CancellationToken ct)
     {
-        var open = await db.Matches.Where(m => m.Status == MatchStatus.Suggested && (m.LostId == reportId || m.FoundId == reportId)).ToListAsync(ct);
-        foreach (var m in open) { m.Status = MatchStatus.Expired; m.ResolvedAt = now; }
+        var open = await db.Matches.Where(m => (m.Status == MatchStatus.Suggested || m.Status == MatchStatus.Held)
+            && (m.LostId == reportId || m.FoundId == reportId)).ToListAsync(ct);
+        foreach (var m in open)
+        {
+            m.Status = m.Status == MatchStatus.Held ? MatchStatus.Withheld : MatchStatus.Expired;
+            m.ResolvedAt = now;
+        }
     }
 
     private static async Task<ReportDto> ToDto(ZarqaDb db, Report r, CancellationToken ct) => (await ToDtos(db, [r], ct))[0];
