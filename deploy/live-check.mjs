@@ -115,9 +115,9 @@ try {
   await expect(finder.page.getByText('Synthetic check: meeting at the library.', { exact: true })).toBeVisible({ timeout: 15000 })
   await owner.page.getByRole('button', { name: t('chat.suggestTime'), exact: true }).click()
   const tomorrow = new Date(Date.now() + 86400000).toISOString().slice(0, 10)
-  await owner.page.getByLabel(t('form.date'), { exact: true }).fill(tomorrow)
-  await owner.page.getByLabel(t('form.time'), { exact: true }).fill('12:00')
-  await owner.page.getByLabel(t('chat.plan.place'), { exact: true }).fill('Library entrance')
+  await owner.page.getByLabel(t('chat.plan.day'), { exact: true }).fill(tomorrow)
+  await owner.page.getByLabel(t('chat.plan.time'), { exact: true }).fill('12:00')
+  await owner.page.getByLabel(t('chat.plan.where'), { exact: true }).fill('Library entrance')
   const handoverPosted = owner.page.waitForResponse(r => r.url().endsWith('/handover') && r.request().method() === 'POST', { timeout: 60000 })
   await owner.page.getByRole('button', { name: t('chat.plan.send'), exact: true }).click()
   const handoverResponse = await handoverPosted
@@ -136,12 +136,19 @@ try {
   console.log(`PASS: public pages, real code verification, two reports, ${realModels ? 'real debate' : 'synthetic'} match, claim, chat, confirmed handover, return and both stats at 390x844.`)
   // Also exercise the new deletion UI against the real endpoint.
   await owner.page.goto(`${url}/profile`)
-  let confirmations = 0
-  owner.page.on('dialog', async d => { confirmations++; await d.accept() })
+  // Two in-app sheets, one after the other: "are you sure", then the final one.
   await owner.page.getByRole('button', { name: t('profile.delete'), exact: true }).click()
+  await owner.page.getByRole('dialog').getByRole('button', { name: t('profile.deleteSheet.next'), exact: true }).click()
+  if (!owner.page.url().endsWith('/profile')) throw new Error('The account was deleted after one confirmation')
+  // The final button ignores taps for 600 ms after it appears, so a double tap on "Continue" can't delete an account.
+  const final = owner.page.getByRole('dialog').getByRole('button', { name: t('profile.deleteFinal.go'), exact: true })
+  await final.click()
+  await owner.page.waitForTimeout(300)
+  if (!owner.page.url().endsWith('/profile')) throw new Error('An instant second tap deleted the account')
+  await owner.page.waitForTimeout(700)
+  await final.click()
   await owner.page.waitForURL('**/signin')
-  if (confirmations !== 2) throw new Error('Expected two deletion confirmations')
-  console.log('PASS: live account deletion required two confirmations and returned to sign-in.')
+  console.log('PASS: live account deletion took two in-app confirmations, ignored an instant double tap, and returned to sign-in.')
 } finally {
   let failed = false
   for (const c of contexts) {
