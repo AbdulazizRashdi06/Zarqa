@@ -35,6 +35,7 @@ const { values: args } = parseArgs({
     "vector-limit": { type: "string" }, // try another retrieval size (the app: 25)
     "max-candidates": { type: "string" }, // try another shortlist size (the app: 10)
     "shortlist-threshold": { type: "string" }, // try another prescore floor (the app: 0.56)
+    "triage-order": { type: "string", default: "prescore" },
     triage: { type: "string" }, // screen the best N by prescore with one Luna call, then review what it keeps
     name: { type: "string" },
     offline: { type: "boolean", default: false },
@@ -101,7 +102,8 @@ function triageFor(query, listIds) {
     const candidates = listIds.slice(0, Number(args.triage)).map((id) => byId.get(id));
     triaged.set(query.id, triage(query, candidates, ctx).then((t) => {
       const keep = new Set(t.kept.map((r) => r.id));
-      const ids = listIds.filter((id) => keep.has(id)).slice(0, CURRENT.maxCandidates);
+      // Which kept candidates get the reviews: the screen's own order ("model") or the best prescore first.
+      const ids = (args["triage-order"] === "model" ? t.kept.map((r) => r.id) : listIds.filter((id) => keep.has(id))).slice(0, CURRENT.maxCandidates);
       reviewsPerReport.set(query.id, ids.length);
       return { ids, screened: candidates.length, kept: t.kept.length, error: t.error };
     }));
