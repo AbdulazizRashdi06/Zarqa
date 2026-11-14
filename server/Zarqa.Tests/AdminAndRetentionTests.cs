@@ -19,6 +19,13 @@ public class AdminAndRetentionTests(TestApp app) : IClassFixture<TestApp>
         Assert.True((await Json(await admin.GetAsync("/api/me"))).GetProperty("isAdmin").GetBoolean());
         var stats = await Json(await admin.GetAsync("/api/admin/stats"));
         Assert.True(stats.GetProperty("users").GetInt32() >= 2);
+
+        // The email check is admin-only, and with emails going to the log (as in tests) it reports no provider.
+        // Checked here because the test admin may only be sent three sign-in codes per 15 minutes.
+        Assert.Equal(HttpStatusCode.Forbidden, (await user.PostAsync("/api/admin/email-test", null)).StatusCode);
+        var check = await Json(await admin.PostAsync("/api/admin/email-test", null));
+        Assert.Equal("admin@gutech.edu.om", check.GetProperty("to").GetString());
+        Assert.Equal(0, check.GetProperty("results").GetArrayLength());
     }
 
     [Fact]
