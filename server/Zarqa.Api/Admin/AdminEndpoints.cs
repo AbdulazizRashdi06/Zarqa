@@ -92,6 +92,36 @@ public static class AdminEndpoints
             return Results.Ok(new { queued = ids.Count });
         });
 
+        // Sends the admin one email through each configured provider on its own, so the backup sender is proven to
+        // work (key, verified domain, this server's address allowed) before the day the first one runs out.
+        admin.MapPost("/email-test", async (HttpContext http, ZarqaDb db, Email.EmailProbe probe, CancellationToken ct) =>
+        {
+            var to = await db.Users.Where(u => u.Id == http.User.Id()).Select(u => u.Email).FirstAsync(ct);
+            var results = new List<object>();
+            foreach (var route in probe.Routes)
+            {
+                string? error = null;
+                try
+                {
+                    var (html, text) = Notifications.NoticeEmail.Build("TEST", $"{route.Name} can send",
+                        $"An admin asked for this test email. It went through {route.Name}.", footer: "Sent from the admin page.");
+                    await route.Sender.SendAsync(to, $"Zarqa test email ({route.Name})", html, text, ct);
+                }
+                catch (Exception e) when (e is Email.EmailNotSentException or HttpRequestException or TaskCanceledException && !ct.IsCancellationRequested)
+                {
+                    error = e switch
+                    {
+                        Email.EmailNotSentException { Status: { } status } => $"refused ({status})",
+                        Email.EmailNotSentException => "sender address not valid",
+                        TaskCanceledException => "timed out",
+                        _ => "unreachable",
+                    };
+                }
+                results.Add(new { provider = route.Name, ok = error is null, error });
+            }
+            return Results.Ok(new { to, results });
+        });
+
         // Sample data for demos (SampleData): fill replaces any earlier set; delete removes only sample people and their posts.
         admin.MapPost("/sample", async (ZarqaDb db, Retention retention, TimeProvider clock, CancellationToken ct) =>
             Results.Ok(await SampleData.FillAsync(db, retention, clock, ct)));

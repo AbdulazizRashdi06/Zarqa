@@ -153,6 +153,27 @@ test('Re-check asks first, refreshes the numbers and words zero results', async 
   expect(statsCalls).toBeGreaterThan(before)
 })
 
+test('the email check sends through each provider and shows a failing backup as an error', async ({ page }) => {
+  await session(page)
+  await page.route('**/api/admin/stats', route => route.fulfill({ json: stats }))
+  await page.route('**/api/admin/reports*', route => route.fulfill({ json: [] }))
+  let calls = 0
+  await page.route('**/api/admin/email-test', route => {
+    calls++
+    const brevo = calls === 1 ? { provider: 'Brevo', ok: false, error: 'refused (401)' } : { provider: 'Brevo', ok: true, error: null }
+    return route.fulfill({ json: { to: 'admin@gutech.edu.om', results: [{ provider: 'Resend', ok: true, error: null }, brevo] } })
+  })
+  await page.goto('/admin')
+  const send = page.getByRole('button', { name: 'Send me a test email' })
+  await send.click()
+  await page.getByRole('dialog').getByRole('button', { name: 'Send it' }).click()
+  await expect(page.getByRole('alert').filter({ hasText: 'Brevo: failed (refused (401)).' })).toBeVisible()
+  await send.click()
+  await page.getByRole('dialog').getByRole('button', { name: 'Send it' }).click()
+  await expect(page.getByRole('status').filter({ hasText: 'Resend: sent. Brevo: sent. Check admin@gutech.edu.om, and its Junk folder.' })).toBeVisible()
+  expect(calls).toBe(2)
+})
+
 test('on a laptop the admin page uses the width', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 800 })
   await session(page)

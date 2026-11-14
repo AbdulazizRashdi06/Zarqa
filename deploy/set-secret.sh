@@ -17,6 +17,9 @@ VALUE="$(printf '%s' "$VALUE" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
 if [ "$NAME" = RESEND_API_KEY ] && { [ "${VALUE#re_}" = "$VALUE" ] || [ ${#VALUE} -lt 20 ]; }; then
   echo "That doesn't look like a Resend key (they start with re_). Nothing changed."; exit 1
 fi
+if [ "$NAME" = BREVO_API_KEY ] && { [ "${VALUE#xkeysib-}" = "$VALUE" ] || [ ${#VALUE} -lt 40 ]; }; then
+  echo "That doesn't look like a Brevo API key (they start with xkeysib-). Nothing changed."; exit 1
+fi
 
 # The value travels over SSH stdin; the server-side script (deploy/set-env-remote.sh) stores it.
 printf '%s' "$VALUE" | ssh -i ~/.ssh/zarqa_vps -o BatchMode=yes deploy@173.249.40.122 bash /opt/zarqa/deploy/set-env-remote.sh "$NAME"
