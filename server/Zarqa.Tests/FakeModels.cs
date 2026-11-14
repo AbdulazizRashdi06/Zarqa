@@ -17,6 +17,13 @@ public sealed class FakeModels
     /// <summary>Every image data URL Luna was sent.</summary>
     public ConcurrentBag<string> LunaImages { get; } = [];
     public ConcurrentBag<string> JudgeModels { get; } = [];
+    /// <summary>The screen's raw JSON answer; null keeps every candidate in the order given.</summary>
+    public string? ScreenAnswer { get; set; }
+    /// <summary>Luna fails the screening call like an outage.</summary>
+    public bool ScreenFails { get; set; }
+    /// <summary>What DeepSeek answers when the screen falls back to it; null means it fails too.</summary>
+    public string? DeepSeekScreenAnswer { get; set; }
+    public ConcurrentQueue<(string Model, string System, string Text, int Images)> ScreenCalls { get; } = [];
 
     public FakeEmbedder Embedder => new(this);
     public FakeLuna Luna => new(this);
@@ -31,6 +38,9 @@ public sealed class FakeModels
         LunaCalls.Clear();
         LunaImages.Clear();
         JudgeModels.Clear();
+        ScreenAnswer = DeepSeekScreenAnswer = null;
+        ScreenFails = false;
+        ScreenCalls.Clear();
     }
 }
 
@@ -61,6 +71,14 @@ public sealed class FakeLuna(FakeModels m) : ILuna
     {
         m.LunaCalls.Add((schemaName, images.Count));
         foreach (var i in images) m.LunaImages.Add(i);
+        if (schemaName == ScreenReviewer.SchemaName)
+        {
+            m.ScreenCalls.Enqueue(("gpt-6-luna", system, text, images.Count));
+            if (m.ScreenFails) throw new ModelCallException("screen down");
+            // Unscripted: keep everything, so the best by prescore are reviewed as they were before the screen.
+            var all = $$"""{"keep":[{{string.Join(",", Enumerable.Range(1, text.Split('\n').Length - 2))}}]}""";
+            return Task.FromResult(new LunaResult(JsonDocument.Parse(m.ScreenAnswer ?? all).RootElement.Clone(), 2000, 0, 40, 7));
+        }
         var json = schemaName switch
         {
             "advocate_for" => """{"argument":"Same blue metal bottle with a cat sticker.","strength":"strong"}""",
@@ -78,8 +96,14 @@ public sealed class FakeJudge(FakeModels m, bool Fallback) : ITerra, IDeepSeek
 
     public Task<LunaResult> ChatJsonAsync(string system, string text, IReadOnlyList<string> images, string schemaName, JsonObject schema, CancellationToken ct)
     {
-        Assert.Equal("debate_judge", schemaName);
         Assert.Empty(images);
+        if (Fallback && schemaName == ScreenReviewer.SchemaName)
+        {
+            m.ScreenCalls.Enqueue((DeepSeekChat.Model, system, text, images.Count));
+            if (m.DeepSeekScreenAnswer is null) throw new ModelCallException("screen fallback down");
+            return Task.FromResult(new LunaResult(JsonDocument.Parse(m.DeepSeekScreenAnswer).RootElement.Clone(), 2000, 0, 40, 7) { Model = DeepSeekChat.Model });
+        }
+        Assert.Equal("debate_judge", schemaName);
         var model = Fallback ? DeepSeekChat.Model : "gpt-6.1-terra";
         m.JudgeModels.Add(model);
         var levels = new[] { "clearly_different", "probably_different", "unclear", "probably_same", "almost_certainly_same" };

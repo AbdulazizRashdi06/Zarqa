@@ -20,6 +20,8 @@ public sealed class ModelOptions
     public string? TypeSafeApiKey { get; set; }
     public string? DeepSeekApiKey { get; set; }
     public bool UseTerraJudge { get; set; } = true;
+    /// <summary>One text-only screening call over the best 30 by prescore when more than 10 pass (decisions.md, 2026-11-14).</summary>
+    public bool UseScreen { get; set; } = true;
     public string LunaModel { get; set; } = "gpt-6-luna";
     public string TerraModel { get; set; } = "gpt-6.1-terra";
     public string EmbeddingModel { get; set; } = "text-embedding-3-small";
