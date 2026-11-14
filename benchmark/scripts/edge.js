@@ -32,6 +32,7 @@ const { values: args } = parseArgs({
     parallel: { type: "string", default: "4" }, // pairs reviewed at once
     samples: { type: "string", default: "1" }, // model runs per pair (run-to-run variation)
     only: { type: "string" }, // comma-separated lens names
+    "skip-clean": { type: "boolean", default: false }, // leave out same-item pairs where nothing disagrees (cheaper wording tests)
     "vector-limit": { type: "string" }, // try another retrieval size (the app: 25)
     "max-candidates": { type: "string" }, // try another shortlist size (the app: 10)
     "shortlist-threshold": { type: "string" }, // try another prescore floor (the app: 0.56)
@@ -100,7 +101,9 @@ const triaged = new Map();
 function triageFor(query, listIds) {
   if (!triaged.has(query.id)) {
     const candidates = listIds.slice(0, Number(args.triage)).map((id) => byId.get(id));
-    triaged.set(query.id, triage(query, candidates, ctx).then((t) => {
+    // Fixed rule: with no more candidates than can be reviewed anyway, the screen could only lose pairs.
+    const run = candidates.length > CURRENT.maxCandidates ? triage(query, candidates, ctx) : Promise.resolve({ kept: candidates });
+    triaged.set(query.id, run.then((t) => {
       const keep = new Set(t.kept.map((r) => r.id));
       // Which kept candidates get the reviews: the screen's own order ("model") or the best prescore first.
       const ids = (args["triage-order"] === "model" ? t.kept.map((r) => r.id) : listIds.filter((id) => keep.has(id))).slice(0, CURRENT.maxCandidates);
@@ -112,7 +115,7 @@ function triageFor(query, listIds) {
 }
 
 const lenses = args.only ? new Set(args.only.split(",")) : null;
-const pairs = edge.pairs.filter((p) => !lenses || lenses.has(p.lens));
+const pairs = edge.pairs.filter((p) => (!lenses || lenses.has(p.lens)) && !(args["skip-clean"] && p.isMatch && p.conflict === "none"));
 const samples = Number(args.samples);
 
 const rows = await mapLimit(pairs, Number(args.parallel), async (p) => {
@@ -170,7 +173,7 @@ for (const lens of [...new Set(rows.map((r) => r.lens))]) {
 }
 
 const pct = (a, b) => (b ? `${a}/${b} (${Math.round((100 * a) / b)}%)` : "–");
-summary.settings = { vectorLimit: PROPOSED.vectorLimit, maxCandidates: CURRENT.maxCandidates, shortlistThreshold, triage: args.triage ? Number(args.triage) : null };
+summary.settings = { rule: process.env.SIMILARITY_RULE || "v1", legacyCode: process.env.EDGE_LEGACY === "1", vectorLimit: PROPOSED.vectorLimit, maxCandidates: CURRENT.maxCandidates, shortlistThreshold, triage: args.triage ? Number(args.triage) : null };
 summary.reviewsPerReport = round([...reviewsPerReport.values()].reduce((s, v) => s + v, 0) / (reviewsPerReport.size || 1));
 console.log(`\nvector top ${PROPOSED.vectorLimit} · shortlist ≥ ${shortlistThreshold}, top ${CURRENT.maxCandidates} · ${summary.reviewsPerReport} reviews per report on average`);
 console.log(`${rows.length} labelled pairs in a database of ${all.length} reports · embeddings ${summary.embeddings} · cut-off ${PROPOSED.debateThreshold}`);

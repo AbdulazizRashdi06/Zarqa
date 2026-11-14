@@ -2,10 +2,14 @@ const STOPWORDS = new Set(
   "a an the and or of in on at to for with my i it is was this that near by from lost found item some".split(" "),
 );
 
+// EDGE_LEGACY=1 reproduces the app as it was before the 2026-11-14 fixes below (the control arm of edge runs).
+export const LEGACY = process.env.EDGE_LEGACY === "1";
+
 export function tokens(text) {
-  return String(text || "")
-    .toLowerCase()
-    .normalize("NFKD")
+  const split = String(text || "").toLowerCase().normalize("NFKD");
+  // NFKD splits "أ" and "ü" into a letter plus a combining mark. Drop the marks, or they turn into spaces
+  // and break the word ("أسود" → "سود", "Hülle" → "hu" + "lle").
+  return (LEGACY ? split : split.replace(/\p{M}/gu, ""))
     .replace(/[^\p{L}\p{N}\s]/gu, " ")
     .split(/\s+/)
     .filter((t) => t.length > 1 && !STOPWORDS.has(t));
@@ -42,8 +46,9 @@ export function matchAliases(location, aliasIndex) {
   const text = ` ${norm(location)} `;
   const out = new Map();
   for (const [name, group] of aliasIndex) {
-    // Short aliases ("LRC") must match as a whole word; longer names may match inside a phrase.
-    if (text.includes(` ${name} `) || (name.length > 3 && text.includes(name))) out.set(group.canonical, group);
+    // A name matches as whole words only. Matching inside words made "Female Residences" also match
+    // Boys Dorms (alias "male residences").
+    if (text.includes(` ${name} `) || (LEGACY && name.length > 3 && text.includes(name))) out.set(group.canonical, group);
   }
   return [...out.values()];
 }

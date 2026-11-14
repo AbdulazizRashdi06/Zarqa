@@ -11,7 +11,7 @@ export function preliminaryScore(a, b, vecA, vecB, aliasIndex) {
   const cos = cosine(vecA, vecB);
 
   let category = 0;
-  const ca = (a.category || "").toLowerCase().trim(), cb = (b.category || "").toLowerCase().trim();
+  const ca = (a.categoryKey ?? a.category ?? "").toLowerCase().trim(), cb = (b.categoryKey ?? b.category ?? "").toLowerCase().trim();
   if (ca && cb) category = ca === cb ? 0.05 : -0.02;
 
   // One-text reports (the app) have no titles: the whole 0.24 text weight goes on the one text.

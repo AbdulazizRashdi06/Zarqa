@@ -8,8 +8,17 @@ import { usage } from "./luna.js";
 
 // Same as the app (decisions.md, 2026-10-27 and 2026-10-31): read item names in context, similarity over proof.
 // Runs before these changes used older wording.
-export const SIMILARITY_RULE =
-  "People describe the same kind of item in different ways and often give very few details. Interpret item names in context; different words, levels of detail, or singular and plural forms alone neither prove nor disprove a match. Missing specifics are not evidence against a match. A missed real match may prevent an item being returned, while the owner can reject a wrong suggestion, so prefer recall when the evidence makes a match plausible. Still weigh concrete contradictions honestly.";
+const RULE_START =
+  "People describe the same kind of item in different ways and often give very few details. Interpret item names in context; different words, levels of detail, or singular and plural forms alone neither prove nor disprove a match. Missing specifics are not evidence against a match. A missed real match may prevent an item being returned, while the owner can reject a wrong suggestion, so prefer recall when the evidence makes a match plausible.";
+const RULES = {
+  // The app's wording since 2026-10-31.
+  v1: `${RULE_START} Still weigh concrete contradictions honestly.`,
+  // Proposed 2026-11-14 after the round-1 edge run: the models treated a missing detail and a stated
+  // difference alike, and treated a wrongly remembered brand as a contradiction.
+  v2: `${RULE_START} Separate a gap from a stated difference. A detail one report gives and the other leaves out is a gap and counts for nothing; parts and contents can go missing from an item but are not added, so a found item with less than the lost report describes is also a gap. The lost report is written from memory and the found report by someone who saw the item only from outside, so either may get a brand, model or the name of the object wrong; details people commonly misjudge, recall from memory or mark as unsure are weak evidence, weaker still when both reports share a specific physical detail. A stated difference is strong evidence of different items when the writer was in a position to know: text the finder reads off the item, something plainly visible that cannot be a matter of shade or memory, or a found item with something the owner says was not there. A different spelling or transliteration of the same name, or a name the finder marks as unsure, is not a difference.`,
+};
+export const SIMILARITY_RULE = RULES[process.env.SIMILARITY_RULE || "v1"];
+if (!SIMILARITY_RULE) throw new Error(`Unknown SIMILARITY_RULE "${process.env.SIMILARITY_RULE}"`);
 
 // luna-debate: two Luna advocates argue the case, Jev decides.
 // The FOR advocate makes the strongest honest case that both reports describe the same
