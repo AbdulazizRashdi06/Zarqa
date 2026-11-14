@@ -20,9 +20,15 @@ export type Me = {
 export type Session = {
   me: Me | null
   loading: boolean
+  /** /me failed for a reason other than 401 (offline, server down) and we don't know who this is yet. */
+  unreachable: boolean
+  /** The session ended in the middle of use (a 401): the sign-in screen says so. */
+  signedOut: boolean
   setMe: (me: Me | null) => void
   refresh: () => Promise<void>
   signOut: () => Promise<void>
+  /** A sign-in just succeeded: drop a logout still pending from an earlier offline sign-out. */
+  forgetPendingLogout: () => void
 }
 
 export const SessionContext = createContext<Session | null>(null)
@@ -31,4 +37,41 @@ export function useSession(): Session {
   const s = useContext(SessionContext)
   if (!s) throw new Error('useSession outside SessionProvider')
   return s
+}
+
+// Where a signed-out visitor was heading (a push or email link), so sign-in can take them there.
+const RETURN_KEY = 'zarqa.returnTo'
+// The page someone signed out from on purpose: the next person to sign in starts on Home, not there.
+let leftFrom: string | null = null
+
+/** Called on sign-out with the page it happened on (null again once someone is signed in). */
+export function signedOutFrom(path: string | null) {
+  leftFrom = path
+}
+
+export function rememberReturnPath(path: string) {
+  if (path === leftFrom) return
+  try {
+    if (path !== '/' && path !== '/welcome' && path.startsWith('/') && !path.startsWith('//')) sessionStorage.setItem(RETURN_KEY, path)
+  } catch {
+    // Private mode: they land on Home instead.
+  }
+}
+
+/** The page to open after signing in, if a signed-out visitor was sent to /signin from one. */
+export function returnPath(): string | null {
+  try {
+    const path = sessionStorage.getItem(RETURN_KEY)
+    return path && path.startsWith('/') && !path.startsWith('//') && !path.startsWith('/signin') ? path : null
+  } catch {
+    return null
+  }
+}
+
+export function clearReturnPath() {
+  try {
+    sessionStorage.removeItem(RETURN_KEY)
+  } catch {
+    // nothing to clear
+  }
 }

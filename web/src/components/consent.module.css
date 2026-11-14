@@ -24,28 +24,30 @@
   text-underline-offset: 2px;
 }
 
-/* One-time prompt for accounts made before consent was recorded: a sheet over the app, not a page. */
-.backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 50;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  background: rgba(20, 22, 30, 0.72);
-  animation: fade 180ms ease;
-}
-
+/* One-time prompt for accounts made before consent was recorded: a modal <dialog> laid out as a bottom sheet.
+   It sits in the top layer, outside #root's padding, so it adds the home-indicator inset itself. */
 .sheet {
   width: 100%;
   max-width: 480px;
-  padding: 22px 20px 26px;
+  max-height: 90dvh;
+  margin: auto auto 0;
+  padding: 22px 20px calc(26px + env(safe-area-inset-bottom));
+  border: none;
   border-radius: 18px 18px 0 0;
   background: var(--surface);
+  color: var(--text);
   display: flex;
   flex-direction: column;
   gap: 14px;
+  overflow-y: auto;
   animation: rise 240ms var(--ease-out);
+}
+.sheet:not([open]) {
+  display: none;
+}
+.sheet::backdrop {
+  background: rgba(20, 22, 30, 0.72);
+  animation: fade 180ms ease;
 }
 
 .sheet h2 {
@@ -61,7 +63,7 @@
   outline: none;
 }
 
-.sheet p {
+.sheet p:not([role='alert']) {
   margin: 0;
   font-size: 14px;
   line-height: 1.45;
@@ -70,6 +72,7 @@
 
 .signOut {
   align-self: center;
+  min-height: var(--tap);
   padding: 8px 12px;
   border: none;
   background: none;
@@ -78,6 +81,10 @@
   font-weight: 600;
   text-decoration: underline;
   cursor: pointer;
+}
+.signOut:disabled {
+  color: var(--text-muted);
+  cursor: default;
 }
 
 @keyframes fade {

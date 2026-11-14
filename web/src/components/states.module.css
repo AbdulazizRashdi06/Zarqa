@@ -1,0 +1,212 @@
+/* Shared page states: loading, load error, inline error, notice, confirm sheet, crash page. */
+
+.loading {
+  flex-grow: 1;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--text-muted);
+  font-size: 14px;
+  /* Fast answers never flash a spinner. */
+  animation: fadeIn 200ms ease 300ms backwards;
+}
+.spinner {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 3px solid var(--tan);
+  border-right-color: transparent;
+  animation: spin 600ms linear infinite;
+}
+
+.loadError {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 8px 0;
+}
+
+/* Inline error under a field or above a button: announced (role="alert"), readable on dark and on paper. */
+.inlineError {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #f2a99a;
+  overflow-wrap: anywhere;
+}
+:global(.on-paper) .inlineError,
+.inlineErrorPaper {
+  color: #a3341f;
+}
+
+/* One-line status (signed out, closed, saved): a paper strip at the top of the page. */
+.notice {
+  margin: 12px var(--gutter) 0;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  animation: fadeIn 200ms ease;
+}
+.noticeAction {
+  flex-shrink: 0;
+  min-height: var(--tap);
+  padding: 0 6px;
+  border: none;
+  background: none;
+  color: var(--ink);
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Confirm sheet: native <dialog> (focus trap, Esc) laid out as a bottom sheet. */
+.sheet {
+  width: 100%;
+  max-width: 480px;
+  max-height: 90dvh;
+  margin: auto auto 0;
+  padding: 22px 20px calc(22px + env(safe-area-inset-bottom));
+  border: none;
+  border-radius: 18px 18px 0 0;
+  background: var(--surface);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.sheet:not([open]) {
+  display: none;
+}
+.sheet::backdrop {
+  background: rgba(20, 22, 30, 0.72);
+}
+.sheet h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+.sheet p:not([role='alert']) {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--text-soft);
+}
+.sheetCancel {
+  align-self: stretch;
+  min-height: var(--tap);
+  border: 1.5px solid var(--slate);
+  border-radius: 14px;
+  background: none;
+  color: var(--text);
+  font-weight: 700;
+  font-size: 15px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .sheet[open] {
+    animation: rise 240ms var(--ease-out);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sheet[open] {
+    animation: fadeIn 180ms ease;
+  }
+}
+
+/* Crash and can't-reach pages */
+.page {
+  flex-grow: 1;
+  padding: 16px var(--gutter) 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.title {
+  margin: 40px 0 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 56px;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+.title:focus {
+  outline: none;
+}
+.bottom {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Splash: the wordmark breathes while the session loads; a hint appears if it takes long. */
+.splash {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 0 var(--gutter);
+  text-align: center;
+}
+.splashLogo {
+  animation: pulse 1600ms ease-in-out infinite;
+}
+.splashHint {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 14px;
+  animation: fadeIn 200ms ease;
+}
+.splashRetry {
+  min-height: var(--tap);
+  padding: 0 18px;
+  border: 1.5px solid var(--slate);
+  border-radius: 14px;
+  background: none;
+  color: var(--text);
+  font-weight: 700;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    translate: 0 24px;
+  }
+}
+@keyframes spin {
+  to {
+    rotate: 1turn;
+  }
+}
+@keyframes pulse {
+  50% {
+    opacity: 0.55;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 1200ms;
+  }
+}

@@ -73,6 +73,8 @@
   gap: 4px;
 }
 .typeLine {
+  display: flex;
+  min-width: 0;
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 700;
@@ -81,7 +83,17 @@
   text-transform: uppercase;
   white-space: nowrap;
   overflow: hidden;
+}
+/* Kind and date never shorten; only the place between them does. */
+.typeFixed {
+  flex-shrink: 0;
+  white-space: pre;
+}
+.typePlace {
+  min-width: 0;
+  overflow: hidden;
   text-overflow: ellipsis;
+  white-space: pre;
 }
 .name {
   font-family: var(--font-display);
@@ -92,13 +104,48 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.dim {
+/* Finished: the photo and name step back; the type line and pill keep full contrast. */
+.done > span:first-child {
   opacity: 0.6;
 }
+.done .name {
+  color: var(--ink-muted);
+}
+/* On its own card's top-right corner, as in the mockup, so two in a row can't be mixed up. */
 .sticker {
   position: absolute;
-  bottom: -10px;
+  top: -9px;
   right: 14px;
+}
+.withSticker {
+  margin-top: 6px;
+  padding-top: 20px;
+}
+/* A second suggestion for a report that is already in a chat or a pickup. */
+.another {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: var(--tap);
+  margin-top: -4px;
+  padding: 0 14px;
+  border: 1.5px dashed var(--tan);
+  border-radius: 14px;
+  color: var(--tan-light);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.another:active {
+  scale: 0.98;
+}
+.filterEmpty {
+  margin: 8px 0 0;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-soft);
 }
 
 .empty {

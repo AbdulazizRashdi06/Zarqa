@@ -91,11 +91,12 @@ public sealed class NotificationSender(ZarqaDb db, IPushSender push, IEmailSende
         var m = await db.Matches.Include(x => x.Lost).ThenInclude(r => r!.User).Include(x => x.Found).FirstOrDefaultAsync(x => x.Id == matchId, ct);
         var owner = m?.Lost?.User;
         if (m is null || owner is null || !owner.MatchAlerts) return;
-        await PushAsync(owner.Id, new PushPayload("Zarqa spotted something 👀", $"Is this your {m.Lost!.Title}? Tap to see.", $"/matches/{m.Id}", $"match-{m.Id}"), ct);
-        var (html, text) = NoticeEmail.Build("ZARQA SPOTTED SOMETHING", $"Is this your {m.Lost.Title}?", m.Found!.DropAtRsa
-            ? "Someone found an item that looks a lot like yours and handed it to the RSA desk. Open Zarqa and check the match: if it's yours, you'll get a pickup code."
-            : "Someone found an item that looks a lot like yours. Open Zarqa and check the match: if it's yours, you can message the finder right away.");
-        await SafeEmailAsync(owner.Email, $"Zarqa spotted a possible match for your {m.Lost.Title}", html, text, ct);
+        await PushAsync(owner.Id, new PushPayload("Zarqa spotted something 👀", $"Someone found something that might be yours: “{m.Lost!.Title}”. Tap to see.", $"/matches/{m.Id}", $"match-{m.Id}"), ct);
+        var (html, text) = NoticeEmail.Build("ZARQA SPOTTED SOMETHING", "Could this be yours?", m.Found!.DropAtRsa
+            ? "Someone found an item that might be yours and handed it to the RSA desk. Open Zarqa and check the match: if it's yours, you'll get a pickup code."
+            : "Someone found an item that might be yours. Open Zarqa and check the match: if it's yours, you can message the finder right away.",
+            item: m.Lost.Title, footer: NoticeEmail.AlertsFooter);
+        await SafeEmailAsync(owner.Email, $"Zarqa spotted a possible match: {m.Lost.Title}", html, text, ct);
     }
 
     public async Task ClaimedAsync(Guid conversationId, CancellationToken ct)
@@ -105,10 +106,11 @@ public sealed class NotificationSender(ZarqaDb db, IPushSender push, IEmailSende
         var finder = await db.Users.FirstAsync(u => u.Id == c.FoundUserId, ct);
         var owner = await db.Users.FirstAsync(u => u.Id == c.LostUserId, ct);
         var item = c.Match!.Found!.Title;
-        await PushAsync(finder.Id, new PushPayload("Someone thinks it's theirs", $"{MeEndpoints.DisplayName(owner)} says the {item} is theirs. Say hi!", $"/chats/{c.Id}", $"chat-{c.Id}"), ct);
-        var (html, text) = NoticeEmail.Build("YOU'RE A LEGEND", $"Someone thinks the {item} is theirs",
-            $"{MeEndpoints.DisplayName(owner)} saw your found report and says it's theirs. Open Zarqa to chat: ask a question only the owner would know, then meet somewhere public on campus.");
-        await SafeEmailAsync(finder.Email, $"Someone thinks the {item} is theirs", html, text, ct);
+        await PushAsync(finder.Id, new PushPayload("Someone thinks it's theirs", $"{MeEndpoints.DisplayName(owner)} thinks this could be theirs: “{item}”. Ask something only the owner would know.", $"/chats/{c.Id}", $"chat-{c.Id}"), ct);
+        var (html, text) = NoticeEmail.Build("YOU'RE A LEGEND", "Someone thinks it's theirs",
+            $"{MeEndpoints.DisplayName(owner)} saw your found report and thinks it could be theirs. Open Zarqa to chat: ask a question only the owner would know, then meet somewhere public on campus.",
+            item: item);
+        await SafeEmailAsync(finder.Email, $"Someone thinks it's theirs: {item}", html, text, ct);
     }
 
     public async Task MessageAsync(long messageId, CancellationToken ct)
@@ -134,24 +136,25 @@ public sealed class NotificationSender(ZarqaDb db, IPushSender push, IEmailSende
     {
         var r = await db.Reports.Include(x => x.User).FirstOrDefaultAsync(x => x.Id == reportId, ct);
         if (r?.User is null) return;
-        await PushAsync(r.UserId, new PushPayload("The RSA has it ✅", $"The {r.Title} is safe at the RSA desk. You're a legend.", $"/reports/{r.Id}", $"report-{r.Id}"), ct);
+        await PushAsync(r.UserId, new PushPayload("The RSA has it ✅", $"Safe at the RSA desk: “{r.Title}”. You're a legend.", $"/reports/{r.Id}", $"report-{r.Id}"), ct);
         // Someone already said "It's mine": now they can go and get it.
         var m = await db.Matches.Include(x => x.Lost).ThenInclude(x => x!.User)
             .FirstOrDefaultAsync(x => x.FoundId == reportId && x.Status == MatchStatus.Confirmed && x.PickupCode != null && x.CollectedAt == null, ct);
         var owner = m?.Lost?.User;
         if (m is null || owner is null) return;
         var code = Rsa.RsaCodes.Format(m.PickupCode);
-        await PushAsync(owner.Id, new PushPayload("Ready to collect 🎉", $"Your {m.Lost!.Title} is at the RSA desk. Pickup code {code}.", $"/matches/{m.Id}", $"match-{m.Id}"), ct);
-        var (html, text) = NoticeEmail.Build("READY TO COLLECT", $"Your {m.Lost.Title} is at the RSA desk",
-            $"Show the pickup code {code} at the RSA desk and bring your student ID. They'll check it against your description and hand it over.");
-        await SafeEmailAsync(owner.Email, $"Your {m.Lost.Title} is ready to collect", html, text, ct);
+        await PushAsync(owner.Id, new PushPayload("Ready to collect 🎉", $"It's at the RSA desk: “{m.Lost!.Title}”. Pickup code {code}.", $"/matches/{m.Id}", $"match-{m.Id}"), ct);
+        var (html, text) = NoticeEmail.Build("READY TO COLLECT", "It's at the RSA desk",
+            $"Show the pickup code {code} at the RSA desk and bring your student ID. They'll check it against your description and hand it over.",
+            item: m.Lost.Title);
+        await SafeEmailAsync(owner.Email, $"Your item is ready to collect: {m.Lost.Title}", html, text, ct);
     }
 
     public async Task CollectedAsync(Guid matchId, CancellationToken ct)
     {
         var m = await db.Matches.Include(x => x.Found).FirstOrDefaultAsync(x => x.Id == matchId, ct);
         if (m?.Found is null) return;
-        await PushAsync(m.Found.UserId, new PushPayload("Back where it belongs 💛", $"The {m.Found.Title} you found is back with its owner. Thank you!", $"/reports/{m.Found.Id}", $"report-{m.Found.Id}"), ct);
+        await PushAsync(m.Found.UserId, new PushPayload("Back where it belongs 💛", $"What you found is back with its owner: “{m.Found.Title}”. Thank you!", $"/reports/{m.Found.Id}", $"report-{m.Found.Id}"), ct);
     }
 
     private async Task<(Message?, Conversation?, User?, Guid)> LoadAsync(long messageId, CancellationToken ct)
@@ -180,10 +183,21 @@ public sealed class NotificationSender(ZarqaDb db, IPushSender push, IEmailSende
 /// <summary>Notice emails in the sign-in email's look. No links, like every Zarqa email.</summary>
 public static class NoticeEmail
 {
-    public static (string Html, string Text) Build(string label, string headline, string body)
+    /// <summary>Only the match-spotted email can be turned off: the server checks Match alerts for that one alone.</summary>
+    public const string AlertsFooter = "Turn these emails off in Profile → Match alerts.";
+    public const string OwnReportFooter = "You get this email because it's about your own report.";
+
+    /// <summary>
+    /// <paramref name="item"/> is the user's own title, shown on its own line in quotes. Titles are often sentences
+    /// ("I lost my black wallet"), so they are never built into the headline.
+    /// </summary>
+    public static (string Html, string Text) Build(string label, string headline, string body, string? item = null, string footer = OwnReportFooter)
     {
         static string e(string s) => WebUtility.HtmlEncode(s);
-        var text = $"{headline}\n\n{body}\n\nOpen Zarqa (tryzarqa.com) on your phone to see it.\n\nZarqa · the GUtech lost & found, made by students";
+        var hasItem = !string.IsNullOrWhiteSpace(item);
+        var itemText = hasItem ? $"“{item}”\n\n" : "";
+        var itemHtml = hasItem ? $"<div style=\"font-size:16px;font-weight:bold;line-height:1.4;margin:0 0 12px;\">&ldquo;{e(item!)}&rdquo;</div>" : "";
+        var text = $"{headline}\n\n{itemText}{body}\n\nOpen Zarqa (tryzarqa.com) on your phone to see it. {footer}\n\nZarqa · the GUtech lost & found, made by students for students.";
         var html = $"""
             <!doctype html>
             <html lang="en" style="background:#222634;">
@@ -196,9 +210,10 @@ public static class NoticeEmail
                     <tr><td style="background:#F2EEE8;border-radius:20px;padding:28px 24px;font-family:Arial,Helvetica,sans-serif;color:#222634;">
                       <div style="font-family:'Courier New',monospace;font-size:12px;font-weight:bold;letter-spacing:2px;color:#8A6A4F;">{e(label)}</div>
                       <div style="font-family:Impact,'Arial Narrow Bold',sans-serif;font-size:30px;line-height:1.1;margin:10px 0 14px;">{e(headline)}</div>
+                      {itemHtml}
                       <div style="font-size:15px;line-height:1.5;">{e(body)}</div>
                       <div style="border-top:2px dashed #CFC6BA;margin:22px 0 16px;"></div>
-                      <div style="font-size:13px;line-height:1.5;color:#5E6472;">Open Zarqa (tryzarqa.com) on your phone to see it. Turn these emails off in Profile → Match alerts.</div>
+                      <div style="font-size:13px;line-height:1.5;color:#5E6472;">Open Zarqa (tryzarqa.com) on your phone to see it. {e(footer)}</div>
                     </td></tr>
                     <tr><td style="padding:18px 4px 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.5;color:#A9B4B6;">Zarqa · the GUtech lost &amp; found, made by students for students.</td></tr>
                   </table>

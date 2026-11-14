@@ -17,3 +17,26 @@ export async function shrinkPhoto(file: File, maxEdge = 1600): Promise<Blob> {
     return file
   }
 }
+
+/** Can this browser draw the file as a picture? (A .txt, a broken JPEG or an undecodable HEIC can't.) */
+export async function canShowPhoto(file: Blob): Promise<boolean> {
+  const url = URL.createObjectURL(file)
+  try {
+    const img = new Image()
+    img.src = url
+    await img.decode()
+    return img.naturalWidth > 0
+  } catch {
+    return false
+  } finally {
+    URL.revokeObjectURL(url)
+  }
+}
+
+/** shrinkPhoto for the report form: throws when the file isn't a picture, so it never becomes a broken tile. */
+export async function readPhoto(file: File, maxEdge = 1600): Promise<Blob> {
+  const shrunk = await shrinkPhoto(file, maxEdge)
+  // shrinkPhoto hands back the original when it couldn't decode it: check that one really is a picture.
+  if (shrunk === file && !(await canShowPhoto(file))) throw new Error('Not a readable photo')
+  return shrunk
+}

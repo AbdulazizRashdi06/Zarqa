@@ -1,3 +1,8 @@
+/* This screen pads for the iPhone home indicator itself (index.css #root). */
+:global(#root):has(> .page) {
+  padding-bottom: 0;
+}
+
 .page {
   position: relative;
   height: 100dvh;
@@ -20,6 +25,10 @@
   gap: 10px;
 }
 .who {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -27,9 +36,39 @@
 }
 .name {
   font-family: var(--font-display);
+  font-weight: 400;
   font-size: 22px;
   line-height: 1;
   text-transform: uppercase;
+}
+/* Safety tips stay one tap away for the whole chat. */
+.safetyLink {
+  flex-shrink: 0;
+  min-height: var(--tap);
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--slate);
+  border-radius: 999px;
+  color: var(--text-soft);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.itemLink {
+  flex-grow: 1;
+  min-width: 0;
+  display: flex;
+  color: inherit;
+  text-decoration: none;
+  border-radius: 8px;
+}
+.itemLink:active {
+  scale: 0.98;
 }
 .role {
   font-family: var(--font-mono);
@@ -117,14 +156,64 @@
   white-space: nowrap;
 }
 
+.logWrap {
+  position: relative;
+  flex-grow: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
 .messages {
   flex-grow: 1;
   min-height: 0;
   overflow-y: auto;
+  /* A pull at the top of the chat scrolls nothing else: no pull-to-refresh wiping the draft on Android. */
+  overscroll-behavior-y: contain;
   padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+.safetyNote {
+  margin: 0 auto 2px;
+  max-width: 300px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+.safetyNote a {
+  color: var(--tan-light);
+  font-weight: 700;
+  text-underline-offset: 2px;
+}
+.day {
+  margin: 6px 0 0;
+  align-self: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+/* Shown while you read older messages and new ones arrive below. */
+.newPill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  width: max-content;
+  margin: 0 auto;
+  min-height: var(--tap);
+  padding: 0 18px;
+  border: none;
+  border-radius: 999px;
+  background: var(--tan);
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 800;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
 .system {
   display: flex;
@@ -244,6 +333,18 @@
   flex-direction: column;
   gap: 2px;
 }
+.ticketHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+.ticketAt {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-muted);
+}
 .ticketTime {
   font-family: var(--font-display);
   font-size: 46px;
@@ -252,6 +353,8 @@
 .ticketPlace {
   font-size: 14px;
   font-weight: 700;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 .ticketActions {
   display: grid;
@@ -280,6 +383,12 @@
   color: var(--ink);
   font-size: 14px;
   font-weight: 700;
+}
+.otherBtn:disabled,
+.withdraw:disabled,
+.chip:disabled,
+.returnAsk:disabled {
+  opacity: 0.5;
 }
 .confirmed {
   display: flex;
@@ -314,6 +423,7 @@
   display: flex;
   gap: 8px;
   overflow-x: auto;
+  overscroll-behavior-x: contain;
   scrollbar-width: none;
 }
 .chip {
@@ -335,18 +445,89 @@
 .inputRow {
   display: flex;
   gap: 8px;
-  align-items: center;
+  align-items: flex-end;
 }
+/* A textarea that grows with the text (Chat.tsx caps it at about four lines). */
 .input {
   flex-grow: 1;
   min-width: 0;
+  display: block;
   height: 50px;
+  min-height: 50px;
   border-radius: 25px;
   border: none;
   background: var(--ground);
-  padding: 0 18px;
+  padding: 14px 18px;
+  font: inherit;
   font-size: 16px;
+  line-height: 22px;
   color: var(--paper);
+  resize: none;
+  overflow-y: auto;
+}
+.count {
+  margin: 0;
+  align-self: flex-end;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.reconnecting {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--text-muted);
+}
+/* A ticket waiting for my answer, scrolled out of sight: one line here points to it. */
+.pendingBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 4px 4px 14px;
+  border-radius: 14px;
+  background: var(--paper);
+  color: var(--ink);
+}
+.pendingBar :focus-visible {
+  outline-color: var(--ink);
+}
+.pendingText {
+  flex-grow: 1;
+  min-width: 0;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+.pendingView {
+  flex-shrink: 0;
+  min-height: var(--tap);
+  padding: 0 16px;
+  border: none;
+  border-radius: 10px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 14px;
+  font-weight: 800;
+}
+@keyframes spin {
+  to {
+    rotate: 1turn;
+  }
+}
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2.5px solid var(--ink);
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 700ms linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 1.6s;
+  }
 }
 .input::placeholder {
   color: var(--text-faint);
@@ -391,7 +572,6 @@
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 3px;
-  min-height: 32px;
 }
 .closedNote {
   margin: 0;
@@ -399,11 +579,24 @@
   color: var(--text-muted);
   text-align: center;
 }
-.error {
-  margin: 0;
+.closedLink {
+  align-self: center;
+  min-height: var(--tap);
+  display: flex;
+  align-items: center;
+  color: var(--tan-light);
   font-size: 14px;
   font-weight: 700;
-  color: #f0a58c;
+  text-underline-offset: 3px;
+}
+/* Loading, failed and gone: the page under the back button. */
+.stateBody {
+  flex-grow: 1;
+  padding: 24px var(--gutter) calc(24px + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
 }
 
 .plan {
@@ -430,7 +623,22 @@
   color: var(--ink);
   min-width: 0;
 }
+.planField {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.planLabel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
 
+/* Bottom-aligned by the mascot's auto top margin, so a short screen scrolls instead of cutting her head off. */
 .overlay {
   position: absolute;
   inset: 0;
@@ -438,16 +646,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
-  padding: 24px 20px 28px;
+  overflow-y: auto;
+  padding: 24px 20px calc(28px + env(safe-area-inset-bottom));
   gap: 12px;
   text-align: center;
   z-index: 10;
 }
 .overlayMascot {
-  width: 228px;
+  width: min(228px, 30dvh);
   height: auto;
+  margin-top: auto;
   margin-bottom: -4px;
+  flex-shrink: 0;
   --z-delay: 120ms;
 }
 /* The celebration: the screen dims, Zarqa pops up and hops, her coins fly, and the title lands out of a blur.
@@ -502,7 +712,7 @@
   margin: 0;
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: 80px;
+  font-size: clamp(56px, 20vw, 80px);
   line-height: 0.9;
   color: var(--tan);
 }

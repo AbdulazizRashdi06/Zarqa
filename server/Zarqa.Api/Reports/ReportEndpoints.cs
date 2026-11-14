@@ -20,7 +20,7 @@ public static class ReportEndpoints
         string? LocationName, string LocationText, string? EventDate, string? EventTime,
         string Status, string Pill, bool IsSensitive, Guid[] PhotoIds,
         Guid? MatchId, Guid? ConversationId, DateTimeOffset CreatedAt,
-        bool DropAtRsa, string? DropCode, bool RsaReceived, Guid? PickupMatchId);
+        bool DropAtRsa, string? DropCode, bool RsaReceived, Guid? PickupMatchId, string? CoverState = null);
 
     public static void MapReports(this RouteGroupBuilder api)
     {
@@ -34,7 +34,7 @@ public static class ReportEndpoints
                 return Errors.Forbidden("Agree to the Terms and Privacy first.");
             var now = clock.GetUtcNow();
             var today = await db.Reports.CountAsync(r => r.UserId == me && r.CreatedAt > now.AddDays(-1), ct);
-            if (today >= MaxPostsPerDay) return Errors.TooMany("That's a lot of posts for one day. Try again tomorrow.");
+            if (today >= MaxPostsPerDay) return Errors.TooMany("That's a lot of posts in 24 hours. Try again later.");
 
             if (!req.HasFormContentType) return Errors.BadRequest("Send the report as a form.");
             var form = await req.ReadFormAsync(ct);
@@ -72,13 +72,15 @@ public static class ReportEndpoints
 
             var files = form.Files.GetFiles("photos");
             if (files.Count > MaxPhotos) return Errors.BadRequest($"Up to {MaxPhotos} photos.");
-            foreach (var file in files)
+            for (var i = 0; i < files.Count; i++)
             {
+                var file = files[i];
                 if (file.Length == 0) continue;
-                if (file.Length > PhotoStore.MaxUploadBytes) return Errors.BadRequest("One of the photos is too big (15 MB max).");
+                // Say which one, so the user knows what to swap (a HEIC from an older phone, a screenshot of a PDF).
+                if (file.Length > PhotoStore.MaxUploadBytes) return Errors.BadRequest($"Photo {i + 1} is too big (15 MB max).");
                 await using var stream = file.OpenReadStream();
                 var key = await photos.SaveAsync(stream, PhotoStore.MaxEdge, ct);
-                if (key is null) return Errors.BadRequest("One of the files isn't a photo we can read.");
+                if (key is null) return Errors.BadRequest($"Photo {i + 1} isn't a photo I can read. Try a JPEG or PNG.");
                 report.Photos.Add(new Photo
                 {
                     StorageKey = key, Position = report.Photos.Count, IsSensitive = report.IsSensitive, CreatedAt = now,
@@ -114,7 +116,16 @@ public static class ReportEndpoints
             var r = await db.Reports.Include(x => x.Photos).FirstOrDefaultAsync(x => x.Id == id && x.UserId == http.User.Id(), ct);
             if (r is null) return Errors.NotFound();
             if (r.Status is not ReportStatus.Open) return Errors.BadRequest("Only reports that are still searching can be edited.");
-            var error = await ApplyFields(r, body.Title ?? r.Title, body.Category ?? r.CategoryText, body.Description ?? r.Description,
+            var (title, category, description) = (body.Title ?? r.Title, body.Category ?? r.CategoryText, body.Description ?? r.Description);
+            // The app's edit form sends the same one "text" box as the Home form.
+            if (body.Text is not null)
+            {
+                var parts = ReportText.Split(body.Text);
+                if (parts is null) return Errors.BadRequest("Tell me what it is first.");
+                if (parts.Description.Length > 500) return Errors.BadRequest("Keep it under 500 characters.");
+                (title, category, description) = (parts.Title, parts.Category, parts.Description);
+            }
+            var error = await ApplyFields(r, title, category, description,
                 body.LocationName ?? (body.LocationText is null ? r.LocationName : null), body.LocationText ?? r.LocationText,
                 body.EventDate, body.EventTime, db, photos, clock, ct, keepWhenMissing: r);
             if (error is not null) return error;
@@ -197,7 +208,8 @@ public static class ReportEndpoints
         }).RequireAuthorization();
     }
 
-    public record PatchBody(string? Title, string? Category, string? Description, string? LocationName, string? LocationText, string? EventDate, string? EventTime);
+    public record PatchBody(string? Title, string? Category, string? Description, string? LocationName, string? LocationText, string? EventDate, string? EventTime,
+        string? Text = null);
 
     /// <summary>Validates and copies the editable fields. Null result means OK.</summary>
     internal static async Task<IResult?> ApplyFields(Report r, string? title, string? category, string? description, string? locationName,
@@ -248,19 +260,18 @@ public static class ReportEndpoints
         r.EventTime = time;
         // Only the user's own words count: Zarqa's own label "Wallets & cards" would make every wallet a card report
         // (owner decision 2026-10-27). A category typed by an older two-field client still counts.
-        r.IsSensitive = Categories.IsSensitive(Categories.All.Contains(category) ? null : category, title, description);
+        // Once a photo was taken as a card photo it stays one: rewording the text ("Bank card" -> "Blue wallet") must never
+        // turn its original into a photo other people see. When unsure, it is a card.
+        r.IsSensitive = Categories.IsSensitive(Categories.All.Contains(category) ? null : category, title, description)
+            || r.Photos.Any(p => p.IsSensitive);
         foreach (var p in r.Photos)
         {
-            // A photo that becomes a card photo gets covered; one that stops being one needs no copy.
-            // Card photos posted before covering existed (state None) stay private, as their uploaders were told.
-            if (r.IsSensitive && !p.IsSensitive) p.CoverState = CoverState.Pending;
-            if (!r.IsSensitive && p.IsSensitive)
+            // A photo that becomes a card photo gets covered, and stays private until then.
+            if (r.IsSensitive && !p.IsSensitive)
             {
-                if (p.CoveredKey is not null) photos.Delete(p.CoveredKey);
-                p.CoveredKey = null;
-                p.CoverState = CoverState.None;
+                p.IsSensitive = true;
+                p.CoverState = CoverState.Pending;
             }
-            p.IsSensitive = r.IsSensitive;
         }
         return null;
     }
@@ -269,6 +280,19 @@ public static class ReportEndpoints
     {
         var t = s?.Trim();
         return string.IsNullOrEmpty(t) ? null : System.Text.RegularExpressions.Regex.Replace(t, @"\s+", " ");
+    }
+
+    /// <summary>
+    /// For the uploader only: what happened to the covered copies of a card report's photos. "Pending" while
+    /// covering runs, "Ready" when every photo has its covered copy, "Private" when any photo stays private
+    /// (covering failed, or it was posted before covering existed). Null when there is no card photo.
+    /// </summary>
+    internal static string? CoverSummary(Report r)
+    {
+        var cards = r.Photos.Where(p => p.IsSensitive).ToList();
+        if (cards.Count == 0) return null;
+        if (cards.Any(p => p.CoverState == CoverState.Pending)) return "Pending";
+        return cards.All(p => p.CoverState == CoverState.Ready) ? "Ready" : "Private";
     }
 
     public static async Task ExpireOpenMatches(ZarqaDb db, Guid reportId, DateTimeOffset now, CancellationToken ct)
@@ -310,13 +334,14 @@ public static class ReportEndpoints
                 ReportStatus.InChat => "Chatting",
                 ReportStatus.Pickup => r.Kind == ReportKind.Lost ? "Ready to collect" : "Claimed at RSA",
                 ReportStatus.Open when r.DropAtRsa => r.RsaReceivedAt is null ? "Bring to RSA" : "At the RSA",
-                ReportStatus.Closed or ReportStatus.Expired => "Closed",
+                ReportStatus.Closed => "Closed",
+                ReportStatus.Expired => "Expired",
                 _ => match is not null ? "Possible match" : "Searching",
             };
             return new ReportDto(r.Id, r.Kind == ReportKind.Lost ? "lost" : "found", r.Title, r.CategoryText, r.CategoryNorm, r.Description,
                 r.LocationName, r.LocationText, r.EventDate?.ToString("yyyy-MM-dd"), r.EventTime?.ToString("HH:mm"),
                 r.Status.ToString(), pill, r.IsSensitive, r.Photos.OrderBy(p => p.Position).Select(p => p.Id).ToArray(),
-                match, chat, r.CreatedAt, r.DropAtRsa, RsaCodes.Format(r.DropCode), r.RsaReceivedAt is not null, pickup);
+                match, chat, r.CreatedAt, r.DropAtRsa, RsaCodes.Format(r.DropCode), r.RsaReceivedAt is not null, pickup, CoverSummary(r));
         }).ToList();
     }
 }

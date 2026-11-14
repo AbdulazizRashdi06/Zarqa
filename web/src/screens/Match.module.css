@@ -1,3 +1,8 @@
+/* This screen pads for the iPhone home indicator itself (index.css #root). */
+:global(#root):has(> .page) {
+  padding-bottom: 0;
+}
+
 .page {
   position: relative;
   flex-grow: 1;
@@ -11,19 +16,19 @@
   position: absolute;
   top: 66px;
   right: 14px;
-  width: 128px;
+  width: clamp(96px, 30vw, 128px);
   display: flex;
   flex-direction: column;
   align-items: center;
   pointer-events: none;
 }
 .mascot img {
-  width: 128px;
+  width: 100%;
   height: auto;
 }
-/* Zarqa is the last beat of the reveal: she pops up once the stamp has landed. */
+/* Zarqa is the last beat of the reveal: she pops up as the stamp lands. */
 .mascot {
-  --z-delay: 900ms;
+  --z-delay: 700ms;
 }
 @keyframes verdictIn {
   from {
@@ -50,38 +55,59 @@
   margin: 0;
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(60px, 19vw, 76px);
+  font-size: clamp(52px, 17vw, 76px);
   line-height: 0.9;
   text-transform: uppercase;
 }
+.title:focus {
+  outline: none;
+}
+/* Short screens give the headline less room so the answer comes sooner. */
+@media (max-height: 760px) {
+  .title {
+    font-size: clamp(52px, 15vw, 62px);
+  }
+}
 
-/* Each tag gets about half the width so neither name hides under the other. */
+/* The two tags sit side by side, the found one lower and overlapping, each as tall as its text needs.
+   The MATCH stamp comes down on the seam below the text, so it never covers a word. */
 .tags {
   position: relative;
-  height: 262px;
   flex-shrink: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  padding-bottom: 50px;
+}
+/* No stamp (an open chat): no room kept for it. */
+.tagsPlain {
+  padding-bottom: 10px;
 }
 .lostTag,
 .foundTag {
-  position: absolute;
-  height: 196px;
-  padding: 16px 12px 14px 34px;
+  min-height: 172px;
+  padding: 16px 12px 22px 34px;
   display: flex;
   flex-direction: column;
   gap: 8px;
   color: var(--ink);
 }
 .lostTag {
-  left: -4px;
-  top: 10px;
-  width: calc(50% + 6px);
+  grid-column: 1;
+  grid-row: 1;
+  margin: 10px -6px 0 -4px;
+  /* The found tag overlaps this one's right edge. */
+  padding-right: 18px;
   rotate: -6deg;
   background: var(--paper);
 }
+.lostTag .stampSmall {
+  color: var(--tan-dark);
+}
 .foundTag {
-  right: -4px;
-  top: 44px;
-  width: calc(50% + 10px);
+  grid-column: 2;
+  grid-row: 1;
+  margin: 40px -4px 0 -6px;
   rotate: 5deg;
   background: var(--tan);
 }
@@ -122,6 +148,13 @@
   }
   100% {
     scale: 1;
+  }
+}
+/* A maybe is set down, not slammed. */
+@keyframes stampSoft {
+  from {
+    opacity: 0;
+    scale: 1.25;
   }
 }
 /* The ring of ink the stamp throws off */
@@ -167,32 +200,78 @@
     animation: stampRing 520ms var(--ease-out) 830ms backwards;
     pointer-events: none;
   }
+  /* The confidence comes in with the stamp, not after it. */
   .verdict {
-    animation: verdictIn 460ms var(--spring) 1080ms backwards;
+    animation: verdictIn 460ms var(--spring) 700ms backwards;
+  }
+  .tags[data-level='small'] {
+    animation: none;
+  }
+  .tags[data-level='small'] .stamp {
+    animation: stampSoft 260ms var(--ease-out) 640ms backwards;
+  }
+  .tags[data-level='small'] .stamp::after {
+    content: none;
   }
 }
+/* Under reduced motion the details fade in at once instead of waiting for the reveal. */
+@media (prefers-reduced-motion: reduce) {
+  .photos [data-enter],
+  .reasons [data-enter] {
+    animation-delay: 0ms;
+  }
+}
+/* Seen before on this phone (or no longer open): everything is already in place. */
+.settled {
+  --z-delay: 0ms;
+}
+.settled .tags,
+.settled .lostTag,
+.settled .foundTag,
+.settled .stamp,
+.settled .stamp::after,
+.settled .verdict,
+.settled .title [data-enter],
+.settled .photos [data-enter],
+.settled .reasons [data-enter] {
+  animation: none;
+}
+
 .tagName {
+  flex-shrink: 0;
   font-family: var(--font-display);
-  font-size: 22px;
-  line-height: 1;
+  font-size: clamp(19px, 5.8vw, 22px);
+  line-height: 1.05;
   text-transform: uppercase;
   overflow: hidden;
-  overflow-wrap: anywhere;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
 .tagMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
   font-size: 12px;
   font-weight: 700;
+  line-height: 1.3;
+}
+.lostTag .tagMeta {
+  color: var(--ink-muted);
+}
+.tagPlace {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 .stamp {
   position: absolute;
-  left: calc(50% - 46px);
-  top: 176px;
-  width: 92px;
-  height: 92px;
-  border-radius: 46px;
+  left: calc(50% - 41px);
+  bottom: 0;
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
   background: var(--ground);
   border: 3px solid var(--paper);
   rotate: -14deg;
@@ -210,32 +289,81 @@
 }
 .stampBig {
   font-family: var(--font-display);
-  font-size: 24px;
+  font-size: 22px;
   line-height: 1;
 }
+.tags[data-level='small'] .stampBig {
+  font-size: 19px;
+}
 
+/* Each photo whole, at its own shape (a card's edges and name are never cropped off); tap to enlarge. */
 .photos {
   display: flex;
   gap: 8px;
   overflow-x: auto;
+  flex-shrink: 0;
+  border-radius: 14px;
+}
+.photoButton {
+  flex-shrink: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  border-radius: 14px;
+  transition: scale 160ms var(--ease-out);
+}
+.photoButton:active {
+  scale: 0.97;
 }
 .photo {
-  width: 120px;
-  height: 120px;
-  flex-shrink: 0;
-  object-fit: cover;
+  display: block;
+  height: 132px;
+  width: auto;
+  min-width: 88px;
+  max-width: min(320px, calc(100vw - 2 * var(--gutter)));
+  object-fit: contain;
   border-radius: 14px;
   border: 3px solid var(--tan);
+  background: var(--surface);
+}
+.photoFailed {
+  width: 132px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
+}
+.photoRetry {
+  color: var(--tan-light);
+  font-weight: 800;
 }
 
-.coveredNote {
+.coveredNote,
+.privateNote {
   margin: -6px 0 0;
   font-size: 13px;
   line-height: 1.45;
-  color: var(--ink-muted);
+  color: var(--text-muted);
+}
+.privateNote {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 2px dashed var(--line);
+  font-size: 14px;
 }
 
 .reasons {
+  margin: 0;
+  padding: 0;
+  list-style: none;
   display: flex;
   flex-direction: column;
 }
@@ -249,6 +377,10 @@
   font-weight: 600;
   line-height: 1.3;
 }
+.reasonText {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
 .reasonNum {
   font-family: var(--font-display);
   font-size: 22px;
@@ -257,31 +389,47 @@
   flex-shrink: 0;
 }
 
-/* After the reasons, never over them; on tall phones it still sits at the bottom. */
+/* The answer stays on screen: it sticks to the bottom while the details scroll under it, and on tall
+   phones it simply sits after them (never over the reasons once you've scrolled down). */
 .bar {
-  margin-top: auto;
-  padding-top: 8px;
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  margin: auto calc(-1 * var(--gutter)) 0;
+  padding: 10px var(--gutter) calc(10px + env(safe-area-inset-bottom));
+  background: var(--ground);
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
+}
+.bar::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: 18px;
+  background: linear-gradient(to bottom, transparent, var(--ground));
+  pointer-events: none;
+}
+.takenNote {
+  margin-top: auto;
 }
 .notMine {
   min-height: 48px;
+  margin-top: -6px;
   border: none;
   background: none;
   color: var(--tan-light);
   font-size: 15px;
   font-weight: 700;
 }
-.error {
-  margin: 0 0 6px;
-  font-size: 14px;
-  font-weight: 700;
-  color: #f0a58c;
+.notMine:disabled {
+  opacity: 0.45;
 }
 
 .mineNote {
-  margin: 2px 0 0;
+  margin: -8px 0 0;
   text-align: center;
   font-size: 13px;
   line-height: 1.4;
@@ -290,6 +438,7 @@
 
 /* The finder's own words, one tap away */
 .words {
+  min-width: 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
@@ -331,12 +480,77 @@
   font-size: 16px;
   line-height: 1.5;
   color: var(--text);
+  white-space: pre-line;
 }
 .wordsText[hidden] {
   display: none;
 }
 .pickup { padding: 22px 20px; color: var(--ink); display: flex; flex-direction: column; gap: 6px; }
 .pickup p { margin: 0; line-height: 1.5; }
-.pickupCode { font: 56px/1 var(--font-display); letter-spacing: 4px; margin: 6px 0 4px !important; }
-.photo { transition: scale 160ms var(--ease-out); }
+.pickupCode { font: clamp(40px, 14vw, 56px)/1 var(--font-display); letter-spacing: 4px; white-space: nowrap; margin: 6px 0 4px !important; }
+/* Not at the desk yet: the code is real but there's nothing to collect, so it reads as on hold. */
+.pickupCodeWaiting { color: var(--ink-muted); }
 .pickupItem { font-weight: 700; }
+
+/* Full-screen photo viewer (native <dialog>: focus trap, Esc closes). */
+.viewer {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: calc(12px + env(safe-area-inset-top)) 12px calc(16px + env(safe-area-inset-bottom));
+  border: none;
+  background: rgb(10 12 18 / 0.94);
+  color: var(--text);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  animation: fadeIn 160ms ease;
+}
+.viewer[open] {
+  display: flex;
+}
+.viewer::backdrop {
+  background: transparent;
+}
+.viewerClose {
+  position: absolute;
+  top: calc(12px + env(safe-area-inset-top));
+  right: 12px;
+  width: var(--tap);
+  height: var(--tap);
+  border: none;
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--text);
+  display: grid;
+  place-items: center;
+}
+.viewerImg {
+  max-width: 100%;
+  max-height: calc(100dvh - 160px);
+  object-fit: contain;
+  border-radius: 12px;
+  touch-action: pinch-zoom;
+}
+.viewerNav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-weight: 700;
+}
+.viewerNav button {
+  width: var(--tap);
+  height: var(--tap);
+  border: none;
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--text);
+  display: grid;
+  place-items: center;
+}
+.viewerNav button:disabled {
+  opacity: 0.35;
+}

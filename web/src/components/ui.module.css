@@ -30,6 +30,8 @@
   position: relative;
   background: var(--paper);
   color: var(--ink);
+  /* Native controls (checkboxes, date and time pickers) drawn for a light surface, not the dark page. */
+  color-scheme: light;
   border-radius: 24px;
   padding: 20px 20px 22px;
 }
@@ -133,14 +135,14 @@
 
 /* Big primary button: Anton label + round arrow */
 .big {
-  height: 66px;
+  min-height: 66px;
   border: none;
   border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 0 10px 0 22px;
+  padding: 10px 10px 10px 22px;
   text-decoration: none;
   width: 100%;
 }
@@ -200,13 +202,14 @@
 }
 .bigLabel {
   font-family: var(--font-display);
-  font-size: 27px;
+  /* Shrinks on narrow phones and wraps to a second line rather than cutting the label off with "...". */
+  font-size: clamp(20px, 7vw, 27px);
+  line-height: 1.05;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   text-align: left;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 .bigCircle {
   width: 46px;
@@ -227,6 +230,15 @@
 .bigDark {
   background: var(--ground);
   color: var(--paper);
+}
+/* On the dark page: a visible bar for secondary and final actions (close a report, back home). */
+.bigSurface {
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: inset 0 0 0 1.5px var(--slate);
+}
+.bigSurface .bigCircle {
+  background: var(--slate);
 }
 
 /* Round 44px icon button (back, chats) */
@@ -298,8 +310,9 @@
   justify-content: flex-start;
   transition: background-color 200ms ease;
 }
+/* tan-dark, not tan: the on state needs 3:1 against the paper form and the paper knob. */
 .switch[aria-checked='true'] {
-  background: var(--tan);
+  background: var(--tan-dark);
 }
 /* The knob slides across and squashes a little while it's held, like a real switch. */
 .switchKnob {

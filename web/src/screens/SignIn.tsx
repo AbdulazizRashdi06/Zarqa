@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react'
+import { useSearchParams } from 'react-router'
 import { Link } from '../lib/nav'
 import { useNavigate } from '../lib/transition'
-import { useSession, type Me } from '../auth/session'
+import { useBack } from '../lib/back'
+import { returnPath, useSession, type Me } from '../auth/session'
+import { clearSignIn, liveCodeAddress, loadSignIn, loadTick, saveSignIn, saveTick } from '../auth/signinDraft'
 import { ConsentCheck } from '../components/ConsentCheck'
 import { BigButton, MonoLabel, Wordmark, ZarqaBubble } from '../components/ui'
 import { zarqaMotion } from '../components/zarqaMotion'
@@ -13,14 +16,27 @@ import s from './SignIn.module.css'
 const RESEND_AFTER = 30
 
 export default function SignIn() {
-  const [step, setStep] = useState<'email' | 'code'>('email')
-  const [email, setEmail] = useState('')
-  const [accepted, setAccepted] = useState(false)
-  const [sentTo, setSentTo] = useState('')
+  const [params] = useSearchParams()
+  const navigate = useNavigate()
+  const back = useBack()
+  const [email, setEmail] = useState(() => loadSignIn().email ?? '')
+  const [accepted, setAccepted] = useState(loadTick)
+  const [sentTo, setSentTo] = useState(() => liveCodeAddress() ?? '')
+  // Opened again (reload, the app relaunched after a trip to the mail app) while the last code still works:
+  // straight back to the code boxes.
+  const [resumed, setResumed] = useState(() => params.get('step') !== 'code' && !!liveCodeAddress())
   const [testCode, setTestCode] = useState<string | null>(null)
   const [error, setError] = useState('')
+  const [invalid, setInvalid] = useState<'email' | 'consent' | null>(null)
   const [busy, setBusy] = useState(false)
-  const [cooldown, setCooldown] = useState(0)
+  const [cooldown, setCooldown] = useState(() => {
+    const { sentAt } = loadSignIn()
+    return typeof sentAt === 'number' ? Math.max(0, RESEND_AFTER - Math.floor((Date.now() - sentAt) / 1000)) : 0
+  })
+  const emailRef = useRef<HTMLInputElement>(null)
+
+  // The code step has its own history entry (?step=code), so the phone's Back returns to the email form.
+  const step = sentTo && (params.get('step') === 'code' || resumed) ? 'code' : 'email'
 
   useEffect(() => {
     if (cooldown <= 0) return
@@ -28,19 +44,66 @@ export default function SignIn() {
     return () => clearTimeout(id)
   }, [cooldown])
 
-  async function sendCode(e?: FormEvent) {
+  // Back on the email form from the code boxes: the cursor waits in the address.
+  const lastStep = useRef(step)
+  useEffect(() => {
+    if (lastStep.current === 'code' && step === 'email') emailRef.current?.focus()
+    lastStep.current = step
+  }, [step])
+
+  function toCodeStep() {
+    setResumed(false)
+    navigate('/signin?step=code', { dir: 'forward' })
+  }
+
+  function fieldError(message: string, field: 'email' | 'consent' | null) {
+    setError(message)
+    setInvalid(field)
+    if (field === 'consent') {
+      const box = document.getElementById('consent')
+      box?.scrollIntoView({ block: 'center' })
+      box?.focus()
+    } else emailRef.current?.focus()
+  }
+
+  /** Sends a code to the typed address (email step) or again to the same one (Resend). True when sent. */
+  async function sendCode(e?: FormEvent): Promise<boolean> {
     e?.preventDefault()
-    if (busy) return
+    if (busy) return false
+    const resend = step === 'code'
+    const address = resend ? sentTo : email.trim()
+    if (!resend) {
+      if (!address) {
+        fieldError(t('signin.needEmail'), 'email')
+        return false
+      }
+      if (!accepted) {
+        fieldError(t('signin.needConsent'), 'consent')
+        return false
+      }
+    }
     setBusy(true)
     setError('')
+    setInvalid(null)
     try {
-      const r = await api<{ email: string; testCode?: string }>('/auth/request-code', { body: { email } })
+      const r = await api<{ email: string; testCode?: string }>('/auth/request-code', { body: { email: address } })
       setSentTo(r.email)
+      saveSignIn({ sentTo: r.email, sentAt: Date.now() })
       setTestCode(r.testCode ?? null)
-      setStep('code')
       setCooldown(RESEND_AFTER)
+      if (!resend) toCodeStep()
+      return true
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : t('common.error'))
+      const message = err instanceof ApiError ? err.message : t('common.error')
+      if (!resend && err instanceof ApiError && err.status === 429 && err.reason === 'codes_sent') {
+        // Codes already went to this address and still work: go and type one instead of waiting. Any other 429
+        // (too many requests from this network) sent nothing, so it stays on the email form.
+        setSentTo(address)
+        setError(message)
+        toCodeStep()
+      } else if (!resend) fieldError(message, err instanceof ApiError && err.status === 400 ? 'email' : null)
+      else setError(message)
+      return false
     } finally {
       setBusy(false)
     }
@@ -51,11 +114,18 @@ export default function SignIn() {
       <CodeStep
         email={sentTo}
         testCode={testCode}
+        consented={accepted}
         cooldown={cooldown}
+        resending={busy}
         resend={() => sendCode()}
         back={() => {
-          setStep('email')
           setError('')
+          if (resumed) {
+            // Opened on someone's half-finished sign-in: whoever asks for another email ticks the box themselves.
+            setResumed(false)
+            setAccepted(false)
+            saveTick(false)
+          } else back('/signin')
         }}
         resendError={error}
       />
@@ -85,12 +155,16 @@ export default function SignIn() {
       <p className={s.legend} data-enter style={{ '--delay': '380ms' }}>
         {t('signin.legend')}
       </p>
+      <p className={s.intro} data-enter style={{ '--delay': '420ms' }}>
+        {t('signin.intro')}
+      </p>
 
       <form className={s.form} onSubmit={sendCode} noValidate data-enter style={{ '--delay': '440ms' }}>
         <label htmlFor="email" className={s.label}>
           {t('signin.emailLabel')}
         </label>
         <input
+          ref={emailRef}
           id="email"
           type="email"
           inputMode="email"
@@ -98,24 +172,54 @@ export default function SignIn() {
           autoCapitalize="none"
           spellCheck={false}
           className={s.input}
-          placeholder="name@gutech.edu.om"
+          placeholder="name@student.gutech.edu.om"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          aria-invalid={!!error}
-          aria-describedby="email-help"
+          onChange={(e) => {
+            setEmail(e.target.value)
+            saveSignIn({ email: e.target.value })
+            if (invalid === 'email') setInvalid(null)
+          }}
+          aria-invalid={invalid === 'email'}
+          aria-describedby={error ? 'signin-error' : 'email-help'}
         />
-        <ConsentCheck checked={accepted} onChange={setAccepted} />
+        <ConsentCheck
+          checked={accepted}
+          invalid={invalid === 'consent'}
+          onChange={(v) => {
+            setAccepted(v)
+            saveTick(v)
+            if (v && invalid === 'consent') {
+              setInvalid(null)
+              setError('')
+            }
+          }}
+        />
         {error && (
-          <p key={error} className={s.error} role="alert" data-shake>
+          <p key={error} id="signin-error" className={s.error} role="alert" data-shake>
             {error}
           </p>
         )}
         <div style={{ marginTop: 8 }}>
-          <BigButton type="submit" label={busy ? t('signin.sending') : t('signin.send')} busy={busy} disabled={busy || !email.trim() || !accepted} />
+          <BigButton type="submit" label={busy ? t('signin.sending') : t('signin.send')} busy={busy} disabled={busy} />
         </div>
-        <p id="email-help" className={s.help}>
-          {t('signin.help')}
-        </p>
+        {/* The same rule as a failed address would repeat it: one line at a time. */}
+        {!error && (
+          <p id="email-help" className={s.help}>
+            {t('signin.help')}
+          </p>
+        )}
+        {!error && liveCodeAddress() && (
+          <button
+            type="button"
+            className={`${s.linkBtn} ${s.haveCode}`}
+            onClick={() => {
+              setSentTo(liveCodeAddress() ?? '')
+              toCodeStep()
+            }}
+          >
+            {t('signin.haveCode')}
+          </button>
+        )}
       </form>
 
       <nav className={s.links} aria-label="About" data-enter style={{ '--delay': '500ms' }}>
@@ -128,23 +232,31 @@ export default function SignIn() {
 function CodeStep({
   email,
   testCode,
+  consented,
   cooldown,
+  resending,
   resend,
   back,
   resendError,
 }: {
   email: string
   testCode: string | null
+  /** The consent box is ticked right now (it can be unticked after a code was sent, then "I already have a code"). */
+  consented: boolean
   cooldown: number
-  resend: () => void
+  resending: boolean
+  resend: () => Promise<boolean>
   back: () => void
   resendError: string
 }) {
-  const { setMe } = useSession()
+  const { setMe, refresh, forgetPendingLogout } = useSession()
   const navigate = useNavigate()
   const [code, setCode] = useState('')
   const [error, setError] = useState('')
+  const [blocked, setBlocked] = useState(false)
+  const [resent, setResent] = useState(false)
   const [busy, setBusy] = useState(false)
+  const [focused, setFocused] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
   const boxes = useRef<HTMLDivElement>(null)
 
@@ -162,13 +274,26 @@ function CodeStep({
     if (busy) return
     setBusy(true)
     setError('')
+    setResent(false)
+    let signedIn = false
     try {
-      // The code step is only reachable with the consent box ticked, so this records it with the sign-in.
-      await api('/auth/verify', { body: { email, code: value, consentVersion: CONSENT_VERSION } })
+      // Consent is recorded with the sign-in only while the box is ticked; otherwise the consent sheet asks.
+      await api('/auth/verify', { body: { email, code: value, consentVersion: consented ? CONSENT_VERSION : undefined } })
+      signedIn = true
+      // A new session exists: a sign-out still waiting from before (made offline) must not end this one.
+      forgetPendingLogout()
+      clearSignIn()
       const me = await api<Me>('/me')
-      navigate(me.firstName ? '/' : '/welcome', { replace: true, dir: 'forward', prepare: () => setMe(me) })
+      navigate(me.firstName ? (returnPath() ?? '/') : '/welcome', { replace: true, dir: 'forward', prepare: () => setMe(me) })
     } catch (err) {
+      if (signedIn) {
+        // The code worked; only loading the account failed. The session takes it from here (or says it can't
+        // reach Zarqa and keeps trying): retyping the spent code would only say it expired.
+        await refresh()
+        return
+      }
       setError(err instanceof ApiError ? err.message : t('common.error'))
+      setBlocked(err instanceof ApiError && err.status === 403)
       setCode('')
       sayNo()
       inputRef.current?.focus()
@@ -178,10 +303,23 @@ function CodeStep({
   }
 
   function onChange(value: string) {
+    // Pasting "482 913" or the whole subject line works: only the digits count.
     const digits = value.replace(/\D/g, '').slice(0, 6)
     setCode(digits)
     if (digits.length === 6) verify(digits)
   }
+
+  async function onResend() {
+    setError('')
+    setResent(false)
+    if (await resend()) {
+      setCode('')
+      setResent(true)
+      inputRef.current?.focus()
+    }
+  }
+
+  const shownError = error || resendError
 
   return (
     <main className={s.page}>
@@ -218,7 +356,11 @@ function CodeStep({
         </label>
         <div className={s.code} ref={boxes}>
           {Array.from({ length: 6 }, (_, i) => (
-            <span key={i} aria-hidden="true" className={`${s.box} ${i === Math.min(code.length, 5) ? s.boxActive : ''} ${code[i] ? s.boxFilled : ''}`}>
+            <span
+              key={i}
+              aria-hidden="true"
+              className={`${s.box} ${focused && i === Math.min(code.length, 5) ? s.boxActive : ''} ${code[i] ? s.boxFilled : ''}`}
+            >
               {/* Each digit pops into its box as it is typed. */}
               {code[i] && <span className={s.digit}>{code[i]}</span>}
             </span>
@@ -229,17 +371,23 @@ function CodeStep({
             className={s.codeInput}
             inputMode="numeric"
             autoComplete="one-time-code"
-            pattern="[0-9]*"
-            maxLength={6}
             autoFocus
             value={code}
             onChange={(e) => onChange(e.target.value)}
+            onFocus={() => setFocused(true)}
+            onBlur={() => setFocused(false)}
             aria-invalid={!!error}
+            aria-describedby={shownError ? 'code-error' : undefined}
           />
         </div>
-        {(error || resendError) && (
-          <p className={s.error} role="alert">
-            {error || resendError}
+        {shownError && (
+          <p id="code-error" className={s.error} role="alert">
+            {shownError}
+          </p>
+        )}
+        {resent && !shownError && (
+          <p className={s.resent} role="status">
+            {t('signin.code.resent', { email })}
           </p>
         )}
         <div style={{ marginTop: 8 }}>
@@ -249,9 +397,16 @@ function CodeStep({
           <button type="button" className={s.linkBtn} onClick={back}>
             {t('signin.code.otherEmail')}
           </button>
-          <button type="button" className={s.linkBtn} onClick={resend} disabled={cooldown > 0}>
-            {cooldown > 0 ? t('signin.code.resendIn', { s: cooldown }) : t('signin.code.resend')}
-          </button>
+          {/* A banned account: another code won't help, the Help page will. */}
+          {blocked ? (
+            <Link to="/help" className={s.linkBtn}>
+              {t('signin.helpLink')}
+            </Link>
+          ) : (
+            <button type="button" className={s.linkBtn} onClick={() => void onResend()} disabled={resending || cooldown > 0} aria-busy={resending || undefined}>
+              {resending ? t('signin.sending') : cooldown > 0 ? t('signin.code.resendIn', { s: cooldown }) : t('signin.code.resend')}
+            </button>
+          )}
         </div>
       </form>
 

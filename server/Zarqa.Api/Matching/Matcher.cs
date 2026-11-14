@@ -192,8 +192,12 @@ public sealed class Matcher(
         // Card/ID photos only as their covered copy, never the original (owner decision 2026-10-27).
         r.Photos.OrderBy(p => p.Position).Select(PhotoAccess.SharedKey).OfType<string>().Select(photos.PathFor).ToList());
 
+    // An app report's name is cut from its one text: it is the start of that text (older reports), or what
+    // ReportText.Split names it today (greetings and "I lost my" skipped). Those match on the text alone, as they
+    // always have. Only a report whose name was typed separately gets the name put in front.
     public static string MatchText(Report r) =>
-        r.Description.StartsWith(r.Title, StringComparison.OrdinalIgnoreCase) ? r.Description
+        r.Description.StartsWith(r.Title, StringComparison.OrdinalIgnoreCase)
+            || string.Equals(ReportText.Split(r.Description)?.Title, r.Title, StringComparison.Ordinal) ? r.Description
         : r.Description.Length == 0 ? r.Title
         : $"{r.Title}. {r.Description}";
 

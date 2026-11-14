@@ -2,6 +2,13 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-14: Shorter consent line on sign-in
+
+**Decision (owner).** The required box on sign-in, and in the sheet shown to accounts with no recorded consent, now reads "I accept the Terms and Privacy", with both words linking to the pages. It replaces the longer line from 2026-11-13 below. The owner's reason was not recorded.
+- **What the tick no longer says.** "I'm 18 or older" and "including my data being processed outside Oman" are gone from the box. Both are still stated in the pages it links to: the Terms require 18 or older, and the Privacy notice says consent includes processing outside Oman and lists each provider and country.
+- **Open question.** The 2026-11-13 entry put those two statements in the box because processing outside Oman needs express consent (Regulations Art. 37) and because Zarqa is 18+ instead of collecting a guardian's consent. Whether accepting the linked pages is enough for either has not been checked by a lawyer.
+- **Unchanged.** The Terms and Privacy texts, the recorded `consent_version` and `consented_at`, and the refusal of reports without consent. The version stays `2026-11-13`, so nobody is asked again; a stored consent does not show which of the two lines the person ticked.
+
 ## 2026-11-13: Terms, Privacy and recorded consent for Oman's PDPL
 
 **Decision (owner).** Rewrite Terms and Privacy against Oman's Personal Data Protection Law (Royal Decree 6/2022) and its Executive Regulations (Ministerial Decision 34/2024), fully enforceable since 5 February 2026. Written from law-firm summaries and the Ministry's pages, not a lawyer's review.

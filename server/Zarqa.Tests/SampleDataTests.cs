@@ -23,6 +23,11 @@ public class SampleDataTests(TestApp app) : IClassFixture<TestApp>
 
         // Filling again replaces the set instead of doubling it.
         await admin.PostAsync("/api/admin/sample", null);
+        // The page can tell sample data is there, and leave made-up people out of the real numbers.
+        var stats = await Json(await admin.GetAsync("/api/admin/stats"));
+        Assert.Equal(9, stats.GetProperty("sampleUsers").GetInt32());
+        Assert.Equal(filled.GetProperty("reports").GetInt32(), stats.GetProperty("sampleReports").GetInt32());
+        Assert.True(stats.GetProperty("users").GetInt32() - stats.GetProperty("sampleUsers").GetInt32() >= 2);
         await using (var db = app.Db())
         {
             Assert.Equal(9, await db.Users.CountAsync(u => u.Email.EndsWith(SampleData.EmailSuffix)));
@@ -46,6 +51,9 @@ public class SampleDataTests(TestApp app) : IClassFixture<TestApp>
             Assert.Equal(0, await db.Conversations.CountAsync());
             Assert.True(await db.Reports.AnyAsync(r => r.Id == real));
         }
+        var after = await Json(await admin.GetAsync("/api/admin/stats"));
+        Assert.Equal(0, after.GetProperty("sampleUsers").GetInt32());
+        Assert.Equal(0, after.GetProperty("sampleReports").GetInt32());
     }
 }
 

@@ -1,10 +1,13 @@
-import { useState, type FormEvent } from 'react'
+import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { useNavigate } from '../lib/transition'
-import { useSession, type Me } from '../auth/session'
+import { returnPath, useSession, type Me } from '../auth/session'
 import { BigButton, Wordmark, ZarqaBubble } from '../components/ui'
 import { t } from '../i18n'
 import { api, ApiError } from '../lib/api'
 import s from './SignIn.module.css'
+
+const WAVE = '/mascot/anim/welcome-wave.webp'
+const WAVE_STILL = '/mascot/anim/welcome-wave-still.webp'
 
 /** First sign-in: pick the first name other students see in chats. Not in the design; built in its style. */
 export default function Welcome() {
@@ -13,17 +16,36 @@ export default function Welcome() {
   const [name, setName] = useState(me?.firstName ?? me?.suggestedFirstName ?? '')
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
+  const inputRef = useRef<HTMLInputElement>(null)
+  // The wave clip is ~700 KB: her still (25 KB) shows at once and the clip takes over, from its first frame,
+  // once it has fully arrived. Reduced motion keeps the still.
+  const [wave, setWave] = useState(WAVE_STILL)
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const clip = new Image()
+    clip.onload = () => setWave(WAVE)
+    clip.src = WAVE
+    return () => {
+      clip.onload = null
+    }
+  }, [])
 
   async function save(e: FormEvent) {
     e.preventDefault()
     if (busy) return
+    if (!name.trim()) {
+      setError(t('welcome.needName'))
+      inputRef.current?.focus()
+      return
+    }
     setBusy(true)
     setError('')
     try {
       const saved = await api<Me>('/me', { method: 'PATCH', body: { firstName: name } })
-      navigate('/', { replace: true, dir: 'forward', prepare: () => setMe(saved) })
+      navigate(returnPath() ?? '/', { replace: true, dir: 'forward', prepare: () => setMe(saved) })
     } catch (err) {
       setError(err instanceof ApiError ? err.message : t('common.error'))
+      inputRef.current?.focus()
     } finally {
       setBusy(false)
     }
@@ -47,10 +69,9 @@ export default function Welcome() {
         mascot="portrait"
         alt={t('welcome.waveAlt')}
         art={
-          <picture className={s.wave}>
-            <source media="(prefers-reduced-motion: reduce)" srcSet="/mascot/anim/welcome-wave-still.webp" />
-            <img src="/mascot/anim/welcome-wave.webp" alt={t('welcome.waveAlt')} width={246} height={420} />
-          </picture>
+          <span className={s.wave}>
+            <img src={wave} alt={t('welcome.waveAlt')} width={246} height={420} />
+          </span>
         }
       >
         {t('welcome.zarqa')}
@@ -61,6 +82,7 @@ export default function Welcome() {
           {t('welcome.label')}
         </label>
         <input
+          ref={inputRef}
           id="first-name"
           className={s.input}
           autoComplete="given-name"
@@ -68,15 +90,15 @@ export default function Welcome() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           aria-invalid={!!error}
-          aria-describedby="name-help"
+          aria-describedby={error ? 'name-error name-help' : 'name-help'}
         />
         {error && (
-          <p className={s.error} role="alert">
+          <p id="name-error" className={s.error} role="alert">
             {error}
           </p>
         )}
         <div style={{ marginTop: 8 }}>
-          <BigButton type="submit" label={busy ? t('welcome.saving') : t('welcome.go')} busy={busy} disabled={busy || !name.trim()} />
+          <BigButton type="submit" label={busy ? t('welcome.saving') : t('welcome.go')} busy={busy} disabled={busy} />
         </div>
         <p id="name-help" className={s.help}>
           {t('welcome.help')}

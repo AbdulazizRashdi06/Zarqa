@@ -18,24 +18,42 @@ function keyBytes(base64url: string) {
   return Uint8Array.from(atob(padded), (c) => c.charCodeAt(0))
 }
 
-/** Asks permission (must follow a tap) and registers this device for alerts. */
-export async function enablePush(): Promise<PushState> {
-  if (pushState() !== 'default' && pushState() !== 'granted') return pushState()
-  const permission = await Notification.requestPermission()
-  if (permission !== 'granted') return permission as PushState
+async function subscribeThisDevice() {
   const registration = await navigator.serviceWorker.ready
   const { publicKey } = await api<{ publicKey: string }>('/push/key')
   const subscription =
     (await registration.pushManager.getSubscription()) ??
     (await registration.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: keyBytes(publicKey) }))
   await api('/push/subscribe', { body: subscription.toJSON() })
+}
+
+/**
+ * Asks permission (must follow a tap) and registers this device for alerts. Throws (ApiError or a browser
+ * error) when registering fails after permission was given: show it and offer to try again.
+ */
+export async function enablePush(): Promise<PushState> {
+  if (pushState() !== 'default' && pushState() !== 'granted') return pushState()
+  const permission = await Notification.requestPermission()
+  if (permission !== 'granted') return permission as PushState
+  await subscribeThisDevice()
   return 'granted'
 }
 
-/** Re-sends an existing subscription (keeps the server's copy fresh after a sign-in). */
+/**
+ * Keeps this device registered after a sign-in: re-sends the subscription, or makes one when permission was
+ * given earlier but subscribing failed.
+ */
 export async function refreshPush() {
   if (pushState() !== 'granted') return
-  const registration = await navigator.serviceWorker.ready
-  const subscription = await registration.pushManager.getSubscription()
-  if (subscription) await api('/push/subscribe', { body: subscription.toJSON() }).catch(() => undefined)
+  await subscribeThisDevice().catch(() => undefined)
+}
+
+/** Signing out: this phone stops getting the account's alerts (removed on the server and in the browser). */
+export async function disablePushOnThisDevice() {
+  if (!('serviceWorker' in navigator) || !('PushManager' in window)) return
+  const registration = await navigator.serviceWorker.getRegistration()
+  const subscription = await registration?.pushManager.getSubscription()
+  if (!subscription) return
+  await api('/push/unsubscribe', { body: subscription.toJSON() }).catch(() => undefined)
+  await subscription.unsubscribe().catch(() => undefined)
 }

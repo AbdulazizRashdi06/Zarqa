@@ -163,6 +163,93 @@ public class ReportFlowTests(TestApp app) : IClassFixture<TestApp>
     }
 
     [Fact]
+    public async Task Editing_with_the_one_text_box_renames_the_report_and_only_while_it_is_searching()
+    {
+        var http = await app.SignedIn("edit.text@gutech.edu.om");
+        var report = await Json(await http.PostAsync("/api/reports", TextForm("lost", "Libary bottle, blue")));
+        var id = report.GetProperty("id").GetGuid();
+
+        var edited = await http.PatchAsync($"/api/reports/{id}",
+            JsonContent.Create(new { text = "Blue water bottle, green cable tie on the handle", locationText = "Library" }));
+        Assert.Equal(HttpStatusCode.OK, edited.StatusCode);
+        var body = await Json(edited);
+        Assert.Equal("Blue water bottle", body.GetProperty("title").GetString());
+        Assert.Equal("Blue water bottle, green cable tie on the handle", body.GetProperty("description").GetString());
+        Assert.Equal("Library", body.GetProperty("locationText").GetString());
+
+        var empty = await http.PatchAsync($"/api/reports/{id}", JsonContent.Create(new { text = "  " }));
+        Assert.Equal(HttpStatusCode.BadRequest, empty.StatusCode);
+
+        Assert.Equal(HttpStatusCode.NoContent, (await http.PostAsync($"/api/reports/{id}/close", null)).StatusCode);
+        var closed = await http.PatchAsync($"/api/reports/{id}", JsonContent.Create(new { text = "Blue bottle" }));
+        Assert.Equal(HttpStatusCode.BadRequest, closed.StatusCode);
+        Assert.Equal("Closed", (await Json(await http.GetAsync($"/api/reports/{id}"))).GetProperty("pill").GetString());
+    }
+
+    [Theory]
+    [InlineData("Blue wallet, my ATM card is inside")]
+    [InlineData("Blue wallet with a Mastercard")]
+    [InlineData("Blue wallet, mulkiya inside")]
+    [InlineData("محفظة زرقاء فيها بطاقة")]
+    public async Task An_edit_that_mentions_a_card_makes_the_photo_private_and_rewording_never_undoes_it(string cardText)
+    {
+        var finder = await app.SignedIn($"finder.edit.{Guid.NewGuid():N}@gutech.edu.om");
+        var owner = await app.SignedIn($"owner.edit.{Guid.NewGuid():N}@gutech.edu.om");
+        var found = await Json(await finder.PostAsync("/api/reports", Form("found", "Blue wallet", "Wallets", photos: 1, description: "Blue wallet")));
+        Assert.False(found.GetProperty("isSensitive").GetBoolean());
+        var foundId = found.GetProperty("id").GetGuid();
+        var photoId = found.GetProperty("photoIds")[0].GetGuid();
+        var lost = await Json(await owner.PostAsync("/api/reports", TextForm("lost", "Blue wallet")));
+        await using (var db = app.Db())
+        {
+            db.Matches.Add(new Match { LostId = lost.GetProperty("id").GetGuid(), FoundId = foundId, FinalScore = 0.9, CreatedAt = DateTimeOffset.UtcNow });
+            await db.SaveChangesAsync();
+        }
+        Assert.Equal(HttpStatusCode.OK, (await owner.GetAsync($"/api/photos/{photoId}")).StatusCode);
+
+        // The finder adds that a card is inside: from now on only the finder sees the original.
+        var carded = await Json(await finder.PatchAsync($"/api/reports/{foundId}", JsonContent.Create(new { text = cardText })));
+        Assert.True(carded.GetProperty("isSensitive").GetBoolean());
+        Assert.Equal("Pending", carded.GetProperty("coverState").GetString());
+        Assert.Equal(HttpStatusCode.NotFound, (await owner.GetAsync($"/api/photos/{photoId}")).StatusCode);
+        Assert.Equal(HttpStatusCode.OK, (await finder.GetAsync($"/api/photos/{photoId}")).StatusCode);
+
+        // Rewording it back does not make the original visible again.
+        var reworded = await Json(await finder.PatchAsync($"/api/reports/{foundId}", JsonContent.Create(new { text = "Blue wallet" })));
+        Assert.True(reworded.GetProperty("isSensitive").GetBoolean());
+        Assert.Equal(HttpStatusCode.NotFound, (await owner.GetAsync($"/api/photos/{photoId}")).StatusCode);
+        var separate = await Json(await finder.PatchAsync($"/api/reports/{foundId}",
+            JsonContent.Create(new { title = "Blue wallet", category = "Wallets", description = "Blue wallet" })));
+        Assert.True(separate.GetProperty("isSensitive").GetBoolean());
+        Assert.Equal(HttpStatusCode.NotFound, (await owner.GetAsync($"/api/photos/{photoId}")).StatusCode);
+        await using (var db = app.Db())
+            Assert.True((await db.Photos.AsNoTracking().SingleAsync(p => p.Id == photoId)).IsSensitive);
+    }
+
+    [Fact]
+    public async Task A_report_without_photos_can_stop_being_a_card_report()
+    {
+        var http = await app.SignedIn("edit.nophoto@gutech.edu.om");
+        var id = (await Json(await http.PostAsync("/api/reports", TextForm("lost", "Bank card, blue")))).GetProperty("id").GetGuid();
+        var edited = await Json(await http.PatchAsync($"/api/reports/{id}", JsonContent.Create(new { text = "Blue pencil case" })));
+        Assert.False(edited.GetProperty("isSensitive").GetBoolean());
+        Assert.True(edited.GetProperty("coverState").ValueKind == JsonValueKind.Null);
+    }
+
+    [Fact]
+    public async Task An_expired_report_says_so_instead_of_closed()
+    {
+        var http = await app.SignedIn("expired.pill@gutech.edu.om");
+        var id = (await Json(await http.PostAsync("/api/reports", TextForm("lost", "Grey scarf")))).GetProperty("id").GetGuid();
+        await using (var db = app.Db())
+        {
+            (await db.Reports.FirstAsync(r => r.Id == id)).Status = ReportStatus.Expired;
+            await db.SaveChangesAsync();
+        }
+        Assert.Equal("Expired", (await Json(await http.GetAsync($"/api/reports/{id}"))).GetProperty("pill").GetString());
+    }
+
+    [Fact]
     public async Task Refuses_future_dates()
     {
         var http = await app.SignedIn("future@gutech.edu.om");
