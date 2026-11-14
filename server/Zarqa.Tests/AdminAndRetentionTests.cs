@@ -19,6 +19,13 @@ public class AdminAndRetentionTests(TestApp app) : IClassFixture<TestApp>
         Assert.True((await Json(await admin.GetAsync("/api/me"))).GetProperty("isAdmin").GetBoolean());
         var stats = await Json(await admin.GetAsync("/api/admin/stats"));
         Assert.True(stats.GetProperty("users").GetInt32() >= 2);
+
+        // The email check is admin-only, and with emails going to the log (as in tests) it reports no provider.
+        // Checked here because the test admin may only be sent three sign-in codes per 15 minutes.
+        Assert.Equal(HttpStatusCode.Forbidden, (await user.PostAsync("/api/admin/email-test", null)).StatusCode);
+        var check = await Json(await admin.PostAsync("/api/admin/email-test", null));
+        Assert.Equal("admin@gutech.edu.om", check.GetProperty("to").GetString());
+        Assert.Equal(0, check.GetProperty("results").GetArrayLength());
     }
 
     [Fact]
@@ -157,18 +164,5 @@ public class AdminAndRetentionTests(TestApp app) : IClassFixture<TestApp>
         Assert.Equal("Striped umbrella", entry.GetProperty("counterpartTitle").GetString());
         Assert.Equal("found", entry.GetProperty("counterpartKind").GetString());
         Assert.Equal(HttpStatusCode.Forbidden, (await owner.GetAsync($"/api/admin/log?reportId={lost}")).StatusCode);
-    }
-
-    [Fact]
-    public async Task Email_test_is_admin_only_and_reports_no_provider_when_emails_go_to_the_log()
-    {
-        var admin = await app.SignedIn("admin@gutech.edu.om");
-        var student = await app.SignedIn("emailtest.student@gutech.edu.om");
-
-        Assert.Equal(HttpStatusCode.Forbidden, (await student.PostAsync("/api/admin/email-test", null)).StatusCode);
-        var answer = await ReportFlowTests.Json(await admin.PostAsync("/api/admin/email-test", null));
-
-        Assert.Equal("admin@gutech.edu.om", answer.GetProperty("to").GetString());
-        Assert.Equal(0, answer.GetProperty("results").GetArrayLength()); // the test app has no provider configured
     }
 }
