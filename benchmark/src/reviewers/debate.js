@@ -32,9 +32,20 @@ const SIDES = {
 // Proposed 2026-11-14 after the photo round: when a finder's words contradicted their own photo ("brown wallet"
 // on a photo of a black one), the advocates noticed, but the judge, who sees no photo, went by the words.
 // PHOTO_RULE=1 switches the two sentences on; the app's wording is without them.
-const PHOTO_RULE = process.env.PHOTO_RULE === "1";
-const PHOTO_FOR_ADVOCATES = PHOTO_RULE ? " A photo shows the item itself: where a report's wording and its photo disagree, go by the photo and say plainly what it shows." : "";
-const PHOTO_FOR_JUDGE = PHOTO_RULE ? "\nYou do not see the photos; the advocates did. Where an advocate says what a photo shows, take that as what the item looks like, even where the report's wording differs." : "";
+// PHOTO_RULE=1 was the first wording: it recovered the true pairs (86 → 91 of 92 accepted) but the judge also
+// began to wave through differences between the photo and the OTHER report (traps 2 → 11 of 82).
+// PHOTO_RULE=2 limits it to a report against its own photo.
+const PHOTO = {
+  1: [
+    " A photo shows the item itself: where a report's wording and its photo disagree, go by the photo and say plainly what it shows.",
+    "\nYou do not see the photos; the advocates did. Where an advocate says what a photo shows, take that as what the item looks like, even where the report's wording differs.",
+  ],
+  2: [
+    " A photo shows the item itself. Where a report's own wording disagrees with its own photo, go by the photo and say plainly what it shows. A difference between what a photo shows and what the other report says is still a difference, and counts as much as before.",
+    "\nYou do not see the photos; the advocates did. Where an advocate says a report's own photo shows something other than that same report's words, go by the photo. A difference between what a photo shows and what the other report says is still a difference, and counts as much as before.",
+  ],
+}[process.env.PHOTO_RULE] || ["", ""];
+const [PHOTO_FOR_ADVOCATES, PHOTO_FOR_JUDGE] = PHOTO;
 export const COMMON = `This is a university lost-and-found app. Use only evidence in the reports and photos: item type, colour, brand/model, distinctive marks, place (location aliases name the same place), and timing (an item cannot be found before it was lost).${PHOTO_FOR_ADVOCATES}
 ${SIMILARITY_RULE}
 Cite concrete details, say how strong each point is, and do not invent facts. If the evidence on your side is weak, say so plainly. At most 120 words.`;
