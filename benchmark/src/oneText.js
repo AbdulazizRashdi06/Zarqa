@@ -23,6 +23,6 @@ export function normalizeCategory(text) {
 
 /** One text (what a student would type), category from keywords, no title. */
 export const toOne = (r) => {
-  const text = `${r.title}. ${r.description || ""}`.trim();
+  const text = (r.title ? `${r.title}. ${r.description || ""}` : r.description || "").trim();
   return { ...r, title: "", description: text, category: normalizeCategory(text) };
 };

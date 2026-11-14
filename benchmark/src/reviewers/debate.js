@@ -1,6 +1,6 @@
 import { existsSync } from "node:fs";
 import path from "node:path";
-import { CURRENT, OFFLINE_ESTIMATE, PROPOSED, RUNTIME } from "../../config.js";
+import { CURRENT, MODELS, OFFLINE_ESTIMATE, PROPOSED, RUNTIME } from "../../config.js";
 import { askJev, readChoice, readNoul, readScore } from "../jevClient.js";
 import { chatJson } from "../openai.js";
 import { dateRelation, matchAliases, truncate } from "../text.js";
@@ -59,12 +59,45 @@ const QUESTIONS = {
   },
 };
 
+// The app's Terra judge (server Reviewers.cs, TerraSystem and JudgeSchema), kept word for word.
+const LEVEL_KEYS = ["clearly_different", "probably_different", "unclear", "probably_same", "almost_certainly_same"];
+export const TERRA_SYSTEM = `You are the judge in a university lost-and-found app. Two advocates have argued whether a LOST report and a FOUND report describe the same physical item. Read the reports and both cases, then answer three questions.
+same_item: ${QUESTIONS.same_item.instructions} Give the probability (0 to 1) that the answer is yes.
+stronger_case: ${QUESTIONS.stronger_case.instructions} "for" = ${QUESTIONS.stronger_case.criteria.for}; "against" = ${QUESTIONS.stronger_case.criteria.against}; "balanced" = ${QUESTIONS.stronger_case.criteria.balanced}.
+overall: ${QUESTIONS.overall.instructions} Give a probability (0 to 1) for each level; they should sum to 1. Levels: ${LEVEL_KEYS.map((k, i) => `${k} = "${DEBATE_LEVELS[i]}"`).join("; ")}.`;
+const num = { type: "number" };
+const JUDGE_SCHEMA = {
+  type: "object",
+  additionalProperties: false,
+  required: ["same_item_probability", "stronger_case", "overall_probabilities"],
+  properties: {
+    same_item_probability: num,
+    stronger_case: { type: "string", enum: ["for", "against", "balanced"] },
+    overall_probabilities: { type: "object", additionalProperties: false, required: LEVEL_KEYS, properties: Object.fromEntries(LEVEL_KEYS.map((k) => [k, num])) },
+  },
+};
+
+/** Reads the Terra judge's answer the way the app does (ReadJudge); null when it is unusable. */
+export function readJudge(a) {
+  const p = (v) => (typeof v === "number" && Number.isFinite(v) ? Math.min(1, Math.max(0, v)) : null);
+  const sameItem = p(a?.same_item_probability);
+  if (sameItem == null || !["for", "against", "balanced"].includes(a?.stronger_case) || !a?.overall_probabilities) return null;
+  let total = 0, weighted = 0;
+  for (let i = 0; i < LEVEL_KEYS.length; i++) {
+    const v = p(a.overall_probabilities[LEVEL_KEYS[i]]);
+    if (v == null) return null;
+    total += v;
+    weighted += v * i;
+  }
+  return total > 0 ? { sameItem, overall: weighted / total / (LEVEL_KEYS.length - 1), stronger: a.stronger_case } : null;
+}
+
 const brief = (r) => ({
   ...(r.title ? { title: r.title } : {}),
   ...(r.category ? { category: r.category } : {}),
   description: truncate(r.description, 500),
   location: r.location,
-  eventDate: r.eventDate,
+  eventDate: r.eventDate || null, // the app sends null for a blank date
 });
 
 async function advocate(side, lost, found, ctx) {
@@ -84,6 +117,7 @@ async function advocate(side, lost, found, ctx) {
     schemaName: `advocate_${side}`,
     schema: ADVOCATE_SCHEMA,
     useCache: ctx.useCache,
+    cacheSalt: ctx.cacheSalt,
   });
   return { ...res.parsed, call: { kind: "luna", ...usage(res) } };
 }
@@ -93,7 +127,7 @@ export function debateScore(f) {
   return 0.5 * f.sameItem + 0.5 * f.overall;
 }
 
-export async function debateReview(lost, found, prelim, ctx, { threshold = PROPOSED.debateThreshold } = {}) {
+export async function debateReview(lost, found, prelim, ctx, { threshold = PROPOSED.debateThreshold, judge = "jev" } = {}) {
   let pro, con;
   try {
     [pro, con] = await Promise.all([advocate("for", lost, found, ctx), advocate("against", lost, found, ctx)]);
@@ -109,7 +143,18 @@ export async function debateReview(lost, found, prelim, ctx, { threshold = PROPO
   };
 
   let answers, jevCall;
-  if (ctx.offline) {
+  if (judge === "terra" && !ctx.offline) {
+    try {
+      const res = await chatJson({ model: MODELS.terra, system: TERRA_SYSTEM, text: JSON.stringify(state), schemaName: "debate_judge", schema: JUDGE_SCHEMA, useCache: ctx.useCache, cacheSalt: ctx.cacheSalt });
+      const read = readJudge(res.parsed);
+      if (!read) throw new Error("unusable judge answer");
+      // Same shapes the Jev readers accept, so the scoring below is shared.
+      answers = { same_item: read.sameItem, stronger_case: { choice: read.stronger }, overall: { score: read.overall * (DEBATE_LEVELS.length - 1) }, raw: res.parsed };
+      jevCall = { kind: "luna", ...usage(res) };
+    } catch (err) {
+      return { failed: true, error: `terra failed: ${err.message}`, call: null, extraCalls: [pro.call, con.call] };
+    }
+  } else if (ctx.offline) {
     answers = { same_item: { noul: prelim.score }, stronger_case: { choice: "balanced" }, overall: { score: prelim.score * 4 } };
     jevCall = { kind: "jev", estimated: true, ...OFFLINE_ESTIMATE.jev };
   } else {
@@ -129,6 +174,7 @@ export async function debateReview(lost, found, prelim, ctx, { threshold = PROPO
     stronger: stronger?.choice ?? "balanced",
     proStrength: pro.strength,
     conStrength: con.strength,
+    timing: state.timing,
   };
   const finalScore = debateScore(features);
   return {
