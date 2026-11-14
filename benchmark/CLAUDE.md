@@ -22,7 +22,12 @@ node scripts/sweep-debate.js --runs results/<dir>          # luna-debate scoring
 node scripts/false-matches.js export|score --runs <dirs>   # blind labelling of false matches
 node scripts/inspect-jev.js                                # Jev answers + blocking rule for each true pair
 LUNA_PROVIDER=none node scripts/count-reviews.js           # how many Luna reviews a run will need
+node scripts/edge.js --data data/edge/round1 --offline     # edge cases: where each labelled pair is lost before the models (free)
+node scripts/edge.js --data data/edge/round2 --vector-limit 100000 --triage 30 --triage-order model --yes   # live, the app's pipeline since 2026-11-14
+EDGE_LEGACY=1 node scripts/edge.js --data data/edge/round2 --yes   # live, the app before 2026-11-14 (control)
 ```
+
+`edge.js` reviews every labelled pair with the models even when retrieval or the shortlist dropped it, so each miss is blamed on the right stage. Three model calls per pair: through the Codex gateway (`OPENAI_BASE_URL=http://127.0.0.1:8090/v1`, `node deploy/codex/gateway.mjs`) about 55 calls a minute is safe; more than that used up the ChatGPT plan's allowance, which production shares. `data/edge/round1` is for tuning and `round2` is the holdout. `scripts/edge-build.js` builds a set from the writers' output. `SIMILARITY_RULE=v2` selects a proposed, unmeasured rewording.
 
 Run options: `--systems`, `--sizes`, `--max-queries`, `--parallel` (reports at once), `--review-concurrency` (reviews per report), `--weights <json>`, `--filler-days`, `--no-cache`.
 
@@ -46,6 +51,7 @@ Run options: `--systems`, `--sizes`, `--max-queries`, `--parallel` (reports at o
 | `jev-photo` | vector top 25 | Jev; adds a one-off vision call per report (`src/photoAttributes.js`) |
 | `jev-cascade` | vector top 25 | Jev; unsure pairs go to Luna |
 | `luna-debate` | vector top 25 | two Luna advocates (for/against) in parallel, then Jev decides (`src/reviewers/debate.js`); cut-off `PROPOSED.debateThreshold` |
+| `luna-debate-terra` | vector top 25 | the same advocates, judged by gpt-6.1-terra (the app's judge since 2026-11-10) |
 
 The preliminary score (`src/prescore.js`) is a reconstruction of production's formula: cosine + category/text/location/date boosts.
 
