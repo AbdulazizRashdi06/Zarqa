@@ -16,7 +16,7 @@ export function preliminaryScore(a, b, vecA, vecB, aliasIndex) {
 
   // One-text reports (the app) have no titles: the whole 0.24 text weight goes on the one text.
   let text;
-  if (!a.title && !b.title) text = 0.24 * overlap(tokens(a.description), tokens(b.description));
+  if (!a.title && !b.title) text = 0.24 * overlap(tokens(a.rankText ?? a.description), tokens(b.rankText ?? b.description));
   else {
     const titleOverlap = overlap(tokens(a.title), tokens(b.title));
     const detailOverlap = overlap(tokens(`${a.title} ${a.description}`), tokens(`${b.title} ${b.description}`));

@@ -21,6 +21,8 @@ import { embeddingModelName } from "../src/openai.js";
 import { preliminaryScore } from "../src/prescore.js";
 import { debateReview } from "../src/reviewers/debate.js";
 import { triage } from "../src/reviewers/triage.js";
+import { normalizeReport } from "../src/normalize.js";
+import { normalizeCategory } from "../src/oneText.js";
 import { buildAliasIndex } from "../src/text.js";
 
 const { values: args } = parseArgs({
@@ -37,6 +39,7 @@ const { values: args } = parseArgs({
     "max-candidates": { type: "string" }, // try another shortlist size (the app: 10)
     "shortlist-threshold": { type: "string" }, // try another prescore floor (the app: 0.56)
     "triage-order": { type: "string", default: "prescore" },
+    normalize: { type: "boolean", default: false }, // rank on a plain-English rendering of each edge report (one Luna call each)
     triage: { type: "string" }, // screen the best N by prescore with one Luna call, then review what it keeps
     name: { type: "string" },
     offline: { type: "boolean", default: false },
@@ -61,6 +64,14 @@ const latest = edge.reports.reduce((m, r) => Math.max(m, Date.parse(r.createdAt)
 const filler = makeFiller({ count: Number(args.filler), places: placesFrom({ reports: extra.reports.length ? extra.reports : edge.reports }), endIso: new Date(latest).toISOString(), days: 90 });
 const all = [...edge.reports, ...extra.reports.map((r) => ({ ...r, id: `campus-${r.id}`, photos: [] })), ...filler].map(toOne);
 const byId = new Map(all.map((r) => [r.id, r]));
+if (args.normalize) {
+  // Only the edge reports: the campus and filler distractors are already plain English.
+  const edgeIds = new Set(edge.reports.map((r) => r.id));
+  const todo = all.filter((r) => edgeIds.has(r.id));
+  const ok = await mapLimit(todo, Number(args.parallel), (r) => normalizeReport(r, ctx));
+  for (const r of todo) if (r.rankText) r.categoryKey = normalizeCategory(r.rankText);
+  console.log(`normalized ${ok.filter(Boolean).length}/${todo.length} reports (${todo.filter((r) => r.rankText).length} changed)`);
+}
 const setup = await embedReports(all, "text", ctx);
 
 if (args["vector-limit"]) PROPOSED.vectorLimit = Number(args["vector-limit"]);
@@ -173,7 +184,7 @@ for (const lens of [...new Set(rows.map((r) => r.lens))]) {
 }
 
 const pct = (a, b) => (b ? `${a}/${b} (${Math.round((100 * a) / b)}%)` : "–");
-summary.settings = { rule: process.env.SIMILARITY_RULE || "v1", legacyCode: process.env.EDGE_LEGACY === "1", vectorLimit: PROPOSED.vectorLimit, maxCandidates: CURRENT.maxCandidates, shortlistThreshold, triage: args.triage ? Number(args.triage) : null };
+summary.settings = { normalize: args.normalize, rule: process.env.SIMILARITY_RULE || "v1", legacyCode: process.env.EDGE_LEGACY === "1", vectorLimit: PROPOSED.vectorLimit, maxCandidates: CURRENT.maxCandidates, shortlistThreshold, triage: args.triage ? Number(args.triage) : null };
 summary.reviewsPerReport = round([...reviewsPerReport.values()].reduce((s, v) => s + v, 0) / (reviewsPerReport.size || 1));
 console.log(`\nvector top ${PROPOSED.vectorLimit} · shortlist ≥ ${shortlistThreshold}, top ${CURRENT.maxCandidates} · ${summary.reviewsPerReport} reviews per report on average`);
 console.log(`${rows.length} labelled pairs in a database of ${all.length} reports · embeddings ${summary.embeddings} · cut-off ${PROPOSED.debateThreshold}`);

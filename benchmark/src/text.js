@@ -55,8 +55,9 @@ export function matchAliases(location, aliasIndex) {
 
 /** Location tokens with every alias of every matched place added. */
 export function expandedLocationTokens(report, aliasIndex) {
-  const base = tokens(`${report.location || ""} ${report.campusZone || ""}`);
-  for (const g of matchAliases(report.location, aliasIndex)) for (const n of g.names) base.push(...tokens(n));
+  const place = report.rankLocation ?? report.location;
+  const base = tokens(`${place || ""} ${report.campusZone || ""}`);
+  for (const g of matchAliases(place, aliasIndex)) for (const n of g.names) base.push(...tokens(n));
   return base;
 }
 
@@ -91,13 +92,15 @@ export function photoAttributesText(attrs) {
 
 /** The structured string that gets embedded (same fields as processReport, plus optional photo attributes). */
 export function embeddingText(report, aliasIndex, { withPhotoAttributes = false } = {}) {
-  const aliases = matchAliases(report.location, aliasIndex).flatMap((g) => g.names);
+  // rankText / rankLocation: the person's words plus a plain-English rendering (src/normalize.js), when one exists.
+  const place = report.rankLocation ?? report.location;
+  const aliases = matchAliases(place, aliasIndex).flatMap((g) => g.names);
   const lines = [
     `type: ${report.type}`,
     `title: ${report.title || ""}`,
     `category: ${report.category || ""}`,
-    `description: ${report.description || ""}`,
-    `location: ${report.location || ""}`,
+    `description: ${report.rankText ?? report.description ?? ""}`,
+    `location: ${place || ""}`,
     `campus zone: ${report.campusZone || ""}`,
     aliases.length ? `location aliases: ${[...new Set(aliases)].join(", ")}` : "",
     `date: ${report.eventDate || ""}`,
