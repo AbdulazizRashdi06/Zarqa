@@ -29,8 +29,12 @@ async function download(url, file) {
 }
 
 if (process.argv[2] === "search") {
-  const all = [];
+  // Openverse searches time out now and then: a second run fetches only the kinds still missing.
+  let all = [];
+  try { all = JSON.parse(await readFile(path.join(ROOT, "candidates.json"), "utf8")); } catch {}
+  const have = new Set(all.map((c) => c.kind));
   for (const [kind, query] of Object.entries(ITEMS)) {
+    if (have.has(kind)) continue;
     const url = `https://api.openverse.org/v1/images/?${new URLSearchParams({ q: query, license: "cc0,pdm,by,by-sa", source: "flickr", page_size: "14", mature: "false" })}`;
     const res = await fetch(url, { headers: { "user-agent": UA } });
     if (!res.ok) { console.log(`${kind}: search HTTP ${res.status}`); await sleep(20_000); continue; }
