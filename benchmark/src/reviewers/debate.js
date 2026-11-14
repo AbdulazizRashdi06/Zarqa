@@ -29,7 +29,13 @@ const SIDES = {
   for: "You are the advocate FOR a match. Make the strongest honest case that the LOST and FOUND reports describe the same physical item.",
   against: "You are the advocate AGAINST a match. Make the strongest honest case that the LOST and FOUND reports describe different items.",
 };
-export const COMMON = `This is a university lost-and-found app. Use only evidence in the reports and photos: item type, colour, brand/model, distinctive marks, place (location aliases name the same place), and timing (an item cannot be found before it was lost).
+// Proposed 2026-11-14 after the photo round: when a finder's words contradicted their own photo ("brown wallet"
+// on a photo of a black one), the advocates noticed, but the judge, who sees no photo, went by the words.
+// PHOTO_RULE=1 switches the two sentences on; the app's wording is without them.
+const PHOTO_RULE = process.env.PHOTO_RULE === "1";
+const PHOTO_FOR_ADVOCATES = PHOTO_RULE ? " A photo shows the item itself: where a report's wording and its photo disagree, go by the photo and say plainly what it shows." : "";
+const PHOTO_FOR_JUDGE = PHOTO_RULE ? "\nYou do not see the photos; the advocates did. Where an advocate says what a photo shows, take that as what the item looks like, even where the report's wording differs." : "";
+export const COMMON = `This is a university lost-and-found app. Use only evidence in the reports and photos: item type, colour, brand/model, distinctive marks, place (location aliases name the same place), and timing (an item cannot be found before it was lost).${PHOTO_FOR_ADVOCATES}
 ${SIMILARITY_RULE}
 Cite concrete details, say how strong each point is, and do not invent facts. If the evidence on your side is weak, say so plainly. At most 120 words.`;
 
@@ -73,7 +79,7 @@ const LEVEL_KEYS = ["clearly_different", "probably_different", "unclear", "proba
 export const TERRA_SYSTEM = `You are the judge in a university lost-and-found app. Two advocates have argued whether a LOST report and a FOUND report describe the same physical item. Read the reports and both cases, then answer three questions.
 same_item: ${QUESTIONS.same_item.instructions} Give the probability (0 to 1) that the answer is yes.
 stronger_case: ${QUESTIONS.stronger_case.instructions} "for" = ${QUESTIONS.stronger_case.criteria.for}; "against" = ${QUESTIONS.stronger_case.criteria.against}; "balanced" = ${QUESTIONS.stronger_case.criteria.balanced}.
-overall: ${QUESTIONS.overall.instructions} Give a probability (0 to 1) for each level; they should sum to 1. Levels: ${LEVEL_KEYS.map((k, i) => `${k} = "${DEBATE_LEVELS[i]}"`).join("; ")}.`;
+overall: ${QUESTIONS.overall.instructions} Give a probability (0 to 1) for each level; they should sum to 1. Levels: ${LEVEL_KEYS.map((k, i) => `${k} = "${DEBATE_LEVELS[i]}"`).join("; ")}.${PHOTO_FOR_JUDGE}`;
 const num = { type: "number" };
 const JUDGE_SCHEMA = {
   type: "object",
