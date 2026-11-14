@@ -20,6 +20,7 @@ import { toOne } from "../src/oneText.js";
 import { embeddingModelName } from "../src/openai.js";
 import { preliminaryScore } from "../src/prescore.js";
 import { debateReview } from "../src/reviewers/debate.js";
+import { triage } from "../src/reviewers/triage.js";
 import { buildAliasIndex } from "../src/text.js";
 
 const { values: args } = parseArgs({
@@ -34,8 +35,10 @@ const { values: args } = parseArgs({
     "vector-limit": { type: "string" }, // try another retrieval size (the app: 25)
     "max-candidates": { type: "string" }, // try another shortlist size (the app: 10)
     "shortlist-threshold": { type: "string" }, // try another prescore floor (the app: 0.56)
+    triage: { type: "string" }, // screen the best N by prescore with one Luna call, then review what it keeps
     name: { type: "string" },
     offline: { type: "boolean", default: false },
+    "stages-only": { type: "boolean", default: false }, // live screening call, but no debate
     yes: { type: "boolean", default: false },
   },
 });
@@ -79,6 +82,7 @@ function trace(query, target) {
   const shortlistRank = list.findIndex((x) => x.id === target.id) + 1;
   reviewsPerReport.set(query.id, Math.min(list.length, CURRENT.maxCandidates));
   return {
+    listIds: list.map((x) => x.id),
     vectorRank,
     retrieved: vectorRank > 0 && vectorRank <= PROPOSED.vectorLimit,
     prescore: round(prelim.score),
@@ -87,6 +91,22 @@ function trace(query, target) {
     shortlistRank,
     shortlisted: shortlistRank > 0 && shortlistRank <= CURRENT.maxCandidates,
   };
+}
+
+// With --triage N the best N by prescore go to one screening call; what it keeps (up to the usual
+// shortlist size, best prescore first) is reviewed.
+const triaged = new Map();
+function triageFor(query, listIds) {
+  if (!triaged.has(query.id)) {
+    const candidates = listIds.slice(0, Number(args.triage)).map((id) => byId.get(id));
+    triaged.set(query.id, triage(query, candidates, ctx).then((t) => {
+      const keep = new Set(t.kept.map((r) => r.id));
+      const ids = listIds.filter((id) => keep.has(id)).slice(0, CURRENT.maxCandidates);
+      reviewsPerReport.set(query.id, ids.length);
+      return { ids, screened: candidates.length, kept: t.kept.length, error: t.error };
+    }));
+  }
+  return triaged.get(query.id);
 }
 
 const lenses = args.only ? new Set(args.only.split(",")) : null;
@@ -99,8 +119,15 @@ const rows = await mapLimit(pairs, Number(args.parallel), async (p) => {
   const lostLater = Date.parse(lost.createdAt) >= Date.parse(found.createdAt);
   const fromLost = trace(lost, found), fromFound = trace(found, lost);
   const main = lostLater ? fromLost : fromFound;
+  if (args.triage && !args.offline) {
+    const t = await triageFor(lostLater ? lost : found, main.listIds);
+    const rank = t.ids.indexOf(lostLater ? found.id : lost.id) + 1;
+    Object.assign(main, { prescoreRank: main.shortlistRank, triage: { screened: t.screened, kept: t.kept, error: t.error }, shortlistRank: rank, shortlisted: rank > 0 });
+  }
+  delete fromLost.listIds;
+  delete fromFound.listIds;
   const row = { ...p, lostText: lost.description, foundText: found.description, lostPlace: lost.location, foundPlace: found.location, lostDate: lost.eventDate, foundDate: found.eventDate, decidingSide: lostLater ? "lost" : "found", ...main, otherSide: lostLater ? fromFound : fromLost };
-  if (args.offline) return row;
+  if (args.offline || args["stages-only"]) return row;
   row.scores = [];
   for (let i = 0; i < samples; i++) {
     const r = await debateReview(lost, found, main, { ...ctx, cacheSalt: i ? `sample-${i}` : undefined }, { judge: args.judge });
@@ -132,7 +159,7 @@ const KINDS = [
 const summary = { data: args.data, mode: args.offline ? "stages-only" : "live", judge: args.judge, embeddings: embeddingModelName(), database: all.length, pairs: rows.length, threshold: PROPOSED.debateThreshold, byKind: {}, byLens: {} };
 const tally = (list) => {
   const t = { n: list.length, retrieved: count(list, (r) => r.retrieved), shortlisted: count(list, (r) => r.retrieved && r.shortlisted) };
-  if (!args.offline) Object.assign(t, { errors: count(list, (r) => r.error), modelMatch: count(list, (r) => r.modelMatch), shown: count(list, (r) => r.shown) });
+  if (!args.offline && !args['stages-only']) Object.assign(t, { errors: count(list, (r) => r.error), modelMatch: count(list, (r) => r.modelMatch), shown: count(list, (r) => r.shown) });
   return t;
 };
 for (const [kind] of KINDS) summary.byKind[kind] = tally(rows.filter((r) => r.kind === kind));
@@ -141,7 +168,7 @@ for (const lens of [...new Set(rows.map((r) => r.lens))]) {
 }
 
 const pct = (a, b) => (b ? `${a}/${b} (${Math.round((100 * a) / b)}%)` : "–");
-summary.settings = { vectorLimit: PROPOSED.vectorLimit, maxCandidates: CURRENT.maxCandidates, shortlistThreshold };
+summary.settings = { vectorLimit: PROPOSED.vectorLimit, maxCandidates: CURRENT.maxCandidates, shortlistThreshold, triage: args.triage ? Number(args.triage) : null };
 summary.reviewsPerReport = round([...reviewsPerReport.values()].reduce((s, v) => s + v, 0) / (reviewsPerReport.size || 1));
 console.log(`\nvector top ${PROPOSED.vectorLimit} · shortlist ≥ ${shortlistThreshold}, top ${CURRENT.maxCandidates} · ${summary.reviewsPerReport} reviews per report on average`);
 console.log(`${rows.length} labelled pairs in a database of ${all.length} reports · embeddings ${summary.embeddings} · cut-off ${PROPOSED.debateThreshold}`);
@@ -149,10 +176,10 @@ for (const [kind, what] of KINDS) {
   const t = summary.byKind[kind];
   if (!t.n) continue;
   console.log(`\n${kind}: ${what}`);
-  console.log(`  retrieved ${pct(t.retrieved, t.n)} · shortlisted ${pct(t.shortlisted, t.n)}` + (args.offline ? "" : ` · models say match ${pct(t.modelMatch, t.n - t.errors)} · SHOWN ${pct(t.shown, t.n - t.errors)}${t.errors ? ` · ${t.errors} failed calls` : ""}`));
+  console.log(`  retrieved ${pct(t.retrieved, t.n)} · shortlisted ${pct(t.shortlisted, t.n)}` + (args.offline || args["stages-only"] ? "" : ` · models say match ${pct(t.modelMatch, t.n - t.errors)} · SHOWN ${pct(t.shown, t.n - t.errors)}${t.errors ? ` · ${t.errors} failed calls` : ""}`));
   for (const [lens, k] of Object.entries(summary.byLens)) {
     const x = k[kind];
-    if (x.n) console.log(`    ${lens.padEnd(26)} retrieved ${String(x.retrieved).padStart(2)}/${x.n}  shortlisted ${String(x.shortlisted).padStart(2)}/${x.n}` + (args.offline ? "" : `  models ${String(x.modelMatch).padStart(2)}/${x.n}  shown ${String(x.shown).padStart(2)}/${x.n}`));
+    if (x.n) console.log(`    ${lens.padEnd(26)} retrieved ${String(x.retrieved).padStart(2)}/${x.n}  shortlisted ${String(x.shortlisted).padStart(2)}/${x.n}` + (args.offline || args["stages-only"] ? "" : `  models ${String(x.modelMatch).padStart(2)}/${x.n}  shown ${String(x.shown).padStart(2)}/${x.n}`));
   }
 }
 
