@@ -31,6 +31,9 @@ const { values: args } = parseArgs({
     parallel: { type: "string", default: "4" }, // pairs reviewed at once
     samples: { type: "string", default: "1" }, // model runs per pair (run-to-run variation)
     only: { type: "string" }, // comma-separated lens names
+    "vector-limit": { type: "string" }, // try another retrieval size (the app: 25)
+    "max-candidates": { type: "string" }, // try another shortlist size (the app: 10)
+    "shortlist-threshold": { type: "string" }, // try another prescore floor (the app: 0.56)
     name: { type: "string" },
     offline: { type: "boolean", default: false },
     yes: { type: "boolean", default: false },
@@ -55,8 +58,11 @@ const all = [...edge.reports, ...extra.reports.map((r) => ({ ...r, id: `campus-$
 const byId = new Map(all.map((r) => [r.id, r]));
 const setup = await embedReports(all, "text", ctx);
 
-const shortlistThreshold = Math.max(CURRENT.shortlistFloor, CURRENT.matchThreshold - CURRENT.shortlistMargin);
+if (args["vector-limit"]) PROPOSED.vectorLimit = Number(args["vector-limit"]);
+if (args["max-candidates"]) CURRENT.maxCandidates = Number(args["max-candidates"]);
+const shortlistThreshold = args["shortlist-threshold"] ? Number(args["shortlist-threshold"]) : Math.max(CURRENT.shortlistFloor, CURRENT.matchThreshold - CURRENT.shortlistMargin);
 
+const reviewsPerReport = new Map(); // how many pairs each traced report would send to the models
 /** What `query`'s own matching run would do with `target`: rank in the vector pool, prescore, rank in the shortlist. */
 function trace(query, target) {
   const pool = all
@@ -71,6 +77,7 @@ function trace(query, target) {
     .filter((x) => x.score >= shortlistThreshold)
     .sort((a, b) => b.score - a.score);
   const shortlistRank = list.findIndex((x) => x.id === target.id) + 1;
+  reviewsPerReport.set(query.id, Math.min(list.length, CURRENT.maxCandidates));
   return {
     vectorRank,
     retrieved: vectorRank > 0 && vectorRank <= PROPOSED.vectorLimit,
@@ -134,7 +141,10 @@ for (const lens of [...new Set(rows.map((r) => r.lens))]) {
 }
 
 const pct = (a, b) => (b ? `${a}/${b} (${Math.round((100 * a) / b)}%)` : "–");
-console.log(`\n${rows.length} labelled pairs in a database of ${all.length} reports · embeddings ${summary.embeddings} · cut-off ${PROPOSED.debateThreshold}`);
+summary.settings = { vectorLimit: PROPOSED.vectorLimit, maxCandidates: CURRENT.maxCandidates, shortlistThreshold };
+summary.reviewsPerReport = round([...reviewsPerReport.values()].reduce((s, v) => s + v, 0) / (reviewsPerReport.size || 1));
+console.log(`\nvector top ${PROPOSED.vectorLimit} · shortlist ≥ ${shortlistThreshold}, top ${CURRENT.maxCandidates} · ${summary.reviewsPerReport} reviews per report on average`);
+console.log(`${rows.length} labelled pairs in a database of ${all.length} reports · embeddings ${summary.embeddings} · cut-off ${PROPOSED.debateThreshold}`);
 for (const [kind, what] of KINDS) {
   const t = summary.byKind[kind];
   if (!t.n) continue;
