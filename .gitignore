@@ -35,3 +35,8 @@ server/**/TestResults/
 server/Zarqa.Api/Data/photos/
 # QA and review screenshots
 screenshots/
+
+# Online test photos (openly licensed): kept out of git; benchmark/data/online/manifest.json lists them.
+benchmark/data/online/candidates/
+benchmark/data/online/candidates.json
+benchmark/data/online/photos/
