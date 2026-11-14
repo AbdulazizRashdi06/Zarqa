@@ -24,17 +24,8 @@ builder.Services.AddDbContext<ZarqaDb>(o => o
 builder.Services.AddProblemDetails();
 builder.Services.AddSingleton(TimeProvider.System);
 builder.Services.Configure<EmailOptions>(builder.Configuration.GetSection("Email"));
-var email = builder.Configuration.GetSection("Email").Get<EmailOptions>() ?? new EmailOptions();
-if (email.Provider == "resend")
-{
-    if (string.IsNullOrWhiteSpace(email.ResendApiKey) || string.IsNullOrWhiteSpace(email.From))
-        throw new InvalidOperationException("Email:Provider is 'resend' but Email:ResendApiKey or Email:From is missing.");
-    builder.Services.AddHttpClient<IEmailSender, ResendEmailSender>(c => c.Timeout = TimeSpan.FromSeconds(15));
-}
-else
-{
-    builder.Services.AddSingleton<IEmailSender, LogEmailSender>();
-}
+// "resend" or "brevo" first, the other as backup when its key is set too; otherwise emails go to the log.
+builder.Services.AddZarqaEmail(builder.Configuration.GetSection("Email").Get<EmailOptions>() ?? new EmailOptions());
 
 builder.Services.Configure<PhotoOptions>(builder.Configuration.GetSection("Photos"));
 builder.Services.AddSingleton<PhotoStore>();

@@ -139,6 +139,19 @@ export default function Admin() {
       },
     })
   }
+  function askEmailTest() {
+    setAsk({
+      key: 'email', action: 'email', title: t('admin.email.sheetTitle'), body: t('admin.email.confirm'), confirmLabel: t('admin.email.go'),
+      run: async () => {
+        const r = await api<{ to: string; results: { provider: string; ok: boolean; error: string | null }[] }>('/admin/email-test', { method: 'POST' })
+        if (r.results.length === 0) return t('admin.email.none')
+        const lines = r.results.map(x => (x.ok ? t('admin.email.okLine', { provider: x.provider }) : t('admin.email.failLine', { provider: x.provider, error: x.error ?? '' }))).join(' ')
+        // One provider failing is the thing this check exists to catch: show it as an error, not a quiet result.
+        if (r.results.some(x => !x.ok)) throw new ApiError(lines, 0)
+        return t('admin.email.allOk', { lines, to: r.to })
+      },
+    })
+  }
   function askSample(method: 'POST' | 'DELETE') {
     const fill = method === 'POST'
     setAsk({
@@ -221,6 +234,15 @@ export default function Admin() {
         <button type="button" disabled={!!running} aria-busy={running === 'rematch' || undefined} onClick={askRematch}>{busyLabel('rematch', t('admin.rematch'), t('admin.rematching'))}</button>
       </div>
       {outcome('rematch')}
+    </section>
+
+    <section aria-labelledby="email-title" className={a.section}>
+      <h2 id="email-title">{t('admin.email.title')}</h2>
+      <p>{t('admin.email.note')}</p>
+      <div className={`${s.actions} ${a.actions}`}>
+        <button type="button" disabled={!!running} aria-busy={running === 'email' || undefined} onClick={askEmailTest}>{busyLabel('email', t('admin.email.send'), t('admin.email.sending'))}</button>
+      </div>
+      {outcome('email')}
     </section>
 
     <section aria-labelledby="reports-title" className={a.section}>
