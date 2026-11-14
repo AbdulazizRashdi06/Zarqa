@@ -39,6 +39,7 @@ const { values: args } = parseArgs({
     "max-candidates": { type: "string" }, // try another shortlist size (the app: 10)
     "shortlist-threshold": { type: "string" }, // try another prescore floor (the app: 0.56)
     "triage-order": { type: "string", default: "prescore" },
+    "no-photos": { type: "boolean", default: false }, // review the same pairs without their photos (what the photos add)
     normalize: { type: "boolean", default: false }, // rank on a plain-English rendering of each edge report (one Luna call each)
     triage: { type: "string" }, // screen the best N by prescore with one Luna call, then review what it keeps
     name: { type: "string" },
@@ -72,6 +73,7 @@ if (args.normalize) {
   for (const r of todo) if (r.rankText) r.categoryKey = normalizeCategory(r.rankText);
   console.log(`normalized ${ok.filter(Boolean).length}/${todo.length} reports (${todo.filter((r) => r.rankText).length} changed)`);
 }
+if (args["no-photos"]) for (const r of all) r.photos = [];
 const setup = await embedReports(all, "text", ctx);
 
 if (args["vector-limit"]) PROPOSED.vectorLimit = Number(args["vector-limit"]);
@@ -184,7 +186,7 @@ for (const lens of [...new Set(rows.map((r) => r.lens))]) {
 }
 
 const pct = (a, b) => (b ? `${a}/${b} (${Math.round((100 * a) / b)}%)` : "–");
-summary.settings = { normalize: args.normalize, rule: process.env.SIMILARITY_RULE || "v1", legacyCode: process.env.EDGE_LEGACY === "1", vectorLimit: PROPOSED.vectorLimit, maxCandidates: CURRENT.maxCandidates, shortlistThreshold, triage: args.triage ? Number(args.triage) : null };
+summary.settings = { photos: !args["no-photos"], normalize: args.normalize, rule: process.env.SIMILARITY_RULE || "v1", legacyCode: process.env.EDGE_LEGACY === "1", vectorLimit: PROPOSED.vectorLimit, maxCandidates: CURRENT.maxCandidates, shortlistThreshold, triage: args.triage ? Number(args.triage) : null };
 summary.reviewsPerReport = round([...reviewsPerReport.values()].reduce((s, v) => s + v, 0) / (reviewsPerReport.size || 1));
 console.log(`\nvector top ${PROPOSED.vectorLimit} · shortlist ≥ ${shortlistThreshold}, top ${CURRENT.maxCandidates} · ${summary.reviewsPerReport} reviews per report on average`);
 console.log(`${rows.length} labelled pairs in a database of ${all.length} reports · embeddings ${summary.embeddings} · cut-off ${PROPOSED.debateThreshold}`);
