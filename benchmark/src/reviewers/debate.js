@@ -126,6 +126,17 @@ const brief = (r) => ({
   eventDate: r.eventDate || null, // the app sends null for a blank date
 });
 
+// The app's line ("0 from the LOST report first, then 1 from the FOUND report") was misread in the photo round:
+// an advocate wrote "the LOST photo shows…" about the finder's photo, and with a photo rule on it then replaced
+// the owner's words with the finder's picture. PHOTO_LINE=2 says whose item each photo shows.
+export function photoLine(lostCount, foundCount) {
+  if (process.env.PHOTO_LINE !== "2") return `Attached photos: ${lostCount} from the LOST report first, then ${foundCount} from the FOUND report.`;
+  if (!lostCount && !foundCount) return "Attached photos: none. Neither report has a photo.";
+  if (!lostCount) return `Attached photos: ${foundCount}, all taken by the finder of the FOUND item. The LOST report has no photo: what the owner lost is known only from the LOST report's words.`;
+  if (!foundCount) return `Attached photos: ${lostCount}, all from the owner and showing the LOST item. The FOUND report has no photo: what was found is known only from the FOUND report's words.`;
+  return `Attached photos: ${lostCount + foundCount}. The first ${lostCount} are from the owner and show the LOST item; the next ${foundCount} were taken by the finder and show the FOUND item.`;
+}
+
 async function advocate(side, lost, found, ctx) {
   if (ctx.offline) return { argument: `(offline ${side} argument)`, strength: "moderate", call: { kind: "luna", estimated: true, ...OFFLINE_ESTIMATE.luna } };
   const photos = (r) => (r.photos || []).slice(0, CURRENT.photosPerReport).map((p) => path.resolve(ctx.dataDir, p)).filter((p) => existsSync(p));
@@ -134,7 +145,7 @@ async function advocate(side, lost, found, ctx) {
   const text =
     `LOST report: ${JSON.stringify(brief(lost))}\nFOUND report: ${JSON.stringify(brief(found))}\n` +
     `Location aliases: ${aliases.join(" | ") || "none"}\n` +
-    `Attached photos: ${lostPhotos.length} from the LOST report first, then ${foundPhotos.length} from the FOUND report.`;
+    photoLine(lostPhotos.length, foundPhotos.length);
   const res = await chatJson({
     system: `${SIDES[side]}\n${COMMON}`,
     text,
