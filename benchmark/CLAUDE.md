@@ -97,4 +97,6 @@ The preliminary score (`src/prescore.js`) is a reconstruction of production's fo
 - **The same writer (Claude) wrote both sides**, so recall is an upper bound.
 - **Reports tagged `sensitive_photo_removed` must stay photo-less.**
 
+**`data/photo-set/`** (2026-11-14) is the found side for photo tests: 92 found reports that each have a photo. 23 are the campus photos (`data/campus/photos/`, rebuilt from the collection page) and 69 are openly licensed photos from Openverse/Flickr (`data/online/photos/`), each looked at by an agent and kept only if it shows one everyday item with no face and no readable card or document. Their texts say only what is visible in the photo. It has no lost reports or pairs yet. The photos are not in git: `data/online/manifest.json` lists each online photo's page, author and licence (CC BY, CC BY-SA, CC0 or public domain; credit the author when one is shown), and `node scripts/fetch-online-photos.js restore` downloads them again.
+
 **`data/sample/`** is a tiny text-only set for offline checks. Any pair not listed in `pairs.json` with `isMatch: true` counts as a non-match.
