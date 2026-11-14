@@ -24,6 +24,20 @@ public sealed class FakeModels
     /// <summary>What DeepSeek answers when the screen falls back to it; null means it fails too.</summary>
     public string? DeepSeekScreenAnswer { get; set; }
     public ConcurrentQueue<(string Model, string System, string Text, int Images)> ScreenCalls { get; } = [];
+    /// <summary>
+    /// The rendering's raw JSON answer for a call's user text; unset or null answers with the report's own words and
+    /// place, so nothing is ranked differently.
+    /// </summary>
+    public Func<string, string?>? NormalizeAnswer { get; set; }
+    /// <summary>Luna fails the rendering call like an outage.</summary>
+    public bool NormalizeFails { get; set; }
+    /// <summary>What DeepSeek answers when the rendering falls back to it; null means it fails too.</summary>
+    public string? DeepSeekNormalizeAnswer { get; set; }
+    public ConcurrentQueue<(string Model, string System, string Text, int Images)> NormalizeCalls { get; } = [];
+    /// <summary>Every text sent for embedding.</summary>
+    public ConcurrentQueue<string> EmbeddedTexts { get; } = [];
+    /// <summary>Every chat prompt any model was sent, by schema name.</summary>
+    public ConcurrentQueue<(string SchemaName, string System, string Text)> Prompts { get; } = [];
 
     public FakeEmbedder Embedder => new(this);
     public FakeLuna Luna => new(this);
@@ -41,6 +55,12 @@ public sealed class FakeModels
         ScreenAnswer = DeepSeekScreenAnswer = null;
         ScreenFails = false;
         ScreenCalls.Clear();
+        NormalizeAnswer = null;
+        NormalizeFails = false;
+        DeepSeekNormalizeAnswer = null;
+        NormalizeCalls.Clear();
+        EmbeddedTexts.Clear();
+        Prompts.Clear();
     }
 }
 
@@ -49,8 +69,11 @@ public sealed class FakeEmbedder(FakeModels m) : IEmbedder
 {
     public bool IsConfigured => m.LunaConfigured;
 
-    public Task<EmbedResult> EmbedAsync(IReadOnlyList<string> texts, CancellationToken ct) =>
-        Task.FromResult(new EmbedResult(texts.Select(Vector).ToArray(), texts.Sum(t => t.Length / 4)));
+    public Task<EmbedResult> EmbedAsync(IReadOnlyList<string> texts, CancellationToken ct)
+    {
+        foreach (var t in texts) m.EmbeddedTexts.Enqueue(t);
+        return Task.FromResult(new EmbedResult(texts.Select(Vector).ToArray(), texts.Sum(t => t.Length / 4)));
+    }
 
     private static float[] Vector(string text)
     {
@@ -70,7 +93,14 @@ public sealed class FakeLuna(FakeModels m) : ILuna
     public Task<LunaResult> ChatJsonAsync(string system, string text, IReadOnlyList<string> images, string schemaName, JsonObject schema, CancellationToken ct)
     {
         m.LunaCalls.Add((schemaName, images.Count));
+        m.Prompts.Enqueue((schemaName, system, text));
         foreach (var i in images) m.LunaImages.Add(i);
+        if (schemaName == ReportNormalizer.SchemaName)
+        {
+            m.NormalizeCalls.Enqueue(("gpt-6-luna", system, text, images.Count));
+            if (m.NormalizeFails) throw new ModelCallException("rendering down");
+            return Task.FromResult(new LunaResult(JsonDocument.Parse(m.NormalizeAnswer?.Invoke(text) ?? Echo(text)).RootElement.Clone(), 300, 0, 60, 3));
+        }
         if (schemaName == ScreenReviewer.SchemaName)
         {
             m.ScreenCalls.Enqueue(("gpt-6-luna", system, text, images.Count));
@@ -88,6 +118,13 @@ public sealed class FakeLuna(FakeModels m) : ILuna
         };
         return Task.FromResult(new LunaResult(JsonDocument.Parse(json).RootElement.Clone(), 1000, 0, 100, 5));
     }
+
+    /// <summary>Unscripted rendering: the report's own words and place, which add nothing to the ranking.</summary>
+    private static string Echo(string text)
+    {
+        var report = JsonDocument.Parse(text[(text.IndexOf(':') + 1)..]).RootElement;
+        return new JsonObject { ["english"] = report.GetProperty("description").GetString(), ["place"] = report.GetProperty("place").GetString() }.ToJsonString();
+    }
 }
 
 public sealed class FakeJudge(FakeModels m, bool Fallback) : ITerra, IDeepSeek
@@ -97,6 +134,13 @@ public sealed class FakeJudge(FakeModels m, bool Fallback) : ITerra, IDeepSeek
     public Task<LunaResult> ChatJsonAsync(string system, string text, IReadOnlyList<string> images, string schemaName, JsonObject schema, CancellationToken ct)
     {
         Assert.Empty(images);
+        m.Prompts.Enqueue((schemaName, system, text));
+        if (Fallback && schemaName == ReportNormalizer.SchemaName)
+        {
+            m.NormalizeCalls.Enqueue((DeepSeekChat.Model, system, text, images.Count));
+            if (m.DeepSeekNormalizeAnswer is null) throw new ModelCallException("rendering fallback down");
+            return Task.FromResult(new LunaResult(JsonDocument.Parse(m.DeepSeekNormalizeAnswer).RootElement.Clone(), 300, 0, 60, 3) { Model = DeepSeekChat.Model, ProviderCostUsd = Prices.DeepSeek(300, 0, 60) });
+        }
         if (Fallback && schemaName == ScreenReviewer.SchemaName)
         {
             m.ScreenCalls.Enqueue((DeepSeekChat.Model, system, text, images.Count));

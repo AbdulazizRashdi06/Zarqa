@@ -22,6 +22,11 @@ public sealed class ModelOptions
     public bool UseTerraJudge { get; set; } = true;
     /// <summary>One text-only screening call over the best 30 by prescore when more than 10 pass (decisions.md, 2026-11-14).</summary>
     public bool UseScreen { get; set; } = true;
+    /// <summary>
+    /// One text-only call per new or edited report writes a plain-English rendering, used only to find and rank
+    /// candidates (benchmark/src/normalize.js). Off: nothing is called and stored renderings are ignored.
+    /// </summary>
+    public bool UseNormalize { get; set; } = true;
     public string LunaModel { get; set; } = "gpt-6-luna";
     public string TerraModel { get; set; } = "gpt-6.1-terra";
     public string EmbeddingModel { get; set; } = "text-embedding-3-small";

@@ -14,7 +14,7 @@ namespace Zarqa.Api.Matching;
 public enum MatchOutcome { Done, Retry, Postponed, NotConfigured }
 
 /// <summary>
-/// Embed → every open counterpart, nearest first → prescore shortlist (≥ 0.56) → when more than 10 pass, one
+/// Plain-English rendering of a new or edited report (search and ranking only) → embed → every open counterpart, nearest first → prescore shortlist (≥ 0.56) → when more than 10 pass, one
 /// text-only Luna screen of the best 30 → Luna advocates and Terra judge (≥ 0.55) on at most 10.
 /// The screen and each debate stage can fall back to DeepSeek. Jev remains available as a rollout switch.
 /// Runs in both directions: a new found report is checked against open lost reports and vice versa.
@@ -26,6 +26,7 @@ public sealed class Matcher(
     DebateReviewer debate,
     LunaReviewer lunaReviewer,
     ScreenReviewer screen,
+    ReportNormalizer normalizer,
     ReasonWriter reasons,
     AliasIndex aliases,
     PhotoStore photos,
@@ -59,6 +60,25 @@ public sealed class Matcher(
         {
             log.LogWarning("Daily model spend cap reached; matching for report {Report} postponed", reportId);
             return MatchOutcome.Postponed;
+        }
+
+        // 0. Plain-English rendering, once per text: a new report, or one whose text or place was edited.
+        if (models.Value.UseNormalize && ReportNormalizer.Hash(Original(report)) is var hash && report.SearchHash != hash)
+        {
+            var result = await normalizer.RenderAsync(Original(report), ct);
+            // A failed or unusable rendering stores nothing, so a later run tries again; this run uses the original text.
+            if (result.Rendering is { } rendering)
+                (report.SearchEnglish, report.SearchPlace, report.SearchHash) = (rendering.English, rendering.Place, hash);
+            var payload = new JsonObject
+            {
+                ["rendered"] = result.Rendering is not null,
+                ["model"] = result.Call is null ? null : result.Call.Model ?? models.Value.LunaModel,
+                ["tokens"] = new JsonObject { ["in"] = result.Call?.InputTokens ?? 0, ["out"] = result.Call?.OutputTokens ?? 0 },
+            };
+            if (result.Call is not null) payload["latencyMs"] = result.Call.LatencyMs;
+            // The call is paid for even when its answer was unusable, so the spend cap counts it.
+            Log(report.Id, null, "normalize", payload, result.Call?.CostUsd ?? 0);
+            await db.SaveChangesAsync(ct);
         }
 
         // 1. Embed (again on every run: edits change the text).
@@ -211,7 +231,20 @@ public sealed class Matcher(
     /// The app matches on one text per report (decisions.md, 2026-10-02): no separate item name.
     /// Reports from the older two-field form fold their name into the text.
     /// </summary>
-    public MatchInput ToInput(Report r) => new(
+    public MatchInput ToInput(Report r)
+    {
+        var input = Original(r);
+        // A rendering counts only for the text it was made from: after an edit the old one is ignored until the next run.
+        if (!models.Value.UseNormalize || r.SearchHash is null || r.SearchHash != ReportNormalizer.Hash(input)) return input;
+        return input with
+        {
+            RankText = ReportNormalizer.RankText(input.Description, r.SearchEnglish),
+            RankLocation = ReportNormalizer.RankLocation(input.Location, r.SearchPlace),
+        };
+    }
+
+    /// <summary>The report in the person's own words, without the rendering.</summary>
+    private MatchInput Original(Report r) => new(
         r.Id,
         r.Kind == ReportKind.Lost ? "lost" : "found",
         "",

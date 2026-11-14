@@ -1,6 +1,7 @@
 using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
+using Zarqa.Api.Reports;
 
 namespace Zarqa.Api.Matching;
 
@@ -17,7 +18,15 @@ public sealed record MatchInput(
     string CampusZone,
     string? EventDate, // yyyy-MM-dd or null
     bool IsSensitive,
-    IReadOnlyList<string> PhotoPaths);
+    IReadOnlyList<string> PhotoPaths,
+    // The person's words plus a plain-English rendering (ReportNormalizer), when one exists. Only for finding and
+    // ranking candidates: the embedded text and the prescore. No model that reviews a pair reads them.
+    string? RankText = null,
+    string? RankLocation = null)
+{
+    /// <summary>The prescore's category: guessed from the rendering when there is one (benchmark/scripts/edge.js --normalize).</summary>
+    public string RankCategoryKey => RankText is null ? CategoryKey : Categories.Normalize(RankText, null) ?? "";
+}
 
 /// <summary>
 /// Port of benchmark/src/text.js. Kept behaviour-identical (checked by the golden fixture test),
@@ -56,8 +65,9 @@ public static partial class TextRules
 
     public static IReadOnlyList<string> ExpandedLocationTokens(MatchInput r, AliasIndex aliases)
     {
-        var tokens = Tokens($"{r.Location} {r.CampusZone}");
-        foreach (var g in aliases.Match(r.Location))
+        var place = r.RankLocation ?? r.Location;
+        var tokens = Tokens($"{place} {r.CampusZone}");
+        foreach (var g in aliases.Match(place))
             foreach (var n in g.Names) tokens.AddRange(Tokens(n));
         return tokens;
     }
@@ -82,14 +92,15 @@ public static partial class TextRules
     /// <summary>The structured text that gets embedded.</summary>
     public static string EmbeddingText(MatchInput r, AliasIndex aliases)
     {
-        var names = aliases.Match(r.Location).SelectMany(g => g.Names).Distinct().ToList();
+        var place = r.RankLocation ?? r.Location;
+        var names = aliases.Match(place).SelectMany(g => g.Names).Distinct().ToList();
         var lines = new[]
         {
             $"type: {r.Type}",
             $"title: {r.Title}",
             $"category: {r.Category}",
-            $"description: {r.Description}",
-            $"location: {r.Location}",
+            $"description: {r.RankText ?? r.Description}",
+            $"location: {place}",
             $"campus zone: {r.CampusZone}",
             names.Count > 0 ? $"location aliases: {string.Join(", ", names)}" : "",
             $"date: {r.EventDate ?? ""}",
@@ -183,8 +194,8 @@ public static class Prescore
     public static Result Score(MatchInput a, MatchInput b, double cosine, AliasIndex aliases)
     {
         double category = 0;
-        var ca = a.CategoryKey.ToLowerInvariant().Trim();
-        var cb = b.CategoryKey.ToLowerInvariant().Trim();
+        var ca = a.RankCategoryKey.ToLowerInvariant().Trim();
+        var cb = b.RankCategoryKey.ToLowerInvariant().Trim();
         if (ca.Length > 0 && cb.Length > 0) category = ca == cb ? 0.05 : -0.02;
 
         double text;
@@ -192,7 +203,7 @@ public static class Prescore
         {
             // One-text reports (the app): no item names, so the whole 0.24 text weight goes on the one text.
             // Fixed rule, set before measuring; shortlist recall checked in benchmark/scripts/shortlist-experiment.js.
-            text = 0.24 * TextRules.Overlap(TextRules.Tokens(a.Description), TextRules.Tokens(b.Description));
+            text = 0.24 * TextRules.Overlap(TextRules.Tokens(a.RankText ?? a.Description), TextRules.Tokens(b.RankText ?? b.Description));
         }
         else
         {

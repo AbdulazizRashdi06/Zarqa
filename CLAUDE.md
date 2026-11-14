@@ -15,6 +15,7 @@ The real app is being **built from scratch**: an ASP.NET Core (.NET 10) backend 
 ## Current matching decision (details in decisions.md)
 
 - **luna-debate.**
+  0. A plain-English rendering of each report (one text-only gpt-6-luna call when it is first matched or edited; since 2026-11-14; `MATCHING_NORMALIZE=false` switches it off). It is used only for search and ranking; models and people see the original words. **Committed but not deployed.**
   1. Embedding retrieval: every open counterpart, nearest first (up to 1,000; was the top 25 until 2026-11-14).
   2. The existing preliminary score: ≥ 0.56. When more than 10 pass, one text-only gpt-6-luna call screens the best 30 and picks at most 10 for the debate (since 2026-11-14; `MATCHING_SCREEN=false` restores the best 10 by prescore). **Committed but not deployed.**
   3. Two gpt-6-luna advocates, one arguing for a match and one against, run in parallel and see the photos.
@@ -22,7 +23,7 @@ The real app is being **built from scratch**: an ASP.NET Core (.NET 10) backend 
    The judge questions and both advocates end with a fixed instruction to read item names in context and not treat missing details as evidence against a match (owner decisions 2026-10-27 and 2026-10-31; not re-measured on the benchmark, see decisions.md).
    After changing the cut-off or prompts, press **Re-check open reports** on `/admin` once it's deployed. Pairs that were reviewed but not matched are only reviewed again when one of their reports is queued.
 - **Fallback:** plain gpt-6-luna review when no debate route is configured.
-- **Edge-case sets** (`benchmark/data/edge/round1` to tune, `round2` as the holdout) were written by blind agents and are run with `benchmark/scripts/edge.js`. Holdout, 2026-11-14: 146 → 158 of 184 same-item pairs shown with the screen. Write a fresh blind set before tuning anything else on round 2.
+- **Edge-case sets** (`benchmark/data/edge/round1` to tune, `round2` as the holdout) were written by blind agents and are run with `benchmark/scripts/edge.js`. Holdout with production embeddings, 2026-11-14: 154 → 172 of 184 same-item pairs shown with the rendering and the screen; two-language pairs 11 → 21 of 21. Write a fresh blind set before tuning anything else on round 2.
 - **Recall is the deciding metric.** A missed match means someone never gets their item back. Precision is secondary.
 - **Design for 100–1,000 active reports.** GUtech has about 2,000 people, so 10,000 is unrealistic.
 

@@ -60,6 +60,9 @@ public class ZarqaDb(DbContextOptions<ZarqaDb> options) : DbContext(options), ID
             e.Property(x => x.Description).HasMaxLength(500);
             e.Property(x => x.LocationText).HasMaxLength(120);
             e.Property(x => x.Embedding).HasColumnType($"vector({EmbeddingDimensions})");
+            e.Property(x => x.SearchEnglish).HasMaxLength(Matching.ReportNormalizer.MaxEnglish);
+            e.Property(x => x.SearchPlace).HasMaxLength(Matching.ReportNormalizer.MaxPlace);
+            e.Property(x => x.SearchHash).HasMaxLength(64);
             e.HasIndex(x => new { x.UserId, x.CreatedAt });
             e.HasIndex(x => new { x.Kind, x.Status });
             e.HasMany(x => x.Photos).WithOne().HasForeignKey(p => p.ReportId).OnDelete(DeleteBehavior.Cascade);

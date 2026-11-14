@@ -2,6 +2,34 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-14: Reports are ranked on their own words plus a plain-English rendering
+
+**Decision (owner: "fixing the language mix is a must").** When a report is matched for the first time, or after its text or place is edited, one text-only gpt-6-luna call writes it as one or two plain-English sentences and gives the place in English. Arabic, Arabic typed in Latin letters and digits, German, typos and emoji are rendered; no fact may be added or removed. The rendering is stored on the report (`search_english`, `search_place`, `search_hash`) and is used only to find and rank candidates: the embedded text, the shared-word term, the keyword category and the place aliases use the person's words plus the rendering. Everything a model reads about a pair, the Match screen and every API response keep the person's own words. If the call fails, the report is matched on its own words and the next run tries again. `MATCHING_NORMALIZE=false` switches it off. **Committed, not deployed.** After deploying, press Re-check open reports so existing reports get a rendering.
+
+**Why.** Vector search, shared words, the keyword category and the alias list all favour reports written in the same language. With production embeddings, only about half of the true pairs written in two different languages reached the reviewers (9 of 22 on round 1, 11 of 21 on the holdout), although the reviewers accepted every one they saw.
+
+**Holdout result** (round 2; text-embedding-3-small, gpt-6-luna and gpt-6.1-terra; settings fixed on round 1):
+
+| | App before | Screen only | Rendering only | Rendering and screen |
+|---|---|---|---|---|
+| Same-item pairs shown | 154 / 184 (84%) | 162 (88%) | 167 (91%) | **172 / 184 (93%)** |
+| Same-item pairs that reach the debate | 160 | 170 | 173 | 179 |
+| Two-language pairs shown | 11 / 21 | | 21 / 21 | 21 / 21 |
+| Ordinary reports shown | 26 / 26 | | 26 / 26 | 26 / 26 |
+| Hard-contradiction pairs shown | 10 / 150 | 9 | 11 | 12 |
+| Soft-disagreement pairs shown | 31 / 48 | 32 | 31 | 32 |
+| Debates per report | 10.0 | 8.3 | 10.0 | 8.3 |
+
+With both changes 18 same-item pairs were gained and none lost. The 12 still missed: 7 rejected by the models, 3 below the best 30, 2 dropped by the screen. By label, shown pairs were: Big chance 128 true and 1 not, Looks like it 40 and 20, Small chance 4 and 25.
+
+- The rendering arm was also run with the app's current tokeniser, alias and category rules (`EDGE_LEGACY=1`): the same 167 of 184.
+- Round 1, the tuning set: 130 to 147 of 154 reaching the debate with the rendering, two-language pairs 9 to 22 of 22.
+- These numbers supersede the MiniLM ones in the entry below for the "app before" column: with production embeddings the app started at 84%, not 79%.
+
+**Cost** (API-equivalent, Luna prices from `benchmark/config.js`, Terra priced as Luna as in the app's ledger; prompt sizes estimated from text length, output sizes measured, including reasoning). A debate is about $0.0004, the screen about $0.0006, a rendering about $0.00005. Per 1,000 reports in a busy database (more than 10 candidates each): about $4.2 before and about $4.1 after, because the screen saves more debates than it and the rendering cost. Model calls per report: 30 before, about 27 after. Through the ChatGPT plan no money is charged; the call count is what uses the allowance.
+
+**Limits.** Round 2 was looked at after the screen run, so the rendering is tuned on round 1 and measured on a holdout that was no longer untouched; a fresh blind set is the clean check. Only edge reports were rendered in the test (the distractors are English templates). A wrong rendering could push a true pair down; the person's own words stay in the ranked text to limit that. Arabic against Arabic was not tested in any number.
+
 ## 2026-11-14: Edge-case testing and a screening step before the debate
 
 **Decision (owner asked for the best fix).** The matcher scores every open counterpart (up to 1,000) instead of the nearest 25 by vector. When more than 10 pass the 0.56 floor, one text-only gpt-6-luna call reads the best 30 and picks which get the debate, at most 10, in its order. With 10 or fewer the screen does not run. If it fails, the best 10 by prescore are reviewed as before. `MATCHING_SCREEN=false` switches it off. The advocate and judge prompts, the score and the 0.55 cut-off are unchanged. **Committed, not deployed.** After deploying, press Re-check open reports.

@@ -23,7 +23,7 @@ node scripts/false-matches.js export|score --runs <dirs>   # blind labelling of 
 node scripts/inspect-jev.js                                # Jev answers + blocking rule for each true pair
 LUNA_PROVIDER=none node scripts/count-reviews.js           # how many Luna reviews a run will need
 node scripts/edge.js --data data/edge/round1 --offline     # edge cases: where each labelled pair is lost before the models (free)
-node scripts/edge.js --data data/edge/round2 --vector-limit 100000 --triage 30 --triage-order model --yes   # live, the app's pipeline since 2026-11-14
+node scripts/edge.js --data data/edge/round2 --normalize --vector-limit 100000 --triage 30 --triage-order model --yes   # live, the app's pipeline since 2026-11-14
 EDGE_LEGACY=1 node scripts/edge.js --data data/edge/round2 --yes   # live, the app before 2026-11-14 (control)
 ```
 

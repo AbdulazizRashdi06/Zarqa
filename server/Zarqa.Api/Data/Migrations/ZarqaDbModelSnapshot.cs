@@ -537,6 +537,21 @@ namespace Zarqa.Api.Data.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("rsa_received_by");
 
+                    b.Property<string>("SearchEnglish")
+                        .HasMaxLength(1000)
+                        .HasColumnType("character varying(1000)")
+                        .HasColumnName("search_english");
+
+                    b.Property<string>("SearchHash")
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)")
+                        .HasColumnName("search_hash");
+
+                    b.Property<string>("SearchPlace")
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)")
+                        .HasColumnName("search_place");
+
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("text")
