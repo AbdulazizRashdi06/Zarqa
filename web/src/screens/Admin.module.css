@@ -43,6 +43,13 @@
   margin-bottom: 8px;
   vertical-align: middle;
 }
+/* To review: the two reports of a held match, one under the other, then the reasons. */
+.heldHead { margin: 0 0 12px !important; font-weight: 600; }
+.heldHead .tag { margin-bottom: 0; }
+.side { min-width: 0; }
+.sideLabel { display: block; font: 700 11px var(--font-mono); letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 6px; }
+.side .cardTitle { font-size: 20px; }
+.card .side:last-of-type { margin-bottom: 16px; }
 .photo { padding: 0; border: 0; background: none; border-radius: 12px; flex: none; cursor: zoom-in; }
 .photo:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .photo img { display: block; }

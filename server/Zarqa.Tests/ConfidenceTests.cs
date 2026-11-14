@@ -7,8 +7,11 @@ public class ConfidenceTests
 {
     [Theory]
     [InlineData(0.55, "small")]
-    [InlineData(0.649, "small")]
-    [InlineData(0.65, "looks")]
+    [InlineData(0.599, "small")]
+    [InlineData(0.60, "small")]
+    [InlineData(0.65, "small")]
+    [InlineData(0.699, "small")]
+    [InlineData(0.70, "looks")]
     [InlineData(0.799, "looks")]
     [InlineData(0.80, "big")]
     public void Confidence_bands_match_the_copy_the_owner_sees(double score, string band) =>

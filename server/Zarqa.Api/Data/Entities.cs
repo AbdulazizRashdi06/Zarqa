@@ -8,7 +8,12 @@ public enum ReportKind { Lost, Found }
 /// <summary>Pickup: the owner claimed an item held at the RSA desk and collects it there (no chat).</summary>
 public enum ReportStatus { Open, InChat, Returned, Closed, Expired, Pickup }
 
-public enum MatchStatus { Suggested, Confirmed, Rejected, Expired }
+/// <summary>
+/// Held: a low-scoring debate match waiting for an admin to approve or reject it (Matching.HeldMatches); nobody else can see it.
+/// Withheld: a held match that ended without the owner ever seeing it: an admin rejected it, or one of its reports left
+/// the pool first. Like Rejected, the pair is never reviewed or suggested again, and the owner cannot open it.
+/// </summary>
+public enum MatchStatus { Suggested, Confirmed, Rejected, Expired, Held, Withheld }
 
 /// <summary>RsaStaff: matched by hand at the RSA desk, after someone described their item in person.</summary>
 public enum MatchDecider { Debate, LunaFallback, RsaStaff }

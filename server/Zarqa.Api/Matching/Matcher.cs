@@ -15,7 +15,8 @@ public enum MatchOutcome { Done, Retry, Postponed, NotConfigured }
 
 /// <summary>
 /// Plain-English rendering of a new or edited report (search and ranking only) → embed → every open counterpart, nearest first → prescore shortlist (≥ 0.56) → when more than 10 pass, one
-/// text-only Luna screen of the best 30 → Luna advocates and Terra judge (≥ 0.55) on at most 10.
+/// text-only Luna screen of the best 30 → Luna advocates and Terra judge (≥ 0.55) on at most 10. A debate match below 0.60
+/// is held for an admin's review first (<see cref="HeldMatches"/>).
 /// The screen and each debate stage can fall back to DeepSeek. Jev remains available as a rollout switch.
 /// Runs in both directions: a new found report is checked against open lost reports and vice versa.
 /// </summary>
@@ -106,7 +107,7 @@ public sealed class Matcher(
             .Take(PoolLimit)
             .ToListAsync(ct);
 
-        // Never review a pair twice: suggested, confirmed and rejected pairs all stay as they are.
+        // Never review a pair twice: suggested, confirmed, rejected and held pairs all stay as they are.
         var poolIds = pool.Select(r => r.Id).ToList();
         var decided = await db.Matches
             .Where(m => (m.LostId == report.Id && poolIds.Contains(m.FoundId)) || (m.FoundId == report.Id && poolIds.Contains(m.LostId)))
@@ -184,6 +185,9 @@ public sealed class Matcher(
                 var (lostReport, foundReport) = report.Kind == ReportKind.Lost ? (report, x.Counterpart) : (x.Counterpart, report);
                 var why = await reasons.WriteAsync(lost, found, lostReport.EventTime, foundReport.EventTime, ct);
                 Log(report.Id, x.Counterpart.Id, "reasons", new JsonObject { ["reasons"] = new JsonArray(why.Reasons.Select(r => (JsonNode)r).ToArray()) }, why.CostUsd);
+                var decider = review.Decider == "debate" ? MatchDecider.Debate : MatchDecider.LunaFallback;
+                // A debate match just over the cut-off waits for an admin (or 48 hours) before the owner hears of it.
+                var hold = HeldMatches.ShouldHold(decider, review.FinalScore);
                 var match = new Match
                 {
                     LostId = lostReport.Id,
@@ -192,13 +196,15 @@ public sealed class Matcher(
                     SameItem = review.SameItem,
                     Overall = review.Overall,
                     FinalScore = review.FinalScore,
-                    DecidedBy = review.Decider == "debate" ? MatchDecider.Debate : MatchDecider.LunaFallback,
+                    DecidedBy = decider,
                     Reasons = why.Reasons,
+                    Status = hold ? MatchStatus.Held : MatchStatus.Suggested,
                     CreatedAt = clock.GetUtcNow(),
                 };
                 db.Matches.Add(match);
+                if (hold) Log(lostReport.Id, foundReport.Id, HeldMatches.HeldStep, new JsonObject { ["finalScore"] = review.FinalScore }, 0);
                 await db.SaveChangesAsync(ct);
-                await notifier.MatchCreatedAsync(match.Id, ct);
+                if (!hold) await notifier.MatchCreatedAsync(match.Id, ct);
             }
             await db.SaveChangesAsync(ct);
         }

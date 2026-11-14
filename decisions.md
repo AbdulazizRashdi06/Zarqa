@@ -2,6 +2,24 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-14: Weakest matches wait for an admin; "Looks like it" starts at 0.70
+
+**Decision (owner).**
+- **Held for review.** A debate match scoring 0.55 to 0.599 is not shown to the owner. It waits in a **To review** list on `/admin` (admins only, for now), with both reports, the score and the reasons. **Approve** shows it as "Small chance" and sends the usual notification. **Reject** means the owner never sees it and the pair is not suggested again. After **48 hours** with no decision it is shown anyway (a fixed rule), so a busy admin never blocks a return.
+- **Labels.** "Small chance" is now below 0.70, "Looks like it" 0.70 to 0.799 (was from 0.65), "Big chance" 0.80 and up (unchanged). The 0.55 cut-off is unchanged.
+- RSA manual matches, plain Luna fallback matches and sample data are never held. Matches already in the database stay as they are.
+
+**Why.** On the round-2 holdout with both matching changes, shown pairs were real 2 times out of 8 at 0.55 to 0.60, 6 of 29 at 0.60 to 0.70, 36 of 52 at 0.70 to 0.80, and 128 of 129 from 0.80. Round 1 shows the same steps (8%, 27%, 63%, 98%). So 0.70 is where a suggestion becomes more likely right than wrong, and the lowest band is small enough for a person to clear. The four real matches under 0.65 were a tablet called an "ipad", a ring with a guessed date, a wallet called dark blue against black, and a card found without its wallet: worth keeping, not worth an email each.
+
+**How it works.** Two new match states, stored as text, so there is no migration: `Held` (waiting) and `Withheld` (rejected by an admin, or one of its reports left the pool while it waited). A held match is invisible to both people on every route and sends nothing. The 48-hour release runs in the retention worker, which now wakes every 15 minutes, so it still runs when matching is paused. Approve, reject and release each write a `review_log` row (`held_approve`, `held_reject`, `held_release`).
+
+**Limits and things to know.**
+- The bands were read off round 1 and round 2 after both had been used for tuning, on deliberately hard cases in a crowded database. The pilot's confirm and reject taps per label are the real check.
+- A rollback to older code cannot read `Held` or `Withheld` rows: clear the list first.
+- `deploy/live-check.mjs --live --models` waits for a real debate match; one scoring under 0.60 would now be held and the check would wait. Earlier runs scored 0.84 and 0.91.
+- The Privacy page now says admins can see some possible matches before the owner does. The consent version was not bumped, because the data processed is the same; the owner can overrule this.
+- Not built: review by the RSA desk, hiding low matches on card and ID reports, and a different notification rule for "Small chance".
+
 ## 2026-11-14: Reports are ranked on their own words plus a plain-English rendering
 
 **Decision (owner: "fixing the language mix is a must").** When a report is matched for the first time, or after its text or place is edited, one text-only gpt-6-luna call writes it as one or two plain-English sentences and gives the place in English. Arabic, Arabic typed in Latin letters and digits, German, typos and emoji are rendered; no fact may be added or removed. The rendering is stored on the report (`search_english`, `search_place`, `search_hash`) and is used only to find and rank candidates: the embedded text, the shared-word term, the keyword category and the place aliases use the person's words plus the rendering. Everything a model reads about a pair, the Match screen and every API response keep the person's own words. If the call fails, the report is matched on its own words and the next run tries again. `MATCHING_NORMALIZE=false` switches it off. **Committed, not deployed.** After deploying, press Re-check open reports so existing reports get a rendering.
