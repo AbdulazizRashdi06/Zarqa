@@ -2,6 +2,19 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-14: A card photo with no long number found gets no covered copy
+
+**Found on a real card (owner asked for the check and consented to the test).** The two card photos on the collection page were run through the app's own covering, locally, with real Tesseract. The originals were never opened by a model and all files were deleted afterwards.
+- **ID card:** stayed private ("digits still readable"). The safe outcome.
+- **Bank debit card:** the app made a "covered" copy with **nothing covered**. The card number, expiry date, account number and holder's name were all plainly readable. OCR read six words on the photo and no digit at all (raised, low-contrast digits), so there was nothing to cover, and the re-check passed because it could not read them either. In the app this copy would have gone to a possible owner, RSA staff, admins and Luna.
+
+**Decision.** A covered copy is only made when OCR found and covered at least one long number: 6 or more digits on one line, or a machine-readable line. Every card and ID carries one, so not finding it means the card could not be read. Otherwise the photo stays private ("no card number found to cover"). Fixed rule; two tests with drawn cards. **Committed, not deployed: until it is, bank card photos posted since 2026-10-27 may have copies like this one.**
+
+**Still open (owner).**
+- **Check the covered copies already on the live site** by hand, for every card or ID report since 2026-10-27, and close or delete any that show a number.
+- This rule does not catch a card where OCR reads one long number and misses another (for example the account number is read and the raised card number is not). OCR cannot promise that. The safer product rule is to make **no copy at all for bank cards** (the words bank, visa, mastercard, debit, credit, ATM in the report) and match them on the bank's name, the colour and the first name; that changes the 2026-10-27 decision, so it is the owner's call.
+- The open item "check covered card photos on real cards" is now done for two cards only.
+
 ## 2026-11-14: Weakest matches wait for an admin; "Looks like it" starts at 0.70
 
 **Decision (owner).**

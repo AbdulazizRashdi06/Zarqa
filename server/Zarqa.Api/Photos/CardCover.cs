@@ -12,8 +12,8 @@ public sealed record CoverResult(byte[]? Jpeg, string Reason)
 /// <summary>
 /// Covers every number on a card/ID photo (owner decision 2026-10-27): digits in any script, MRZ lines,
 /// barcodes and QR codes. Names, faces and logos stay visible so an owner can recognise their card.
-/// Fails closed: no readable text, too much covered, an OCR error, or any digit still readable on
-/// the covered copy, and there is no copy at all.
+/// Fails closed: no readable text, no long number found to cover, too much covered, an OCR error, or any
+/// digit still readable on the covered copy, and there is no copy at all.
 /// </summary>
 public sealed partial class CardCover(IOcrEngine ocr)
 {
@@ -59,6 +59,10 @@ public sealed partial class CardCover(IOcrEngine ocr)
 
             var boxes = TextBoxes(bestWords, best.Width);
             boxes.AddRange(BusyRegions(best, bestWords));
+            // Every card and ID carries a long number. If OCR never found one, it could not read the card
+            // (raised or low-contrast digits), and a clean re-check proves nothing: a real bank card came out
+            // with its number, expiry and account number untouched (2026-11-14). No long number, no copy.
+            var foundLongNumber = HasLongNumber(bestWords);
 
             // Covering changes how OCR splits the image, so a re-check can find digits the first read missed.
             // Cover those too and check again; the copy is only kept after a clean check of the served bytes.
@@ -82,7 +86,11 @@ public sealed partial class CardCover(IOcrEngine ocr)
                     foreach (var w in Unscale([.. read], scale)) left.Add(w with { Box = Unrotate(w.Box, degrees, check.Width, check.Height) });
                     if (left.Count > 0) leftover = $"{degrees}°";
                 }
-                if (left.Count == 0) return new CoverResult(output, round == 0 ? "covered" : $"covered after {round + 1} checks");
+                if (left.Count == 0)
+                    return foundLongNumber
+                        ? new CoverResult(output, round == 0 ? "covered" : $"covered after {round + 1} checks")
+                        : CoverResult.Fail("no card number found to cover");
+                foundLongNumber |= HasLongNumber(left);
                 boxes.AddRange(TextBoxes(left, best.Width));
             }
             return CoverResult.Fail($"digits still readable ({leftover})");
@@ -119,6 +127,10 @@ public sealed partial class CardCover(IOcrEngine ocr)
         var (x2, y2) = Back(box.Right, box.Bottom);
         return new SKRectI(Math.Min(x1, x2), Math.Min(y1, y2), Math.Max(x1, x2), Math.Max(y1, y2));
     }
+
+    /// <summary>A card or ID number (6 or more digits on one line) or a machine-readable line among the words.</summary>
+    public static bool HasLongNumber(IReadOnlyList<OcrWord> words) =>
+        Rows(words).Any(row => row.Any(w => IsMrz(w.Text)) || row.Sum(w => w.Text.Count(char.IsDigit)) >= 6);
 
     /// <summary>Boxes over the numbers OCR found, padded; whole rows for card numbers and MRZ lines.</summary>
     public static List<SKRect> TextBoxes(IReadOnlyList<OcrWord> words, int imageWidth)
