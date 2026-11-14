@@ -1,0 +1,4697 @@
+[
+ {
+  "lostId": "L-O-wallet-08",
+  "foundId": "F-O-wallet-09",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a tan hand-tooled basket-weave wallet with dark lacing, not a black Guess wallet; found date is also before the lost date.",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F25",
+  "foundId": "F-C-F25",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "kind": "must",
+  "conflict": "none",
+  "why": "date off by one day (lost on the 4th, wrote the 3rd); did not mention the embossed pattern",
+  "checkerNote": "Black bifold with cash showing; found a day after it was lost.",
+  "tags": [
+   "wallet",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-11",
+  "foundId": "F-O-wallet-01",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a thick black wallet stuffed with cards, not an empty reddish-brown card sleeve.",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-03",
+  "foundId": "F-O-wallet-04",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows an old black wallet with a coin pocket, not a light beige one with a green star.",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-06",
+  "foundId": "F-O-wallet-08",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a black Guess bifold, empty with a price tag; not a long maroon flap wallet with a gold logo.",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-09",
+  "foundId": "F-C-F25",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a black wallet with an embossed line pattern, not light brown woven leather with lacing.",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-01",
+  "foundId": "F-O-wallet-03",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a thin yellowish Morocco wallet with a green star, not a thick black one.",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-04",
+  "foundId": "F-O-wallet-07",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a bright red clover wallet in good condition, not a worn black one.",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-08",
+  "foundId": "F-O-wallet-08",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Black Guess wallet, empty, price tag still attached.",
+  "tags": [
+   "wallet",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-11",
+  "foundId": "F-C-F25",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a black bifold holding cash, not an empty reddish-brown card sleeve.",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-03",
+  "foundId": "F-O-wallet-03",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing (written in Arabic; did not mention the laced edges)",
+  "checkerNote": "Leather wallet with a green star and MOROCCO on it; tan-yellow leather is within reach of 'light beige'.",
+  "tags": [
+   "wallet",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-06",
+  "foundId": "F-O-wallet-07",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a small bright red wallet with an embossed clover and a button tab; not long, no gold metal logo.",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-09",
+  "foundId": "F-O-wallet-11",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a plain reddish-brown card sleeve; no woven pattern or lacing.",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-01",
+  "foundId": "F-O-wallet-02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "kind": "lookalike",
+  "conflict": "none",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Black leather wallet seen flat from the front; thickness and contents cannot be judged from the photo.",
+  "tags": [
+   "wallet",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-04",
+  "foundId": "F-O-wallet-06",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a long red Dooney & Bourke flap wallet, not a worn black one.",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-07",
+  "foundId": "F-O-wallet-10",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a black carbon-look wallet in a box, not a red clover purse.",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-11",
+  "foundId": "F-O-wallet-11",
+  "isMatch": true,
+  "lens": "finder-careless",
+  "itemKind": "wallet",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows a thin reddish-brown leather card sleeve with white stitching and two slots, empty. The finder's 'black' is wrong against the photo.",
+  "tags": [
+   "wallet",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-02",
+  "foundId": "F-O-wallet-05",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a snake-print wristlet pouch, not a black men's wallet.",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-06",
+  "foundId": "F-O-wallet-06",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "kind": "must",
+  "conflict": "none",
+  "why": "colour shade off (said maroon, it is a brighter red)",
+  "checkerNote": "Long dark red flap wallet with a gold metal logo plate; maroon versus red is a matter of shade.",
+  "tags": [
+   "wallet",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-09",
+  "foundId": "F-O-wallet-10",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a black leather and carbon-pattern wallet, not light brown woven leather.",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-01",
+  "foundId": "F-O-wallet-01",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "wallet",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Thick black leather wallet full of cards, lying on a table.",
+  "tags": [
+   "wallet",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-04",
+  "foundId": "F-O-wallet-05",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a snake-print wristlet pouch, not a black leather wallet with a coin pocket.",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-07",
+  "foundId": "F-O-wallet-09",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a tan woven-pattern wallet, not a red clover purse; found date is also before the lost date.",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-10",
+  "foundId": "F-O-wallet-01",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a thick plain black wallet full of cards; no carbon pattern and no gift box.",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-02",
+  "foundId": "F-O-wallet-04",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "wallet",
+  "kind": "lookalike",
+  "conflict": "none",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Black wallet photographed open with cards inside; the outside, where a logo would be, is not visible.",
+  "tags": [
+   "wallet",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-05",
+  "foundId": "F-O-wallet-08",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a black Guess bifold, not a snakeskin-print purse with a hand loop.",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-09",
+  "foundId": "F-O-wallet-09",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "wallet",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Light brown tooled basket-weave leather with dark lacing along the sides, shown in a back pocket.",
+  "tags": [
+   "wallet",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F25",
+  "foundId": "F-O-wallet-03",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a yellowish Morocco wallet, not black.",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-04",
+  "foundId": "F-O-wallet-04",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "wallet",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Worn black wallet with a round coin pocket holding a coin and two cards.",
+  "tags": [
+   "wallet",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-07",
+  "foundId": "F-O-wallet-08",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a black Guess bifold, not a red clover purse.",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-10",
+  "foundId": "F-C-F25",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a bifold embossed all over with a line pattern and holding cash; not a half-leather half-carbon flap case in a gift box. The place also differs.",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-02",
+  "foundId": "F-O-wallet-03",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a yellowish Morocco wallet with a green star, not a black Lacoste one.",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-05",
+  "foundId": "F-O-wallet-07",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a red clover wallet, not a grey and black snakeskin purse.",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-08",
+  "foundId": "F-O-wallet-11",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a reddish-brown card sleeve, not a black Guess wallet (the finder's 'black' does not match the photo either).",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F25",
+  "foundId": "F-O-wallet-02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Black leather bifold fits, but the photo shows one that looks new while the owner had theirs about two years.",
+  "tags": [
+   "wallet",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-03",
+  "foundId": "F-O-wallet-06",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a long red Dooney & Bourke wallet, not a light beige one with a green star.",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-07",
+  "foundId": "F-O-wallet-07",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Small red wallet with an embossed four-leaf clover and side zips with leather pulls.",
+  "tags": [
+   "wallet",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-10",
+  "foundId": "F-O-wallet-11",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a reddish-brown open card sleeve; no carbon pattern and no box.",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-02",
+  "foundId": "F-O-wallet-02",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "kind": "must",
+  "conflict": "soft",
+  "why": "brand guessed wrongly (said Lacoste, it is Timberland)",
+  "checkerNote": "Black men's wallet with a small logo in the corner, but the logo is Timberland's tree; the owner was only guessing Lacoste.",
+  "tags": [
+   "wallet",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-05",
+  "foundId": "F-O-wallet-06",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a long red leather flap wallet, not a snakeskin-print purse.",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-08",
+  "foundId": "F-O-wallet-10",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "The flap is embossed TOM'S, not Guess, and it is a carbon-pattern case in a box.",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F25",
+  "foundId": "F-O-wallet-01",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "wallet",
+  "kind": "lookalike",
+  "conflict": "none",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Black leather folding wallet with cards and visible wear.",
+  "tags": [
+   "wallet",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-11",
+  "foundId": "F-O-wallet-02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a black Timberland bifold, not a reddish-brown card sleeve.",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-03",
+  "foundId": "F-O-wallet-05",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a snake-print wristlet pouch, not a beige leather wallet with a green star.",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-06",
+  "foundId": "F-O-wallet-09",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "wallet",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a tan woven-pattern wallet, not a long maroon flap wallet with a gold logo.",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-10",
+  "foundId": "F-O-wallet-10",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "kind": "must",
+  "conflict": "soft",
+  "why": "wrong nearby place (said the main entrance, it was left in the canteen)",
+  "checkerNote": "Black case, half leather flap and half carbon pattern, in a black box; only the place differs (main entrance versus canteen).",
+  "tags": [
+   "wallet",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-01",
+  "foundId": "F-O-wallet-04",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "wallet",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Black leather wallet, but the photo shows only two cards and a fairly slim wallet, not one stuffed with cards and receipts.",
+  "tags": [
+   "wallet",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-05",
+  "foundId": "F-O-wallet-05",
+  "isMatch": true,
+  "lens": "finder-careless",
+  "itemKind": "wallet",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing (did not mention the purple zip)",
+  "checkerNote": "Flat grey and black snakeskin-print pouch with a hand loop.",
+  "tags": [
+   "wallet",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-08",
+  "foundId": "F-C-F24",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a 2-button blade key (Toyota style) with flat silver tags, one car-shaped; not a push-in Mercedes key and no chrome logo fob.",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F24",
+  "foundId": "F-C-F24",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows a Toyota-style 2-button key with a metal car-shaped tag on the ring; fits.",
+  "tags": [
+   "car-key",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-03",
+  "foundId": "F-O-car-key-04",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a keyless smart fob with silver buttons and no charm or cord; not a 3-button VW key with a sumo charm.",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-06",
+  "foundId": "F-O-car-key-08",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a real Mercedes key with a PANIC button and a chrome Mercedes-Benz fob, not a USB drive.",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-01",
+  "foundId": "F-O-car-key-03",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "car-key",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost item is the bare electronic insert of a remote; photo shows a complete VW flip key with a sumo charm.",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-04",
+  "foundId": "F-O-car-key-07",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "car-key",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost item is a keyless Honda remote with no blade; photo shows a bunch of metal blade keys.",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-08",
+  "foundId": "F-O-car-key-08",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows a push-in Mercedes key with a heavy chrome Mercedes-Benz logo fob; fits.",
+  "tags": [
+   "car-key",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-03",
+  "foundId": "F-O-car-key-03",
+  "isMatch": true,
+  "lens": "finder-careless",
+  "itemKind": "car-key",
+  "kind": "must",
+  "conflict": "none",
+  "why": "says the cord is yellow, it is orange (neighbouring shade)",
+  "checkerNote": "Photo shows a 3-button VW-style flip key with a sumo wrestler charm on a yellow-orange cord; fits (the finder's 'green string' is wrong, the photo is not).",
+  "tags": [
+   "car-key",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-06",
+  "foundId": "F-O-car-key-07",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "car-key",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows metal keys (black-headed key with a groove, gold key behind), not a USB drive.",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-01",
+  "foundId": "F-O-car-key-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "car-key",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost item is a remote's circuit board; photo shows an old all-metal key in a dashboard.",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-04",
+  "foundId": "F-O-car-key-06",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "car-key",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a USB flash drive shaped like a remote (USB plug visible, cap off), not a Honda keyless remote.",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-07",
+  "foundId": "F-O-car-key-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a bare circuit board with battery holder, not a bunch of keys.",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-02",
+  "foundId": "F-O-car-key-05",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost key is all metal with a flower-shaped head and no plastic; photo shows a black rubber-headed key snapped in two.",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-06",
+  "foundId": "F-O-car-key-06",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "car-key",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows a rubber USB drive shaped like a car remote with its cap off; black and grey rather than only dark grey, which is a shade matter.",
+  "tags": [
+   "car-key",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-01",
+  "foundId": "F-O-car-key-01",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows the inside electronics of a remote with a battery clip and no cover; fits.",
+  "tags": [
+   "car-key",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-04",
+  "foundId": "F-O-car-key-05",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost item is a keyless remote with no blade; photo shows a plain rubber-headed blade key, broken.",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-07",
+  "foundId": "F-C-F24",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows one remote-head car key with an edge-cut blade and metal tags; no house keys, no gold key, no wavy centre groove.",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-02",
+  "foundId": "F-O-car-key-04",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a modern plastic keyless fob, not a small all-metal key.",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-05",
+  "foundId": "F-O-car-key-08",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost item is a plain key broken in two with no remote; photo shows an intact Mercedes remote key with a fob.",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F24",
+  "foundId": "F-O-car-key-03",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "car-key",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a VW-style flip key with a sumo doll on a cord; no metal car-shaped keychain.",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-04",
+  "foundId": "F-O-car-key-04",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "kind": "must",
+  "conflict": "soft",
+  "why": "date off by a day: says the 5th, it was found on the 4th",
+  "checkerNote": "Photo fits well (black Honda-style keyless fob, no blade). Only issue: finder's date 2026-11-04 is one day before the stated loss date 2026-11-05, plausibly a misremembered day.",
+  "tags": [
+   "car-key",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-07",
+  "foundId": "F-O-car-key-08",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a single Mercedes remote key with a chrome fob; no house keys or gold key, no blade with a groove.",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-02",
+  "foundId": "F-O-car-key-03",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "car-key",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a black plastic flip remote key with a charm; lost key is all metal with no plastic and no keychain.",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-05",
+  "foundId": "F-O-car-key-07",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "car-key",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows an intact key on a bunch with other keys; lost key was a single plain key snapped in two pieces.",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-08",
+  "foundId": "F-O-car-key-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "car-key",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a small old all-metal key with a clover head, no fob; not a Mercedes push-in key with a chrome logo fob.",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F24",
+  "foundId": "F-O-car-key-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "car-key",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a bare vintage metal key with no keychain; lost key had a metal car-shaped keychain and is a modern Toyota key.",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-03",
+  "foundId": "F-O-car-key-06",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "car-key",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a USB drive shaped like a remote; no sumo charm or cord, not a VW key.",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-07",
+  "foundId": "F-O-car-key-07",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "car-key",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows a black-headed key with a wavy groove down the blade plus other keys including a gold-coloured one; fits.",
+  "tags": [
+   "car-key",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-02",
+  "foundId": "F-O-car-key-02",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "car-key",
+  "kind": "must",
+  "conflict": "soft",
+  "why": "wrong nearby place: says Dirt Parking, it was found in Student Parking",
+  "checkerNote": "Photo fits (small old all-metal key, flower/clover head, no keychain, in an old jeep-like dash). Place differs: Dirt Parking vs Student Parking, a nearby place.",
+  "tags": [
+   "car-key",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-05",
+  "foundId": "F-O-car-key-06",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "car-key",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a USB drive shaped like a remote, not a broken plain metal key.",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-08",
+  "foundId": "F-O-car-key-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a bare circuit board, not a Mercedes key with a chrome fob.",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F24",
+  "foundId": "F-O-car-key-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a bare circuit board with battery holder; no key and no car-shaped keychain.",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-03",
+  "foundId": "F-O-car-key-05",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a plain rubber-headed key with no buttons, snapped; no sumo charm or cord.",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-06",
+  "foundId": "F-C-F24",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a real car key with a metal blade and key ring tags, not a USB drive.",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-01",
+  "foundId": "F-O-car-key-04",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost item is the bare electronic insert; photo shows a complete, intact keyless fob with its shell.",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-05",
+  "foundId": "F-O-car-key-05",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows a plain key with no remote, blade snapped into two pieces; fits.",
+  "tags": [
+   "car-key",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-01",
+  "foundId": "F-O-headphones-01",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "kind": "must",
+  "conflict": "soft",
+  "why": "says the cable is grey; it is white",
+  "checkerNote": "Photo: silver metal in-ears with blue band in black mesh drawstring pouch; cable is white, lost said grey (hedged).",
+  "tags": [
+   "headphones",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-04",
+  "foundId": "F-O-headphones-05",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost white earbuds; photo shows large Philips over-ear headphones.",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-07",
+  "foundId": "F-O-headphones-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost big AKG over-ear; photo shows small in-ear earphones.",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-02",
+  "foundId": "F-O-headphones-04",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "headphones",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost chrome Skullcandy in-ears with black wire; photo shows white Apple-style earbuds (finder's 'black' is wrong, but still not chrome/Skullcandy).",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-05",
+  "foundId": "F-O-headphones-08",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost over-ear headphones; photo shows white earbuds with red fabric cable cover.",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-04",
+  "foundId": "F-O-headphones-04",
+  "isMatch": true,
+  "lens": "finder-careless",
+  "itemKind": "headphones",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows white round Apple earbuds without tips, no remote visible; finder's 'black' is contradicted by the photo itself.",
+  "tags": [
+   "headphones",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-07",
+  "foundId": "F-O-headphones-08",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost big AKG over-ear; photo shows earbuds.",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-02",
+  "foundId": "F-O-headphones-03",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost chrome Skullcandy with black wire; photo shows all-white Apple earbuds.",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-05",
+  "foundId": "F-O-headphones-07",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "headphones",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost has brown padding, Sony guess; photo shows AKG (logo readable) with black padding and a strap headband.",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-08",
+  "foundId": "F-O-headphones-03",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost has hand-sewn red fabric cable cover; photo shows bare white cable with remote, no cover.",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-03",
+  "foundId": "F-O-headphones-06",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost white Apple wired earbuds; photo shows black Sennheiser over-ear headphones.",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-07",
+  "foundId": "F-O-headphones-07",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "headphones",
+  "kind": "must",
+  "conflict": "none",
+  "why": "calls the ring silver; it is white",
+  "checkerNote": "Photo shows big black AKG with light/silver ring, single-sided cable and leather strap under headband.",
+  "tags": [
+   "headphones",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-02",
+  "foundId": "F-O-headphones-02",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "headphones",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows chrome Skullcandy in-ears with skull logo, black wire and black tips.",
+  "tags": [
+   "headphones",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-05",
+  "foundId": "F-O-headphones-06",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost has brown padding; photo shows all-black Sennheiser HD 280 pro, no brown anywhere.",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-08",
+  "foundId": "F-O-headphones-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "headphones",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost white earbuds with red fabric cover; photo shows chrome Skullcandy in-ears with bare black wire.",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-03",
+  "foundId": "F-O-headphones-05",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost white Apple earbuds; photo shows Philips over-ear headphones.",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-06",
+  "foundId": "F-O-headphones-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost black Sennheiser studio headphones; photo shows small silver/blue in-ears.",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-01",
+  "foundId": "F-O-headphones-04",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "headphones",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost metal in-ears with blue stripe; photo shows white plastic Apple earbuds, no metal, no blue.",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-05",
+  "foundId": "F-O-headphones-05",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "kind": "must",
+  "conflict": "soft",
+  "why": "guessed the brand as Sony; it is Philips",
+  "checkerNote": "Photo matches wired over-ear with brown padding on cups and headband; brand reads Philips, lost guessed Sony ('I think').",
+  "tags": [
+   "headphones",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-08",
+  "foundId": "F-O-headphones-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost white earbuds with red sewn cover; photo shows silver/blue metal in-ears with bare white cable.",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-03",
+  "foundId": "F-O-headphones-04",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "headphones",
+  "kind": "lookalike",
+  "conflict": "none",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows white Apple wired earbuds; remote not visible but most of cable is out of frame. Finder's 'black' is contradicted by the photo.",
+  "tags": [
+   "headphones",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-06",
+  "foundId": "F-O-headphones-08",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost black Sennheiser over-ear; photo shows white earbuds with red cloth cover.",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-01",
+  "foundId": "F-O-headphones-03",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost metal in-ears with blue stripe in a bag; photo shows white plastic Apple earbuds.",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-04",
+  "foundId": "F-O-headphones-07",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "headphones",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost white iPod earbuds; photo shows big AKG over-ear headphones.",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-08",
+  "foundId": "F-O-headphones-08",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows white earbuds with red fabric cable cover stitched in green and purple.",
+  "tags": [
+   "headphones",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-03",
+  "foundId": "F-O-headphones-03",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows white Apple wired earbuds with inline remote on a table.",
+  "tags": [
+   "headphones",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-06",
+  "foundId": "F-O-headphones-07",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "headphones",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost all-black Sennheiser; photo shows AKG (logo readable) with white ring.",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-01",
+  "foundId": "F-O-headphones-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "headphones",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost has light blue stripe and a grey cable; photo shows chrome Skullcandy with no blue and a black wire.",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-04",
+  "foundId": "F-O-headphones-06",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost white earbuds; photo shows black Sennheiser over-ear headphones.",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-07",
+  "foundId": "F-O-headphones-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "headphones",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost big AKG over-ear; photo shows Skullcandy in-ear earbuds.",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-02",
+  "foundId": "F-O-headphones-05",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost Skullcandy earbuds; photo shows Philips over-ear headphones.",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-06",
+  "foundId": "F-O-headphones-06",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows all-black closed-back Sennheiser HD 280 pro hanging on a chair; coiled part of cable not in frame, but nothing contradicts.",
+  "tags": [
+   "headphones",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-02",
+  "foundId": "F-O-cap-03",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "cap",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo plainly reads CCB in white on a trucker cap with mesh back; not a Stussy cap with red stitched logo.",
+  "tags": [
+   "cap",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F07",
+  "foundId": "F-C-F07",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "glasses",
+  "kind": "must",
+  "conflict": "soft",
+  "why": "says dark grey frame, it is black (neighbouring shade)",
+  "checkerNote": "Photo shows a black, thick, squarish plastic frame; lost says dark grey square frame - a neighbouring shade.",
+  "tags": [
+   "glasses",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-02",
+  "foundId": "F-O-glasses-03",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "glasses",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a plain thin metal oval frame with no knobs and no brown patterned frame; not adjustable-focus glasses.",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F16",
+  "foundId": "F-O-cap-02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "cap",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is a white Omani kuma with brown embroidery; photo is a navy cap with red Stussy lettering.",
+  "tags": [
+   "cap",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-03",
+  "foundId": "F-O-cap-01",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "cap",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a blue baseball cap with a red C, no CCB print and no mesh back.",
+  "tags": [
+   "cap",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F15",
+  "foundId": "F-O-glasses-02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "glasses",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is frameless with thin arms; photo shows a thick tortoise frame with dials and tubes.",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-03",
+  "foundId": "F-C-F15",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "glasses",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost has a thin metal rim; photo shows rimless lenses with no rim at all.",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-02",
+  "foundId": "F-O-cap-02",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "cap",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Navy cap with Stussy stitched in red (white outline) matches; canteen agrees.",
+  "tags": [
+   "cap",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-02",
+  "foundId": "F-O-glasses-02",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "glasses",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Round brown tortoise frame with adjustment dials on each arm matches adjustable-focus glasses.",
+  "tags": [
+   "glasses",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F16",
+  "foundId": "F-O-cap-01",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "cap",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is a white embroidered kuma; photo is a blue baseball cap with a red C.",
+  "tags": [
+   "cap",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-03",
+  "foundId": "F-C-F16",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "cap",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is a navy CCB trucker cap; photo is a white and brown embroidered kuma.",
+  "tags": [
+   "cap",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F15",
+  "foundId": "F-O-glasses-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "glasses",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is frameless with round lenses; photo shows a full metal rectangular frame.",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-03",
+  "foundId": "F-C-F07",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "glasses",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is thin metal rim, oval; photo is a thick black plastic squarish frame.",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-01",
+  "foundId": "F-O-cap-04",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "cap",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is a Chicago Cubs cap; photo shows the Seattle Mariners S and compass logo on a dark cap.",
+  "tags": [
+   "cap",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-01",
+  "foundId": "F-O-glasses-04",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "glasses",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is a slim wire frame; photo shows a thick black plastic frame.",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F16",
+  "foundId": "F-C-F16",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "cap",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "White kuma with brown embroidery, left on a table in the canteen, same date.",
+  "tags": [
+   "cap",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-03",
+  "foundId": "F-O-cap-04",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "cap",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost has CCB print and mesh back; photo shows an embroidered Mariners S compass logo.",
+  "tags": [
+   "cap",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F15",
+  "foundId": "F-C-F15",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "glasses",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows rimless glasses with roundish lenses and very thin dark arms, no case.",
+  "tags": [
+   "glasses",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-03",
+  "foundId": "F-O-glasses-04",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "glasses",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is thin metal rim, oval; photo is a thick black plastic rectangular frame.",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-01",
+  "foundId": "F-O-cap-03",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "cap",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is a Cubs cap; photo plainly reads CCB on a trucker cap with mesh back.",
+  "tags": [
+   "cap",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-04",
+  "foundId": "F-O-cap-02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "cap",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is a Mariners cap with S and compass; photo plainly reads Stussy in red.",
+  "tags": [
+   "cap",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-01",
+  "foundId": "F-O-glasses-03",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "glasses",
+  "kind": "lookalike",
+  "conflict": "none",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a slim wire frame; the arms are out of view, so black sides and lens thickness cannot be checked.",
+  "tags": [
+   "glasses",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-04",
+  "foundId": "F-O-glasses-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "glasses",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is a black plastic frame; photo shows a thin metal frame.",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-03",
+  "foundId": "F-O-cap-03",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "cap",
+  "kind": "must",
+  "conflict": "soft",
+  "why": "says the mesh is grey, it is white/cream (neighbouring shade)",
+  "checkerNote": "Navy trucker cap with CCB print matches; mesh in photo is white/cream rather than grey - a shade difference.",
+  "tags": [
+   "cap",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F07",
+  "foundId": "F-O-glasses-02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "glasses",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is a dark grey square frame; photo shows a round brown tortoise frame with dials.",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-03",
+  "foundId": "F-O-glasses-03",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "glasses",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Thin metal rim, oval-ish lenses, yellowed/amber nose pads all visible in the photo.",
+  "tags": [
+   "glasses",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-01",
+  "foundId": "F-O-cap-02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "cap",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is a Cubs cap; photo plainly reads Stussy.",
+  "tags": [
+   "cap",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-04",
+  "foundId": "F-O-cap-01",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "cap",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is dark navy with Mariners S compass logo; photo is a bright blue cap with a red C.",
+  "tags": [
+   "cap",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-01",
+  "foundId": "F-O-glasses-02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "glasses",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is a slim wire frame; photo shows a thick round tortoise plastic frame with dials.",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-04",
+  "foundId": "F-C-F15",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "glasses",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is a black plastic rectangle frame; photo shows rimless glasses.",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-02",
+  "foundId": "F-C-F16",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "cap",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is a dark blue Stussy cap; photo is a white and brown embroidered kuma.",
+  "tags": [
+   "cap",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F07",
+  "foundId": "F-O-glasses-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "glasses",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a thin dark metal rectangular frame; lost says dark grey square frame - shape and shade are close but not the same.",
+  "tags": [
+   "glasses",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-02",
+  "foundId": "F-C-F07",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "glasses",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is round, brownish patterned, with knobs; photo is a plain black squarish plastic frame, no knobs.",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-01",
+  "foundId": "F-O-cap-01",
+  "isMatch": true,
+  "lens": "finder-careless",
+  "itemKind": "cap",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows a worn blue cap with the red Cubs C; the finder's 'green' is wrong against the photo.",
+  "tags": [
+   "cap",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-04",
+  "foundId": "F-C-F16",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "cap",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is a Mariners fitted cap; photo is an embroidered kuma.",
+  "tags": [
+   "cap",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-01",
+  "foundId": "F-O-glasses-01",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "glasses",
+  "kind": "must",
+  "conflict": "soft",
+  "why": "date is a day late (says 6 Nov, they were found on 5 Nov)",
+  "checkerNote": "Photo matches (thin metal frame, dark arms, thick lenses), but it was found on 2026-11-05, one day before the stated loss date of 2026-11-06.",
+  "tags": [
+   "glasses",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-04",
+  "foundId": "F-C-F07",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "glasses",
+  "kind": "lookalike",
+  "conflict": "none",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Black plastic frame, rectangular/squarish; the transparent inner side cannot be confirmed or ruled out in the photo.",
+  "tags": [
+   "glasses",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-02",
+  "foundId": "F-O-cap-04",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "cap",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is a Stussy cap with red logo; photo shows the Mariners S compass logo in silver and green.",
+  "tags": [
+   "cap",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F07",
+  "foundId": "F-C-F15",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "glasses",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost has a dark grey square frame; photo shows rimless glasses.",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-02",
+  "foundId": "F-O-glasses-04",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "glasses",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is round, brownish, with knobs; photo is a black rectangular plastic frame without knobs.",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F16",
+  "foundId": "F-O-cap-03",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "cap",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is a white embroidered kuma; photo is a navy CCB trucker cap.",
+  "tags": [
+   "cap",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-04",
+  "foundId": "F-O-cap-04",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "cap",
+  "kind": "must",
+  "conflict": "none",
+  "why": "says dark navy, the cap is black (neighbouring shade)",
+  "checkerNote": "Photo shows the S and compass logo in silver and green on a very dark cap; black versus dark navy is down to lighting.",
+  "tags": [
+   "cap",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F15",
+  "foundId": "F-O-glasses-03",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "glasses",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is frameless with round lenses; photo shows a full metal rim around the lenses.",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-04",
+  "foundId": "F-O-glasses-04",
+  "isMatch": true,
+  "lens": "finder-careless",
+  "itemKind": "glasses",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Black plastic rectangular frame, clear on the inside, lying on a magazine; the lenses in the photo are clear, so the finder's 'sunglasses' is wrong.",
+  "tags": [
+   "glasses",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-04",
+  "foundId": "F-O-pencil-case-05",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "pencil-case",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a plain denim sleeve with two pens, no cartoon print and no hand loop.",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F21",
+  "foundId": "F-C-F21",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "keys",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows about six keys on a ring with a metal carabiner clip, lying in sand.",
+  "tags": [
+   "keys",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-03",
+  "foundId": "F-O-keys-04",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "keys",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo has a long barrel key but only about three keys and no clear black and blue plastic tags; the frame is cropped.",
+  "tags": [
+   "keys",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-02",
+  "foundId": "F-O-pencil-case-04",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "pencil-case",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a black cartoon-print zip pouch, not a large purple case that opens like a book.",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-05",
+  "foundId": "F-O-pencil-case-03",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "pencil-case",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a round striped zip case, not a denim sleeve.",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-01",
+  "foundId": "F-O-keys-03",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "keys",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows about five keys with a big old-style key and two oval plastic tags; no round metal medallion or remote.",
+  "tags": [
+   "keys",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-04",
+  "foundId": "F-O-keys-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "keys",
+  "kind": "lookalike",
+  "conflict": "none",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo is a black-and-white close-up of a ring with a dark disc; the keys are not visible, so nothing contradicts, though the disc is unmentioned.",
+  "tags": [
+   "keys",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-04",
+  "foundId": "F-O-pencil-case-04",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "pencil-case",
+  "kind": "must",
+  "conflict": "soft",
+  "why": "Says the background is dark blue; it is black. Neighbouring shade.",
+  "checkerNote": "Cartoon print, hand loop and lying on a book all fit; background is black rather than dark blue.",
+  "tags": [
+   "pencil-case",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-03",
+  "foundId": "F-O-keys-03",
+  "isMatch": true,
+  "lens": "finder-careless",
+  "itemKind": "keys",
+  "kind": "must",
+  "conflict": "soft",
+  "why": "Says one tag is blue; it is a pale grey/white. Colour remembered wrongly.",
+  "checkerNote": "About five keys, a big old-style key and two plastic tags fit; tags look black and grey-white rather than black and blue.",
+  "tags": [
+   "keys",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-02",
+  "foundId": "F-O-pencil-case-03",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "pencil-case",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a small round striped case (sepia), not a large purple book-style case.",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-05",
+  "foundId": "F-O-pencil-case-02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "pencil-case",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a purple zip organiser full of pens, not a denim sleeve with two pens.",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-01",
+  "foundId": "F-O-keys-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "keys",
+  "kind": "lookalike",
+  "conflict": "none",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Close-up shows a ring with a round dark disc; keys and any remote are out of frame, nothing contradicts.",
+  "tags": [
+   "keys",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-04",
+  "foundId": "F-O-keys-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "keys",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a big bunch of about eight silver keys with a black fob, not three keys on a small ring.",
+  "tags": [
+   "keys",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-03",
+  "foundId": "F-O-pencil-case-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "pencil-case",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a flat London Underground map pouch, not a round striped beige and brown case.",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-02",
+  "foundId": "F-C-F21",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "keys",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows about six keys on a carabiner with no disc tag, not one or two keys on a plain ring.",
+  "tags": [
+   "keys",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-02",
+  "foundId": "F-O-pencil-case-02",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "pencil-case",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Purple case opened like a book with pens, highlighters and erasers.",
+  "tags": [
+   "pencil-case",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-05",
+  "foundId": "F-O-pencil-case-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "pencil-case",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "London Underground map pouch, not denim; also found the day before the stated loss.",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-01",
+  "foundId": "F-O-keys-01",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "keys",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "About eight silver keys on one ring with a black fob and a round metal disc; seven versus eight is a count estimate.",
+  "tags": [
+   "keys",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-04",
+  "foundId": "F-C-F21",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "keys",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows about six keys on a carabiner, no barrel key and no gold key with sticker.",
+  "tags": [
+   "keys",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-03",
+  "foundId": "F-O-pencil-case-05",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "pencil-case",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Flat blue denim sleeve, not a round striped beige and brown case.",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-02",
+  "foundId": "F-O-keys-04",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "keys",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows about three keys including a long barrel key and a gold key with a sticker; no round dark disc tag.",
+  "tags": [
+   "keys",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-01",
+  "foundId": "F-O-pencil-case-04",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "pencil-case",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Black cartoon-print pouch, no metro map.",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-05",
+  "foundId": "F-O-pencil-case-05",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "pencil-case",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Denim sleeve that looks hand-sewn with two black and silver pens, one could be a fountain pen.",
+  "tags": [
+   "pencil-case",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F21",
+  "foundId": "F-O-keys-03",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "keys",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "No carabiner; photo shows a big old-style key and two plastic tags the lost report does not have.",
+  "tags": [
+   "keys",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-04",
+  "foundId": "F-O-keys-04",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "keys",
+  "kind": "must",
+  "conflict": "soft",
+  "why": "Date is off by a day: remembers losing them on the 6th, but they were found on the 5th.",
+  "checkerNote": "Photo fits (long barrel key, gold key with sticker on head, few keys), but found date is one day before the stated loss date.",
+  "tags": [
+   "keys",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-03",
+  "foundId": "F-O-pencil-case-04",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "pencil-case",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Black cartoon-print pouch with loop, not striped beige and brown.",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-02",
+  "foundId": "F-O-keys-03",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "keys",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "About five keys with a big old key and two oval plastic tags, not one or two keys with a round disc.",
+  "tags": [
+   "keys",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-01",
+  "foundId": "F-O-pencil-case-03",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "pencil-case",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Round striped case, not a flat pouch with metro lines.",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-04",
+  "foundId": "F-O-pencil-case-02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "pencil-case",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Purple book-style organiser, no cartoon print or dark blue background.",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F21",
+  "foundId": "F-O-keys-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "keys",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Close-up shows a plain split ring with a round disc and no carabiner in view; keys are out of frame so count cannot be checked.",
+  "tags": [
+   "keys",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-03",
+  "foundId": "F-O-keys-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "keys",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "About eight keys with a black fob and a round metal disc; no blue plastic tag, and more keys than stated.",
+  "tags": [
+   "keys",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-03",
+  "foundId": "F-O-pencil-case-03",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "pencil-case",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Small round fabric case with stripes; photo is sepia so beige and brown fit.",
+  "tags": [
+   "pencil-case",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-02",
+  "foundId": "F-O-keys-02",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "keys",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Plain steel ring with a round dark disc tag; few keys, out of frame.",
+  "tags": [
+   "keys",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-01",
+  "foundId": "F-O-pencil-case-02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "pencil-case",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Purple organiser, no London metro print, not flat.",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-04",
+  "foundId": "F-O-pencil-case-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "pencil-case",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "White London Underground map pouch, no cartoon characters or dark background.",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F21",
+  "foundId": "F-O-keys-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "keys",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "About eight keys rather than five or six, with a black fob and metal disc; no carabiner clearly visible, though the frame is cropped.",
+  "tags": [
+   "keys",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-03",
+  "foundId": "F-C-F21",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "keys",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows keys on a carabiner with no plastic tags and no long old-fashioned key.",
+  "tags": [
+   "keys",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-02",
+  "foundId": "F-O-pencil-case-05",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "pencil-case",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Small blue denim sleeve with two pens, not a large purple book-style case.",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-01",
+  "foundId": "F-O-keys-04",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "keys",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "About three keys with a barrel key and a gold key; no black remote or round metal medallion, far fewer than seven.",
+  "tags": [
+   "keys",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-01",
+  "foundId": "F-O-pencil-case-01",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "pencil-case",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Flat pouch printed with the London Underground map, a pencil sticking out.",
+  "tags": [
+   "pencil-case",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-charger-02",
+  "foundId": "F-C-F08",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "charger",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a small white UK phone-style plug with a thin black cable, not a dark grey Dell laptop charger brick.",
+  "tags": [
+   "charger",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-01",
+  "foundId": "F-O-usb-stick-01",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "usb-stick",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Silver/grey metal TDK drive with a pivot end; consistent with a grey metal swivel drive.",
+  "tags": [
+   "usb-stick",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-03",
+  "foundId": "F-O-watch-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "watch",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a gold F.P. Journe on a dark strap, no case; lost is a Bulova on a steel bracelet in a display case.",
+  "tags": [
+   "watch",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-04",
+  "foundId": "F-O-usb-stick-05",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "usb-stick",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a red and silver metal slide drive with a leather strap, not a small black capped SanDisk.",
+  "tags": [
+   "usb-stick",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F17",
+  "foundId": "F-O-charger-02",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "charger",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a Dell laptop power brick, not a bare USB-C cable.",
+  "tags": [
+   "charger",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-01",
+  "foundId": "F-O-watch-04",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "watch",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a steel Breitling chronograph on a steel bracelet, not a gold dress watch on brown leather.",
+  "tags": [
+   "watch",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-02",
+  "foundId": "F-O-usb-stick-04",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "usb-stick",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Black capped stick fits, but the photo reads Transcend 1GB (lost says 2GB) and has a blue ring; 6th floor vs library.",
+  "tags": [
+   "usb-stick",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-05",
+  "foundId": "F-O-usb-stick-03",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "usb-stick",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a dark rubber novelty-shaped drive with blue lettering and a cap, not a metal maroon slide drive with a strap.",
+  "tags": [
+   "usb-stick",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-charger-02",
+  "foundId": "F-O-charger-02",
+  "isMatch": true,
+  "lens": "finder-careless",
+  "itemKind": "charger",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows a dark grey Dell charger with a black cable, as described; the finder's 'white' is contradicted by the photo, not by the lost report.",
+  "tags": [
+   "charger",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-03",
+  "foundId": "F-O-watch-04",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "watch",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo plainly reads Breitling Navitimer, worn on a wrist, no display case; lost is a Bulova in its case.",
+  "tags": [
+   "watch",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-04",
+  "foundId": "F-O-usb-stick-04",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "usb-stick",
+  "kind": "must",
+  "conflict": "soft",
+  "why": "Brand guessed wrongly: says SanDisk, it is a Transcend.",
+  "checkerNote": "Black, capped, with a string as described, but the photo reads Transcend, not SanDisk (brand mix-up plausible).",
+  "tags": [
+   "usb-stick",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F17",
+  "foundId": "F-O-charger-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "charger",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a black laptop brick with a mains lead, not a bare USB-C to USB-C cable.",
+  "tags": [
+   "charger",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-01",
+  "foundId": "F-O-watch-03",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "watch",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a steel Bulova on a steel bracelet in a case, not a gold watch on brown leather.",
+  "tags": [
+   "watch",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-02",
+  "foundId": "F-O-usb-stick-03",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "usb-stick",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a large novelty-shaped rubber drive with blue lettering, not a small plain black stick.",
+  "tags": [
+   "usb-stick",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-04",
+  "foundId": "F-O-watch-03",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "watch",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo plainly reads Bulova Accutron, a three-hand watch in a display case, not a Breitling chronograph.",
+  "tags": [
+   "watch",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-05",
+  "foundId": "F-O-usb-stick-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "usb-stick",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a black plastic capped stick, no maroon, no strap, no sliding plug.",
+  "tags": [
+   "usb-stick",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-charger-01",
+  "foundId": "F-C-F17",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "charger",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows only a thin black braided USB-C cable, no laptop brick or European plug.",
+  "tags": [
+   "charger",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-03",
+  "foundId": "F-O-watch-03",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "watch",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Bulova on a steel bracelet in a display case with a blue interior, exactly as described.",
+  "tags": [
+   "watch",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-03",
+  "foundId": "F-O-usb-stick-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "usb-stick",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a plain silver metal TDK drive, not a rubbery novelty-shaped one with blue lettering.",
+  "tags": [
+   "usb-stick",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F17",
+  "foundId": "F-C-F17",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "charger",
+  "kind": "must",
+  "conflict": "soft",
+  "why": "Date off by a day: says 6 Nov, it was found on 5 Nov.",
+  "checkerNote": "Long black braided USB-C cable with no plug matches the photo; only conflict is the found date being one day before the stated loss date.",
+  "tags": [
+   "charger",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-01",
+  "foundId": "F-O-watch-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "watch",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a steel Victorinox on a steel bracelet with a black dial, not a gold dress watch on brown leather.",
+  "tags": [
+   "watch",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-02",
+  "foundId": "F-O-usb-stick-02",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "usb-stick",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Small black capped stick marked 2G, as described; only the place wording differs (6th floor vs library).",
+  "tags": [
+   "usb-stick",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-04",
+  "foundId": "F-O-watch-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "watch",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Steel chronograph on a bracelet, but the dial plainly reads Victorinox Swiss Army, not Breitling.",
+  "tags": [
+   "watch",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-05",
+  "foundId": "F-O-usb-stick-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "usb-stick",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows an all-silver TDK drive with no maroon front and no wrist strap.",
+  "tags": [
+   "usb-stick",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-charger-01",
+  "foundId": "F-C-F08",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "charger",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a small white UK plug with a thin cable, not a black Acer laptop brick with a European plug.",
+  "tags": [
+   "charger",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-02",
+  "foundId": "F-O-watch-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "watch",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a gold F.P. Journe on a strap, not a silver Swiss Army watch with big white numbers.",
+  "tags": [
+   "watch",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-03",
+  "foundId": "F-O-usb-stick-05",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "usb-stick",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a red and silver metal drive with a leather strap, not a rubbery dark drive with light blue lettering.",
+  "tags": [
+   "usb-stick",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F08",
+  "foundId": "F-O-charger-02",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "charger",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a Dell laptop power brick, not a white phone adapter with a braided USB-C wire.",
+  "tags": [
+   "charger",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-01",
+  "foundId": "F-O-watch-01",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "watch",
+  "kind": "must",
+  "conflict": "soft",
+  "why": "Neighbouring colour: says brown strap, it is black.",
+  "checkerNote": "Gold dress watch on a leather strap fits; the strap looks black or very dark in the dim photo rather than brown.",
+  "tags": [
+   "watch",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-01",
+  "foundId": "F-O-usb-stick-04",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "usb-stick",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a black plastic capped Transcend with a blue ring, not a grey metal swivel drive.",
+  "tags": [
+   "usb-stick",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-04",
+  "foundId": "F-O-watch-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "watch",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a gold F.P. Journe on a strap, not a steel Breitling chronograph on a bracelet.",
+  "tags": [
+   "watch",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-05",
+  "foundId": "F-O-usb-stick-05",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "usb-stick",
+  "kind": "must",
+  "conflict": "soft",
+  "why": "Neighbouring colour shade: says maroon, it is bright red.",
+  "checkerNote": "Metal slide drive with a black wrist strap matches; the front panel is bright red rather than maroon (shade).",
+  "tags": [
+   "usb-stick",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-charger-01",
+  "foundId": "F-O-charger-02",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "charger",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo plainly shows a Dell-branded dark grey brick, not an Acer black one; no European plug visible.",
+  "tags": [
+   "charger",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-02",
+  "foundId": "F-O-watch-04",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "watch",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo plainly reads Breitling with baton markers and white subdials, not a Swiss Army watch with big white numbers.",
+  "tags": [
+   "watch",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-03",
+  "foundId": "F-O-usb-stick-04",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "usb-stick",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows an ordinary black plastic Transcend stick, not a novelty-shaped rubbery drive.",
+  "tags": [
+   "usb-stick",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F08",
+  "foundId": "F-O-charger-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "charger",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a black laptop brick with a European plug, not a white phone adapter with a braided USB-C wire.",
+  "tags": [
+   "charger",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-charger-02",
+  "foundId": "F-O-charger-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "charger",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Black/dark laptop brick with a black wire fits, but the label reads Chicony, not Dell, and the body is black rather than dark grey; a third-party brick could still belong to a Dell laptop.",
+  "tags": [
+   "charger",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-01",
+  "foundId": "F-O-usb-stick-03",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "usb-stick",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a dark rubber novelty drive with blue lettering and a cap, not a grey metal swivel drive.",
+  "tags": [
+   "usb-stick",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-04",
+  "foundId": "F-O-watch-04",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "watch",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Steel Breitling chronograph on a steel bracelet, as described; the clasp is not visible.",
+  "tags": [
+   "watch",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-04",
+  "foundId": "F-O-usb-stick-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "usb-stick",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Small black capped stick fits, but no string is visible and the logo does not look like SanDisk (unreadable).",
+  "tags": [
+   "usb-stick",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "L-O-charger-01",
+  "foundId": "F-O-charger-01",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "charger",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Black laptop brick with a European two-pin plug; the Chicony label is a common maker of Acer chargers.",
+  "tags": [
+   "charger",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-02",
+  "foundId": "F-O-watch-03",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "watch",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo plainly reads Bulova Accutron with baton markers, not a Swiss Army watch with big white numbers.",
+  "tags": [
+   "watch",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-03",
+  "foundId": "F-O-usb-stick-03",
+  "isMatch": true,
+  "lens": "finder-careless",
+  "itemKind": "usb-stick",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Odd-shaped rubbery drive with light blue lettering on a dark body, exactly as described.",
+  "tags": [
+   "usb-stick",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F08",
+  "foundId": "F-C-F17",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "charger",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Long black braided USB-C cable fits, but the white adapter head is not there; it could have been separated.",
+  "tags": [
+   "charger",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "L-O-charger-02",
+  "foundId": "F-C-F17",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "charger",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows only a thin braided USB-C cable, no Dell laptop brick.",
+  "tags": [
+   "charger",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-01",
+  "foundId": "F-O-usb-stick-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "usb-stick",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a black plastic capped stick, not a grey metal swivel drive.",
+  "tags": [
+   "usb-stick",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-03",
+  "foundId": "F-O-watch-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "watch",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo plainly reads Victorinox Swiss Army, a chronograph with no case, not a Bulova in its display case.",
+  "tags": [
+   "watch",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-04",
+  "foundId": "F-O-usb-stick-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "usb-stick",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a silver metal TDK drive with no cap, not a small black capped SanDisk.",
+  "tags": [
+   "usb-stick",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F17",
+  "foundId": "F-C-F08",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "charger",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Long black braided USB-C cable fits, but the photo shows it attached to a white plug while the lost report says no plug was with it.",
+  "tags": [
+   "charger",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-02",
+  "foundId": "F-O-watch-02",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "watch",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Silver metal Victorinox Swiss Army with a black face and big white numbers, as described.",
+  "tags": [
+   "watch",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-02",
+  "foundId": "F-O-usb-stick-05",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "usb-stick",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a red and silver metal slide drive with a leather strap, not a small black capped stick.",
+  "tags": [
+   "usb-stick",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F08",
+  "foundId": "F-C-F08",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "charger",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "White adapter head with a long black braided USB-C cable, as described; cafeteria vs canteen is the same kind of place.",
+  "tags": [
+   "charger",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-power-bank-03",
+  "foundId": "F-O-power-bank-03",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "power-bank",
+  "kind": "must",
+  "conflict": "soft",
+  "why": "brand guessed wrongly: says Huawei, it is a Xiaomi (Mi) one; finder text is Arabic in Latin letters",
+  "checkerNote": "Photo shows a silver metal power bank with one USB port and a round button on the end, but the logo is Mi (Xiaomi), not Huawei; the owner only guessed the brand.",
+  "tags": [
+   "power-bank",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F01",
+  "foundId": "F-C-F01",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "laptop",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows a dark grey/black Dell laptop on a desk with a cable plugged in; nothing disagrees.",
+  "tags": [
+   "laptop",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-backpack-01",
+  "foundId": "F-O-backpack-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "backpack",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows an orange and black Tamrac camera bag with no dots pattern and no pink zips.",
+  "tags": [
+   "backpack",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-textbook-01",
+  "foundId": "F-C-F23",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "textbook",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a worn, yellowed text-only book in Cyrillic, not a colourful kids science book.",
+  "tags": [
+   "textbook",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F20",
+  "foundId": "F-C-F20",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "laptop",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows an open silver MacBook with no case or stickers visible.",
+  "tags": [
+   "laptop",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F18",
+  "foundId": "F-C-F23",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "textbook",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows an old coverless Russian book with yellowed pages, not a black hardback Zumdahl chemistry textbook.",
+  "tags": [
+   "textbook",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-power-bank-02",
+  "foundId": "F-O-power-bank-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "power-bank",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a flat matte black Anker power bank; lost one is a light grey stone shape with a leather loop.",
+  "tags": [
+   "power-bank",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-backpack-01",
+  "foundId": "F-O-backpack-01",
+  "isMatch": true,
+  "lens": "finder-careless",
+  "itemKind": "backpack",
+  "kind": "must",
+  "conflict": "none",
+  "why": "calls it maroon, the bag is brown (finder's careless detail: zippers are pink, not blue)",
+  "checkerNote": "Photo shows a brown/maroon backpack with orange and yellow circles and pink zips (the finder's 'blue zippers' is wrong per the photo). Maroon vs brown is within the warm lighting.",
+  "tags": [
+   "backpack",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-textbook-01",
+  "foundId": "F-C-F18",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "textbook",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a black Zumdahl 'Chemistry' ninth edition, not a colourful kids science book.",
+  "tags": [
+   "textbook",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F06",
+  "foundId": "F-C-F01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "laptop",
+  "kind": "trap-soft",
+  "conflict": "soft",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Black Dell matches, but the lid in the photo has only faint marks rather than being quite scratched on one side.",
+  "tags": [
+   "laptop",
+   "trap-soft"
+  ]
+ },
+ {
+  "lostId": "L-C-F18",
+  "foundId": "F-C-F18",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "textbook",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows a thick black Zumdahl Chemistry book; matches.",
+  "tags": [
+   "textbook",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-power-bank-02",
+  "foundId": "F-O-power-bank-03",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "power-bank",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a silver metal rectangular Xiaomi power bank with one USB port and no loop; not a stone shape with a leather loop and two ports.",
+  "tags": [
+   "power-bank",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F03",
+  "foundId": "F-O-backpack-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "backpack",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows an orange and black Tamrac camera bag, not a dark grey bag.",
+  "tags": [
+   "backpack",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-textbook-01",
+  "foundId": "F-O-textbook-01",
+  "isMatch": true,
+  "lens": "finder-careless",
+  "itemKind": "textbook",
+  "kind": "must",
+  "conflict": "none",
+  "why": "wrong nearby place: says 4th floor, it was left on the 3rd floor (finder's careless detail: it is a science book, not maths)",
+  "checkerNote": "Photo shows a colourful kids science book open at the solar system chapter with highlighted words; the finder's 'math book' is contradicted by the photo, not by the lost report. Same date.",
+  "tags": [
+   "textbook",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F06",
+  "foundId": "F-C-F20",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "laptop",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a silver MacBook, not a black Dell.",
+  "tags": [
+   "laptop",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-backpack-02",
+  "foundId": "F-O-backpack-01",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "backpack",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a brown backpack with coloured circles and pink zips; no Tamrac branding, not orange and black, no net pocket with clip.",
+  "tags": [
+   "backpack",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-power-bank-02",
+  "foundId": "F-O-power-bank-02",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "power-bank",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing; skipped the blue dot and printed logo",
+  "checkerNote": "Photo shows a light grey stone-shaped power bank with a leather loop, two USB ports and a conference logo (EU2017.EE).",
+  "tags": [
+   "power-bank",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F03",
+  "foundId": "F-O-backpack-01",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "backpack",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a brown bag with a bright circles pattern and pink zips, not a dark grey one-strap bag.",
+  "tags": [
+   "backpack",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F23",
+  "foundId": "F-C-F18",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "textbook",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a black Zumdahl Chemistry textbook in English, not an old Russian novel.",
+  "tags": [
+   "textbook",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F06",
+  "foundId": "F-C-F06",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "laptop",
+  "kind": "must",
+  "conflict": "soft",
+  "why": "date is one day late (left it on the 4th, wrote the 5th); did not mention the cable plugged into it",
+  "checkerNote": "Photo shows a black Dell with a clearly scratched lid on one side, which fits; but the found date (11-04) is one day before the stated lost date (11-05), a slip a person could make.",
+  "tags": [
+   "laptop",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-backpack-02",
+  "foundId": "F-C-F03",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "backpack",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a grey one-strap bag with black mesh; no orange, no Tamrac, not a camera bag.",
+  "tags": [
+   "backpack",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-power-bank-01",
+  "foundId": "F-O-power-bank-03",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "power-bank",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a silver metal Xiaomi (Mi logo) power bank, not a matte black Anker.",
+  "tags": [
+   "power-bank",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F03",
+  "foundId": "F-C-F03",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "backpack",
+  "kind": "must",
+  "conflict": "none",
+  "why": "says dark grey, the bag is a mid/light grey; written in Arabic",
+  "checkerNote": "Photo shows a grey single-strap backpack with black mesh; the grey is mid rather than dark, a minor shade matter.",
+  "tags": [
+   "backpack",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F23",
+  "foundId": "F-O-textbook-01",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "textbook",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a glossy colourful English kids science book, not an old worn Russian novel.",
+  "tags": [
+   "textbook",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-power-bank-03",
+  "foundId": "F-O-power-bank-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "power-bank",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a light grey stone-shaped, non-metal power bank with two USB ports and a leather loop; lost one is a silver metal one with one port and a round end button.",
+  "tags": [
+   "power-bank",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F01",
+  "foundId": "F-C-F20",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "laptop",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a silver MacBook, not a dark grey Dell.",
+  "tags": [
+   "laptop",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-backpack-02",
+  "foundId": "F-O-backpack-02",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "backpack",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows a small orange and black Tamrac bag with a front net pocket and a clip above it.",
+  "tags": [
+   "backpack",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-power-bank-01",
+  "foundId": "F-O-power-bank-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "power-bank",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a light grey stone-shaped power bank with EU2017 branding, not a matte black slim Anker.",
+  "tags": [
+   "power-bank",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F20",
+  "foundId": "F-C-F06",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "laptop",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a black Dell laptop (logo readable), not a silver MacBook Air.",
+  "tags": [
+   "laptop",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F23",
+  "foundId": "F-C-F23",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "textbook",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows an old worn Russian book with loose yellowed pages.",
+  "tags": [
+   "textbook",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-power-bank-03",
+  "foundId": "F-O-power-bank-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "power-bank",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a matte black plastic Anker power bank, not a silver metal one.",
+  "tags": [
+   "power-bank",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F01",
+  "foundId": "F-C-F06",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "laptop",
+  "kind": "lookalike",
+  "conflict": "none",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a black/dark Dell laptop with a cable plugged in; dark grey vs black is a shade matter, and the scratches are simply not mentioned.",
+  "tags": [
+   "laptop",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "L-O-backpack-01",
+  "foundId": "F-C-F03",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "backpack",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a plain grey one-strap bag with black mesh; no maroon, dots or pink zips.",
+  "tags": [
+   "backpack",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-power-bank-01",
+  "foundId": "F-O-power-bank-01",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "power-bank",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows a matte black slim Anker power bank about phone size; amphitheatre vs Oman Hall could be the same lecture hall.",
+  "tags": [
+   "power-bank",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F20",
+  "foundId": "F-C-F01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "laptop",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a black Dell laptop, closed, not a silver MacBook Air.",
+  "tags": [
+   "laptop",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F18",
+  "foundId": "F-O-textbook-01",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "textbook",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Photo shows a colourful kids science book on the solar system, not a black Zumdahl chemistry textbook.",
+  "tags": [
+   "textbook",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F02",
+  "foundId": "F-C-F02",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "pen",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows a clear plastic ballpoint with blue grip, blue cap and blue end plug; library place agrees.",
+  "tags": [
+   "pen",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-umbrella-01",
+  "foundId": "F-O-umbrella-02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "umbrella",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is a small folding umbrella with a silver metal cap; photo shows a full-length stick umbrella with a wooden crook handle and wooden tip.",
+  "tags": [
+   "umbrella",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-bottle-02",
+  "foundId": "F-O-bottle-02",
+  "isMatch": true,
+  "lens": "finder-careless",
+  "itemKind": "bottle",
+  "kind": "must",
+  "conflict": "soft",
+  "why": "Guessed the brand wrongly: says Stanley, it is a Thermos.",
+  "checkerNote": "Photo shows a silver stainless steel tumbler (finder's 'blue' is wrong), but the readable brand is THERMOS, not Stanley; the owner only guessed the brand.",
+  "tags": [
+   "bottle",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F11",
+  "foundId": "F-C-F11",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "sports",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows a table tennis racket with red rubber peeling at the edges and an orange wooden handle.",
+  "tags": [
+   "sports",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-umbrella-01",
+  "foundId": "F-O-umbrella-01",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "umbrella",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo is a close-up of bright red umbrella fabric with a scratched silver metal cap on top.",
+  "tags": [
+   "umbrella",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-bottle-01",
+  "foundId": "F-O-bottle-02",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "bottle",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is a matte black SpaceX bottle; photo shows a silver stainless Thermos tumbler.",
+  "tags": [
+   "bottle",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F10",
+  "foundId": "F-C-F10",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "game",
+  "kind": "must",
+  "conflict": "soft",
+  "why": "Colour off: says black box, it is dark navy.",
+  "checkerNote": "Square box, Arabic and English, Money Talks conversation game with people at a table all match; box is dark navy rather than black, a neighbouring shade.",
+  "tags": [
+   "game",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-prayer-beads-02",
+  "foundId": "F-O-prayer-beads-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "prayer-beads",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is wooden beads in brown and light with a dark red thread at the end; photo shows uniform olive-brown seed beads linked by metal wire with red beads and no thread.",
+  "tags": [
+   "prayer-beads",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-bottle-01",
+  "foundId": "F-O-bottle-01",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "bottle",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows a matte black bottle with 'Gateway to Mars' and the SpaceX X logo, marked refillable.",
+  "tags": [
+   "bottle",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F09",
+  "foundId": "F-C-F09",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "notebook",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows a blue hardback book with a bubbly marbled cover and worn corners; place names may differ but nothing concrete conflicts.",
+  "tags": [
+   "notebook",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-prayer-beads-02",
+  "foundId": "F-O-prayer-beads-02",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "prayer-beads",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows wooden beads alternating brown and light with a dark red thread and knot at the end.",
+  "tags": [
+   "prayer-beads",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F22",
+  "foundId": "F-C-F02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "pen",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is a heavy dark navy metal fountain pen; photo shows a cheap clear plastic ballpoint with blue cap.",
+  "tags": [
+   "pen",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F04",
+  "foundId": "F-C-F04",
+  "isMatch": true,
+  "lens": "finder-careless",
+  "itemKind": "earbuds",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows a silver JBL earbuds case with a dark screen on the lid; finder's 'charger' is a misreading.",
+  "tags": [
+   "earbuds",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-prayer-beads-01",
+  "foundId": "F-O-prayer-beads-02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "prayer-beads",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is oval greenish-brown seed beads linked with wire and a few red beads; photo shows round brown and light wooden beads on a thread with no wire or red beads.",
+  "tags": [
+   "prayer-beads",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F22",
+  "foundId": "F-C-F22",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "pen",
+  "kind": "must",
+  "conflict": "soft",
+  "why": "Says dark navy; the pen is black. Lost date is one day before it was found.",
+  "checkerNote": "Photo shows a textured-barrel metal-looking pen with silver rings, but it looks black rather than dark navy, a shade difference; dates are compatible.",
+  "tags": [
+   "pen",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-umbrella-02",
+  "foundId": "F-O-umbrella-01",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "umbrella",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost has a wooden tip and is maroon; photo shows a bright red umbrella topped with a silver metal cap, not wood.",
+  "tags": [
+   "umbrella",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-prayer-beads-01",
+  "foundId": "F-O-prayer-beads-01",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "prayer-beads",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows oval olive-brown seed beads linked with wire and a few red beads near the end.",
+  "tags": [
+   "prayer-beads",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F02",
+  "foundId": "F-C-F22",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "pen",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is a see-through plastic ballpoint with blue grip and lid; photo shows an opaque black textured pen with silver rings.",
+  "tags": [
+   "pen",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-umbrella-02",
+  "foundId": "F-O-umbrella-02",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "umbrella",
+  "kind": "must",
+  "conflict": "soft",
+  "why": "Colour shade off: says maroon, the umbrella is a brighter red.",
+  "checkerNote": "Full-size umbrella with light wood crook handle and wooden tip matches; fabric is red rather than maroon, a neighbouring shade.",
+  "tags": [
+   "umbrella",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-bottle-02",
+  "foundId": "F-O-bottle-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "bottle",
+  "kind": "trap",
+  "conflict": "hard",
+  "why": "another item of the same kind, found in the same place",
+  "checkerNote": "Lost is a silver stainless coffee tumbler; photo shows a matte black capped SpaceX water bottle.",
+  "tags": [
+   "bottle",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F12",
+  "foundId": "F-C-F12",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "remote",
+  "kind": "must",
+  "conflict": "none",
+  "why": "Wrong nearby place: says UPAD Studio, it was left in Germany Hall (same building).",
+  "checkerNote": "Photo shows a dark grey Oscar-branded remote with a red power button; place differs in name only, nothing concrete conflicts.",
+  "tags": [
+   "remote",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F19",
+  "foundId": "F-C-F19",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "shoes",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows black leather men's slide sandals on a tiled floor, consistent with the lost report. Size is not visible. A prayer room is named on both sides; UPAD vs GU2 wording differs but is not a clear contradiction.",
+  "tags": [
+   "shoes",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-sunglasses-01",
+  "foundId": "F-O-sunglasses-01",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "sunglasses",
+  "kind": "must",
+  "conflict": "soft",
+  "why": "colour shade: says purple frame, it is dark red / burgundy",
+  "checkerNote": "Photo shows oversized ladies' sunglasses with gradient lenses darker at the top and no case, as reported. The frame looks dark red/burgundy-plum rather than clearly purple: a neighbouring shade under filtered lighting.",
+  "tags": [
+   "sunglasses",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-phone-01",
+  "foundId": "F-O-phone-01",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "phone",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows an iPhone 6-style back with no cover on a wooden desk. The colour reads silver-gold in this lighting, compatible with gold. The lock screen is not visible.",
+  "tags": [
+   "phone",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F26",
+  "foundId": "F-C-F26",
+  "isMatch": true,
+  "lens": "finder-careless",
+  "itemKind": "jacket",
+  "kind": "must",
+  "conflict": "none",
+  "why": "nothing",
+  "checkerNote": "Photo shows a dark brown collared zip jacket with a readable 'LOST' patch and a vertical stripe (grey and white band) on one side, lying on grass, which matches the lost report. The finder's 'blue' is contradicted by the photo, not by the lost report. Found one day after the loss is consistent.",
+  "tags": [
+   "jacket",
+   "must"
+  ]
+ }
+]
