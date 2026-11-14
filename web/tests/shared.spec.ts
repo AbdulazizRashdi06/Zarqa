@@ -165,3 +165,20 @@ test('page changes set the title and move focus to the new heading; Back goes ba
   await page.goBack()
   await expect(page).toHaveURL(/\/$/)
 })
+
+test('a click anywhere on the date or time box opens its picker', async ({ page }) => {
+  // Record the calls instead of opening the real picker, which would cover the page.
+  await page.addInitScript(() => {
+    const opened: string[] = []
+    Object.assign(window, { opened })
+    HTMLInputElement.prototype.showPicker = function () {
+      opened.push(this.type)
+    }
+  })
+  await app(page)
+  await page.goto('/')
+  await page.getByRole('switch', { name: /I know when/ }).click()
+  await page.locator('input[type="date"]').click({ position: { x: 12, y: 12 } })
+  await page.locator('input[type="time"]').click({ position: { x: 12, y: 12 } })
+  expect(await page.evaluate(() => (window as unknown as { opened: string[] }).opened)).toEqual(['date', 'time'])
+})

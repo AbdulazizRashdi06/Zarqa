@@ -59,6 +59,16 @@ function readRepost(state: unknown): Partial<DraftFields> | null {
   }
 }
 
+// The native date/time input is invisible, so on a computer its small picker icon can't be found.
+// Open the picker from a click anywhere on the box; older browsers just focus the field.
+function openPicker(input: HTMLInputElement) {
+  try {
+    input.showPicker()
+  } catch {
+    input.focus()
+  }
+}
+
 const toPicked =(blob: Blob): PickedPhoto => ({ blob, url: URL.createObjectURL(blob) })
 
 const coarsePointer = () => window.matchMedia?.('(pointer: coarse)').matches ?? false
@@ -644,6 +654,7 @@ export default function Home() {
                     value={date}
                     min={yearBefore(now.date)}
                     max={now.date}
+                    onClick={(e) => openPicker(e.currentTarget)}
                     onChange={(e) => e.target.value && setDate(e.target.value)}
                   />
                 </label>
@@ -658,6 +669,7 @@ export default function Home() {
                       type="time"
                       className={s.whenNative}
                       value={time}
+                      onClick={(e) => openPicker(e.currentTarget)}
                       onChange={(e) => setTime(e.target.value)}
                       aria-label={t('form.time.pick')}
                     />
