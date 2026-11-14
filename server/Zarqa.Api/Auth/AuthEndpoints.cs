@@ -15,7 +15,7 @@ public static class AuthEndpoints
     private const int VerifyLockClass = 0x5A_41_56; // "ZAV"
 
     public record RequestCodeBody(string? Email);
-    /// <param name="ConsentVersion">Sent when the sign-in box (18+, Terms, Privacy, processing outside Oman) was ticked.</param>
+    /// <param name="ConsentVersion">Sent when the sign-in box ("I accept the Terms and Privacy") was ticked.</param>
     public record VerifyBody(string? Email, string? Code, string? ConsentVersion = null);
 
     public static void MapAuth(this RouteGroupBuilder api)

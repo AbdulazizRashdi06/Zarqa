@@ -3,7 +3,8 @@ import { t } from '../i18n'
 import c from './consent.module.css'
 
 /**
- * The one consent line (Oman PDPL: express consent, including processing outside Oman). "Terms" and
+ * The one consent line (Oman PDPL). It accepts the Terms and Privacy pages, which state 18+ and processing
+ * outside Oman; the box itself no longer does (decisions.md, 2026-11-14). "Terms" and
  * "Privacy" open those pages; tapping a link follows it without ticking the box.
  */
 export function ConsentCheck({
