@@ -171,6 +171,15 @@ const DETAIL_SCHEMA = {
   },
 };
 const DETAIL_FOR_JUDGE = DETAIL_CHECK ? "\ndetail_check lists each thing the owner stated about the item and whether the found side shows it, cannot show it, or contradicts it. It was made by a reviewer who saw the photos. A contradicted detail is a concrete difference between the items; a not_visible one is a gap." : "";
+//   MATCH_DEFINITION=1  a written definition of what counts as a match: which disagreements rule a pair out and
+//                        which do not. A DRAFT for the owner to rule on (decisions.md, 2026-11-15), not a decision.
+const MATCH_DEFINITION = process.env.MATCH_DEFINITION === "1";
+const DEFINITION_FOR_JUDGE = MATCH_DEFINITION
+  ? `\nWhat counts as a match here. A match is a pair the owner should be shown: nothing in the evidence rules it out.
+These rule a pair out, so give low probabilities: the two are different kinds of object, beyond a different word for the same thing; a name or other text read off the found item differs from the one the owner gives as their own (another spelling of the same name is not a difference); the colour is from a different family, not a neighbouring shade.
+This is a weak point against, not a rule-out: a distinctive feature the owner states that the found side plainly shows is absent, since parts and attachments come off.
+These do not count against a match: a neighbouring shade; a brand or model the owner gives from memory; a count, a size, a place or a date that differs; contents or details the finder could not see. Where a finder's words disagree with the finder's own photo, go by the photo.`
+  : "";
 const PHOTOS_FOR_JUDGE = JUDGE_PHOTOS ? "\nThe photos are attached. Look at them yourself and go by what they show." : "";
 
 async function detailCheck(lost, found, ctx) {
@@ -245,7 +254,7 @@ export async function debateReview(lost, found, prelim, ctx, { threshold = PROPO
       const judgePhotos = JUDGE_PHOTOS ? [...photosOf(lost, ctx), ...photosOf(found, ctx)] : [];
       const res = await chatJson({
         model: MODELS.terra,
-        system: TERRA_SYSTEM + DETAIL_FOR_JUDGE + PHOTOS_FOR_JUDGE,
+        system: TERRA_SYSTEM + DEFINITION_FOR_JUDGE + DETAIL_FOR_JUDGE + PHOTOS_FOR_JUDGE,
         text: JSON.stringify(state) + (JUDGE_PHOTOS ? `\n${ownerLine(photosOf(lost, ctx).length, photosOf(found, ctx).length)}` : ""),
         imagePaths: judgePhotos,
         imageDetail: RUNTIME.lunaImageDetail,
