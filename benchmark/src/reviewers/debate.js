@@ -185,6 +185,11 @@ These do not count against a match: a neighbouring shade; a brand or model the o
 A plainly shown difference rules the pair out, so give low probabilities. That is: something the owner states about the item itself (what kind of object it is, its colour, a brand, name or other text on it, its material, shape or build, how many there are, a distinctive part or mark) where the found photo or report plainly shows something else.
 These are not plainly shown differences and do not count against a match: a neighbouring shade of the same colour; something the owner marks as unsure or a guess; a part or attachment that could have come off; a place or a date that differs; anything the found side cannot show, such as contents, the other side, or a detail too small or out of frame; another spelling of the same name. Where a finder's words disagree with the finder's own photo, go by the photo.`,
 };
+// Draft 3 = draft 2 plus three clarifications, written after two labellers split on dark shades and key counts, and
+// one found an item "matched" to an owner who still had theirs seven weeks later. On the 100 unsettled pairs it
+// raised agreement between two readers (photo 77% -> 91%) and gave back real items draft 2 had ruled out.
+DEFINITIONS[3] = `${DEFINITIONS[2]}
+Three clarifications. Dark colours: black, navy, dark grey, charcoal and dark brown are neighbouring shades of each other, and so are light ones such as white, cream and beige; a dark colour against a light or bright one is a plainly shown difference. Counts: a number the owner gives roughly, or that is off by one or two, is not a plainly shown difference; a clearly different amount is, such as one or two against a large bunch, or a single item against a pair. Timing: a date a few days off does not count, but an impossible order of events does: the item was found clearly before the owner says they still had it.`;
 const DEFINITION_FOR_JUDGE = DEFINITIONS[process.env.MATCH_DEFINITION] || "";
 const PHOTOS_FOR_JUDGE = JUDGE_PHOTOS ? "\nThe photos are attached. Look at them yourself and go by what they show." : "";
 

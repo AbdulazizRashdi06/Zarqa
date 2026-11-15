@@ -15,7 +15,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "dark blue backpack, owner says black",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-colour-01-L1",
@@ -33,7 +38,12 @@
   ],
   "definitionLabel": "good",
   "definitionNote": "",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-colour-02-L1",
@@ -123,7 +133,12 @@
   ],
   "definitionLabel": "good",
   "definitionNote": "",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-colour-04-L2",
@@ -159,7 +174,12 @@
   ],
   "definitionLabel": "good",
   "definitionNote": "",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-colour-05-L1",
@@ -231,7 +251,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "owner: stickers on it; found: no stickers",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "stickers on it vs no stickers"
+  }
  },
  {
   "lostId": "R2-colour-07-L1",
@@ -267,7 +292,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "contents shown are makeup items, not drafting pens",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "bad",
+   "note": "holds make-up, not drafting pens"
+  }
  },
  {
   "lostId": "R2-colour-08-L1",
@@ -285,7 +315,12 @@
   ],
   "definitionLabel": "good",
   "definitionNote": "",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-colour-08-L2",
@@ -483,7 +518,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "maroon (3nabi) vs brown",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-colour-14-L1",
@@ -537,7 +577,12 @@
   ],
   "definitionLabel": "good",
   "definitionNote": "",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-colour-14-L2",
@@ -645,7 +690,12 @@
   ],
   "definitionLabel": "good",
   "definitionNote": "",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-colour-16-L1",
@@ -717,7 +767,12 @@
   ],
   "definitionLabel": "good",
   "definitionNote": "",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "bad",
+   "note": "laptop, not a notebook of notes"
+  }
  },
  {
   "lostId": "R2-word-meaning-01-L2",
@@ -969,7 +1024,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "JBL earbuds, not AirPods",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "AirPods vs JBL earbuds"
+  }
  },
  {
   "lostId": "R2-word-meaning-05-L2",
@@ -1005,7 +1065,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "black case vs brown leather pouch",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "black case vs brown leather pouch"
+  }
  },
  {
   "lostId": "R2-word-meaning-05-L2",
@@ -1113,7 +1178,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "Huawei tablet, not an iPad",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "iPad vs Huawei tablet"
+  }
  },
  {
   "lostId": "R2-word-meaning-07-L1",
@@ -1149,7 +1219,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "Stanley vs no brand on it",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "Stanley vs no brand on it"
+  }
  },
  {
   "lostId": "R2-word-meaning-08-L1",
@@ -1239,7 +1314,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "cap worn on the head vs plastic bottle lid",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "cap (hat) vs plastic bottle lid"
+  }
  },
  {
   "lostId": "R2-word-meaning-10-L1",
@@ -1329,7 +1409,12 @@
   ],
   "definitionLabel": "good",
   "definitionNote": "",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-word-meaning-11-L2",
@@ -1365,7 +1450,12 @@
   ],
   "definitionLabel": "good",
   "definitionNote": "",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-word-meaning-11-L2",
@@ -1779,7 +1869,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "car key plus one room key vs two door keys, no car key",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-language-03-L1",
@@ -1833,7 +1928,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "massar (turban cloth) vs Omani cap",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "massar (folded cloth) vs Omani cap"
+  }
  },
  {
   "lostId": "R2-language-03-L1",
@@ -1851,7 +1951,12 @@
   ],
   "definitionLabel": "good",
   "definitionNote": "",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "bad",
+   "note": "folded cloth (massar), not a kumma cap"
+  }
  },
  {
   "lostId": "R2-language-04-L1",
@@ -1959,7 +2064,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "abaya vs scarf",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "abaya vs scarf"
+  }
  },
  {
   "lostId": "R2-language-06-L1",
@@ -2373,7 +2483,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "dishdasha vs lab coat",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "dishdasha vs lab coat"
+  }
  },
  {
   "lostId": "R2-language-13-L2",
@@ -2679,7 +2794,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "AirPods Pro case vs round case thought to be Samsung",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-sloppy-writing-02-L2",
@@ -2787,7 +2907,12 @@
   ],
   "definitionLabel": "good",
   "definitionNote": "",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-sloppy-writing-04-L2",
@@ -2841,7 +2966,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "no case vs transparent cover with sticker",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "no case vs transparent cover with sticker"
+  }
  },
  {
   "lostId": "R2-sloppy-writing-05-L2",
@@ -2913,7 +3043,12 @@
   ],
   "definitionLabel": "good",
   "definitionNote": "",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-sloppy-writing-06-L2",
@@ -2967,7 +3102,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "owner's mark is initials M.K; found has name sticker Fatma",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "initials M.K vs name sticker Fatma"
+  }
  },
  {
   "lostId": "R2-sloppy-writing-07-L2",
@@ -2985,7 +3125,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "bag vs calculator",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-sloppy-writing-08-L1",
@@ -3021,7 +3166,12 @@
   ],
   "definitionLabel": "good",
   "definitionNote": "",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-sloppy-writing-08-L2",
@@ -3111,7 +3261,12 @@
   ],
   "definitionLabel": "good",
   "definitionNote": "",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-sloppy-writing-10-L1",
@@ -3237,7 +3392,12 @@
   ],
   "definitionLabel": "good",
   "definitionNote": "",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-sloppy-writing-12-L1",
@@ -3417,7 +3577,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "earring vs ring",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-sloppy-writing-15-L1",
@@ -3615,7 +3780,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "JBL brand vs no brand",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "JBL vs no brand, skin-colour odd-shaped buds"
+  }
  },
  {
   "lostId": "R2-human-memory-errors-04-L1",
@@ -3633,7 +3803,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "dark blue wallet vs black wallet",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-human-memory-errors-04-L1",
@@ -3687,7 +3862,12 @@
   ],
   "definitionLabel": "good",
   "definitionNote": "",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-human-memory-errors-06-L1",
@@ -3705,7 +3885,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "3 keys vs 5 keys",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-human-memory-errors-06-L1",
@@ -3741,7 +3926,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "vape vs USB flash drive",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-human-memory-errors-07-L2",
@@ -3849,7 +4039,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "grey vs light blue",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "grey vs light blue"
+  }
  },
  {
   "lostId": "R2-human-memory-errors-09-L1",
@@ -3885,7 +4080,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "MacBook Pro vs MacBook Air",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "MacBook Pro vs MacBook Air"
+  }
  },
  {
   "lostId": "R2-human-memory-errors-10-L1",
@@ -3957,7 +4157,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "green lanyard vs blue neck strap",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "green lanyard vs blue neck strap"
+  }
  },
  {
   "lostId": "R2-human-memory-errors-12-L1",
@@ -3975,7 +4180,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "logistics vs engineering on the card",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "logistics vs engineering on the card"
+  }
  },
  {
   "lostId": "R2-human-memory-errors-13-L1",
@@ -3993,7 +4203,12 @@
   ],
   "definitionLabel": "good",
   "definitionNote": "",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-human-memory-errors-13-L1",
@@ -4299,7 +4514,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "3 keys vs 2 keys",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-04-L2",
@@ -4443,7 +4663,12 @@
   ],
   "definitionLabel": "good",
   "definitionNote": "",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-07-L1",
@@ -4461,7 +4686,12 @@
   ],
   "definitionLabel": "good",
   "definitionNote": "",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-07-L1",
@@ -4551,7 +4781,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "grey bag holds only a mouse and adapter, no laptop",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-09-L1",
@@ -4767,7 +5002,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "64GB vs 128GB",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "64GB vs 128GB"
+  }
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-13-L1",
@@ -4803,7 +5043,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "size 43 vs size 42",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "size 43 vs size 42"
+  }
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-14-L1",
@@ -4857,7 +5102,12 @@
   ],
   "definitionLabel": "good",
   "definitionNote": "",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-16-L1",
@@ -4983,7 +5233,12 @@
   ],
   "definitionLabel": "good",
   "definitionNote": "",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-time-and-place-03-L1",
@@ -5091,7 +5346,12 @@
   ],
   "definitionLabel": "good",
   "definitionNote": "",
-  "closeCall": false
+  "closeCall": false,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "found weeks before owner last used it"
+  }
  },
  {
   "lostId": "R2-time-and-place-06-L1",
@@ -5109,7 +5369,12 @@
   ],
   "definitionLabel": "good",
   "definitionNote": "",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-time-and-place-07-L1",
@@ -5145,7 +5410,12 @@
   ],
   "definitionLabel": "good",
   "definitionNote": "",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-time-and-place-08-L1",
@@ -5163,7 +5433,12 @@
   ],
   "definitionLabel": "good",
   "definitionNote": "",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-time-and-place-08-L1",
@@ -5343,7 +5618,12 @@
   ],
   "definitionLabel": "good",
   "definitionNote": "",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-time-and-place-14-L1",
@@ -5631,7 +5911,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "dark blue with a dent vs black, looks new",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-adversarial-and-odd-06-L1",
@@ -5703,7 +5988,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "no stickers; owner states a Palestine flag sticker on the lid",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "flag sticker on lid vs no stickers"
+  }
  },
  {
   "lostId": "R2-adversarial-and-odd-08-L1",
@@ -5739,7 +6029,12 @@
   ],
   "definitionLabel": "good",
   "definitionNote": "",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "Z scratched on back vs name sticker Hamed"
+  }
  },
  {
   "lostId": "R2-adversarial-and-odd-09-L1",
@@ -6027,7 +6322,12 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "name on card Alia vs Ali",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "name Alia vs name Ali"
+  }
  },
  {
   "lostId": "R2-adversarial-and-odd-14-L1",
@@ -6387,7 +6687,12 @@
   ],
   "definitionLabel": "good",
   "definitionNote": "",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-ordinary-06-L1",
@@ -6423,7 +6728,12 @@
   ],
   "definitionLabel": "good",
   "definitionNote": "",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-ordinary-07-L1",
@@ -6711,7 +7021,12 @@
   ],
   "definitionLabel": "good",
   "definitionNote": "",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-ordinary-12-L1",
@@ -6963,6 +7278,11 @@
   ],
   "definitionLabel": "bad",
   "definitionNote": "owner says no cover; found is in a black zip bag",
-  "closeCall": true
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "no cover vs in a black zip bag"
+  }
  }
 ]

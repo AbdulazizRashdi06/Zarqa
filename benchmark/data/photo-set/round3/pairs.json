@@ -41,7 +41,12 @@
   "secondLabel": "bad",
   "secondCloseCall": true,
   "secondNote": "visible leather is smooth, no lines pressed in",
-  "disputed": false
+  "disputed": false,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "L-C-F25",
@@ -63,7 +68,12 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "front is smooth leather with a tree logo, no lines pressed in",
-  "disputed": false
+  "disputed": false,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "L-C-F25",
@@ -129,7 +139,12 @@
   "secondLabel": "bad",
   "secondCloseCall": true,
   "secondNote": "slim, new-looking wallet, not thick old leather",
-  "disputed": true
+  "disputed": true,
+  "draft3": {
+   "a": "good",
+   "b": "bad",
+   "note": "slim, new-looking wallet against a thick old stuffed one"
+  }
  },
  {
   "lostId": "L-O-wallet-01",
@@ -173,7 +188,12 @@
   "secondLabel": "good",
   "secondCloseCall": true,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "L-O-wallet-02",
@@ -195,7 +215,12 @@
   "secondLabel": "bad",
   "secondCloseCall": true,
   "secondNote": "black, not dark brown",
-  "disputed": false
+  "disputed": false,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "L-O-wallet-02",
@@ -239,7 +264,12 @@
   "secondLabel": "good",
   "secondCloseCall": true,
   "secondNote": "",
-  "disputed": true
+  "disputed": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "L-O-wallet-02",
@@ -1735,7 +1765,12 @@
   "secondLabel": "bad",
   "secondCloseCall": true,
   "secondNote": "single car key with metal tags, no house keys or gold key",
-  "disputed": false
+  "disputed": false,
+  "draft3": {
+   "a": "good",
+   "b": "bad",
+   "note": "single car key with tags, no house keys"
+  }
  },
  {
   "lostId": "L-O-car-key-07",
@@ -2549,7 +2584,12 @@
   "secondLabel": "bad",
   "secondCloseCall": true,
   "secondNote": "wire is bare white, no red cloth cover sewn around it",
-  "disputed": false
+  "disputed": false,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "wire is bare white, no red cloth cover"
+  }
  },
  {
   "lostId": "L-C-F07",
@@ -2791,7 +2831,12 @@
   "secondLabel": "good",
   "secondCloseCall": true,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "L-O-glasses-01",
@@ -3033,7 +3078,12 @@
   "secondLabel": "good",
   "secondCloseCall": true,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "L-O-glasses-04",
@@ -3275,7 +3325,12 @@
   "secondLabel": "good",
   "secondCloseCall": true,
   "secondNote": "",
-  "disputed": true
+  "disputed": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "L-O-cap-02",
@@ -3561,7 +3616,12 @@
   "secondLabel": "bad",
   "secondCloseCall": true,
   "secondNote": "eight or so keys, not about five",
-  "disputed": false
+  "disputed": false,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "about five keys against a bunch of about nine"
+  }
  },
  {
   "lostId": "L-C-F21",
@@ -3583,7 +3643,12 @@
   "secondLabel": "good",
   "secondCloseCall": true,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "L-C-F21",
@@ -3605,7 +3670,12 @@
   "secondLabel": "good",
   "secondCloseCall": true,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "L-O-keys-01",
@@ -3649,7 +3719,12 @@
   "secondLabel": "good",
   "secondCloseCall": true,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "L-O-keys-01",
@@ -3671,7 +3746,12 @@
   "secondLabel": "good",
   "secondCloseCall": true,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "L-O-keys-01",
@@ -3693,7 +3773,12 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "only about four keys, not a heavy bunch of eight",
-  "disputed": false
+  "disputed": false,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "heavy bunch of about eight keys against a few (about four)"
+  }
  },
  {
   "lostId": "L-O-keys-02",
@@ -3737,7 +3822,12 @@
   "secondLabel": "bad",
   "secondCloseCall": true,
   "secondNote": "bunch of about six house keys with a big old key, not a single bike-key keychain",
-  "disputed": true
+  "disputed": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "L-O-keys-02",
@@ -3759,7 +3849,12 @@
   "secondLabel": "bad",
   "secondCloseCall": true,
   "secondNote": "four assorted keys, not a single bike-key keychain",
-  "disputed": true
+  "disputed": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "L-O-keys-02",
@@ -3781,7 +3876,12 @@
   "secondLabel": "bad",
   "secondCloseCall": true,
   "secondNote": "bunch of about six keys on a clip hook, not a single bike-key keychain",
-  "disputed": true
+  "disputed": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "L-O-keys-03",
@@ -3825,7 +3925,12 @@
   "secondLabel": "good",
   "secondCloseCall": true,
   "secondNote": "",
-  "disputed": true
+  "disputed": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "L-O-keys-03",
@@ -3847,7 +3952,12 @@
   "secondLabel": "good",
   "secondCloseCall": true,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "L-O-keys-03",
@@ -3869,7 +3979,12 @@
   "secondLabel": "bad",
   "secondCloseCall": true,
   "secondNote": "eight or so ordinary toothed keys, none with dots; round tag is metal, not plastic",
-  "disputed": false
+  "disputed": false,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "L-O-keys-04",
@@ -3913,7 +4028,12 @@
   "secondLabel": "bad",
   "secondCloseCall": true,
   "secondNote": "about six silver/dark keys, no brass key",
-  "disputed": true
+  "disputed": true,
+  "draft3": {
+   "a": "bad",
+   "b": "good",
+   "note": "no brass key, all keys dark or silver, and a larger bunch than a small set"
+  }
  },
  {
   "lostId": "L-O-keys-04",
@@ -3957,7 +4077,12 @@
   "secondLabel": "good",
   "secondCloseCall": true,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "L-O-pencil-case-01",
@@ -4067,7 +4192,12 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "L-O-pencil-case-02",
@@ -4419,7 +4549,12 @@
   "secondLabel": "good",
   "secondCloseCall": true,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "L-O-usb-stick-01",
@@ -4793,7 +4928,12 @@
   "secondLabel": "bad",
   "secondCloseCall": true,
   "secondNote": "visible branded face is plain silver, no maroon front",
-  "disputed": false
+  "disputed": false,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "front is plain silver with TDK logo, not maroon"
+  }
  },
  {
   "lostId": "L-O-usb-stick-05",
@@ -5013,7 +5153,12 @@
   "secondLabel": "bad",
   "secondCloseCall": true,
   "secondNote": "cable has a white charger head attached; owner's is a cable with no head",
-  "disputed": false
+  "disputed": false,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "owner's cable has no charger head, found one has a white head attached"
+  }
  },
  {
   "lostId": "L-O-charger-01",
@@ -5057,7 +5202,12 @@
   "secondLabel": "bad",
   "secondCloseCall": true,
   "secondNote": "Dell-branded adapter, not an Acer charger",
-  "disputed": false
+  "disputed": false,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "Dell-branded adapter, owner's is for an Acer"
+  }
  },
  {
   "lostId": "L-O-charger-01",
@@ -5189,7 +5339,12 @@
   "secondLabel": "bad",
   "secondCloseCall": true,
   "secondNote": "brick is labelled Chicony, not Dell",
-  "disputed": false
+  "disputed": false,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "adapter is labelled Chicony, not Dell"
+  }
  },
  {
   "lostId": "L-O-watch-01",
@@ -5585,7 +5740,12 @@
   "secondLabel": "good",
   "secondCloseCall": true,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "L-C-F01",
@@ -5673,7 +5833,12 @@
   "secondLabel": "good",
   "secondCloseCall": true,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "L-C-F20",
@@ -6751,7 +6916,12 @@
   "secondLabel": "good",
   "secondCloseCall": true,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "L-C-F11",
@@ -6861,7 +7031,12 @@
   "secondLabel": "good",
   "secondCloseCall": true,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "L-O-sunglasses-01",
@@ -6883,6 +7058,11 @@
   "secondLabel": "good",
   "secondCloseCall": true,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  }
 ]

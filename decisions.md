@@ -17,6 +17,17 @@ The decisions made while turning the uni matching prototype into a real app, and
 
 **Photo round 3** (`benchmark/data/photo-set/round3`): 184 reports, 313 pairs, the same hard condition as round 2 (three reports in four undated, every item of a kind found in one place), fresh blind writing. By the first labelling: 108 good matches (90 real items and 18 lookalikes) and 205 bad. The test fixed in advance for it: judge sees photos with definition draft 2, read at 0.55 and 0.75, against the app's wording.
 
+**The text holdout by the same yardstick** (387 pairs, labelled the same way without photos; cached answers): good matches shown go from 176 of 225 with the app before to 194 with both fixes, bad matches shown from 21 to 24 of 162.
+- **Without a photo the definition costs more.** It calls 13 of 185 real items bad matches, 8 of them owners who misremembered a fact; with photos it was 1 or 2 in 92. A difference the finder only *states* is weaker evidence than one a photo shows.
+- A labeller also found a hole: draft 2 forgives any date, so an item found seven weeks before the owner last used theirs was a "good match".
+
+**Definition draft 3** (`MATCH_DEFINITION=3`) adds three clarifications to draft 2: dark colours (black, navy, dark grey, dark brown) are neighbours of each other and light ones of each other; a rough count or one off by one or two is not a difference, a clearly different amount is; an impossible order of events rules a pair out. Tested on the 100 pairs that were close calls or disputed, two independent readers each:
+- Photo round 3 (36 pairs): the two readers agree on 33, where draft 2's readers agreed on 28. All 7 real items in the subset are good matches (5 under draft 2).
+- Text holdout (64 pairs): the readers agree on 61. 13 of the 19 real items are good matches (8 under draft 2).
+- It lets a few more lookalikes through as good matches (photo 16 to 19, text 22 to 25), which is the direction the owner's "a wrong suggestion costs a glance" points.
+- Still split: a slim wallet against a "thick, stuffed" one, a single car key against a bunch, a notebook against a laptop. These are judgments about what kind of object it is, not wording.
+- Draft 3 was written after reading these pairs, so the gain on them is not a holdout result. **The owner has not ruled on any draft.**
+
 **Limit of "blind".** The harness shows every agent this repository's instruction files, which describe these experiments, though not the definition's wording. Writers and labellers were not asked to match anything.
 
 ## 2026-11-15: What counts as a match, and a judge that sees the photo (benchmark only)
