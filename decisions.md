@@ -28,6 +28,12 @@ The decisions made while turning the uni matching prototype into a real app, and
 - Still split: a slim wallet against a "thick, stuffed" one, a single car key against a bunch, a notebook against a laptop. These are judgments about what kind of object it is, not wording.
 - Draft 3 was written after reading these pairs, so the gain on them is not a holdout result. **The owner has not ruled on any draft.**
 
+**Text round 3** (`benchmark/data/edge/round3`, written 15 Nov): a fresh blind text set under the hard condition that hurt most on photos. 438 reports and 416 pairs from eight writers, one per kind of human mistake: three reports in four undated, every found item of a group in the same place, one report in three under 8 words. Labelled from the start by two independent readers who apply the definition and are not told the truth.
+- Draft 2: 251 good matches and 165 bad; the readers agree on 413 of 416. 176 of the 184 real items are good matches, against 172 of 185 on the older text holdout.
+- Draft 3 changes 12 labels, 6 each way, and the readers agree on 413 again.
+- The eight writers and four of the readers ran on the session's model; the other twelve readers ran on another Claude model after a usage limit. Both readers of a lens used the same model.
+- No arm has been run on it. It is the unseen text set for the definition, draft 3 included.
+
 **Limit of "blind".** The harness shows every agent this repository's instruction files, which describe these experiments, though not the definition's wording. Writers and labellers were not asked to match anything.
 
 ## 2026-11-15: What counts as a match, and a judge that sees the photo (benchmark only)
