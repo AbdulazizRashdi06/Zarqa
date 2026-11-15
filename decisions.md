@@ -2,6 +2,43 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-15: The judge that sees photos holds up on unseen pairs (benchmark only)
+
+**Nothing in the app changed.** The owner gave an OpenAI API key for testing with a 10 dollar limit, so these runs went through the API (`gpt-6-luna`, `gpt-6.1-terra`), not the Codex gateway that production uses and that the earlier runs used. Same models and prompts; answers through the two routes are not guaranteed identical, so arms are compared within one route. Spent: $6.33 for 5,472 calls, stopped by `benchmark/src/spend.js` at $9.50 if reached. The judge is 91% of the cost: Terra is $1.00 in and $5.00 out per million tokens, ten times Luna, and the app's ledger still prices it as Luna.
+
+**The test fixed in advance, photo round 3** (313 pairs no arm had been run on; labels from the written definition; the 8 pairs the labellers split on are left out of the good and bad rows):
+
+| | Good matches shown (of 103) | Bad matches shown (of 202) | Real items shown (of 92) |
+|---|---|---|---|
+| App today, line 0.55 | 98 | 45 | 87 |
+| App today, line 0.75 | 58 | 1 | 56 |
+| Judge sees photos + definition draft 2, line 0.55 | 101 | 31 | 88 |
+| Judge sees photos + definition draft 2, line 0.75 | 94 | 6 | 88 |
+| Same with draft 3, line 0.75 | 94 | 6 | 88 |
+
+- The goal set before the run (at least 87% of real items, at most 10% of bad matches) is met at 0.75: 96% and 3%. Today's app cannot meet it at any line: at 0.65 it shows 85% of good matches and 10% of bad ones, at 0.70 76% and 2%.
+- Draft 3 changes nothing at 0.75 and lets 5 more bad matches through at 0.55. On photos it is not better than draft 2.
+
+**Text, where the judge has no photo to see** (definition only):
+
+| | Good shown | Bad shown | Real items shown |
+|---|---|---|---|
+| Text round 3, app today, 0.55 | 228 of 250 | 23 of 163 | 174 of 184 |
+| Text round 3, definition draft 2, 0.55 | 237 | 25 | 174 |
+| Text round 3, definition draft 2, 0.70 | 223 | 17 | not read |
+| Text round 3, definition draft 2, 0.75 | 185 | 12 | 150 |
+| Text round 3, definition draft 3, 0.75 | 184 | 16 | 153 |
+| Text holdout (round 2), app, 0.55, judge through Codex | 194 of 225 | 24 of 162 | 172 of 185 |
+| Text holdout, definition draft 2, 0.55, judge through the API | 209 | 21 | 167 |
+
+- In text the definition lifts the scores of good matches but does not remove bad ones: at equal recall (about 89% of good matches) it shows 17 bad matches where the app shows 20. The gain on photos comes from the judge seeing the photo, not from the wording alone.
+- Draft 3 is no better than draft 2 on either text set.
+- The text holdout rows mix routes (old judge through Codex, new judge through the API); read them as a rough check only.
+
+**Photo descriptions for search, confirmed on round 3** (stage test, no review): good matches within the best 10 candidates go from 99 to 101 of 103, near-empty finder reports from 26 to 28 of 29; within the best 30, 102 to 103. Smaller than on round 2 (106 to 112 of 115) because less was being lost.
+
+**Open.** The owner asked for a quality score on a spectrum in place of good and bad, with a difficulty score, and for the best option to be calculated from them. Two raters per pair are scoring both round-3 sets (0 to 10 and 1 to 5).
+
 ## 2026-11-15: Tests built on good match / bad match from a written definition
 
 **Nothing in the app changed.** Follow-up to the entry below, done without model calls while the ChatGPT plan limit was closed.

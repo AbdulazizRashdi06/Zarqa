@@ -25,6 +25,7 @@ The real app is being **built from scratch**: an ASP.NET Core (.NET 10) backend 
 - **Weakest matches wait for an admin (2026-11-14, committed but not deployed).** A debate match at 0.55–0.599 is held in **To review** on `/admin`: Approve shows it, Reject hides it for good, and after 48 hours it is shown anyway. Labels: Small chance below 0.70, Looks like it 0.70–0.799, Big chance 0.80+.
 - **Fallback:** plain gpt-6-luna review when no debate route is configured.
 - **Edge-case sets** (`benchmark/data/edge/round1` to tune, `round2` as the holdout) were written by blind agents and are run with `benchmark/scripts/edge.js`. Holdout with production embeddings, 2026-11-14: 154 → 172 of 184 same-item pairs shown with the rendering and the screen; two-language pairs 11 → 21 of 21. Write a fresh blind set before tuning anything else on round 2.
+- **Benchmark only, for the owner to rule on (2026-11-15):** a judge that sees the photos and is given a written definition of a match. On unseen photo pairs at a 0.75 line it shows 96% of real items and 3% of bad matches; today's app shows 95% and 22% at 0.55. Without a photo the definition adds little. See decisions.md.
 - **Recall is the deciding metric.** A missed match means someone never gets their item back. Precision is secondary.
 - **Design for 100–1,000 active reports.** GUtech has about 2,000 people, so 10,000 is unrealistic.
 
