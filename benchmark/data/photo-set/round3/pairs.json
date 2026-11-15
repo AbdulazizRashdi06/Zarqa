@@ -1,0 +1,5636 @@
+[
+ {
+  "lostId": "L-C-F25",
+  "foundId": "F-C-F25",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "why": "Date mistake: the owner gives 5 Nov, one day after the wallet was actually found (4 Nov).",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "wallet",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F25",
+  "foundId": "F-O-wallet-01",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "visible leather is smooth, no pressed lines",
+  "closeCall": true,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "visible leather is smooth, no pressed lines",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F25",
+  "foundId": "F-O-wallet-02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "front is smooth leather with a tree logo, no pressed lines",
+  "closeCall": true,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "front is smooth leather with a tree logo, no pressed lines",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F25",
+  "foundId": "F-O-wallet-03",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "yellowish tan wallet with a star, not black",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "yellowish tan wallet with a star, not black",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-01",
+  "foundId": "F-O-wallet-01",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "wallet",
+  "why": "No mistake.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "wallet",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-01",
+  "foundId": "F-O-wallet-02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "kind": "lookalike",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "wallet",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-01",
+  "foundId": "F-O-wallet-03",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "yellowish tan wallet with a star, not black",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "yellowish tan wallet with a star, not black",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-01",
+  "foundId": "F-O-wallet-04",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "lookalike",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "wallet",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-02",
+  "foundId": "F-O-wallet-02",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "why": "Colour mistake: the owner says dark brown, the wallet is black.",
+  "definitionLabel": "bad",
+  "definitionNote": "black wallet, not dark brown",
+  "closeCall": true,
+  "kind": "stretch",
+  "conflict": "hard",
+  "checkerNote": "black wallet, not dark brown",
+  "tags": [
+   "wallet",
+   "stretch"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-02",
+  "foundId": "F-O-wallet-03",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "yellowish tan wallet with star and Morocco, not dark brown Timberland",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "yellowish tan wallet with star and Morocco, not dark brown Timberland",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-02",
+  "foundId": "F-O-wallet-04",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "black wallet, not dark brown",
+  "closeCall": true,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "black wallet, not dark brown",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-02",
+  "foundId": "F-O-wallet-05",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "snake-print zip pouch, not a dark brown Timberland bifold",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "snake-print zip pouch, not a dark brown Timberland bifold",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-03",
+  "foundId": "F-O-wallet-03",
+  "isMatch": true,
+  "lens": "finder-careless",
+  "itemKind": "wallet",
+  "why": "No mistake.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "wallet",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-03",
+  "foundId": "F-O-wallet-04",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "black wallet, not light tan with a star",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "black wallet, not light tan with a star",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-03",
+  "foundId": "F-O-wallet-05",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "grey snake-print pouch, not a tan leather wallet with a star",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "grey snake-print pouch, not a tan leather wallet with a star",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-03",
+  "foundId": "F-O-wallet-06",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "red long wallet with gold plate, not light tan with a star",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "red long wallet with gold plate, not light tan with a star",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-04",
+  "foundId": "F-O-wallet-04",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "why": "No mistake. Written in Arabic.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "wallet",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-04",
+  "foundId": "F-O-wallet-05",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "snake-print zip pouch with strap, not a black leather wallet",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "snake-print zip pouch with strap, not a black leather wallet",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-04",
+  "foundId": "F-O-wallet-06",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "red wallet, not black",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "red wallet, not black",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-04",
+  "foundId": "F-O-wallet-07",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "red wallet, not black",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "red wallet, not black",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-05",
+  "foundId": "F-O-wallet-05",
+  "isMatch": true,
+  "lens": "finder-careless",
+  "itemKind": "wallet",
+  "why": "No mistake.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "wallet",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-05",
+  "foundId": "F-O-wallet-06",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "plain red long wallet, not a grey and black animal-print pouch",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "plain red long wallet, not a grey and black animal-print pouch",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-05",
+  "foundId": "F-O-wallet-07",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "red clover wallet, not a grey and black animal-print pouch",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "red clover wallet, not a grey and black animal-print pouch",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-05",
+  "foundId": "F-O-wallet-08",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "plain black Guess bifold, not an animal-print pouch with strap",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "plain black Guess bifold, not an animal-print pouch with strap",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-06",
+  "foundId": "F-O-wallet-06",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "why": "Brand mistake: the owner guesses Coach, the plate on the wallet says Dooney & Bourke.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "wallet",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-06",
+  "foundId": "F-O-wallet-07",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "small compact wallet with zip and button strap, not a long flap wallet",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "small compact wallet with zip and button strap, not a long flap wallet",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-06",
+  "foundId": "F-O-wallet-08",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "black bifold, not a long red wallet",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "black bifold, not a long red wallet",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-06",
+  "foundId": "F-O-wallet-09",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "orange-brown woven bifold, not a long red wallet",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "orange-brown woven bifold, not a long red wallet",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-07",
+  "foundId": "F-O-wallet-07",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "wallet",
+  "why": "No mistake.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "wallet",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-07",
+  "foundId": "F-O-wallet-08",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "black Guess bifold, not red with a clover",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "black Guess bifold, not red with a clover",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-07",
+  "foundId": "F-O-wallet-09",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "orange-brown woven wallet, not red with a clover",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "orange-brown woven wallet, not red with a clover",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-07",
+  "foundId": "F-O-wallet-10",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "black carbon-fibre wallet, not red with a clover",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "black carbon-fibre wallet, not red with a clover",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-08",
+  "foundId": "F-O-wallet-08",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "why": "No mistake.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "wallet",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-08",
+  "foundId": "F-O-wallet-09",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "orange-brown woven wallet, not black Guess",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "orange-brown woven wallet, not black Guess",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-08",
+  "foundId": "F-O-wallet-10",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "brand on it reads TOM'S, not Guess; carbon-fibre coin wallet",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "brand on it reads TOM'S, not Guess; carbon-fibre coin wallet",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-08",
+  "foundId": "F-O-wallet-11",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "reddish brown card holder, not a black Guess wallet",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "reddish brown card holder, not a black Guess wallet",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-09",
+  "foundId": "F-O-wallet-09",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "why": "No mistake. The finder's text is Arabic typed in Latin letters and digits.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "wallet",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-09",
+  "foundId": "F-O-wallet-10",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "black carbon-fibre coin wallet, not orange-brown woven",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "black carbon-fibre coin wallet, not orange-brown woven",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-09",
+  "foundId": "F-O-wallet-11",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "plain slim card holder, no woven pattern or lacing",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "plain slim card holder, no woven pattern or lacing",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-09",
+  "foundId": "F-C-F25",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "black wallet, not orange-brown woven",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "black wallet, not orange-brown woven",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-10",
+  "foundId": "F-O-wallet-10",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "wallet",
+  "why": "Place mistake: the owner thinks it was left at the Main Entrance; it was found in the Ground Canteen nearby.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "wallet",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-10",
+  "foundId": "F-O-wallet-11",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "reddish brown card holder, not a black carbon-fibre coin wallet",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "reddish brown card holder, not a black carbon-fibre coin wallet",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-10",
+  "foundId": "F-C-F25",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "bifold with pressed line pattern and banknotes, not a carbon-fibre coin wallet with a flap",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "bifold with pressed line pattern and banknotes, not a carbon-fibre coin wallet with a flap",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-10",
+  "foundId": "F-O-wallet-01",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "thick plain black bifold full of cards, not a carbon-fibre coin wallet with a flap",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "thick plain black bifold full of cards, not a carbon-fibre coin wallet with a flap",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-11",
+  "foundId": "F-O-wallet-11",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "why": "No mistake.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "wallet",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-11",
+  "foundId": "F-C-F25",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "black bifold wallet, not a brown card sleeve",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "black bifold wallet, not a brown card sleeve",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-11",
+  "foundId": "F-O-wallet-01",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "thick black wallet, not a thin brown card sleeve",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "thick black wallet, not a thin brown card sleeve",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-wallet-11",
+  "foundId": "F-O-wallet-02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "wallet",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "black bifold wallet, not a brown card sleeve",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "black bifold wallet, not a brown card sleeve",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F24",
+  "foundId": "F-C-F24",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "why": "",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "car-key",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F24",
+  "foundId": "F-O-car-key-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "bare circuit board, not a black two-button car key",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "bare circuit board, not a black two-button car key",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F24",
+  "foundId": "F-O-car-key-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "car-key",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "old all-metal key, not a black two-button key",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "old all-metal key, not a black two-button key",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F24",
+  "foundId": "F-O-car-key-03",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "car-key",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "three-button flip key with sumo toy, not a two-button key with metal car keychain",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "three-button flip key with sumo toy, not a two-button key with metal car keychain",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-01",
+  "foundId": "F-O-car-key-01",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "why": "",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "car-key",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-01",
+  "foundId": "F-O-car-key-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "car-key",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "old metal key, not a circuit board",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "old metal key, not a circuit board",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-01",
+  "foundId": "F-O-car-key-03",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "car-key",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "complete flip key, not a bare circuit board",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "complete flip key, not a bare circuit board",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-01",
+  "foundId": "F-O-car-key-04",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "complete smart key in its shell, not a bare circuit board",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "complete smart key in its shell, not a bare circuit board",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-02",
+  "foundId": "F-O-car-key-02",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "car-key",
+  "why": "",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "car-key",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-02",
+  "foundId": "F-O-car-key-03",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "car-key",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "black plastic flip key with toy, not a bare old metal key",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "black plastic flip key with toy, not a bare old metal key",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-02",
+  "foundId": "F-O-car-key-04",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "black plastic smart fob, not an old all-metal key",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "black plastic smart fob, not an old all-metal key",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-02",
+  "foundId": "F-O-car-key-05",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "black plastic head, owner says all metal with no plastic",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "black plastic head, owner says all metal with no plastic",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-03",
+  "foundId": "F-O-car-key-03",
+  "isMatch": true,
+  "lens": "finder-careless",
+  "itemKind": "car-key",
+  "why": "",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "car-key",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-03",
+  "foundId": "F-O-car-key-04",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "bladeless smart fob, not a folding key",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "bladeless smart fob, not a folding key",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-03",
+  "foundId": "F-O-car-key-05",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "fixed-blade key with plastic head, not a folding key",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "fixed-blade key with plastic head, not a folding key",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-03",
+  "foundId": "F-O-car-key-06",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "USB flash drive, not a folding car key",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "USB flash drive, not a folding car key",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-04",
+  "foundId": "F-O-car-key-04",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "why": "",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "car-key",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-04",
+  "foundId": "F-O-car-key-05",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "plain key with a metal blade, not a bladeless keyless remote",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "plain key with a metal blade, not a bladeless keyless remote",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-04",
+  "foundId": "F-O-car-key-06",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "USB flash drive, not a car remote",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "USB flash drive, not a car remote",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-04",
+  "foundId": "F-O-car-key-07",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "car-key",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "bunch of bladed metal keys, not a bladeless remote",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "bunch of bladed metal keys, not a bladeless remote",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-05",
+  "foundId": "F-O-car-key-05",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "why": "Wrong nearby place: the owner names GU1 Parking, the key was found in Student Parking.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "car-key",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-05",
+  "foundId": "F-O-car-key-06",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "USB flash drive, not a snapped metal key",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "USB flash drive, not a snapped metal key",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-05",
+  "foundId": "F-O-car-key-07",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "car-key",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "intact key on a bunch, not a snapped key",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "intact key on a bunch, not a snapped key",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-05",
+  "foundId": "F-O-car-key-08",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "intact Mercedes remote key, not a snapped plain key without remote",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "intact Mercedes remote key, not a snapped plain key without remote",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-06",
+  "foundId": "F-O-car-key-06",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "why": "Neighbouring colour shade: the owner says black and silver, the panels are grey.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "car-key",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-06",
+  "foundId": "F-O-car-key-07",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "car-key",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "bunch of metal keys, not a flash drive",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "bunch of metal keys, not a flash drive",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-06",
+  "foundId": "F-O-car-key-08",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "Mercedes car key, not a flash drive",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "Mercedes car key, not a flash drive",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-06",
+  "foundId": "F-C-F24",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "real car key with blade, not a flash drive",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "real car key with blade, not a flash drive",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-07",
+  "foundId": "F-O-car-key-07",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "car-key",
+  "why": "",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "car-key",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-07",
+  "foundId": "F-O-car-key-08",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "single Mercedes remote key with keyring, no house keys",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "single Mercedes remote key with keyring, no house keys",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-07",
+  "foundId": "F-C-F24",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "single car key with metal tags, no house keys or gold key",
+  "closeCall": true,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "single car key with metal tags, no house keys or gold key",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-07",
+  "foundId": "F-O-car-key-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "bare circuit board, not a bunch of keys",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "bare circuit board, not a bunch of keys",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-08",
+  "foundId": "F-O-car-key-08",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "why": "Date off by two days: the owner says 7 Nov, the key was found on 5 Nov.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "car-key",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-08",
+  "foundId": "F-C-F24",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "two-button bladed key with no panic button",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "two-button bladed key with no panic button",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-08",
+  "foundId": "F-O-car-key-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "car-key",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "bare circuit board, not a Mercedes key",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "bare circuit board, not a Mercedes key",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-car-key-08",
+  "foundId": "F-O-car-key-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "car-key",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "small old all-metal key, not a Mercedes remote key",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "small old all-metal key, not a Mercedes remote key",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-01",
+  "foundId": "F-O-headphones-01",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "why": "No memory mistake. Mentions spare tips in the pouch, which the photo does not show.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "headphones",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-01",
+  "foundId": "F-O-headphones-02",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "headphones",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "chrome Skullcandy earbuds with no light blue ring",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "chrome Skullcandy earbuds with no light blue ring",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-01",
+  "foundId": "F-O-headphones-03",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "headphones",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "white plastic Apple earbuds, not metal with blue ring",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "white plastic Apple earbuds, not metal with blue ring",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-01",
+  "foundId": "F-O-headphones-04",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "white plastic Apple earbuds, not metal with blue ring",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "white plastic Apple earbuds, not metal with blue ring",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-02",
+  "foundId": "F-O-headphones-02",
+  "isMatch": true,
+  "lens": "finder-careless",
+  "itemKind": "headphones",
+  "why": "Memory mistake: owner says the wire is dark grey; it is black. (Finder's careless detail: says white wire, photo shows black.)",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "headphones",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-02",
+  "foundId": "F-O-headphones-03",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "headphones",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "white Apple earbuds, not chrome Skullcandy",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "white Apple earbuds, not chrome Skullcandy",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-02",
+  "foundId": "F-O-headphones-04",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "white Apple earbuds, not chrome Skullcandy",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "white Apple earbuds, not chrome Skullcandy",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-02",
+  "foundId": "F-O-headphones-05",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "Philips over-ear headphones, not Skullcandy chrome earbuds",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "Philips over-ear headphones, not Skullcandy chrome earbuds",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-03",
+  "foundId": "F-O-headphones-03",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "headphones",
+  "why": "No memory mistake. Arabic in Latin letters: white Apple wired earphones with a volume button, forgotten on a table in the library.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "headphones",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-03",
+  "foundId": "F-O-headphones-04",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "lookalike",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "headphones",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-03",
+  "foundId": "F-O-headphones-05",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "black/brown Philips over-ear headphones, not white Apple earphones",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "black/brown Philips over-ear headphones, not white Apple earphones",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-03",
+  "foundId": "F-O-headphones-06",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "black Sennheiser over-ear headphones, not white Apple earphones",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "black Sennheiser over-ear headphones, not white Apple earphones",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-04",
+  "foundId": "F-O-headphones-04",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "why": "No memory mistake. Owner mentions age and missing foam covers rather than what the photo shows.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "headphones",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-04",
+  "foundId": "F-O-headphones-05",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "black/brown Philips over-ear headphones, not white earphones",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "black/brown Philips over-ear headphones, not white earphones",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-04",
+  "foundId": "F-O-headphones-06",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "black Sennheiser over-ear headphones, not white earphones",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "black Sennheiser over-ear headphones, not white earphones",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-04",
+  "foundId": "F-O-headphones-07",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "headphones",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "black AKG over-ear headphones, not white earphones",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "black AKG over-ear headphones, not white earphones",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-05",
+  "foundId": "F-O-headphones-05",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "why": "Memory mistake: date off by a day (owner says 5 Nov, but the finder picked them up on 4 Nov).",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "headphones",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-05",
+  "foundId": "F-O-headphones-06",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "Sennheiser brand, all black, not Philips with brown padding",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "Sennheiser brand, all black, not Philips with brown padding",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-05",
+  "foundId": "F-O-headphones-07",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "headphones",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "AKG brand, black padding, not Philips with brown padding",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "AKG brand, black padding, not Philips with brown padding",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-05",
+  "foundId": "F-O-headphones-08",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "white earbuds, not Philips over-ear headphones",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "white earbuds, not Philips over-ear headphones",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-06",
+  "foundId": "F-O-headphones-06",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "why": "No memory mistake. The curly part of the cable is outside the photo.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "headphones",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-06",
+  "foundId": "F-O-headphones-07",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "headphones",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "AKG brand shown, not Sennheiser",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "AKG brand shown, not Sennheiser",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-06",
+  "foundId": "F-O-headphones-08",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "white earbuds, not big black Sennheiser headphones",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "white earbuds, not big black Sennheiser headphones",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-06",
+  "foundId": "F-O-headphones-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "small silver/blue in-ear earphones, not big black Sennheiser headphones",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "small silver/blue in-ear earphones, not big black Sennheiser headphones",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-07",
+  "foundId": "F-O-headphones-07",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "headphones",
+  "why": "Memory mistake: owner calls the ring grey; in the photo it is white. Finder text is Arabic: 'headphones I found on the table'.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "headphones",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-07",
+  "foundId": "F-O-headphones-08",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "white earbuds with red cloth, not big black over-ear AKG",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "white earbuds with red cloth, not big black over-ear AKG",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-07",
+  "foundId": "F-O-headphones-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "small silver/blue in-ear earphones, not big black over-ear AKG",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "small silver/blue in-ear earphones, not big black over-ear AKG",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-07",
+  "foundId": "F-O-headphones-02",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "headphones",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "Skullcandy chrome earbuds, not big over-ear AKG",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "Skullcandy chrome earbuds, not big over-ear AKG",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-08",
+  "foundId": "F-O-headphones-08",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "why": "No memory mistake.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "headphones",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-08",
+  "foundId": "F-O-headphones-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "headphones",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "silver/blue metal in-ear earphones, not white Apple; no red cloth",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "silver/blue metal in-ear earphones, not white Apple; no red cloth",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-08",
+  "foundId": "F-O-headphones-02",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "headphones",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "chrome Skullcandy earbuds with dark wire, not white Apple",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "chrome Skullcandy earbuds with dark wire, not white Apple",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-headphones-08",
+  "foundId": "F-O-headphones-03",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "headphones",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "bare white wire, no red cloth cover sewn on it",
+  "closeCall": true,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "bare white wire, no red cloth cover sewn on it",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F07",
+  "foundId": "F-C-F07",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "glasses",
+  "why": "Memory mistake: date is one day late (owner says 6 Nov, they were found on 5 Nov).",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "glasses",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F07",
+  "foundId": "F-C-F15",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "glasses",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "frameless round glasses, not thick black plastic",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "frameless round glasses, not thick black plastic",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F07",
+  "foundId": "F-O-glasses-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "glasses",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "thin metal frame, not thick black plastic",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "thin metal frame, not thick black plastic",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F07",
+  "foundId": "F-O-glasses-02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "glasses",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "round tortoiseshell frame with syringes, not black square-ish",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "round tortoiseshell frame with syringes, not black square-ish",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F15",
+  "foundId": "F-C-F15",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "glasses",
+  "why": "No mistake.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "glasses",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F15",
+  "foundId": "F-O-glasses-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "glasses",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "rectangular lenses in a metal frame, not frameless round",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "rectangular lenses in a metal frame, not frameless round",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F15",
+  "foundId": "F-O-glasses-02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "glasses",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "thick tortoiseshell frame with syringes, not frameless",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "thick tortoiseshell frame with syringes, not frameless",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F15",
+  "foundId": "F-O-glasses-03",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "glasses",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "full metal wire rim, not frameless",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "full metal wire rim, not frameless",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-01",
+  "foundId": "F-O-glasses-01",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "glasses",
+  "why": "Arabic typed in Latin letters and digits. No mistake.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "glasses",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-01",
+  "foundId": "F-O-glasses-02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "glasses",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "round thick tortoiseshell frame with syringes, not thin metal rectangular",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "round thick tortoiseshell frame with syringes, not thin metal rectangular",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-01",
+  "foundId": "F-O-glasses-03",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "glasses",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "kind": "lookalike",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "glasses",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-01",
+  "foundId": "F-O-glasses-04",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "glasses",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "thick plastic frame, not thin metal",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "thick plastic frame, not thin metal",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-02",
+  "foundId": "F-O-glasses-02",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "glasses",
+  "why": "No mistake.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "glasses",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-02",
+  "foundId": "F-O-glasses-03",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "glasses",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "thin metal wire frame, no syringes, not round tortoiseshell",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "thin metal wire frame, no syringes, not round tortoiseshell",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-02",
+  "foundId": "F-O-glasses-04",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "glasses",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "black rectangular plastic frame, no syringes, not round tortoiseshell",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "black rectangular plastic frame, no syringes, not round tortoiseshell",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-02",
+  "foundId": "F-C-F07",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "glasses",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "plain black square frame, not round tortoiseshell with syringes",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "plain black square frame, not round tortoiseshell with syringes",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-03",
+  "foundId": "F-O-glasses-03",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "glasses",
+  "why": "No mistake.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "glasses",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-03",
+  "foundId": "F-O-glasses-04",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "glasses",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "thick black plastic rectangular frame, not thin wire",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "thick black plastic rectangular frame, not thin wire",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-03",
+  "foundId": "F-C-F07",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "glasses",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "black plastic frame, not thin wire",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "black plastic frame, not thin wire",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-03",
+  "foundId": "F-C-F15",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "glasses",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "frameless lenses, no metal rim",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "frameless lenses, no metal rim",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-04",
+  "foundId": "F-O-glasses-04",
+  "isMatch": true,
+  "lens": "finder-careless",
+  "itemKind": "glasses",
+  "why": "No mistake. (The finder's 'brown' is the careless detail; the frame is black.)",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "glasses",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-04",
+  "foundId": "F-C-F07",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "glasses",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "kind": "lookalike",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "glasses",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-04",
+  "foundId": "F-C-F15",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "glasses",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "frameless round glasses, not black plastic rectangular",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "frameless round glasses, not black plastic rectangular",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-glasses-04",
+  "foundId": "F-O-glasses-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "glasses",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "thin metal frame, not black plastic",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "thin metal frame, not black plastic",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F16",
+  "foundId": "F-C-F16",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "cap",
+  "why": "Memory mistake: neighbouring colour shade (owner says orange stitching; the embroidery is brown). Finder's text is in Arabic.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "cap",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F16",
+  "foundId": "F-O-cap-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "cap",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "blue baseball cap, not a kumma",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "blue baseball cap, not a kumma",
+  "tags": [
+   "cap",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F16",
+  "foundId": "F-O-cap-02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "cap",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "navy Stussy cap, not a kumma",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "navy Stussy cap, not a kumma",
+  "tags": [
+   "cap",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F16",
+  "foundId": "F-O-cap-03",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "cap",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "navy trucker cap with CCB, not a kumma",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "navy trucker cap with CCB, not a kumma",
+  "tags": [
+   "cap",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-01",
+  "foundId": "F-O-cap-01",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "cap",
+  "why": "No mistake.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "cap",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-01",
+  "foundId": "F-O-cap-02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "cap",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "Stussy logo, not Cubs",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "Stussy logo, not Cubs",
+  "tags": [
+   "cap",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-01",
+  "foundId": "F-O-cap-03",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "cap",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "navy trucker cap with CCB, not Cubs cap",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "navy trucker cap with CCB, not Cubs cap",
+  "tags": [
+   "cap",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-01",
+  "foundId": "F-O-cap-04",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "cap",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "black cap with S compass logo, not royal blue Cubs cap",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "black cap with S compass logo, not royal blue Cubs cap",
+  "tags": [
+   "cap",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-02",
+  "foundId": "F-O-cap-02",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "cap",
+  "why": "Memory mistake: neighbouring colour shade (owner says black; the cap is navy blue).",
+  "definitionLabel": "bad",
+  "definitionNote": "cap is navy blue, not black",
+  "closeCall": true,
+  "kind": "stretch",
+  "conflict": "hard",
+  "checkerNote": "cap is navy blue, not black",
+  "tags": [
+   "cap",
+   "stretch"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-02",
+  "foundId": "F-O-cap-03",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "cap",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "navy trucker cap with CCB, not Stussy",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "navy trucker cap with CCB, not Stussy",
+  "tags": [
+   "cap",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-02",
+  "foundId": "F-O-cap-04",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "cap",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "logo is a silver and green S with a compass star, not red Stussy",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "logo is a silver and green S with a compass star, not red Stussy",
+  "tags": [
+   "cap",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-02",
+  "foundId": "F-C-F16",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "cap",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "white embroidered kumma, not a black Stussy cap",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "white embroidered kumma, not a black Stussy cap",
+  "tags": [
+   "cap",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-03",
+  "foundId": "F-O-cap-03",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "cap",
+  "why": "No mistake.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "cap",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-03",
+  "foundId": "F-O-cap-04",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "cap",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "black cap with S compass logo, not CCB trucker cap",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "black cap with S compass logo, not CCB trucker cap",
+  "tags": [
+   "cap",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-03",
+  "foundId": "F-C-F16",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "cap",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "white embroidered kumma, not a trucker cap",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "white embroidered kumma, not a trucker cap",
+  "tags": [
+   "cap",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-03",
+  "foundId": "F-O-cap-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "cap",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "red C logo, no CCB letters or white net",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "red C logo, no CCB letters or white net",
+  "tags": [
+   "cap",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-04",
+  "foundId": "F-O-cap-04",
+  "isMatch": true,
+  "lens": "finder-careless",
+  "itemKind": "cap",
+  "why": "Memory mistake: wrong nearby place (owner says the football pitch; it was found in the Sports Hall). (The finder's 'red S' is the careless detail; the S is silver with green.)",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "cap",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-04",
+  "foundId": "F-C-F16",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "cap",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "white embroidered kumma, not a Mariners cap",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "white embroidered kumma, not a Mariners cap",
+  "tags": [
+   "cap",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-04",
+  "foundId": "F-O-cap-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "cap",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "blue cap with red C, not Mariners S logo",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "blue cap with red C, not Mariners S logo",
+  "tags": [
+   "cap",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-cap-04",
+  "foundId": "F-O-cap-02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "cap",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "red Stussy script logo, not Mariners S",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "red Stussy script logo, not Mariners S",
+  "tags": [
+   "cap",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F21",
+  "foundId": "F-C-F21",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "keys",
+  "why": "No memory mistake. Owner says what the keys are for and how they were lost, which the photo cannot show.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "keys",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F21",
+  "foundId": "F-O-keys-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "keys",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "eight or more keys, not about five",
+  "closeCall": true,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "eight or more keys, not about five",
+  "tags": [
+   "keys",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F21",
+  "foundId": "F-O-keys-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "keys",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "kind": "lookalike",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "keys",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "L-C-F21",
+  "foundId": "F-O-keys-03",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "keys",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "kind": "lookalike",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "keys",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-01",
+  "foundId": "F-O-keys-01",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "keys",
+  "why": "Memory mistake: date off by one day (owner says the 5th, a day after it was found on the 4th).",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "keys",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-01",
+  "foundId": "F-O-keys-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "keys",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "lookalike",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "keys",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-01",
+  "foundId": "F-O-keys-03",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "keys",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "kind": "lookalike",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "keys",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-01",
+  "foundId": "F-O-keys-04",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "keys",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "only about four keys, not eight or so",
+  "closeCall": true,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "only about four keys, not eight or so",
+  "tags": [
+   "keys",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-02",
+  "foundId": "F-O-keys-02",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "keys",
+  "why": "No memory mistake. The photo is a black-and-white close-up of the ring and fob only, so the bike lock key the owner mentions is not visible.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "keys",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-02",
+  "foundId": "F-O-keys-03",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "keys",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "kind": "lookalike",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "keys",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-02",
+  "foundId": "F-O-keys-04",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "keys",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "kind": "lookalike",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "keys",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-02",
+  "foundId": "F-C-F21",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "keys",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "kind": "lookalike",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "keys",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-03",
+  "foundId": "F-O-keys-03",
+  "isMatch": true,
+  "lens": "finder-careless",
+  "itemKind": "keys",
+  "why": "No memory mistake. (The finder's careless detail is the colour: the keys are silver, not gold.)",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "keys",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-03",
+  "foundId": "F-O-keys-04",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "keys",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "keys shown have ordinary cut blades, none with dots; white tag and sticker label instead of black and grey tags",
+  "closeCall": true,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "keys shown have ordinary cut blades, none with dots; white tag and sticker label instead of black and grey tags",
+  "tags": [
+   "keys",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-03",
+  "foundId": "F-C-F21",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "keys",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "kind": "lookalike",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "keys",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-03",
+  "foundId": "F-O-keys-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "keys",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "all keys shown have ordinary cut blades, none with dots",
+  "closeCall": true,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "all keys shown have ordinary cut blades, none with dots",
+  "tags": [
+   "keys",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-04",
+  "foundId": "F-O-keys-04",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "keys",
+  "why": "Memory mistake: wrong nearby place (owner names GU1 Parking, the keys were found in Student Parking).",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "keys",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-04",
+  "foundId": "F-C-F21",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "keys",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "kind": "lookalike",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "keys",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-04",
+  "foundId": "F-O-keys-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "keys",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "many keys, all silver; not a small set with a brass key",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "many keys, all silver; not a small set with a brass key",
+  "tags": [
+   "keys",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-keys-04",
+  "foundId": "F-O-keys-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "keys",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "kind": "lookalike",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "keys",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-01",
+  "foundId": "F-O-pencil-case-01",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "pencil-case",
+  "why": "No memory mistake. Owner adds where it was bought and the pens inside, which the photo does not show.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "pencil-case",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-01",
+  "foundId": "F-O-pencil-case-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "pencil-case",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "purple hard-shell case, no underground map",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "purple hard-shell case, no underground map",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-01",
+  "foundId": "F-O-pencil-case-03",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "pencil-case",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "striped cloth barrel case, no underground map",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "striped cloth barrel case, no underground map",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-01",
+  "foundId": "F-O-pencil-case-04",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "pencil-case",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "black cartoon-print pouch, no underground map",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "black cartoon-print pouch, no underground map",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-02",
+  "foundId": "F-O-pencil-case-02",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "pencil-case",
+  "why": "Memory mistake: neighbouring colour shade (owner says pinkish, the case is purple).",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "pencil-case",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-02",
+  "foundId": "F-O-pencil-case-03",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "pencil-case",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "striped cloth barrel case, not a hard-shell book-style case",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "striped cloth barrel case, not a hard-shell book-style case",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-02",
+  "foundId": "F-O-pencil-case-04",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "pencil-case",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "soft black cartoon-print pouch, not a pinkish hard-shell case",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "soft black cartoon-print pouch, not a pinkish hard-shell case",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-02",
+  "foundId": "F-O-pencil-case-05",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "pencil-case",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "soft blue denim pouch, not a pinkish hard-shell book-style case",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "soft blue denim pouch, not a pinkish hard-shell book-style case",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-03",
+  "foundId": "F-O-pencil-case-03",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "pencil-case",
+  "why": "No memory mistake. The photo is sepia-toned, so the brown and beige colours the owner gives cannot be confirmed from it; contents are from memory.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "pencil-case",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-03",
+  "foundId": "F-O-pencil-case-04",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "pencil-case",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "black cartoon-print pouch, not brown and beige stripes",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "black cartoon-print pouch, not brown and beige stripes",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-03",
+  "foundId": "F-O-pencil-case-05",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "pencil-case",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "flat blue denim pouch, not a striped barrel case",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "flat blue denim pouch, not a striped barrel case",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-03",
+  "foundId": "F-O-pencil-case-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "pencil-case",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "flat metro-map print case, not a striped barrel case",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "flat metro-map print case, not a striped barrel case",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-04",
+  "foundId": "F-O-pencil-case-04",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "pencil-case",
+  "why": "No memory mistake. Finder wrote in Arabic typed in Latin letters (black pencil case with colourful cartoon drawings, it was on top of a book). Contents are from the owner's memory.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "pencil-case",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-04",
+  "foundId": "F-O-pencil-case-05",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "pencil-case",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "plain blue denim pouch, not black with cartoon characters",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "plain blue denim pouch, not black with cartoon characters",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-04",
+  "foundId": "F-O-pencil-case-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "pencil-case",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "white metro-map print case, not black with cartoon characters",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "white metro-map print case, not black with cartoon characters",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-04",
+  "foundId": "F-O-pencil-case-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "pencil-case",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "purple hard-shell book-style case, not a black cartoon-print pouch",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "purple hard-shell book-style case, not a black cartoon-print pouch",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-05",
+  "foundId": "F-O-pencil-case-05",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "pencil-case",
+  "why": "No memory mistake. Owner wrote in Arabic: a small blue denim pen pouch sewn by her sister, with two black and silver pens, left on a table in the library.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "pencil-case",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-05",
+  "foundId": "F-O-pencil-case-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "pencil-case",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "metro-map print case with red zip, not blue denim",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "metro-map print case with red zip, not blue denim",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-05",
+  "foundId": "F-O-pencil-case-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "pencil-case",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "purple hard-shell case, not blue denim",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "purple hard-shell case, not blue denim",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-pencil-case-05",
+  "foundId": "F-O-pencil-case-03",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "pencil-case",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "striped cloth barrel case with a rigid rim, not denim",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "striped cloth barrel case with a rigid rim, not denim",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-01",
+  "foundId": "F-O-usb-stick-01",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "usb-stick",
+  "why": "No memory mistake. Owner does not name the brand.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "usb-stick",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-01",
+  "foundId": "F-O-usb-stick-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "usb-stick",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "black capped stick, not metallic grey swing type",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "black capped stick, not metallic grey swing type",
+  "tags": [
+   "usb-stick",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-01",
+  "foundId": "F-O-usb-stick-03",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "usb-stick",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "blue rubber graffiti shape with cap, not plain metallic grey swing type",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "blue rubber graffiti shape with cap, not plain metallic grey swing type",
+  "tags": [
+   "usb-stick",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-01",
+  "foundId": "F-O-usb-stick-04",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "usb-stick",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "black Transcend with cap, not metallic grey swing type",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "black Transcend with cap, not metallic grey swing type",
+  "tags": [
+   "usb-stick",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-02",
+  "foundId": "F-O-usb-stick-02",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "usb-stick",
+  "why": "Memory mistake: wrong nearby place. The owner thinks it was left at the library printers, but it was found at the Copy Centre.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "usb-stick",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-02",
+  "foundId": "F-O-usb-stick-03",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "usb-stick",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "blue rubber graffiti shape, not a small black stick",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "blue rubber graffiti shape, not a small black stick",
+  "tags": [
+   "usb-stick",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-02",
+  "foundId": "F-O-usb-stick-04",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "usb-stick",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "Transcend marked 1GB with light blue band, not plain black 2GB",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "Transcend marked 1GB with light blue band, not plain black 2GB",
+  "tags": [
+   "usb-stick",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-02",
+  "foundId": "F-O-usb-stick-05",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "usb-stick",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "silver metal with red front, slider, not black with cap",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "silver metal with red front, slider, not black with cap",
+  "tags": [
+   "usb-stick",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-03",
+  "foundId": "F-O-usb-stick-03",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "usb-stick",
+  "why": "No memory mistake. Written in Arabic typed in Latin letters: a blue and black rubber flash drive with an odd shape like a drawing, holding the owner's design project.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "usb-stick",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-03",
+  "foundId": "F-O-usb-stick-04",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "usb-stick",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "ordinary hard plastic Transcend stick, not weird-shaped rubber",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "ordinary hard plastic Transcend stick, not weird-shaped rubber",
+  "tags": [
+   "usb-stick",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-03",
+  "foundId": "F-O-usb-stick-05",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "usb-stick",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "silver metal with red front, not blue and black rubber",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "silver metal with red front, not blue and black rubber",
+  "tags": [
+   "usb-stick",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-03",
+  "foundId": "F-O-usb-stick-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "usb-stick",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "silver metal TDK, not blue and black rubber",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "silver metal TDK, not blue and black rubber",
+  "tags": [
+   "usb-stick",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-04",
+  "foundId": "F-O-usb-stick-04",
+  "isMatch": true,
+  "lens": "finder-careless",
+  "itemKind": "usb-stick",
+  "why": "No memory mistake by the owner. The finder's careless detail is the stripe colour: it is light blue, not green.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "usb-stick",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-04",
+  "foundId": "F-O-usb-stick-05",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "usb-stick",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "silver metal with red front, not black Transcend",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "silver metal with red front, not black Transcend",
+  "tags": [
+   "usb-stick",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-04",
+  "foundId": "F-O-usb-stick-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "usb-stick",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "silver TDK, not black Transcend",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "silver TDK, not black Transcend",
+  "tags": [
+   "usb-stick",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-04",
+  "foundId": "F-O-usb-stick-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "usb-stick",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "marked 2G, all black, no Transcend name or light blue part",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "marked 2G, all black, no Transcend name or light blue part",
+  "tags": [
+   "usb-stick",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-05",
+  "foundId": "F-O-usb-stick-05",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "usb-stick",
+  "why": "Memory mistake: neighbouring colour shade. The owner says maroon; the panel is bright red.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "usb-stick",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-05",
+  "foundId": "F-O-usb-stick-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "usb-stick",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "front face plain silver with TDK logo, no maroon front",
+  "closeCall": true,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "front face plain silver with TDK logo, no maroon front",
+  "tags": [
+   "usb-stick",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-05",
+  "foundId": "F-O-usb-stick-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "usb-stick",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "black capped stick, not silver with maroon front",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "black capped stick, not silver with maroon front",
+  "tags": [
+   "usb-stick",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-usb-stick-05",
+  "foundId": "F-O-usb-stick-03",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "usb-stick",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "blue rubber graffiti shape with cap, not silver slider",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "blue rubber graffiti shape with cap, not silver slider",
+  "tags": [
+   "usb-stick",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F08",
+  "foundId": "F-C-F08",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "charger",
+  "why": "No memory mistake.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "charger",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F08",
+  "foundId": "F-C-F17",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "charger",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "lookalike",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "charger",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "L-C-F08",
+  "foundId": "F-O-charger-01",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "charger",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "black laptop charger brick, not white three pin phone adapter",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "black laptop charger brick, not white three pin phone adapter",
+  "tags": [
+   "charger",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F08",
+  "foundId": "F-O-charger-02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "charger",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "dark grey Dell laptop adapter, not a white phone charger",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "dark grey Dell laptop adapter, not a white phone charger",
+  "tags": [
+   "charger",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F17",
+  "foundId": "F-C-F17",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "charger",
+  "why": "No memory mistake. Written in Arabic: a long black charging cable without the plug head, type C, forgotten under the table while studying.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "charger",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F17",
+  "foundId": "F-O-charger-01",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "charger",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "laptop charger brick with round tip, not a bare type C cable",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "laptop charger brick with round tip, not a bare type C cable",
+  "tags": [
+   "charger",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F17",
+  "foundId": "F-O-charger-02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "charger",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "Dell laptop adapter brick, not a bare type C cable",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "Dell laptop adapter brick, not a bare type C cable",
+  "tags": [
+   "charger",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F17",
+  "foundId": "F-C-F08",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "charger",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "white charger head attached; owner lost a cable without the head",
+  "closeCall": true,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "white charger head attached; owner lost a cable without the head",
+  "tags": [
+   "charger",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-charger-01",
+  "foundId": "F-O-charger-01",
+  "isMatch": true,
+  "lens": "finder-careless",
+  "itemKind": "charger",
+  "why": "No memory mistake by the owner, who names the laptop it belongs to rather than the name printed on the charger. The finder's careless detail is the item word: it is a laptop charger, not a phone charger.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "charger",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-charger-01",
+  "foundId": "F-O-charger-02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "charger",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "Dell-branded dark grey adapter, not an Acer charger",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "Dell-branded dark grey adapter, not an Acer charger",
+  "tags": [
+   "charger",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-charger-01",
+  "foundId": "F-C-F08",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "charger",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "white phone charger head, not a black laptop brick",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "white phone charger head, not a black laptop brick",
+  "tags": [
+   "charger",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-charger-01",
+  "foundId": "F-C-F17",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "charger",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "thin braided USB cable only, not a laptop brick with round pin",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "thin braided USB cable only, not a laptop brick with round pin",
+  "tags": [
+   "charger",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-charger-02",
+  "foundId": "F-O-charger-02",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "charger",
+  "why": "No memory mistake.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "charger",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-charger-02",
+  "foundId": "F-C-F08",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "charger",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "white phone charger head, not a Dell laptop adapter",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "white phone charger head, not a Dell laptop adapter",
+  "tags": [
+   "charger",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-charger-02",
+  "foundId": "F-C-F17",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "charger",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "thin braided USB cable, not a Dell laptop charger",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "thin braided USB cable, not a Dell laptop charger",
+  "tags": [
+   "charger",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-charger-02",
+  "foundId": "F-O-charger-01",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "charger",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "Chicony brand on the brick, not Dell",
+  "closeCall": true,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "Chicony brand on the brick, not Dell",
+  "tags": [
+   "charger",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-01",
+  "foundId": "F-O-watch-01",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "watch",
+  "why": "No memory mistake. Owner does not name the brand.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "watch",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-01",
+  "foundId": "F-O-watch-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "watch",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "steel Victorinox on metal bracelet, not gold on leather",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "steel Victorinox on metal bracelet, not gold on leather",
+  "tags": [
+   "watch",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-01",
+  "foundId": "F-O-watch-03",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "watch",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "silver watch on metal band, Bulova, not gold on leather",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "silver watch on metal band, Bulova, not gold on leather",
+  "tags": [
+   "watch",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-01",
+  "foundId": "F-O-watch-04",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "watch",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "steel Breitling on metal bracelet, not gold on leather",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "steel Breitling on metal bracelet, not gold on leather",
+  "tags": [
+   "watch",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-02",
+  "foundId": "F-O-watch-02",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "watch",
+  "why": "No memory mistake.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "watch",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-02",
+  "foundId": "F-O-watch-03",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "watch",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "Bulova with 24-hour bezel, not Victorinox",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "Bulova with 24-hour bezel, not Victorinox",
+  "tags": [
+   "watch",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-02",
+  "foundId": "F-O-watch-04",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "watch",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "Breitling with three white subdials, not Victorinox with big numbers",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "Breitling with three white subdials, not Victorinox with big numbers",
+  "tags": [
+   "watch",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-02",
+  "foundId": "F-O-watch-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "watch",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "gold F.P. Journe on leather strap, not steel Victorinox",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "gold F.P. Journe on leather strap, not steel Victorinox",
+  "tags": [
+   "watch",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-03",
+  "foundId": "F-O-watch-03",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "watch",
+  "why": "Memory mistake: neighbouring colour shade. The owner says the face is dark blue; it is black.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "watch",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-03",
+  "foundId": "F-O-watch-04",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "watch",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "Breitling with three white subdials, not Bulova",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "Breitling with three white subdials, not Bulova",
+  "tags": [
+   "watch",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-03",
+  "foundId": "F-O-watch-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "watch",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "gold watch on leather strap, not silver-band Bulova",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "gold watch on leather strap, not silver-band Bulova",
+  "tags": [
+   "watch",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-03",
+  "foundId": "F-O-watch-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "watch",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "Victorinox Swiss Army on dial, not Bulova",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "Victorinox Swiss Army on dial, not Bulova",
+  "tags": [
+   "watch",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-04",
+  "foundId": "F-O-watch-04",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "watch",
+  "why": "Memory mistake: date off by one day. The owner says Wednesday 4 November; it was found on Thursday 5 November. The finder's text is in Arabic: a silver watch with a black face and three small white circles.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "watch",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-04",
+  "foundId": "F-O-watch-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "watch",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "gold watch on leather strap, F.P. Journe, not Breitling on metal bracelet",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "gold watch on leather strap, F.P. Journe, not Breitling on metal bracelet",
+  "tags": [
+   "watch",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-04",
+  "foundId": "F-O-watch-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "watch",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "Victorinox Swiss Army on dial, not Breitling",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "Victorinox Swiss Army on dial, not Breitling",
+  "tags": [
+   "watch",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-watch-04",
+  "foundId": "F-O-watch-03",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "watch",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "Bulova, no subdials, not Breitling",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "Bulova, no subdials, not Breitling",
+  "tags": [
+   "watch",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F01",
+  "foundId": "F-C-F01",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "laptop",
+  "why": "No memory mistake.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "laptop",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F01",
+  "foundId": "F-C-F06",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "laptop",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "kind": "lookalike",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "laptop",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "L-C-F01",
+  "foundId": "F-C-F20",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "laptop",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "found is a silver MacBook, not a black Dell",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "found is a silver MacBook, not a black Dell",
+  "tags": [
+   "laptop",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F06",
+  "foundId": "F-C-F06",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "laptop",
+  "why": "No memory mistake.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "laptop",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F06",
+  "foundId": "F-C-F20",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "laptop",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "found is a silver MacBook, not a dark Dell",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "found is a silver MacBook, not a dark Dell",
+  "tags": [
+   "laptop",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F06",
+  "foundId": "F-C-F01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "laptop",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "kind": "lookalike",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "laptop",
+   "lookalike"
+  ]
+ },
+ {
+  "lostId": "L-C-F20",
+  "foundId": "F-C-F20",
+  "isMatch": true,
+  "lens": "finder-careless",
+  "itemKind": "laptop",
+  "why": "Arabic in Latin letters: silver MacBook, left open on a table in the library, no cover or stickers. No memory mistake. (The finder's careless detail is the colour: the laptop is silver, not black.)",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "laptop",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F20",
+  "foundId": "F-C-F01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "laptop",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "found is a black Dell, not a silver MacBook",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "found is a black Dell, not a silver MacBook",
+  "tags": [
+   "laptop",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F20",
+  "foundId": "F-C-F06",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "laptop",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "found is a black Dell, not a silver MacBook",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "found is a black Dell, not a silver MacBook",
+  "tags": [
+   "laptop",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F03",
+  "foundId": "F-C-F03",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "backpack",
+  "why": "No memory mistake.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "backpack",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F03",
+  "foundId": "F-O-backpack-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "backpack",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "found bag is brown with coloured circles, not plain grey",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "found bag is brown with coloured circles, not plain grey",
+  "tags": [
+   "backpack",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F03",
+  "foundId": "F-O-backpack-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "backpack",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "found bag is orange and black, not plain grey",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "found bag is orange and black, not plain grey",
+  "tags": [
+   "backpack",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-backpack-01",
+  "foundId": "F-O-backpack-01",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "backpack",
+  "why": "Memory mistake: neighbouring colour shade. The owner says dark maroon, the bag's background is brown.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "backpack",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-backpack-01",
+  "foundId": "F-O-backpack-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "backpack",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "found bag is an orange and black Tamrac, no dots or maroon",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "found bag is an orange and black Tamrac, no dots or maroon",
+  "tags": [
+   "backpack",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-backpack-01",
+  "foundId": "F-C-F03",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "backpack",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "found bag is plain grey, no coloured dots or maroon",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "found bag is plain grey, no coloured dots or maroon",
+  "tags": [
+   "backpack",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-backpack-02",
+  "foundId": "F-O-backpack-02",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "backpack",
+  "why": "No memory mistake.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "backpack",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-backpack-02",
+  "foundId": "F-C-F03",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "backpack",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "found bag is grey with grey sides, not an orange and black Tamrac",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "found bag is grey with grey sides, not an orange and black Tamrac",
+  "tags": [
+   "backpack",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-backpack-02",
+  "foundId": "F-O-backpack-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "backpack",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "found bag is brown with coloured circles and pink zips, not an orange and black Tamrac",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "found bag is brown with coloured circles and pink zips, not an orange and black Tamrac",
+  "tags": [
+   "backpack",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F18",
+  "foundId": "F-C-F18",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "textbook",
+  "why": "No memory mistake.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "textbook",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F18",
+  "foundId": "F-C-F23",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "textbook",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "found is an old Russian book with yellow pages, not a Zumdahl chemistry textbook",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "found is an old Russian book with yellow pages, not a Zumdahl chemistry textbook",
+  "tags": [
+   "textbook",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F18",
+  "foundId": "F-O-textbook-01",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "textbook",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "found is a kids science book on the solar system, not a Zumdahl chemistry textbook",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "found is a kids science book on the solar system, not a Zumdahl chemistry textbook",
+  "tags": [
+   "textbook",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F23",
+  "foundId": "F-C-F23",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "textbook",
+  "why": "Memory mistake: date off by a day. The owner gives 6 November, the book was already found on 5 November.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "textbook",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F23",
+  "foundId": "F-O-textbook-01",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "textbook",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "found is a colourful kids science textbook in English, not an old Russian book",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "found is a colourful kids science textbook in English, not an old Russian book",
+  "tags": [
+   "textbook",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F23",
+  "foundId": "F-C-F18",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "textbook",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "found is a black Zumdahl Chemistry textbook, not an old Russian book",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "found is a black Zumdahl Chemistry textbook, not an old Russian book",
+  "tags": [
+   "textbook",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-textbook-01",
+  "foundId": "F-O-textbook-01",
+  "isMatch": true,
+  "lens": "finder-careless",
+  "itemKind": "textbook",
+  "why": "No memory mistake. (The finder's careless detail is the item word: it is a printed textbook, not a notebook.)",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "textbook",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-textbook-01",
+  "foundId": "F-C-F18",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "textbook",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "found is a Zumdahl Chemistry textbook, not a kids science book",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "found is a Zumdahl Chemistry textbook, not a kids science book",
+  "tags": [
+   "textbook",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-textbook-01",
+  "foundId": "F-C-F23",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "textbook",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "found is an old text-only Russian book, not a kids science textbook with colour pictures",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "found is an old text-only Russian book, not a kids science textbook with colour pictures",
+  "tags": [
+   "textbook",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-power-bank-01",
+  "foundId": "F-O-power-bank-01",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "power-bank",
+  "why": "Memory mistake: brand guessed wrongly. The owner says Baseus, the power bank is an Anker.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "power-bank",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-power-bank-01",
+  "foundId": "F-O-power-bank-02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "power-bank",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "found is a light grey pebble shape, not a slim black one",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "found is a light grey pebble shape, not a slim black one",
+  "tags": [
+   "power-bank",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-power-bank-01",
+  "foundId": "F-O-power-bank-03",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "power-bank",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "found is a silver Xiaomi, not black",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "found is a silver Xiaomi, not black",
+  "tags": [
+   "power-bank",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-power-bank-02",
+  "foundId": "F-O-power-bank-02",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "power-bank",
+  "why": "No memory mistake.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "power-bank",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-power-bank-02",
+  "foundId": "F-O-power-bank-03",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "power-bank",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "found is a silver metal Xiaomi bar with one USB port, not an off-white stone shape",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "found is a silver metal Xiaomi bar with one USB port, not an off-white stone shape",
+  "tags": [
+   "power-bank",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-power-bank-02",
+  "foundId": "F-O-power-bank-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "power-bank",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "found is a flat black Anker, not an off-white stone shape",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "found is a flat black Anker, not an off-white stone shape",
+  "tags": [
+   "power-bank",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-power-bank-03",
+  "foundId": "F-O-power-bank-03",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "power-bank",
+  "why": "No memory mistake. Finder's text is Arabic: 'power bank, I found it on the chair'.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "power-bank",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-power-bank-03",
+  "foundId": "F-O-power-bank-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "power-bank",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "found is a black Anker, not a silver Xiaomi",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "found is a black Anker, not a silver Xiaomi",
+  "tags": [
+   "power-bank",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-power-bank-03",
+  "foundId": "F-O-power-bank-02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "power-bank",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "found is a stone-textured pebble with an EU2017.EE logo, not a metal Xiaomi",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "found is a stone-textured pebble with an EU2017.EE logo, not a metal Xiaomi",
+  "tags": [
+   "power-bank",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F02",
+  "foundId": "F-C-F02",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "pen",
+  "why": "no mistake",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "pen",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F02",
+  "foundId": "F-C-F22",
+  "isMatch": false,
+  "lens": "finder-careless",
+  "itemKind": "pen",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "dark opaque metal pen, not a see-through blue pen with rubber grip",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "dark opaque metal pen, not a see-through blue pen with rubber grip",
+  "tags": [
+   "pen",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F22",
+  "foundId": "F-C-F22",
+  "isMatch": true,
+  "lens": "finder-careless",
+  "itemKind": "pen",
+  "why": "no mistake (the finder's careless detail is the colour: the pen is black, not dark blue)",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "pen",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F22",
+  "foundId": "F-C-F02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "pen",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "clear plastic blue pen, not a black heavy textured pen with a silver band",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "clear plastic blue pen, not a black heavy textured pen with a silver band",
+  "tags": [
+   "pen",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-bottle-01",
+  "foundId": "F-O-bottle-01",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "bottle",
+  "why": "no mistake",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "bottle",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-bottle-01",
+  "foundId": "F-O-bottle-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "bottle",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "silver steel Thermos tumbler, not a black bottle",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "silver steel Thermos tumbler, not a black bottle",
+  "tags": [
+   "bottle",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-bottle-02",
+  "foundId": "F-O-bottle-02",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "bottle",
+  "why": "no mistake; written in Arabic",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "bottle",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-bottle-02",
+  "foundId": "F-O-bottle-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "bottle",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "black bottle, not a silver steel thermos",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "black bottle, not a silver steel thermos",
+  "tags": [
+   "bottle",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-prayer-beads-01",
+  "foundId": "F-O-prayer-beads-01",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "prayer-beads",
+  "why": "no mistake",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "prayer-beads",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-prayer-beads-01",
+  "foundId": "F-O-prayer-beads-02",
+  "isMatch": false,
+  "lens": "finder-minimal",
+  "itemKind": "prayer-beads",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "brown wooden beads on string, not grey-green seed beads on metal wire",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "brown wooden beads on string, not grey-green seed beads on metal wire",
+  "tags": [
+   "prayer-beads",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-prayer-beads-02",
+  "foundId": "F-O-prayer-beads-02",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "prayer-beads",
+  "why": "date off by a day: owner says 6 Nov, it was found on 5 Nov. Finder's text is in Arabic",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "prayer-beads",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-prayer-beads-02",
+  "foundId": "F-O-prayer-beads-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "prayer-beads",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "olive seed beads linked with metal wire, not brown wooden beads on string",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "olive seed beads linked with metal wire, not brown wooden beads on string",
+  "tags": [
+   "prayer-beads",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-umbrella-01",
+  "foundId": "F-O-umbrella-01",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "umbrella",
+  "why": "no mistake",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "umbrella",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-umbrella-01",
+  "foundId": "F-O-umbrella-02",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "umbrella",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "long stick umbrella with wooden hook handle, not a compact folding one",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "long stick umbrella with wooden hook handle, not a compact folding one",
+  "tags": [
+   "umbrella",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-O-umbrella-02",
+  "foundId": "F-O-umbrella-02",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "umbrella",
+  "why": "wrong nearby place: owner says GU1 Parking, it was found at the Main Entrance",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "umbrella",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-umbrella-02",
+  "foundId": "F-O-umbrella-01",
+  "isMatch": false,
+  "lens": "finder-normal",
+  "itemKind": "umbrella",
+  "why": "another item of the same kind, found in the same place",
+  "definitionLabel": "bad",
+  "definitionNote": "small folding umbrella with metal cap, not a long one with wooden tip",
+  "closeCall": false,
+  "kind": "trap",
+  "conflict": "hard",
+  "checkerNote": "small folding umbrella with metal cap, not a long one with wooden tip",
+  "tags": [
+   "umbrella",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-C-F04",
+  "foundId": "F-C-F04",
+  "isMatch": true,
+  "lens": "finder-careless",
+  "itemKind": "earbuds",
+  "why": "no mistake (the finder's careless detail is the item word: it is an earbuds case, not a charger)",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "earbuds",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F09",
+  "foundId": "F-C-F09",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "notebook",
+  "why": "no mistake",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "notebook",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F10",
+  "foundId": "F-C-F10",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "game",
+  "why": "neighbouring colour shade: owner says black box, it is dark navy blue",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "game",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F11",
+  "foundId": "F-C-F11",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "sports",
+  "why": "no mistake; written in Arabic with Latin letters and digits",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "sports",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F12",
+  "foundId": "F-C-F12",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "remote",
+  "why": "brand guessed wrongly: owner says LG, the remote is Oscar brand",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "remote",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F19",
+  "foundId": "F-C-F19",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "shoes",
+  "why": "No memory mistake. Written in Arabic typed in Latin letters: black leather men's sandals size 43, left at the prayer room door and gone after prayer, thick sole.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "shoes",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-C-F26",
+  "foundId": "F-C-F26",
+  "isMatch": true,
+  "lens": "finder-careless",
+  "itemKind": "jacket",
+  "why": "No memory mistake. (Finder's careless detail: the stripes are grey and cream, not red.)",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "jacket",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-phone-01",
+  "foundId": "F-O-phone-01",
+  "isMatch": true,
+  "lens": "finder-minimal",
+  "itemKind": "phone",
+  "why": "No memory mistake.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "phone",
+   "must"
+  ]
+ },
+ {
+  "lostId": "L-O-sunglasses-01",
+  "foundId": "F-O-sunglasses-01",
+  "isMatch": true,
+  "lens": "finder-normal",
+  "itemKind": "sunglasses",
+  "why": "Memory mistake: neighbouring colour shade. The owner says dark purple; the frame is dark red / maroon.",
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "kind": "must",
+  "conflict": "none",
+  "checkerNote": "",
+  "tags": [
+   "sunglasses",
+   "must"
+  ]
+ }
+]
