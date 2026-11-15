@@ -34,6 +34,7 @@ const { values: args } = parseArgs({
     parallel: { type: "string", default: "4" }, // pairs reviewed at once
     samples: { type: "string", default: "1" }, // model runs per pair (run-to-run variation)
     only: { type: "string" }, // comma-separated lens names
+    fold: { type: "string" }, // "a" or "b": half of the item kinds each, so a change tuned on one half is measured on the other
     kinds: { type: "string" }, // comma-separated pair kinds (must, stretch, trap, trap-soft, lookalike)
     "skip-clean": { type: "boolean", default: false }, // leave out same-item pairs where nothing disagrees (cheaper wording tests)
     "vector-limit": { type: "string" }, // try another retrieval size (the app: 25)
@@ -129,8 +130,20 @@ function triageFor(query, listIds) {
 }
 
 const lenses = args.only ? new Set(args.only.split(",")) : null;
+// Folds split by item kind, so every lookalike pair sits wholly in one half. Kinds are dealt out biggest first.
+const foldOf = new Map();
+{
+  const count = new Map();
+  for (const p of edge.pairs) count.set(p.itemKind ?? p.lens, (count.get(p.itemKind ?? p.lens) || 0) + 1);
+  const size = { a: 0, b: 0 };
+  for (const [kind, n] of [...count.entries()].sort((x, y) => y[1] - x[1] || String(x[0]).localeCompare(String(y[0])))) {
+    const f = size.a <= size.b ? "a" : "b";
+    foldOf.set(kind, f);
+    size[f] += n;
+  }
+}
 const kinds = args.kinds ? new Set(args.kinds.split(",")) : null;
-const pairs = edge.pairs.filter((p) => (!lenses || lenses.has(p.lens)) && (!kinds || kinds.has(p.kind)) && !(args["skip-clean"] && p.isMatch && p.conflict === "none"));
+const pairs = edge.pairs.filter((p) => (!lenses || lenses.has(p.lens)) && (!kinds || kinds.has(p.kind)) && (!args.fold || foldOf.get(p.itemKind ?? p.lens) === args.fold) && !(args["skip-clean"] && p.isMatch && p.conflict === "none"));
 const samples = Number(args.samples);
 
 const rows = await mapLimit(pairs, Number(args.parallel), async (p) => {
@@ -156,7 +169,7 @@ const rows = await mapLimit(pairs, Number(args.parallel), async (p) => {
       break;
     }
     row.scores.push(round(r.finalScore));
-    if (i === 0) Object.assign(row, { finalScore: round(r.finalScore), sameItem: round(r.features.sameItem), overall: round(r.features.overall), stronger: r.features.stronger, timing: r.features.timing, debate: r.explanation });
+    if (i === 0) Object.assign(row, { finalScore: round(r.finalScore), sameItem: round(r.features.sameItem), overall: round(r.features.overall), stronger: r.features.stronger, timing: r.features.timing, debate: r.explanation, ...(r.features.details ? { details: r.features.details, contradicted: r.features.contradicted, shownDetails: r.features.shownDetails } : {}) });
   }
   if (row.finalScore != null) {
     row.modelMatch = row.finalScore >= PROPOSED.debateThreshold;
@@ -188,7 +201,7 @@ for (const lens of [...new Set(rows.map((r) => r.lens))]) {
 }
 
 const pct = (a, b) => (b ? `${a}/${b} (${Math.round((100 * a) / b)}%)` : "–");
-summary.settings = { photoRule: process.env.PHOTO_RULE || null, photoLine: process.env.PHOTO_LINE || null, photos: !args["no-photos"], normalize: args.normalize, rule: process.env.SIMILARITY_RULE || "v1", legacyCode: process.env.EDGE_LEGACY === "1", vectorLimit: PROPOSED.vectorLimit, maxCandidates: CURRENT.maxCandidates, shortlistThreshold, triage: args.triage ? Number(args.triage) : null };
+summary.settings = { fold: args.fold || null, judgePhotos: process.env.JUDGE_PHOTOS === '1', detailCheck: process.env.DETAIL_CHECK === '1', photoRule: process.env.PHOTO_RULE || null, photoLine: process.env.PHOTO_LINE || null, photos: !args["no-photos"], normalize: args.normalize, rule: process.env.SIMILARITY_RULE || "v1", legacyCode: process.env.EDGE_LEGACY === "1", vectorLimit: PROPOSED.vectorLimit, maxCandidates: CURRENT.maxCandidates, shortlistThreshold, triage: args.triage ? Number(args.triage) : null };
 summary.reviewsPerReport = round([...reviewsPerReport.values()].reduce((s, v) => s + v, 0) / (reviewsPerReport.size || 1));
 console.log(`\nvector top ${PROPOSED.vectorLimit} · shortlist ≥ ${shortlistThreshold}, top ${CURRENT.maxCandidates} · ${summary.reviewsPerReport} reviews per report on average`);
 console.log(`${rows.length} labelled pairs in a database of ${all.length} reports · embeddings ${summary.embeddings} · cut-off ${PROPOSED.debateThreshold}`);
