@@ -8,6 +8,11 @@
 //          verdicts: [{group, lost, found, conflict: "none"|"soft"|"hard", note}]}]
 // The writer knows the truth; an independent checker, who is not told it, says whether the two texts
 // conflict. Together they give each pair its kind (see KIND below).
+//
+// Since 2026-11-15 a lens may carry labelsA and labelsB instead of verdicts: two independent readers who apply
+// the written definition of a match ([{group, lost, found, first, second, closeCall, difference}], "first" under
+// draft 2, "second" under draft 3). Reader A's draft-2 label becomes definitionLabel and sets the kind; pairs the
+// two readers split on are marked disputed.
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { parseArgs } from "node:util";
@@ -23,7 +28,8 @@ const isDate = (s) => /^\d{4}-\d{2}-\d{2}$/.test(s || "");
 
 const reports = [], pairs = [], skipped = [];
 let n = 0;
-for (const { lens, groups, verdicts } of lenses) {
+const LABEL_KIND = { same: { good: "must", bad: "stretch" }, different: { good: "lookalike", bad: "trap" } };
+for (const { lens, groups, verdicts, labelsA, labelsB } of lenses) {
   groups.forEach((g, gi) => {
     const ids = new Map();
     for (const r of g.reports) {
@@ -49,13 +55,17 @@ for (const { lens, groups, verdicts } of lenses) {
     }
     for (const p of g.pairs) {
       const lostId = ids.get(p.lost), foundId = ids.get(p.found);
-      const v = (verdicts || []).find((x) => x.group === gi && x.lost === p.lost && x.found === p.found);
+      const of = (list) => (list || []).find((x) => x.group === gi && x.lost === p.lost && x.found === p.found);
+      const a = of(labelsA), b = of(labelsB);
+      const v = of(verdicts) ?? (a && b ? { conflict: a.first === "good" ? "none" : "hard", note: a.difference || b.difference || "" } : null);
       const lostType = g.reports.find((r) => r.key === p.lost)?.type, foundType = g.reports.find((r) => r.key === p.found)?.type;
       if (!lostId || !foundId || lostType !== "lost" || foundType !== "found" || !KIND[p.truth] || !v) {
-        skipped.push({ lens, group: gi, ...p, reason: !v ? "no checker verdict" : "bad report keys" });
+        skipped.push({ lens, group: gi, ...p, reason: !v ? "no checker verdict or labels" : "bad report keys" });
         continue;
       }
-      pairs.push({ lostId, foundId, isMatch: p.truth === "same", lens, kind: KIND[p.truth][v.conflict], conflict: v.conflict, idea: g.idea, why: p.why, checkerNote: v.note, tags: [lens, KIND[p.truth][v.conflict]] });
+      const kind = a && b ? LABEL_KIND[p.truth][a.first] : KIND[p.truth][v.conflict];
+      const labels = a && b ? { definitionLabel: a.first, secondLabel: b.first, disputed: a.first !== b.first, closeCall: Boolean(a.closeCall || b.closeCall), draft3: { a: a.second, b: b.second, note: a.difference || b.difference || "" } } : {};
+      pairs.push({ lostId, foundId, isMatch: p.truth === "same", lens, kind, conflict: v.conflict, idea: g.idea, why: p.why, checkerNote: v.note, tags: [lens, kind], ...labels });
     }
   });
 }
