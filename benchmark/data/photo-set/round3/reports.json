@@ -1,0 +1,3314 @@
+[
+ {
+  "id": "F-C-F25",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Black wallet with a pattern on it, cash sticking out",
+  "location": "Ground Canteen",
+  "campusZone": "",
+  "eventDate": "2026-11-04",
+  "createdAt": "2026-11-04T09:00:00.000Z",
+  "photos": [
+   "../../campus/photos/b3e2fba4fadc0fb71af0e9b5f0e9134a.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "wallet",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-C-F25",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Lost my black leather wallet, it has lines pressed into the leather. Some cash and my gym membership card inside, think it fell off the bench.",
+  "location": "canteen",
+  "campusZone": "",
+  "eventDate": "2026-11-05",
+  "createdAt": "2026-11-06T15:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "wallet"
+  ],
+  "ownerNote": "Date mistake: the owner gives 5 Nov, one day after the wallet was actually found (4 Nov)."
+ },
+ {
+  "id": "F-O-wallet-01",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "wallet found on a table",
+  "location": "Canteen",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:01:00.000Z",
+  "photos": [
+   "../../online/photos/wallet__01421c7f-0c50-4edf-8876-3718a4b33938.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "wallet",
+   "finder_minimal"
+  ]
+ },
+ {
+  "id": "L-O-wallet-01",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Thick black wallet, old leather, stuffed with cards and receipts so it barely closes. Left it on the table after lunch.",
+  "location": "Ground canteen",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-04T15:01:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "wallet"
+  ],
+  "ownerNote": "No mistake."
+ },
+ {
+  "id": "F-O-wallet-02",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Black leather wallet, white stitching, small tree logo in the corner",
+  "location": "Ground Canteen",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:02:00.000Z",
+  "photos": [
+   "../../online/photos/wallet__1275244d-d511-44f4-8dc4-7b695e5d4084.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "wallet",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-wallet-02",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Dark brown Timberland wallet, folds in half, had it about a year. Bank card and around 5 rials in it.",
+  "location": "cafeteria",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-08T15:02:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "wallet"
+  ],
+  "ownerNote": "Colour mistake: the owner says dark brown, the wallet is black."
+ },
+ {
+  "id": "F-O-wallet-03",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Yellowish leather wallet with a red star drawn on the front",
+  "location": "Ground Canteen",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:03:00.000Z",
+  "photos": [
+   "../../online/photos/wallet__175cb0ce-9446-46cb-b525-66131648b646.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "wallet",
+   "finder_careless"
+  ]
+ },
+ {
+  "id": "L-O-wallet-03",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Handmade leather wallet from Morocco, light tan, laced leather edges and a star on the front. Gift from my aunt, only coins inside.",
+  "location": "GU1 canteen",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-03T15:03:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "wallet"
+  ],
+  "ownerNote": "No mistake."
+ },
+ {
+  "id": "F-O-wallet-04",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Old black leather wallet, was lying open, two cards and a coin inside",
+  "location": "Canteen",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:04:00.000Z",
+  "photos": [
+   "../../online/photos/wallet__1acc872a-1915-4a3d-9185-7dad0b79e0b5.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "wallet",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-wallet-04",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "محفظة جلد سوداء قديمة شوي، فيها جيب صغير للعملات وبطاقتين. أظن نسيتها على الطاولة وقت الفطور",
+  "location": "الكانتين",
+  "campusZone": "",
+  "eventDate": "2026-11-06",
+  "createdAt": "2026-11-07T15:04:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "wallet"
+  ],
+  "ownerNote": "No mistake. Written in Arabic."
+ },
+ {
+  "id": "F-O-wallet-05",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Snake pattern sunglasses case with a wrist strap and purple zip",
+  "location": "Ground Canteen",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:05:00.000Z",
+  "photos": [
+   "../../online/photos/wallet__499bee7c-5d72-4072-9f23-861347b676a9.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "wallet",
+   "finder_careless"
+  ]
+ },
+ {
+  "id": "L-O-wallet-05",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Small flat pouch I use as a wallet, grey and black animal print with a hand strap. Coins, a hair clip and my bus card inside.",
+  "location": "Canteen ground floor",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T15:05:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "wallet"
+  ],
+  "ownerNote": "No mistake."
+ },
+ {
+  "id": "F-O-wallet-06",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Long red ladies wallet with a gold metal plate on the front",
+  "location": "Ground Canteen",
+  "campusZone": "",
+  "eventDate": "2026-11-05",
+  "createdAt": "2026-11-05T09:06:00.000Z",
+  "photos": [
+   "../../online/photos/wallet__8139b493-1400-4e79-82d3-7213fb1cf0a7.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "wallet",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-wallet-06",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Long red leather wallet with a flap, Coach I think, it was a birthday present. Had my driving licence and some receipts.",
+  "location": "Cafeteria",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-06T15:06:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "wallet"
+  ],
+  "ownerNote": "Brand mistake: the owner guesses Coach, the plate on the wallet says Dooney & Bourke."
+ },
+ {
+  "id": "F-O-wallet-07",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "found this",
+  "location": "Ground Canteen",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:07:00.000Z",
+  "photos": [
+   "../../online/photos/wallet__83e8cca8-cc66-422f-9d19-b2ad7a465b64.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "wallet",
+   "finder_minimal"
+  ]
+ },
+ {
+  "id": "L-O-wallet-07",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Small red wallet with a four leaf clover on it, zip and a button strap. Mostly coins and my dorm room key inside.",
+  "location": "Canteen",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-09T15:07:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "wallet"
+  ],
+  "ownerNote": "No mistake."
+ },
+ {
+  "id": "F-O-wallet-08",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Black Guess wallet, looks brand new, the price tag is still attached",
+  "location": "Ground Canteen",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:08:00.000Z",
+  "photos": [
+   "../../online/photos/wallet__8c6ecbd2-8102-44ad-8f5d-8de26c713214.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "wallet",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-wallet-08",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Brand new black Guess wallet for men, bought it as a gift for my brother so the tag was still on. Nothing inside it.",
+  "location": "Ground floor canteen",
+  "campusZone": "",
+  "eventDate": "2026-11-04",
+  "createdAt": "2026-11-04T15:08:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "wallet"
+  ],
+  "ownerNote": "No mistake."
+ },
+ {
+  "id": "F-O-wallet-09",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "l8eet ma7fa9a jild bunni fate7 feeha naqsh w 7awafha jild ghami8",
+  "location": "Canteen",
+  "campusZone": "",
+  "eventDate": "2026-11-03",
+  "createdAt": "2026-11-03T09:09:00.000Z",
+  "photos": [
+   "../../online/photos/wallet__9fe407d5-85ef-4ff7-a632-fee29b27146c.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "wallet",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-wallet-09",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Cowboy style leather wallet, orange-brown woven pattern with dark lacing down the sides. My dad brought it from Texas. About 10 rials and my gym card in it.",
+  "location": "canteen",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T15:09:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "wallet"
+  ],
+  "ownerNote": "No mistake. The finder's text is Arabic typed in Latin letters and digits."
+ },
+ {
+  "id": "F-O-wallet-10",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "wallet in a box, found on a chair",
+  "location": "Ground Canteen",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:10:00.000Z",
+  "photos": [
+   "../../online/photos/wallet__e315f7f5-17b8-4ad7-a764-bb0b99de26c5.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "wallet",
+   "finder_minimal"
+  ]
+ },
+ {
+  "id": "L-O-wallet-10",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Small black coin wallet, carbon fibre look with a leather flap, still in its black box. It was a gift, I hadn't used it yet.",
+  "location": "Main Entrance",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-10T15:10:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "wallet"
+  ],
+  "ownerNote": "Place mistake: the owner thinks it was left at the Main Entrance; it was found in the Ground Canteen nearby."
+ },
+ {
+  "id": "F-O-wallet-11",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Slim reddish brown leather card holder with light stitching",
+  "location": "Ground Canteen",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:11:00.000Z",
+  "photos": [
+   "../../online/photos/wallet__e8126813-d8bf-4ef6-aeeb-079e6858f002.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "wallet",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-wallet-11",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Thin leather card sleeve, brown with cream stitching, two slots. I keep it in my back pocket, probably slipped out when I sat down to eat.",
+  "location": "GU1 cafeteria",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-02T15:11:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "wallet"
+  ],
+  "ownerNote": "No mistake."
+ },
+ {
+  "id": "F-C-F24",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Black car key with two buttons, few silver metal tags on the ring",
+  "location": "Student Parking",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:12:00.000Z",
+  "photos": [
+   "../../campus/photos/b5640d9f5ac62ab1959a83a735224045.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "car-key",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-C-F24",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "mefta7 sayarti toyota dha3, aswad fih zereen, w m3ah medalya 7adeed 3la shakl sayara. a6an ta7 mn jaibi lama nzlt mn el sayara",
+  "location": "mawaqif el 6ullab (student parking)",
+  "campusZone": "",
+  "eventDate": "2026-11-03",
+  "createdAt": "2026-11-04T15:12:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "car-key"
+  ],
+  "ownerNote": ""
+ },
+ {
+  "id": "F-O-car-key-01",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Inside part of a car remote, small green board with the battery clip, no cover",
+  "location": "Student Parking",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:13:00.000Z",
+  "photos": [
+   "../../online/photos/car-key__043c45c6-9451-451a-9032-29d73da9cf39.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "car-key",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-car-key-01",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "My car remote cracked open when I dropped it and the electronic piece from inside is gone. Tiny chip with the battery holder on it. I still have the plastic shell.",
+  "location": "student parking",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T15:13:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "car-key"
+  ],
+  "ownerNote": ""
+ },
+ {
+  "id": "F-O-car-key-02",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "old key found",
+  "location": "Student parking",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:14:00.000Z",
+  "photos": [
+   "../../online/photos/car-key__2d33c97b-464b-4f5d-ac78-8f1eacb4fdf8.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "car-key",
+   "finder_minimal"
+  ]
+ },
+ {
+  "id": "L-O-car-key-02",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Small old metal key for my grandfather's old jeep, no plastic on it and no keychain. The top is shaped a bit like a flower.",
+  "location": "Students car park",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-06T15:14:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "car-key"
+  ],
+  "ownerNote": ""
+ },
+ {
+  "id": "F-O-car-key-03",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Black flip car key with a blue string and a small wrestler toy on it",
+  "location": "Student Parking",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:15:00.000Z",
+  "photos": [
+   "../../online/photos/car-key__5364840b-486f-412c-96da-3e4d95a2b6ed.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "car-key",
+   "finder_careless"
+  ]
+ },
+ {
+  "id": "L-O-car-key-03",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Lost my Volkswagen key, the folding type, with a little wooden sumo man hanging from it that my sister brought me from Japan.",
+  "location": "parking, student side",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-07T15:15:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "car-key"
+  ],
+  "ownerNote": ""
+ },
+ {
+  "id": "F-O-car-key-04",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Car smart key, black with silver buttons and a red hold button at the bottom",
+  "location": "Student Parking",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:16:00.000Z",
+  "photos": [
+   "../../online/photos/car-key__602c0e60-fa92-4449-b480-43ed7cf3ee57.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "car-key",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-car-key-04",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Honda keyless remote, the kind with the remote start button and no blade sticking out. Had it in my hand walking from the car, nothing attached to it.",
+  "location": "student parking lot",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-04T15:16:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "car-key"
+  ],
+  "ownerNote": ""
+ },
+ {
+  "id": "F-O-car-key-05",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Broken car key, black plastic head, the metal part is snapped in two pieces",
+  "location": "Student parking",
+  "campusZone": "",
+  "eventDate": "2026-11-06",
+  "createdAt": "2026-11-06T09:17:00.000Z",
+  "photos": [
+   "../../online/photos/car-key__add161df-f26a-48ec-8e27-cb08afa3f855.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "car-key",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-car-key-05",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "My Nissan key snapped while I was opening the door and I dropped both bits somewhere by the car. Black top, no remote. Need it to get a copy made.",
+  "location": "GU1 Parking",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-08T15:17:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "car-key"
+  ],
+  "ownerNote": "Wrong nearby place: the owner names GU1 Parking, the key was found in Student Parking."
+ },
+ {
+  "id": "F-O-car-key-06",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "USB flash shaped like a car remote, black and grey, the cap is off",
+  "location": "Student Parking",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:18:00.000Z",
+  "photos": [
+   "../../online/photos/car-key__bbdfd186-9320-424c-903d-e34eda42af8b.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "car-key",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-car-key-06",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Flash drive that looks like a car key remote, black and silver, got it as a giveaway. My graduation project files are on it. The cap comes off easily.",
+  "location": "student parking, near the gate",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-09T15:18:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "car-key"
+  ],
+  "ownerNote": "Neighbouring colour shade: the owner says black and silver, the panels are grey."
+ },
+ {
+  "id": "F-O-car-key-07",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "keys found in the parking",
+  "location": "Student Parking",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:19:00.000Z",
+  "photos": [
+   "../../online/photos/car-key__e3f72752-3f84-46fa-b88f-46fc1596ad59.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "car-key",
+   "finder_minimal"
+  ]
+ },
+ {
+  "id": "L-O-car-key-07",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Bunch of keys with my car key on it, black head, plus my house keys, one of them gold coloured. I was carrying them with my coffee.",
+  "location": "Student parking",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T15:19:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "car-key"
+  ],
+  "ownerNote": ""
+ },
+ {
+  "id": "F-O-car-key-08",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "مفتاح مرسيدس اسود مع ميدالية فضية، لقيته عند المواقف",
+  "location": "Student Parking",
+  "campusZone": "",
+  "eventDate": "2026-11-05",
+  "createdAt": "2026-11-05T09:20:00.000Z",
+  "photos": [
+   "../../online/photos/car-key__e778634f-9370-4557-8106-9024a284183f.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "car-key",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-car-key-08",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Mercedes key with the panic button, on a shiny metal Mercedes keyring my father gave me with the car. I think it fell when I took my bag out of the boot.",
+  "location": "parking for students",
+  "campusZone": "",
+  "eventDate": "2026-11-07",
+  "createdAt": "2026-11-08T15:20:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "car-key"
+  ],
+  "ownerNote": "Date off by two days: the owner says 7 Nov, the key was found on 5 Nov."
+ },
+ {
+  "id": "F-O-headphones-01",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "wired earphones, silver and blue, inside a small black net bag",
+  "location": "GU1 Library",
+  "campusZone": "",
+  "eventDate": "2026-11-05",
+  "createdAt": "2026-11-05T09:21:00.000Z",
+  "photos": [
+   "../../online/photos/headphones__648af4ee-9e33-40a9-9c19-3a28e132d5d6.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "headphones",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-headphones-01",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "In-ear earphones with a wire, metal with a light blue ring. I always keep them in a small drawstring mesh pouch with my spare tips.",
+  "location": "library",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-06T15:21:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "headphones"
+  ],
+  "ownerNote": "No memory mistake. Mentions spare tips in the pouch, which the photo does not show."
+ },
+ {
+  "id": "F-O-headphones-02",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Skullcandy earphones, shiny silver with a white wire",
+  "location": "GU1 Library",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:22:00.000Z",
+  "photos": [
+   "../../online/photos/headphones__860b8287-c72b-4c93-ab22-a67c32a5a8d7.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "headphones",
+   "finder_careless"
+  ]
+ },
+ {
+  "id": "L-O-headphones-02",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Skullcandy wired earbuds, chrome with the skull logo on the back, dark grey wire. Left them on the desk while studying for midterms.",
+  "location": "6th floor",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-04T15:22:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "headphones"
+  ],
+  "ownerNote": "Memory mistake: owner says the wire is dark grey; it is black. (Finder's careless detail: says white wire, photo shows black.)"
+ },
+ {
+  "id": "F-O-headphones-03",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "found earphones",
+  "location": "Library",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:23:00.000Z",
+  "photos": [
+   "../../online/photos/headphones__89f64fce-fa6b-443c-b03d-923adc93f28e.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "headphones",
+   "finder_minimal"
+  ]
+ },
+ {
+  "id": "L-O-headphones-03",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "sama3at apple bay'9a b silk, feha zr mal 9oot. nasetha fil maktaba 3al 6awla",
+  "location": "maktaba",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-09T15:23:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "headphones"
+  ],
+  "ownerNote": "No memory mistake. Arabic in Latin letters: white Apple wired earphones with a volume button, forgotten on a table in the library."
+ },
+ {
+  "id": "F-O-headphones-04",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "white wired apple earphones, the old round type",
+  "location": "GU1 Library",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:24:00.000Z",
+  "photos": [
+   "../../online/photos/headphones__8b8ad73d-016d-422d-92bf-f17b718d0e98.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "headphones",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-headphones-04",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Old white iPod earphones, no mic or buttons on them, foam covers already gone. Had them for years. Left near the library computers.",
+  "location": "GU1 library",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-03T15:24:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "headphones"
+  ],
+  "ownerNote": "No memory mistake. Owner mentions age and missing foam covers rather than what the photo shows."
+ },
+ {
+  "id": "F-O-headphones-05",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Philips headphones, black with brown cushions, has a wire",
+  "location": "GU1 Library",
+  "campusZone": "",
+  "eventDate": "2026-11-04",
+  "createdAt": "2026-11-04T09:25:00.000Z",
+  "photos": [
+   "../../online/photos/headphones__9da3b16f-07a3-451a-a7d7-14a0236279b5.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "headphones",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-headphones-05",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Philips over-ear headphones with a cable, brown leather padding. Bought them last year. Forgot them on a table in the reading area.",
+  "location": "reading area, library",
+  "campusZone": "",
+  "eventDate": "2026-11-05",
+  "createdAt": "2026-11-06T15:25:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "headphones"
+  ],
+  "ownerNote": "Memory mistake: date off by a day (owner says 5 Nov, but the finder picked them up on 4 Nov)."
+ },
+ {
+  "id": "F-O-headphones-06",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "black Sennheiser headphones left hanging on a chair",
+  "location": "library 6th floor",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:26:00.000Z",
+  "photos": [
+   "../../online/photos/headphones__bdd77d14-257a-4a98-baa9-54285897d34a.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "headphones",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-headphones-06",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Big black Sennheiser studio headphones with a long curly cable. I hung them on my chair and forgot them when I went to pray.",
+  "location": "6th floor GU1",
+  "campusZone": "",
+  "eventDate": "2026-11-06",
+  "createdAt": "2026-11-07T15:26:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "headphones"
+  ],
+  "ownerNote": "No memory mistake. The curly part of the cable is outside the photo."
+ },
+ {
+  "id": "F-O-headphones-07",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "سماعات لقيتها على الطاولة",
+  "location": "GU1 Library",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:27:00.000Z",
+  "photos": [
+   "../../online/photos/headphones__c299de0a-29b4-4113-a267-e1c80bd61ad0.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "headphones",
+   "finder_minimal"
+  ]
+ },
+ {
+  "id": "L-O-headphones-07",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "AKG headphones, the big over-ear kind, black with a grey ring around each side and a thin leather headband. The cable was still attached.",
+  "location": "Library study tables",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-08T15:27:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "headphones"
+  ],
+  "ownerNote": "Memory mistake: owner calls the ring grey; in the photo it is white. Finder text is Arabic: 'headphones I found on the table'."
+ },
+ {
+  "id": "F-O-headphones-08",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "white earphones with red cloth sewn around the wire",
+  "location": "GU1 Library",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:28:00.000Z",
+  "photos": [
+   "../../online/photos/headphones__ff050667-3d13-4f69-beeb-d9a4b3d547db.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "headphones",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-headphones-08",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "White Apple earphones. My sister sewed a red cloth cover around the wire with green and purple stitching. Means a lot to me.",
+  "location": "library",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T15:28:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "headphones"
+  ],
+  "ownerNote": "No memory mistake."
+ },
+ {
+  "id": "F-C-F07",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "black frame glasses, folded, left on a table",
+  "location": "GU1 Library",
+  "campusZone": "",
+  "eventDate": "2026-11-05",
+  "createdAt": "2026-11-05T09:29:00.000Z",
+  "photos": [
+   "../../campus/photos/5e2174bcf72e1f19333c732269dc1630.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "glasses",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-C-F07",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Prescription glasses with a thick black plastic frame, square-ish lenses. Took them off while studying and forgot them. No case.",
+  "location": "library 6th floor",
+  "campusZone": "",
+  "eventDate": "2026-11-06",
+  "createdAt": "2026-11-07T15:29:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "glasses"
+  ],
+  "ownerNote": "Memory mistake: date is one day late (owner says 6 Nov, they were found on 5 Nov)."
+ },
+ {
+  "id": "F-C-F15",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "found glasses",
+  "location": "Library",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:30:00.000Z",
+  "photos": [
+   "../../campus/photos/7ddfb974e2945ecb9dcf17feab42ed53.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "glasses",
+   "finder_minimal"
+  ]
+ },
+ {
+  "id": "L-C-F15",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Frameless glasses, round lenses, very thin dark metal arms. Really light and easy to bend. I need them for lectures.",
+  "location": "GU1 library",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-04T15:30:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "glasses"
+  ],
+  "ownerNote": "No mistake."
+ },
+ {
+  "id": "F-O-glasses-01",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "thin metal glasses, rectangular, dark arms, on the floor near the shelves",
+  "location": "GU1 Library",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:31:00.000Z",
+  "photos": [
+   "../../online/photos/glasses__966b49d2-bf32-4c31-ac71-b62d58047dc5.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "glasses",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-glasses-01",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "nadharat 6ebeya dha3at, etar 7adeed rfee3 lon ghami8, 3adasat mustateela. A3ta8ed nseetha 3la el 6awla",
+  "location": "el maktaba",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-06T15:31:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "glasses"
+  ],
+  "ownerNote": "Arabic typed in Latin letters and digits. No mistake."
+ },
+ {
+  "id": "F-O-glasses-02",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "strange round brown glasses with white plastic tubes on the arms",
+  "location": "GU1 Library",
+  "campusZone": "",
+  "eventDate": "2026-11-06",
+  "createdAt": "2026-11-06T09:32:00.000Z",
+  "photos": [
+   "../../online/photos/glasses__ceb8731f-b6e6-474b-8617-f56c7de9cc62.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "glasses",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-glasses-02",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Adjustable glasses for a project, round tortoiseshell frame, each side has a small syringe and dial that changes the lens strength.",
+  "location": "library",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-08T15:32:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "glasses"
+  ],
+  "ownerNote": "No mistake."
+ },
+ {
+  "id": "F-O-glasses-03",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "glasses found on a desk",
+  "location": "GU1 Library",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:33:00.000Z",
+  "photos": [
+   "../../online/photos/glasses__e02323f9-81ee-4416-acaa-f43865d3ffc9.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "glasses",
+   "finder_minimal"
+  ]
+ },
+ {
+  "id": "L-O-glasses-03",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Old wire glasses, thin metal rim, oval-ish lenses. Nose pads have turned yellow. Had them for about five years.",
+  "location": "Library study desks",
+  "campusZone": "",
+  "eventDate": "2026-11-02",
+  "createdAt": "2026-11-03T15:33:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "glasses"
+  ],
+  "ownerNote": "No mistake."
+ },
+ {
+  "id": "F-O-glasses-04",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "brown plastic glasses, rectangular, see-through on the inside of the frame",
+  "location": "Library",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:34:00.000Z",
+  "photos": [
+   "../../online/photos/glasses__eef2c90b-8970-446b-8551-fafcbbc9a5bf.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "glasses",
+   "finder_careless"
+  ]
+ },
+ {
+  "id": "L-O-glasses-04",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Black rectangular glasses, plastic, the inner side of the frame is clear. Lenses are quite thick, strong prescription.",
+  "location": "6th floor",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-09T15:34:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "glasses"
+  ],
+  "ownerNote": "No mistake. (The finder's 'brown' is the careless detail; the frame is black.)"
+ },
+ {
+  "id": "F-C-F16",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "كمة عمانية بيضاء عليها تطريز بني",
+  "location": "Sports Hall",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:35:00.000Z",
+  "photos": [
+   "../../campus/photos/bfd907dd87359215040629df2f87bea3.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "cap",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-C-F16",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "My kumma, off-white with orange stitching, swirl shapes and a star in a circle. Took it off before a game and left it on the bench.",
+  "location": "gym",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T15:35:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "cap"
+  ],
+  "ownerNote": "Memory mistake: neighbouring colour shade (owner says orange stitching; the embroidery is brown). Finder's text is in Arabic."
+ },
+ {
+  "id": "F-O-cap-01",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "blue cap with a red C on the front, a bit dirty",
+  "location": "Sports Hall",
+  "campusZone": "",
+  "eventDate": "2026-11-03",
+  "createdAt": "2026-11-03T09:36:00.000Z",
+  "photos": [
+   "../../online/photos/cap__1f721e03-4da4-4180-98ab-827a002b3dbb.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "cap",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-cap-01",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Chicago Cubs baseball cap, royal blue. It's old and faded, a bit stained from sweat. My uncle brought it from the US.",
+  "location": "Sports hall",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-04T15:36:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "cap"
+  ],
+  "ownerNote": "No mistake."
+ },
+ {
+  "id": "F-O-cap-02",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "navy cap, Stussy written in red on the front",
+  "location": "Sports Hall",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:37:00.000Z",
+  "photos": [
+   "../../online/photos/cap__2098ab9b-0b53-426c-bf89-4fa4ed881588.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "cap",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-cap-02",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Black Stussy cap, logo stitched in red with white edges and two little stars. Bought it this summer.",
+  "location": "gym changing room",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-07T15:37:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "cap"
+  ],
+  "ownerNote": "Memory mistake: neighbouring colour shade (owner says black; the cap is navy blue)."
+ },
+ {
+  "id": "F-O-cap-03",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "found this cap",
+  "location": "Sports Hall",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:38:00.000Z",
+  "photos": [
+   "../../online/photos/cap__7919f8b3-ce3c-4ef5-be93-ca5747b216bb.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "cap",
+   "finder_minimal"
+  ]
+ },
+ {
+  "id": "L-O-cap-03",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Trucker cap, dark navy front and white net at the back, CCB in big white letters. From my cousin's team.",
+  "location": "Sports Hall",
+  "campusZone": "",
+  "eventDate": "2026-11-04",
+  "createdAt": "2026-11-05T15:38:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "cap"
+  ],
+  "ownerNote": "No mistake."
+ },
+ {
+  "id": "F-O-cap-04",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "black cap with a red S and a star stitched on it",
+  "location": "Sports Hall",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:39:00.000Z",
+  "photos": [
+   "../../online/photos/cap__82cd0849-6ad4-419e-ab52-8256b6eefc9a.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "cap",
+   "finder_careless"
+  ]
+ },
+ {
+  "id": "L-O-cap-04",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Seattle Mariners cap, dark, the S with the compass star in silver and green. Fitted, not adjustable.",
+  "location": "football pitch",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-10T15:39:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "cap"
+  ],
+  "ownerNote": "Memory mistake: wrong nearby place (owner says the football pitch; it was found in the Sports Hall). (The finder's 'red S' is the careless detail; the S is silver with green.)"
+ },
+ {
+  "id": "F-C-F21",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Bunch of keys on a silver clip hook, was lying in the sand",
+  "location": "Student Parking",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:40:00.000Z",
+  "photos": [
+   "../../campus/photos/0694a8aa77630d4abf0e8ed85eedb9fb.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "keys",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-C-F21",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "My room and locker keys, about five, hooked on a metal belt clip. Must have dropped when I got out of the car.",
+  "location": "student parking",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-04T15:40:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "keys"
+  ],
+  "ownerNote": "No memory mistake. Owner says what the keys are for and how they were lost, which the photo cannot show."
+ },
+ {
+  "id": "F-O-keys-01",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Lots of silver keys on one ring, with a black fob and round metal tag",
+  "location": "Student Parking",
+  "campusZone": "",
+  "eventDate": "2026-11-04",
+  "createdAt": "2026-11-04T09:41:00.000Z",
+  "photos": [
+   "../../online/photos/keys__01712899-331e-4f51-aba0-84c019e5ca51.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "keys",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-keys-01",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Heavy bunch of flat and house keys, eight or so, has a little dark torch and a coin-shaped keychain. Lost it walking to my car.",
+  "location": "parking lot for students",
+  "campusZone": "",
+  "eventDate": "2026-11-05",
+  "createdAt": "2026-11-06T15:41:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "keys"
+  ],
+  "ownerNote": "Memory mistake: date off by one day (owner says the 5th, a day after it was found on the 4th)."
+ },
+ {
+  "id": "F-O-keys-02",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "found this keyring",
+  "location": "Student Parking",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:42:00.000Z",
+  "photos": [
+   "../../online/photos/keys__18ac1674-78cd-4ea5-84c7-b54b57b82214.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "keys",
+   "finder_minimal"
+  ]
+ },
+ {
+  "id": "L-O-keys-02",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Keychain with a big steel ring and a round dark disc fob, it holds my bike lock key. Had it since first year.",
+  "location": "Student parking area",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-07T15:42:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "keys"
+  ],
+  "ownerNote": "No memory mistake. The photo is a black-and-white close-up of the ring and fob only, so the bike lock key the owner mentions is not visible."
+ },
+ {
+  "id": "F-O-keys-03",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Bunch of gold keys with one big old-fashioned key and two tags",
+  "location": "Student Parking",
+  "campusZone": "",
+  "eventDate": "2026-11-06",
+  "createdAt": "2026-11-06T09:43:00.000Z",
+  "photos": [
+   "../../online/photos/keys__2d3a664c-42d2-46e3-8c49-88d45edc8cef.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "keys",
+   "finder_careless"
+  ]
+ },
+ {
+  "id": "L-O-keys-03",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Keys for my family house: one long old style door key, a couple with dots on the blade, plus black and grey plastic tags.",
+  "location": "students parking",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-08T15:43:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "keys"
+  ],
+  "ownerNote": "No memory mistake. (The finder's careless detail is the colour: the keys are silver, not gold.)"
+ },
+ {
+  "id": "F-O-keys-04",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Few keys on a ring, one long silver one and one gold coloured",
+  "location": "Student Parking",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:44:00.000Z",
+  "photos": [
+   "../../online/photos/keys__d4f02212-cc8a-41a7-b294-ddfcb06f565d.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "keys",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-keys-04",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Small set of keys, a brass one, a long tube-shaped one for the gate and one with a coloured sticker label. Dropped near my car.",
+  "location": "GU1 parking",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T15:44:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "keys"
+  ],
+  "ownerNote": "Memory mistake: wrong nearby place (owner names GU1 Parking, the keys were found in Student Parking)."
+ },
+ {
+  "id": "F-O-pencil-case-01",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Flat pencil case with a metro map print and red zip",
+  "location": "GU1 Library",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:45:00.000Z",
+  "photos": [
+   "../../online/photos/pencil-case__047c6577-b1bc-4b7a-81de-5cdd77c22cdd.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "pencil-case",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-pencil-case-01",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Souvenir pencil case from London with the underground map on it. Had a pencil with red circle logos and some pens in it.",
+  "location": "library",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-03T15:45:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "pencil-case"
+  ],
+  "ownerNote": "No memory mistake. Owner adds where it was bought and the pens inside, which the photo does not show."
+ },
+ {
+  "id": "F-O-pencil-case-02",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "pencil case left on a desk",
+  "location": "GU1 Library",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:46:00.000Z",
+  "photos": [
+   "../../online/photos/pencil-case__b36a2ac6-d8ee-404e-91b5-e0ffa1e7a434.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "pencil-case",
+   "finder_minimal"
+  ]
+ },
+ {
+  "id": "L-O-pencil-case-02",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Pinkish hard-shell pencil case that opens like a book, pens in elastic loops, net pockets with eraser and correction tape. Lots of pink and purple pens.",
+  "location": "6th floor",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-09T15:46:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "pencil-case"
+  ],
+  "ownerNote": "Memory mistake: neighbouring colour shade (owner says pinkish, the case is purple)."
+ },
+ {
+  "id": "F-O-pencil-case-03",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Small round pencil case, striped cloth, zip along the top",
+  "location": "GU1 Library",
+  "campusZone": "",
+  "eventDate": "2026-11-05",
+  "createdAt": "2026-11-05T09:47:00.000Z",
+  "photos": [
+   "../../online/photos/pencil-case__cde08906-81dd-4a6f-af45-783637868a82.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "pencil-case",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-pencil-case-03",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Barrel-shaped pencil case, brown and beige stripes with plain canvas ends. Only pens and a sharpener inside. Left on a study table.",
+  "location": "GU1 library, study area",
+  "campusZone": "",
+  "eventDate": "2026-11-05",
+  "createdAt": "2026-11-06T15:47:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "pencil-case"
+  ],
+  "ownerNote": "No memory mistake. The photo is sepia-toned, so the brown and beige colours the owner gives cannot be confirmed from it; contents are from memory."
+ },
+ {
+  "id": "F-O-pencil-case-04",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "maqlama soda 3aleha rsomat kartoon mlawwana, kanat fog ktab",
+  "location": "GU1 Library",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:48:00.000Z",
+  "photos": [
+   "../../online/photos/pencil-case__e8c8fce8-4fab-46d1-8da3-a3308d2f5194.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "pencil-case",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-pencil-case-04",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Black pencil pouch covered in colourful cartoon characters, with a loop strap on one side. My highlighters and a flash drive are inside.",
+  "location": "Library 6th floor",
+  "campusZone": "",
+  "eventDate": "2026-11-03",
+  "createdAt": "2026-11-04T15:48:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "pencil-case"
+  ],
+  "ownerNote": "No memory mistake. Finder wrote in Arabic typed in Latin letters (black pencil case with colourful cartoon drawings, it was on top of a book). Contents are from the owner's memory."
+ },
+ {
+  "id": "F-O-pencil-case-05",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "pen pouch found on a table",
+  "location": "GU1 Library",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:49:00.000Z",
+  "photos": [
+   "../../online/photos/pencil-case__edda5b22-b074-4fa5-9c18-8f108e30bb81.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "pencil-case",
+   "finder_minimal"
+  ]
+ },
+ {
+  "id": "L-O-pencil-case-05",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "مقلمة صغيرة من قماش جينز أزرق خيطتها أختي، فيها قلمين لونهم أسود وفضي. نسيتها على طاولة في المكتبة",
+  "location": "المكتبة",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-10T15:49:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "pencil-case"
+  ],
+  "ownerNote": "No memory mistake. Owner wrote in Arabic: a small blue denim pen pouch sewn by her sister, with two black and silver pens, left on a table in the library."
+ },
+ {
+  "id": "F-O-usb-stick-01",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Silver TDK flash drive with a metal loop on the end",
+  "location": "Copy Centre",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:50:00.000Z",
+  "photos": [
+   "../../online/photos/usb-stick__9b2c5fbd-437d-4edb-bc25-9c821c9e1d8c.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "usb-stick",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-usb-stick-01",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "My flash memory, plain metallic grey, the kind you swing open. It has my graduation project files on it. I think I left it plugged into the printing PC.",
+  "location": "copy center",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T15:50:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "usb-stick"
+  ],
+  "ownerNote": "No memory mistake. Owner does not name the brand."
+ },
+ {
+  "id": "F-O-usb-stick-02",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "usb found",
+  "location": "Copy Centre",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:51:00.000Z",
+  "photos": [
+   "../../online/photos/usb-stick__a1f2b1e8-4aaa-4f5d-8a49-34cde108aa27.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "usb-stick",
+   "finder_minimal"
+  ]
+ },
+ {
+  "id": "L-O-usb-stick-02",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Small black USB stick, an old 2GB one with a rounded cap. All my physics lab reports are on it, I was printing them.",
+  "location": "GU1 library printers",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-06T15:51:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "usb-stick"
+  ],
+  "ownerNote": "Memory mistake: wrong nearby place. The owner thinks it was left at the library printers, but it was found at the Copy Centre."
+ },
+ {
+  "id": "F-O-usb-stick-03",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Rubber usb with blue graffiti letters on it, weird shape, has a cap",
+  "location": "Copy Centre",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:52:00.000Z",
+  "photos": [
+   "../../online/photos/usb-stick__bcf5a24a-f183-49e0-8bca-0ef16c4d273c.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "usb-stick",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-usb-stick-03",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "dhaya3t flash mali, matat azrag w aswad, shaklah ghareeb mithl rasma. feeh mashroo3 el design mali kamil",
+  "location": "copy centre",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-04T15:52:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "usb-stick"
+  ],
+  "ownerNote": "No memory mistake. Written in Arabic typed in Latin letters: a blue and black rubber flash drive with an odd shape like a drawing, holding the owner's design project."
+ },
+ {
+  "id": "F-O-usb-stick-04",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Black Transcend usb with a green stripe, cap and a small strap",
+  "location": "Copy Centre",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:53:00.000Z",
+  "photos": [
+   "../../online/photos/usb-stick__e1b9f93e-d386-4513-bc1b-f9779a53d30e.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "usb-stick",
+   "finder_careless"
+  ]
+ },
+ {
+  "id": "L-O-usb-stick-04",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Transcend flash drive, 1GB, black with a light blue part near the plug and a short black string. I've had it for years, my CV and scans are on it.",
+  "location": "the copy shop in GU1",
+  "campusZone": "",
+  "eventDate": "2026-11-03",
+  "createdAt": "2026-11-04T15:53:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "usb-stick"
+  ],
+  "ownerNote": "No memory mistake by the owner. The finder's careless detail is the stripe colour: it is light blue, not green."
+ },
+ {
+  "id": "F-O-usb-stick-05",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Small metal usb, red top, with a black leather strap",
+  "location": "Copy Centre",
+  "campusZone": "",
+  "eventDate": "2026-11-04",
+  "createdAt": "2026-11-04T09:54:00.000Z",
+  "photos": [
+   "../../online/photos/usb-stick__f0427fec-f608-43bc-b21d-9575e608e989.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "usb-stick",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-usb-stick-05",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Flash drive, shiny silver with a maroon front, hanging on a black leather wrist strap. It slides out, no cap. Forgot it after printing my thesis draft.",
+  "location": "Copy Centre",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T15:54:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "usb-stick"
+  ],
+  "ownerNote": "Memory mistake: neighbouring colour shade. The owner says maroon; the panel is bright red."
+ },
+ {
+  "id": "F-C-F08",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "White charger head with a long black cable, left on a chair",
+  "location": "GU1 Library",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:55:00.000Z",
+  "photos": [
+   "../../campus/photos/bad092cc42ffa4d90787d928df83b011.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "charger",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-C-F08",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Phone charger, white three pin adapter with a black braided type C cable, about two metres. Left it plugged in next to the window tables.",
+  "location": "library 6th floor",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-06T15:55:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "charger"
+  ],
+  "ownerNote": "No memory mistake."
+ },
+ {
+  "id": "F-C-F17",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "cable on the floor",
+  "location": "GU1 Library",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:56:00.000Z",
+  "photos": [
+   "../../campus/photos/738d528d11e4f8a6f05de784ad7cf33d.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "charger",
+   "finder_minimal"
+  ]
+ },
+ {
+  "id": "L-C-F17",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "سلك شاحن أسود طويل بدون الراس، نوعه تايب سي، نسيته تحت الطاولة وأنا أذاكر",
+  "location": "المكتبة",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-07T15:56:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "charger"
+  ],
+  "ownerNote": "No memory mistake. Written in Arabic: a long black charging cable without the plug head, type C, forgotten under the table while studying."
+ },
+ {
+  "id": "F-O-charger-01",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Black phone charger with a box in the middle and a two pin plug",
+  "location": "GU1 Library",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:57:00.000Z",
+  "photos": [
+   "../../online/photos/charger__3d684a80-36f0-44d3-ac22-1a0912f8577e.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "charger",
+   "finder_careless"
+  ]
+ },
+ {
+  "id": "L-O-charger-01",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Laptop charger for my Acer, black brick with the round pin tip. It has a European plug so I always use it with an adapter. Left in the study room.",
+  "location": "GU1 library study room",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-08T15:57:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "charger"
+  ],
+  "ownerNote": "No memory mistake by the owner, who names the laptop it belongs to rather than the name printed on the charger. The finder's careless detail is the item word: it is a laptop charger, not a phone charger."
+ },
+ {
+  "id": "F-O-charger-02",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Dell laptop adapter, dark grey, with the power cable",
+  "location": "GU1 Library",
+  "campusZone": "",
+  "eventDate": "2026-11-03",
+  "createdAt": "2026-11-03T09:58:00.000Z",
+  "photos": [
+   "../../online/photos/charger__49d8f15a-cf55-4c76-a3ee-8c35fb8d9201.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "charger",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-charger-02",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Dell laptop charger, charcoal colour, the big heavy one where the wall cable comes off as a separate piece. I was sitting near the sockets by the shelves.",
+  "location": "Library",
+  "campusZone": "",
+  "eventDate": "2026-11-03",
+  "createdAt": "2026-11-04T15:58:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "charger"
+  ],
+  "ownerNote": "No memory mistake."
+ },
+ {
+  "id": "F-O-watch-01",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Gold watch with black strap, has small dials inside",
+  "location": "GU1 Prayer Room",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:59:00.000Z",
+  "photos": [
+   "../../online/photos/watch__2ed5a276-1ed7-4090-82e8-db51a17d2021.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "watch",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-watch-01",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Men's watch, gold colour with a dark leather band. The face is black and cream, time part on the right side. Gift from my father, took it off for wudu.",
+  "location": "musalla GU1",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T15:59:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "watch"
+  ],
+  "ownerNote": "No memory mistake. Owner does not name the brand."
+ },
+ {
+  "id": "F-O-watch-02",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "watch found in the prayer room",
+  "location": "GU1 Prayer Room",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:00:00.000Z",
+  "photos": [
+   "../../online/photos/watch__42cfb8e3-1ec8-4165-bf2c-20ddf9f0ca2f.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "watch",
+   "finder_minimal"
+  ]
+ },
+ {
+  "id": "L-O-watch-02",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Victorinox Swiss Army watch, steel bracelet, black face with big white numbers and a small date window at the bottom. I put it down near the shoe rack.",
+  "location": "GU1 prayer room",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-09T15:00:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "watch"
+  ],
+  "ownerNote": "No memory mistake."
+ },
+ {
+  "id": "F-O-watch-03",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Silver watch with a black face, numbers around the edge go up to 24",
+  "location": "GU1 Prayer Room",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:01:00.000Z",
+  "photos": [
+   "../../online/photos/watch__4eea78d5-e582-4c9a-a70c-db204e0004a9.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "watch",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-watch-03",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Old Bulova watch that was my grandfather's, silver metal band and a dark blue face with a ring that turns. Took it off before prayer and forgot it.",
+  "location": "prayer room, main building",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-07T15:01:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "watch"
+  ],
+  "ownerNote": "Memory mistake: neighbouring colour shade. The owner says the face is dark blue; it is black."
+ },
+ {
+  "id": "F-O-watch-04",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "ساعة فضية وجهها أسود وفيها ثلاث دوائر بيضاء صغيرة",
+  "location": "GU1 Prayer Room",
+  "campusZone": "",
+  "eventDate": "2026-11-05",
+  "createdAt": "2026-11-05T09:02:00.000Z",
+  "photos": [
+   "../../online/photos/watch__77bbbbfc-2117-438f-b3a8-094db1a2c929.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "watch",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-watch-04",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Breitling watch with a metal bracelet, black dial with three small white dials and lots of tiny numbers around the rim. Lost it after Dhuhr on Wednesday I think.",
+  "location": "the musalla",
+  "campusZone": "",
+  "eventDate": "2026-11-04",
+  "createdAt": "2026-11-06T15:02:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "watch"
+  ],
+  "ownerNote": "Memory mistake: date off by one day. The owner says Wednesday 4 November; it was found on Thursday 5 November. The finder's text is in Arabic: a silver watch with a black face and three small white circles."
+ },
+ {
+  "id": "F-C-F01",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Dell laptop left closed on a study desk, charger still plugged in",
+  "location": "GU1 Library",
+  "campusZone": "",
+  "eventDate": "2026-11-04",
+  "createdAt": "2026-11-04T09:03:00.000Z",
+  "photos": [
+   "../../campus/photos/eea57713bdbe40c03b8020ca01ed1f90.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "laptop",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-C-F01",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "My black Dell, I left it charging at one of the wooden desks and went to class. No stickers on it, lid is clean. All my semester project files are on it.",
+  "location": "library 6th floor",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T15:03:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "laptop"
+  ],
+  "ownerNote": "No memory mistake."
+ },
+ {
+  "id": "F-C-F06",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "laptop found",
+  "location": "GU1 Library",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:04:00.000Z",
+  "photos": [
+   "../../campus/photos/d8980b77b8778511e5527934263bd0e2.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "laptop",
+   "finder_minimal"
+  ]
+ },
+ {
+  "id": "L-C-F06",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Dell laptop, dark colour, the lid is pretty scratched up on one side from my bag. Had it about three years. It was plugged in when I left it.",
+  "location": "6th floor",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-06T15:04:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "laptop"
+  ],
+  "ownerNote": "No memory mistake."
+ },
+ {
+  "id": "F-C-F20",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "black macbook left open on a table, nobody around",
+  "location": "GU1 Library",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:05:00.000Z",
+  "photos": [
+   "../../campus/photos/737dcc1a8f9d5be1ab04c1b628e95d65.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "laptop",
+   "finder_careless"
+  ]
+ },
+ {
+  "id": "L-C-F20",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "laptop macbook lono fa9'i, nseeto maftoo7 3la el tawla fi el maktaba w ma 3aleh cover wala stickers",
+  "location": "el maktaba GU1",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-07T15:05:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "laptop"
+  ],
+  "ownerNote": "Arabic in Latin letters: silver MacBook, left open on a table in the library, no cover or stickers. No memory mistake. (The finder's careless detail is the colour: the laptop is silver, not black.)"
+ },
+ {
+  "id": "F-C-F03",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "grey backpack with black mesh on the back and net side pockets",
+  "location": "Ground Canteen",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:06:00.000Z",
+  "photos": [
+   "../../campus/photos/92cea6f91f56a8fa088635224d3b7ecd.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "backpack",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-C-F03",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Plain grey bag, light fabric, bottle holders on both sides. My lab coat and a scientific calculator are inside. I put it under the table while eating.",
+  "location": "cafeteria",
+  "campusZone": "",
+  "eventDate": "2026-11-03",
+  "createdAt": "2026-11-04T15:06:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "backpack"
+  ],
+  "ownerNote": "No memory mistake."
+ },
+ {
+  "id": "F-O-backpack-01",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "brown school bag with orange and yellow circles and pink zips",
+  "location": "Ground Canteen",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:07:00.000Z",
+  "photos": [
+   "../../online/photos/backpack__db3fd8af-1ee3-4058-8593-6f18c37d855c.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "backpack",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-backpack-01",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Backpack with big coloured dots all over it, dark maroon background, pinkish zippers. Sketchbook and a pencil case inside. I hung it on the back of a chair.",
+  "location": "canteen ground floor",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-08T15:07:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "backpack"
+  ],
+  "ownerNote": "Memory mistake: neighbouring colour shade. The owner says dark maroon, the bag's background is brown."
+ },
+ {
+  "id": "F-O-backpack-02",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "bag found in canteen",
+  "location": "Ground Canteen",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:08:00.000Z",
+  "photos": [
+   "../../online/photos/backpack__fa6b6af3-e064-4024-b9c8-862f28be27b4.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "backpack",
+   "finder_minimal"
+  ]
+ },
+ {
+  "id": "L-O-backpack-02",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Small Tamrac camera backpack, orange front and black sides, mesh pocket on the front. A lens and some filters are inside. Left it by the tables near the entrance.",
+  "location": "Canteen",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T15:08:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "backpack"
+  ],
+  "ownerNote": "No memory mistake."
+ },
+ {
+  "id": "F-C-F18",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "thick black Chemistry textbook, Zumdahl ninth edition, on the window sill",
+  "location": "Faculty of Sciences",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:09:00.000Z",
+  "photos": [
+   "../../campus/photos/7f8a35a4203404db36885c50aa4f0d85.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "textbook",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-C-F18",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "General chemistry book by Zumdahl, heavy hardcover. Borrowed it from a senior, there are pencil notes in the equilibrium chapter. I left it by the window after the tutorial.",
+  "location": "3rd floor",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-09T15:09:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "textbook"
+  ],
+  "ownerNote": "No memory mistake."
+ },
+ {
+  "id": "F-C-F23",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "old book with yellow pages lying open on the ground outside, looks Russian, some pages torn",
+  "location": "Faculty of Sciences",
+  "campusZone": "",
+  "eventDate": "2026-11-05",
+  "createdAt": "2026-11-05T09:10:00.000Z",
+  "photos": [
+   "../../campus/photos/403e40b96fe29bc244974d48f34e6ee7.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "textbook",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-C-F23",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Old Russian book, was my grandfather's. Paper is very yellow and the pages are coming loose. It must have fallen out of my bag on the way out.",
+  "location": "outside science faculty",
+  "campusZone": "",
+  "eventDate": "2026-11-06",
+  "createdAt": "2026-11-07T15:10:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "textbook"
+  ],
+  "ownerNote": "Memory mistake: date off by a day. The owner gives 6 November, the book was already found on 5 November."
+ },
+ {
+  "id": "F-O-textbook-01",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "science notebook left open on the solar system page with the planets",
+  "location": "Faculty of Sciences",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:11:00.000Z",
+  "photos": [
+   "../../online/photos/textbook__6d3770a9-1623-41c3-b860-9a5302c39a27.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "textbook",
+   "finder_careless"
+  ]
+ },
+ {
+  "id": "L-O-textbook-01",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Kids science textbook, big hardcover with lots of colour pictures. It is my little brother's school book, I was using it for a tutoring volunteer session.",
+  "location": "classroom in Faculty of Sciences",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-06T15:11:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "textbook"
+  ],
+  "ownerNote": "No memory mistake. (The finder's careless detail is the item word: it is a printed textbook, not a notebook.)"
+ },
+ {
+  "id": "F-O-power-bank-01",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "black Anker power bank, flat and matte, four small lights",
+  "location": "Oman Hall",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:12:00.000Z",
+  "photos": [
+   "../../online/photos/power-bank__333a0f3d-e09b-4d89-bbd0-5feb14e2c4a7.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "power-bank",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-power-bank-01",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Slim black power bank with rounded corners, I think it's Baseus. Lights on it are blue. Was on the seat next to me during the lecture.",
+  "location": "amphitheatre",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-04T15:12:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "power-bank"
+  ],
+  "ownerNote": "Memory mistake: brand guessed wrongly. The owner says Baseus, the power bank is an Anker."
+ },
+ {
+  "id": "F-O-power-bank-02",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "light grey pebble shaped power bank with a blue dot and small leather loop",
+  "location": "Oman Hall",
+  "campusZone": "",
+  "eventDate": "2026-11-06",
+  "createdAt": "2026-11-06T09:13:00.000Z",
+  "photos": [
+   "../../online/photos/power-bank__83248c6c-6c15-4d8f-91ba-028f759354f5.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "power-bank",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-power-bank-02",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Power bank shaped like a smooth stone, off white. Got it as a giveaway at a conference so it has their logo printed on top. Two USB ports and a little tag on the side.",
+  "location": "Oman Hall back rows",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-08T15:13:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "power-bank"
+  ],
+  "ownerNote": "No memory mistake."
+ },
+ {
+  "id": "F-O-power-bank-03",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "باور بانك لقيته على الكرسي",
+  "location": "Oman Hall",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:14:00.000Z",
+  "photos": [
+   "../../online/photos/power-bank__cb2642b0-62ff-4e77-9e02-bc24c962618f.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "power-bank",
+   "finder_minimal"
+  ]
+ },
+ {
+  "id": "L-O-power-bank-03",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Silver Xiaomi power bank, metal body, small enough for a pocket. Had it since first year. Forgot it after the event in the hall.",
+  "location": "Oman hall amphitheatre",
+  "campusZone": "",
+  "eventDate": "2026-11-05",
+  "createdAt": "2026-11-06T15:14:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "power-bank"
+  ],
+  "ownerNote": "No memory mistake. Finder's text is Arabic: 'power bank, I found it on the chair'."
+ },
+ {
+  "id": "F-C-F02",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "blue ballpoint pen with clear body, left on a desk",
+  "location": "Oman Hall",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:15:00.000Z",
+  "photos": [
+   "../../campus/photos/9b3870ae606a4d53beb638c4eb9c2027.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "pen",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-C-F02",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "lost my blue pen after the lecture, see-through type with a rubber grip and blue cap. almost new",
+  "location": "amphitheatre",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T15:15:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "pen"
+  ],
+  "ownerNote": "no mistake"
+ },
+ {
+  "id": "F-C-F22",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "dark blue metal pen with silver rings, looks expensive",
+  "location": "Oman Hall",
+  "campusZone": "",
+  "eventDate": "2026-11-04",
+  "createdAt": "2026-11-04T09:16:00.000Z",
+  "photos": [
+   "../../campus/photos/a4348292375c545768fc23049bd9ab5a.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "pen",
+   "finder_careless"
+  ]
+ },
+ {
+  "id": "L-C-F22",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Black ink pen, heavy, rough textured body with a silver band in the middle. Gift from my father. Left it on a seat in the back rows",
+  "location": "Oman Hall",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-06T15:16:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "pen"
+  ],
+  "ownerNote": "no mistake (the finder's careless detail is the colour: the pen is black, not dark blue)"
+ },
+ {
+  "id": "F-O-bottle-01",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Black metal water bottle, says Boca Chica, has an X logo",
+  "location": "Sports Hall",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:17:00.000Z",
+  "photos": [
+   "../../online/photos/bottle__1d768617-30c4-4191-9af6-849e55b4ce80.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "bottle",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-bottle-01",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "black aluminium water bottle with screw cap, souvenir from the SpaceX place in Texas, my uncle brought it. forgot it after football training",
+  "location": "gym",
+  "campusZone": "",
+  "eventDate": "2026-11-05",
+  "createdAt": "2026-11-06T15:17:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "bottle"
+  ],
+  "ownerNote": "no mistake"
+ },
+ {
+  "id": "F-O-bottle-02",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "thermos found near the court",
+  "location": "Sports Hall",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:18:00.000Z",
+  "photos": [
+   "../../online/photos/bottle__694be669-5013-42bf-a2e7-8e1f3e7e5c96.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "bottle",
+   "finder_minimal"
+  ]
+ },
+ {
+  "id": "L-O-bottle-02",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "ترمس ستيل فضي حق القهوة، نسيته بعد التمرين. فيه خدوش بسيطة من تحت",
+  "location": "الصالة الرياضية",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-08T15:18:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "bottle"
+  ],
+  "ownerNote": "no mistake; written in Arabic"
+ },
+ {
+  "id": "F-O-prayer-beads-01",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "prayer beads, olive oval beads on wire with some red ones",
+  "location": "GU1 Prayer Room",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:19:00.000Z",
+  "photos": [
+   "../../online/photos/prayer-beads__78503b5b-4213-4762-a190-32dab07cba3c.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "prayer-beads",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-prayer-beads-01",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "My misbaha, greyish green seed beads joined with metal wire not thread, a few red beads near the end. Very old, from my grandfather",
+  "location": "musalla GU1",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-04T15:19:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "prayer-beads"
+  ],
+  "ownerNote": "no mistake"
+ },
+ {
+  "id": "F-O-prayer-beads-02",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "سبحة لقيتها في المصلى",
+  "location": "GU1 Prayer Room",
+  "campusZone": "",
+  "eventDate": "2026-11-05",
+  "createdAt": "2026-11-05T09:20:00.000Z",
+  "photos": [
+   "../../online/photos/prayer-beads__cf83b361-7ac8-4c2c-a2ba-12e6c6add05c.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "prayer-beads",
+   "finder_minimal"
+  ]
+ },
+ {
+  "id": "L-O-prayer-beads-02",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "wooden tasbih, light and dark brown beads on a brown string with a small dark red knot. left it after dhuhr prayer",
+  "location": "prayer room, main building",
+  "campusZone": "",
+  "eventDate": "2026-11-06",
+  "createdAt": "2026-11-07T15:20:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "prayer-beads"
+  ],
+  "ownerNote": "date off by a day: owner says 6 Nov, it was found on 5 Nov. Finder's text is in Arabic"
+ },
+ {
+  "id": "F-O-umbrella-01",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "small red umbrella, folded, metal cap on top is all scratched",
+  "location": "Main Entrance",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:21:00.000Z",
+  "photos": [
+   "../../online/photos/umbrella__235fa0dc-a1dd-49f4-94ea-4d17b168e363.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "umbrella",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-umbrella-01",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "compact umbrella, bright red, folds short to fit in a bag, no cover. left it by the security desk when it rained",
+  "location": "main gate",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-09T15:21:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "umbrella"
+  ],
+  "ownerNote": "no mistake"
+ },
+ {
+  "id": "F-O-umbrella-02",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "long red umbrella with curved wooden handle",
+  "location": "Main Entrance",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:22:00.000Z",
+  "photos": [
+   "../../online/photos/umbrella__76886b8e-5987-40ce-bffb-5bd7035e7d65.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "umbrella",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-umbrella-02",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Big red umbrella, the long kind with a wooden hook handle and wooden tip. I leaned it on the wall when I got out of the car",
+  "location": "GU1 Parking",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-03T15:22:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "umbrella"
+  ],
+  "ownerNote": "wrong nearby place: owner says GU1 Parking, it was found at the Main Entrance"
+ },
+ {
+  "id": "F-C-F04",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "JBL charger, silver with a black top, left on a table",
+  "location": "GU1 Library",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:23:00.000Z",
+  "photos": [
+   "../../campus/photos/ca6923ecf7ec00f6fa2c0f2851406342.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "earbuds",
+   "finder_careless"
+  ]
+ },
+ {
+  "id": "L-C-F04",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "jbl earbuds in the case, silver, the case has a small black screen on the front. both buds inside. left on a study table",
+  "location": "6th floor",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-10T15:23:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "earbuds"
+  ],
+  "ownerNote": "no mistake (the finder's careless detail is the item word: it is an earbuds case, not a charger)"
+ },
+ {
+  "id": "F-C-F09",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "found this notebook",
+  "location": "Faculty of Sciences",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:24:00.000Z",
+  "photos": [
+   "../../campus/photos/3b1a7ca5abd0556a51a1409a46deeb72.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "notebook",
+   "finder_minimal"
+  ]
+ },
+ {
+  "id": "L-C-F09",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "hardcover register notebook, blue marble pattern cover, A4. my chemistry lab notes inside and my name on the first page",
+  "location": "3rd floor",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T15:24:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "notebook"
+  ],
+  "ownerNote": "no mistake"
+ },
+ {
+  "id": "F-C-F10",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "Money Talks card game box, dark blue, by Balinca, looks new",
+  "location": "Ground Canteen",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:25:00.000Z",
+  "photos": [
+   "../../campus/photos/54efcb52d1d158a4f8b76fed3e3dbbe9.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "game",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-C-F10",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "card game in a square black box, called dardasha maliya, questions about money and careers. we played at lunch and I forgot it on the table",
+  "location": "cafeteria",
+  "campusZone": "",
+  "eventDate": "2026-11-03",
+  "createdAt": "2026-11-04T15:25:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "game"
+  ],
+  "ownerNote": "neighbouring colour shade: owner says black box, it is dark navy blue"
+ },
+ {
+  "id": "F-C-F11",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "table tennis racket, red rubber, orange handle, edges chipped",
+  "location": "Boys Dorms",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:26:00.000Z",
+  "photos": [
+   "../../campus/photos/2f6f4932b5b67ca2d4035e2f03703aa9.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "sports",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-C-F11",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "madrab tennis tawla a7mar, el yad burtuqali, shwaya mt2akel mn el atraf. nseeto 3nd el tawla",
+  "location": "boys dorms",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-07T15:26:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "sports"
+  ],
+  "ownerNote": "no mistake; written in Arabic with Latin letters and digits"
+ },
+ {
+  "id": "F-C-F12",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "tv remote, dark grey, Oscar brand with netflix and prime buttons",
+  "location": "Germany Hall",
+  "campusZone": "",
+  "eventDate": "2026-11-03",
+  "createdAt": "2026-11-03T09:27:00.000Z",
+  "photos": [
+   "../../campus/photos/e500808140eaddbf352b5f367d00fa5d.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "remote",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-C-F12",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "TV remote we use for the screen at club events, dark grey with a Netflix button, LG I think. Batteries inside",
+  "location": "Germany Hall GU2",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-04T15:27:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "remote"
+  ],
+  "ownerNote": "brand guessed wrongly: owner says LG, the remote is Oscar brand"
+ },
+ {
+  "id": "F-C-F19",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "pair of black leather sandals left by the prayer room door",
+  "location": "GU2 Prayer Room",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:28:00.000Z",
+  "photos": [
+   "../../campus/photos/80f50b0938bec1581ceee157dc03b9ac.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "shoes",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-C-F19",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "na3al jild aswad rijali m8as 43, 5aletah 3nd bab el musalla w ba3d el salah ma l8etah. el na3la thageela shwai",
+  "location": "musalla UPAD",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T15:28:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "shoes"
+  ],
+  "ownerNote": "No memory mistake. Written in Arabic typed in Latin letters: black leather men's sandals size 43, left at the prayer room door and gone after prayer, thick sole."
+ },
+ {
+  "id": "F-C-F26",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "brown zip jacket with red stripes down the front, was on the grass",
+  "location": "Grass Pitch",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:29:00.000Z",
+  "photos": [
+   "../../campus/photos/f608e6e51131830ef36f1372f5661470.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "jacket",
+   "finder_careless"
+  ]
+ },
+ {
+  "id": "L-C-F26",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "My dark brown collared jacket, zips up, two lines going down one side of the chest and a small badge. Took it off to play and forgot it next to the goal.",
+  "location": "football pitch",
+  "campusZone": "",
+  "eventDate": "2026-11-05",
+  "createdAt": "2026-11-06T15:29:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "jacket"
+  ],
+  "ownerNote": "No memory mistake. (Finder's careless detail: the stripes are grey and cream, not red.)"
+ },
+ {
+  "id": "F-O-phone-01",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "phone found on a table",
+  "location": "GU1 Library",
+  "campusZone": "",
+  "eventDate": "2026-11-04",
+  "createdAt": "2026-11-04T09:30:00.000Z",
+  "photos": [
+   "../../online/photos/phone__7a74658f-39b0-426c-8ebb-8616f9df4df3.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "phone",
+   "finder_minimal"
+  ]
+ },
+ {
+  "id": "L-O-phone-01",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Gold iPhone, no cover on it. Lock screen is a photo of mountains and the battery was almost dead. Left it on a desk in the quiet study area.",
+  "location": "library 6th floor",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-04T15:30:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "phone"
+  ],
+  "ownerNote": "No memory mistake."
+ },
+ {
+  "id": "F-O-sunglasses-01",
+  "type": "found",
+  "title": "",
+  "category": "",
+  "description": "big dark red sunglasses with blue-ish lenses, left on a table",
+  "location": "Ground Canteen",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-05T09:31:00.000Z",
+  "photos": [
+   "../../online/photos/sunglasses__52b71001-a13a-49a0-be12-c16f718e8ff3.jpg"
+  ],
+  "status": "open",
+  "tags": [
+   "sunglasses",
+   "finder_normal"
+  ]
+ },
+ {
+  "id": "L-O-sunglasses-01",
+  "type": "lost",
+  "title": "",
+  "category": "",
+  "description": "Women's oversized sunglasses, dark purple frame, wide arms, lenses darker at the top. No case. I think I left them at the cafeteria after lunch.",
+  "location": "cafeteria",
+  "campusZone": "",
+  "eventDate": null,
+  "createdAt": "2026-11-08T15:31:00.000Z",
+  "photos": [],
+  "status": "open",
+  "tags": [
+   "sunglasses"
+  ],
+  "ownerNote": "Memory mistake: neighbouring colour shade. The owner says dark purple; the frame is dark red / maroon."
+ }
+]
