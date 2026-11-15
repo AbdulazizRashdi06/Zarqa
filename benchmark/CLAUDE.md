@@ -70,7 +70,7 @@ The preliminary score (`src/prescore.js`) is a reconstruction of production's fo
 
 **Cache** (`src/cache.js`). Every paid call is cached in `.cache/<kind>/<sha256>.json` with its measured latency, and replays return that latency. Reruns are therefore free and reproducible. Changing a prompt, schema or model name changes the key and triggers new paid calls.
 
-**Spending stop** (`src/spend.js`). With `SPEND_CAP_USD` set, every live API call is priced from the usage the API reports (Luna, Terra and embedding prices in `config.js`) and added to `.cache/spend.json`, which carries over between runs; at the cap the process exits with code 3. The owner set a 10 dollar budget for testing on 2026-11-15: run API tests with `SPEND_CAP_USD=9.5 OPENAI_BASE_URL=https://api.openai.com/v1 OPENAI_API_KEY=proxy-injected` (the cloud environment adds the real key), one process at a time, and do not reset the file unless the owner sets a new budget.
+**Spending stop** (`src/spend.js`). With `SPEND_CAP_USD` set, every live API call is priced from the usage the API reports (Luna, Terra and embedding prices in `config.js`) and added to `.cache/spend.json`, which carries over between runs; at the cap the process exits with code 3. The owner set a 10 dollar budget for testing on 2026-11-15 and added 10 more the same day (20 in all): run API tests with `SPEND_CAP_USD=19.5 OPENAI_BASE_URL=https://api.openai.com/v1 OPENAI_API_KEY=proxy-injected` (the cloud environment adds the real key), one process at a time, and do not reset the file unless the owner sets a new budget.
 
 **Cost and latency** (`src/ledger.js`).
 - Cost is priced from token counts with `PRICES` in `config.js`. Local embeddings are priced as if `text-embedding-3-small` were used.
