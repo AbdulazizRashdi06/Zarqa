@@ -2,6 +2,23 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-15: Tests built on good match / bad match from a written definition
+
+**Nothing in the app changed.** Follow-up to the entry below, done without model calls while the ChatGPT plan limit was closed.
+
+- **Labels now come from the written definition** (draft 2 below), applied by agents who look at the photo and are told neither the truth nor the app's answers. Photo round 2 was relabelled and photo round 3 was built this way from the start (`definitionLabel` in each `pairs.json`).
+- **The definition is clear enough to test against.** Two independent sets of labellers agreed on 305 of 313 round-3 pairs (97.4%, kappa 0.94). None of the second set opened the first set's answers. The 8 they split on are marked `disputed` and should be reported apart: 5 key rings (is a different number or mix of keys "plainly shown"?), 2 wallets and 1 cap (are black, navy and dark brown neighbouring shades?). **Those two questions need the owner's ruling.**
+- **The definition costs almost no real returns.** 91 of 92 real items in round 2 and 90 of 92 in round 3 are good matches under it. The two round-3 exceptions are both the dark-shade question.
+- **It agrees with the earlier checker** on 301 of 313 round-2 pairs, so the earlier good and bad counts were close to this definition.
+- **The held-back half of round 2, regraded by the definition labels.** Picked arm (judge sees photos, definition draft 2): at 0.55, 49 of 54 good matches and 18 of 102 bad ones shown; at 0.75, 47 of 54 and 1 of 102, with 44 of 47 real items. The app today: 48 and 27 at 0.55; 30 and 0 at 0.75, with 29 real items.
+- **Why good matches are still missed at 0.75:** 4 of the 7 never reached the judge. The finder wrote almost nothing ("found this on the ground", "old key found"), so search had no words to rank.
+
+**Photo descriptions for search** (`edge.js --photo-captions`, stage test only, no model calls). A short description of the finder's photo is added to what search and ranking see; the reviewers still get the finder's own words and the photo. On round 2, good matches within the best 10 candidates go from 106 to 112 of 115, near-empty finder reports from 30 to 35 of 36, real items from 86 to 90 of 92; within the best 30, 113 to 115 of 115. The descriptions used were written by the agents that vetted the photos, not by Luna, and round 2 had been used before: confirm on round 3. In the app this would be one vision call per found photo.
+
+**Photo round 3** (`benchmark/data/photo-set/round3`): 184 reports, 313 pairs, the same hard condition as round 2 (three reports in four undated, every item of a kind found in one place), fresh blind writing. By the first labelling: 108 good matches (90 real items and 18 lookalikes) and 205 bad. The test fixed in advance for it: judge sees photos with definition draft 2, read at 0.55 and 0.75, against the app's wording.
+
+**Limit of "blind".** The harness shows every agent this repository's instruction files, which describe these experiments, though not the definition's wording. Writers and labellers were not asked to match anything.
+
 ## 2026-11-15: What counts as a match, and a judge that sees the photo (benchmark only)
 
 **Nothing in the app changed.** This entry records an owner principle, a loop run on it, and a result for the owner to rule on.
