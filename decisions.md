@@ -2,6 +2,13 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-15: An independent benchmark, and a card-showing photo removed
+
+**Nothing in the app changed.**
+
+- **Independent benchmark** (`benchmark/data/independent`, owner's request). Built by an agent started with none of the testing session's context and told not to read the earlier sets, results, matching code or this log; it was given what the app collects, the campus places and the 92 item photos, and a free hand on design. 271 reports (162 lost, 109 found, 88 with a photo) and 276 pairs (108 real, 168 not) across 19 situations of its own choosing; its reasoning and what it leaves out are in `DESIGN.md` there. It ran on another Claude model and still saw the project's instruction file, which mentions the experiments.
+- **A stock photo that shows a payment card was in the photo set.** The independent agent spotted that the online wallet photo `wallet__01421c7f…` (report `O-wallet-01`) shows a payment card with a visible logo; the earlier vetting had passed it. It is an openly licensed stock photo, not a student's card, but the project rule is that no card photo goes to any model, and this one was sent to Luna, and to Terra in the judge-sees-photos arms, in photo rounds 1 to 3. The report is now text-only in `data/photo-set` and in all three rounds (tag `card_photo_removed`), so no later run sends it. Results already recorded include it; a re-run will differ on the few pairs that used it.
+
 ## 2026-11-15: The judge that sees photos holds up on unseen pairs (benchmark only)
 
 **Nothing in the app changed.** The owner gave an OpenAI API key for testing with a 10 dollar limit, so these runs went through the API (`gpt-6-luna`, `gpt-6.1-terra`), not the Codex gateway that production uses and that the earlier runs used. Same models and prompts; answers through the two routes are not guaranteed identical, so arms are compared within one route. Spent: $6.33 for 5,472 calls, stopped by `benchmark/src/spend.js` at $9.50 if reached. The judge is 91% of the cost: Terra is $1.00 in and $5.00 out per million tokens, ten times Luna, and the app's ledger still prices it as Luna.

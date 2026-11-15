@@ -1510,13 +1510,12 @@
   "campusZone": "",
   "eventDate": null,
   "createdAt": "2026-11-13T08:54:00.000Z",
-  "photos": [
-   "../online/photos/wallet__01421c7f-0c50-4edf-8876-3718a4b33938.jpg"
-  ],
+  "photos": [],
   "status": "open",
   "tags": [
    "online_photo",
-   "wallet"
+   "wallet",
+   "card_photo_removed"
   ],
   "colour": "black"
  },
