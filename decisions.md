@@ -2,6 +2,38 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-15: The outside benchmark does not back the written definition or a 0.75 line
+
+**Nothing in the app changed. This entry withdraws part of the one below it ("The judge that sees photos holds up").**
+
+Five setups were run on the independent benchmark (276 pairs, 108 real; through the API), and the missing combination, a judge that sees photos with no written definition, was added on photo round 3. Two raters scored the independent pairs for quality and difficulty (within one point on every pair; 3 pairs unrated). Scores are the owner's formula (share of the best possible, line picked on half the item kinds and scored on the other half), for show from 4 / 5 / 6:
+
+| Setup | Independent set | Photo round 3 |
+|---|---|---|
+| App before 14 Nov (what is live) | 92 / 91 / 91% | not run |
+| App as committed (rendering + screen) | 95 / 95 / 95% | 88 / 85 / 83% |
+| Same, photos withheld | 95 / 94 / 92% | not run |
+| Judge sees photos | 95 / 96 / 97% | 96 / 90 / 88% |
+| Judge sees photos + definition draft 2 | 96 / 94 / 95%, line unstable (0.10 to 0.75) | 96 / 96 / 95%, line 0.75 |
+
+Real items and other items shown, independent set (of 108 and 168):
+
+| Setup | 0.55 | 0.65 | 0.75 |
+|---|---|---|---|
+| App before 14 Nov | 103, 32 | 103, 16 | 90, 5 |
+| App as committed | 106, 39 | 106, 19 | 94, 5 |
+| Judge sees photos | 107, 28 | 107, 18 | 98, 4 |
+| Judge sees photos + definition | 103, 55 | 103, 47 | 100, 16 |
+
+- **Holds on both sets:** the committed fixes find more real items (103 to 106 of 108 here); a judge that sees the photo shows fewer wrong pairs at the same or better recall (here at 0.55: 107 real and 28 others, against 106 and 39; on round 3: 88 and 38, against 87 and 64); the app's score follows the quality ratings more closely when the judge sees the photo (rank correlation 0.84 to 0.91 here, 0.79 to 0.85 on round 3).
+- **Does not hold:** the written definition. On the outside set it shows more wrong pairs at every line (55 of 168 at 0.55 where the plain photo judge shows 28) and its best line jumps between 0.10 and 0.75. It tells the judge that a pair with nothing plainly different is a match, and the outside author's decoys are mostly twins with nothing plainly different, which the assistant's own sets under-represented. The definition was the assistant's wording, tested on sets built by agents the assistant briefed.
+- **Does not hold:** a 0.75 line. It came from the definition arm on round 3. With the photo judge and no definition the best line is 0.50 to 0.65 on the outside set and 0.40 to 0.65 on round 3; today's 0.55 is inside both ranges.
+- **A line cannot be fixed from written test sets.** Today's app at 0.75 shows 87% of real items on the outside set and 61% on round 3: the two sets differ in how much people wrote and how often they gave a date. The line needs real pilot reports.
+- The outside author misread two photos (a Cyrillic book written up as an Arabic novel, a cable as a cord necklace); the raters scored those "real" pairs below 4.
+- Spent so far: $9.14 of the 20 dollar budget.
+
+**Standing recommendation:** deploy the committed fixes; build "the judge sees the photos" behind a switch, with no written definition and the line left at 0.55; drop definition drafts 1 to 3.
+
 ## 2026-11-15: An independent benchmark, and a card-showing photo removed
 
 **Nothing in the app changed.**
@@ -10,6 +42,8 @@ The decisions made while turning the uni matching prototype into a real app, and
 - **A stock photo that shows a payment card was in the photo set.** The independent agent spotted that the online wallet photo `wallet__01421c7f…` (report `O-wallet-01`) shows a payment card with a visible logo; the earlier vetting had passed it. It is an openly licensed stock photo, not a student's card, but the project rule is that no card photo goes to any model, and this one was sent to Luna, and to Terra in the judge-sees-photos arms, in photo rounds 1 to 3. The report is now text-only in `data/photo-set` and in all three rounds (tag `card_photo_removed`), so no later run sends it. Results already recorded include it; a re-run will differ on the few pairs that used it.
 
 ## 2026-11-15: The judge that sees photos holds up on unseen pairs (benchmark only)
+
+**Partly withdrawn the same day: see the entry above. The gain from the judge seeing photos stands; the written definition and the 0.75 line do not.**
 
 **Nothing in the app changed.** The owner gave an OpenAI API key for testing with a 10 dollar limit, so these runs went through the API (`gpt-6-luna`, `gpt-6.1-terra`), not the Codex gateway that production uses and that the earlier runs used. Same models and prompts; answers through the two routes are not guaranteed identical, so arms are compared within one route. Spent: $6.33 for 5,472 calls, stopped by `benchmark/src/spend.js` at $9.50 if reached. The judge is 91% of the cost: Terra is $1.00 in and $5.00 out per million tokens, ten times Luna, and the app's ledger still prices it as Luna.
 
