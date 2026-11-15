@@ -11,6 +11,10 @@
 // --wrong-weight scales the negative side: 1 treats a point below the line like a point above it; 0.25 says a
 // wrong suggestion costs the owner a glance and a missed one costs them the item (the project's stated priority).
 // A run's value at a line is the sum of that over the pairs it shows; the best line is the one with the most value.
+// --forgive-hard (the owner's rule): a mistake is a pair above "show from" that is not shown, or one below it that
+// is. Each mistake is weighed by how easy the pair was: full weight at difficulty 1, a fifth at difficulty 5
+// ((6 - difficulty) / 5). An easy pair got wrong costs most, a hard pair got wrong costs little, and getting a hard
+// pair right earns nothing extra.
 // "Honest" picks the line on one half of the item kinds and scores it on the other half, both ways round, so the
 // reported value is not tuned on the pairs it is measured on. Value is given as a share of the most any system
 // could get (showing exactly the pairs above "show from").
@@ -23,6 +27,7 @@ const { values: args } = parseArgs({
     runs: { type: "string" },
     "show-from": { type: "string", default: "4,5,6" },
     "wrong-weight": { type: "string", default: "1" }, // how much a point below "show from" costs, against a point above it
+    "forgive-hard": { type: "boolean", default: false }, // weigh each mistake by how easy the pair was (owner, 2026-11-15)
   },
 });
 if (!args.runs) throw new Error("--runs <name,name> is required (results/edge-<name>)");
@@ -76,14 +81,18 @@ for (const name of args.runs.split(",")) {
     n[h] += c;
   }
   const s = summary.settings;
-  console.log(`\n${name}: ${path.basename(path.dirname(summary.data))}/${path.basename(summary.data)} · ${list.length} rated pairs · wrong weight ${args["wrong-weight"]} · judge ${s.judgePhotos ? "sees photos" : "text only"} · definition ${s.matchDefinition ?? "none"}`);
+  console.log(`\n${name}: ${path.basename(path.dirname(summary.data))}/${path.basename(summary.data)} · ${list.length} rated pairs · wrong weight ${args["wrong-weight"]}${args["forgive-hard"] ? " · mistakes weighed by ease" : ""} · judge ${s.judgePhotos ? "sees photos" : "text only"} · definition ${s.matchDefinition ?? "none"}`);
   const reached = list.filter((x) => x.score >= 0);
   console.log(`  the app's score follows the quality rating: rank correlation ${spearman(reached.map((x) => x.score), reached.map((x) => x.q)).toFixed(2)} (pairs that reached the judge)`);
 
   const W = Number(args["wrong-weight"]);
-  const value = (items, line, from) => items.filter((x) => x.score >= line).reduce((t, x) => t + (x.q >= from ? x.q - from : W * (x.q - from)), 0);
-  const best = (items, from) => LINES.reduce((b, line) => (value(items, line, from) > value(items, b, from) + 1e-9 ? line : b), LINES[0]);
-  const most = (items, from) => items.reduce((t, x) => t + Math.max(0, x.q - from), 0);
+  const ease = (x) => (args["forgive-hard"] ? (6 - x.d) / 5 : 1);
+  // What a run loses at a line: every missed pair above "show from", every shown pair below it.
+  const loss = (items, line, from) => items.reduce((t, x) => t + (x.score >= line ? (x.q < from ? W * (from - x.q) * ease(x) : 0) : x.q > from ? (x.q - from) * ease(x) : 0), 0);
+  const best = (items, from) => LINES.reduce((b, line) => (loss(items, line, from) < loss(items, b, from) - 1e-9 ? line : b), LINES[0]);
+  // Showing nothing loses every pair above "show from": the scale's zero. Losing nothing is 100%.
+  const most = (items, from) => items.reduce((t, x) => t + Math.max(0, x.q - from) * ease(x), 0);
+  const value = (items, line, from) => most(items, from) - loss(items, line, from);
   for (const from of args["show-from"].split(",").map(Number)) {
     const line = best(list, from);
     const halves = [0, 1].map((h) => list.filter((x) => half.get(x.group) === h));
