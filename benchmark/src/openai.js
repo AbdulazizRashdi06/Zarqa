@@ -6,6 +6,7 @@ import { codexJson } from "./codexClient.js";
 import { postJson } from "./http.js";
 import { LOCAL_EMBEDDING_MODEL, localEmbed } from "./localEmbed.js";
 import { photoDataUrls } from "./photos.js";
+import { charge, checkSpend } from "./spend.js";
 
 // Where Luna and embedding calls go:
 // 1. OPENAI_BASE_URL / EMBEDDING_BASE_URL set → that OpenAI-compatible endpoint.
@@ -67,7 +68,9 @@ export async function embed(texts, { useCache = true } = {}) {
     "embedding",
     { model: MODELS.embedding, texts }, // same vectors whichever provider serves the model
     async () => {
+      checkSpend();
       const json = await postJson(`${r.base}/embeddings`, { model: r.model, input: texts }, r.headers);
+      charge(MODELS.embedding, { inputTokens: json.usage?.prompt_tokens ?? 0 });
       return {
         vectors: json.data.sort((a, b) => a.index - b.index).map((d) => d.embedding),
         inputTokens: json.usage?.prompt_tokens ?? 0,
@@ -104,13 +107,15 @@ export async function chatJson({ system, text, imagePaths = [], imageDetail, sch
     // cacheSalt asks for a fresh sample of the same prompt (run-to-run variation); it is never sent.
     cacheSalt ? { ...body, cacheSalt } : body,
     async () => {
+      checkSpend();
       const json = await postJson(`${r.base}/chat/completions`, body, r.headers);
-      return {
-        parsed: JSON.parse(json.choices[0].message.content),
+      const usage = {
         inputTokens: json.usage?.prompt_tokens ?? 0,
         cachedInputTokens: json.usage?.prompt_tokens_details?.cached_tokens ?? 0,
         outputTokens: json.usage?.completion_tokens ?? 0,
       };
+      charge(body.model, usage); // before parsing: a reply that fails to parse was still paid for
+      return { parsed: JSON.parse(json.choices[0].message.content), ...usage };
     },
     { enabled: useCache },
   );
