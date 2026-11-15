@@ -9,7 +9,7 @@
 //
 // Every labelled pair is reviewed by the models even when retrieval or the shortlist would have
 // dropped it, so a miss can be blamed on the right stage. "shown" needs all three stages.
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { parseArgs } from "node:util";
 import { CURRENT, PROPOSED } from "../config.js";
@@ -42,6 +42,7 @@ const { values: args } = parseArgs({
     "shortlist-threshold": { type: "string" }, // try another prescore floor (the app: 0.56)
     "triage-order": { type: "string", default: "prescore" },
     "no-photos": { type: "boolean", default: false }, // review the same pairs without their photos (what the photos add)
+    "photo-captions": { type: "string" }, // JSON file {foundReportId: caption}: a description of the photo, added to what search and ranking see
     normalize: { type: "boolean", default: false }, // rank on a plain-English rendering of each edge report (one Luna call each)
     triage: { type: "string" }, // screen the best N by prescore with one Luna call, then review what it keeps
     name: { type: "string" },
@@ -76,6 +77,14 @@ if (args.normalize) {
   console.log(`normalized ${ok.filter(Boolean).length}/${todo.length} reports (${todo.filter((r) => r.rankText).length} changed)`);
 }
 if (args["no-photos"]) for (const r of all) r.photos = [];
+if (args["photo-captions"]) {
+  // A finder who writes "found this" gives search no words. A description of their photo does.
+  // Search and ranking only: the reviewers still get the finder's own words and the photo itself.
+  const captions = JSON.parse(await readFile(path.resolve(args["photo-captions"]), "utf8"));
+  let n = 0;
+  for (const r of all) if (captions[r.id]) { r.rankText = `${r.rankText ?? r.description} ${captions[r.id]}`; r.categoryKey = normalizeCategory(r.rankText); n++; }
+  console.log(`photo captions added to ${n} reports`);
+}
 const setup = await embedReports(all, "text", ctx);
 
 if (args["vector-limit"]) PROPOSED.vectorLimit = Number(args["vector-limit"]);
