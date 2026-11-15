@@ -2,6 +2,54 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-15: What counts as a match, and a judge that sees the photo (benchmark only)
+
+**Nothing in the app changed.** This entry records an owner principle, a loop run on it, and a result for the owner to rule on.
+
+**Owner principle.** From the app's side a close pair is a "Schrödinger's match": whether it really is the same item should matter less in testing than whether it was a **good match or a bad match** given what the app could see. What has to be decided is the *semantic* cut-off, meaning what we deem a match, and the models adjusted to that. The tests should have been built this way from the start.
+- **How results are now read.** Good match: the checker, who is not told the truth, found nothing that disagrees, or only a soft disagreement. Bad match: a concrete contradiction. The share of real items shown stays alongside as the check on the definition itself: a definition graded only against itself would always look good.
+- **The earlier rounds regraded** (no re-run): text holdout, app before, 187 of 236 good shown and 10 of 151 bad; with both fixes 206 of 236 and 12 of 151. Photo round 1: 88 of 109 and 3 of 204. Photo round 2: 104 of 113 and 54 of 200.
+- **Still open: the labels follow the checker's unwritten judgment, not a definition the owner chose.**
+
+**Goal of the loop.** In the hard case (same kind of item, same place, no date), keep at least 87% of real items shown and bring bad matches shown to 10% or less. Benchmark only; the numeric cut-off, product changes and the app's wording were out of scope.
+
+**Method.** Photo round 2 split in two by item kind (`edge.js --fold a|b`): half A to tune (62 good, 95 bad, 45 real), half B held back (51 good, 105 bad, 47 real). Three tuning rounds on A, then the chosen arm once on B.
+
+**Tuning, half A** (accepted by the models at 0.55):
+
+| Arm | Good, of 62 | Bad, of 95 |
+|---|---|---|
+| App today | 60 | 29 |
+| Judge sees the photos (`JUDGE_PHOTOS=1`) | 60 | 16 |
+| Detail check (`DETAIL_CHECK=1`) | 56 | 7 |
+| Judge sees photos + definition draft 1 | 61 | 39 |
+| Definition draft 1, no photos | 60 | 48 |
+| Judge sees photos + definition draft 2 | 60 | 13 |
+| Same, plus the detail check | 56 | 11 |
+
+- **The definition moves results more than anything else tried.** Same judge, same photos, same pairs: 16 or 39 bad matches accepted depending only on what was written down as a match.
+- **Draft 1 forgave by kind of detail** (a brand, a count or a size never counts against). It accepted a watch whose dial plainly reads another brand. **Draft 2 forgives by what the found side shows:** a plainly shown difference rules the pair out whatever it is about; a neighbouring shade, a hedged statement, a part that could have come off, place, date and anything the finder could not see do not. Both texts are in `benchmark/src/reviewers/debate.js`.
+- **The detail check** lists each thing the owner stated and whether the found side shows it, cannot show it or contradicts it. It found a contradiction in 88 of 95 bad matches and in 19 of 45 real ones, and with it the judge began rejecting good matches over shade. Left out.
+
+**Holdout, half B** (shown end to end; the arm was picked before this ran: judge sees the photos, definition draft 2):
+
+| Line | App today: real of 47, bad of 105 | Picked arm: real of 47, bad of 105 |
+|---|---|---|
+| 0.55 (the app's) | 43, 29 | 44, 20 |
+| 0.70 | 32, 6 | 44, 11 |
+| 0.75 | 29, 0 | **44, 2** |
+| 0.80 | 20, 0 | 42, 0 |
+
+- **At the app's 0.55 the goal is missed:** bad matches shown fall from 28% to 19%, not to 10%.
+- **The scores now separate.** Real items keep their place while bad matches fall away as the line rises. A line of 0.75, the best on half A (42 of 45 real, 2 of 95 bad), gives 44 of 47 real (94%) and 2 of 105 bad (2%) on half B. Today's app at the same line shows 29 of 47 real.
+- By label on half B with the picked arm: Big chance 43 good and 0 bad; Looks like it 4 and 11; Small chance 0 and 8; held 0 and 1.
+
+**Limits.** One run, 47 real items and 105 bad matches in the holdout. Labels are an AI checker's. Both halves come from one photo set and one round of blind writing. The judge seeing a photo breaks the 2026-11-10 rule that the judge is text only, and the DeepSeek fallback cannot see photos. Draft 2 is a draft: the owner has not ruled on it. Run-to-run variation was not measured. A second holdout arm (judge sees photos, no definition) lost 6 of 156 pairs to the plan's usage limit: 40 of 47 real and 13 of 105 bad shown on what completed.
+
+**For the owner to decide.** (1) The definition: rule on draft 2, row by row. (2) Whether the judge may see photos. (3) The line, once (1) and (2) are settled; 0.75 is where this data points. Any of these in the app needs a fresh blind photo round first, written against the chosen definition.
+
+**Plan limit.** The loop used about 1,250 model calls and ended on the ChatGPT plan's usage limit at 07:58 UTC (reset stated as 12:08). Production shares the plan.
+
 ## 2026-11-15: Photo tests: what the finder's photo adds, and where wrong suggestions come from
 
 **Nothing in the app changed.** This entry records two photo rounds run on the app's new pipeline (rendering, screen, production embeddings, gpt-6-luna advocates who see the photos, gpt-6.1-terra judge who does not).
