@@ -30,6 +30,9 @@ const { values: args } = parseArgs({
     // Owner's rules, 2026-11-15: a wrong suggestion costs less than a missed one, and a mistake on an easy pair costs
     // more than one on a hard pair. The size of the first (a quarter) is the assistant's number, not the owner's.
     "wrong-weight": { type: "string", default: "0.25" }, // how much a point below "show from" costs, against a point above it
+    // How a missed pair's cost grows with its distance above "show from" (owner, 2026-11-15: a really good match
+    // that is missed should cost much more). "1" = the distance, "2" = its square, "exp" = 2^distance - 1.
+    "miss-power": { type: "string", default: "1" },
     "even-difficulty": { type: "boolean", default: false }, // switch off the difficulty rule: every mistake counts the same
   },
 });
@@ -89,12 +92,13 @@ for (const name of args.runs.split(",")) {
   console.log(`  the app's score follows the quality rating: rank correlation ${spearman(reached.map((x) => x.score), reached.map((x) => x.q)).toFixed(2)} (pairs that reached the judge)`);
 
   const W = Number(args["wrong-weight"]);
+  const missCost = args["miss-power"] === "exp" ? (gap) => 2 ** gap - 1 : (gap) => gap ** Number(args["miss-power"]);
   const ease = (x) => (args["even-difficulty"] ? 1 : (6 - x.d) / 5);
   // What a run loses at a line: every missed pair above "show from", every shown pair below it.
-  const loss = (items, line, from) => items.reduce((t, x) => t + (x.score >= line ? (x.q < from ? W * (from - x.q) * ease(x) : 0) : x.q > from ? (x.q - from) * ease(x) : 0), 0);
+  const loss = (items, line, from) => items.reduce((t, x) => t + (x.score >= line ? (x.q < from ? W * (from - x.q) * ease(x) : 0) : x.q > from ? missCost(x.q - from) * ease(x) : 0), 0);
   const best = (items, from) => LINES.reduce((b, line) => (loss(items, line, from) < loss(items, b, from) - 1e-9 ? line : b), LINES[0]);
   // Showing nothing loses every pair above "show from": the scale's zero. Losing nothing is 100%.
-  const most = (items, from) => items.reduce((t, x) => t + Math.max(0, x.q - from) * ease(x), 0);
+  const most = (items, from) => items.reduce((t, x) => t + missCost(Math.max(0, x.q - from)) * ease(x), 0);
   const value = (items, line, from) => most(items, from) - loss(items, line, from);
   for (const from of args["show-from"].split(",").map(Number)) {
     const line = best(list, from);
