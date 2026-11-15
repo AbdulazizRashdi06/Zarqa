@@ -21,7 +21,16 @@
    "a": "good",
    "b": "good",
    "note": "navy blue vs black (first reading only)"
-  }
+  },
+  "quality": {
+   "a": 5,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "navy hoodie vs black jacket, zip and chair fit, no logo check"
  },
  {
   "lostId": "R3-colour-01-L2",
@@ -45,7 +54,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "dark hoodie fits, found says little"
  },
  {
   "lostId": "R3-colour-01-L1",
@@ -69,7 +87,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "dark hoodie fits, found says little"
  },
  {
   "lostId": "R3-colour-01-L2",
@@ -93,7 +120,16 @@
    "a": "bad",
    "b": "bad",
    "note": "no zip vs has zipper"
-  }
+  },
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "owner says no zip, found has zipper"
  },
  {
   "lostId": "R3-colour-02-L1",
@@ -117,7 +153,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "grey Apple laptop with sticker, same room"
  },
  {
   "lostId": "R3-colour-02-L1",
@@ -141,7 +186,16 @@
    "a": "bad",
    "b": "bad",
    "note": "camel sticker on lid vs no stickers"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "owner has sticker, found has none; silver vs space grey"
  },
  {
   "lostId": "R3-colour-02-L2",
@@ -165,7 +219,16 @@
    "a": "bad",
    "b": "bad",
    "note": "HP vs MacBook"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "HP vs MacBook"
  },
  {
   "lostId": "R3-colour-02-L2",
@@ -189,7 +252,16 @@
    "a": "bad",
    "b": "bad",
    "note": "HP vs Apple laptop"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "HP vs Apple"
  },
  {
   "lostId": "R3-colour-03-L1",
@@ -213,7 +285,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "off-white with gold edge = cream with shiny border"
  },
  {
   "lostId": "R3-colour-03-L2",
@@ -237,7 +318,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "light scarf fits, vague"
  },
  {
   "lostId": "R3-colour-03-L1",
@@ -261,7 +351,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "light scarf fits, vague"
  },
  {
   "lostId": "R3-colour-03-L2",
@@ -285,7 +384,16 @@
    "a": "bad",
    "b": "bad",
    "note": "plain vs shiny border"
-  }
+  },
+  "quality": {
+   "a": 4,
+   "b": 4
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "plain scarf vs shiny border"
  },
  {
   "lostId": "R3-colour-04-L1",
@@ -309,7 +417,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "maroon vs brown, neighbouring shade, vague"
  },
  {
   "lostId": "R3-colour-04-L2",
@@ -333,7 +450,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "long zip wallet, burgundy vs red close"
  },
  {
   "lostId": "R3-colour-04-L1",
@@ -357,7 +483,16 @@
    "a": "bad",
    "b": "bad",
    "note": "mens wallet vs long ladies wallet"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 3
+  },
+  "ratingNote": "mens with gym card vs ladies long wallet, no cards"
  },
  {
   "lostId": "R3-colour-04-L2",
@@ -381,7 +516,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 4,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "burgundy vs brown, vague"
  },
  {
   "lostId": "R3-colour-05-L1",
@@ -405,7 +549,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "rose gold/pink iPhone, cracked screen, gym"
  },
  {
   "lostId": "R3-colour-05-L2",
@@ -429,7 +582,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 1
+  },
+  "ratingNote": "gold phone fits, vague"
  },
  {
   "lostId": "R3-colour-05-L1",
@@ -453,7 +615,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 3
+  },
+  "ratingNote": "rose gold vs gold, vague"
  },
  {
   "lostId": "R3-colour-05-L2",
@@ -477,7 +648,16 @@
    "a": "bad",
    "b": "bad",
    "note": "gold vs pink"
-  }
+  },
+  "quality": {
+   "a": 3,
+   "b": 4
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "gold vs pink, clear case not mentioned"
  },
  {
   "lostId": "R3-colour-06-L1",
@@ -501,7 +681,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "teal/blue metal bottle with damaged bottom"
  },
  {
   "lostId": "R3-colour-06-L2",
@@ -525,7 +714,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 3
+  },
+  "ratingNote": "tiffany vs green close, vague"
  },
  {
   "lostId": "R3-colour-06-L1",
@@ -549,7 +747,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "teal vs green close, vague"
  },
  {
   "lostId": "R3-colour-06-L2",
@@ -573,7 +780,16 @@
    "a": "bad",
    "b": "bad",
    "note": "plastic vs steel"
-  }
+  },
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "plastic vs steel"
  },
  {
   "lostId": "R3-colour-07-L1",
@@ -597,7 +813,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "purple pouch with pens fits pencil case"
  },
  {
   "lostId": "R3-colour-07-L2",
@@ -621,7 +846,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "violet bag with makeup fits makeup pouch"
  },
  {
   "lostId": "R3-colour-07-L1",
@@ -645,7 +879,16 @@
    "a": "bad",
    "b": "good",
    "note": "pencil case with pens and ruler vs bag with lipstick and mirror"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "pencil case vs makeup contents"
  },
  {
   "lostId": "R3-colour-07-L2",
@@ -669,7 +912,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 4,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "makeup pouch vs pouch with pens"
  },
  {
   "lostId": "R3-colour-08-L1",
@@ -693,7 +945,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "cover unmentioned by owner, phone colour unknown"
  },
  {
   "lostId": "R3-colour-08-L1",
@@ -717,7 +978,16 @@
    "a": "bad",
    "b": "bad",
    "note": "iPhone vs Xiaomi"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "iPhone vs Xiaomi"
  },
  {
   "lostId": "R3-colour-08-L2",
@@ -741,7 +1011,16 @@
    "a": "bad",
    "b": "bad",
    "note": "green cover vs black cover"
-  }
+  },
+  "quality": {
+   "a": 3,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 2
+  },
+  "ratingNote": "green cover vs black cover"
  },
  {
   "lostId": "R3-colour-08-L2",
@@ -765,7 +1044,16 @@
    "a": "bad",
    "b": "bad",
    "note": "black Samsung vs white Xiaomi"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black Samsung green cover vs white Xiaomi no case"
  },
  {
   "lostId": "R3-colour-09-L1",
@@ -789,7 +1077,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "Nike tick, baby blue vs greyish at night"
  },
  {
   "lostId": "R3-colour-09-L2",
@@ -813,7 +1110,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "blue NY cap, same parking"
  },
  {
   "lostId": "R3-colour-09-L1",
@@ -837,7 +1143,16 @@
    "a": "bad",
    "b": "bad",
    "note": "Nike vs NY on the cap"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Nike vs NY"
  },
  {
   "lostId": "R3-colour-09-L2",
@@ -861,7 +1176,16 @@
    "a": "bad",
    "b": "bad",
    "note": "NY on front vs Nike tick logo; navy vs greyish"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "navy NY vs grey Nike"
  },
  {
   "lostId": "R3-colour-10-L1",
@@ -885,7 +1209,16 @@
    "a": "bad",
    "b": "bad",
    "note": "orange vs black"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "orange vs black racket"
  },
  {
   "lostId": "R3-colour-10-L1",
@@ -909,7 +1242,16 @@
    "a": "bad",
    "b": "bad",
    "note": "Bullpadel vs Adidas"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Bullpadel no cover vs Adidas in cover"
  },
  {
   "lostId": "R3-colour-10-L2",
@@ -933,7 +1275,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "black racket fits, yellow not mentioned"
  },
  {
   "lostId": "R3-colour-10-L2",
@@ -957,7 +1308,16 @@
    "a": "bad",
    "b": "bad",
    "note": "black/yellow Head vs orange/white Adidas"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black/yellow Head vs orange/white Adidas"
  },
  {
   "lostId": "R3-colour-11-L1",
@@ -981,7 +1341,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 3
+  },
+  "ratingNote": "keys with torch, red vs faded pink/orange strap"
  },
  {
   "lostId": "R3-colour-11-L2",
@@ -1005,7 +1374,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "keys, no detail"
  },
  {
   "lostId": "R3-colour-11-L1",
@@ -1029,7 +1407,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "keys, no detail"
  },
  {
   "lostId": "R3-colour-11-L2",
@@ -1053,7 +1440,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 4,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "car key vs keys with strap and flashlight"
  },
  {
   "lostId": "R3-colour-12-L1",
@@ -1077,7 +1473,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "white case with one earbud, distinctive"
  },
  {
   "lostId": "R3-colour-12-L2",
@@ -1101,7 +1506,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 1
+  },
+  "ratingNote": "owner gives no detail"
  },
  {
   "lostId": "R3-colour-12-L1",
@@ -1125,7 +1539,16 @@
    "a": "bad",
    "b": "bad",
    "note": "AirPods Pro vs black JBL earbuds"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "AirPods vs black JBL"
  },
  {
   "lostId": "R3-colour-12-L2",
@@ -1149,7 +1572,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "owner gives no detail"
  },
  {
   "lostId": "R3-colour-13-L1",
@@ -1173,7 +1605,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "maroon bag with charger"
  },
  {
   "lostId": "R3-colour-13-L1",
@@ -1197,7 +1638,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 4,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "maroon vs brown, vague"
  },
  {
   "lostId": "R3-colour-13-L1",
@@ -1221,7 +1671,16 @@
    "a": "bad",
    "b": "bad",
    "note": "maroon vs navy"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "maroon vs kohli dark blue"
  },
  {
   "lostId": "R3-colour-14-L1",
@@ -1245,7 +1704,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "pink Stanley quencher with handle"
  },
  {
   "lostId": "R3-colour-14-L2",
@@ -1269,7 +1737,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "olive vs sage green Stanley"
  },
  {
   "lostId": "R3-colour-14-L1",
@@ -1293,7 +1770,16 @@
    "a": "bad",
    "b": "bad",
    "note": "pink vs sage green"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "pink vs sage green"
  },
  {
   "lostId": "R3-colour-14-L2",
@@ -1317,7 +1803,16 @@
    "a": "bad",
    "b": "bad",
    "note": "olive green vs rose"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "olive vs rose"
  },
  {
   "lostId": "R3-word-meaning-01-L1",
@@ -1341,7 +1836,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "laptop with lid sticker fits; grey vs silver is a neighbouring shade"
  },
  {
   "lostId": "R3-word-meaning-01-L1",
@@ -1365,7 +1869,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "bare 'notebook' could mean paper notebook, not laptop"
  },
  {
   "lostId": "R3-word-meaning-01-L2",
@@ -1389,7 +1902,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "notebook in library; found says nothing more"
  },
  {
   "lostId": "R3-word-meaning-01-L2",
@@ -1413,7 +1935,16 @@
    "a": "bad",
    "b": "bad",
    "note": "paper notebook vs laptop"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "paper notebook vs laptop"
  },
  {
   "lostId": "R3-word-meaning-02-L2",
@@ -1437,7 +1968,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Samsung tablet, grey book cover, cracked corner all confirmed"
  },
  {
   "lostId": "R3-word-meaning-02-L2",
@@ -1461,7 +2001,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "owner's 'ipad' is a Samsung; bare finder word fits loosely"
  },
  {
   "lostId": "R3-word-meaning-02-L1",
@@ -1485,7 +2034,16 @@
    "a": "bad",
    "b": "bad",
    "note": "pill box vs tablet computer"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "pill box vs Galaxy Tab"
  },
  {
   "lostId": "R3-word-meaning-03-L1",
@@ -1509,7 +2067,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "glasses in the same hall, no details"
  },
  {
   "lostId": "R3-word-meaning-03-L1",
@@ -1533,7 +2100,16 @@
    "a": "bad",
    "b": "bad",
    "note": "eyeglasses in case vs six drinking glasses in carton"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "eyeglasses vs carton of drinking glasses"
  },
  {
   "lostId": "R3-word-meaning-03-L2",
@@ -1557,7 +2133,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "carton of six glasses near stage, day after event"
  },
  {
   "lostId": "R3-word-meaning-03-L2",
@@ -1581,7 +2166,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 3,
+   "b": 4
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "box of drinking glasses vs glasses on a seat, likely eyewear"
  },
  {
   "lostId": "R3-word-meaning-04-L2",
@@ -1605,7 +2199,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "white long USB-C to C cable; braiding unconfirmed"
  },
  {
   "lostId": "R3-word-meaning-04-L2",
@@ -1629,7 +2232,16 @@
    "a": "bad",
    "b": "bad",
    "note": "wire only vs charger head with no wire"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 1
+  },
+  "ratingNote": "owner lost only wire; found is head only"
  },
  {
   "lostId": "R3-word-meaning-04-L1",
@@ -1653,7 +2265,16 @@
    "a": "bad",
    "b": "bad",
    "note": "Lenovo laptop charger vs Samsung head"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Lenovo laptop charger vs Samsung phone head"
  },
  {
   "lostId": "R3-word-meaning-04-L1",
@@ -1677,7 +2298,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "laptop charger vs bare USB-C cable"
  },
  {
   "lostId": "R3-word-meaning-05-L1",
@@ -1701,7 +2331,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "flash drive at copy centre, no details"
  },
  {
   "lostId": "R3-word-meaning-05-L1",
@@ -1725,7 +2364,16 @@
    "a": "bad",
    "b": "bad",
    "note": "SanDisk 32 red/black vs metal Kingston 64"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "SanDisk 32 red/black vs metal Kingston 64"
  },
  {
   "lostId": "R3-word-meaning-05-L2",
@@ -1749,7 +2397,16 @@
    "a": "bad",
    "b": "bad",
    "note": "writing pen vs pen drive"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "pen vs pen drive"
  },
  {
   "lostId": "R3-word-meaning-05-L2",
@@ -1773,7 +2430,16 @@
    "a": "bad",
    "b": "bad",
    "note": "writing pen vs flash drive"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "pen vs flash drive"
  },
  {
   "lostId": "R3-word-meaning-06-L1",
@@ -1797,7 +2463,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black JBL earbuds case on bridge"
  },
  {
   "lostId": "R3-word-meaning-06-L1",
@@ -1821,7 +2496,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "owner's 'airpods' are JBL; bare finder word"
  },
  {
   "lostId": "R3-word-meaning-06-L2",
@@ -1845,7 +2529,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 4,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "empty case only vs 'airpods' likely with buds"
  },
  {
   "lostId": "R3-word-meaning-06-L2",
@@ -1869,7 +2562,16 @@
    "a": "bad",
    "b": "bad",
    "note": "white empty AirPods case vs black JBL box with buds"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "white empty AirPods case vs black JBL with buds"
  },
  {
   "lostId": "R3-word-meaning-07-L1",
@@ -1893,7 +2595,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "ladies wallet in same musalla; no details"
  },
  {
   "lostId": "R3-word-meaning-07-L1",
@@ -1917,7 +2628,16 @@
    "a": "bad",
    "b": "bad",
    "note": "small brown zip purse vs black chain handbag"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "small brown purse vs black chain handbag"
  },
  {
   "lostId": "R3-word-meaning-07-L2",
@@ -1941,7 +2661,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black chain-strap bag, same room, same day"
  },
  {
   "lostId": "R3-word-meaning-07-L2",
@@ -1965,7 +2694,16 @@
    "a": "bad",
    "b": "bad",
    "note": "found reported 5 Nov, before owner lost it on 6 Nov"
-  }
+  },
+  "quality": {
+   "a": 4,
+   "b": 4
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "chain-strap purse vs 'wallet'; possible wording"
  },
  {
   "lostId": "R3-word-meaning-08-L1",
@@ -1989,7 +2727,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "ring in GU1 parking near gate; no details"
  },
  {
   "lostId": "R3-word-meaning-08-L1",
@@ -2013,7 +2760,16 @@
    "a": "bad",
    "b": "bad",
    "note": "finger ring vs key ring with car remote"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "finger ring vs key ring"
  },
  {
   "lostId": "R3-word-meaning-08-L2",
@@ -2037,7 +2793,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "keys with car remote and khanjar charm"
  },
  {
   "lostId": "R3-word-meaning-08-L2",
@@ -2061,7 +2826,16 @@
    "a": "bad",
    "b": "bad",
    "note": "keys with remote vs a ring"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 2
+  },
+  "ratingNote": "keys vs bare 'ring', likely finger ring"
  },
  {
   "lostId": "R3-word-meaning-09-L2",
@@ -2085,7 +2859,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "small black Wacom with pen confirmed"
  },
  {
   "lostId": "R3-word-meaning-09-L1",
@@ -2109,7 +2892,16 @@
    "a": "bad",
    "b": "bad",
    "note": "paper sketch pad vs drawing tablet"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 1
+  },
+  "ratingNote": "paper sketch pad vs drawing tablet"
  },
  {
   "lostId": "R3-word-meaning-09-L2",
@@ -2133,7 +2925,16 @@
    "a": "bad",
    "b": "bad",
    "note": "small Wacom tablet vs big mouse pad"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 1
+  },
+  "ratingNote": "Wacom tablet vs mouse pad"
  },
  {
   "lostId": "R3-word-meaning-09-L1",
@@ -2157,7 +2958,16 @@
    "a": "bad",
    "b": "bad",
    "note": "paper sketch pad vs mouse pad"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "sketch pad vs mouse pad"
  },
  {
   "lostId": "R3-word-meaning-10-L1",
@@ -2181,7 +2991,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "metal cap at padel; screw/loop unconfirmed"
  },
  {
   "lostId": "R3-word-meaning-10-L1",
@@ -2205,7 +3024,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 2
+  },
+  "ratingNote": "flask cap vs black cap, likely headwear"
  },
  {
   "lostId": "R3-word-meaning-10-L2",
@@ -2229,7 +3057,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black cap on padel bench; Nike unconfirmed"
  },
  {
   "lostId": "R3-word-meaning-10-L2",
@@ -2253,7 +3090,16 @@
    "a": "bad",
    "b": "bad",
    "note": "Nike hat vs metal cap"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Nike cap vs metal cap"
  },
  {
   "lostId": "R3-word-meaning-11-L1",
@@ -2277,7 +3123,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "pink unbranded tumbler with straw, knockoff Stanley"
  },
  {
   "lostId": "R3-word-meaning-11-L1",
@@ -2301,7 +3156,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "'Stanley' at pitch; owner's is a knockoff, no details"
  },
  {
   "lostId": "R3-word-meaning-11-L2",
@@ -2325,7 +3189,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "steel flask could be a Stanley; found says little"
  },
  {
   "lostId": "R3-word-meaning-11-L2",
@@ -2349,7 +3222,16 @@
    "a": "bad",
    "b": "bad",
    "note": "steel flask vs pink tumbler with straw"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "steel flask vs pink straw tumbler"
  },
  {
   "lostId": "R3-word-meaning-12-L1",
@@ -2373,7 +3255,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "black fitness band, unbranded; scratch unconfirmed"
  },
  {
   "lostId": "R3-word-meaning-12-L1",
@@ -2397,7 +3288,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "bare 'band' in gym, ambiguous"
  },
  {
   "lostId": "R3-word-meaning-12-L2",
@@ -2421,7 +3321,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "bare 'band' in gym, ambiguous"
  },
  {
   "lostId": "R3-word-meaning-12-L2",
@@ -2445,7 +3354,16 @@
    "a": "bad",
    "b": "bad",
    "note": "purple resistance band vs black watch"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "resistance band vs watch"
  },
  {
   "lostId": "R3-word-meaning-13-L1",
@@ -2469,7 +3387,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "blue Xiaomi, clear case, money inside"
  },
  {
   "lostId": "R3-word-meaning-13-L2",
@@ -2493,7 +3420,16 @@
    "a": "bad",
    "b": "bad",
    "note": "power bank vs bank card"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 1
+  },
+  "ratingNote": "power bank vs bank card"
  },
  {
   "lostId": "R3-word-meaning-13-L2",
@@ -2517,7 +3453,16 @@
    "a": "bad",
    "b": "bad",
    "note": "power bank vs phone"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "power bank vs phone"
  },
  {
   "lostId": "R3-word-meaning-13-L1",
@@ -2541,7 +3486,16 @@
    "a": "bad",
    "b": "bad",
    "note": "phone vs bank card"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "phone vs bank card"
  },
  {
   "lostId": "R3-word-meaning-14-L1",
@@ -2565,7 +3519,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "grey jumper in Germany Hall; brand unconfirmed"
  },
  {
   "lostId": "R3-word-meaning-14-L1",
@@ -2589,7 +3552,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 3,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "jumper vs hooded jacket"
  },
  {
   "lostId": "R3-word-meaning-14-L2",
@@ -2613,7 +3585,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "hoodie fits jacket with hood; print unconfirmed"
  },
  {
   "lostId": "R3-word-meaning-14-L2",
@@ -2637,7 +3618,16 @@
    "a": "bad",
    "b": "bad",
    "note": "printed hoodie vs plain knit with no hood"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "printed hoodie vs plain knitted no-hood sweater"
  },
  {
   "lostId": "R3-language-01-L1",
@@ -2661,7 +3651,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "silver metal-strap watch fits; brand and scratch unconfirmed"
  },
  {
   "lostId": "R3-language-01-L2",
@@ -2685,7 +3684,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "white earbuds in green case match the green cover"
  },
  {
   "lostId": "R3-language-01-L1",
@@ -2709,7 +3717,16 @@
    "a": "bad",
    "b": "bad",
    "note": "watch vs earphones"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "watch vs earphones"
  },
  {
   "lostId": "R3-language-01-L2",
@@ -2733,7 +3750,16 @@
    "a": "bad",
    "b": "bad",
    "note": "earphones vs watch"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "earphones vs watch"
  },
  {
   "lostId": "R3-language-02-L1",
@@ -2757,7 +3783,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "brown wallet with student card in library"
  },
  {
   "lostId": "R3-language-02-L1",
@@ -2781,7 +3816,16 @@
    "a": "bad",
    "b": "bad",
    "note": "wallet vs book"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 3
+  },
+  "ratingNote": "wallet (boke) vs book"
  },
  {
   "lostId": "R3-language-02-L2",
@@ -2805,7 +3849,16 @@
    "a": "bad",
    "b": "bad",
    "note": "black vs brown"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 3
+  },
+  "ratingNote": "black vs brown wallet"
  },
  {
   "lostId": "R3-language-02-L2",
@@ -2829,7 +3882,16 @@
    "a": "bad",
    "b": "bad",
    "note": "wallet vs book"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "black wallet vs brown book"
  },
  {
   "lostId": "R3-language-03-L1",
@@ -2853,7 +3915,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "green misbaha in musalla; tassel/count unconfirmed"
  },
  {
   "lostId": "R3-language-03-L1",
@@ -2877,7 +3948,16 @@
    "a": "bad",
    "b": "bad",
    "note": "green stone 33 beads vs brown wood 99 beads"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "green stone 33 vs brown wood 99 beads"
  },
  {
   "lostId": "R3-language-03-L2",
@@ -2901,7 +3981,16 @@
    "a": "bad",
    "b": "bad",
    "note": "reading lamp vs prayer beads"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "reading lamp vs prayer beads (similar spelling)"
  },
  {
   "lostId": "R3-language-03-L2",
@@ -2925,7 +4014,16 @@
    "a": "bad",
    "b": "bad",
    "note": "reading lamp vs prayer beads"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "reading lamp vs prayer beads"
  },
  {
   "lostId": "R3-language-04-L1",
@@ -2949,7 +4047,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "white Omani cap with blue embroidery, canteen"
  },
  {
   "lostId": "R3-language-04-L2",
@@ -2973,7 +4080,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "brown cap matches; found says little, gold stitching unconfirmed"
  },
  {
   "lostId": "R3-language-04-L1",
@@ -2997,7 +4113,16 @@
    "a": "bad",
    "b": "bad",
    "note": "white vs brown"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "white vs brown kumma"
  },
  {
   "lostId": "R3-language-04-L2",
@@ -3021,7 +4146,16 @@
    "a": "bad",
    "b": "bad",
    "note": "brown vs white"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "brown gold vs white blue cap"
  },
  {
   "lostId": "R3-language-05-L1",
@@ -3045,7 +4179,16 @@
    "a": "bad",
    "b": "bad",
    "note": "found 11-05 before owner lost it 11-06"
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "red patterned shawl folded on seat; date one day off"
  },
  {
   "lostId": "R3-language-05-L2",
@@ -3069,7 +4212,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "keys with gold pyramid keychain"
  },
  {
   "lostId": "R3-language-05-L1",
@@ -3093,7 +4245,16 @@
    "a": "bad",
    "b": "bad",
    "note": "scarf vs keys"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "shawl vs keys"
  },
  {
   "lostId": "R3-language-05-L2",
@@ -3117,7 +4278,16 @@
    "a": "bad",
    "b": "bad",
    "note": "keychain vs scarf"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "keys vs scarf"
  },
  {
   "lostId": "R3-language-06-L1",
@@ -3141,7 +4311,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Nissan key with small dagger keychain"
  },
  {
   "lostId": "R3-language-06-L2",
@@ -3165,7 +4344,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 1
+  },
+  "ratingNote": "3 keys on ring with red tag"
  },
  {
   "lostId": "R3-language-06-L1",
@@ -3189,7 +4377,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "car key with dagger vs 3 keys with red tag, no Nissan or dagger"
  },
  {
   "lostId": "R3-language-06-L2",
@@ -3213,7 +4410,16 @@
    "a": "bad",
    "b": "bad",
    "note": "3 hostel room keys vs one Nissan car key"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "room keys red tag vs Nissan key with dagger"
  },
  {
   "lostId": "R3-language-07-L1",
@@ -3237,7 +4443,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "white Epson remote"
  },
  {
   "lostId": "R3-language-07-L2",
@@ -3261,7 +4476,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "beamer = BMW, black fob, 4th floor"
  },
  {
   "lostId": "R3-language-07-L1",
@@ -3285,7 +4509,16 @@
    "a": "bad",
    "b": "bad",
    "note": "white remote vs black key fob"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "white projector remote vs black key fob"
  },
  {
   "lostId": "R3-language-07-L2",
@@ -3309,7 +4542,16 @@
    "a": "bad",
    "b": "bad",
    "note": "black BMW key vs white Epson remote"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "car key vs remote"
  },
  {
   "lostId": "R3-language-08-L1",
@@ -3333,7 +4575,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "iPhone, clear case, cat sticker"
  },
  {
   "lostId": "R3-language-08-L2",
@@ -3357,7 +4608,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 1
+  },
+  "ratingNote": "black-frame glasses by copier"
  },
  {
   "lostId": "R3-language-08-L1",
@@ -3381,7 +4641,16 @@
    "a": "bad",
    "b": "bad",
    "note": "phone vs glasses"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "phone vs glasses"
  },
  {
   "lostId": "R3-language-08-L2",
@@ -3405,7 +4674,16 @@
    "a": "bad",
    "b": "bad",
    "note": "glasses vs phone"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "glasses vs phone"
  },
  {
   "lostId": "R3-language-09-L1",
@@ -3429,7 +4707,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "black wrap with silver edge embroidery in GU2 prayer room"
  },
  {
   "lostId": "R3-language-09-L1",
@@ -3453,7 +4740,16 @@
    "a": "bad",
    "b": "bad",
    "note": "black shawl vs grey fleece blanket"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "black embroidered wrap vs grey fleece blanket"
  },
  {
   "lostId": "R3-language-09-L2",
@@ -3477,7 +4773,16 @@
    "a": "bad",
    "b": "bad",
    "note": "plain abaya vs shayla with silver thread"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "plain abaya vs embroidered shayla"
  },
  {
   "lostId": "R3-language-10-L1",
@@ -3501,7 +4806,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "ring with blue stone by sink in studio"
  },
  {
   "lostId": "R3-language-10-L2",
@@ -3525,7 +4839,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "wooden stamp plus blue ink pad"
  },
  {
   "lostId": "R3-language-10-L1",
@@ -3549,7 +4872,16 @@
    "a": "bad",
    "b": "bad",
    "note": "ring vs stamp"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "ring vs stamp"
  },
  {
   "lostId": "R3-language-10-L2",
@@ -3573,7 +4905,16 @@
    "a": "bad",
    "b": "bad",
    "note": "stamp vs ring"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "stamp vs ring"
  },
  {
   "lostId": "R3-language-11-L1",
@@ -3597,7 +4938,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 10,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "dark red small prayer mat with compass"
  },
  {
   "lostId": "R3-language-11-L2",
@@ -3621,7 +4971,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "green prayer mat; both sides vague"
  },
  {
   "lostId": "R3-language-11-L1",
@@ -3645,7 +5004,16 @@
    "a": "bad",
    "b": "bad",
    "note": "maroon vs green"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "maroon vs green mat"
  },
  {
   "lostId": "R3-language-11-L2",
@@ -3669,7 +5037,16 @@
    "a": "bad",
    "b": "bad",
    "note": "green vs dark red"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "green vs dark red mat"
  },
  {
   "lostId": "R3-language-12-L1",
@@ -3693,7 +5070,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "plain bangle by lathe; steel vs silver easily confused"
  },
  {
   "lostId": "R3-language-12-L1",
@@ -3717,7 +5103,16 @@
    "a": "bad",
    "b": "bad",
    "note": "plain steel vs thin with white stones"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "plain kada vs bangle with white stones"
  },
  {
   "lostId": "R3-language-13-L1",
@@ -3741,7 +5136,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Casio calculator with white M on back"
  },
  {
   "lostId": "R3-language-13-L1",
@@ -3765,7 +5169,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "Casio calculator; M not mentioned, missing lid not mentioned"
  },
  {
   "lostId": "R3-language-13-L2",
@@ -3789,7 +5202,16 @@
    "a": "bad",
    "b": "bad",
    "note": "laptop vs calculator"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "laptop vs calculator"
  },
  {
   "lostId": "R3-language-13-L2",
@@ -3813,7 +5235,16 @@
    "a": "bad",
    "b": "bad",
    "note": "Lenovo laptop vs Casio calculator"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "laptop vs calculator"
  },
  {
   "lostId": "R3-language-14-L1",
@@ -3837,7 +5268,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black metal bottle with mountain sticker"
  },
  {
   "lostId": "R3-language-14-L2",
@@ -3861,7 +5301,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "small oud bottle in red velvet pouch"
  },
  {
   "lostId": "R3-language-14-L1",
@@ -3885,7 +5334,16 @@
    "a": "bad",
    "b": "bad",
    "note": "water bottle vs perfume bottle"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "water bottle vs perfume"
  },
  {
   "lostId": "R3-language-14-L2",
@@ -3909,7 +5367,16 @@
    "a": "bad",
    "b": "bad",
    "note": "perfume bottle vs water bottle"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "perfume vs water bottle"
  },
  {
   "lostId": "R3-sloppy-writing-01-L1",
@@ -3933,7 +5400,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "wallet fits, found side gives no detail"
  },
  {
   "lostId": "R3-sloppy-writing-01-L1",
@@ -3957,7 +5433,16 @@
    "a": "bad",
    "b": "bad",
    "note": "black vs brown wallet"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 1
+  },
+  "ratingNote": "black vs brown; bank card/licence vs gym card, no ID"
  },
  {
   "lostId": "R3-sloppy-writing-01-L2",
@@ -3981,7 +5466,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "brown wallet, coins and gym/fitness card all match"
  },
  {
   "lostId": "R3-sloppy-writing-01-L2",
@@ -4005,7 +5499,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "wallet fits, no detail on found side"
  },
  {
   "lostId": "R3-sloppy-writing-02-L1",
@@ -4029,7 +5532,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "AirPods with cracked lid confirmed, library"
  },
  {
   "lostId": "R3-sloppy-writing-02-L1",
@@ -4053,7 +5565,16 @@
    "a": "bad",
    "b": "bad",
    "note": "AirPods Pro vs black-case Samsung earbuds"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "AirPods Pro vs Samsung black case"
  },
  {
   "lostId": "R3-sloppy-writing-02-L2",
@@ -4077,7 +5598,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Samsung buds black case in library match"
  },
  {
   "lostId": "R3-sloppy-writing-02-L2",
@@ -4101,7 +5631,16 @@
    "a": "bad",
    "b": "bad",
    "note": "Galaxy Buds black case vs white AirPod"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Galaxy Buds black vs white AirPods"
  },
  {
   "lostId": "R3-sloppy-writing-03-L1",
@@ -4125,7 +5664,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "HP charger left in wall socket, 4th floor"
  },
  {
   "lostId": "R3-sloppy-writing-03-L1",
@@ -4149,7 +5697,16 @@
    "a": "bad",
    "b": "bad",
    "note": "HP laptop charger vs white iPhone charger"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "HP laptop charger vs iPhone charger"
  },
  {
   "lostId": "R3-sloppy-writing-03-L2",
@@ -4173,7 +5730,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "lost side says only charger"
  },
  {
   "lostId": "R3-sloppy-writing-03-L2",
@@ -4197,7 +5763,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "lost side says only charger"
  },
  {
   "lostId": "R3-sloppy-writing-04-L1",
@@ -4221,7 +5796,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 3
+  },
+  "ratingNote": "silver steel analog watch in gym fits Casio silver"
  },
  {
   "lostId": "R3-sloppy-writing-04-L1",
@@ -4245,7 +5829,16 @@
    "a": "bad",
    "b": "bad",
    "note": "silver Casio vs black-strap Xiaomi smartwatch"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "silver Casio vs black Xiaomi smartwatch"
  },
  {
   "lostId": "R3-sloppy-writing-04-L2",
@@ -4269,7 +5862,16 @@
    "a": "bad",
    "b": "bad",
    "note": "Apple Watch vs Xiaomi"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "black-strap smartwatch but Apple vs Xiaomi"
  },
  {
   "lostId": "R3-sloppy-writing-04-L2",
@@ -4293,7 +5895,16 @@
    "a": "bad",
    "b": "bad",
    "note": "Apple Watch black band vs non-digital watch, steel strap"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Apple Watch black band vs non-digital steel strap"
  },
  {
   "lostId": "R3-sloppy-writing-05-L1",
@@ -4317,7 +5928,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 1
+  },
+  "ratingNote": "Toyota car key, same hall"
  },
  {
   "lostId": "R3-sloppy-writing-05-L1",
@@ -4341,7 +5961,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "found side just a key emoji"
  },
  {
   "lostId": "R3-sloppy-writing-05-L2",
@@ -4365,7 +5994,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "found side just a key emoji"
  },
  {
   "lostId": "R3-sloppy-writing-05-L2",
@@ -4389,7 +6027,16 @@
    "a": "bad",
    "b": "bad",
    "note": "dorm room key vs Toyota car key"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "dorm key with teddy vs Toyota car key"
  },
  {
   "lostId": "R3-sloppy-writing-06-L1",
@@ -4413,7 +6060,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "both just calculator"
  },
  {
   "lostId": "R3-sloppy-writing-06-L1",
@@ -4437,7 +6093,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "lost side gives no detail"
  },
  {
   "lostId": "R3-sloppy-writing-06-L2",
@@ -4461,7 +6126,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Casio scientific with name written, sciences"
  },
  {
   "lostId": "R3-sloppy-writing-06-L2",
@@ -4485,7 +6159,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "found side just calc"
  },
  {
   "lostId": "R3-sloppy-writing-07-L1",
@@ -4509,7 +6192,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "glasses by musalla sinks as owner described"
  },
  {
   "lostId": "R3-sloppy-writing-07-L1",
@@ -4533,7 +6225,16 @@
    "a": "bad",
    "b": "bad",
    "note": "prescription glasses vs sunglasses"
-  }
+  },
+  "quality": {
+   "a": 4,
+   "b": 4
+  },
+  "difficulty": {
+   "a": 4,
+   "b": 3
+  },
+  "ratingNote": "black Ray-Ban but sunglasses vs prescription glasses"
  },
  {
   "lostId": "R3-sloppy-writing-07-L2",
@@ -4557,7 +6258,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Ray-Ban sunglasses, prayer room"
  },
  {
   "lostId": "R3-sloppy-writing-07-L2",
@@ -4581,7 +6291,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "glasses vague, nothing differs"
  },
  {
   "lostId": "R3-sloppy-writing-08-L1",
@@ -4605,7 +6324,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "red USB left in print shop PC"
  },
  {
   "lostId": "R3-sloppy-writing-08-L1",
@@ -4629,7 +6357,16 @@
    "a": "bad",
    "b": "bad",
    "note": "SanDisk red/black vs black Kingston"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "SanDisk red/black vs black Kingston"
  },
  {
   "lostId": "R3-sloppy-writing-08-L2",
@@ -4653,7 +6390,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Kingston USB with ring"
  },
  {
   "lostId": "R3-sloppy-writing-08-L2",
@@ -4677,7 +6423,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "USB, colour unknown on lost side, ring not mentioned"
  },
  {
   "lostId": "R3-sloppy-writing-09-L1",
@@ -4701,7 +6456,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "lost side just phone"
  },
  {
   "lostId": "R3-sloppy-writing-09-L1",
@@ -4725,7 +6489,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "both just phone in parking"
  },
  {
   "lostId": "R3-sloppy-writing-10-L1",
@@ -4749,7 +6522,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 3
+  },
+  "ratingNote": "lab coat on list, no details to compare"
  },
  {
   "lostId": "R3-sloppy-writing-10-L1",
@@ -4773,7 +6555,16 @@
    "a": "bad",
    "b": "bad",
    "note": "pink bottle vs silver steel bottle"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 2
+  },
+  "ratingNote": "pink bottle vs silver steel bottle"
  },
  {
   "lostId": "R3-sloppy-writing-10-L2",
@@ -4797,7 +6588,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "notebook in mechatronics, no detail on found"
  },
  {
   "lostId": "R3-sloppy-writing-11-L1",
@@ -4821,7 +6621,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "gold chain with A by laundry machines"
  },
  {
   "lostId": "R3-sloppy-writing-11-L1",
@@ -4845,7 +6654,16 @@
    "a": "bad",
    "b": "bad",
    "note": "gold with letter A vs silver with heart"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "gold A vs silver heart"
  },
  {
   "lostId": "R3-sloppy-writing-11-L2",
@@ -4869,7 +6687,16 @@
    "a": "bad",
    "b": "bad",
    "note": "bracelet vs necklace"
-  }
+  },
+  "quality": {
+   "a": 4,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "silver hearts but bracelet vs necklace"
  },
  {
   "lostId": "R3-sloppy-writing-12-L1",
@@ -4893,7 +6720,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black Nike hoodie in studio"
  },
  {
   "lostId": "R3-sloppy-writing-12-L1",
@@ -4917,7 +6753,16 @@
    "a": "bad",
    "b": "bad",
    "note": "Nike vs Adidas"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Nike vs Adidas"
  },
  {
   "lostId": "R3-sloppy-writing-12-L2",
@@ -4941,7 +6786,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "black Adidas with stripes; jacket vs hoodie"
  },
  {
   "lostId": "R3-sloppy-writing-12-L2",
@@ -4965,7 +6819,16 @@
    "a": "bad",
    "b": "bad",
    "note": "Adidas vs Nike tick logo"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Adidas vs Nike"
  },
  {
   "lostId": "R3-sloppy-writing-13-L1",
@@ -4989,7 +6852,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "white kumma with brown, GU2 musalla"
  },
  {
   "lostId": "R3-sloppy-writing-13-L1",
@@ -5013,7 +6885,16 @@
    "a": "bad",
    "b": "bad",
    "note": "kumma cap vs prayer beads"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "cap vs prayer beads"
  },
  {
   "lostId": "R3-sloppy-writing-13-L2",
@@ -5037,7 +6918,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "wooden prayer beads, same room"
  },
  {
   "lostId": "R3-sloppy-writing-13-L2",
@@ -5061,7 +6951,16 @@
    "a": "bad",
    "b": "bad",
    "note": "prayer beads vs kumma cap"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "prayer beads vs cap"
  },
  {
   "lostId": "R3-sloppy-writing-14-L1",
@@ -5085,7 +6984,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 5,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 4,
+   "b": 3
+  },
+  "ratingNote": "truncated 'bl' could be blue or black"
  },
  {
   "lostId": "R3-sloppy-writing-14-L1",
@@ -5109,7 +7017,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 5,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 4,
+   "b": 3
+  },
+  "ratingNote": "truncated 'bl' could be black or blue"
  },
  {
   "lostId": "R3-sloppy-writing-14-L2",
@@ -5133,7 +7050,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black laptop bag with mouse, Germany Hall"
  },
  {
   "lostId": "R3-sloppy-writing-14-L2",
@@ -5157,7 +7083,16 @@
    "a": "bad",
    "b": "bad",
    "note": "black laptop sleeve vs blue backpack"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black laptop sleeve vs blue backpack"
  },
  {
   "lostId": "R3-human-memory-errors-01-L1",
@@ -5181,7 +7116,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "broken cover and MK scratch confirmed; place differs"
  },
  {
   "lostId": "R3-human-memory-errors-01-L1",
@@ -5205,7 +7149,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "casio fx-991 in library, nothing distinctive"
  },
  {
   "lostId": "R3-human-memory-errors-01-L2",
@@ -5229,7 +7182,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "casio fits, colour/cover unstated"
  },
  {
   "lostId": "R3-human-memory-errors-01-L2",
@@ -5253,7 +7215,16 @@
    "a": "bad",
    "b": "bad",
    "note": "no cover vs broken cover"
-  }
+  },
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "owner says no cover, found has broken cover and MK"
  },
  {
   "lostId": "R3-human-memory-errors-02-L1",
@@ -5277,7 +7248,16 @@
    "a": "bad",
    "b": "bad",
    "note": "found two days before owner lost it"
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "silver blue watch fits; found two days before loss"
  },
  {
   "lostId": "R3-human-memory-errors-02-L1",
@@ -5301,7 +7281,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "silver blue watch, same hall, generic"
  },
  {
   "lostId": "R3-human-memory-errors-02-L2",
@@ -5325,7 +7314,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "silver blue watch same day, brand unconfirmed"
  },
  {
   "lostId": "R3-human-memory-errors-02-L2",
@@ -5349,7 +7347,16 @@
    "a": "bad",
    "b": "bad",
    "note": "found 6 days before owner still wore it"
-  }
+  },
+  "quality": {
+   "a": 4,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "features fit but found 6 days before owner wore it"
  },
  {
   "lostId": "R3-human-memory-errors-03-L1",
@@ -5373,7 +7380,16 @@
    "a": "bad",
    "b": "bad",
    "note": "Samsung vs Huawei"
-  }
+  },
+  "quality": {
+   "a": 4,
+   "b": 4
+  },
+  "difficulty": {
+   "a": 4,
+   "b": 4
+  },
+  "ratingNote": "fruit sticker fits but brand Huawei vs Samsung"
  },
  {
   "lostId": "R3-human-memory-errors-03-L1",
@@ -5397,7 +7413,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "white samsung buds, no detail"
  },
  {
   "lostId": "R3-human-memory-errors-03-L2",
@@ -5421,7 +7446,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "white samsung buds same hall"
  },
  {
   "lostId": "R3-human-memory-errors-03-L2",
@@ -5445,7 +7479,16 @@
    "a": "bad",
    "b": "bad",
    "note": "Galaxy Buds vs Huawei FreeBuds"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "brand differs, sticker unmentioned by owner"
  },
  {
   "lostId": "R3-human-memory-errors-04-L1",
@@ -5469,7 +7512,16 @@
    "a": "good",
    "b": "good",
    "note": "dark blue vs black"
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "zara and earphones fit; black vs dark blue"
  },
  {
   "lostId": "R3-human-memory-errors-04-L1",
@@ -5493,7 +7545,16 @@
    "a": "bad",
    "b": "bad",
    "note": "Zara dark blue vs H&M baby blue"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "baby blue H&M vs dark blue Zara"
  },
  {
   "lostId": "R3-human-memory-errors-04-L2",
@@ -5517,7 +7578,16 @@
    "a": "bad",
    "b": "bad",
    "note": "Pull and Bear vs Zara tag"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "brand differs, pocket contents vs plain"
  },
  {
   "lostId": "R3-human-memory-errors-04-L2",
@@ -5541,7 +7611,16 @@
    "a": "bad",
    "b": "bad",
    "note": "black vs baby blue, brand"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "colour and brand differ"
  },
  {
   "lostId": "R3-human-memory-errors-05-L1",
@@ -5565,7 +7644,16 @@
    "a": "good",
    "b": "good",
    "note": "2 house keys vs 4 keys"
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "toyota and dagger fit; 4 vs 2 keys"
  },
  {
   "lostId": "R3-human-memory-errors-05-L1",
@@ -5589,7 +7677,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "toyota key only, little detail"
  },
  {
   "lostId": "R3-human-memory-errors-05-L2",
@@ -5613,7 +7710,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "single toyota key fits"
  },
  {
   "lostId": "R3-human-memory-errors-05-L2",
@@ -5637,7 +7743,16 @@
    "a": "bad",
    "b": "bad",
    "note": "single key no keychain vs bunch with keyring"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "bunch with keyring vs single key"
  },
  {
   "lostId": "R3-human-memory-errors-06-L1",
@@ -5661,7 +7776,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "wallet unopened, colour unstated by owner"
  },
  {
   "lostId": "R3-human-memory-errors-06-L1",
@@ -5685,7 +7809,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "just a wallet"
  },
  {
   "lostId": "R3-human-memory-errors-06-L2",
@@ -5709,7 +7842,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "just a wallet"
  },
  {
   "lostId": "R3-human-memory-errors-06-L2",
@@ -5733,7 +7875,16 @@
    "a": "bad",
    "b": "good",
    "note": "black vs brown"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "brown vs black"
  },
  {
   "lostId": "R3-human-memory-errors-07-L1",
@@ -5757,7 +7908,16 @@
    "a": "bad",
    "b": "bad",
    "note": "power bank vs hard drive"
-  }
+  },
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "black with white cable fits but hard drive vs power bank"
  },
  {
   "lostId": "R3-human-memory-errors-07-L1",
@@ -5781,7 +7941,16 @@
    "a": "bad",
    "b": "bad",
    "note": "heavy black vs small white"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "small white vs heavy black"
  },
  {
   "lostId": "R3-human-memory-errors-07-L2",
@@ -5805,7 +7974,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black external drive fits"
  },
  {
   "lostId": "R3-human-memory-errors-07-L2",
@@ -5829,7 +8007,16 @@
    "a": "bad",
    "b": "bad",
    "note": "black hard disk vs white powerbank"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "power bank vs hard disk"
  },
  {
   "lostId": "R3-human-memory-errors-08-L1",
@@ -5853,7 +8040,16 @@
    "a": "bad",
    "b": "bad",
    "note": "vape vs USB stick"
-  }
+  },
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 4,
+   "b": 4
+  },
+  "ratingNote": "blue, smoking area; vape could look like USB"
  },
  {
   "lostId": "R3-human-memory-errors-08-L2",
@@ -5877,7 +8073,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "blue flash drive at 7th floor"
  },
  {
   "lostId": "R3-human-memory-errors-08-L2",
@@ -5901,7 +8106,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "flash drive, no detail"
  },
  {
   "lostId": "R3-human-memory-errors-08-L1",
@@ -5925,7 +8139,16 @@
    "a": "bad",
    "b": "bad",
    "note": "vape vs flash drive"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "vape vs flash drive"
  },
  {
   "lostId": "R3-human-memory-errors-09-L1",
@@ -5949,7 +8172,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "beige aid in grey case with tube"
  },
  {
   "lostId": "R3-human-memory-errors-09-L1",
@@ -5973,7 +8205,16 @@
    "a": "bad",
    "b": "bad",
    "note": "hearing aid vs AirPod"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "airpod no case vs hearing aid in case"
  },
  {
   "lostId": "R3-human-memory-errors-09-L2",
@@ -5997,7 +8238,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "single airpod, side unknown"
  },
  {
   "lostId": "R3-human-memory-errors-09-L2",
@@ -6021,7 +8271,16 @@
    "a": "good",
    "b": "bad",
    "note": "AirPod Pro vs skin-colour earpiece with clear tube"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "hearing aid in box, not airpod"
  },
  {
   "lostId": "R3-human-memory-errors-10-L1",
@@ -6045,7 +8304,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "a ring near sink, no detail"
  },
  {
   "lostId": "R3-human-memory-errors-10-L1",
@@ -6069,7 +8337,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 3,
+   "b": 4
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "blue stone owner never mentioned"
  },
  {
   "lostId": "R3-human-memory-errors-10-L1",
@@ -6093,7 +8370,16 @@
    "a": "bad",
    "b": "bad",
    "note": "silver vs gold"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 3
+  },
+  "ratingNote": "gold vs silver though letters inside"
  },
  {
   "lostId": "R3-human-memory-errors-11-L1",
@@ -6117,7 +8403,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "wallpaper matches; model guess unsure"
  },
  {
   "lostId": "R3-human-memory-errors-11-L1",
@@ -6141,7 +8436,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "blue iphone, little detail"
  },
  {
   "lostId": "R3-human-memory-errors-11-L2",
@@ -6165,7 +8469,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "blue iphone, little detail"
  },
  {
   "lostId": "R3-human-memory-errors-11-L2",
@@ -6189,7 +8502,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 5,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 2
+  },
+  "ratingNote": "model guess 11 vs 12; wallpaper unconfirmed"
  },
  {
   "lostId": "R3-human-memory-errors-12-L1",
@@ -6213,7 +8535,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "all details match"
  },
  {
   "lostId": "R3-human-memory-errors-12-L1",
@@ -6237,7 +8568,16 @@
    "a": "bad",
    "b": "bad",
    "note": "black vs white/orange"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "white/orange vs black"
  },
  {
   "lostId": "R3-human-memory-errors-12-L2",
@@ -6261,7 +8601,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "orange puma, owner unsure of place"
  },
  {
   "lostId": "R3-human-memory-errors-12-L2",
@@ -6285,7 +8634,16 @@
    "a": "bad",
    "b": "bad",
    "note": "orange Puma vs black boots"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black vs orange puma"
  },
  {
   "lostId": "R3-human-memory-errors-13-L1",
@@ -6309,7 +8667,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "wood beads with silver tassel"
  },
  {
   "lostId": "R3-human-memory-errors-13-L1",
@@ -6333,7 +8700,16 @@
    "a": "bad",
    "b": "bad",
    "note": "dark wood vs green"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "green vs dark wood"
  },
  {
   "lostId": "R3-human-memory-errors-13-L1",
@@ -6357,7 +8733,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "brown tasbih fits, no detail"
  },
  {
   "lostId": "R3-human-memory-errors-14-L1",
@@ -6381,7 +8766,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 3
+  },
+  "ratingNote": "bag unspecified by owner; found tells outside only"
  },
  {
   "lostId": "R3-human-memory-errors-14-L1",
@@ -6405,7 +8799,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "charger and notebooks fit; name Fatma unknown"
  },
  {
   "lostId": "R3-human-memory-errors-14-L2",
@@ -6429,7 +8832,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "grey bag with books fits"
  },
  {
   "lostId": "R3-human-memory-errors-14-L2",
@@ -6453,7 +8865,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 3
+  },
+  "ratingNote": "grey backpack fits, keychain unmentioned"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-01-L1",
@@ -6477,7 +8898,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Casio in library, white painted letters on lid fits tippex initials"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-01-L2",
@@ -6501,7 +8931,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Casio without lid agrees; generic"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-01-L1",
@@ -6525,7 +8964,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "owner's cover with initials is the key part; found has no lid"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-01-L2",
@@ -6549,7 +8997,16 @@
    "a": "bad",
    "b": "bad",
    "note": "owner says no cover; found has a lettered lid"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 2
+  },
+  "ratingNote": "owner's has no cover; found has lid with letters"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-02-L1",
@@ -6573,7 +9030,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "cat sticker inside lid matches; model differs but owner unsure"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-02-L1",
@@ -6597,7 +9063,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Casio 991 same lab; sticker not mentioned, little detail"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-03-L1",
@@ -6621,7 +9096,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "single white earbud fits single AirPod; vague"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-03-L2",
@@ -6645,7 +9129,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "clear case and duck keychain confirmed"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-03-L1",
@@ -6669,7 +9162,16 @@
    "a": "bad",
    "b": "bad",
    "note": "one earbud vs case with both earbuds"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "owner lost one earbud, found full case set"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-03-L2",
@@ -6693,7 +9195,16 @@
    "a": "bad",
    "b": "bad",
    "note": "pair in a case vs a single earbud"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 1
+  },
+  "ratingNote": "owner lost full case set, found single earbud"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-04-L1",
@@ -6717,7 +9228,16 @@
    "a": "good",
    "b": "good",
    "note": "3 keys vs 2 keys"
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "wooden khanjar keychain matches; 2 vs 3 keys"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-04-L2",
@@ -6741,7 +9261,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "khanjar keyring without keys matches exactly"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-04-L1",
@@ -6765,7 +9294,16 @@
    "a": "bad",
    "b": "bad",
    "note": "3 keys on ring vs keyring with no keys"
-  }
+  },
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 2
+  },
+  "ratingNote": "owner lost keys with keychain; found keychain only"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-04-L2",
@@ -6789,7 +9327,16 @@
    "a": "bad",
    "b": "bad",
    "note": "keychain only vs 2 keys with keychain"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "owner lost only keychain; found has keys"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-05-L1",
@@ -6813,7 +9360,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Toyota key in parking; generic"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-05-L2",
@@ -6837,7 +9393,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "yellow tag with plate ending 47 confirmed"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-05-L1",
@@ -6861,7 +9426,16 @@
    "a": "bad",
    "b": "bad",
    "note": "nothing on it vs yellow tag attached"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "owner says nothing on it; found has yellow tag"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-05-L2",
@@ -6885,7 +9459,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Toyota key fits; tag not mentioned"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-06-L1",
@@ -6909,7 +9492,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "white charger head plugged in corridor wall fits"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-06-L1",
@@ -6933,7 +9525,16 @@
    "a": "bad",
    "b": "bad",
    "note": "charger head only vs cable only"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "head only vs cable only"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-06-L1",
@@ -6957,7 +9558,16 @@
    "a": "bad",
    "b": "bad",
    "note": "head with no wire vs complete charger with cable"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "owner lost head only; found complete charger with cable"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-07-L1",
@@ -6981,7 +9591,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "wallet at padel courts; no detail"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-07-L2",
@@ -7005,7 +9624,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 10,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "bank card alone, name Yusuf confirmed"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-07-L1",
@@ -7029,7 +9657,16 @@
    "a": "bad",
    "b": "bad",
    "note": "wallet, name Hamed vs lone card, name Yusuf"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "wallet Hamed vs card Yusuf"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-07-L2",
@@ -7053,7 +9690,16 @@
    "a": "bad",
    "b": "bad",
    "note": "single debit card vs a wallet"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "card only vs a wallet"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-08-L2",
@@ -7077,7 +9723,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "laptop, mouse, HP charger in black cover"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-08-L1",
@@ -7101,7 +9756,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "grey empty laptop sleeve agrees"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-08-L1",
@@ -7125,7 +9789,16 @@
    "a": "bad",
    "b": "bad",
    "note": "grey empty sleeve vs black cover with laptop"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "empty grey sleeve vs black cover with laptop"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-08-L2",
@@ -7149,7 +9822,16 @@
    "a": "bad",
    "b": "bad",
    "note": "black sleeve with laptop vs grey empty cover"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "laptop in black sleeve vs empty grey cover"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-09-L1",
@@ -7173,7 +9855,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "pink lid without cup in gym"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-09-L2",
@@ -7197,7 +9888,16 @@
    "a": "bad",
    "b": "bad",
    "note": "1 litre vs 500 ml"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "1L with sticker vs 500ml no stickers"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-09-L1",
@@ -7221,7 +9921,16 @@
    "a": "bad",
    "b": "bad",
    "note": "pink lid vs black steel bottle"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "pink lid vs black bottle"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-09-L2",
@@ -7245,7 +9954,16 @@
    "a": "bad",
    "b": "bad",
    "note": "black bottle vs pink lid"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black bottle vs pink lid"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-10-L1",
@@ -7269,7 +9987,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 3
+  },
+  "ratingNote": "black iPhone with broken camera glass; finder unsure of model"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-10-L1",
@@ -7293,7 +10020,16 @@
    "a": "bad",
    "b": "bad",
    "note": "iPhone 14 vs iPhone 13"
-  }
+  },
+  "quality": {
+   "a": 4,
+   "b": 4
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "model 13 vs 14; no crack mentioned"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-10-L1",
@@ -7317,7 +10053,16 @@
    "a": "bad",
    "b": "bad",
    "note": "no cover vs blue case"
-  }
+  },
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "owner had no cover; found in blue case"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-11-L1",
@@ -7341,7 +10086,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "lanyard, Fatma, flash drive confirmed"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-11-L2",
@@ -7365,7 +10119,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 10,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "lanyard with ID and key 214"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-11-L1",
@@ -7389,7 +10152,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 5,
+   "b": 4
+  },
+  "difficulty": {
+   "a": 4,
+   "b": 3
+  },
+  "ratingNote": "lanyard with ID; key not mentioned by owner, USB not by finder"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-11-L2",
@@ -7413,7 +10185,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 4,
+   "b": 3
+  },
+  "ratingNote": "name Fatma matches; key vs flash drive each unmentioned"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-12-L1",
@@ -7437,7 +10218,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "calculus book with name Aditya"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-12-L2",
@@ -7461,7 +10251,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "new book with sticker; found has someone's name inside"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-12-L3",
@@ -7485,7 +10284,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "calculus book; owner gave no detail"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-13-L2",
@@ -7509,7 +10317,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "SanDisk Cruzer 128GB sliding black/red"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-13-L1",
@@ -7533,7 +10350,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "SanDisk left in print PC; few details"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-13-L1",
@@ -7557,7 +10383,16 @@
    "a": "bad",
    "b": "bad",
    "note": "64GB vs 128GB"
-  }
+  },
+  "quality": {
+   "a": 4,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 2
+  },
+  "ratingNote": "64GB vs 128GB"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-13-L2",
@@ -7581,7 +10416,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "SanDisk left in PC; capacity not stated"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-14-L1",
@@ -7605,7 +10449,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 10,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "orange Nike 43 in string bag"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-14-L2",
@@ -7629,7 +10482,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "single left orange boot size 42"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-14-L1",
@@ -7653,7 +10515,16 @@
    "a": "bad",
    "b": "bad",
    "note": "pair size 43 vs single boot size 42"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "pair 43 in bag vs single left 42"
  },
  {
   "lostId": "R3-lookalikes-parts-numbers-14-L2",
@@ -7677,7 +10548,16 @@
    "a": "bad",
    "b": "bad",
    "note": "single left boot 42 vs pair 43"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "single left 42 vs pair 43 in bag"
  },
  {
   "lostId": "R3-time-and-place-01-L1",
@@ -7701,7 +10581,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Casio in cover, scratched name, library; name unreadable"
  },
  {
   "lostId": "R3-time-and-place-01-L1",
@@ -7725,7 +10614,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 4,
+   "b": 4
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "Casio in library but no cover, owner says cover on"
  },
  {
   "lostId": "R3-time-and-place-02-L1",
@@ -7749,7 +10647,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 1
+  },
+  "ratingNote": "AirPods from prayer room with broken lid match crack"
  },
  {
   "lostId": "R3-time-and-place-02-L1",
@@ -7773,7 +10680,16 @@
    "a": "bad",
    "b": "bad",
    "note": "white case vs black case"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "black case vs white case"
  },
  {
   "lostId": "R3-time-and-place-02-L2",
@@ -7797,7 +10713,16 @@
    "a": "bad",
    "b": "bad",
    "note": "one airpod vs airpods in a case"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 2
+  },
+  "ratingNote": "single left earbud vs full set in case from prayer room"
  },
  {
   "lostId": "R3-time-and-place-02-L2",
@@ -7821,7 +10746,16 @@
    "a": "bad",
    "b": "bad",
    "note": "one airpod vs airpods in a case"
-  }
+  },
+  "quality": {
+   "a": 3,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "one earbud lost vs AirPods in black case"
  },
  {
   "lostId": "R3-time-and-place-03-L1",
@@ -7845,7 +10779,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "brown wallet near bus stop fits bus loss; no details confirmed"
  },
  {
   "lostId": "R3-time-and-place-03-L1",
@@ -7869,7 +10812,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "generic wallet, nothing differs"
  },
  {
   "lostId": "R3-time-and-place-03-L2",
@@ -7893,7 +10845,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "generic wallet in parking, nothing differs"
  },
  {
   "lostId": "R3-time-and-place-03-L2",
@@ -7917,7 +10878,16 @@
    "a": "bad",
    "b": "bad",
    "note": "black vs brown wallet"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "brown vs black wallet"
  },
  {
   "lostId": "R3-time-and-place-04-L1",
@@ -7941,7 +10911,16 @@
    "a": "bad",
    "b": "bad",
    "note": "found the day before owner still had it"
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "silver watch in sports hall; date a day earlier"
  },
  {
   "lostId": "R3-time-and-place-04-L1",
@@ -7965,7 +10944,16 @@
    "a": "bad",
    "b": "bad",
    "note": "silver metal strap vs digital black rubber strap"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "digital black rubber strap vs silver metal strap"
  },
  {
   "lostId": "R3-time-and-place-05-L1",
@@ -7989,7 +10977,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 4,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "sunglasses but no brown case, found months later on table"
  },
  {
   "lostId": "R3-time-and-place-05-L1",
@@ -8013,7 +11010,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "brown case, canteen, there since last semester"
  },
  {
   "lostId": "R3-time-and-place-05-L2",
@@ -8037,7 +11043,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "black sunglasses, no case, canteen, same day"
  },
  {
   "lostId": "R3-time-and-place-05-L2",
@@ -8061,7 +11076,16 @@
    "a": "bad",
    "b": "bad",
    "note": "no case vs brown case; found since last semester"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "brown case and old vs no case lost today"
  },
  {
   "lostId": "R3-time-and-place-06-L1",
@@ -8085,7 +11109,16 @@
    "a": "bad",
    "b": "bad",
    "note": "no keychain vs red tag; found a week before"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "red tag vs no keychain; found before lost"
  },
  {
   "lostId": "R3-time-and-place-06-L1",
@@ -8109,7 +11142,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "generic car key, same parking"
  },
  {
   "lostId": "R3-time-and-place-06-L2",
@@ -8133,7 +11175,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "Toyota/Yaris key with red tag, timing fits"
  },
  {
   "lostId": "R3-time-and-place-06-L2",
@@ -8157,7 +11208,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "generic car key, nothing differs"
  },
  {
   "lostId": "R3-time-and-place-07-L1",
@@ -8181,7 +11241,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "USB left in copy centre PC, date fits 'last week'"
  },
  {
   "lostId": "R3-time-and-place-07-L1",
@@ -8205,7 +11274,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "USB at copy centre, white colour unconfirmed for SanDisk"
  },
  {
   "lostId": "R3-time-and-place-08-L1",
@@ -8229,7 +11307,16 @@
    "a": "bad",
    "b": "bad",
    "note": "Stanley with straw vs Hydroflask screw lid"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "Hydro Flask screw lid vs Stanley with straw, other place"
  },
  {
   "lostId": "R3-time-and-place-08-L1",
@@ -8253,7 +11340,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "big pink tumbler with handle in UPAD studio"
  },
  {
   "lostId": "R3-time-and-place-09-L1",
@@ -8277,7 +11373,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "brown wooden beads in GU1 prayer room"
  },
  {
   "lostId": "R3-time-and-place-09-L1",
@@ -8301,7 +11406,16 @@
    "a": "bad",
    "b": "bad",
    "note": "brown wood vs green stones"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "green stones vs brown wood"
  },
  {
   "lostId": "R3-time-and-place-09-L2",
@@ -8325,7 +11439,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "green tasbih in GU2 prayer room"
  },
  {
   "lostId": "R3-time-and-place-09-L2",
@@ -8349,7 +11472,16 @@
    "a": "bad",
    "b": "bad",
    "note": "green vs brown wooden"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "brown wood vs green"
  },
  {
   "lostId": "R3-time-and-place-10-L1",
@@ -8373,7 +11505,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "keys with mini flashlight matches torch"
  },
  {
   "lostId": "R3-time-and-place-10-L1",
@@ -8397,7 +11538,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 1
+  },
+  "ratingNote": "keys, no details"
  },
  {
   "lostId": "R3-time-and-place-10-L2",
@@ -8421,7 +11571,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 2
+  },
+  "ratingNote": "plural keys vs single key on lanyard, vague"
  },
  {
   "lostId": "R3-time-and-place-10-L2",
@@ -8445,7 +11604,16 @@
    "a": "bad",
    "b": "bad",
    "note": "single key vs bunch with flashlight"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 1
+  },
+  "ratingNote": "bunch with flashlight vs single key on lanyard"
  },
  {
   "lostId": "R3-time-and-place-11-L1",
@@ -8469,7 +11637,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "white Apple charger left in classroom"
  },
  {
   "lostId": "R3-time-and-place-11-L1",
@@ -8493,7 +11670,16 @@
    "a": "bad",
    "b": "bad",
    "note": "white MacBook vs black Lenovo"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black Lenovo vs white MacBook charger"
  },
  {
   "lostId": "R3-time-and-place-12-L1",
@@ -8517,7 +11703,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "black hoodie Oman Hall ~3 weeks ago fits mid-Oct"
  },
  {
   "lostId": "R3-time-and-place-12-L1",
@@ -8541,7 +11736,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "jacket vs hoodie, easily confused"
  },
  {
   "lostId": "R3-time-and-place-12-L2",
@@ -8565,7 +11769,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "black jacket in Oman Hall seats"
  },
  {
   "lostId": "R3-time-and-place-12-L2",
@@ -8589,7 +11802,16 @@
    "a": "bad",
    "b": "bad",
    "note": "found ~3 weeks before owner's talk"
-  }
+  },
+  "quality": {
+   "a": 5,
+   "b": 4
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "hoodie vs zip jacket; timing older"
  },
  {
   "lostId": "R3-time-and-place-13-L1",
@@ -8613,7 +11835,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "headphones on 7th floor terrace, no details"
  },
  {
   "lostId": "R3-time-and-place-13-L1",
@@ -8637,7 +11868,16 @@
    "a": "bad",
    "b": "bad",
    "note": "Sony vs JBL"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "JBL vs Sony"
  },
  {
   "lostId": "R3-time-and-place-14-L1",
@@ -8661,7 +11901,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "bag with boots by goal post"
  },
  {
   "lostId": "R3-time-and-place-14-L1",
@@ -8685,7 +11934,16 @@
    "a": "bad",
    "b": "bad",
    "note": "black/red Adidas vs white Asics"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "white Asics vs black/red Adidas boots"
  },
  {
   "lostId": "R3-adversarial-and-odd-01-L1",
@@ -8709,7 +11967,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "blue iPhone, corner crack, canteen agree; case not mentioned"
  },
  {
   "lostId": "R3-adversarial-and-odd-01-L2",
@@ -8733,7 +12000,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 2
+  },
+  "ratingNote": "lost side says only 'phone'; nothing to compare"
  },
  {
   "lostId": "R3-adversarial-and-odd-01-L2",
@@ -8757,7 +12033,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 2
+  },
+  "ratingNote": "lost side says only 'phone'; nothing to compare"
  },
  {
   "lostId": "R3-adversarial-and-odd-01-L1",
@@ -8781,7 +12066,16 @@
    "a": "bad",
    "b": "bad",
    "note": "iPhone blue vs Samsung black"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "blue iPhone vs black Samsung"
  },
  {
   "lostId": "R3-adversarial-and-odd-02-L1",
@@ -8805,7 +12099,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "AirPods case with cat sticker in studio"
  },
  {
   "lostId": "R3-adversarial-and-odd-02-L2",
@@ -8829,7 +12132,16 @@
    "a": "bad",
    "b": "bad",
    "note": "Galaxy Buds vs AirPods case"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Galaxy Buds vs AirPods"
  },
  {
   "lostId": "R3-adversarial-and-odd-02-L2",
@@ -8853,7 +12165,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "white non-Apple 'Buds' in studio"
  },
  {
   "lostId": "R3-adversarial-and-odd-02-L1",
@@ -8877,7 +12198,16 @@
    "a": "bad",
    "b": "bad",
    "note": "AirPods Pro vs not Apple, white"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "AirPods vs explicitly not Apple"
  },
  {
   "lostId": "R3-adversarial-and-odd-03-L1",
@@ -8901,7 +12231,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "20 rial note in folded paper at print shop"
  },
  {
   "lostId": "R3-adversarial-and-odd-03-L1",
@@ -8925,7 +12264,16 @@
    "a": "bad",
    "b": "bad",
    "note": "one 20 rial note vs coins and a 5"
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "one 20 note vs coins and a 5 in a bag"
  },
  {
   "lostId": "R3-adversarial-and-odd-03-L2",
@@ -8949,7 +12297,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 2
+  },
+  "ratingNote": "lost says only cash"
  },
  {
   "lostId": "R3-adversarial-and-odd-03-L2",
@@ -8973,7 +12330,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 2
+  },
+  "ratingNote": "lost says only cash"
  },
  {
   "lostId": "R3-adversarial-and-odd-04-L1",
@@ -8997,7 +12363,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "corrected dark blue, library; navy backpack in library"
  },
  {
   "lostId": "R3-adversarial-and-odd-04-L1",
@@ -9021,7 +12396,16 @@
    "a": "good",
    "b": "good",
    "note": "owner corrected to dark blue, not black; found black"
-  }
+  },
+  "quality": {
+   "a": 4,
+   "b": 4
+  },
+  "difficulty": {
+   "a": 4,
+   "b": 4
+  },
+  "ratingNote": "owner corrected away from black; found is black Jansport"
  },
  {
   "lostId": "R3-adversarial-and-odd-04-L2",
@@ -9045,7 +12429,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "black Jansport in library; keychain not confirmed"
  },
  {
   "lostId": "R3-adversarial-and-odd-04-L2",
@@ -9069,7 +12462,16 @@
    "a": "good",
    "b": "good",
    "note": "black vs navy"
-  }
+  },
+  "quality": {
+   "a": 5,
+   "b": 4
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "black vs navy, neighbouring shade; no brand"
  },
  {
   "lostId": "R3-adversarial-and-odd-05-L1",
@@ -9093,7 +12495,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "HP round pin fits; owner unsure grey vs black"
  },
  {
   "lostId": "R3-adversarial-and-odd-05-L1",
@@ -9117,7 +12528,16 @@
    "a": "bad",
    "b": "bad",
    "note": "round pin, not USB-C vs type C"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "owner says not USB-C; found is type C"
  },
  {
   "lostId": "R3-adversarial-and-odd-05-L2",
@@ -9141,7 +12561,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Lenovo charger on 4th floor; wattage not confirmed"
  },
  {
   "lostId": "R3-adversarial-and-odd-05-L2",
@@ -9165,7 +12594,16 @@
    "a": "bad",
    "b": "bad",
    "note": "Lenovo vs HP"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Lenovo vs HP"
  },
  {
   "lostId": "R3-adversarial-and-odd-06-L1",
@@ -9189,7 +12627,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "Casio with scratched initials, amphi"
  },
  {
   "lostId": "R3-adversarial-and-odd-06-L1",
@@ -9213,7 +12660,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 3
+  },
+  "ratingNote": "found side vague; initials not confirmed"
  },
  {
   "lostId": "R3-adversarial-and-odd-06-L2",
@@ -9237,7 +12693,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "calculator with no cover, amphi"
  },
  {
   "lostId": "R3-adversarial-and-odd-06-L2",
@@ -9261,7 +12726,16 @@
    "a": "bad",
    "b": "bad",
    "note": "nothing written vs letters scratched on back"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "nothing written vs letters scratched"
  },
  {
   "lostId": "R3-adversarial-and-odd-07-L1",
@@ -9285,7 +12759,16 @@
    "a": "bad",
    "b": "bad",
    "note": "not a pink Stanley vs pink Stanley"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "owner says not a pink Stanley"
  },
  {
   "lostId": "R3-adversarial-and-odd-07-L1",
@@ -9309,7 +12792,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "plain steel bottle with a dent, gym"
  },
  {
   "lostId": "R3-adversarial-and-odd-07-L1",
@@ -9333,7 +12825,16 @@
    "a": "bad",
    "b": "bad",
    "note": "not a Hydro Flask vs Hydro Flask"
-  }
+  },
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "owner says not a Hydroflask"
  },
  {
   "lostId": "R3-adversarial-and-odd-08-L1",
@@ -9357,7 +12858,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "glasses in brown case at entrance"
  },
  {
   "lostId": "R3-adversarial-and-odd-08-L3",
@@ -9381,7 +12891,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "black small folding umbrella at entrance"
  },
  {
   "lostId": "R3-adversarial-and-odd-08-L2",
@@ -9405,7 +12924,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "owner says umbrella was in car all along"
  },
  {
   "lostId": "R3-adversarial-and-odd-09-L1",
@@ -9429,7 +12957,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "GUtech ID, Mohammed/Muhammad spelling variant"
  },
  {
   "lostId": "R3-adversarial-and-odd-09-L1",
@@ -9453,7 +12990,16 @@
    "a": "bad",
    "b": "bad",
    "note": "student ID vs bank card"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "student ID vs bank card"
  },
  {
   "lostId": "R3-adversarial-and-odd-09-L2",
@@ -9477,7 +13023,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "bank card named Mohamed in GU2; bank not stated"
  },
  {
   "lostId": "R3-adversarial-and-odd-09-L2",
@@ -9501,7 +13056,16 @@
    "a": "bad",
    "b": "bad",
    "note": "debit card vs GUtech card"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "bank card vs GUtech ID"
  },
  {
   "lostId": "R3-adversarial-and-odd-10-L1",
@@ -9525,7 +13089,16 @@
    "a": "bad",
    "b": "bad",
    "note": "Bank Dhofar green vs NBO red"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "green Bank Dhofar vs red NBO"
  },
  {
   "lostId": "R3-adversarial-and-odd-10-L1",
@@ -9549,7 +13122,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "Aysha, Dhofar bank, shoe rack at musalla"
  },
  {
   "lostId": "R3-adversarial-and-odd-10-L2",
@@ -9573,7 +13155,16 @@
    "a": "bad",
    "b": "bad",
    "note": "student ID vs bank card"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "student ID vs bank card"
  },
  {
   "lostId": "R3-adversarial-and-odd-10-L2",
@@ -9597,7 +13188,16 @@
    "a": "bad",
    "b": "bad",
    "note": "student ID vs Dhofar bank card"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "student ID vs bank card"
  },
  {
   "lostId": "R3-adversarial-and-odd-11-L1",
@@ -9621,7 +13221,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "student ID named Salma on GUbridge"
  },
  {
   "lostId": "R3-adversarial-and-odd-11-L1",
@@ -9645,7 +13254,16 @@
    "a": "bad",
    "b": "bad",
    "note": "name Salma vs Salim"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Salma vs Salim"
  },
  {
   "lostId": "R3-adversarial-and-odd-11-L2",
@@ -9669,7 +13287,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Salim, red lanyard, bridge between GU1 and GU2"
  },
  {
   "lostId": "R3-adversarial-and-odd-11-L2",
@@ -9693,7 +13320,16 @@
    "a": "bad",
    "b": "bad",
    "note": "name Salim vs Salma"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Salim vs Salma"
  },
  {
   "lostId": "R3-adversarial-and-odd-12-L1",
@@ -9717,7 +13353,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "lab coat labelled Ali, sciences floor"
  },
  {
   "lostId": "R3-adversarial-and-odd-12-L1",
@@ -9741,7 +13386,16 @@
    "a": "bad",
    "b": "bad",
    "note": "name Ali vs Alia"
-  }
+  },
+  "quality": {
+   "a": 4,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "Ali vs Alia, could be a slip"
  },
  {
   "lostId": "R3-adversarial-and-odd-12-L2",
@@ -9765,7 +13419,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Alia name and stained sleeve both confirmed"
  },
  {
   "lostId": "R3-adversarial-and-odd-12-L2",
@@ -9789,7 +13452,16 @@
    "a": "bad",
    "b": "bad",
    "note": "Alia, small vs ALI, large"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Alia, small vs ALI, large"
  },
  {
   "lostId": "R3-adversarial-and-odd-13-L1",
@@ -9813,7 +13485,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "Lenovo with penguin sticker on lid"
  },
  {
   "lostId": "R3-adversarial-and-odd-13-L1",
@@ -9837,7 +13518,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "Lenovo fits; stickers vs sleeve, nothing confirmed"
  },
  {
   "lostId": "R3-adversarial-and-odd-13-L2",
@@ -9861,7 +13551,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Lenovo in grey sleeve in labs"
  },
  {
   "lostId": "R3-adversarial-and-odd-13-L2",
@@ -9885,7 +13584,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "Lenovo fits; sleeve not mentioned"
  },
  {
   "lostId": "R3-adversarial-and-odd-14-L2",
@@ -9909,7 +13617,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "brown wallet with child photo, GU1 parking"
  },
  {
   "lostId": "R3-adversarial-and-odd-14-L1",
@@ -9933,7 +13650,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "lost side gives no details"
  },
  {
   "lostId": "R3-adversarial-and-odd-14-L1",
@@ -9957,7 +13683,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "both sides give no details"
  },
  {
   "lostId": "R3-adversarial-and-odd-14-L2",
@@ -9981,6 +13716,15 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "found says only wallet, GU1 parking"
  }
 ]

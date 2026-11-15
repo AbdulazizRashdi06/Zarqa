@@ -37,7 +37,24 @@ The decisions made while turning the uni matching prototype into a real app, and
 
 **Photo descriptions for search, confirmed on round 3** (stage test, no review): good matches within the best 10 candidates go from 99 to 101 of 103, near-empty finder reports from 26 to 28 of 29; within the best 30, 102 to 103. Smaller than on round 2 (106 to 112 of 115) because less was being lost.
 
-**Open.** The owner asked for a quality score on a spectrum in place of good and bad, with a difficulty score, and for the best option to be calculated from them. Two raters per pair are scoring both round-3 sets (0 to 10 and 1 to 5).
+**Quality on a spectrum (owner's request, 15 Nov).** Each pair in both round-3 sets now carries two raters' scores in `pairs.json`: `quality` 0 to 10 (how much the found item deserves to be shown to that owner, on the evidence alone; 10 = distinctive details confirmed, 6 = nothing differs but little to go on, 2 = a clear difference, 0 = plainly another item) and `difficulty` 1 to 5. The raters saw neither the truth nor the app's answers.
+- **The scale is reproducible:** the two raters are within one point on 99% of pairs in both sets (rank correlation 0.94 on photos, 0.99 on text). Both raters are the same Claude model, so that is an upper bound.
+- **Photo pairs are nearly black and white, text pairs are grey:** about 20 of 313 photo pairs sit between 4 and 7, against about 130 of 416 text pairs. Without a photo, "found a wallet" fits many owners.
+- **Real items the scale rates low:** none of 92 below 4 with photos; 3 of 184 in text, and 38 more between 4 and 6.
+- **The calculation** (`scripts/edge-rate.js`). The owner picks "show from", the lowest quality still worth showing. Showing a pair rated q is worth q minus that number, negative below it, with a weight on the negative side (1 = a wrong suggestion hurts as much as a miss helps; 0.25 = it costs a glance). The best line is the one with the most value; "honest" picks the line on half the item kinds and scores the other half. Value as a share of the most possible, honest, for show from 4 / 5 / 6:
+
+| | Wrong weight 1 | Wrong weight 0.25 | Best line |
+|---|---|---|---|
+| Photos, app today | 80 / 78 / 75% | 87 / 83 / 81% | 0.60 to 0.70 |
+| Photos, judge sees photos + definition draft 2 | 94 / 92 / 87% | 95 / 95 / 94% | 0.75 every time |
+| Text, app today | 91 / 90 / 89% | 94 / 94 / 92% | 0.45 to 0.70, rising with "show from" |
+| Text, definition draft 2 | 91 / 84 / 83% | 95 / 94 / 91% | 0.60 to 0.80 |
+
+- **Photos:** the judge that sees photos wins under every setting tried, always at 0.75, so that choice does not depend on the owner's two numbers.
+- **Text:** today's wording is as good as or better than the definition. Its best line does depend on "show from": about 0.50 for 4, 0.65 for 5, 0.70 for 6.
+- **The app's score already follows the quality scale:** rank correlation 0.79 on photos today, 0.85 with the judge seeing photos, 0.90 on text.
+- **Difficulty is used to break results down, not as a weight** (the sets are hard on purpose; weighting hard pairs more would tune the app for rare cases). The misses and wrong suggestions sit in the hard pairs: with the photo judge at 0.75 and show from 5, easy pairs are 42 of 43 shown and 1 of 173 wrongly shown; hard pairs 11 of 13 and 6 of 13.
+- The anchors of the quality scale are the assistant's wording and need the owner's ruling, as do "show from" and the wrong weight.
 
 ## 2026-11-15: Tests built on good match / bad match from a written definition
 

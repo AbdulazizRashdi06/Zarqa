@@ -19,7 +19,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "black wallet with pressed line pattern and cash, all confirmed"
  },
  {
   "lostId": "L-C-F25",
@@ -46,7 +55,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 3,
+   "b": 4
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "black wallet but smooth, no pressed lines; thick stuffed"
  },
  {
   "lostId": "L-C-F25",
@@ -73,7 +91,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "black leather but smooth Timberland, no pressed lines"
  },
  {
   "lostId": "L-C-F25",
@@ -95,7 +122,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "yellowish tan wallet with star, not black",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "yellow Morocco wallet vs black"
  },
  {
   "lostId": "L-O-wallet-01",
@@ -117,7 +153,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "thick old black wallet stuffed with cards, on table"
  },
  {
   "lostId": "L-O-wallet-01",
@@ -144,7 +189,16 @@
    "a": "good",
    "b": "bad",
    "note": "slim, new-looking wallet against a thick old stuffed one"
-  }
+  },
+  "quality": {
+   "a": 4,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "black leather but slim and new-looking, not stuffed or old"
  },
  {
   "lostId": "L-O-wallet-01",
@@ -166,7 +220,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "yellowish tan wallet with star, not black",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "yellow vs black"
  },
  {
   "lostId": "L-O-wallet-01",
@@ -193,7 +256,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 4,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "old black leather but only two cards, not stuffed"
  },
  {
   "lostId": "L-O-wallet-02",
@@ -220,7 +292,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 4,
+   "b": 4
+  },
+  "ratingNote": "Timberland tree logo bifold confirmed; black vs dark brown shade"
  },
  {
   "lostId": "L-O-wallet-02",
@@ -242,7 +323,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "yellowish tan with star and MOROCCO, not dark brown Timberland",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "yellow Morocco wallet vs dark brown Timberland"
  },
  {
   "lostId": "L-O-wallet-02",
@@ -269,7 +359,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "black worn wallet, no Timberland seen; brown vs black"
  },
  {
   "lostId": "L-O-wallet-02",
@@ -291,7 +390,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "grey snake-print pouch, not a dark brown bifold",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "snake print pouch vs brown Timberland wallet"
  },
  {
   "lostId": "L-O-wallet-03",
@@ -313,7 +421,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "tan Moroccan wallet, laced edges, star all confirmed"
  },
  {
   "lostId": "L-O-wallet-03",
@@ -335,7 +452,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "black wallet, not light tan with a star",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black vs light tan Moroccan"
  },
  {
   "lostId": "L-O-wallet-03",
@@ -357,7 +483,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "grey snake-print pouch, not light tan leather with a star",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "snake pouch vs tan wallet"
  },
  {
   "lostId": "L-O-wallet-03",
@@ -379,7 +514,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "red long wallet with gold plate, not light tan with star and laced edges",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "red long wallet vs tan Moroccan"
  },
  {
   "lostId": "L-O-wallet-04",
@@ -401,7 +545,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 1
+  },
+  "ratingNote": "old black leather, coin pocket, two cards, on table all confirmed"
  },
  {
   "lostId": "L-O-wallet-04",
@@ -423,7 +576,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "grey snake-print pouch with wrist strap, not a black leather wallet",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "snake print pouch vs black leather wallet"
  },
  {
   "lostId": "L-O-wallet-04",
@@ -445,7 +607,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "red wallet, not black",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "red vs black"
  },
  {
   "lostId": "L-O-wallet-04",
@@ -467,7 +638,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "red wallet with clover, not black",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "red clover wallet vs black"
  },
  {
   "lostId": "L-O-wallet-05",
@@ -489,7 +669,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 2
+  },
+  "ratingNote": "photo: grey-black animal print flat pouch with hand strap; finder's 'sunglasses case' label only"
  },
  {
   "lostId": "L-O-wallet-05",
@@ -511,7 +700,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "red leather long wallet, not a grey and black animal-print pouch",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "red long wallet vs animal print pouch"
  },
  {
   "lostId": "L-O-wallet-05",
@@ -533,7 +731,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "red leather wallet with clover, not an animal-print pouch",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "red clover wallet vs animal print pouch"
  },
  {
   "lostId": "L-O-wallet-05",
@@ -555,7 +762,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "plain black leather bifold, not an animal-print pouch with strap",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black Guess wallet vs animal print pouch"
  },
  {
   "lostId": "L-O-wallet-06",
@@ -577,7 +793,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "long red leather flap wallet; Dooney & Bourke not Coach, but brand marked unsure"
  },
  {
   "lostId": "L-O-wallet-06",
@@ -599,7 +824,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "small compact wallet with zip and button strap, not a long flap wallet",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "red but small zip clover wallet, not long flap"
  },
  {
   "lostId": "L-O-wallet-06",
@@ -621,7 +855,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "black bifold, not a long red wallet",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black vs red"
  },
  {
   "lostId": "L-O-wallet-06",
@@ -643,7 +886,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "orange-brown woven bifold, not a long red wallet",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "tan woven wallet vs red"
  },
  {
   "lostId": "L-O-wallet-07",
@@ -665,7 +917,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "small red, clover, zip, button strap all in photo"
  },
  {
   "lostId": "L-O-wallet-07",
@@ -687,7 +948,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "black bifold, not red with a clover",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black Guess vs red clover"
  },
  {
   "lostId": "L-O-wallet-07",
@@ -709,7 +979,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "orange-brown woven leather, not red with a clover",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "tan woven vs red clover"
  },
  {
   "lostId": "L-O-wallet-07",
@@ -731,7 +1010,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "black carbon-look wallet, not red with a clover",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black boxed wallet vs red"
  },
  {
   "lostId": "L-O-wallet-08",
@@ -753,7 +1041,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black Guess, new, tag attached, empty"
  },
  {
   "lostId": "L-O-wallet-08",
@@ -775,7 +1072,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "orange-brown woven leather, not black",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "tan woven vs black Guess"
  },
  {
   "lostId": "L-O-wallet-08",
@@ -797,7 +1103,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "TOM'S embossed on a carbon-look coin wallet, not Guess",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "black new in box but TOM'S coin wallet, not Guess, no tag"
  },
  {
   "lostId": "L-O-wallet-08",
@@ -819,7 +1134,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "reddish brown card holder, not a black Guess wallet",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "brown card holder vs black Guess"
  },
  {
   "lostId": "L-O-wallet-09",
@@ -841,7 +1165,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "orange-brown woven tooled leather, dark lacing confirmed"
  },
  {
   "lostId": "L-O-wallet-09",
@@ -863,7 +1196,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "black carbon-look wallet, not orange-brown woven leather",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black carbon wallet vs orange woven"
  },
  {
   "lostId": "L-O-wallet-09",
@@ -885,7 +1227,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "plain smooth card holder, no woven pattern or dark lacing",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "plain reddish card holder vs woven cowboy wallet"
  },
  {
   "lostId": "L-O-wallet-09",
@@ -907,7 +1258,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "black wallet, not orange-brown woven leather",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black embossed vs orange woven"
  },
  {
   "lostId": "L-O-wallet-10",
@@ -929,7 +1289,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "black coin wallet, carbon fibre, leather flap, in black box; place differs only"
  },
  {
   "lostId": "L-O-wallet-10",
@@ -951,7 +1320,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "reddish brown card holder, not a black carbon-look coin wallet",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "brown card holder vs black carbon coin wallet"
  },
  {
   "lostId": "L-O-wallet-10",
@@ -973,7 +1351,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "bifold with pressed line pattern and no flap, not a carbon-look coin wallet with flap",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "black but bifold with cash, no carbon fibre or box"
  },
  {
   "lostId": "L-O-wallet-10",
@@ -995,7 +1382,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "plain smooth leather bifold stuffed with cards, not a carbon-fibre coin wallet with flap",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 2,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 1
+  },
+  "ratingNote": "black but thick used wallet, not new boxed coin wallet"
  },
  {
   "lostId": "L-O-wallet-11",
@@ -1017,7 +1413,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "thin brown leather card sleeve, cream stitching, slots"
  },
  {
   "lostId": "L-O-wallet-11",
@@ -1039,7 +1444,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "black bifold wallet, not a brown card sleeve",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black bifold vs brown card sleeve"
  },
  {
   "lostId": "L-O-wallet-11",
@@ -1061,7 +1475,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "thick black wallet, not a thin brown card sleeve",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "thick black wallet vs brown card sleeve"
  },
  {
   "lostId": "L-O-wallet-11",
@@ -1083,7 +1506,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "black bifold wallet, not a brown card sleeve",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "black bifold vs brown card sleeve"
  },
  {
   "lostId": "L-C-F24",
@@ -1105,7 +1537,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black 2-button Toyota-style key with metal car-shaped tag in photo"
  },
  {
   "lostId": "L-C-F24",
@@ -1127,7 +1568,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "bare circuit board, not a black key with buttons",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "bare circuit board vs whole key with keyring"
  },
  {
   "lostId": "L-C-F24",
@@ -1149,7 +1599,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "old all-metal key, not a black key with two buttons",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "old flower-top metal key vs Toyota remote key"
  },
  {
   "lostId": "L-C-F24",
@@ -1171,7 +1630,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "three-button flip key with wooden figure, not two buttons with metal car tag",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "VW flip key with sumo charm, 3 buttons, no car medallion"
  },
  {
   "lostId": "L-O-car-key-01",
@@ -1193,7 +1661,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "remote circuit board with battery holder, no shell, as described"
  },
  {
   "lostId": "L-O-car-key-01",
@@ -1215,7 +1692,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "old metal key, not a circuit board",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "old metal key vs remote circuit board"
  },
  {
   "lostId": "L-O-car-key-01",
@@ -1237,7 +1723,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "complete flip key in its shell, not a bare inner board",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "whole flip key vs bare circuit board"
  },
  {
   "lostId": "L-O-car-key-01",
@@ -1259,7 +1754,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "complete smart key in its shell, not a bare inner board",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "intact smart key vs bare circuit board"
  },
  {
   "lostId": "L-O-car-key-02",
@@ -1281,7 +1785,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "old all-metal key, flower-shaped head, no keychain, in an old jeep"
  },
  {
   "lostId": "L-O-car-key-02",
@@ -1303,7 +1816,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "black plastic flip key with a toy, not a bare metal key",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "VW flip key with charm vs plain old metal key"
  },
  {
   "lostId": "L-O-car-key-02",
@@ -1325,7 +1847,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "black plastic smart fob, not a small metal key",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "smart key vs old metal key"
  },
  {
   "lostId": "L-O-car-key-02",
@@ -1347,7 +1878,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "black plastic head, owner says all metal with no plastic",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "plastic-head broken key vs all-metal flower key"
  },
  {
   "lostId": "L-O-car-key-03",
@@ -1369,7 +1909,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "VW flip key with wooden sumo figure; string colour aside"
  },
  {
   "lostId": "L-O-car-key-03",
@@ -1391,7 +1940,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "bladeless smart fob, not a folding key",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Honda smart key, no sumo charm"
  },
  {
   "lostId": "L-O-car-key-03",
@@ -1413,7 +1971,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "fixed-blade plain key, not a folding remote key",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "broken plain key vs VW flip key with sumo"
  },
  {
   "lostId": "L-O-car-key-03",
@@ -1435,7 +2002,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "USB flash drive, not a car key",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "USB stick shaped like a remote, not a key"
  },
  {
   "lostId": "L-O-car-key-04",
@@ -1457,7 +2033,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Honda-style smart key with remote start, no blade, nothing attached"
  },
  {
   "lostId": "L-O-car-key-04",
@@ -1479,7 +2064,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "plain bladed key with no buttons, not a keyless remote",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "broken bladed key vs keyless remote"
  },
  {
   "lostId": "L-O-car-key-04",
@@ -1501,7 +2095,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "USB flash drive, not a real car remote",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "USB stick, not a car remote"
  },
  {
   "lostId": "L-O-car-key-04",
@@ -1523,7 +2126,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "bunch of bladed keys, not a single bladeless remote",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "bunch of bladed keys vs a lone keyless remote"
  },
  {
   "lostId": "L-O-car-key-05",
@@ -1545,7 +2157,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "snapped key in two pieces, black head, no remote, Nissan-style"
  },
  {
   "lostId": "L-O-car-key-05",
@@ -1567,7 +2188,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "USB flash drive, not a snapped car key",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "USB stick vs snapped key"
  },
  {
   "lostId": "L-O-car-key-05",
@@ -1589,7 +2219,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "bunch of keys with intact blade, not a single snapped key",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "intact blade on a bunch vs snapped key"
  },
  {
   "lostId": "L-O-car-key-05",
@@ -1611,7 +2250,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "intact Mercedes remote fob, not a snapped plain key",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Mercedes remote key vs Nissan key with no remote"
  },
  {
   "lostId": "L-O-car-key-06",
@@ -1633,7 +2281,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "car-remote USB stick with cap off; grey vs silver is a neighbouring shade"
  },
  {
   "lostId": "L-O-car-key-06",
@@ -1655,7 +2312,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "bunch of ordinary keys, not a flash drive",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 1
+  },
+  "ratingNote": "real keys vs a USB stick"
  },
  {
   "lostId": "L-O-car-key-06",
@@ -1677,7 +2343,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "real Mercedes key, not a flash drive",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Mercedes key vs a USB stick"
  },
  {
   "lostId": "L-O-car-key-06",
@@ -1699,7 +2374,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "real bladed car key, not a flash drive",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Toyota key vs a USB stick"
  },
  {
   "lostId": "L-O-car-key-07",
@@ -1721,7 +2405,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "bunch with black-head car key and a gold key visible; blurry photo"
  },
  {
   "lostId": "L-O-car-key-07",
@@ -1743,7 +2436,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "single Mercedes fob with keyring, no house keys",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 3
+  },
+  "ratingNote": "black car key fits, but no house keys or gold key"
  },
  {
   "lostId": "L-O-car-key-07",
@@ -1770,7 +2472,16 @@
    "a": "good",
    "b": "bad",
    "note": "single car key with tags, no house keys"
-  }
+  },
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 3
+  },
+  "ratingNote": "black car key fits, but tags instead of house keys, no gold key"
  },
  {
   "lostId": "L-O-car-key-07",
@@ -1792,7 +2503,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "bare circuit board, not a bunch of keys",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "bare circuit board vs bunch of keys"
  },
  {
   "lostId": "L-O-car-key-08",
@@ -1814,7 +2534,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Mercedes key with panic button and shiny Mercedes keyring; date earlier"
  },
  {
   "lostId": "L-O-car-key-08",
@@ -1836,7 +2565,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "two-button bladed key with no panic button",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Toyota-style key with tags; no panic button or Mercedes ring"
  },
  {
   "lostId": "L-O-car-key-08",
@@ -1858,7 +2596,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "bare circuit board, not a Mercedes key with keyring",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "bare circuit board vs Mercedes key"
  },
  {
   "lostId": "L-O-car-key-08",
@@ -1880,7 +2627,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "old plain metal key, not a Mercedes remote key",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "old metal key vs Mercedes remote"
  },
  {
   "lostId": "L-O-headphones-01",
@@ -1902,7 +2658,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "silver earbuds with blue ring and black mesh drawstring pouch, all confirmed"
  },
  {
   "lostId": "L-O-headphones-01",
@@ -1924,7 +2689,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "all-chrome Skullcandy earbuds with skull logo, no light blue ring",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "metal earbuds but no light blue ring; chrome Skullcandy with dark wire"
  },
  {
   "lostId": "L-O-headphones-01",
@@ -1946,7 +2720,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "white plastic Apple earbuds, not metal in-ears with a light blue ring",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "white plastic Apple earbuds, not metal with blue ring"
  },
  {
   "lostId": "L-O-headphones-01",
@@ -1968,7 +2751,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "white plastic Apple earbuds, not metal in-ears with a light blue ring",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "white Apple earbuds, not metal with blue ring"
  },
  {
   "lostId": "L-O-headphones-02",
@@ -1990,7 +2782,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "chrome Skullcandy with skull logo, photo shows dark wire (finder's 'white' is wrong)"
  },
  {
   "lostId": "L-O-headphones-02",
@@ -2012,7 +2813,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "white Apple earbuds, not chrome Skullcandy earbuds",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "white Apple earbuds vs chrome Skullcandy"
  },
  {
   "lostId": "L-O-headphones-02",
@@ -2034,7 +2844,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "white Apple earbuds, not chrome Skullcandy earbuds",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "white Apple earbuds vs chrome Skullcandy"
  },
  {
   "lostId": "L-O-headphones-02",
@@ -2056,7 +2875,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "Philips over-ear headphones, not Skullcandy chrome earbuds",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "over-ear Philips headphones vs in-ear Skullcandy"
  },
  {
   "lostId": "L-O-headphones-03",
@@ -2078,7 +2906,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 2
+  },
+  "ratingNote": "white wired Apple earbuds, inline remote visible on wire fits volume button"
  },
  {
   "lostId": "L-O-headphones-03",
@@ -2100,7 +2937,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 2
+  },
+  "ratingNote": "white wired Apple earbuds; volume button not visible in photo, nothing differs"
  },
  {
   "lostId": "L-O-headphones-03",
@@ -2122,7 +2968,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "black and brown Philips over-ear headphones, not white Apple earphones",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black Philips over-ear vs white Apple earbuds"
  },
  {
   "lostId": "L-O-headphones-03",
@@ -2144,7 +2999,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "black Sennheiser over-ear headphones, not white Apple earphones",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black Sennheiser over-ear vs white Apple earbuds"
  },
  {
   "lostId": "L-O-headphones-04",
@@ -2166,7 +3030,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "old round white Apple earbuds, no foam, no remote visible; common item"
  },
  {
   "lostId": "L-O-headphones-04",
@@ -2188,7 +3061,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "black and brown Philips over-ear headphones, not white earphones",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Philips over-ear vs white iPod earbuds"
  },
  {
   "lostId": "L-O-headphones-04",
@@ -2210,7 +3092,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "black Sennheiser over-ear headphones, not white earphones",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Sennheiser over-ear vs white iPod earbuds"
  },
  {
   "lostId": "L-O-headphones-04",
@@ -2232,7 +3123,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "big black AKG over-ear headphones, not white earphones",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "AKG over-ear in photo vs white iPod earbuds"
  },
  {
   "lostId": "L-O-headphones-05",
@@ -2254,7 +3154,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Philips over-ear, brown leather padding, wired all confirmed"
  },
  {
   "lostId": "L-O-headphones-05",
@@ -2276,7 +3185,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "Sennheiser brand, all black, not Philips with brown padding",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black Sennheiser vs Philips with brown padding"
  },
  {
   "lostId": "L-O-headphones-05",
@@ -2298,7 +3216,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "AKG brand with black padding, not Philips with brown padding",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "AKG black/grey vs Philips brown padding"
  },
  {
   "lostId": "L-O-headphones-05",
@@ -2320,7 +3247,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "white Apple earbuds, not Philips over-ear headphones",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "white earbuds vs over-ear headphones"
  },
  {
   "lostId": "L-O-headphones-06",
@@ -2342,7 +3278,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "black Sennheiser studio headphones hanging on a chair; curly cable not clearly visible"
  },
  {
   "lostId": "L-O-headphones-06",
@@ -2364,7 +3309,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "AKG brand shown on the headphones, not Sennheiser",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 1
+  },
+  "ratingNote": "black over-ear but AKG brand, not Sennheiser"
  },
  {
   "lostId": "L-O-headphones-06",
@@ -2386,7 +3340,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "white Apple earbuds, not big black over-ear headphones",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "white earbuds vs big over-ear headphones"
  },
  {
   "lostId": "L-O-headphones-06",
@@ -2408,7 +3371,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "small silver and blue in-ear earphones, not big black over-ear headphones",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "small earbuds vs big over-ear headphones"
  },
  {
   "lostId": "L-O-headphones-07",
@@ -2430,7 +3402,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "AKG over-ear, black with grey ring, leather strap, cable attached"
  },
  {
   "lostId": "L-O-headphones-07",
@@ -2452,7 +3433,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "white Apple earbuds, not big black over-ear headphones",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "white earbuds vs AKG over-ear"
  },
  {
   "lostId": "L-O-headphones-07",
@@ -2474,7 +3464,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "small silver and blue in-ear earphones, not big black over-ear headphones",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "in-ear earbuds vs AKG over-ear"
  },
  {
   "lostId": "L-O-headphones-07",
@@ -2496,7 +3495,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "chrome Skullcandy in-ear earbuds, not big black over-ear headphones",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Skullcandy earbuds vs AKG over-ear"
  },
  {
   "lostId": "L-O-headphones-08",
@@ -2518,7 +3526,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "red cloth cover with green and purple stitching confirmed"
  },
  {
   "lostId": "L-O-headphones-08",
@@ -2540,7 +3557,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "silver and blue metal in-ears, not white Apple earphones with red cloth cover",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "silver/blue earbuds vs white Apple with red cover"
  },
  {
   "lostId": "L-O-headphones-08",
@@ -2562,7 +3588,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "chrome Skullcandy earbuds with dark wire, not white Apple earphones",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "chrome Skullcandy vs white Apple with red cover"
  },
  {
   "lostId": "L-O-headphones-08",
@@ -2589,7 +3624,16 @@
    "a": "bad",
    "b": "bad",
    "note": "wire is bare white, no red cloth cover"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "white Apple earbuds but no red cloth cover, a distinctive part"
  },
  {
   "lostId": "L-C-F07",
@@ -2611,7 +3655,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 1
+  },
+  "ratingNote": "thick black plastic squarish frame in photo, library; nothing distinctive"
  },
  {
   "lostId": "L-C-F07",
@@ -2633,7 +3686,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "rimless round glasses, not thick black plastic frame",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "photo shows rimless round glasses, not thick black plastic"
  },
  {
   "lostId": "L-C-F07",
@@ -2655,7 +3717,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "thin metal frame, not thick black plastic",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "thin metal frame vs thick black plastic"
  },
  {
   "lostId": "L-C-F07",
@@ -2677,7 +3748,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "round tortoiseshell frame with syringes, not black square-ish",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "round tortoiseshell adjustable glasses with syringes, different item"
  },
  {
   "lostId": "L-C-F15",
@@ -2699,7 +3779,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "photo shows frameless round lenses with thin dark metal arms, all features fit"
  },
  {
   "lostId": "L-C-F15",
@@ -2721,7 +3810,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "full metal rim with rectangular lenses, not frameless round",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "full metal rim rectangular vs frameless round"
  },
  {
   "lostId": "L-C-F15",
@@ -2743,7 +3841,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "thick tortoiseshell full frame, not frameless",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "thick tortoiseshell adjustable glasses, not frameless"
  },
  {
   "lostId": "L-C-F15",
@@ -2765,7 +3872,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "full metal rim, not frameless",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "metal-rimmed oval/rectangular vs frameless round"
  },
  {
   "lostId": "L-O-glasses-01",
@@ -2787,7 +3903,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "Arabizi: thin dark metal frame, rectangular lenses; photo fits; floor vs table minor"
  },
  {
   "lostId": "L-O-glasses-01",
@@ -2809,7 +3934,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "round thick tortoiseshell frame with syringes, not thin metal rectangular",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 1
+  },
+  "ratingNote": "thick round tortoiseshell adjustable vs thin dark metal rectangular"
  },
  {
   "lostId": "L-O-glasses-01",
@@ -2836,7 +3970,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "thin metal rim, roughly rectangular lenses, on desk; shade of frame unclear"
  },
  {
   "lostId": "L-O-glasses-01",
@@ -2858,7 +4001,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "thick black plastic frame, not thin metal",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "thick plastic frame vs thin metal"
  },
  {
   "lostId": "L-O-glasses-02",
@@ -2880,7 +4032,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "round tortoiseshell with syringe and dial on each side, distinctive, confirmed"
  },
  {
   "lostId": "L-O-glasses-02",
@@ -2902,7 +4063,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "thin metal wire frame, not round tortoiseshell",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "plain wire glasses, no adjustable parts"
  },
  {
   "lostId": "L-O-glasses-02",
@@ -2924,7 +4094,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "black rectangular frame, not round tortoiseshell",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black rectangular plastic, no syringes"
  },
  {
   "lostId": "L-O-glasses-02",
@@ -2946,7 +4125,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "black square-ish frame, not round tortoiseshell",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "plain black plastic glasses, not adjustable tortoiseshell"
  },
  {
   "lostId": "L-O-glasses-03",
@@ -2968,7 +4156,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "thin metal rim, oval-ish lenses, yellowed amber nose pads visible"
  },
  {
   "lostId": "L-O-glasses-03",
@@ -2990,7 +4187,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "thick black plastic rectangular frame, not thin wire",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "thick plastic frame vs thin wire rim"
  },
  {
   "lostId": "L-O-glasses-03",
@@ -3012,7 +4218,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "thick black plastic frame, not thin wire",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "thick black plastic vs thin wire rim"
  },
  {
   "lostId": "L-O-glasses-03",
@@ -3034,7 +4249,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "rimless glasses, no metal rim",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "rimless round with thin metal arms vs wire rimmed oval; rim differs"
  },
  {
   "lostId": "L-O-glasses-04",
@@ -3056,7 +4280,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "photo shows black (not brown) rectangular plastic with clear inner frame, distinctive match"
  },
  {
   "lostId": "L-O-glasses-04",
@@ -3083,7 +4316,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "black plastic squarish frame fits; clear inner side not confirmed"
  },
  {
   "lostId": "L-O-glasses-04",
@@ -3105,7 +4347,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "rimless round glasses, not black plastic frame",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "rimless round vs black plastic rectangular"
  },
  {
   "lostId": "L-O-glasses-04",
@@ -3127,7 +4378,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "thin metal frame, not black plastic",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "thin metal vs black plastic"
  },
  {
   "lostId": "L-C-F16",
@@ -3149,7 +4409,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Photo shows off-white kumma with swirls and star-in-circle; brown vs orange is a neighbouring shade"
  },
  {
   "lostId": "L-C-F16",
@@ -3171,7 +4440,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "blue baseball cap with red C, not a kumma",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Kumma vs blue Cubs baseball cap"
  },
  {
   "lostId": "L-C-F16",
@@ -3193,7 +4471,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "navy Stussy baseball cap, not a kumma",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Kumma vs navy Stussy cap"
  },
  {
   "lostId": "L-C-F16",
@@ -3215,7 +4502,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "navy trucker cap with CCB, not a kumma",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Kumma vs navy CCB trucker cap"
  },
  {
   "lostId": "L-O-cap-01",
@@ -3237,7 +4533,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Royal blue Cubs C cap, faded and stained, all confirmed"
  },
  {
   "lostId": "L-O-cap-01",
@@ -3259,7 +4564,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "Stussy logo, not Cubs",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Cubs cap vs Stussy-logo cap: different logo"
  },
  {
   "lostId": "L-O-cap-01",
@@ -3281,7 +4595,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "navy trucker cap with CCB, not Cubs",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Cubs cap vs navy CCB trucker"
  },
  {
   "lostId": "L-O-cap-01",
@@ -3303,7 +4626,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "black cap with S compass logo, not royal blue Cubs",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Cubs vs black Mariners S cap"
  },
  {
   "lostId": "L-O-cap-02",
@@ -3330,7 +4662,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Stussy in red with white edges and two stars confirmed; navy vs black is a near shade"
  },
  {
   "lostId": "L-O-cap-02",
@@ -3352,7 +4693,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "navy trucker cap with CCB, not Stussy",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Stussy cap vs CCB trucker"
  },
  {
   "lostId": "L-O-cap-02",
@@ -3374,7 +4724,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "logo is a silver and green S with compass star, not red Stussy",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 3
+  },
+  "ratingNote": "Photo shows Mariners S, not Stussy; only dark cap colour agrees"
  },
  {
   "lostId": "L-O-cap-02",
@@ -3396,7 +4755,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "embroidered kumma, not a Stussy cap",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Stussy cap vs kumma"
  },
  {
   "lostId": "L-O-cap-03",
@@ -3418,7 +4786,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Navy trucker, white mesh, white CCB letters all in the photo"
  },
  {
   "lostId": "L-O-cap-03",
@@ -3440,7 +4817,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "black cap with S compass logo, no CCB or net",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "CCB trucker vs Mariners cap"
  },
  {
   "lostId": "L-O-cap-03",
@@ -3462,7 +4848,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "embroidered kumma, not a trucker cap",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Trucker cap vs kumma"
  },
  {
   "lostId": "L-O-cap-03",
@@ -3484,7 +4879,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "royal blue cap with red C, no CCB or net",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "CCB trucker vs royal blue Cubs C cap"
  },
  {
   "lostId": "L-O-cap-04",
@@ -3506,7 +4910,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Photo shows dark Mariners S with compass star in silver and green; finder's 'red S' is wrong; fit not visible"
  },
  {
   "lostId": "L-O-cap-04",
@@ -3528,7 +4941,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "embroidered kumma, not a baseball cap",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Mariners cap vs kumma"
  },
  {
   "lostId": "L-O-cap-04",
@@ -3550,7 +4972,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "royal blue cap with red C, not Mariners S",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Mariners vs Cubs cap"
  },
  {
   "lostId": "L-O-cap-04",
@@ -3572,7 +5003,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "Stussy script logo in red, not Mariners S",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Mariners vs Stussy cap"
  },
  {
   "lostId": "L-C-F21",
@@ -3594,7 +5034,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 1
+  },
+  "ratingNote": "silver clip hook and about six keys match the belt clip and about five keys"
  },
  {
   "lostId": "L-C-F21",
@@ -3621,7 +5070,16 @@
    "a": "bad",
    "b": "bad",
    "note": "about five keys against a bunch of about nine"
-  }
+  },
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "no clip in photo, many more keys, fob and tag"
  },
  {
   "lostId": "L-C-F21",
@@ -3648,7 +5106,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "photo shows only a ring and disc fob, no belt clip"
  },
  {
   "lostId": "L-C-F21",
@@ -3675,7 +5142,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "no clip; tags and an old-style key the owner never mentions"
  },
  {
   "lostId": "L-O-keys-01",
@@ -3697,7 +5173,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 1
+  },
+  "ratingNote": "heavy bunch with a dark cylinder like a torch and a coin-like round tag"
  },
  {
   "lostId": "L-O-keys-01",
@@ -3724,7 +5209,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 5,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 4,
+   "b": 3
+  },
+  "ratingNote": "close-up of a dark round fob could be the coin keychain; no keys or torch shown"
  },
  {
   "lostId": "L-O-keys-01",
@@ -3751,7 +5245,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "no torch or coin keychain; plastic tags instead"
  },
  {
   "lostId": "L-O-keys-01",
@@ -3778,7 +5281,16 @@
    "a": "bad",
    "b": "bad",
    "note": "heavy bunch of about eight keys against a few (about four)"
-  }
+  },
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "only a few keys, no torch or coin keychain"
  },
  {
   "lostId": "L-O-keys-02",
@@ -3800,7 +5312,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 3
+  },
+  "ratingNote": "big steel ring with a round dark disc fob, exactly as described"
  },
  {
   "lostId": "L-O-keys-02",
@@ -3827,7 +5348,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 3,
+   "b": 4
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "plastic tags and many keys, no round dark disc"
  },
  {
   "lostId": "L-O-keys-02",
@@ -3854,7 +5384,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "no disc fob; sticker-labelled keys"
  },
  {
   "lostId": "L-O-keys-02",
@@ -3881,7 +5420,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "clip hook, not a big ring with a disc fob"
  },
  {
   "lostId": "L-O-keys-03",
@@ -3903,7 +5451,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "long old key, keys with dots on the blade, black and grey tags all confirmed"
  },
  {
   "lostId": "L-O-keys-03",
@@ -3930,7 +5487,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 4,
+   "b": 4
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "has a long old-style key, but no dimple keys or black and grey tags"
  },
  {
   "lostId": "L-O-keys-03",
@@ -3957,7 +5523,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "clip hook bunch with no old-style key or tags"
  },
  {
   "lostId": "L-O-keys-03",
@@ -3984,7 +5559,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 4,
+   "b": 4
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "long key and black fob, but a metal tag, not grey plastic"
  },
  {
   "lostId": "L-O-keys-04",
@@ -4006,7 +5590,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 1
+  },
+  "ratingNote": "brass key, tube key and coloured sticker label all in photo"
  },
  {
   "lostId": "L-O-keys-04",
@@ -4033,7 +5626,16 @@
    "a": "bad",
    "b": "good",
    "note": "no brass key, all keys dark or silver, and a larger bunch than a small set"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "no brass, tube or sticker key"
  },
  {
   "lostId": "L-O-keys-04",
@@ -4055,7 +5657,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "lots of silver keys (eight or so), no brass key, not a small set",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "has a long key but no brass key or sticker label"
  },
  {
   "lostId": "L-O-keys-04",
@@ -4082,7 +5693,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 3
+  },
+  "ratingNote": "only a ring and fob"
  },
  {
   "lostId": "L-O-pencil-case-01",
@@ -4104,7 +5724,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Tube map case, red zip, roundel pencil visible"
  },
  {
   "lostId": "L-O-pencil-case-01",
@@ -4126,7 +5755,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "purple hard-shell organiser case, no underground map",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Purple hard-shell case, not London map case"
  },
  {
   "lostId": "L-O-pencil-case-01",
@@ -4148,7 +5786,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "striped cloth barrel case, no underground map",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Striped barrel case, no map print"
  },
  {
   "lostId": "L-O-pencil-case-01",
@@ -4170,7 +5817,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "cartoon-character print, not the underground map",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Black cartoon pouch, not tube map"
  },
  {
   "lostId": "L-O-pencil-case-02",
@@ -4197,7 +5853,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Book-opening shell, loops, mesh with eraser/tape, pink-purple pens; purple vs pinkish"
  },
  {
   "lostId": "L-O-pencil-case-02",
@@ -4219,7 +5884,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "striped cloth barrel case, not a hard-shell book-style case",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Striped barrel vs pink hard shell"
  },
  {
   "lostId": "L-O-pencil-case-02",
@@ -4241,7 +5915,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "soft black cartoon-print pouch, not a pinkish hard-shell case",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Black cartoon pouch vs pink hard shell"
  },
  {
   "lostId": "L-O-pencil-case-02",
@@ -4263,7 +5946,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "soft blue denim pouch, not a pinkish hard-shell book-style case",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Denim pouch vs pink hard shell"
  },
  {
   "lostId": "L-O-pencil-case-03",
@@ -4285,7 +5977,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 8,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 2
+  },
+  "ratingNote": "Striped barrel with canvas section; sepia photo hides exact colours"
  },
  {
   "lostId": "L-O-pencil-case-03",
@@ -4307,7 +6008,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "black cartoon-print pouch, not brown and beige stripes",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Cartoon pouch vs striped barrel"
  },
  {
   "lostId": "L-O-pencil-case-03",
@@ -4329,7 +6039,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "flat blue denim pouch, not a striped barrel case",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Denim pouch vs striped barrel"
  },
  {
   "lostId": "L-O-pencil-case-03",
@@ -4351,7 +6070,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "flat metro-map print case, not a striped barrel",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Flat map case vs striped barrel"
  },
  {
   "lostId": "L-O-pencil-case-04",
@@ -4373,7 +6101,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Black pouch, colourful cartoons, loop strap all confirmed"
  },
  {
   "lostId": "L-O-pencil-case-04",
@@ -4395,7 +6132,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "plain blue denim pouch, not black with cartoon characters",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Denim pouch vs black cartoon pouch"
  },
  {
   "lostId": "L-O-pencil-case-04",
@@ -4417,7 +6163,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "white metro-map print case, not black with cartoon characters",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Tube map case vs cartoon pouch"
  },
  {
   "lostId": "L-O-pencil-case-04",
@@ -4439,7 +6194,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "purple hard-shell book-style organiser, not a black cartoon-print pouch",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Purple hard shell vs black cartoon pouch"
  },
  {
   "lostId": "L-O-pencil-case-05",
@@ -4461,7 +6225,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Homemade denim pouch with black and silver pens"
  },
  {
   "lostId": "L-O-pencil-case-05",
@@ -4483,7 +6256,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "glossy metro-map print case with red zip, not blue denim",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Map case vs blue denim pouch"
  },
  {
   "lostId": "L-O-pencil-case-05",
@@ -4505,7 +6287,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "purple hard-shell organiser case, not a small blue denim pouch",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Purple hard shell vs denim pouch"
  },
  {
   "lostId": "L-O-pencil-case-05",
@@ -4527,7 +6318,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "striped cloth barrel case with canvas ends, not plain denim",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Striped barrel vs denim pouch"
  },
  {
   "lostId": "L-O-usb-stick-01",
@@ -4554,7 +6354,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "silver metal slide/swivel drive fits plain grey metallic; brand unstated by owner"
  },
  {
   "lostId": "L-O-usb-stick-01",
@@ -4576,7 +6385,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "black stick with cap, not metallic grey swing-open",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 2,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black plastic capped stick vs metallic grey swivel"
  },
  {
   "lostId": "L-O-usb-stick-01",
@@ -4598,7 +6416,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "blue rubber graffiti-shaped stick with cap, not plain metallic grey swing-open",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "blue graffiti rubber novelty drive, not plain grey metal"
  },
  {
   "lostId": "L-O-usb-stick-01",
@@ -4620,7 +6447,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "black Transcend with cap, not plain metallic grey swing-open",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black Transcend with cap vs plain grey metal swivel"
  },
  {
   "lostId": "L-O-usb-stick-02",
@@ -4642,7 +6478,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "photo shows small black 2G stick with rounded cap; place differs"
  },
  {
   "lostId": "L-O-usb-stick-02",
@@ -4664,7 +6509,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "blue rubber graffiti-shaped stick, not a small black stick",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "blue graffiti rubber shape vs small black 2GB"
  },
  {
   "lostId": "L-O-usb-stick-02",
@@ -4686,7 +6540,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "printed Transcend 1GB with light blue band, not a 2GB stick",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 4,
+   "b": 4
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "black capped stick but photo says 1GB vs owner's 2GB, blue band unmentioned"
  },
  {
   "lostId": "L-O-usb-stick-02",
@@ -4708,7 +6571,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "silver metal with red front, not black with a cap",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "silver/red metal slider vs black capped stick"
  },
  {
   "lostId": "L-O-usb-stick-03",
@@ -4730,7 +6602,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "blue and dark drive with odd drawing-like shape matches; nothing differs"
  },
  {
   "lostId": "L-O-usb-stick-03",
@@ -4752,7 +6633,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "ordinary hard plastic stick shape, not rubber in an odd drawing-like shape",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "black and blue but ordinary shape, owner said odd drawing shape"
  },
  {
   "lostId": "L-O-usb-stick-03",
@@ -4774,7 +6664,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "silver metal with red front, not blue and black rubber",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "silver/red metal drive vs blue-black odd shape"
  },
  {
   "lostId": "L-O-usb-stick-03",
@@ -4796,7 +6695,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "silver metal TDK stick, not blue and black rubber in an odd shape",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "silver TDK vs blue-black odd shape"
  },
  {
   "lostId": "L-O-usb-stick-04",
@@ -4818,7 +6726,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "photo: Transcend 1GB, black, light blue band by plug, black string; 'green' text wrong"
  },
  {
   "lostId": "L-O-usb-stick-04",
@@ -4840,7 +6757,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "silver metal with red front, not black Transcend",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "silver/red metal vs black Transcend"
  },
  {
   "lostId": "L-O-usb-stick-04",
@@ -4862,7 +6788,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "silver TDK, not black Transcend",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "silver TDK vs black Transcend"
  },
  {
   "lostId": "L-O-usb-stick-04",
@@ -4884,7 +6819,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "marked 2G, all black with no light blue part, not Transcend 1GB",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 2,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "black capped stick but 2G, no blue part, no string, not Transcend"
  },
  {
   "lostId": "L-O-usb-stick-05",
@@ -4906,7 +6850,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "silver with red/maroon front, black leather strap, slide-out, no cap"
  },
  {
   "lostId": "L-O-usb-stick-05",
@@ -4933,7 +6886,16 @@
    "a": "bad",
    "b": "bad",
    "note": "front is plain silver with TDK logo, not maroon"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "silver slider but no maroon front or leather strap"
  },
  {
   "lostId": "L-O-usb-stick-05",
@@ -4955,7 +6917,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "black plastic stick with cap, not silver with maroon front",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black capped plastic vs silver/maroon slider"
  },
  {
   "lostId": "L-O-usb-stick-05",
@@ -4977,7 +6948,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "blue rubber graffiti-shaped stick with cap, not silver and maroon slider",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "blue rubber novelty drive vs silver/maroon slider"
  },
  {
   "lostId": "L-C-F08",
@@ -4999,7 +6979,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "White UK three-pin head with long black braided-looking cable, matches well"
  },
  {
   "lostId": "L-C-F08",
@@ -5021,7 +7010,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "Long black braided type-C cable fits, but no adapter; head could have stayed in the socket"
  },
  {
   "lostId": "L-C-F08",
@@ -5043,7 +7041,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "black laptop brick with two-pin plug, not white three-pin adapter with USB-C cable",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "Photo shows black laptop brick with two-pin plug, not white phone adapter"
  },
  {
   "lostId": "L-C-F08",
@@ -5065,7 +7072,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "dark grey Dell laptop brick, not a white phone adapter",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Dell laptop adapter vs phone charger"
  },
  {
   "lostId": "L-C-F17",
@@ -5087,7 +7103,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Long black type-C cable with no head, as the owner says"
  },
  {
   "lostId": "L-C-F17",
@@ -5109,7 +7134,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "laptop power brick with barrel tip, not a USB-C cable",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 2,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 1
+  },
+  "ratingNote": "Laptop brick with cables vs a head-less type-C cable"
  },
  {
   "lostId": "L-C-F17",
@@ -5131,7 +7165,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "Dell laptop power brick, not a USB-C cable",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Dell laptop adapter vs type-C cable"
  },
  {
   "lostId": "L-C-F17",
@@ -5158,7 +7201,16 @@
    "a": "bad",
    "b": "bad",
    "note": "owner's cable has no charger head, found one has a white head attached"
-  }
+  },
+  "quality": {
+   "a": 4,
+   "b": 4
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "Long black type-C cable fits, but found has a white head and owner says no head"
  },
  {
   "lostId": "L-O-charger-01",
@@ -5180,7 +7232,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "Photo shows black Chicony laptop brick, barrel tip and European plug; finder misnamed it a phone charger"
  },
  {
   "lostId": "L-O-charger-01",
@@ -5207,7 +7268,16 @@
    "a": "bad",
    "b": "bad",
    "note": "Dell-branded adapter, owner's is for an Acer"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Dell brick vs Acer brick: brand differs"
  },
  {
   "lostId": "L-O-charger-01",
@@ -5229,7 +7299,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "white three-pin phone charger head, not a black laptop brick",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "White phone charger vs Acer laptop brick"
  },
  {
   "lostId": "L-O-charger-01",
@@ -5251,7 +7330,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "thin braided USB cable only, not a black laptop brick with round pin",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Thin type-C cable vs laptop brick"
  },
  {
   "lostId": "L-O-charger-02",
@@ -5273,7 +7361,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Dell, charcoal, detachable wall cable, same day and place"
  },
  {
   "lostId": "L-O-charger-02",
@@ -5295,7 +7392,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "white phone charger head with thin cable, not a charcoal Dell laptop brick",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "White phone charger vs Dell laptop brick"
  },
  {
   "lostId": "L-O-charger-02",
@@ -5317,7 +7423,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "thin braided USB cable, not a Dell laptop brick or its wall cable",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Loose cable vs Dell laptop brick"
  },
  {
   "lostId": "L-O-charger-02",
@@ -5344,7 +7459,16 @@
    "a": "bad",
    "b": "bad",
    "note": "adapter is labelled Chicony, not Dell"
-  }
+  },
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Photo shows Chicony black brick, not Dell charcoal"
  },
  {
   "lostId": "L-O-watch-01",
@@ -5366,7 +7490,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "gold, black-and-cream face, time dial on the right, dark strap"
  },
  {
   "lostId": "L-O-watch-01",
@@ -5388,7 +7521,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "steel Victorinox on metal bracelet, not gold with leather band",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 2,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "steel Victorinox, not a gold leather watch"
  },
  {
   "lostId": "L-O-watch-01",
@@ -5410,7 +7552,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "silver Bulova on metal bracelet, not gold with leather band",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 2,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "silver bracelet Bulova, not gold leather"
  },
  {
   "lostId": "L-O-watch-01",
@@ -5432,7 +7583,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "steel Breitling on metal bracelet, not gold with leather band",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 2,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "silver Breitling bracelet"
  },
  {
   "lostId": "L-O-watch-02",
@@ -5454,7 +7614,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Victorinox, steel bracelet, big white numbers, date window"
  },
  {
   "lostId": "L-O-watch-02",
@@ -5476,7 +7645,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "Bulova, not Victorinox",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "photo shows a Bulova, not a Victorinox"
  },
  {
   "lostId": "L-O-watch-02",
@@ -5498,7 +7676,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "Breitling with three white subdials, not Victorinox with big white numbers",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "photo shows a Breitling"
  },
  {
   "lostId": "L-O-watch-02",
@@ -5520,7 +7707,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "gold F.P. Journe on black strap, not steel Victorinox",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "gold watch on a leather strap"
  },
  {
   "lostId": "L-O-watch-03",
@@ -5542,7 +7738,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Bulova, silver band, dark face, rotating bezel; finder says black"
  },
  {
   "lostId": "L-O-watch-03",
@@ -5564,7 +7769,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "dial reads Breitling, not Bulova",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "photo shows a Breitling"
  },
  {
   "lostId": "L-O-watch-03",
@@ -5586,7 +7800,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "gold F.P. Journe on black strap, not silver Bulova on metal band",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "gold watch on a leather strap"
  },
  {
   "lostId": "L-O-watch-03",
@@ -5608,7 +7831,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "dial reads Victorinox Swiss Army, not Bulova",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "photo shows a Victorinox"
  },
  {
   "lostId": "L-O-watch-04",
@@ -5630,7 +7862,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Breitling, metal bracelet, black dial, three white subdials, numbered rim"
  },
  {
   "lostId": "L-O-watch-04",
@@ -5652,7 +7893,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "gold F.P. Journe on a black strap, not Breitling on a metal bracelet",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "gold watch on a leather strap"
  },
  {
   "lostId": "L-O-watch-04",
@@ -5674,7 +7924,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "Victorinox with white numerals, not Breitling with white subdials",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "Victorinox with black subdials, not a Breitling"
  },
  {
   "lostId": "L-O-watch-04",
@@ -5696,7 +7955,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "Bulova with plain dark dial, not Breitling with three white subdials",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "photo shows a Bulova"
  },
  {
   "lostId": "L-C-F01",
@@ -5718,7 +7986,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Dark Dell, clean lid, charging on wooden desk"
  },
  {
   "lostId": "L-C-F01",
@@ -5745,7 +8022,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "Black Dell plugged in, but lid visibly scratched vs clean; white table"
  },
  {
   "lostId": "L-C-F01",
@@ -5767,7 +8053,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "MacBook with a silver body, not a black Dell",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Silver MacBook vs black Dell"
  },
  {
   "lostId": "L-C-F06",
@@ -5789,7 +8084,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "Dark Dell, scratches on one side of lid, plugged in"
  },
  {
   "lostId": "L-C-F06",
@@ -5811,7 +8115,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "MacBook with a silver body, not a dark Dell",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "MacBook vs Dell"
  },
  {
   "lostId": "L-C-F06",
@@ -5838,7 +8151,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "Dark Dell plugged in, lid looks fairly clean not scratched"
  },
  {
   "lostId": "L-C-F20",
@@ -5860,7 +8182,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Photo shows silver MacBook open, no cover/stickers; text says black"
  },
  {
   "lostId": "L-C-F20",
@@ -5882,7 +8213,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "black Dell, not a silver MacBook",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Dell vs silver MacBook"
  },
  {
   "lostId": "L-C-F20",
@@ -5904,7 +8244,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "black Dell, not a silver MacBook",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Dell vs MacBook"
  },
  {
   "lostId": "L-C-F03",
@@ -5926,7 +8275,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "grey fabric backpack with mesh bottle pockets both sides; common type"
  },
  {
   "lostId": "L-C-F03",
@@ -5948,7 +8306,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "brown bag with coloured circles, not plain grey",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "brown dotted bag vs plain grey"
  },
  {
   "lostId": "L-C-F03",
@@ -5970,7 +8337,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "orange and black Tamrac camera bag, not plain grey",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "orange Tamrac camera bag vs plain grey"
  },
  {
   "lostId": "L-O-backpack-01",
@@ -5992,7 +8368,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "dark brown/maroon backpack with big coloured dots and pink zips"
  },
  {
   "lostId": "L-O-backpack-01",
@@ -6014,7 +8399,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "orange and black Tamrac camera bag, no dots or maroon",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "orange Tamrac vs dotted maroon"
  },
  {
   "lostId": "L-O-backpack-01",
@@ -6036,7 +8430,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "plain grey bag, no coloured dots or maroon",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "plain grey vs dotted maroon"
  },
  {
   "lostId": "L-O-backpack-02",
@@ -6058,7 +8461,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "photo: Tamrac, orange front, black sides, front mesh pocket"
  },
  {
   "lostId": "L-O-backpack-02",
@@ -6080,7 +8492,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "grey bag with grey sides, no orange or black body",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "grey backpack vs orange Tamrac"
  },
  {
   "lostId": "L-O-backpack-02",
@@ -6102,7 +8523,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "brown dotted school bag with pink zips, not orange and black Tamrac",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "dotted school bag vs Tamrac camera bag"
  },
  {
   "lostId": "L-C-F18",
@@ -6124,7 +8554,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Zumdahl Chemistry on window sill, 3rd floor; pencil notes unseen"
  },
  {
   "lostId": "L-C-F18",
@@ -6146,7 +8585,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "old Russian book with yellow pages, not a Zumdahl chemistry hardcover",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "old Russian book, not a chemistry textbook"
  },
  {
   "lostId": "L-C-F18",
@@ -6168,7 +8616,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "kids science book on the solar system, not Zumdahl chemistry",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "colourful kids science book vs Zumdahl chemistry"
  },
  {
   "lostId": "L-C-F23",
@@ -6190,7 +8647,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "old Russian book, yellow pages coming loose, outside science faculty"
  },
  {
   "lostId": "L-C-F23",
@@ -6212,7 +8678,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "colourful English kids science book, not an old Russian book",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "modern colourful kids textbook vs old Russian book"
  },
  {
   "lostId": "L-C-F23",
@@ -6234,7 +8709,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "black Zumdahl Chemistry textbook in English, not an old Russian book",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Zumdahl chemistry textbook vs old Russian book"
  },
  {
   "lostId": "L-O-textbook-01",
@@ -6256,7 +8740,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "photo shows big colourful kids science textbook, not a notebook; fits"
  },
  {
   "lostId": "L-O-textbook-01",
@@ -6278,7 +8771,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "black Zumdahl Chemistry textbook, not a kids science book",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "college chemistry textbook vs kids colour textbook"
  },
  {
   "lostId": "L-O-textbook-01",
@@ -6300,7 +8802,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "old Russian text book with yellow pages, no colour pictures",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "old Russian text book vs kids colour textbook"
  },
  {
   "lostId": "L-O-power-bank-01",
@@ -6322,7 +8833,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "Slim black rounded, blue lights; Anker vs unsure Baseus"
  },
  {
   "lostId": "L-O-power-bank-01",
@@ -6344,7 +8864,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "light grey pebble shape, not slim black",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Grey pebble vs slim black"
  },
  {
   "lostId": "L-O-power-bank-01",
@@ -6366,7 +8895,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "silver metal Xiaomi, not black",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Silver Xiaomi vs black"
  },
  {
   "lostId": "L-O-power-bank-02",
@@ -6388,7 +8926,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Off-white stone shape, event logo, two USB, tag"
  },
  {
   "lostId": "L-O-power-bank-02",
@@ -6410,7 +8957,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "silver metal Xiaomi bar, not an off-white stone shape",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Silver Xiaomi vs stone-shaped"
  },
  {
   "lostId": "L-O-power-bank-02",
@@ -6432,7 +8988,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "flat black Anker, not an off-white stone shape",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Black Anker vs off-white stone"
  },
  {
   "lostId": "L-O-power-bank-03",
@@ -6454,7 +9019,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Silver metal Xiaomi pocket size confirmed"
  },
  {
   "lostId": "L-O-power-bank-03",
@@ -6476,7 +9050,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "black Anker, not silver Xiaomi metal",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Black Anker vs silver Xiaomi"
  },
  {
   "lostId": "L-O-power-bank-03",
@@ -6498,7 +9081,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "pebble-shaped non-metal body with EU2017 logo, not a metal Xiaomi",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "Grey pebble vs metal Xiaomi"
  },
  {
   "lostId": "L-C-F02",
@@ -6520,7 +9112,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 8,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "clear blue pen with blue rubber grip and cap; common item"
  },
  {
   "lostId": "L-C-F02",
@@ -6542,7 +9143,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "dark opaque metal pen, not a see-through blue pen with rubber grip",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "photo black textured heavy pen vs clear blue ballpoint"
  },
  {
   "lostId": "L-C-F22",
@@ -6564,7 +9174,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "photo shows black textured pen with silver band; text's 'dark blue' contradicted by photo"
  },
  {
   "lostId": "L-C-F22",
@@ -6586,7 +9205,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "clear plastic blue pen, not a black textured pen with a silver band",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 0,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "clear blue ballpoint vs heavy black textured pen"
  },
  {
   "lostId": "L-O-bottle-01",
@@ -6608,7 +9236,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "black aluminium Boca Chica SpaceX bottle, screw cap"
  },
  {
   "lostId": "L-O-bottle-01",
@@ -6630,7 +9267,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "silver steel Thermos tumbler, not a black bottle",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "silver Thermos vs black SpaceX bottle"
  },
  {
   "lostId": "L-O-bottle-02",
@@ -6652,7 +9298,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "silver steel Thermos fits; scratches not visible"
  },
  {
   "lostId": "L-O-bottle-02",
@@ -6674,7 +9329,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "black bottle, not a silver steel thermos",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black SpaceX bottle vs silver coffee thermos"
  },
  {
   "lostId": "L-O-prayer-beads-01",
@@ -6696,7 +9360,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "grey-green seed beads on metal wire with red beads near end, all confirmed"
  },
  {
   "lostId": "L-O-prayer-beads-01",
@@ -6718,7 +9391,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "brown wooden beads on string, not greyish green beads on metal wire",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "photo shows orange-brown wooden beads on string, not grey-green on wire"
  },
  {
   "lostId": "L-O-prayer-beads-02",
@@ -6740,7 +9422,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "light and dark brown wooden beads, brown string, dark red knot all visible"
  },
  {
   "lostId": "L-O-prayer-beads-02",
@@ -6762,7 +9453,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "olive beads linked with metal wire, not brown wooden beads on string",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "grey-green beads on wire vs wooden brown beads on string"
  },
  {
   "lostId": "L-O-umbrella-01",
@@ -6784,7 +9484,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "compact folded red umbrella; nothing differs"
  },
  {
   "lostId": "L-O-umbrella-01",
@@ -6806,7 +9515,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "long umbrella with wooden hook handle, not a compact folding one",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "long stick umbrella vs compact folding"
  },
  {
   "lostId": "L-O-umbrella-02",
@@ -6828,7 +9546,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "long red, wooden hook handle and wooden tip; place nearby differs"
  },
  {
   "lostId": "L-O-umbrella-02",
@@ -6850,7 +9577,16 @@
   "secondLabel": "bad",
   "secondCloseCall": false,
   "secondNote": "small folded umbrella with metal cap, not a long one with wooden tip",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "compact folding vs long wooden-handled"
  },
  {
   "lostId": "L-C-F04",
@@ -6872,7 +9608,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 3
+  },
+  "ratingNote": "photo shows a silver JBL earbud case with a black screen, not a charger"
  },
  {
   "lostId": "L-C-F09",
@@ -6894,7 +9639,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 1
+  },
+  "ratingNote": "blue marble hardcover notebook confirmed; name inside not seen"
  },
  {
   "lostId": "L-C-F10",
@@ -6921,7 +9675,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Box reads dardasha maliya with Money and Career topics; dark navy vs black is a near shade"
  },
  {
   "lostId": "L-C-F11",
@@ -6943,7 +9706,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "red rubber, orange handle, chipped edges confirmed"
  },
  {
   "lostId": "L-C-F12",
@@ -6965,7 +9737,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 3
+  },
+  "ratingNote": "dark grey remote with Netflix button; Oscar vs LG, but owner was unsure"
  },
  {
   "lostId": "L-C-F19",
@@ -6987,7 +9768,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 1
+  },
+  "ratingNote": "black leather men's sandals at prayer room door; size not confirmed"
  },
  {
   "lostId": "L-C-F26",
@@ -7009,7 +9799,16 @@
   "secondLabel": "good",
   "secondCloseCall": false,
   "secondNote": "",
-  "disputed": false
+  "disputed": false,
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "dark brown collared zip jacket, two stripes one side, badge; finder's red stripes wrong per photo"
  },
  {
   "lostId": "L-O-phone-01",
@@ -7036,7 +9835,16 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 7,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Gold iPhone with no case, plain; lock screen not visible, many like it"
  },
  {
   "lostId": "L-O-sunglasses-01",
@@ -7063,6 +9871,15 @@
    "a": "good",
    "b": "good",
    "note": ""
-  }
+  },
+  "quality": {
+   "a": 9,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "oversized, wide arms, gradient lenses; frame is purple-maroon, finder says dark red"
  }
 ]

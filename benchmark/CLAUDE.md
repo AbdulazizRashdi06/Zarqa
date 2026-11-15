@@ -26,6 +26,7 @@ node scripts/edge.js --data data/edge/round1 --offline     # edge cases: where e
 node scripts/edge.js --data data/edge/round2 --normalize --vector-limit 100000 --triage 30 --triage-order model --yes   # live, the app's pipeline since 2026-11-14
 EDGE_LEGACY=1 node scripts/edge.js --data data/edge/round2 --yes   # live, the app before 2026-11-14 (control)
 node scripts/edge-read.js --runs <name>,<name> --lines 0.55,0.75   # read finished edge runs as good match / bad match (free)
+node scripts/edge-rate.js --runs <name>,<name> --show-from 4,5,6 --wrong-weight 0.25   # best line for each run from the 0-10 quality ratings (round 3 sets; free)
 ```
 
 `edge.js` reviews every labelled pair with the models even when retrieval or the shortlist dropped it, so each miss is blamed on the right stage. Three model calls per pair: through the Codex gateway (`OPENAI_BASE_URL=http://127.0.0.1:8090/v1`, `node deploy/codex/gateway.mjs`) about 55 calls a minute is safe; more than that used up the ChatGPT plan's allowance, which production shares. `data/edge/round1` is for tuning and `round2` is the holdout; `round3` (2026-11-15) is a fresh text set, mostly undated with lookalikes in the same place, labelled good match / bad match from the start. `scripts/edge-build.js` builds a set from the writers' output. `SIMILARITY_RULE=v2` selects a proposed, unmeasured rewording.
