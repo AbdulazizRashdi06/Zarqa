@@ -173,13 +173,19 @@ const DETAIL_SCHEMA = {
 const DETAIL_FOR_JUDGE = DETAIL_CHECK ? "\ndetail_check lists each thing the owner stated about the item and whether the found side shows it, cannot show it, or contradicts it. It was made by a reviewer who saw the photos. A contradicted detail is a concrete difference between the items; a not_visible one is a gap." : "";
 //   MATCH_DEFINITION=1  a written definition of what counts as a match: which disagreements rule a pair out and
 //                        which do not. A DRAFT for the owner to rule on (decisions.md, 2026-11-15), not a decision.
-const MATCH_DEFINITION = process.env.MATCH_DEFINITION === "1";
-const DEFINITION_FOR_JUDGE = MATCH_DEFINITION
-  ? `\nWhat counts as a match here. A match is a pair the owner should be shown: nothing in the evidence rules it out.
+// Draft 1 forgave by KIND of detail (brand, count and size never count against). On half A of photo round 2 it more
+// than doubled the bad matches accepted (16 -> 39 of 95): a dial that plainly reads another brand was waved through.
+// Draft 2 forgives by what the found side SHOWS: a plainly shown difference rules the pair out, whatever it is about.
+const DEFINITIONS = {
+  1: `\nWhat counts as a match here. A match is a pair the owner should be shown: nothing in the evidence rules it out.
 These rule a pair out, so give low probabilities: the two are different kinds of object, beyond a different word for the same thing; a name or other text read off the found item differs from the one the owner gives as their own (another spelling of the same name is not a difference); the colour is from a different family, not a neighbouring shade.
 This is a weak point against, not a rule-out: a distinctive feature the owner states that the found side plainly shows is absent, since parts and attachments come off.
-These do not count against a match: a neighbouring shade; a brand or model the owner gives from memory; a count, a size, a place or a date that differs; contents or details the finder could not see. Where a finder's words disagree with the finder's own photo, go by the photo.`
-  : "";
+These do not count against a match: a neighbouring shade; a brand or model the owner gives from memory; a count, a size, a place or a date that differs; contents or details the finder could not see. Where a finder's words disagree with the finder's own photo, go by the photo.`,
+  2: `\nWhat counts as a match here. A match is a pair the owner should be shown: the found side shows nothing that plainly differs from what the owner describes.
+A plainly shown difference rules the pair out, so give low probabilities. That is: something the owner states about the item itself (what kind of object it is, its colour, a brand, name or other text on it, its material, shape or build, how many there are, a distinctive part or mark) where the found photo or report plainly shows something else.
+These are not plainly shown differences and do not count against a match: a neighbouring shade of the same colour; something the owner marks as unsure or a guess; a part or attachment that could have come off; a place or a date that differs; anything the found side cannot show, such as contents, the other side, or a detail too small or out of frame; another spelling of the same name. Where a finder's words disagree with the finder's own photo, go by the photo.`,
+};
+const DEFINITION_FOR_JUDGE = DEFINITIONS[process.env.MATCH_DEFINITION] || "";
 const PHOTOS_FOR_JUDGE = JUDGE_PHOTOS ? "\nThe photos are attached. Look at them yourself and go by what they show." : "";
 
 async function detailCheck(lost, found, ctx) {
