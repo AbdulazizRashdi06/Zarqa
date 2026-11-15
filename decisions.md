@@ -2,6 +2,45 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-15: Photo tests: what the finder's photo adds, and where wrong suggestions come from
+
+**Nothing in the app changed.** This entry records two photo rounds run on the app's new pipeline (rendering, screen, production embeddings, gpt-6-luna advocates who see the photos, gpt-6.1-terra judge who does not).
+
+**The photo set** (`benchmark/data/photo-set/`): 92 found items that each have a photo: the 23 campus photos and 69 openly licensed photos found through Openverse and vetted one by one by agents (one everyday item, no face, no readable card or document; sources and licences in `benchmark/data/online/manifest.json`). Blind writers looked at each photo and wrote a finder's report and an owner's report; the owner has no photo. Finder texts are normal, near-empty ("found this") or carry one detail the photo contradicts. Checkers who were not told the truth graded each pair against the photo. Traps are other items of the same kind.
+
+**Round 1** (every report dated; traps found on other days and in other places):
+
+| | With photos | Without photos |
+|---|---|---|
+| Same-item pairs shown | 84 / 92 (91%) | 83 / 92 (90%) |
+| Clear-difference traps shown | 3 / 204 | 4 / 204 |
+
+**Round 2** (three reports in four undated, as the Home form's default gives; every item of a kind found in the same place), with photos:
+
+| | Shown |
+|---|---|
+| Same-item pairs | 84 / 92 (91%) |
+| Clear-difference traps | **54 / 200 (27%)** |
+| Soft-difference traps and lookalikes | 20 / 21 |
+
+By label in round 2: Big chance 34 real and 1 wrong; Looks like it 30 and 24; Small chance 18 and 40; held for review 2 and 9.
+
+**What this shows.**
+- **Place and day were doing the separating, not the look of the item.** In round 1 no trap shared a day with the owner's report, and near-empty finder reports still matched on kind, place and day alone. In round 2, where place agrees and dates are missing, the models suggest one clear-difference lookalike in four, even with the photo attached. Most real reports will be undated, because the "I know when" switch is off by default.
+- **Photos add little as the pipeline stands.** A few points of score, a pair or two. The judge never sees a photo; it reads the advocates' accounts of it.
+- **"Big chance" stays trustworthy in the hard round** (34 of 35). The two lower labels do not: more wrong than right below 0.70.
+- **The advocates sometimes take the finder's photo for the owner's.** With the app's line ("0 from the LOST report first, then 1 from the FOUND report"), 29 of 313 debates in each round spoke of "the LOST photo".
+
+**Tried and not adopted.**
+- **A clearer photo line** (`PHOTO_LINE=2`: whose item each photo shows). It cut the mix-up from 29 to 9 debates on round 2, but changed nothing that matters: 82 against 84 same-item pairs shown, 52 against 54 traps. On round 1, where it was tuned, it had looked like a gain (86 to 90 accepted); the holdout did not confirm it.
+- **Two photo rules** telling the models to go by a report's own photo over its words (`PHOTO_RULE=1`, `2`). Both recovered the pairs where the finder's text contradicted the photo and both let through many more wrong pairs (2 to 11 and 14 of 82), because a model that had the photo's owner wrong then replaced the owner's words with the finder's picture.
+
+**Limits.** One photo per item, both rounds on the same 92 photos, traps limited to up to three other items of the same kind, each pair judged once. Round 2 was not run without photos. The online photos are tidy single-item shots; real finder photos are messier. The ChatGPT plan's usage limit was reached twice during these runs (production shares it); 139 failed pairs were re-run.
+
+**Open.**
+- The real problem to work on is round 2's: same kind, same place, no date. Candidates, none measured: have the opposing advocate compare each detail the owner states with what the photo shows; give the judge the photo; show the owner several same-place candidates side by side instead of one suggestion each; show the posting time to the models.
+- A round with two different photos of the same object (owner's and finder's) needs new photos from the owner.
+
 ## 2026-11-14: A card photo with no long number found gets no covered copy
 
 **Found on a real card (owner asked for the check and consented to the test).** The two card photos on the collection page were run through the app's own covering, locally, with real Tesseract. The originals were never opened by a model and all files were deleted afterwards.
