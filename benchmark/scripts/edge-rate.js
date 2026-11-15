@@ -2,6 +2,7 @@
 // Scores edge.js runs against the quality ratings in a dataset's pairs.json and works out the best line for each run.
 //
 //   node scripts/edge-rate.js --runs p3-app,p3-photos-def2 --show-from 4,5,6
+//   node scripts/edge-rate.js --runs p3-app --wrong-weight 1 --even-difficulty   # the plain version
 //
 // Each pair carries quality {a, b}: two raters' 0-10 scores for how good a match it is on the evidence alone
 // (blind to the truth and to the app), and difficulty {a, b} (1-5). The mean of the two raters is used.
@@ -11,7 +12,7 @@
 // --wrong-weight scales the negative side: 1 treats a point below the line like a point above it; 0.25 says a
 // wrong suggestion costs the owner a glance and a missed one costs them the item (the project's stated priority).
 // A run's value at a line is the sum of that over the pairs it shows; the best line is the one with the most value.
-// --forgive-hard (the owner's rule): a mistake is a pair above "show from" that is not shown, or one below it that
+// The owner's difficulty rule (on unless --even-difficulty): a mistake is a pair above "show from" that is not shown, or one below it that
 // is. Each mistake is weighed by how easy the pair was: full weight at difficulty 1, a fifth at difficulty 5
 // ((6 - difficulty) / 5). An easy pair got wrong costs most, a hard pair got wrong costs little, and getting a hard
 // pair right earns nothing extra.
@@ -26,8 +27,10 @@ const { values: args } = parseArgs({
   options: {
     runs: { type: "string" },
     "show-from": { type: "string", default: "4,5,6" },
-    "wrong-weight": { type: "string", default: "1" }, // how much a point below "show from" costs, against a point above it
-    "forgive-hard": { type: "boolean", default: false }, // weigh each mistake by how easy the pair was (owner, 2026-11-15)
+    // Owner's rules, 2026-11-15: a wrong suggestion costs less than a missed one, and a mistake on an easy pair costs
+    // more than one on a hard pair. The size of the first (a quarter) is the assistant's number, not the owner's.
+    "wrong-weight": { type: "string", default: "0.25" }, // how much a point below "show from" costs, against a point above it
+    "even-difficulty": { type: "boolean", default: false }, // switch off the difficulty rule: every mistake counts the same
   },
 });
 if (!args.runs) throw new Error("--runs <name,name> is required (results/edge-<name>)");
@@ -81,12 +84,12 @@ for (const name of args.runs.split(",")) {
     n[h] += c;
   }
   const s = summary.settings;
-  console.log(`\n${name}: ${path.basename(path.dirname(summary.data))}/${path.basename(summary.data)} · ${list.length} rated pairs · wrong weight ${args["wrong-weight"]}${args["forgive-hard"] ? " · mistakes weighed by ease" : ""} · judge ${s.judgePhotos ? "sees photos" : "text only"} · definition ${s.matchDefinition ?? "none"}`);
+  console.log(`\n${name}: ${path.basename(path.dirname(summary.data))}/${path.basename(summary.data)} · ${list.length} rated pairs · wrong weight ${args["wrong-weight"]}${args["even-difficulty"] ? "" : " · mistakes weighed by ease"} · judge ${s.judgePhotos ? "sees photos" : "text only"} · definition ${s.matchDefinition ?? "none"}`);
   const reached = list.filter((x) => x.score >= 0);
   console.log(`  the app's score follows the quality rating: rank correlation ${spearman(reached.map((x) => x.score), reached.map((x) => x.q)).toFixed(2)} (pairs that reached the judge)`);
 
   const W = Number(args["wrong-weight"]);
-  const ease = (x) => (args["forgive-hard"] ? (6 - x.d) / 5 : 1);
+  const ease = (x) => (args["even-difficulty"] ? 1 : (6 - x.d) / 5);
   // What a run loses at a line: every missed pair above "show from", every shown pair below it.
   const loss = (items, line, from) => items.reduce((t, x) => t + (x.score >= line ? (x.q < from ? W * (from - x.q) * ease(x) : 0) : x.q > from ? (x.q - from) * ease(x) : 0), 0);
   const best = (items, from) => LINES.reduce((b, line) => (loss(items, line, from) < loss(items, b, from) - 1e-9 ? line : b), LINES[0]);
