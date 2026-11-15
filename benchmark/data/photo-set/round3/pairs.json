@@ -15,7 +15,11 @@
   "tags": [
    "wallet",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-C-F25",
@@ -33,7 +37,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": true,
+  "secondNote": "visible leather is smooth, no lines pressed in",
+  "disputed": false
  },
  {
   "lostId": "L-C-F25",
@@ -51,7 +59,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "front is smooth leather with a tree logo, no lines pressed in",
+  "disputed": false
  },
  {
   "lostId": "L-C-F25",
@@ -69,7 +81,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "yellowish tan wallet with star, not black",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-01",
@@ -87,7 +103,11 @@
   "tags": [
    "wallet",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-01",
@@ -105,7 +125,11 @@
   "tags": [
    "wallet",
    "lookalike"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": true,
+  "secondNote": "slim, new-looking wallet, not thick old leather",
+  "disputed": true
  },
  {
   "lostId": "L-O-wallet-01",
@@ -123,7 +147,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "yellowish tan wallet with star, not black",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-01",
@@ -141,7 +169,11 @@
   "tags": [
    "wallet",
    "lookalike"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": true,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-02",
@@ -159,7 +191,11 @@
   "tags": [
    "wallet",
    "stretch"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": true,
+  "secondNote": "black, not dark brown",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-02",
@@ -177,7 +213,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "yellowish tan with star and MOROCCO, not dark brown Timberland",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-02",
@@ -195,7 +235,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": true,
+  "secondNote": "",
+  "disputed": true
  },
  {
   "lostId": "L-O-wallet-02",
@@ -213,7 +257,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "grey snake-print pouch, not a dark brown bifold",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-03",
@@ -231,7 +279,11 @@
   "tags": [
    "wallet",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-03",
@@ -249,7 +301,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "black wallet, not light tan with a star",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-03",
@@ -267,7 +323,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "grey snake-print pouch, not light tan leather with a star",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-03",
@@ -285,7 +345,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "red long wallet with gold plate, not light tan with star and laced edges",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-04",
@@ -303,7 +367,11 @@
   "tags": [
    "wallet",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-04",
@@ -321,7 +389,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "grey snake-print pouch with wrist strap, not a black leather wallet",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-04",
@@ -339,7 +411,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "red wallet, not black",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-04",
@@ -357,7 +433,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "red wallet with clover, not black",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-05",
@@ -375,7 +455,11 @@
   "tags": [
    "wallet",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-05",
@@ -393,7 +477,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "red leather long wallet, not a grey and black animal-print pouch",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-05",
@@ -411,7 +499,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "red leather wallet with clover, not an animal-print pouch",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-05",
@@ -429,7 +521,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "plain black leather bifold, not an animal-print pouch with strap",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-06",
@@ -447,7 +543,11 @@
   "tags": [
    "wallet",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-06",
@@ -465,7 +565,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "small compact wallet with zip and button strap, not a long flap wallet",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-06",
@@ -483,7 +587,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "black bifold, not a long red wallet",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-06",
@@ -501,7 +609,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "orange-brown woven bifold, not a long red wallet",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-07",
@@ -519,7 +631,11 @@
   "tags": [
    "wallet",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-07",
@@ -537,7 +653,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "black bifold, not red with a clover",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-07",
@@ -555,7 +675,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "orange-brown woven leather, not red with a clover",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-07",
@@ -573,7 +697,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "black carbon-look wallet, not red with a clover",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-08",
@@ -591,7 +719,11 @@
   "tags": [
    "wallet",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-08",
@@ -609,7 +741,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "orange-brown woven leather, not black",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-08",
@@ -627,7 +763,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "TOM'S embossed on a carbon-look coin wallet, not Guess",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-08",
@@ -645,7 +785,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "reddish brown card holder, not a black Guess wallet",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-09",
@@ -663,7 +807,11 @@
   "tags": [
    "wallet",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-09",
@@ -681,7 +829,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "black carbon-look wallet, not orange-brown woven leather",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-09",
@@ -699,7 +851,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "plain smooth card holder, no woven pattern or dark lacing",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-09",
@@ -717,7 +873,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "black wallet, not orange-brown woven leather",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-10",
@@ -735,7 +895,11 @@
   "tags": [
    "wallet",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-10",
@@ -753,7 +917,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "reddish brown card holder, not a black carbon-look coin wallet",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-10",
@@ -771,7 +939,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "bifold with pressed line pattern and no flap, not a carbon-look coin wallet with flap",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-10",
@@ -789,7 +961,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "plain smooth leather bifold stuffed with cards, not a carbon-fibre coin wallet with flap",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-11",
@@ -807,7 +983,11 @@
   "tags": [
    "wallet",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-11",
@@ -825,7 +1005,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "black bifold wallet, not a brown card sleeve",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-11",
@@ -843,7 +1027,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "thick black wallet, not a thin brown card sleeve",
+  "disputed": false
  },
  {
   "lostId": "L-O-wallet-11",
@@ -861,7 +1049,11 @@
   "tags": [
    "wallet",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "black bifold wallet, not a brown card sleeve",
+  "disputed": false
  },
  {
   "lostId": "L-C-F24",
@@ -879,7 +1071,11 @@
   "tags": [
    "car-key",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-C-F24",
@@ -897,7 +1093,11 @@
   "tags": [
    "car-key",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "bare circuit board, not a black key with buttons",
+  "disputed": false
  },
  {
   "lostId": "L-C-F24",
@@ -915,7 +1115,11 @@
   "tags": [
    "car-key",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "old all-metal key, not a black key with two buttons",
+  "disputed": false
  },
  {
   "lostId": "L-C-F24",
@@ -933,7 +1137,11 @@
   "tags": [
    "car-key",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "three-button flip key with wooden figure, not two buttons with metal car tag",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-01",
@@ -951,7 +1159,11 @@
   "tags": [
    "car-key",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-01",
@@ -969,7 +1181,11 @@
   "tags": [
    "car-key",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "old metal key, not a circuit board",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-01",
@@ -987,7 +1203,11 @@
   "tags": [
    "car-key",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "complete flip key in its shell, not a bare inner board",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-01",
@@ -1005,7 +1225,11 @@
   "tags": [
    "car-key",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "complete smart key in its shell, not a bare inner board",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-02",
@@ -1023,7 +1247,11 @@
   "tags": [
    "car-key",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-02",
@@ -1041,7 +1269,11 @@
   "tags": [
    "car-key",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "black plastic flip key with a toy, not a bare metal key",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-02",
@@ -1059,7 +1291,11 @@
   "tags": [
    "car-key",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "black plastic smart fob, not a small metal key",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-02",
@@ -1077,7 +1313,11 @@
   "tags": [
    "car-key",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "black plastic head, owner says all metal with no plastic",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-03",
@@ -1095,7 +1335,11 @@
   "tags": [
    "car-key",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-03",
@@ -1113,7 +1357,11 @@
   "tags": [
    "car-key",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "bladeless smart fob, not a folding key",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-03",
@@ -1131,7 +1379,11 @@
   "tags": [
    "car-key",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "fixed-blade plain key, not a folding remote key",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-03",
@@ -1149,7 +1401,11 @@
   "tags": [
    "car-key",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "USB flash drive, not a car key",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-04",
@@ -1167,7 +1423,11 @@
   "tags": [
    "car-key",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-04",
@@ -1185,7 +1445,11 @@
   "tags": [
    "car-key",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "plain bladed key with no buttons, not a keyless remote",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-04",
@@ -1203,7 +1467,11 @@
   "tags": [
    "car-key",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "USB flash drive, not a real car remote",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-04",
@@ -1221,7 +1489,11 @@
   "tags": [
    "car-key",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "bunch of bladed keys, not a single bladeless remote",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-05",
@@ -1239,7 +1511,11 @@
   "tags": [
    "car-key",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-05",
@@ -1257,7 +1533,11 @@
   "tags": [
    "car-key",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "USB flash drive, not a snapped car key",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-05",
@@ -1275,7 +1555,11 @@
   "tags": [
    "car-key",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "bunch of keys with intact blade, not a single snapped key",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-05",
@@ -1293,7 +1577,11 @@
   "tags": [
    "car-key",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "intact Mercedes remote fob, not a snapped plain key",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-06",
@@ -1311,7 +1599,11 @@
   "tags": [
    "car-key",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-06",
@@ -1329,7 +1621,11 @@
   "tags": [
    "car-key",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "bunch of ordinary keys, not a flash drive",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-06",
@@ -1347,7 +1643,11 @@
   "tags": [
    "car-key",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "real Mercedes key, not a flash drive",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-06",
@@ -1365,7 +1665,11 @@
   "tags": [
    "car-key",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "real bladed car key, not a flash drive",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-07",
@@ -1383,7 +1687,11 @@
   "tags": [
    "car-key",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-07",
@@ -1401,7 +1709,11 @@
   "tags": [
    "car-key",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "single Mercedes fob with keyring, no house keys",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-07",
@@ -1419,7 +1731,11 @@
   "tags": [
    "car-key",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": true,
+  "secondNote": "single car key with metal tags, no house keys or gold key",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-07",
@@ -1437,7 +1753,11 @@
   "tags": [
    "car-key",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "bare circuit board, not a bunch of keys",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-08",
@@ -1455,7 +1775,11 @@
   "tags": [
    "car-key",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-08",
@@ -1473,7 +1797,11 @@
   "tags": [
    "car-key",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "two-button bladed key with no panic button",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-08",
@@ -1491,7 +1819,11 @@
   "tags": [
    "car-key",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "bare circuit board, not a Mercedes key with keyring",
+  "disputed": false
  },
  {
   "lostId": "L-O-car-key-08",
@@ -1509,7 +1841,11 @@
   "tags": [
    "car-key",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "old plain metal key, not a Mercedes remote key",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-01",
@@ -1527,7 +1863,11 @@
   "tags": [
    "headphones",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-01",
@@ -1545,7 +1885,11 @@
   "tags": [
    "headphones",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "all-chrome Skullcandy earbuds with skull logo, no light blue ring",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-01",
@@ -1563,7 +1907,11 @@
   "tags": [
    "headphones",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "white plastic Apple earbuds, not metal in-ears with a light blue ring",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-01",
@@ -1581,7 +1929,11 @@
   "tags": [
    "headphones",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "white plastic Apple earbuds, not metal in-ears with a light blue ring",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-02",
@@ -1599,7 +1951,11 @@
   "tags": [
    "headphones",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-02",
@@ -1617,7 +1973,11 @@
   "tags": [
    "headphones",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "white Apple earbuds, not chrome Skullcandy earbuds",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-02",
@@ -1635,7 +1995,11 @@
   "tags": [
    "headphones",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "white Apple earbuds, not chrome Skullcandy earbuds",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-02",
@@ -1653,7 +2017,11 @@
   "tags": [
    "headphones",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "Philips over-ear headphones, not Skullcandy chrome earbuds",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-03",
@@ -1671,7 +2039,11 @@
   "tags": [
    "headphones",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-03",
@@ -1689,7 +2061,11 @@
   "tags": [
    "headphones",
    "lookalike"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-03",
@@ -1707,7 +2083,11 @@
   "tags": [
    "headphones",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "black and brown Philips over-ear headphones, not white Apple earphones",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-03",
@@ -1725,7 +2105,11 @@
   "tags": [
    "headphones",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "black Sennheiser over-ear headphones, not white Apple earphones",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-04",
@@ -1743,7 +2127,11 @@
   "tags": [
    "headphones",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-04",
@@ -1761,7 +2149,11 @@
   "tags": [
    "headphones",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "black and brown Philips over-ear headphones, not white earphones",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-04",
@@ -1779,7 +2171,11 @@
   "tags": [
    "headphones",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "black Sennheiser over-ear headphones, not white earphones",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-04",
@@ -1797,7 +2193,11 @@
   "tags": [
    "headphones",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "big black AKG over-ear headphones, not white earphones",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-05",
@@ -1815,7 +2215,11 @@
   "tags": [
    "headphones",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-05",
@@ -1833,7 +2237,11 @@
   "tags": [
    "headphones",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "Sennheiser brand, all black, not Philips with brown padding",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-05",
@@ -1851,7 +2259,11 @@
   "tags": [
    "headphones",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "AKG brand with black padding, not Philips with brown padding",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-05",
@@ -1869,7 +2281,11 @@
   "tags": [
    "headphones",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "white Apple earbuds, not Philips over-ear headphones",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-06",
@@ -1887,7 +2303,11 @@
   "tags": [
    "headphones",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-06",
@@ -1905,7 +2325,11 @@
   "tags": [
    "headphones",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "AKG brand shown on the headphones, not Sennheiser",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-06",
@@ -1923,7 +2347,11 @@
   "tags": [
    "headphones",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "white Apple earbuds, not big black over-ear headphones",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-06",
@@ -1941,7 +2369,11 @@
   "tags": [
    "headphones",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "small silver and blue in-ear earphones, not big black over-ear headphones",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-07",
@@ -1959,7 +2391,11 @@
   "tags": [
    "headphones",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-07",
@@ -1977,7 +2413,11 @@
   "tags": [
    "headphones",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "white Apple earbuds, not big black over-ear headphones",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-07",
@@ -1995,7 +2435,11 @@
   "tags": [
    "headphones",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "small silver and blue in-ear earphones, not big black over-ear headphones",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-07",
@@ -2013,7 +2457,11 @@
   "tags": [
    "headphones",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "chrome Skullcandy in-ear earbuds, not big black over-ear headphones",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-08",
@@ -2031,7 +2479,11 @@
   "tags": [
    "headphones",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-08",
@@ -2049,7 +2501,11 @@
   "tags": [
    "headphones",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "silver and blue metal in-ears, not white Apple earphones with red cloth cover",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-08",
@@ -2067,7 +2523,11 @@
   "tags": [
    "headphones",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "chrome Skullcandy earbuds with dark wire, not white Apple earphones",
+  "disputed": false
  },
  {
   "lostId": "L-O-headphones-08",
@@ -2085,7 +2545,11 @@
   "tags": [
    "headphones",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": true,
+  "secondNote": "wire is bare white, no red cloth cover sewn around it",
+  "disputed": false
  },
  {
   "lostId": "L-C-F07",
@@ -2103,7 +2567,11 @@
   "tags": [
    "glasses",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-C-F07",
@@ -2121,7 +2589,11 @@
   "tags": [
    "glasses",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "rimless round glasses, not thick black plastic frame",
+  "disputed": false
  },
  {
   "lostId": "L-C-F07",
@@ -2139,7 +2611,11 @@
   "tags": [
    "glasses",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "thin metal frame, not thick black plastic",
+  "disputed": false
  },
  {
   "lostId": "L-C-F07",
@@ -2157,7 +2633,11 @@
   "tags": [
    "glasses",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "round tortoiseshell frame with syringes, not black square-ish",
+  "disputed": false
  },
  {
   "lostId": "L-C-F15",
@@ -2175,7 +2655,11 @@
   "tags": [
    "glasses",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-C-F15",
@@ -2193,7 +2677,11 @@
   "tags": [
    "glasses",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "full metal rim with rectangular lenses, not frameless round",
+  "disputed": false
  },
  {
   "lostId": "L-C-F15",
@@ -2211,7 +2699,11 @@
   "tags": [
    "glasses",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "thick tortoiseshell full frame, not frameless",
+  "disputed": false
  },
  {
   "lostId": "L-C-F15",
@@ -2229,7 +2721,11 @@
   "tags": [
    "glasses",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "full metal rim, not frameless",
+  "disputed": false
  },
  {
   "lostId": "L-O-glasses-01",
@@ -2247,7 +2743,11 @@
   "tags": [
    "glasses",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-glasses-01",
@@ -2265,7 +2765,11 @@
   "tags": [
    "glasses",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "round thick tortoiseshell frame with syringes, not thin metal rectangular",
+  "disputed": false
  },
  {
   "lostId": "L-O-glasses-01",
@@ -2283,7 +2787,11 @@
   "tags": [
    "glasses",
    "lookalike"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": true,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-glasses-01",
@@ -2301,7 +2809,11 @@
   "tags": [
    "glasses",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "thick black plastic frame, not thin metal",
+  "disputed": false
  },
  {
   "lostId": "L-O-glasses-02",
@@ -2319,7 +2831,11 @@
   "tags": [
    "glasses",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-glasses-02",
@@ -2337,7 +2853,11 @@
   "tags": [
    "glasses",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "thin metal wire frame, not round tortoiseshell",
+  "disputed": false
  },
  {
   "lostId": "L-O-glasses-02",
@@ -2355,7 +2875,11 @@
   "tags": [
    "glasses",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "black rectangular frame, not round tortoiseshell",
+  "disputed": false
  },
  {
   "lostId": "L-O-glasses-02",
@@ -2373,7 +2897,11 @@
   "tags": [
    "glasses",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "black square-ish frame, not round tortoiseshell",
+  "disputed": false
  },
  {
   "lostId": "L-O-glasses-03",
@@ -2391,7 +2919,11 @@
   "tags": [
    "glasses",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-glasses-03",
@@ -2409,7 +2941,11 @@
   "tags": [
    "glasses",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "thick black plastic rectangular frame, not thin wire",
+  "disputed": false
  },
  {
   "lostId": "L-O-glasses-03",
@@ -2427,7 +2963,11 @@
   "tags": [
    "glasses",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "thick black plastic frame, not thin wire",
+  "disputed": false
  },
  {
   "lostId": "L-O-glasses-03",
@@ -2445,7 +2985,11 @@
   "tags": [
    "glasses",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "rimless glasses, no metal rim",
+  "disputed": false
  },
  {
   "lostId": "L-O-glasses-04",
@@ -2463,7 +3007,11 @@
   "tags": [
    "glasses",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-glasses-04",
@@ -2481,7 +3029,11 @@
   "tags": [
    "glasses",
    "lookalike"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": true,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-glasses-04",
@@ -2499,7 +3051,11 @@
   "tags": [
    "glasses",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "rimless round glasses, not black plastic frame",
+  "disputed": false
  },
  {
   "lostId": "L-O-glasses-04",
@@ -2517,7 +3073,11 @@
   "tags": [
    "glasses",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "thin metal frame, not black plastic",
+  "disputed": false
  },
  {
   "lostId": "L-C-F16",
@@ -2535,7 +3095,11 @@
   "tags": [
    "cap",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-C-F16",
@@ -2553,7 +3117,11 @@
   "tags": [
    "cap",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "blue baseball cap with red C, not a kumma",
+  "disputed": false
  },
  {
   "lostId": "L-C-F16",
@@ -2571,7 +3139,11 @@
   "tags": [
    "cap",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "navy Stussy baseball cap, not a kumma",
+  "disputed": false
  },
  {
   "lostId": "L-C-F16",
@@ -2589,7 +3161,11 @@
   "tags": [
    "cap",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "navy trucker cap with CCB, not a kumma",
+  "disputed": false
  },
  {
   "lostId": "L-O-cap-01",
@@ -2607,7 +3183,11 @@
   "tags": [
    "cap",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-cap-01",
@@ -2625,7 +3205,11 @@
   "tags": [
    "cap",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "Stussy logo, not Cubs",
+  "disputed": false
  },
  {
   "lostId": "L-O-cap-01",
@@ -2643,7 +3227,11 @@
   "tags": [
    "cap",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "navy trucker cap with CCB, not Cubs",
+  "disputed": false
  },
  {
   "lostId": "L-O-cap-01",
@@ -2661,7 +3249,11 @@
   "tags": [
    "cap",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "black cap with S compass logo, not royal blue Cubs",
+  "disputed": false
  },
  {
   "lostId": "L-O-cap-02",
@@ -2679,7 +3271,11 @@
   "tags": [
    "cap",
    "stretch"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": true,
+  "secondNote": "",
+  "disputed": true
  },
  {
   "lostId": "L-O-cap-02",
@@ -2697,7 +3293,11 @@
   "tags": [
    "cap",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "navy trucker cap with CCB, not Stussy",
+  "disputed": false
  },
  {
   "lostId": "L-O-cap-02",
@@ -2715,7 +3315,11 @@
   "tags": [
    "cap",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "logo is a silver and green S with compass star, not red Stussy",
+  "disputed": false
  },
  {
   "lostId": "L-O-cap-02",
@@ -2733,7 +3337,11 @@
   "tags": [
    "cap",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "embroidered kumma, not a Stussy cap",
+  "disputed": false
  },
  {
   "lostId": "L-O-cap-03",
@@ -2751,7 +3359,11 @@
   "tags": [
    "cap",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-cap-03",
@@ -2769,7 +3381,11 @@
   "tags": [
    "cap",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "black cap with S compass logo, no CCB or net",
+  "disputed": false
  },
  {
   "lostId": "L-O-cap-03",
@@ -2787,7 +3403,11 @@
   "tags": [
    "cap",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "embroidered kumma, not a trucker cap",
+  "disputed": false
  },
  {
   "lostId": "L-O-cap-03",
@@ -2805,7 +3425,11 @@
   "tags": [
    "cap",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "royal blue cap with red C, no CCB or net",
+  "disputed": false
  },
  {
   "lostId": "L-O-cap-04",
@@ -2823,7 +3447,11 @@
   "tags": [
    "cap",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-cap-04",
@@ -2841,7 +3469,11 @@
   "tags": [
    "cap",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "embroidered kumma, not a baseball cap",
+  "disputed": false
  },
  {
   "lostId": "L-O-cap-04",
@@ -2859,7 +3491,11 @@
   "tags": [
    "cap",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "royal blue cap with red C, not Mariners S",
+  "disputed": false
  },
  {
   "lostId": "L-O-cap-04",
@@ -2877,7 +3513,11 @@
   "tags": [
    "cap",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "Stussy script logo in red, not Mariners S",
+  "disputed": false
  },
  {
   "lostId": "L-C-F21",
@@ -2895,7 +3535,11 @@
   "tags": [
    "keys",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-C-F21",
@@ -2913,7 +3557,11 @@
   "tags": [
    "keys",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": true,
+  "secondNote": "eight or so keys, not about five",
+  "disputed": false
  },
  {
   "lostId": "L-C-F21",
@@ -2931,7 +3579,11 @@
   "tags": [
    "keys",
    "lookalike"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": true,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-C-F21",
@@ -2949,7 +3601,11 @@
   "tags": [
    "keys",
    "lookalike"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": true,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-keys-01",
@@ -2967,7 +3623,11 @@
   "tags": [
    "keys",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-keys-01",
@@ -2985,7 +3645,11 @@
   "tags": [
    "keys",
    "lookalike"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": true,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-keys-01",
@@ -3003,7 +3667,11 @@
   "tags": [
    "keys",
    "lookalike"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": true,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-keys-01",
@@ -3021,7 +3689,11 @@
   "tags": [
    "keys",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "only about four keys, not a heavy bunch of eight",
+  "disputed": false
  },
  {
   "lostId": "L-O-keys-02",
@@ -3039,7 +3711,11 @@
   "tags": [
    "keys",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-keys-02",
@@ -3057,7 +3733,11 @@
   "tags": [
    "keys",
    "lookalike"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": true,
+  "secondNote": "bunch of about six house keys with a big old key, not a single bike-key keychain",
+  "disputed": true
  },
  {
   "lostId": "L-O-keys-02",
@@ -3075,7 +3755,11 @@
   "tags": [
    "keys",
    "lookalike"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": true,
+  "secondNote": "four assorted keys, not a single bike-key keychain",
+  "disputed": true
  },
  {
   "lostId": "L-O-keys-02",
@@ -3093,7 +3777,11 @@
   "tags": [
    "keys",
    "lookalike"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": true,
+  "secondNote": "bunch of about six keys on a clip hook, not a single bike-key keychain",
+  "disputed": true
  },
  {
   "lostId": "L-O-keys-03",
@@ -3111,7 +3799,11 @@
   "tags": [
    "keys",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-keys-03",
@@ -3129,7 +3821,11 @@
   "tags": [
    "keys",
    "trap"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": true,
+  "secondNote": "",
+  "disputed": true
  },
  {
   "lostId": "L-O-keys-03",
@@ -3147,7 +3843,11 @@
   "tags": [
    "keys",
    "lookalike"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": true,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-keys-03",
@@ -3165,7 +3865,11 @@
   "tags": [
    "keys",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": true,
+  "secondNote": "eight or so ordinary toothed keys, none with dots; round tag is metal, not plastic",
+  "disputed": false
  },
  {
   "lostId": "L-O-keys-04",
@@ -3183,7 +3887,11 @@
   "tags": [
    "keys",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-keys-04",
@@ -3201,7 +3909,11 @@
   "tags": [
    "keys",
    "lookalike"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": true,
+  "secondNote": "about six silver/dark keys, no brass key",
+  "disputed": true
  },
  {
   "lostId": "L-O-keys-04",
@@ -3219,7 +3931,11 @@
   "tags": [
    "keys",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "lots of silver keys (eight or so), no brass key, not a small set",
+  "disputed": false
  },
  {
   "lostId": "L-O-keys-04",
@@ -3237,7 +3953,11 @@
   "tags": [
    "keys",
    "lookalike"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": true,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-pencil-case-01",
@@ -3255,7 +3975,11 @@
   "tags": [
    "pencil-case",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-pencil-case-01",
@@ -3273,7 +3997,11 @@
   "tags": [
    "pencil-case",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "purple hard-shell organiser case, no underground map",
+  "disputed": false
  },
  {
   "lostId": "L-O-pencil-case-01",
@@ -3291,7 +4019,11 @@
   "tags": [
    "pencil-case",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "striped cloth barrel case, no underground map",
+  "disputed": false
  },
  {
   "lostId": "L-O-pencil-case-01",
@@ -3309,7 +4041,11 @@
   "tags": [
    "pencil-case",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "cartoon-character print, not the underground map",
+  "disputed": false
  },
  {
   "lostId": "L-O-pencil-case-02",
@@ -3327,7 +4063,11 @@
   "tags": [
    "pencil-case",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-pencil-case-02",
@@ -3345,7 +4085,11 @@
   "tags": [
    "pencil-case",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "striped cloth barrel case, not a hard-shell book-style case",
+  "disputed": false
  },
  {
   "lostId": "L-O-pencil-case-02",
@@ -3363,7 +4107,11 @@
   "tags": [
    "pencil-case",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "soft black cartoon-print pouch, not a pinkish hard-shell case",
+  "disputed": false
  },
  {
   "lostId": "L-O-pencil-case-02",
@@ -3381,7 +4129,11 @@
   "tags": [
    "pencil-case",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "soft blue denim pouch, not a pinkish hard-shell book-style case",
+  "disputed": false
  },
  {
   "lostId": "L-O-pencil-case-03",
@@ -3399,7 +4151,11 @@
   "tags": [
    "pencil-case",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-pencil-case-03",
@@ -3417,7 +4173,11 @@
   "tags": [
    "pencil-case",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "black cartoon-print pouch, not brown and beige stripes",
+  "disputed": false
  },
  {
   "lostId": "L-O-pencil-case-03",
@@ -3435,7 +4195,11 @@
   "tags": [
    "pencil-case",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "flat blue denim pouch, not a striped barrel case",
+  "disputed": false
  },
  {
   "lostId": "L-O-pencil-case-03",
@@ -3453,7 +4217,11 @@
   "tags": [
    "pencil-case",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "flat metro-map print case, not a striped barrel",
+  "disputed": false
  },
  {
   "lostId": "L-O-pencil-case-04",
@@ -3471,7 +4239,11 @@
   "tags": [
    "pencil-case",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-pencil-case-04",
@@ -3489,7 +4261,11 @@
   "tags": [
    "pencil-case",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "plain blue denim pouch, not black with cartoon characters",
+  "disputed": false
  },
  {
   "lostId": "L-O-pencil-case-04",
@@ -3507,7 +4283,11 @@
   "tags": [
    "pencil-case",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "white metro-map print case, not black with cartoon characters",
+  "disputed": false
  },
  {
   "lostId": "L-O-pencil-case-04",
@@ -3525,7 +4305,11 @@
   "tags": [
    "pencil-case",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "purple hard-shell book-style organiser, not a black cartoon-print pouch",
+  "disputed": false
  },
  {
   "lostId": "L-O-pencil-case-05",
@@ -3543,7 +4327,11 @@
   "tags": [
    "pencil-case",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-pencil-case-05",
@@ -3561,7 +4349,11 @@
   "tags": [
    "pencil-case",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "glossy metro-map print case with red zip, not blue denim",
+  "disputed": false
  },
  {
   "lostId": "L-O-pencil-case-05",
@@ -3579,7 +4371,11 @@
   "tags": [
    "pencil-case",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "purple hard-shell organiser case, not a small blue denim pouch",
+  "disputed": false
  },
  {
   "lostId": "L-O-pencil-case-05",
@@ -3597,7 +4393,11 @@
   "tags": [
    "pencil-case",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "striped cloth barrel case with canvas ends, not plain denim",
+  "disputed": false
  },
  {
   "lostId": "L-O-usb-stick-01",
@@ -3615,7 +4415,11 @@
   "tags": [
    "usb-stick",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": true,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-usb-stick-01",
@@ -3633,7 +4437,11 @@
   "tags": [
    "usb-stick",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "black stick with cap, not metallic grey swing-open",
+  "disputed": false
  },
  {
   "lostId": "L-O-usb-stick-01",
@@ -3651,7 +4459,11 @@
   "tags": [
    "usb-stick",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "blue rubber graffiti-shaped stick with cap, not plain metallic grey swing-open",
+  "disputed": false
  },
  {
   "lostId": "L-O-usb-stick-01",
@@ -3669,7 +4481,11 @@
   "tags": [
    "usb-stick",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "black Transcend with cap, not plain metallic grey swing-open",
+  "disputed": false
  },
  {
   "lostId": "L-O-usb-stick-02",
@@ -3687,7 +4503,11 @@
   "tags": [
    "usb-stick",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-usb-stick-02",
@@ -3705,7 +4525,11 @@
   "tags": [
    "usb-stick",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "blue rubber graffiti-shaped stick, not a small black stick",
+  "disputed": false
  },
  {
   "lostId": "L-O-usb-stick-02",
@@ -3723,7 +4547,11 @@
   "tags": [
    "usb-stick",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "printed Transcend 1GB with light blue band, not a 2GB stick",
+  "disputed": false
  },
  {
   "lostId": "L-O-usb-stick-02",
@@ -3741,7 +4569,11 @@
   "tags": [
    "usb-stick",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "silver metal with red front, not black with a cap",
+  "disputed": false
  },
  {
   "lostId": "L-O-usb-stick-03",
@@ -3759,7 +4591,11 @@
   "tags": [
    "usb-stick",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-usb-stick-03",
@@ -3777,7 +4613,11 @@
   "tags": [
    "usb-stick",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "ordinary hard plastic stick shape, not rubber in an odd drawing-like shape",
+  "disputed": false
  },
  {
   "lostId": "L-O-usb-stick-03",
@@ -3795,7 +4635,11 @@
   "tags": [
    "usb-stick",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "silver metal with red front, not blue and black rubber",
+  "disputed": false
  },
  {
   "lostId": "L-O-usb-stick-03",
@@ -3813,7 +4657,11 @@
   "tags": [
    "usb-stick",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "silver metal TDK stick, not blue and black rubber in an odd shape",
+  "disputed": false
  },
  {
   "lostId": "L-O-usb-stick-04",
@@ -3831,7 +4679,11 @@
   "tags": [
    "usb-stick",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-usb-stick-04",
@@ -3849,7 +4701,11 @@
   "tags": [
    "usb-stick",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "silver metal with red front, not black Transcend",
+  "disputed": false
  },
  {
   "lostId": "L-O-usb-stick-04",
@@ -3867,7 +4723,11 @@
   "tags": [
    "usb-stick",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "silver TDK, not black Transcend",
+  "disputed": false
  },
  {
   "lostId": "L-O-usb-stick-04",
@@ -3885,7 +4745,11 @@
   "tags": [
    "usb-stick",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "marked 2G, all black with no light blue part, not Transcend 1GB",
+  "disputed": false
  },
  {
   "lostId": "L-O-usb-stick-05",
@@ -3903,7 +4767,11 @@
   "tags": [
    "usb-stick",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-usb-stick-05",
@@ -3921,7 +4789,11 @@
   "tags": [
    "usb-stick",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": true,
+  "secondNote": "visible branded face is plain silver, no maroon front",
+  "disputed": false
  },
  {
   "lostId": "L-O-usb-stick-05",
@@ -3939,7 +4811,11 @@
   "tags": [
    "usb-stick",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "black plastic stick with cap, not silver with maroon front",
+  "disputed": false
  },
  {
   "lostId": "L-O-usb-stick-05",
@@ -3957,7 +4833,11 @@
   "tags": [
    "usb-stick",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "blue rubber graffiti-shaped stick with cap, not silver and maroon slider",
+  "disputed": false
  },
  {
   "lostId": "L-C-F08",
@@ -3975,7 +4855,11 @@
   "tags": [
    "charger",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-C-F08",
@@ -3993,7 +4877,11 @@
   "tags": [
    "charger",
    "lookalike"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-C-F08",
@@ -4011,7 +4899,11 @@
   "tags": [
    "charger",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "black laptop brick with two-pin plug, not white three-pin adapter with USB-C cable",
+  "disputed": false
  },
  {
   "lostId": "L-C-F08",
@@ -4029,7 +4921,11 @@
   "tags": [
    "charger",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "dark grey Dell laptop brick, not a white phone adapter",
+  "disputed": false
  },
  {
   "lostId": "L-C-F17",
@@ -4047,7 +4943,11 @@
   "tags": [
    "charger",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-C-F17",
@@ -4065,7 +4965,11 @@
   "tags": [
    "charger",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "laptop power brick with barrel tip, not a USB-C cable",
+  "disputed": false
  },
  {
   "lostId": "L-C-F17",
@@ -4083,7 +4987,11 @@
   "tags": [
    "charger",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "Dell laptop power brick, not a USB-C cable",
+  "disputed": false
  },
  {
   "lostId": "L-C-F17",
@@ -4101,7 +5009,11 @@
   "tags": [
    "charger",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": true,
+  "secondNote": "cable has a white charger head attached; owner's is a cable with no head",
+  "disputed": false
  },
  {
   "lostId": "L-O-charger-01",
@@ -4119,7 +5031,11 @@
   "tags": [
    "charger",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-charger-01",
@@ -4137,7 +5053,11 @@
   "tags": [
    "charger",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": true,
+  "secondNote": "Dell-branded adapter, not an Acer charger",
+  "disputed": false
  },
  {
   "lostId": "L-O-charger-01",
@@ -4155,7 +5075,11 @@
   "tags": [
    "charger",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "white three-pin phone charger head, not a black laptop brick",
+  "disputed": false
  },
  {
   "lostId": "L-O-charger-01",
@@ -4173,7 +5097,11 @@
   "tags": [
    "charger",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "thin braided USB cable only, not a black laptop brick with round pin",
+  "disputed": false
  },
  {
   "lostId": "L-O-charger-02",
@@ -4191,7 +5119,11 @@
   "tags": [
    "charger",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-charger-02",
@@ -4209,7 +5141,11 @@
   "tags": [
    "charger",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "white phone charger head with thin cable, not a charcoal Dell laptop brick",
+  "disputed": false
  },
  {
   "lostId": "L-O-charger-02",
@@ -4227,7 +5163,11 @@
   "tags": [
    "charger",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "thin braided USB cable, not a Dell laptop brick or its wall cable",
+  "disputed": false
  },
  {
   "lostId": "L-O-charger-02",
@@ -4245,7 +5185,11 @@
   "tags": [
    "charger",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": true,
+  "secondNote": "brick is labelled Chicony, not Dell",
+  "disputed": false
  },
  {
   "lostId": "L-O-watch-01",
@@ -4263,7 +5207,11 @@
   "tags": [
    "watch",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-watch-01",
@@ -4281,7 +5229,11 @@
   "tags": [
    "watch",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "steel Victorinox on metal bracelet, not gold with leather band",
+  "disputed": false
  },
  {
   "lostId": "L-O-watch-01",
@@ -4299,7 +5251,11 @@
   "tags": [
    "watch",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "silver Bulova on metal bracelet, not gold with leather band",
+  "disputed": false
  },
  {
   "lostId": "L-O-watch-01",
@@ -4317,7 +5273,11 @@
   "tags": [
    "watch",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "steel Breitling on metal bracelet, not gold with leather band",
+  "disputed": false
  },
  {
   "lostId": "L-O-watch-02",
@@ -4335,7 +5295,11 @@
   "tags": [
    "watch",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-watch-02",
@@ -4353,7 +5317,11 @@
   "tags": [
    "watch",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "Bulova, not Victorinox",
+  "disputed": false
  },
  {
   "lostId": "L-O-watch-02",
@@ -4371,7 +5339,11 @@
   "tags": [
    "watch",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "Breitling with three white subdials, not Victorinox with big white numbers",
+  "disputed": false
  },
  {
   "lostId": "L-O-watch-02",
@@ -4389,7 +5361,11 @@
   "tags": [
    "watch",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "gold F.P. Journe on black strap, not steel Victorinox",
+  "disputed": false
  },
  {
   "lostId": "L-O-watch-03",
@@ -4407,7 +5383,11 @@
   "tags": [
    "watch",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-watch-03",
@@ -4425,7 +5405,11 @@
   "tags": [
    "watch",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "dial reads Breitling, not Bulova",
+  "disputed": false
  },
  {
   "lostId": "L-O-watch-03",
@@ -4443,7 +5427,11 @@
   "tags": [
    "watch",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "gold F.P. Journe on black strap, not silver Bulova on metal band",
+  "disputed": false
  },
  {
   "lostId": "L-O-watch-03",
@@ -4461,7 +5449,11 @@
   "tags": [
    "watch",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "dial reads Victorinox Swiss Army, not Bulova",
+  "disputed": false
  },
  {
   "lostId": "L-O-watch-04",
@@ -4479,7 +5471,11 @@
   "tags": [
    "watch",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-watch-04",
@@ -4497,7 +5493,11 @@
   "tags": [
    "watch",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "gold F.P. Journe on a black strap, not Breitling on a metal bracelet",
+  "disputed": false
  },
  {
   "lostId": "L-O-watch-04",
@@ -4515,7 +5515,11 @@
   "tags": [
    "watch",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "Victorinox with white numerals, not Breitling with white subdials",
+  "disputed": false
  },
  {
   "lostId": "L-O-watch-04",
@@ -4533,7 +5537,11 @@
   "tags": [
    "watch",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "Bulova with plain dark dial, not Breitling with three white subdials",
+  "disputed": false
  },
  {
   "lostId": "L-C-F01",
@@ -4551,7 +5559,11 @@
   "tags": [
    "laptop",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-C-F01",
@@ -4569,7 +5581,11 @@
   "tags": [
    "laptop",
    "lookalike"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": true,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-C-F01",
@@ -4587,7 +5603,11 @@
   "tags": [
    "laptop",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "MacBook with a silver body, not a black Dell",
+  "disputed": false
  },
  {
   "lostId": "L-C-F06",
@@ -4605,7 +5625,11 @@
   "tags": [
    "laptop",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-C-F06",
@@ -4623,7 +5647,11 @@
   "tags": [
    "laptop",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "MacBook with a silver body, not a dark Dell",
+  "disputed": false
  },
  {
   "lostId": "L-C-F06",
@@ -4641,7 +5669,11 @@
   "tags": [
    "laptop",
    "lookalike"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": true,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-C-F20",
@@ -4659,7 +5691,11 @@
   "tags": [
    "laptop",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-C-F20",
@@ -4677,7 +5713,11 @@
   "tags": [
    "laptop",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "black Dell, not a silver MacBook",
+  "disputed": false
  },
  {
   "lostId": "L-C-F20",
@@ -4695,7 +5735,11 @@
   "tags": [
    "laptop",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "black Dell, not a silver MacBook",
+  "disputed": false
  },
  {
   "lostId": "L-C-F03",
@@ -4713,7 +5757,11 @@
   "tags": [
    "backpack",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-C-F03",
@@ -4731,7 +5779,11 @@
   "tags": [
    "backpack",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "brown bag with coloured circles, not plain grey",
+  "disputed": false
  },
  {
   "lostId": "L-C-F03",
@@ -4749,7 +5801,11 @@
   "tags": [
    "backpack",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "orange and black Tamrac camera bag, not plain grey",
+  "disputed": false
  },
  {
   "lostId": "L-O-backpack-01",
@@ -4767,7 +5823,11 @@
   "tags": [
    "backpack",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-backpack-01",
@@ -4785,7 +5845,11 @@
   "tags": [
    "backpack",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "orange and black Tamrac camera bag, no dots or maroon",
+  "disputed": false
  },
  {
   "lostId": "L-O-backpack-01",
@@ -4803,7 +5867,11 @@
   "tags": [
    "backpack",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "plain grey bag, no coloured dots or maroon",
+  "disputed": false
  },
  {
   "lostId": "L-O-backpack-02",
@@ -4821,7 +5889,11 @@
   "tags": [
    "backpack",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-backpack-02",
@@ -4839,7 +5911,11 @@
   "tags": [
    "backpack",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "grey bag with grey sides, no orange or black body",
+  "disputed": false
  },
  {
   "lostId": "L-O-backpack-02",
@@ -4857,7 +5933,11 @@
   "tags": [
    "backpack",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "brown dotted school bag with pink zips, not orange and black Tamrac",
+  "disputed": false
  },
  {
   "lostId": "L-C-F18",
@@ -4875,7 +5955,11 @@
   "tags": [
    "textbook",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-C-F18",
@@ -4893,7 +5977,11 @@
   "tags": [
    "textbook",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "old Russian book with yellow pages, not a Zumdahl chemistry hardcover",
+  "disputed": false
  },
  {
   "lostId": "L-C-F18",
@@ -4911,7 +5999,11 @@
   "tags": [
    "textbook",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "kids science book on the solar system, not Zumdahl chemistry",
+  "disputed": false
  },
  {
   "lostId": "L-C-F23",
@@ -4929,7 +6021,11 @@
   "tags": [
    "textbook",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-C-F23",
@@ -4947,7 +6043,11 @@
   "tags": [
    "textbook",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "colourful English kids science book, not an old Russian book",
+  "disputed": false
  },
  {
   "lostId": "L-C-F23",
@@ -4965,7 +6065,11 @@
   "tags": [
    "textbook",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "black Zumdahl Chemistry textbook in English, not an old Russian book",
+  "disputed": false
  },
  {
   "lostId": "L-O-textbook-01",
@@ -4983,7 +6087,11 @@
   "tags": [
    "textbook",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-textbook-01",
@@ -5001,7 +6109,11 @@
   "tags": [
    "textbook",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "black Zumdahl Chemistry textbook, not a kids science book",
+  "disputed": false
  },
  {
   "lostId": "L-O-textbook-01",
@@ -5019,7 +6131,11 @@
   "tags": [
    "textbook",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "old Russian text book with yellow pages, no colour pictures",
+  "disputed": false
  },
  {
   "lostId": "L-O-power-bank-01",
@@ -5037,7 +6153,11 @@
   "tags": [
    "power-bank",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-power-bank-01",
@@ -5055,7 +6175,11 @@
   "tags": [
    "power-bank",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "light grey pebble shape, not slim black",
+  "disputed": false
  },
  {
   "lostId": "L-O-power-bank-01",
@@ -5073,7 +6197,11 @@
   "tags": [
    "power-bank",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "silver metal Xiaomi, not black",
+  "disputed": false
  },
  {
   "lostId": "L-O-power-bank-02",
@@ -5091,7 +6219,11 @@
   "tags": [
    "power-bank",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-power-bank-02",
@@ -5109,7 +6241,11 @@
   "tags": [
    "power-bank",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "silver metal Xiaomi bar, not an off-white stone shape",
+  "disputed": false
  },
  {
   "lostId": "L-O-power-bank-02",
@@ -5127,7 +6263,11 @@
   "tags": [
    "power-bank",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "flat black Anker, not an off-white stone shape",
+  "disputed": false
  },
  {
   "lostId": "L-O-power-bank-03",
@@ -5145,7 +6285,11 @@
   "tags": [
    "power-bank",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-power-bank-03",
@@ -5163,7 +6307,11 @@
   "tags": [
    "power-bank",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "black Anker, not silver Xiaomi metal",
+  "disputed": false
  },
  {
   "lostId": "L-O-power-bank-03",
@@ -5181,7 +6329,11 @@
   "tags": [
    "power-bank",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "pebble-shaped non-metal body with EU2017 logo, not a metal Xiaomi",
+  "disputed": false
  },
  {
   "lostId": "L-C-F02",
@@ -5199,7 +6351,11 @@
   "tags": [
    "pen",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-C-F02",
@@ -5217,7 +6373,11 @@
   "tags": [
    "pen",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "dark opaque metal pen, not a see-through blue pen with rubber grip",
+  "disputed": false
  },
  {
   "lostId": "L-C-F22",
@@ -5235,7 +6395,11 @@
   "tags": [
    "pen",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-C-F22",
@@ -5253,7 +6417,11 @@
   "tags": [
    "pen",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "clear plastic blue pen, not a black textured pen with a silver band",
+  "disputed": false
  },
  {
   "lostId": "L-O-bottle-01",
@@ -5271,7 +6439,11 @@
   "tags": [
    "bottle",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-bottle-01",
@@ -5289,7 +6461,11 @@
   "tags": [
    "bottle",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "silver steel Thermos tumbler, not a black bottle",
+  "disputed": false
  },
  {
   "lostId": "L-O-bottle-02",
@@ -5307,7 +6483,11 @@
   "tags": [
    "bottle",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-bottle-02",
@@ -5325,7 +6505,11 @@
   "tags": [
    "bottle",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "black bottle, not a silver steel thermos",
+  "disputed": false
  },
  {
   "lostId": "L-O-prayer-beads-01",
@@ -5343,7 +6527,11 @@
   "tags": [
    "prayer-beads",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-prayer-beads-01",
@@ -5361,7 +6549,11 @@
   "tags": [
    "prayer-beads",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "brown wooden beads on string, not greyish green beads on metal wire",
+  "disputed": false
  },
  {
   "lostId": "L-O-prayer-beads-02",
@@ -5379,7 +6571,11 @@
   "tags": [
    "prayer-beads",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-prayer-beads-02",
@@ -5397,7 +6593,11 @@
   "tags": [
    "prayer-beads",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "olive beads linked with metal wire, not brown wooden beads on string",
+  "disputed": false
  },
  {
   "lostId": "L-O-umbrella-01",
@@ -5415,7 +6615,11 @@
   "tags": [
    "umbrella",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-umbrella-01",
@@ -5433,7 +6637,11 @@
   "tags": [
    "umbrella",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "long umbrella with wooden hook handle, not a compact folding one",
+  "disputed": false
  },
  {
   "lostId": "L-O-umbrella-02",
@@ -5451,7 +6659,11 @@
   "tags": [
    "umbrella",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-umbrella-02",
@@ -5469,7 +6681,11 @@
   "tags": [
    "umbrella",
    "trap"
-  ]
+  ],
+  "secondLabel": "bad",
+  "secondCloseCall": false,
+  "secondNote": "small folded umbrella with metal cap, not a long one with wooden tip",
+  "disputed": false
  },
  {
   "lostId": "L-C-F04",
@@ -5487,7 +6703,11 @@
   "tags": [
    "earbuds",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-C-F09",
@@ -5505,7 +6725,11 @@
   "tags": [
    "notebook",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-C-F10",
@@ -5523,7 +6747,11 @@
   "tags": [
    "game",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": true,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-C-F11",
@@ -5541,7 +6769,11 @@
   "tags": [
    "sports",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-C-F12",
@@ -5559,7 +6791,11 @@
   "tags": [
    "remote",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-C-F19",
@@ -5577,7 +6813,11 @@
   "tags": [
    "shoes",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-C-F26",
@@ -5595,7 +6835,11 @@
   "tags": [
    "jacket",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": false,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-phone-01",
@@ -5613,7 +6857,11 @@
   "tags": [
    "phone",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": true,
+  "secondNote": "",
+  "disputed": false
  },
  {
   "lostId": "L-O-sunglasses-01",
@@ -5631,6 +6879,10 @@
   "tags": [
    "sunglasses",
    "must"
-  ]
+  ],
+  "secondLabel": "good",
+  "secondCloseCall": true,
+  "secondNote": "",
+  "disputed": false
  }
 ]
