@@ -33,6 +33,20 @@ Both lifted every pair, not only the ones they were aimed at. On the 220 pairs w
 
 The four real items it hides are rated 4.5 to 5.5 (navy hoodie against "black jacket", maroon against "brown wallet"). With the rule, lowering the line to 0.30 loses no real item. On Terra's answers the rule changes nothing: Terra already scores those pairs under 0.55. **This was found on the four sets it is reported on**; the fresh check is outside set 3.
 
+**The council's verdict sitting (H2).** J1r and A1 recorded as rejected, 4-0. The rule gets no accepting test, 1-3: it hides real items on the seen sets, so it fails the seen-set step that stopped J1r, and a rule that only hides pairs can at best tie on "no fewer real items"; how such a rule is to be judged is the owner's. Outside set 3 is read as information, 4-0. Wording loops for Haiku stop until the owner answers, 4-0 (two loops with nothing accepted). A repeat run on set 3 to measure chance, 4-0.
+
+**Outside set 3** (`data/independent3`: 269 reports, 285 pairs, 113 real, written by the `outside-benchmark-writer` and rated by two blind raters who are within one point on all 285 pairs). The lines (0.55 and 0.35) and the rule were fixed before it was scored; only totals and ratings were read, no pair text. Different models at different lines, read as information, nothing accepted:
+
+| Outside set 3 | Real items (of 113) | Other pairs (of 172) | Stupid matches (of 124) | Honest score, show from 5 |
+|---|---|---|---|---|
+| Today's app, Luna and Terra at 0.55 | 110 | 26 | 5 | 96% |
+| Haiku at 0.35 | 112 | 31 | 6 | 98% |
+| Haiku at 0.35 with the rule | 112 | 21 | 2 | |
+
+Against the measured chance band (about one real item, four other pairs and one stupid match per set) the rule's drop in stupid matches is outside it and it hid no real item here; Haiku's two extra real items over today's app are at the edge of it. Haiku ran through helper agents, 10 to 12 pairs at a time, not the app's route.
+
+**Owner's idea, started the same day: a panel of Haikus instead of instruction lines.** Six members, each answering for one rule only (kind of object, names and marks, brand, colour and material, place, time) and scoring how well a pair follows it. The ways of combining the six scores were written down before any score existed (`benchmark/_workspace/tuning/state.json`): the plain average; the average with the pair hidden when the kind or marks member says "differs"; the debate score with the same hiding; and a regression fitted on half the item kinds and scored on the other half. A close relative, Jev's typed questions decided in code, lost to the debate earlier in this log, with a weaker model and no photos.
+
 ## 2026-11-16: Haiku for all three roles, on the Claude plan (rough test, benchmark only)
 
 The owner asked for Claude Haiku 5.5 in place of Luna and Terra so that testing runs faster, on the Claude subscription only; an API key for production follows only if the results are good. Haiku wrote both advocates' arguments and judged them (the judge sees the photo) on all four rated sets, through helper agents: the app's exact prompts and inputs, a separate agent for each side, 10 pairs per advocate agent and 12 per judge agent. Search and the screen are the base runs'.
