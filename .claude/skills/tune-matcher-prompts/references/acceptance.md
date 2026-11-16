@@ -10,6 +10,7 @@ A candidate is accepted for the benchmark only if all of these hold on the **out
 2. At "show from 4" and "show from 6" it is not more than 1 point below the base. A wording that only wins at one setting is tuned to that setting.
 3. At the base's own best line it shows **no fewer real items** than the base. Recall is the deciding measure for this project: a missed match means someone never gets their item back.
 4. Its best line is stable: the two halves pick lines within 0.10 of each other. A line that jumps (0.10 on one half, 0.75 on the other) means the scores no longer order the pairs sensibly.
+5. At the line used for rule 3 it shows **no more stupid matches** than the base: pairs shown although the raters put them at quality 2 or below (`node scripts/edge-stupid.js --runs <base>:<line>,<candidate>:<line>`). Owner, 2026-11-16: "remember that we cant also make stupid matches". Report this count beside real items shown in every loop.
 
 On the **seen sets** it only has to not be worse (step 4 of the skill). Winning there proves little, because the wording was written from their failures.
 
