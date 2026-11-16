@@ -37,7 +37,7 @@ The real app is being **built from scratch**: an ASP.NET Core (.NET 10) backend 
 
 **Goal:** change the matching models' prompts only through a loop that diagnoses observed failures, attacks each small change before paying to test it, and accepts it only on a fresh outside benchmark scored with the owner's formula.
 
-**When to use:** for any request to engineer, tune, improve or re-test the matcher's prompts or line, to keep the loop running, to convene the loop council, or to build and run an outside check, use the `tune-matcher-prompts` skill. To write or rate a blind test set on its own, use `blind-benchmark`. Simple questions about results can be answered directly.
+**When to use:** for any request to engineer, tune, improve or re-test the matcher's prompts or line, to keep the loop running, to convene the loop council, or to build and run an outside check, use the `tune-matcher-prompts` skill. To write or rate a blind test set on its own, use `blind-benchmark`. To run or compare the redesigned debate (claimant, skeptic, referee) with Haiku or Opus, use `match-debate`. Simple questions about results can be answered directly.
 
 **Change log:**
 
@@ -47,6 +47,7 @@ The real app is being **built from scratch**: an ASP.NET Core (.NET 10) backend 
 | 2026-11-16 | A critic's `uncertain` becomes a named check in the paid test; only a `fail` with a concrete example stops a candidate | `tune-matcher-prompts` step 3 and its critic workflow | Loop 1: a sound fix drew no `fail` in two rounds and was still dropped. Owner's ruling |
 | 2026-11-16 | A loop council sits at three points of every loop (agenda, go or no-go, verdict and what next): four seats and a chair from the `agentic-council` plugin | `tune-matcher-prompts` steps 1b, 3b, 6b and `references/council.md` | Owner asked for a loop that keeps going without waiting for them; the council decides only what the critics, the tests and the acceptance rule leave open |
 | 2026-11-16 | No stupid matches: a fifth acceptance rule and a count in every report | `references/acceptance.md`, `benchmark/scripts/edge-stupid.js` | Owner's reminder that recall must not come with clearly wrong suggestions |
+| 2026-11-16 | Debate v2 added: three role agents (`match-claimant`, `match-skeptic`, `match-referee`) and the `match-debate` skill, run with Haiku or Opus on the Claude plan | `.claude/agents/match-*.md`, `.claude/skills/match-debate/` | One model alone matched or beat the first debate; the owner asked for the debate to be redone with the harness skill in a Haiku and an Opus version |
 
 ## Project rules that aren't obvious from the code
 
