@@ -22,6 +22,14 @@ public static class AdminEndpoints
             var matches = await db.Matches.GroupBy(m => m.Status).Select(g => new { Status = g.Key.ToString(), Count = g.Count() }).ToListAsync(ct);
             var reports = await db.Reports.GroupBy(r => new { r.Kind, r.Status }).Select(g => new { Kind = g.Key.Kind.ToString(), Status = g.Key.Status.ToString(), Count = g.Count() }).ToListAsync(ct);
             var decided = await db.Matches.GroupBy(m => m.DecidedBy).Select(g => new { By = g.Key.ToString(), Count = g.Count() }).ToListAsync(ct);
+            // Model-made suggestions people could see, real people only: matches made by hand at the RSA desk, ones still
+            // held or withheld by an admin, and sample data say nothing about how good the matcher's scores are.
+            var shown = await db.Matches
+                .Where(m => m.DecidedBy != MatchDecider.RsaStaff && m.Status != MatchStatus.Held && m.Status != MatchStatus.Withheld)
+                .Where(m => !m.Lost!.User!.Email.EndsWith(SampleData.EmailSuffix) && !m.Found!.User!.Email.EndsWith(SampleData.EmailSuffix))
+                .Select(m => new MatchOutcomes.Row(m.FinalScore, m.Status,
+                    db.Conversations.Any(c => c.MatchId == m.Id && c.Status == ConversationStatus.Returned)))
+                .ToListAsync(ct);
             return Results.Ok(new
             {
                 users = await db.Users.CountAsync(ct),
@@ -33,6 +41,7 @@ public static class AdminEndpoints
                 reports,
                 matches,
                 decidedBy = decided,
+                outcomes = MatchOutcomes.ByBand(shown),
                 returned = await db.Conversations.CountAsync(c => c.Status == ConversationStatus.Returned, ct),
                 pendingJobs = await db.MatchJobs.CountAsync(j => j.CompletedAt == null, ct),
                 failedJobs = await db.MatchJobs.CountAsync(j => j.CompletedAt != null && j.LastError != null, ct),

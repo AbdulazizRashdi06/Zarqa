@@ -10,7 +10,10 @@ import s from './Launch.module.css'
 import a from './Admin.module.css'
 
 type Group = { status?: string; count: number; kind?: string; by?: string }
+/** How shown suggestions turned out in one confidence band (server: MatchOutcomes.Band). */
+type Outcome = { key: 'below' | 'held' | 'small' | 'looks' | 'big'; shown: number; claimed: number; notMine: number; returned: number; waiting: number; expired: number }
 type Stats = {
+  outcomes?: Outcome[]
   users: number; admins?: number; sampleUsers?: number; sampleReports?: number; newUsers30d: number; returned: number
   pendingJobs: number; failedJobs: number; spendTodayUsd: number; spend30dUsd: number; reports?: Group[]; matches?: Group[]; decidedBy?: Group[]
 }
@@ -293,6 +296,26 @@ export default function Admin() {
           {outcome(`held:${m.id}`, true)}
         </Ticket>)}</div>}
     </section>
+
+    {stats?.outcomes && <section aria-labelledby="outcomes-title" className={a.section}>
+      <h2 id="outcomes-title">{t('admin.outcomes.title')}</h2>
+      <p className={a.note}>{t('admin.outcomes.note')}</p>
+      {stats.outcomes.every(o => o.shown === 0) ? <p>{t('admin.outcomes.empty')}</p>
+        : <div className={a.tableWrap}><table className={a.table}>
+          <thead><tr>
+            <th scope="col">{t('admin.outcomes.band')}</th>
+            <th scope="col">{t('admin.outcomes.shown')}</th>
+            <th scope="col">{t('admin.outcomes.claimed')}</th>
+            <th scope="col">{t('admin.outcomes.notMine')}</th>
+            <th scope="col">{t('admin.outcomes.returned')}</th>
+            <th scope="col">{t('admin.outcomes.waiting')}</th>
+          </tr></thead>
+          <tbody>{stats.outcomes.map(o => <tr key={o.key} data-outcome={o.key}>
+            <th scope="row">{t(`admin.outcomes.bands.${o.key}` as StringKey)}</th>
+            <td>{o.shown}</td><td>{o.claimed}</td><td>{o.notMine}</td><td>{o.returned}</td><td>{o.waiting + o.expired}</td>
+          </tr>)}</tbody>
+        </table></div>}
+    </section>}
 
     <section aria-labelledby="reports-title" className={a.section}>
       <h2 id="reports-title">{t('admin.reports')}</h2>
