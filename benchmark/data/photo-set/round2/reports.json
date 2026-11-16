@@ -152,13 +152,12 @@
   "campusZone": "",
   "eventDate": null,
   "createdAt": "2026-11-05T09:04:00.000Z",
-  "photos": [
-   "../../online/photos/wallet__1acc872a-1915-4a3d-9185-7dad0b79e0b5.jpg"
-  ],
+  "photos": [],
   "status": "open",
   "tags": [
    "wallet",
-   "finder_minimal"
+   "finder_minimal",
+   "card_photo_removed"
   ]
  },
  {

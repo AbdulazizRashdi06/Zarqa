@@ -80,19 +80,41 @@ export async function embed(texts, { useCache = true } = {}) {
   );
 }
 
-// At most PLAN_MAX_PARALLEL calls are on the plan at once (default 8): 20 at once drew a limit error within a minute
-// on 2026-11-16 although single calls worked again minutes later. Extra calls wait for a slot rather than go to the API.
-let planBusy = 0;
+// How many calls are on the plan at once is found, not guessed (owner, 2026-11-16: "check for the burst limit and
+// edge it"). Start at PLAN_MAX_PARALLEL (default 8); after a run of clean answers allow one more; on a limit error
+// drop to 70% and remember that level as the ceiling, so the run settles just under where the plan pushes back.
+// The ceiling is forgotten after 5 quiet minutes, because the plan's limit moves. Extra calls wait for a slot
+// rather than go to the API. 20 at once drew a limit within a minute on 2026-11-16; 8 at once ran clean.
+const PLAN_HARD_MAX = Number(process.env.PLAN_HARD_MAX || 40);
+let planMax = Number(process.env.PLAN_MAX_PARALLEL || 8), planCeiling = PLAN_HARD_MAX, planBusy = 0, planClean = 0, planLastLimit = 0, planPeak = 0;
 const planWaiters = [];
 async function planSlot() {
-  const max = Number(process.env.PLAN_MAX_PARALLEL || 8);
-  if (planBusy >= max) await new Promise((go) => planWaiters.push(go));
+  while (planBusy >= planMax) await new Promise((go) => planWaiters.push(go));
   planBusy++;
+  planPeak = Math.max(planPeak, planBusy);
   return () => {
     planBusy--;
     planWaiters.shift()?.();
   };
 }
+function planAnswered() {
+  if (planLastLimit && Date.now() - planLastLimit > 5 * 60_000) planCeiling = PLAN_HARD_MAX;
+  if (++planClean >= planMax * 3 && planMax < planCeiling - 1) {
+    planMax++;
+    planClean = 0;
+    planWaiters.shift()?.();
+    if (process.env.PLAN_LOG) console.error(`\n[plan] ${planMax} calls at once`);
+  }
+}
+function planPushedBack() {
+  if (Date.now() - planLastLimit < 5_000) return; // one burst produces several errors; react once
+  planLastLimit = Date.now();
+  planCeiling = Math.max(3, planBusy);
+  planMax = Math.max(2, Math.floor(planBusy * 0.7));
+  planClean = 0;
+  console.error(`\n[plan] limit error with ${planBusy} calls in flight; now ${planMax} at once, ceiling ${planCeiling}`);
+}
+export const planParallelism = () => ({ now: planMax, ceiling: planCeiling, peak: planPeak });
 
 /**
  * One structured-output Luna call: a text prompt plus optional photos (local file paths).
@@ -133,9 +155,11 @@ export async function chatJson({ system, text, imagePaths = [], imageDetail, sch
             try {
               const viaPlan = await postJson(`${plan}/chat/completions`, body, {}, { attempts: 1 });
               countRoute("plan");
+              planAnswered();
               return { parsed: JSON.parse(viaPlan.choices[0].message.content), inputTokens: viaPlan.usage?.prompt_tokens ?? 0, cachedInputTokens: 0, outputTokens: viaPlan.usage?.completion_tokens ?? 0, route: "plan" };
             } catch (err) {
               if (!/usage limit|HTTP 429/i.test(err.message)) break; // another gateway failure: this one call goes to the API
+              planPushedBack();
               if (attempt === 2) closePlan();
               else await new Promise((done) => setTimeout(done, 20_000 * (attempt + 1) + Math.random() * 5_000));
             }

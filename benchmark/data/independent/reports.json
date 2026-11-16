@@ -1927,11 +1927,11 @@
   "campusZone": "",
   "eventDate": null,
   "createdAt": "2026-11-08T13:57:57.000Z",
-  "photos": [
-   "../online/photos/wallet__1acc872a-1915-4a3d-9185-7dad0b79e0b5.jpg"
-  ],
+  "photos": [],
   "status": "open",
-  "tags": []
+  "tags": [
+   "card_photo_removed"
+  ]
  },
  {
   "id": "L-081",
