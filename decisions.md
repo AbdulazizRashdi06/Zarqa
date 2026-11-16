@@ -2,6 +2,37 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-16: Loops H1 and H2 with Haiku, the loop council, and a rule that halves stupid matches (benchmark only)
+
+**Owner's rulings.** "Remember that we can't also make stupid matches": a pair shown although raters put it at 2 of 10 or lower is counted in every test (`benchmark/scripts/edge-stupid.js`), and a change that shows more of them than the base is not accepted (fifth acceptance rule). The owner also asked for a loop council built with the harness and council plugins, so the loop keeps going without waiting for them.
+
+**The loop council** (`tune-matcher-prompts`, `references/council.md`): four seats from the `agentic-council` plugin (Oracle for evidence, Skeptic for risk, Advocate for the people using the app, Strategist for priority) and a chair (Steward) sit three times per loop: what to attack, which candidates to test, what to do after the verdict. Three of four votes carry; two against two is no. It cannot overrule a critic's `fail`, the acceptance rule, or the owner's rules, and anything that is the owner's goes on a docket (`benchmark/_workspace/tuning/owner-docket.md`).
+
+**Noise floor** (the council asked for it). Haiku's unchanged judge run twice on outside set 2: honest score 97% then 96%, real items 103 then 102, other pairs 48 then 44, stupid matches 11 then 10; 11 of 267 pairs crossed 0.35; mean absolute score change 0.048. Anything smaller than about one point, one real item or four other pairs per set is chance.
+
+**Loop H1: the two date notes with Haiku.** On the 83 pairs they apply to: real items 12 of 13 before and after, 9 more other pairs shown, stupid matches 33 to 34. Haiku already shows the real one-day-early pairs without help. No gain; not accepted for Haiku (their result with Luna and Terra stands as recorded below).
+
+**Loop H2.** Diagnosis of Haiku at 0.35 on the four seen sets: 24 missed and 99 wrongly shown; the largest class by far is a conflict that an advocate named and the judge still scored 0.35 to 0.50 (75 pairs), and the judge gives the same 0.35 to 0.39 to thin real pairs with nothing against them.
+
+| Candidate (as the council trimmed it) | Critics | Council | Seen sets at 0.35: real / others / stupid | Result |
+|---|---|---|---|---|
+| Base Haiku | | | 474 / 193 / 33 | |
+| J1r, judge: thin evidence is not a low score; a conflict is a difference no ordinary slip explains (`JUDGE_CONFLICT=1`) | J1 stopped by a `fail` (an owner writing Anker for a Baseus); the revision drew three `uncertain` | test parts 1 and 2 (4-0 each, part 2 trimmed), drop the no-photo sentence (0-4) | 477 / 220 / 42 | rejected at the seen-set step |
+| A1, advocates: different places and neighbouring shades are weak evidence (`ADVOCATE_PLACE_SHADE=1`) | three `uncertain` | place 4-0; shades 4-0 with "a different colour family is a contradiction" cut; the stated-difference clause dropped 1-3 | 477 / 216 / 40 | rejected at the seen-set step |
+
+Both lifted every pair, not only the ones they were aimed at. On the 220 pairs with two different named places, A1 moved real items 30 to 31, other pairs 46 to 61 and stupid matches 8 to 14: a different place was keeping lookalikes out. J1r did make the line less fragile on short text (0.35 to 0.40 loses 3 real items instead of 11), but its conflict half does not bite. Outside set 3 was not spent on either.
+
+**A rule in code, found while checking.** The judge already returns which case was stronger. "Do not show a pair when the judge says the case against is stronger" (`edge-stupid.js --not-against`, no new model calls, no tuned number):
+
+| Four seen sets | Real items (of 489) | Other pairs (of 783) | Stupid matches (of 545) |
+|---|---|---|---|
+| Today's app, Luna and Terra at 0.55 | 471 | 180 | 30 |
+| Haiku at 0.35 | 474 | 193 | 33 |
+| Haiku at 0.40 | 462 | 142 | 18 |
+| Haiku at 0.35 with the rule | 470 | 151 | 16 |
+
+The four real items it hides are rated 4.5 to 5.5 (navy hoodie against "black jacket", maroon against "brown wallet"). With the rule, lowering the line to 0.30 loses no real item. On Terra's answers the rule changes nothing: Terra already scores those pairs under 0.55. **This was found on the four sets it is reported on**; the fresh check is outside set 3.
+
 ## 2026-11-16: Haiku for all three roles, on the Claude plan (rough test, benchmark only)
 
 The owner asked for Claude Haiku 5.5 in place of Luna and Terra so that testing runs faster, on the Claude subscription only; an API key for production follows only if the results are good. Haiku wrote both advocates' arguments and judged them (the judge sees the photo) on all four rated sets, through helper agents: the app's exact prompts and inputs, a separate agent for each side, 10 pairs per advocate agent and 12 per judge agent. Search and the screen are the base runs'.
