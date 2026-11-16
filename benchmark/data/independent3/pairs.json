@@ -5,7 +5,13 @@
   "isMatch": true,
   "itemKind": "laptop",
   "lens": "plain",
-  "why": "Black Dell left charging in the library; the copper-coloured logo the owner names shows in the photo."
+  "why": "Black Dell left charging in the library; the copper-coloured logo the owner names shows in the photo.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "laptop",
+   "must"
+  ]
  },
  {
   "lostId": "L-001",
@@ -13,7 +19,13 @@
   "isMatch": false,
   "itemKind": "laptop",
   "lens": "twin",
-  "why": "Also a black Dell, but found in the canteen with a silver logo and a heavily scratched lid the owner does not mention."
+  "why": "Also a black Dell, but found in the canteen with a silver logo and a heavily scratched lid the owner does not mention.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "laptop",
+   "trap"
+  ]
  },
  {
   "lostId": "L-002",
@@ -21,7 +33,13 @@
   "isMatch": true,
   "itemKind": "laptop",
   "lens": "plain",
-  "why": "Scratched black Dell left in the canteen, as the owner says."
+  "why": "Scratched black Dell left in the canteen, as the owner says.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "laptop",
+   "must"
+  ]
  },
  {
   "lostId": "L-002",
@@ -29,7 +47,13 @@
   "isMatch": false,
   "itemKind": "laptop",
   "lens": "twin",
-  "why": "Black Dell of the same kind, but its lid is clean and it was left charging in the library."
+  "why": "Black Dell of the same kind, but its lid is clean and it was left charging in the library.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "laptop",
+   "trap"
+  ]
  },
  {
   "lostId": "L-003",
@@ -37,7 +61,13 @@
   "isMatch": true,
   "itemKind": "laptop",
   "lens": "language",
-  "why": "Arabic report of a silver MacBook lost in the studio; the finder wrote in English."
+  "why": "Arabic report of a silver MacBook lost in the studio; the finder wrote in English.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "laptop",
+   "must"
+  ]
  },
  {
   "lostId": "L-003",
@@ -45,7 +75,13 @@
   "isMatch": false,
   "itemKind": "laptop",
   "lens": "same-kind-diff",
-  "why": "A laptop, but a black Dell in the canteen, not a silver MacBook."
+  "why": "A laptop, but a black Dell in the canteen, not a silver MacBook.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "laptop",
+   "trap"
+  ]
  },
  {
   "lostId": "L-004",
@@ -53,7 +89,13 @@
   "isMatch": true,
   "itemKind": "laptop",
   "lens": "plain",
-  "why": "Grey HP with stickers in a GU2 classroom; the finder does not say which sticker."
+  "why": "Grey HP with stickers in a GU2 classroom; the finder does not say which sticker.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "laptop",
+   "must"
+  ]
  },
  {
   "lostId": "L-004",
@@ -61,7 +103,13 @@
   "isMatch": false,
   "itemKind": "laptop",
   "lens": "same-kind-diff",
-  "why": "Silver laptop is close to grey, but the photo shows an Apple MacBook with no stickers."
+  "why": "Silver laptop is close to grey, but the photo shows an Apple MacBook with no stickers.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "laptop",
+   "trap"
+  ]
  },
  {
   "lostId": "L-005",
@@ -69,7 +117,13 @@
   "isMatch": false,
   "itemKind": "laptop",
   "lens": "same-kind-diff",
-  "why": "Black laptop left in the library on the same day, but the photo shows a Dell logo, not a ThinkPad."
+  "why": "Black laptop left in the library on the same day, but the photo shows a Dell logo, not a ThinkPad.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "laptop",
+   "trap"
+  ]
  },
  {
   "lostId": "L-005",
@@ -77,7 +131,13 @@
   "isMatch": false,
   "itemKind": "laptop",
   "lens": "same-kind-diff",
-  "why": "Black laptop, but a Dell, and in the canteen."
+  "why": "Black laptop, but a Dell, and in the canteen.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "laptop",
+   "trap"
+  ]
  },
  {
   "lostId": "L-006",
@@ -85,7 +145,13 @@
   "isMatch": true,
   "itemKind": "charger",
   "lens": "plain",
-  "why": "Dell charger with a cloverleaf cable on the 4th floor; found a day after the owner's date."
+  "why": "Dell charger with a cloverleaf cable on the 4th floor; found a day after the owner's date.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "charger",
+   "must"
+  ]
  },
  {
   "lostId": "L-006",
@@ -93,7 +159,13 @@
   "isMatch": false,
   "itemKind": "charger",
   "lens": "twin",
-  "why": "Another Dell charger on the same floor; nothing in the text separates them, the photo-less report was simply someone else's."
+  "why": "Another Dell charger on the same floor; nothing in the text separates them, the photo-less report was simply someone else's.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "charger",
+   "trap"
+  ]
  },
  {
   "lostId": "L-006",
@@ -101,7 +173,13 @@
   "isMatch": false,
   "itemKind": "charger",
   "lens": "same-kind-diff",
-  "why": "A black laptop brick, but the photo shows a Chicony adapter with a European two-pin plug."
+  "why": "A black laptop brick, but the photo shows a Chicony adapter with a European two-pin plug.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "charger",
+   "trap"
+  ]
  },
  {
   "lostId": "L-007",
@@ -109,7 +187,13 @@
   "isMatch": true,
   "itemKind": "charger",
   "lens": "memory-slip",
-  "why": "German report of an Acer charger with a Euro plug; the brick itself is labelled Chicony, the maker of many Acer adapters."
+  "why": "German report of an Acer charger with a Euro plug; the brick itself is labelled Chicony, the maker of many Acer adapters.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "charger",
+   "must"
+  ]
  },
  {
   "lostId": "L-007",
@@ -117,7 +201,13 @@
   "isMatch": false,
   "itemKind": "charger",
   "lens": "same-kind-diff",
-  "why": "Laptop charger, but a Dell one with a cloverleaf cable on the 4th floor."
+  "why": "Laptop charger, but a Dell one with a cloverleaf cable on the 4th floor.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "charger",
+   "trap"
+  ]
  },
  {
   "lostId": "L-008",
@@ -125,7 +215,13 @@
   "isMatch": true,
   "itemKind": "charger",
   "lens": "plain",
-  "why": "White plug with a long black USB-C cable left in the copy centre socket."
+  "why": "White plug with a long black USB-C cable left in the copy centre socket.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "charger",
+   "must"
+  ]
  },
  {
   "lostId": "L-008",
@@ -133,7 +229,13 @@
   "isMatch": false,
   "itemKind": "cable",
   "lens": "part-found",
-  "why": "A long black USB-C cable, but found outside by the padel courts with no plug; it belongs to another owner."
+  "why": "A long black USB-C cable, but found outside by the padel courts with no plug; it belongs to another owner.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "cable",
+   "trap"
+  ]
  },
  {
   "lostId": "L-008",
@@ -141,7 +243,13 @@
   "isMatch": false,
   "itemKind": "cable",
   "lens": "same-kind-diff",
-  "why": "A white lightning cable, not a black USB-C cable with a plug."
+  "why": "A white lightning cable, not a black USB-C cable with a plug.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "cable",
+   "trap"
+  ]
  },
  {
   "lostId": "L-009",
@@ -149,7 +257,13 @@
   "isMatch": true,
   "itemKind": "cable",
   "lens": "plain",
-  "why": "Long black braided USB-C cable on the ground by the padel courts."
+  "why": "Long black braided USB-C cable on the ground by the padel courts.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "cable",
+   "must"
+  ]
  },
  {
   "lostId": "L-009",
@@ -157,7 +271,13 @@
   "isMatch": false,
   "itemKind": "cable",
   "lens": "part-found",
-  "why": "Same kind of long black cable, but this one is attached to a white plug in the copy centre and the owner lost only a cable outdoors."
+  "why": "Same kind of long black cable, but this one is attached to a white plug in the copy centre and the owner lost only a cable outdoors.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "cable",
+   "trap"
+  ]
  },
  {
   "lostId": "L-010",
@@ -165,7 +285,13 @@
   "isMatch": true,
   "itemKind": "pen",
   "lens": "sparse",
-  "why": "Finder wrote two words and no date; the photo shows the clear body and blue grip the owner describes."
+  "why": "Finder wrote two words and no date; the photo shows the clear body and blue grip the owner describes.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "pen",
+   "must"
+  ]
  },
  {
   "lostId": "L-010",
@@ -173,7 +299,13 @@
   "isMatch": false,
   "itemKind": "pen",
   "lens": "same-kind-diff",
-  "why": "A pen in Oman Hall, but a black one with silver rings."
+  "why": "A pen in Oman Hall, but a black one with silver rings.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "pen",
+   "trap"
+  ]
  },
  {
   "lostId": "L-011",
@@ -181,7 +313,13 @@
   "isMatch": true,
   "itemKind": "pen",
   "lens": "plain",
-  "why": "Black pen with silver rings found in Oman Hall."
+  "why": "Black pen with silver rings found in Oman Hall.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "pen",
+   "must"
+  ]
  },
  {
   "lostId": "L-011",
@@ -189,7 +327,13 @@
   "isMatch": false,
   "itemKind": "pen",
   "lens": "twin",
-  "why": "Also black lacquer pens with silver trim, but two pens in a denim pouch on the 4th floor."
+  "why": "Also black lacquer pens with silver trim, but two pens in a denim pouch on the 4th floor.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "pen",
+   "trap"
+  ]
  },
  {
   "lostId": "L-011",
@@ -197,7 +341,13 @@
   "isMatch": false,
   "itemKind": "pen",
   "lens": "different-kind",
-  "why": "A cheap blue plastic pen."
+  "why": "A cheap blue plastic pen.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "pen",
+   "trap"
+  ]
  },
  {
   "lostId": "L-012",
@@ -205,7 +355,13 @@
   "isMatch": true,
   "itemKind": "pen",
   "lens": "plain",
-  "why": "Two black pens in a denim sleeve on the 4th floor."
+  "why": "Two black pens in a denim sleeve on the 4th floor.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "pen",
+   "must"
+  ]
  },
  {
   "lostId": "L-012",
@@ -213,7 +369,13 @@
   "isMatch": false,
   "itemKind": "pen",
   "lens": "twin",
-  "why": "A single black pen with silver rings, without the pouch, in Oman Hall."
+  "why": "A single black pen with silver rings, without the pouch, in Oman Hall.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "pen",
+   "trap"
+  ]
  },
  {
   "lostId": "L-013",
@@ -221,7 +383,13 @@
   "isMatch": true,
   "itemKind": "backpack",
   "lens": "plain",
-  "why": "Grey backpack with black mesh back and side pockets found in the Sports Hall with notebooks inside."
+  "why": "Grey backpack with black mesh back and side pockets found in the Sports Hall with notebooks inside.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "backpack",
+   "must"
+  ]
  },
  {
   "lostId": "L-013",
@@ -229,7 +397,13 @@
   "isMatch": false,
   "itemKind": "backpack",
   "lens": "same-kind-diff",
-  "why": "A black Nike backpack on the bus."
+  "why": "A black Nike backpack on the bus.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "backpack",
+   "trap"
+  ]
  },
  {
   "lostId": "L-014",
@@ -237,7 +411,13 @@
   "isMatch": false,
   "itemKind": "backpack",
   "lens": "photo-cannot-tell",
-  "why": "Grey backpack in the gym on the same day; the photo shows only the back panel, so the Adidas stripes on the front can be neither seen nor ruled out. The author's truth is that it is not this one."
+  "why": "Grey backpack in the gym on the same day; the photo shows only the back panel, so the Adidas stripes on the front can be neither seen nor ruled out. The author's truth is that it is not this one.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "backpack",
+   "trap"
+  ]
  },
  {
   "lostId": "L-014",
@@ -245,7 +425,13 @@
   "isMatch": false,
   "itemKind": "backpack",
   "lens": "language",
-  "why": "Arabizi report of a grey Adidas backpack; the found one is a black Nike on the bus."
+  "why": "Arabizi report of a grey Adidas backpack; the found one is a black Nike on the bus.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "backpack",
+   "trap"
+  ]
  },
  {
   "lostId": "L-015",
@@ -253,7 +439,13 @@
   "isMatch": true,
   "itemKind": "backpack",
   "lens": "plain",
-  "why": "Brown backpack with big coloured dots and pink zips at the girls' dorm reception."
+  "why": "Brown backpack with big coloured dots and pink zips at the girls' dorm reception.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "backpack",
+   "must"
+  ]
  },
  {
   "lostId": "L-015",
@@ -261,7 +453,13 @@
   "isMatch": false,
   "itemKind": "backpack",
   "lens": "same-kind-diff",
-  "why": "A backpack with orange on it, but a black-and-orange camera bag."
+  "why": "A backpack with orange on it, but a black-and-orange camera bag.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "backpack",
+   "trap"
+  ]
  },
  {
   "lostId": "L-016",
@@ -269,7 +467,13 @@
   "isMatch": true,
   "itemKind": "backpack",
   "lens": "plain",
-  "why": "Tamrac camera backpack, orange and black, heavy with a lens, found under the amphi seats."
+  "why": "Tamrac camera backpack, orange and black, heavy with a lens, found under the amphi seats.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "backpack",
+   "must"
+  ]
  },
  {
   "lostId": "L-016",
@@ -277,7 +481,13 @@
   "isMatch": false,
   "itemKind": "backpack",
   "lens": "same-kind-diff",
-  "why": "A backpack with orange dots, but brown with pink zips, at the girls' dorms."
+  "why": "A backpack with orange dots, but brown with pink zips, at the girls' dorms.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "backpack",
+   "trap"
+  ]
  },
  {
   "lostId": "L-017",
@@ -285,7 +495,13 @@
   "isMatch": false,
   "itemKind": "backpack",
   "lens": "same-kind-diff",
-  "why": "Orange and black backpack, but the photo shows a Tamrac logo, not The North Face, and it was found in the amphi."
+  "why": "Orange and black backpack, but the photo shows a Tamrac logo, not The North Face, and it was found in the amphi.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "backpack",
+   "trap"
+  ]
  },
  {
   "lostId": "L-017",
@@ -293,7 +509,13 @@
   "isMatch": false,
   "itemKind": "backpack",
   "lens": "same-kind-diff",
-  "why": "A backpack in the Sports Hall, but grey, not orange."
+  "why": "A backpack in the Sports Hall, but grey, not orange.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "backpack",
+   "trap"
+  ]
  },
  {
   "lostId": "L-018",
@@ -301,7 +523,13 @@
   "isMatch": true,
   "itemKind": "backpack",
   "lens": "sparse",
-  "why": "Black Nike backpack left on the bus; both sides say little but agree."
+  "why": "Black Nike backpack left on the bus; both sides say little but agree.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "backpack",
+   "must"
+  ]
  },
  {
   "lostId": "L-018",
@@ -309,7 +537,13 @@
   "isMatch": false,
   "itemKind": "backpack",
   "lens": "same-kind-diff",
-  "why": "Grey backpack in the Sports Hall."
+  "why": "Grey backpack in the Sports Hall.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "backpack",
+   "trap"
+  ]
  },
  {
   "lostId": "L-019",
@@ -317,7 +551,13 @@
   "isMatch": true,
   "itemKind": "earbuds",
   "lens": "plain",
-  "why": "JBL case, silver rim and black top, outside GU2."
+  "why": "JBL case, silver rim and black top, outside GU2.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "earbuds",
+   "must"
+  ]
  },
  {
   "lostId": "L-019",
@@ -325,7 +565,13 @@
   "isMatch": false,
   "itemKind": "earbuds",
   "lens": "same-kind-diff",
-  "why": "An earbuds case found near GU2, but a black Samsung one."
+  "why": "An earbuds case found near GU2, but a black Samsung one.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "earbuds",
+   "trap"
+  ]
  },
  {
   "lostId": "L-020",
@@ -333,7 +579,13 @@
   "isMatch": true,
   "itemKind": "earbuds",
   "lens": "part-found",
-  "why": "White AirPods case found empty in the library; the owner lost the case with the earbuds inside."
+  "why": "White AirPods case found empty in the library; the owner lost the case with the earbuds inside.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "earbuds",
+   "must"
+  ]
  },
  {
   "lostId": "L-020",
@@ -341,7 +593,13 @@
   "isMatch": false,
   "itemKind": "earbuds",
   "lens": "same-kind-diff",
-  "why": "An earbuds case, but a JBL with a black top."
+  "why": "An earbuds case, but a JBL with a black top.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "earbuds",
+   "trap"
+  ]
  },
  {
   "lostId": "L-020",
@@ -349,7 +607,13 @@
   "isMatch": false,
   "itemKind": "earbuds",
   "lens": "kind-trap",
-  "why": "White Apple earphones, but wired ones, not AirPods."
+  "why": "White Apple earphones, but wired ones, not AirPods.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "earbuds",
+   "trap"
+  ]
  },
  {
   "lostId": "L-021",
@@ -357,7 +621,13 @@
   "isMatch": true,
   "itemKind": "earbuds",
   "lens": "sparse",
-  "why": "Black Galaxy Buds in GU2 parking; three words from the owner."
+  "why": "Black Galaxy Buds in GU2 parking; three words from the owner.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "earbuds",
+   "must"
+  ]
  },
  {
   "lostId": "L-021",
@@ -365,7 +635,13 @@
   "isMatch": false,
   "itemKind": "earbuds",
   "lens": "same-kind-diff",
-  "why": "Earbuds case near GU2 with a black top, but the photo shows JBL and a silver rim."
+  "why": "Earbuds case near GU2 with a black top, but the photo shows JBL and a silver rim.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "earbuds",
+   "trap"
+  ]
  },
  {
   "lostId": "L-022",
@@ -373,7 +649,13 @@
   "isMatch": true,
   "itemKind": "glasses",
   "lens": "language",
-  "why": "Arabic finder report from room 205 on the second floor of GU1; the photo shows thick black plastic frames."
+  "why": "Arabic finder report from room 205 on the second floor of GU1; the photo shows thick black plastic frames.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "glasses",
+   "must"
+  ]
  },
  {
   "lostId": "L-022",
@@ -381,7 +663,13 @@
   "isMatch": false,
   "itemKind": "glasses",
   "lens": "same-kind-diff",
-  "why": "Glasses, but a thin metal frame in the library."
+  "why": "Glasses, but a thin metal frame in the library.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
  },
  {
   "lostId": "L-023",
@@ -389,7 +677,13 @@
   "isMatch": true,
   "itemKind": "glasses",
   "lens": "memory-slip",
-  "why": "Arabic report of thin black metal frames in the library; the photo shows thin dark gunmetal metal frames."
+  "why": "Arabic report of thin black metal frames in the library; the photo shows thin dark gunmetal metal frames.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "glasses",
+   "must"
+  ]
  },
  {
   "lostId": "L-023",
@@ -397,7 +691,13 @@
   "isMatch": false,
   "itemKind": "glasses",
   "lens": "same-kind-diff",
-  "why": "Black frames, but thick plastic and in a GU1 classroom, not thin metal."
+  "why": "Black frames, but thick plastic and in a GU1 classroom, not thin metal.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
  },
  {
   "lostId": "L-023",
@@ -405,7 +705,13 @@
   "isMatch": false,
   "itemKind": "glasses",
   "lens": "same-kind-diff",
-  "why": "Thin metal frame, but gold-coloured with amber pads and in the canteen."
+  "why": "Thin metal frame, but gold-coloured with amber pads and in the canteen.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
  },
  {
   "lostId": "L-024",
@@ -413,7 +719,13 @@
   "isMatch": true,
   "itemKind": "glasses",
   "lens": "plain",
-  "why": "Rimless glasses found in the female residences."
+  "why": "Rimless glasses found in the female residences.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "glasses",
+   "must"
+  ]
  },
  {
   "lostId": "L-024",
@@ -421,7 +733,13 @@
   "isMatch": false,
   "itemKind": "glasses",
   "lens": "same-kind-diff",
-  "why": "Thin metal glasses, but full-rim."
+  "why": "Thin metal glasses, but full-rim.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
  },
  {
   "lostId": "L-025",
@@ -429,7 +747,13 @@
   "isMatch": true,
   "itemKind": "glasses",
   "lens": "photo-decides",
-  "why": "Finder wrote only 'glasses, metal frame'; the photo shows the gold colour and amber nose pads."
+  "why": "Finder wrote only 'glasses, metal frame'; the photo shows the gold colour and amber nose pads.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "glasses",
+   "must"
+  ]
  },
  {
   "lostId": "L-025",
@@ -437,7 +761,13 @@
   "isMatch": false,
   "itemKind": "glasses",
   "lens": "same-kind-diff",
-  "why": "Thin metal frame, but dark gunmetal, not gold, and in the library."
+  "why": "Thin metal frame, but dark gunmetal, not gold, and in the library.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
  },
  {
   "lostId": "L-026",
@@ -445,7 +775,13 @@
   "isMatch": false,
   "itemKind": "glasses",
   "lens": "twin",
-  "why": "Gold metal glasses found the same day, but in the canteen; nothing in the evidence separates them except the place. Author's truth: another owner's."
+  "why": "Gold metal glasses found the same day, but in the canteen; nothing in the evidence separates them except the place. Author's truth: another owner's.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
  },
  {
   "lostId": "L-026",
@@ -453,7 +789,13 @@
   "isMatch": false,
   "itemKind": "glasses",
   "lens": "same-kind-diff",
-  "why": "Found in the library, but dark metal, not gold."
+  "why": "Found in the library, but dark metal, not gold.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
  },
  {
   "lostId": "L-027",
@@ -461,7 +803,13 @@
   "isMatch": true,
   "itemKind": "glasses",
   "lens": "plain",
-  "why": "An optician's trial frame from the sciences floor; the finder did not know what it was."
+  "why": "An optician's trial frame from the sciences floor; the finder did not know what it was.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "glasses",
+   "must"
+  ]
  },
  {
   "lostId": "L-027",
@@ -469,7 +817,13 @@
   "isMatch": false,
   "itemKind": "glasses",
   "lens": "different-kind",
-  "why": "Ordinary black prescription glasses."
+  "why": "Ordinary black prescription glasses.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
  },
  {
   "lostId": "L-028",
@@ -477,7 +831,13 @@
   "isMatch": true,
   "itemKind": "sunglasses",
   "lens": "plain",
-  "why": "Oversized burgundy sunglasses with blue gradient lenses at the padel courts; the owner is unsure of the brand and none shows."
+  "why": "Oversized burgundy sunglasses with blue gradient lenses at the padel courts; the owner is unsure of the brand and none shows.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "sunglasses",
+   "must"
+  ]
  },
  {
   "lostId": "L-028",
@@ -485,7 +845,13 @@
   "isMatch": false,
   "itemKind": "sunglasses",
   "lens": "same-kind-diff",
-  "why": "Sunglasses at the padel courts, but black Ray-Bans."
+  "why": "Sunglasses at the padel courts, but black Ray-Bans.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "sunglasses",
+   "trap"
+  ]
  },
  {
   "lostId": "L-029",
@@ -493,7 +859,13 @@
   "isMatch": true,
   "itemKind": "sunglasses",
   "lens": "plain",
-  "why": "Black Ray-Bans at the padel courts."
+  "why": "Black Ray-Bans at the padel courts.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "sunglasses",
+   "must"
+  ]
  },
  {
   "lostId": "L-029",
@@ -501,7 +873,13 @@
   "isMatch": false,
   "itemKind": "sunglasses",
   "lens": "same-kind-diff",
-  "why": "Sunglasses at the padel courts the day before, but an oversized burgundy frame."
+  "why": "Sunglasses at the padel courts the day before, but an oversized burgundy frame.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "sunglasses",
+   "trap"
+  ]
  },
  {
   "lostId": "L-030",
@@ -509,7 +887,13 @@
   "isMatch": true,
   "itemKind": "book",
   "lens": "plain",
-  "why": "Blue marbled hardcover in Germany Hall; the finder calls it a book, the owner a notebook."
+  "why": "Blue marbled hardcover in Germany Hall; the finder calls it a book, the owner a notebook.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "book",
+   "must"
+  ]
  },
  {
   "lostId": "L-030",
@@ -517,7 +901,13 @@
   "isMatch": false,
   "itemKind": "notebook",
   "lens": "same-kind-diff",
-  "why": "A notebook, but an A4 spiral one with thermodynamics notes."
+  "why": "A notebook, but an A4 spiral one with thermodynamics notes.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "notebook",
+   "trap"
+  ]
  },
  {
   "lostId": "L-031",
@@ -525,7 +915,13 @@
   "isMatch": true,
   "itemKind": "book",
   "lens": "memory-slip",
-  "why": "Zumdahl Chemistry on the 3rd floor; the owner guesses the 10th edition, the spine says ninth."
+  "why": "Zumdahl Chemistry on the 3rd floor; the owner guesses the 10th edition, the spine says ninth.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "book",
+   "must"
+  ]
  },
  {
   "lostId": "L-031",
@@ -533,7 +929,13 @@
   "isMatch": false,
   "itemKind": "book",
   "lens": "same-kind-diff",
-  "why": "A chemistry book, but Atkins, in the library."
+  "why": "A chemistry book, but Atkins, in the library.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "book",
+   "trap"
+  ]
  },
  {
   "lostId": "L-032",
@@ -541,7 +943,13 @@
   "isMatch": true,
   "itemKind": "book",
   "lens": "sparse",
-  "why": "Atkins chemistry book in the library."
+  "why": "Atkins chemistry book in the library.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "book",
+   "must"
+  ]
  },
  {
   "lostId": "L-032",
@@ -549,7 +957,13 @@
   "isMatch": false,
   "itemKind": "book",
   "lens": "same-kind-diff",
-  "why": "Chemistry textbook, but the photo shows Zumdahl."
+  "why": "Chemistry textbook, but the photo shows Zumdahl.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "book",
+   "trap"
+  ]
  },
  {
   "lostId": "L-033",
@@ -557,7 +971,13 @@
   "isMatch": true,
   "itemKind": "book",
   "lens": "photo-decides",
-  "why": "Finder says only 'not English, not Arabic'; the photo shows Cyrillic print, matching the Russian novel."
+  "why": "Finder says only 'not English, not Arabic'; the photo shows Cyrillic print, matching the Russian novel.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "book",
+   "must"
+  ]
  },
  {
   "lostId": "L-034",
@@ -565,7 +985,13 @@
   "isMatch": false,
   "itemKind": "book",
   "lens": "photo-decides",
-  "why": "Old yellowed book in the same garden on the same day, but the photo shows Cyrillic, not Arabic, script."
+  "why": "Old yellowed book in the same garden on the same day, but the photo shows Cyrillic, not Arabic, script.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "book",
+   "trap"
+  ]
  },
  {
   "lostId": "L-035",
@@ -573,7 +999,13 @@
   "isMatch": true,
   "itemKind": "book",
   "lens": "plain",
-  "why": "Children's science book open at the solar system, left in Oman Hall."
+  "why": "Children's science book open at the solar system, left in Oman Hall.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "book",
+   "must"
+  ]
  },
  {
   "lostId": "L-035",
@@ -581,7 +1013,13 @@
   "isMatch": false,
   "itemKind": "book",
   "lens": "different-kind",
-  "why": "A plain hardcover with a marbled cover."
+  "why": "A plain hardcover with a marbled cover.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "book",
+   "trap"
+  ]
  },
  {
   "lostId": "L-036",
@@ -589,7 +1027,13 @@
   "isMatch": true,
   "itemKind": "game",
   "lens": "language",
-  "why": "The Arabic title and Balinca brand agree on both sides."
+  "why": "The Arabic title and Balinca brand agree on both sides.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "game",
+   "must"
+  ]
  },
  {
   "lostId": "L-037",
@@ -597,7 +1041,13 @@
   "isMatch": false,
   "itemKind": "game",
   "lens": "same-kind-diff",
-  "why": "A card game in the same lounge on the same day, but Money Talks, not Uno."
+  "why": "A card game in the same lounge on the same day, but Money Talks, not Uno.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "game",
+   "trap"
+  ]
  },
  {
   "lostId": "L-038",
@@ -605,7 +1055,13 @@
   "isMatch": true,
   "itemKind": "sports",
   "lens": "photo-decides",
-  "why": "Finder wrote 'old table tennis racket'; the photo shows the orange handle and peeling red rubber."
+  "why": "Finder wrote 'old table tennis racket'; the photo shows the orange handle and peeling red rubber.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "sports",
+   "must"
+  ]
  },
  {
   "lostId": "L-039",
@@ -613,7 +1069,13 @@
   "isMatch": false,
   "itemKind": "sports",
   "lens": "same-kind-diff",
-  "why": "Table tennis bat in the Sports Hall, but the photo shows a worn cheap bat with an orange handle, not an almost new black and red Butterfly."
+  "why": "Table tennis bat in the Sports Hall, but the photo shows a worn cheap bat with an orange handle, not an almost new black and red Butterfly.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "sports",
+   "trap"
+  ]
  },
  {
   "lostId": "L-040",
@@ -621,7 +1083,13 @@
   "isMatch": true,
   "itemKind": "remote",
   "lens": "photo-decides",
-  "why": "Finder gave no brand; the photo shows an Oscar remote."
+  "why": "Finder gave no brand; the photo shows an Oscar remote.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "remote",
+   "must"
+  ]
  },
  {
   "lostId": "L-041",
@@ -629,7 +1097,13 @@
   "isMatch": false,
   "itemKind": "remote",
   "lens": "same-kind-diff",
-  "why": "A remote in the boys' dorms, but a dark grey TV remote, not a white AC one."
+  "why": "A remote in the boys' dorms, but a dark grey TV remote, not a white AC one.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "remote",
+   "trap"
+  ]
  },
  {
   "lostId": "L-042",
@@ -637,7 +1111,13 @@
   "isMatch": true,
   "itemKind": "clothing",
   "lens": "kind-trap",
-  "why": "Owner says kumma, finder was unsure what the white cloth with brown embroidery is; the photo fits a crumpled cap."
+  "why": "Owner says kumma, finder was unsure what the white cloth with brown embroidery is; the photo fits a crumpled cap.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "clothing",
+   "must"
+  ]
  },
  {
   "lostId": "L-043",
@@ -645,7 +1125,13 @@
   "isMatch": false,
   "itemKind": "clothing",
   "lens": "same-kind-diff",
-  "why": "A white kumma, but the photo shows brown embroidery, not green and red."
+  "why": "A white kumma, but the photo shows brown embroidery, not green and red.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "clothing",
+   "trap"
+  ]
  },
  {
   "lostId": "L-044",
@@ -653,7 +1139,13 @@
   "isMatch": true,
   "itemKind": "sandals",
   "lens": "place-date-off",
-  "why": "Arabic report of black leather sandals at the musalla; the finder posted three days later."
+  "why": "Arabic report of black leather sandals at the musalla; the finder posted three days later.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "sandals",
+   "must"
+  ]
  },
  {
   "lostId": "L-044",
@@ -661,7 +1153,13 @@
   "isMatch": false,
   "itemKind": "earphones",
   "lens": "different-kind",
-  "why": "White earphones."
+  "why": "White earphones.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "earphones",
+   "trap"
+  ]
  },
  {
   "lostId": "L-045",
@@ -669,7 +1167,13 @@
   "isMatch": false,
   "itemKind": "sandals",
   "lens": "same-kind-diff",
-  "why": "Leather sandals by a prayer room, but black and at GU1, not brown and at GU2."
+  "why": "Leather sandals by a prayer room, but black and at GU1, not brown and at GU2.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "sandals",
+   "trap"
+  ]
  },
  {
   "lostId": "L-046",
@@ -677,7 +1181,13 @@
   "isMatch": true,
   "itemKind": "keys",
   "lens": "plain",
-  "why": "Keys on a silver carabiner found in the dirt parking."
+  "why": "Keys on a silver carabiner found in the dirt parking.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "keys",
+   "must"
+  ]
  },
  {
   "lostId": "L-046",
@@ -685,7 +1195,13 @@
   "isMatch": false,
   "itemKind": "keys",
   "lens": "same-kind-diff",
-  "why": "A bunch of keys, but about ten on a ring with a round tag and no carabiner."
+  "why": "A bunch of keys, but about ten on a ring with a round tag and no carabiner.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "keys",
+   "trap"
+  ]
  },
  {
   "lostId": "L-047",
@@ -693,7 +1209,13 @@
   "isMatch": true,
   "itemKind": "keys",
   "lens": "plain",
-  "why": "About ten keys with a round tag and a torch-like object, found at the main entrance."
+  "why": "About ten keys with a round tag and a torch-like object, found at the main entrance.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "keys",
+   "must"
+  ]
  },
  {
   "lostId": "L-047",
@@ -701,7 +1223,13 @@
   "isMatch": false,
   "itemKind": "keys",
   "lens": "same-kind-diff",
-  "why": "Keys, but five on a carabiner, in the dirt parking."
+  "why": "Keys, but five on a carabiner, in the dirt parking.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "keys",
+   "trap"
+  ]
  },
  {
   "lostId": "L-048",
@@ -709,7 +1237,13 @@
   "isMatch": true,
   "itemKind": "keys",
   "lens": "language",
-  "why": "Both reports in German; the photo shows an old bit key and a grey tag."
+  "why": "Both reports in German; the photo shows an old bit key and a grey tag.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "keys",
+   "must"
+  ]
  },
  {
   "lostId": "L-048",
@@ -717,7 +1251,13 @@
   "isMatch": false,
   "itemKind": "keys",
   "lens": "same-kind-diff",
-  "why": "Many keys, but no old bit key and no grey tag in the photo."
+  "why": "Many keys, but no old bit key and no grey tag in the photo.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "keys",
+   "trap"
+  ]
  },
  {
   "lostId": "L-049",
@@ -725,7 +1265,13 @@
   "isMatch": true,
   "itemKind": "keys",
   "lens": "plain",
-  "why": "A single key with a red rubber cover found on the GU1 stairs."
+  "why": "A single key with a red rubber cover found on the GU1 stairs.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "keys",
+   "must"
+  ]
  },
  {
   "lostId": "L-049",
@@ -733,7 +1279,13 @@
   "isMatch": false,
   "itemKind": "keys",
   "lens": "same-kind-diff",
-  "why": "A small key, but on a grey GUtech lanyard in Germany Hall."
+  "why": "A small key, but on a grey GUtech lanyard in Germany Hall.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "keys",
+   "trap"
+  ]
  },
  {
   "lostId": "L-050",
@@ -741,7 +1293,13 @@
   "isMatch": true,
   "itemKind": "keys",
   "lens": "sparse",
-  "why": "Both sides almost empty and undated; the blurry photo shows a black key head beside other keys, as the owner says."
+  "why": "Both sides almost empty and undated; the blurry photo shows a black key head beside other keys, as the owner says.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "keys",
+   "must"
+  ]
  },
  {
   "lostId": "L-050",
@@ -749,7 +1307,13 @@
   "isMatch": false,
   "itemKind": "keys",
   "lens": "sparse",
-  "why": "Also keys with a black-headed key in the photo, but found at the main entrance; no detail separates them, only the author knows."
+  "why": "Also keys with a black-headed key in the photo, but found at the main entrance; no detail separates them, only the author knows.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "keys",
+   "trap"
+  ]
  },
  {
   "lostId": "L-050",
@@ -757,7 +1321,13 @@
   "isMatch": false,
   "itemKind": "keys",
   "lens": "sparse",
-  "why": "Keys, but in the dirt parking, and none of them is a car key."
+  "why": "Keys, but in the dirt parking, and none of them is a car key.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "keys",
+   "trap"
+  ]
  },
  {
   "lostId": "L-051",
@@ -765,7 +1335,13 @@
   "isMatch": true,
   "itemKind": "car-key",
   "lens": "plain",
-  "why": "Two-button car key with a silver car-shaped tag in the student parking."
+  "why": "Two-button car key with a silver car-shaped tag in the student parking.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "car-key",
+   "must"
+  ]
  },
  {
   "lostId": "L-051",
@@ -773,7 +1349,13 @@
   "isMatch": false,
   "itemKind": "car-key",
   "lens": "twin",
-  "why": "A two-button Toyota key, but with nothing on it and in GU2 parking."
+  "why": "A two-button Toyota key, but with nothing on it and in GU2 parking.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
  },
  {
   "lostId": "L-052",
@@ -781,7 +1363,13 @@
   "isMatch": true,
   "itemKind": "car-key",
   "lens": "sparse",
-  "why": "Black Toyota key in GU2 parking."
+  "why": "Black Toyota key in GU2 parking.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "car-key",
+   "must"
+  ]
  },
  {
   "lostId": "L-052",
@@ -789,7 +1377,13 @@
   "isMatch": false,
   "itemKind": "car-key",
   "lens": "twin",
-  "why": "Two-button black key of the same style, but with a car-shaped tag the owner does not mention, in the student parking."
+  "why": "Two-button black key of the same style, but with a car-shaped tag the owner does not mention, in the student parking.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
  },
  {
   "lostId": "L-053",
@@ -797,7 +1391,13 @@
   "isMatch": true,
   "itemKind": "car-key",
   "lens": "language",
-  "why": "Arabizi report of a VW flip key with a little Japanese sumo doll on an orange string; the photo shows exactly that."
+  "why": "Arabizi report of a VW flip key with a little Japanese sumo doll on an orange string; the photo shows exactly that.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "car-key",
+   "must"
+  ]
  },
  {
   "lostId": "L-053",
@@ -805,7 +1405,13 @@
   "isMatch": false,
   "itemKind": "car-key",
   "lens": "same-kind-diff",
-  "why": "A black car key in GU1 parking, but with no charm."
+  "why": "A black car key in GU1 parking, but with no charm.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
  },
  {
   "lostId": "L-054",
@@ -813,7 +1419,13 @@
   "isMatch": true,
   "itemKind": "car-key",
   "lens": "plain",
-  "why": "Honda smart key at the main entrance."
+  "why": "Honda smart key at the main entrance.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "car-key",
+   "must"
+  ]
  },
  {
   "lostId": "L-055",
@@ -821,7 +1433,13 @@
   "isMatch": false,
   "itemKind": "car-key",
   "lens": "same-kind-diff",
-  "why": "Honda key at the main entrance on the same day, but a keyless smart fob, not a blade key."
+  "why": "Honda key at the main entrance on the same day, but a keyless smart fob, not a blade key.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
  },
  {
   "lostId": "L-056",
@@ -829,7 +1447,13 @@
   "isMatch": true,
   "itemKind": "car-key",
   "lens": "plain",
-  "why": "Key snapped in two, both pieces, in the workshops."
+  "why": "Key snapped in two, both pieces, in the workshops.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "car-key",
+   "must"
+  ]
  },
  {
   "lostId": "L-056",
@@ -837,7 +1461,13 @@
   "isMatch": false,
   "itemKind": "car-key",
   "lens": "same-kind-diff",
-  "why": "A whole black car key in a parking lot."
+  "why": "A whole black car key in a parking lot.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
  },
  {
   "lostId": "L-057",
@@ -845,7 +1475,13 @@
   "isMatch": true,
   "itemKind": "car-key",
   "lens": "plain",
-  "why": "Mercedes key with a chrome Mercedes keychain in the dirt parking."
+  "why": "Mercedes key with a chrome Mercedes keychain in the dirt parking.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "car-key",
+   "must"
+  ]
  },
  {
   "lostId": "L-057",
@@ -853,7 +1489,13 @@
   "isMatch": false,
   "itemKind": "car-key",
   "lens": "same-kind-diff",
-  "why": "A black car key, but in GU1 parking with no keychain mentioned."
+  "why": "A black car key, but in GU1 parking with no keychain mentioned.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
  },
  {
   "lostId": "L-058",
@@ -861,7 +1503,13 @@
   "isMatch": true,
   "itemKind": "car-key",
   "lens": "sparse",
-  "why": "Black car key in GU1 parking; the finder gives no brand."
+  "why": "Black car key in GU1 parking; the finder gives no brand.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "car-key",
+   "must"
+  ]
  },
  {
   "lostId": "L-058",
@@ -869,7 +1517,13 @@
   "isMatch": false,
   "itemKind": "car-key",
   "lens": "same-kind-diff",
-  "why": "A Mercedes key, but on a chrome keychain while the owner says there was no ring."
+  "why": "A Mercedes key, but on a chrome keychain while the owner says there was no ring.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
  },
  {
   "lostId": "L-059",
@@ -877,7 +1531,13 @@
   "isMatch": true,
   "itemKind": "usb",
   "lens": "photo-decides",
-  "why": "The finder took it for a car remote; the photo shows a USB plug, as the owner says."
+  "why": "The finder took it for a car remote; the photo shows a USB plug, as the owner says.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "usb",
+   "must"
+  ]
  },
  {
   "lostId": "L-059",
@@ -885,7 +1545,13 @@
   "isMatch": false,
   "itemKind": "usb",
   "lens": "sparse",
-  "why": "A USB found in the copy centre, but no detail; the key-shaped one is in the other report."
+  "why": "A USB found in the copy centre, but no detail; the key-shaped one is in the other report.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "usb",
+   "trap"
+  ]
  },
  {
   "lostId": "L-060",
@@ -893,7 +1559,13 @@
   "isMatch": false,
   "itemKind": "car-key",
   "lens": "photo-decides",
-  "why": "The finder's words fit a black and grey car remote, but the photo shows a USB stick."
+  "why": "The finder's words fit a black and grey car remote, but the photo shows a USB stick.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
  },
  {
   "lostId": "L-061",
@@ -901,7 +1573,13 @@
   "isMatch": true,
   "itemKind": "car-key",
   "lens": "plain",
-  "why": "Nissan key with a blue lanyard in the student parking."
+  "why": "Nissan key with a blue lanyard in the student parking.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "car-key",
+   "must"
+  ]
  },
  {
   "lostId": "L-061",
@@ -909,7 +1587,13 @@
   "isMatch": false,
   "itemKind": "car-key",
   "lens": "same-kind-diff",
-  "why": "A car key in the student parking, but with a silver car tag, not a lanyard."
+  "why": "A car key in the student parking, but with a silver car tag, not a lanyard.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
  },
  {
   "lostId": "L-062",
@@ -917,7 +1601,13 @@
   "isMatch": true,
   "itemKind": "watch",
   "lens": "photo-decides",
-  "why": "Finder wrote 'gold watch'; the photo shows the half black, half cream dial with sub-dials and a strap."
+  "why": "Finder wrote 'gold watch'; the photo shows the half black, half cream dial with sub-dials and a strap.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "watch",
+   "must"
+  ]
  },
  {
   "lostId": "L-062",
@@ -925,7 +1615,13 @@
   "isMatch": false,
   "itemKind": "watch",
   "lens": "same-kind-diff",
-  "why": "A watch, but steel with a black face, in the prayer room."
+  "why": "A watch, but steel with a black face, in the prayer room.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "watch",
+   "trap"
+  ]
  },
  {
   "lostId": "L-063",
@@ -933,7 +1629,13 @@
   "isMatch": true,
   "itemKind": "watch",
   "lens": "plain",
-  "why": "Victorinox with a black dial and a steel bracelet found at the GU2 wudu area."
+  "why": "Victorinox with a black dial and a steel bracelet found at the GU2 wudu area.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "watch",
+   "must"
+  ]
  },
  {
   "lostId": "L-063",
@@ -941,7 +1643,13 @@
   "isMatch": false,
   "itemKind": "watch",
   "lens": "twin",
-  "why": "A steel watch with a black face, also left at wudu, but at GU1, and the photo shows Breitling."
+  "why": "A steel watch with a black face, also left at wudu, but at GU1, and the photo shows Breitling.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "watch",
+   "trap"
+  ]
  },
  {
   "lostId": "L-064",
@@ -949,7 +1657,13 @@
   "isMatch": true,
   "itemKind": "watch",
   "lens": "plain",
-  "why": "Breitling Navitimer at the GU1 prayer room."
+  "why": "Breitling Navitimer at the GU1 prayer room.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "watch",
+   "must"
+  ]
  },
  {
   "lostId": "L-064",
@@ -957,7 +1671,13 @@
   "isMatch": false,
   "itemKind": "watch",
   "lens": "twin",
-  "why": "Steel watch with a black dial left at wudu, but at GU2, and the photo shows Victorinox."
+  "why": "Steel watch with a black dial left at wudu, but at GU2, and the photo shows Victorinox.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "watch",
+   "trap"
+  ]
  },
  {
   "lostId": "L-065",
@@ -965,7 +1685,13 @@
   "isMatch": false,
   "itemKind": "watch",
   "lens": "language",
-  "why": "Hindi/Urdu report of a steel Casio with a black dial at the same prayer room on the same day; the photo shows Breitling."
+  "why": "Hindi/Urdu report of a steel Casio with a black dial at the same prayer room on the same day; the photo shows Breitling.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "watch",
+   "trap"
+  ]
  },
  {
   "lostId": "L-065",
@@ -973,7 +1699,13 @@
   "isMatch": false,
   "itemKind": "watch",
   "lens": "same-kind-diff",
-  "why": "Steel with a black dial, but the photo shows Victorinox, at GU2."
+  "why": "Steel with a black dial, but the photo shows Victorinox, at GU2.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "watch",
+   "trap"
+  ]
  },
  {
   "lostId": "L-066",
@@ -981,7 +1713,13 @@
   "isMatch": true,
   "itemKind": "watch",
   "lens": "place-date-off",
-  "why": "Bulova Accutron in its box; the owner guesses GU2, it was found on the 4th floor."
+  "why": "Bulova Accutron in its box; the owner guesses GU2, it was found on the 4th floor.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "watch",
+   "must"
+  ]
  },
  {
   "lostId": "L-067",
@@ -989,7 +1727,13 @@
   "isMatch": false,
   "itemKind": "watch",
   "lens": "same-kind-diff",
-  "why": "A watch from the Sports Hall changing room, but gold with a dial, not an Apple Watch."
+  "why": "A watch from the Sports Hall changing room, but gold with a dial, not an Apple Watch.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "watch",
+   "trap"
+  ]
  },
  {
   "lostId": "L-068",
@@ -997,7 +1741,13 @@
   "isMatch": true,
   "itemKind": "earphones",
   "lens": "plain",
-  "why": "Silver and blue earphones in a black mesh pouch."
+  "why": "Silver and blue earphones in a black mesh pouch.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "earphones",
+   "must"
+  ]
  },
  {
   "lostId": "L-068",
@@ -1005,7 +1755,13 @@
   "isMatch": false,
   "itemKind": "earphones",
   "lens": "same-kind-diff",
-  "why": "Metal in-ear earphones, but chrome Skullcandy with a black wire."
+  "why": "Metal in-ear earphones, but chrome Skullcandy with a black wire.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "earphones",
+   "trap"
+  ]
  },
  {
   "lostId": "L-069",
@@ -1013,7 +1769,13 @@
   "isMatch": true,
   "itemKind": "earphones",
   "lens": "plain",
-  "why": "Chrome Skullcandy earphones in the Sports Hall."
+  "why": "Chrome Skullcandy earphones in the Sports Hall.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "earphones",
+   "must"
+  ]
  },
  {
   "lostId": "L-069",
@@ -1021,7 +1783,13 @@
   "isMatch": false,
   "itemKind": "earphones",
   "lens": "same-kind-diff",
-  "why": "Metal earphones, but blue and silver with a white wire."
+  "why": "Metal earphones, but blue and silver with a white wire.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "earphones",
+   "trap"
+  ]
  },
  {
   "lostId": "L-070",
@@ -1029,7 +1797,13 @@
   "isMatch": true,
   "itemKind": "earphones",
   "lens": "plain",
-  "why": "Wired Apple earphones with a mic in Oman Hall."
+  "why": "Wired Apple earphones with a mic in Oman Hall.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "earphones",
+   "must"
+  ]
  },
  {
   "lostId": "L-070",
@@ -1037,7 +1811,13 @@
   "isMatch": false,
   "itemKind": "earphones",
   "lens": "twin",
-  "why": "Identical-looking white Apple earphones, found in the library a week later."
+  "why": "Identical-looking white Apple earphones, found in the library a week later.",
+  "kind": "lookalike",
+  "conflict": "none",
+  "tags": [
+   "earphones",
+   "lookalike"
+  ]
  },
  {
   "lostId": "L-071",
@@ -1045,7 +1825,13 @@
   "isMatch": true,
   "itemKind": "earphones",
   "lens": "sparse",
-  "why": "White Apple earphones in the library."
+  "why": "White Apple earphones in the library.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "earphones",
+   "must"
+  ]
  },
  {
   "lostId": "L-071",
@@ -1053,7 +1839,13 @@
   "isMatch": false,
   "itemKind": "earphones",
   "lens": "twin",
-  "why": "Identical-looking white Apple earphones, but in Oman Hall."
+  "why": "Identical-looking white Apple earphones, but in Oman Hall.",
+  "kind": "lookalike",
+  "conflict": "none",
+  "tags": [
+   "earphones",
+   "lookalike"
+  ]
  },
  {
   "lostId": "L-071",
@@ -1061,7 +1853,13 @@
   "isMatch": false,
   "itemKind": "earphones",
   "lens": "same-kind-diff",
-  "why": "White Apple earbuds, but with a hand-sewn red sleeve the owner would have mentioned."
+  "why": "White Apple earbuds, but with a hand-sewn red sleeve the owner would have mentioned.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "earphones",
+   "trap"
+  ]
  },
  {
   "lostId": "L-072",
@@ -1069,7 +1867,13 @@
   "isMatch": true,
   "itemKind": "earphones",
   "lens": "plain",
-  "why": "Hand-sewn red fabric sleeve with green stitches on white earbuds."
+  "why": "Hand-sewn red fabric sleeve with green stitches on white earbuds.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "earphones",
+   "must"
+  ]
  },
  {
   "lostId": "L-072",
@@ -1077,7 +1881,13 @@
   "isMatch": false,
   "itemKind": "earphones",
   "lens": "same-kind-diff",
-  "why": "Plain white earphones with no sleeve."
+  "why": "Plain white earphones with no sleeve.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "earphones",
+   "trap"
+  ]
  },
  {
   "lostId": "L-073",
@@ -1085,7 +1895,13 @@
   "isMatch": true,
   "itemKind": "headphones",
   "lens": "plain",
-  "why": "Philips headphones with brown leather pads in the studio."
+  "why": "Philips headphones with brown leather pads in the studio.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "headphones",
+   "must"
+  ]
  },
  {
   "lostId": "L-073",
@@ -1093,7 +1909,13 @@
   "isMatch": false,
   "itemKind": "headphones",
   "lens": "same-kind-diff",
-  "why": "Over-ear headphones in a UPAD building, but AKG with a white ring."
+  "why": "Over-ear headphones in a UPAD building, but AKG with a white ring.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
  },
  {
   "lostId": "L-074",
@@ -1101,7 +1923,13 @@
   "isMatch": true,
   "itemKind": "headphones",
   "lens": "plain",
-  "why": "Sennheiser HD 280 pro in the Mechatronics Lab."
+  "why": "Sennheiser HD 280 pro in the Mechatronics Lab.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "headphones",
+   "must"
+  ]
  },
  {
   "lostId": "L-074",
@@ -1109,7 +1937,13 @@
   "isMatch": false,
   "itemKind": "headphones",
   "lens": "same-kind-diff",
-  "why": "Black over-ear headphones, but AKG."
+  "why": "Black over-ear headphones, but AKG.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
  },
  {
   "lostId": "L-075",
@@ -1117,7 +1951,13 @@
   "isMatch": true,
   "itemKind": "headphones",
   "lens": "plain",
-  "why": "AKG headphones found in GU2."
+  "why": "AKG headphones found in GU2.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "headphones",
+   "must"
+  ]
  },
  {
   "lostId": "L-075",
@@ -1125,7 +1965,13 @@
   "isMatch": false,
   "itemKind": "headphones",
   "lens": "same-kind-diff",
-  "why": "Black studio headphones, but Sennheiser."
+  "why": "Black studio headphones, but Sennheiser.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
  },
  {
   "lostId": "L-076",
@@ -1133,7 +1979,13 @@
   "isMatch": false,
   "itemKind": "headphones",
   "lens": "same-kind-diff",
-  "why": "Big black headphones in UPAD on the same day, but AKG, not Sony."
+  "why": "Big black headphones in UPAD on the same day, but AKG, not Sony.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
  },
  {
   "lostId": "L-076",
@@ -1141,7 +1993,13 @@
   "isMatch": false,
   "itemKind": "headphones",
   "lens": "same-kind-diff",
-  "why": "Over-ear headphones in the studio, but Philips with brown pads."
+  "why": "Over-ear headphones in the studio, but Philips with brown pads.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
  },
  {
   "lostId": "L-077",
@@ -1149,7 +2007,13 @@
   "isMatch": true,
   "itemKind": "pencil-case",
   "lens": "plain",
-  "why": "London tube map pencil case in Germany Hall."
+  "why": "London tube map pencil case in Germany Hall.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "pencil-case",
+   "must"
+  ]
  },
  {
   "lostId": "L-078",
@@ -1157,7 +2021,13 @@
   "isMatch": true,
   "itemKind": "pencil-case",
   "lens": "plain",
-  "why": "Purple book-style case with pink and purple pens."
+  "why": "Purple book-style case with pink and purple pens.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "pencil-case",
+   "must"
+  ]
  },
  {
   "lostId": "L-078",
@@ -1165,7 +2035,13 @@
   "isMatch": false,
   "itemKind": "pencil-case",
   "lens": "same-kind-diff",
-  "why": "A pencil case, but white with a tube map."
+  "why": "A pencil case, but white with a tube map.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
  },
  {
   "lostId": "L-079",
@@ -1173,7 +2049,13 @@
   "isMatch": true,
   "itemKind": "pencil-case",
   "lens": "photo-cannot-tell",
-  "why": "Small round striped case in the studio; the photo is sepia, so it fits beige and brown but cannot prove the colours."
+  "why": "Small round striped case in the studio; the photo is sepia, so it fits beige and brown but cannot prove the colours.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "pencil-case",
+   "must"
+  ]
  },
  {
   "lostId": "L-080",
@@ -1181,7 +2063,13 @@
   "isMatch": false,
   "itemKind": "pencil-case",
   "lens": "photo-cannot-tell",
-  "why": "Striped case found in the same studio on the same day; the sepia photo hides the colour, so blue cannot be ruled out. Author's truth: not this one."
+  "why": "Striped case found in the same studio on the same day; the sepia photo hides the colour, so blue cannot be ruled out. Author's truth: not this one.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
  },
  {
   "lostId": "L-080",
@@ -1189,7 +2077,13 @@
   "isMatch": false,
   "itemKind": "pencil-case",
   "lens": "same-kind-diff",
-  "why": "A purple case, not blue striped."
+  "why": "A purple case, not blue striped.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
  },
  {
   "lostId": "L-081",
@@ -1197,7 +2091,13 @@
   "isMatch": true,
   "itemKind": "phone",
   "lens": "memory-slip",
-  "why": "iPhone 6 with no case in the canteen; the finder says silver, the owner gold, and the photo's pale gold tone could be read either way."
+  "why": "iPhone 6 with no case in the canteen; the finder says silver, the owner gold, and the photo's pale gold tone could be read either way.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "phone",
+   "must"
+  ]
  },
  {
   "lostId": "L-082",
@@ -1205,7 +2105,13 @@
   "isMatch": false,
   "itemKind": "phone",
   "lens": "same-kind-diff",
-  "why": "An iPhone in the canteen on the same day, but an older model with no case, not a blue iPhone 13 in a clear case."
+  "why": "An iPhone in the canteen on the same day, but an older model with no case, not a blue iPhone 13 in a clear case.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "phone",
+   "trap"
+  ]
  },
  {
   "lostId": "L-144",
@@ -1213,7 +2119,13 @@
   "isMatch": false,
   "itemKind": "phone",
   "lens": "sparse",
-  "why": "'phone lost' in GU1; a phone was found in the canteen on the same day, and nothing either supports or rules it out."
+  "why": "'phone lost' in GU1; a phone was found in the canteen on the same day, and nothing either supports or rules it out.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "phone",
+   "trap"
+  ]
  },
  {
   "lostId": "L-083",
@@ -1221,7 +2133,13 @@
   "isMatch": true,
   "itemKind": "power-bank",
   "lens": "place-date-off",
-  "why": "Black Anker with four lights; the owner guessed Oman Hall, it turned up in the library."
+  "why": "Black Anker with four lights; the owner guessed Oman Hall, it turned up in the library.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "power-bank",
+   "must"
+  ]
  },
  {
   "lostId": "L-083",
@@ -1229,7 +2147,13 @@
   "isMatch": false,
   "itemKind": "power-bank",
   "lens": "same-kind-diff",
-  "why": "A power bank, but a silver Xiaomi on the bus."
+  "why": "A power bank, but a silver Xiaomi on the bus.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "power-bank",
+   "trap"
+  ]
  },
  {
   "lostId": "L-084",
@@ -1237,7 +2161,13 @@
   "isMatch": true,
   "itemKind": "power-bank",
   "lens": "memory-slip",
-  "why": "Pebble power bank printed EU2017.EE in Germany Hall; the owner calls the light grey white."
+  "why": "Pebble power bank printed EU2017.EE in Germany Hall; the owner calls the light grey white.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "power-bank",
+   "must"
+  ]
  },
  {
   "lostId": "L-085",
@@ -1245,7 +2175,13 @@
   "isMatch": true,
   "itemKind": "power-bank",
   "lens": "place-date-off",
-  "why": "Silver Xiaomi Mi power bank on the bus; the finder's date is one day before the owner's."
+  "why": "Silver Xiaomi Mi power bank on the bus; the finder's date is one day before the owner's.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "power-bank",
+   "must"
+  ]
  },
  {
   "lostId": "L-085",
@@ -1253,7 +2189,13 @@
   "isMatch": false,
   "itemKind": "power-bank",
   "lens": "same-kind-diff",
-  "why": "A light-coloured power bank, but a grey pebble one in Germany Hall."
+  "why": "A light-coloured power bank, but a grey pebble one in Germany Hall.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "power-bank",
+   "trap"
+  ]
  },
  {
   "lostId": "L-086",
@@ -1261,7 +2203,13 @@
   "isMatch": false,
   "itemKind": "power-bank",
   "lens": "photo-decides",
-  "why": "Black power bank in the library on the same day; the finder gave no brand, but the photo shows Anker, not Baseus."
+  "why": "Black power bank in the library on the same day; the finder gave no brand, but the photo shows Anker, not Baseus.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "power-bank",
+   "trap"
+  ]
  },
  {
   "lostId": "L-087",
@@ -1269,7 +2217,13 @@
   "isMatch": true,
   "itemKind": "prayer-beads",
   "lens": "language",
-  "why": "Both in Arabic; the photo shows brown and orange wooden beads with a tassel."
+  "why": "Both in Arabic; the photo shows brown and orange wooden beads with a tassel.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "prayer-beads",
+   "must"
+  ]
  },
  {
   "lostId": "L-088",
@@ -1277,7 +2231,13 @@
   "isMatch": false,
   "itemKind": "prayer-beads",
   "lens": "photo-decides",
-  "why": "A misbaha from the same musalla on the same day; the finder wrote one word, and the photo shows wood, not black onyx."
+  "why": "A misbaha from the same musalla on the same day; the finder wrote one word, and the photo shows wood, not black onyx.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "prayer-beads",
+   "trap"
+  ]
  },
  {
   "lostId": "L-089",
@@ -1285,7 +2245,13 @@
   "isMatch": true,
   "itemKind": "prayer-beads",
   "lens": "language",
-  "why": "Hindi/Urdu report of a mala of brown seed beads with a few red ones on silver wire."
+  "why": "Hindi/Urdu report of a mala of brown seed beads with a few red ones on silver wire.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "prayer-beads",
+   "must"
+  ]
  },
  {
   "lostId": "L-089",
@@ -1293,7 +2259,13 @@
   "isMatch": false,
   "itemKind": "prayer-beads",
   "lens": "same-kind-diff",
-  "why": "A string of beads, but a wooden misbaha with a tassel, at GU1."
+  "why": "A string of beads, but a wooden misbaha with a tassel, at GU1.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "prayer-beads",
+   "trap"
+  ]
  },
  {
   "lostId": "L-090",
@@ -1301,7 +2273,13 @@
   "isMatch": true,
   "itemKind": "umbrella",
   "lens": "photo-decides",
-  "why": "The finder wrote 'umbrella red'; the photo shows the long one with the wooden crook handle."
+  "why": "The finder wrote 'umbrella red'; the photo shows the long one with the wooden crook handle.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "umbrella",
+   "must"
+  ]
  },
  {
   "lostId": "L-090",
@@ -1309,7 +2287,13 @@
   "isMatch": false,
   "itemKind": "umbrella",
   "lens": "same-kind-diff",
-  "why": "A red umbrella, but a small folding one at the main entrance."
+  "why": "A red umbrella, but a small folding one at the main entrance.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "umbrella",
+   "trap"
+  ]
  },
  {
   "lostId": "L-091",
@@ -1317,7 +2301,13 @@
   "isMatch": true,
   "itemKind": "umbrella",
   "lens": "memory-slip",
-  "why": "Small red folding umbrella at the main entrance; the owner says dark red, the canopy is bright red."
+  "why": "Small red folding umbrella at the main entrance; the owner says dark red, the canopy is bright red.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "umbrella",
+   "must"
+  ]
  },
  {
   "lostId": "L-091",
@@ -1325,7 +2315,13 @@
   "isMatch": false,
   "itemKind": "umbrella",
   "lens": "same-kind-diff",
-  "why": "A red umbrella, but a long one with a wooden handle."
+  "why": "A red umbrella, but a long one with a wooden handle.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "umbrella",
+   "trap"
+  ]
  },
  {
   "lostId": "L-132",
@@ -1333,7 +2329,13 @@
   "isMatch": true,
   "itemKind": "umbrella",
   "lens": "sparse",
-  "why": "Black umbrella at the main entrance."
+  "why": "Black umbrella at the main entrance.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "umbrella",
+   "must"
+  ]
  },
  {
   "lostId": "L-132",
@@ -1341,7 +2343,13 @@
   "isMatch": false,
   "itemKind": "umbrella",
   "lens": "same-kind-diff",
-  "why": "An umbrella at the main entrance on the same day, but red."
+  "why": "An umbrella at the main entrance on the same day, but red.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "umbrella",
+   "trap"
+  ]
  },
  {
   "lostId": "L-092",
@@ -1349,7 +2357,13 @@
   "isMatch": true,
   "itemKind": "usb",
   "lens": "plain",
-  "why": "Silver TDK flash drive in the copy centre."
+  "why": "Silver TDK flash drive in the copy centre.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "usb",
+   "must"
+  ]
  },
  {
   "lostId": "L-092",
@@ -1357,7 +2371,13 @@
   "isMatch": false,
   "itemKind": "usb",
   "lens": "sparse",
-  "why": "Some USB found in the copy centre with no detail; the TDK was posted separately."
+  "why": "Some USB found in the copy centre with no detail; the TDK was posted separately.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "usb",
+   "trap"
+  ]
  },
  {
   "lostId": "L-093",
@@ -1365,7 +2385,13 @@
   "isMatch": true,
   "itemKind": "usb",
   "lens": "plain",
-  "why": "Black 2GB USB with a black cap."
+  "why": "Black 2GB USB with a black cap.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "usb",
+   "must"
+  ]
  },
  {
   "lostId": "L-093",
@@ -1373,7 +2399,13 @@
   "isMatch": false,
   "itemKind": "usb",
   "lens": "twin",
-  "why": "Black USB with a black cap, but the photo shows a Transcend 1GB with a light-blue collar."
+  "why": "Black USB with a black cap, but the photo shows a Transcend 1GB with a light-blue collar.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "usb",
+   "trap"
+  ]
  },
  {
   "lostId": "L-094",
@@ -1381,7 +2413,13 @@
   "isMatch": true,
   "itemKind": "usb",
   "lens": "memory-slip",
-  "why": "Transcend with a lanyard in the CS department; the owner says dark blue, the collar is light blue."
+  "why": "Transcend with a lanyard in the CS department; the owner says dark blue, the collar is light blue.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "usb",
+   "must"
+  ]
  },
  {
   "lostId": "L-094",
@@ -1389,7 +2427,13 @@
   "isMatch": false,
   "itemKind": "usb",
   "lens": "twin",
-  "why": "Black USB with a black cap, but no blue part and no lanyard."
+  "why": "Black USB with a black cap, but no blue part and no lanyard.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "usb",
+   "trap"
+  ]
  },
  {
   "lostId": "L-095",
@@ -1397,7 +2441,13 @@
   "isMatch": true,
   "itemKind": "usb",
   "lens": "plain",
-  "why": "Blue rubber USB shaped like the word CREATE, in the studio."
+  "why": "Blue rubber USB shaped like the word CREATE, in the studio.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "usb",
+   "must"
+  ]
  },
  {
   "lostId": "L-096",
@@ -1405,7 +2455,13 @@
   "isMatch": true,
   "itemKind": "usb",
   "lens": "plain",
-  "why": "Silver and red USB with a black leather strap at GUbridge."
+  "why": "Silver and red USB with a black leather strap at GUbridge.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "usb",
+   "must"
+  ]
  },
  {
   "lostId": "L-097",
@@ -1413,7 +2469,13 @@
   "isMatch": true,
   "itemKind": "usb",
   "lens": "sparse",
-  "why": "Both sides are bare 'USB, copy centre'; the finder gave no date."
+  "why": "Both sides are bare 'USB, copy centre'; the finder gave no date.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "usb",
+   "must"
+  ]
  },
  {
   "lostId": "L-097",
@@ -1421,7 +2483,13 @@
   "isMatch": false,
   "itemKind": "usb",
   "lens": "sparse",
-  "why": "A USB from the copy centre, a week earlier; nothing in the owner's words rules it out."
+  "why": "A USB from the copy centre, a week earlier; nothing in the owner's words rules it out.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "usb",
+   "trap"
+  ]
  },
  {
   "lostId": "L-097",
@@ -1429,7 +2497,13 @@
   "isMatch": false,
   "itemKind": "usb",
   "lens": "sparse",
-  "why": "A USB stick (described as a car remote) at the copy centre on the owner's date; nothing in the owner's words rules it out."
+  "why": "A USB stick (described as a car remote) at the copy centre on the owner's date; nothing in the owner's words rules it out.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "usb",
+   "trap"
+  ]
  },
  {
   "lostId": "L-098",
@@ -1437,7 +2511,13 @@
   "isMatch": true,
   "itemKind": "wallet",
   "lens": "plain",
-  "why": "Black wallet with an embossed line pattern and cash, found at GUbridge."
+  "why": "Black wallet with an embossed line pattern and cash, found at GUbridge.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "wallet",
+   "must"
+  ]
  },
  {
   "lostId": "L-098",
@@ -1445,7 +2525,13 @@
   "isMatch": false,
   "itemKind": "wallet",
   "lens": "same-kind-diff",
-  "why": "Black leather wallet, but plain with a Timberland tree and in the Sports Hall."
+  "why": "Black leather wallet, but plain with a Timberland tree and in the Sports Hall.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
  },
  {
   "lostId": "L-099",
@@ -1453,7 +2539,13 @@
   "isMatch": true,
   "itemKind": "wallet",
   "lens": "place-date-off",
-  "why": "Black Timberland wallet in the Sports Hall; found the day before the owner's date, as people often notice a loss the next morning."
+  "why": "Black Timberland wallet in the Sports Hall; found the day before the owner's date, as people often notice a loss the next morning.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "wallet",
+   "must"
+  ]
  },
  {
   "lostId": "L-099",
@@ -1461,7 +2553,13 @@
   "isMatch": false,
   "itemKind": "wallet",
   "lens": "same-kind-diff",
-  "why": "Black wallet, but with an embossed pattern and no tree logo, at GUbridge."
+  "why": "Black wallet, but with an embossed pattern and no tree logo, at GUbridge.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
  },
  {
   "lostId": "L-100",
@@ -1469,7 +2567,13 @@
   "isMatch": true,
   "itemKind": "wallet",
   "lens": "plain",
-  "why": "New black Guess wallet with the tag on, in the GU1 lobby."
+  "why": "New black Guess wallet with the tag on, in the GU1 lobby.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "wallet",
+   "must"
+  ]
  },
  {
   "lostId": "L-109",
@@ -1477,7 +2581,13 @@
   "isMatch": false,
   "itemKind": "wallet",
   "lens": "twin",
-  "why": "Black Guess bifold in GU1 on the same day, but the owner's is old and worn while the found one still has its price tag."
+  "why": "Black Guess bifold in GU1 on the same day, but the owner's is old and worn while the found one still has its price tag.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
  },
  {
   "lostId": "L-109",
@@ -1485,7 +2595,13 @@
   "isMatch": false,
   "itemKind": "wallet",
   "lens": "same-kind-diff",
-  "why": "Black leather bifold, but Timberland."
+  "why": "Black leather bifold, but Timberland.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
  },
  {
   "lostId": "L-101",
@@ -1493,7 +2609,13 @@
   "isMatch": true,
   "itemKind": "wallet",
   "lens": "plain",
-  "why": "Moroccan leather wallet with a green star in the canteen."
+  "why": "Moroccan leather wallet with a green star in the canteen.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "wallet",
+   "must"
+  ]
  },
  {
   "lostId": "L-102",
@@ -1501,7 +2623,13 @@
   "isMatch": true,
   "itemKind": "wallet",
   "lens": "plain",
-  "why": "Snake-print wristlet with a purple zip in the girls' dorms."
+  "why": "Snake-print wristlet with a purple zip in the girls' dorms.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "wallet",
+   "must"
+  ]
  },
  {
   "lostId": "L-103",
@@ -1509,7 +2637,13 @@
   "isMatch": true,
   "itemKind": "wallet",
   "lens": "plain",
-  "why": "Long red Dooney & Bourke wallet in the library."
+  "why": "Long red Dooney & Bourke wallet in the library.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "wallet",
+   "must"
+  ]
  },
  {
   "lostId": "L-103",
@@ -1517,7 +2651,13 @@
   "isMatch": false,
   "itemKind": "wallet",
   "lens": "same-kind-diff",
-  "why": "Red wallet, but small, with a clover, in Germany Hall."
+  "why": "Red wallet, but small, with a clover, in Germany Hall.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
  },
  {
   "lostId": "L-104",
@@ -1525,7 +2665,13 @@
   "isMatch": true,
   "itemKind": "wallet",
   "lens": "plain",
-  "why": "Small red 'motto' wallet with a clover in Germany Hall."
+  "why": "Small red 'motto' wallet with a clover in Germany Hall.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "wallet",
+   "must"
+  ]
  },
  {
   "lostId": "L-104",
@@ -1533,7 +2679,13 @@
   "isMatch": false,
   "itemKind": "wallet",
   "lens": "same-kind-diff",
-  "why": "Red wallet, but a long Dooney & Bourke one."
+  "why": "Red wallet, but a long Dooney & Bourke one.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
  },
  {
   "lostId": "L-105",
@@ -1541,7 +2693,13 @@
   "isMatch": false,
   "itemKind": "wallet",
   "lens": "photo-decides",
-  "why": "Red zipped wallet in Germany Hall on the same day; the finder's words fit, but the photo shows the 'motto' brand with a clover, not Michael Kors."
+  "why": "Red zipped wallet in Germany Hall on the same day; the finder's words fit, but the photo shows the 'motto' brand with a clover, not Michael Kors.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
  },
  {
   "lostId": "L-105",
@@ -1549,7 +2707,13 @@
   "isMatch": false,
   "itemKind": "wallet",
   "lens": "same-kind-diff",
-  "why": "Red wallet, but a flap-style Dooney & Bourke in the library."
+  "why": "Red wallet, but a flap-style Dooney & Bourke in the library.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
  },
  {
   "lostId": "L-106",
@@ -1557,7 +2721,13 @@
   "isMatch": true,
   "itemKind": "wallet",
   "lens": "plain",
-  "why": "Hand-tooled basket-weave wallet with dark laces at the football pitch."
+  "why": "Hand-tooled basket-weave wallet with dark laces at the football pitch.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "wallet",
+   "must"
+  ]
  },
  {
   "lostId": "L-106",
@@ -1565,7 +2735,13 @@
   "isMatch": false,
   "itemKind": "wallet",
   "lens": "same-kind-diff",
-  "why": "Laced tan leather wallet, but plain with a painted Morocco star."
+  "why": "Laced tan leather wallet, but plain with a painted Morocco star.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
  },
  {
   "lostId": "L-107",
@@ -1573,7 +2749,13 @@
   "isMatch": true,
   "itemKind": "wallet",
   "lens": "photo-decides",
-  "why": "Finder wrote 'wallet in a black box'; the photo shows TOM'S and the carbon pattern."
+  "why": "Finder wrote 'wallet in a black box'; the photo shows TOM'S and the carbon pattern.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "wallet",
+   "must"
+  ]
  },
  {
   "lostId": "L-108",
@@ -1581,7 +2763,13 @@
   "isMatch": true,
   "itemKind": "wallet",
   "lens": "plain",
-  "why": "Slim brown leather card holder in Oman Hall."
+  "why": "Slim brown leather card holder in Oman Hall.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "wallet",
+   "must"
+  ]
  },
  {
   "lostId": "L-108",
@@ -1589,7 +2777,13 @@
   "isMatch": false,
   "itemKind": "wallet",
   "lens": "same-kind-diff",
-  "why": "Brown leather, but a thick tooled bifold."
+  "why": "Brown leather, but a thick tooled bifold.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
  },
  {
   "lostId": "L-143",
@@ -1597,7 +2791,13 @@
   "isMatch": false,
   "itemKind": "wallet",
   "lens": "sparse",
-  "why": "'lost my wallet' with no place or date; the found black wallet fits and cannot be ruled out, but the author's truth is no."
+  "why": "'lost my wallet' with no place or date; the found black wallet fits and cannot be ruled out, but the author's truth is no.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
  },
  {
   "lostId": "L-143",
@@ -1605,7 +2805,13 @@
   "isMatch": false,
   "itemKind": "wallet",
   "lens": "sparse",
-  "why": "'lost my wallet' with no place or date; a red wallet fits as well as any."
+  "why": "'lost my wallet' with no place or date; a red wallet fits as well as any.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
  },
  {
   "lostId": "L-110",
@@ -1613,7 +2819,13 @@
   "isMatch": true,
   "itemKind": "cap",
   "lens": "photo-decides",
-  "why": "Finder wrote 'blue cap'; the photo shows the red Cubs C."
+  "why": "Finder wrote 'blue cap'; the photo shows the red Cubs C.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "cap",
+   "must"
+  ]
  },
  {
   "lostId": "L-111",
@@ -1621,7 +2833,13 @@
   "isMatch": true,
   "itemKind": "cap",
   "lens": "memory-slip",
-  "why": "Stussy cap in the canteen; the owner says black, the photo shows navy."
+  "why": "Stussy cap in the canteen; the owner says black, the photo shows navy.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "cap",
+   "must"
+  ]
  },
  {
   "lostId": "L-111",
@@ -1629,7 +2847,13 @@
   "isMatch": false,
   "itemKind": "cap",
   "lens": "same-kind-diff",
-  "why": "Black cap, but with a Mariners logo, in GU2 parking."
+  "why": "Black cap, but with a Mariners logo, in GU2 parking.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "cap",
+   "trap"
+  ]
  },
  {
   "lostId": "L-112",
@@ -1637,7 +2861,13 @@
   "isMatch": true,
   "itemKind": "cap",
   "lens": "photo-decides",
-  "why": "Finder wrote 'trucker cap'; the photo shows the white CCB letters and mesh."
+  "why": "Finder wrote 'trucker cap'; the photo shows the white CCB letters and mesh.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "cap",
+   "must"
+  ]
  },
  {
   "lostId": "L-113",
@@ -1645,7 +2875,13 @@
   "isMatch": true,
   "itemKind": "cap",
   "lens": "photo-decides",
-  "why": "Finder wrote 'black baseball cap'; the photo shows the Mariners S."
+  "why": "Finder wrote 'black baseball cap'; the photo shows the Mariners S.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "cap",
+   "must"
+  ]
  },
  {
   "lostId": "L-113",
@@ -1653,7 +2889,13 @@
   "isMatch": false,
   "itemKind": "cap",
   "lens": "same-kind-diff",
-  "why": "Baseball cap, but blue with a red C."
+  "why": "Baseball cap, but blue with a red C.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "cap",
+   "trap"
+  ]
  },
  {
   "lostId": "L-114",
@@ -1661,7 +2903,13 @@
   "isMatch": false,
   "itemKind": "cap",
   "lens": "same-kind-diff",
-  "why": "Navy cap with red writing in the canteen on the same day, but the logo is Stussy, not NY."
+  "why": "Navy cap with red writing in the canteen on the same day, but the logo is Stussy, not NY.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "cap",
+   "trap"
+  ]
  },
  {
   "lostId": "L-114",
@@ -1669,7 +2917,13 @@
   "isMatch": false,
   "itemKind": "cap",
   "lens": "same-kind-diff",
-  "why": "Blue cap with a red letter logo, but a C, at the football pitch."
+  "why": "Blue cap with a red letter logo, but a C, at the football pitch.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "cap",
+   "trap"
+  ]
  },
  {
   "lostId": "L-115",
@@ -1677,7 +2931,13 @@
   "isMatch": true,
   "itemKind": "jacket",
   "lens": "photo-decides",
-  "why": "Finder wrote 'brown jacket'; the photo shows the stripe and the LOST patch."
+  "why": "Finder wrote 'brown jacket'; the photo shows the stripe and the LOST patch.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "jacket",
+   "must"
+  ]
  },
  {
   "lostId": "L-116",
@@ -1685,7 +2945,13 @@
   "isMatch": false,
   "itemKind": "jacket",
   "lens": "same-kind-diff",
-  "why": "Clothing left in the same lab on the same day, but a brown zip jacket, not a black hoodie."
+  "why": "Clothing left in the same lab on the same day, but a brown zip jacket, not a black hoodie.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "jacket",
+   "trap"
+  ]
  },
  {
   "lostId": "L-116",
@@ -1693,7 +2959,13 @@
   "isMatch": false,
   "itemKind": "jacket",
   "lens": "same-kind-diff",
-  "why": "Black, in the same lab, but a North Face jacket five days later."
+  "why": "Black, in the same lab, but a North Face jacket five days later.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "jacket",
+   "trap"
+  ]
  },
  {
   "lostId": "L-141",
@@ -1701,7 +2973,13 @@
   "isMatch": true,
   "itemKind": "jacket",
   "lens": "plain",
-  "why": "Black North Face jacket in the Mechatronics Lab."
+  "why": "Black North Face jacket in the Mechatronics Lab.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "jacket",
+   "must"
+  ]
  },
  {
   "lostId": "L-117",
@@ -1709,7 +2987,13 @@
   "isMatch": true,
   "itemKind": "bottle",
   "lens": "photo-decides",
-  "why": "Finder wrote 'black bottle'; the photo shows the Boca Chica print."
+  "why": "Finder wrote 'black bottle'; the photo shows the Boca Chica print.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "bottle",
+   "must"
+  ]
  },
  {
   "lostId": "L-119",
@@ -1717,7 +3001,13 @@
   "isMatch": false,
   "itemKind": "bottle",
   "lens": "photo-decides",
-  "why": "Black bottle at the padel courts on the same day; the finder's words fit, but the photo shows Boca Chica, not Hydro Flask."
+  "why": "Black bottle at the padel courts on the same day; the finder's words fit, but the photo shows Boca Chica, not Hydro Flask.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "bottle",
+   "trap"
+  ]
  },
  {
   "lostId": "L-118",
@@ -1725,7 +3015,13 @@
   "isMatch": true,
   "itemKind": "bottle",
   "lens": "place-alias",
-  "why": "The finder wrote 'sab3', the students' name for the 7th-floor smoking area, the owner wrote '7th floor'."
+  "why": "The finder wrote 'sab3', the students' name for the 7th-floor smoking area, the owner wrote '7th floor'.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "bottle",
+   "must"
+  ]
  },
  {
   "lostId": "L-120",
@@ -1733,7 +3029,13 @@
   "isMatch": false,
   "itemKind": "bottle",
   "lens": "language",
-  "why": "Arabic report of a silver Stanley tumbler on the 7th floor on the same day; the photo shows a Thermos logo."
+  "why": "Arabic report of a silver Stanley tumbler on the 7th floor on the same day; the photo shows a Thermos logo.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "bottle",
+   "trap"
+  ]
  },
  {
   "lostId": "L-122",
@@ -1741,7 +3043,13 @@
   "isMatch": true,
   "itemKind": "bottle",
   "lens": "plain",
-  "why": "Blue Aquaflask with stickers in the gym."
+  "why": "Blue Aquaflask with stickers in the gym.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "bottle",
+   "must"
+  ]
  },
  {
   "lostId": "L-122",
@@ -1749,7 +3057,13 @@
   "isMatch": false,
   "itemKind": "bottle",
   "lens": "sparse",
-  "why": "'water bottle' in the Sports Hall three days later, no colour or brand."
+  "why": "'water bottle' in the Sports Hall three days later, no colour or brand.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "bottle",
+   "trap"
+  ]
  },
  {
   "lostId": "L-140",
@@ -1757,7 +3071,13 @@
   "isMatch": true,
   "itemKind": "bottle",
   "lens": "sparse",
-  "why": "Grey Nike bottle; the finder wrote only 'water bottle' in the Sports Hall on the same date."
+  "why": "Grey Nike bottle; the finder wrote only 'water bottle' in the Sports Hall on the same date.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "bottle",
+   "must"
+  ]
  },
  {
   "lostId": "L-140",
@@ -1765,7 +3085,13 @@
   "isMatch": false,
   "itemKind": "bottle",
   "lens": "same-kind-diff",
-  "why": "A bottle in the Sports Hall, but blue Aquaflask."
+  "why": "A bottle in the Sports Hall, but blue Aquaflask.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "bottle",
+   "trap"
+  ]
  },
  {
   "lostId": "L-121",
@@ -1773,7 +3099,13 @@
   "isMatch": true,
   "itemKind": "clothing",
   "lens": "sparse",
-  "why": "Black shayla in Oman Hall."
+  "why": "Black shayla in Oman Hall.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "clothing",
+   "must"
+  ]
  },
  {
   "lostId": "L-123",
@@ -1781,7 +3113,13 @@
   "isMatch": true,
   "itemKind": "calculator",
   "lens": "plain",
-  "why": "Casio fx-991 after the exam in Oman Hall."
+  "why": "Casio fx-991 after the exam in Oman Hall.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "calculator",
+   "must"
+  ]
  },
  {
   "lostId": "L-124",
@@ -1789,7 +3127,13 @@
   "isMatch": false,
   "itemKind": "calculator",
   "lens": "same-kind-diff",
-  "why": "Casio calculator in the same hall on the same day, but an fx-991, not an fx-82."
+  "why": "Casio calculator in the same hall on the same day, but an fx-991, not an fx-82.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "calculator",
+   "trap"
+  ]
  },
  {
   "lostId": "L-125",
@@ -1797,7 +3141,13 @@
   "isMatch": true,
   "itemKind": "clothing",
   "lens": "sparse",
-  "why": "Black abaya in the dorm laundry; the finder does not mention the gold embroidery, which is not evidence against."
+  "why": "Black abaya in the dorm laundry; the finder does not mention the gold embroidery, which is not evidence against.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "clothing",
+   "must"
+  ]
  },
  {
   "lostId": "L-126",
@@ -1805,7 +3155,13 @@
   "isMatch": true,
   "itemKind": "clothing",
   "lens": "plain",
-  "why": "Grey GUtech hoodie in the Sports Hall."
+  "why": "Grey GUtech hoodie in the Sports Hall.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "clothing",
+   "must"
+  ]
  },
  {
   "lostId": "L-127",
@@ -1813,7 +3169,13 @@
   "isMatch": false,
   "itemKind": "clothing",
   "lens": "same-kind-diff",
-  "why": "GUtech hoodie in the same hall on the same day, but grey, not navy."
+  "why": "GUtech hoodie in the same hall on the same day, but grey, not navy.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "clothing",
+   "trap"
+  ]
  },
  {
   "lostId": "L-128",
@@ -1821,7 +3183,13 @@
   "isMatch": true,
   "itemKind": "lunchbox",
   "lens": "sparse",
-  "why": "Pink lunch box in the canteen."
+  "why": "Pink lunch box in the canteen.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "lunchbox",
+   "must"
+  ]
  },
  {
   "lostId": "L-129",
@@ -1829,7 +3197,13 @@
   "isMatch": true,
   "itemKind": "notebook",
   "lens": "plain",
-  "why": "A4 spiral notebook with thermodynamics notes."
+  "why": "A4 spiral notebook with thermodynamics notes.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "notebook",
+   "must"
+  ]
  },
  {
   "lostId": "L-129",
@@ -1837,7 +3211,13 @@
   "isMatch": false,
   "itemKind": "notebook",
   "lens": "same-kind-diff",
-  "why": "A hardcover with a marbled cover, not a spiral notebook."
+  "why": "A hardcover with a marbled cover, not a spiral notebook.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "notebook",
+   "trap"
+  ]
  },
  {
   "lostId": "L-130",
@@ -1845,7 +3225,13 @@
   "isMatch": true,
   "itemKind": "jewellery",
   "lens": "plain",
-  "why": "Silver ring with a small blue stone next to the GU1 sink."
+  "why": "Silver ring with a small blue stone next to the GU1 sink.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "jewellery",
+   "must"
+  ]
  },
  {
   "lostId": "L-131",
@@ -1853,7 +3239,13 @@
   "isMatch": false,
   "itemKind": "jewellery",
   "lens": "same-kind-diff",
-  "why": "Jewellery in GU1 on the same day, but a silver ring, not a gold bracelet."
+  "why": "Jewellery in GU1 on the same day, but a silver ring, not a gold bracelet.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "jewellery",
+   "trap"
+  ]
  },
  {
   "lostId": "L-133",
@@ -1861,7 +3253,13 @@
   "isMatch": true,
   "itemKind": "perfume",
   "lens": "plain",
-  "why": "Small attar bottle with a gold cap in the GU1 prayer room."
+  "why": "Small attar bottle with a gold cap in the GU1 prayer room.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "perfume",
+   "must"
+  ]
  },
  {
   "lostId": "L-134",
@@ -1869,7 +3267,13 @@
   "isMatch": true,
   "itemKind": "book",
   "lens": "plain",
-  "why": "Small green Quran in the GU2 prayer room; the finder does not mention the name sticker."
+  "why": "Small green Quran in the GU2 prayer room; the finder does not mention the name sticker.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "book",
+   "must"
+  ]
  },
  {
   "lostId": "L-135",
@@ -1877,7 +3281,13 @@
   "isMatch": true,
   "itemKind": "clothing",
   "lens": "plain",
-  "why": "Lab coat with Aisha sewn on it."
+  "why": "Lab coat with Aisha sewn on it.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "clothing",
+   "must"
+  ]
  },
  {
   "lostId": "L-136",
@@ -1885,7 +3295,13 @@
   "isMatch": false,
   "itemKind": "clothing",
   "lens": "same-kind-diff",
-  "why": "Lab coat on the same floor and day, but it bears a name, while the owner says theirs has none."
+  "why": "Lab coat on the same floor and day, but it bears a name, while the owner says theirs has none.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "clothing",
+   "trap"
+  ]
  },
  {
   "lostId": "L-137",
@@ -1893,7 +3309,13 @@
   "isMatch": true,
   "itemKind": "keys",
   "lens": "plain",
-  "why": "Grey GUtech lanyard with a small key in Germany Hall."
+  "why": "Grey GUtech lanyard with a small key in Germany Hall.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "keys",
+   "must"
+  ]
  },
  {
   "lostId": "L-138",
@@ -1901,7 +3323,13 @@
   "isMatch": true,
   "itemKind": "shoes",
   "lens": "plain",
-  "why": "Adidas boots, black and white, at the pitch."
+  "why": "Adidas boots, black and white, at the pitch.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "shoes",
+   "must"
+  ]
  },
  {
   "lostId": "L-139",
@@ -1909,7 +3337,13 @@
   "isMatch": false,
   "itemKind": "shoes",
   "lens": "same-kind-diff",
-  "why": "Football boots at the pitch on the same day, but Adidas, not Nike."
+  "why": "Football boots at the pitch on the same day, but Adidas, not Nike.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "shoes",
+   "trap"
+  ]
  },
  {
   "lostId": "L-142",
@@ -1917,7 +3351,13 @@
   "isMatch": true,
   "itemKind": "glasses-case",
   "lens": "sparse",
-  "why": "Brown glasses case, empty, in the library; the finder gives no brand."
+  "why": "Brown glasses case, empty, in the library; the finder gives no brand.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "glasses-case",
+   "must"
+  ]
  },
  {
   "lostId": "L-142",
@@ -1925,7 +3365,13 @@
   "isMatch": false,
   "itemKind": "glasses",
   "lens": "kind-trap",
-  "why": "Glasses found in the library, but the owner lost only the case."
+  "why": "Glasses found in the library, but the owner lost only the case.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
  },
  {
   "lostId": "L-145",
@@ -1933,7 +3379,13 @@
   "isMatch": false,
   "itemKind": "e-reader",
   "lens": "kind-trap",
-  "why": "A flat black device in the library on the same day, but a power bank, not a Kindle."
+  "why": "A flat black device in the library on the same day, but a power bank, not a Kindle.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "e-reader",
+   "trap"
+  ]
  },
  {
   "lostId": "L-145",
@@ -1941,7 +3393,13 @@
   "isMatch": false,
   "itemKind": "e-reader",
   "lens": "different-kind",
-  "why": "A black laptop, not an e-reader."
+  "why": "A black laptop, not an e-reader.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "e-reader",
+   "trap"
+  ]
  },
  {
   "lostId": "L-010",
@@ -1949,7 +3407,13 @@
   "isMatch": false,
   "itemKind": "pen",
   "lens": "different-kind",
-  "why": "Same hall and month, but earphones."
+  "why": "Same hall and month, but earphones.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "pen",
+   "trap"
+  ]
  },
  {
   "lostId": "L-016",
@@ -1957,7 +3421,13 @@
   "isMatch": false,
   "itemKind": "backpack",
   "lens": "different-kind",
-  "why": "Same hall, but a children's book."
+  "why": "Same hall, but a children's book.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "backpack",
+   "trap"
+  ]
  },
  {
   "lostId": "L-036",
@@ -1965,7 +3435,13 @@
   "isMatch": false,
   "itemKind": "game",
   "lens": "different-kind",
-  "why": "Same building, but headphones."
+  "why": "Same building, but headphones.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "game",
+   "trap"
+  ]
  },
  {
   "lostId": "L-040",
@@ -1973,7 +3449,13 @@
   "isMatch": false,
   "itemKind": "remote",
   "lens": "different-kind",
-  "why": "Same dorm and day, but keys."
+  "why": "Same dorm and day, but keys.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "remote",
+   "trap"
+  ]
  },
  {
   "lostId": "L-046",
@@ -1981,7 +3463,13 @@
   "isMatch": false,
   "itemKind": "keys",
   "lens": "kind-trap",
-  "why": "Found in the same dirt parking, but a Mercedes car key on its own chain, not house keys on a carabiner."
+  "why": "Found in the same dirt parking, but a Mercedes car key on its own chain, not house keys on a carabiner.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "keys",
+   "trap"
+  ]
  },
  {
   "lostId": "L-057",
@@ -1989,7 +3477,13 @@
   "isMatch": false,
   "itemKind": "car-key",
   "lens": "kind-trap",
-  "why": "Same dirt parking, but house keys on a carabiner."
+  "why": "Same dirt parking, but house keys on a carabiner.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
  },
  {
   "lostId": "L-062",
@@ -1997,7 +3491,13 @@
   "isMatch": false,
   "itemKind": "watch",
   "lens": "different-kind",
-  "why": "Same Sports Hall, but earphones."
+  "why": "Same Sports Hall, but earphones.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "watch",
+   "trap"
+  ]
  },
  {
   "lostId": "L-077",
@@ -2005,7 +3505,13 @@
   "isMatch": false,
   "itemKind": "pencil-case",
   "lens": "different-kind",
-  "why": "Same Germany Hall, but a laptop charger."
+  "why": "Same Germany Hall, but a laptop charger.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "pencil-case",
+   "trap"
+  ]
  },
  {
   "lostId": "L-085",
@@ -2013,7 +3519,13 @@
   "isMatch": false,
   "itemKind": "power-bank",
   "lens": "different-kind",
-  "why": "Same bus, but a cap."
+  "why": "Same bus, but a cap.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "power-bank",
+   "trap"
+  ]
  },
  {
   "lostId": "L-095",
@@ -2021,7 +3533,13 @@
   "isMatch": false,
   "itemKind": "usb",
   "lens": "different-kind",
-  "why": "Same studio, but headphones."
+  "why": "Same studio, but headphones.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "usb",
+   "trap"
+  ]
  },
  {
   "lostId": "L-101",
@@ -2029,7 +3547,13 @@
   "isMatch": false,
   "itemKind": "wallet",
   "lens": "different-kind",
-  "why": "Same canteen and day, but a lunch box."
+  "why": "Same canteen and day, but a lunch box.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
  },
  {
   "lostId": "L-102",
@@ -2037,7 +3561,13 @@
   "isMatch": false,
   "itemKind": "wallet",
   "lens": "different-kind",
-  "why": "Same residences, but glasses."
+  "why": "Same residences, but glasses.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
  },
  {
   "lostId": "L-112",
@@ -2045,7 +3575,13 @@
   "isMatch": false,
   "itemKind": "cap",
   "lens": "different-kind",
-  "why": "Same bus and day, but a power bank."
+  "why": "Same bus and day, but a power bank.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "cap",
+   "trap"
+  ]
  },
  {
   "lostId": "L-133",
@@ -2053,7 +3589,13 @@
   "isMatch": false,
   "itemKind": "perfume",
   "lens": "different-kind",
-  "why": "Same prayer room, but a watch."
+  "why": "Same prayer room, but a watch.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "perfume",
+   "trap"
+  ]
  },
  {
   "lostId": "L-134",
@@ -2061,7 +3603,13 @@
   "isMatch": false,
   "itemKind": "book",
   "lens": "different-kind",
-  "why": "Same prayer room, but an umbrella."
+  "why": "Same prayer room, but an umbrella.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "book",
+   "trap"
+  ]
  },
  {
   "lostId": "L-138",
@@ -2069,7 +3617,13 @@
   "isMatch": false,
   "itemKind": "shoes",
   "lens": "different-kind",
-  "why": "Same pitch, but a cap."
+  "why": "Same pitch, but a cap.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "shoes",
+   "trap"
+  ]
  },
  {
   "lostId": "L-067",
@@ -2077,7 +3631,13 @@
   "isMatch": false,
   "itemKind": "watch",
   "lens": "different-kind",
-  "why": "Same Sports Hall, but earphones."
+  "why": "Same Sports Hall, but earphones.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "watch",
+   "trap"
+  ]
  },
  {
   "lostId": "L-131",
@@ -2085,7 +3645,13 @@
   "isMatch": false,
   "itemKind": "jewellery",
   "lens": "different-kind",
-  "why": "GU1, but a perfume bottle."
+  "why": "GU1, but a perfume bottle.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "jewellery",
+   "trap"
+  ]
  },
  {
   "lostId": "L-144",
@@ -2093,7 +3659,13 @@
   "isMatch": false,
   "itemKind": "phone",
   "lens": "kind-trap",
-  "why": "A white Apple case found the same day; not a phone."
+  "why": "A white Apple case found the same day; not a phone.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "phone",
+   "trap"
+  ]
  },
  {
   "lostId": "L-024",
@@ -2101,7 +3673,13 @@
   "isMatch": false,
   "itemKind": "glasses",
   "lens": "kind-trap",
-  "why": "Glasses, but sunglasses with burgundy frames."
+  "why": "Glasses, but sunglasses with burgundy frames.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
  },
  {
   "lostId": "L-020",
@@ -2109,7 +3687,13 @@
   "isMatch": false,
   "itemKind": "earbuds",
   "lens": "different-kind",
-  "why": "An Apple accessory, but a cable."
+  "why": "An Apple accessory, but a cable.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "earbuds",
+   "trap"
+  ]
  },
  {
   "lostId": "L-129",
@@ -2117,7 +3701,13 @@
   "isMatch": false,
   "itemKind": "notebook",
   "lens": "different-kind",
-  "why": "A science book, not a spiral notebook."
+  "why": "A science book, not a spiral notebook.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "notebook",
+   "trap"
+  ]
  },
  {
   "lostId": "L-032",
@@ -2125,7 +3715,13 @@
   "isMatch": false,
   "itemKind": "book",
   "lens": "different-kind",
-  "why": "Science-related papers, but a spiral notebook, not the Atkins textbook."
+  "why": "Science-related papers, but a spiral notebook, not the Atkins textbook.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "book",
+   "trap"
+  ]
  },
  {
   "lostId": "L-003",
@@ -2133,7 +3729,13 @@
   "isMatch": false,
   "itemKind": "laptop",
   "lens": "different-kind",
-  "why": "A charger, not a laptop."
+  "why": "A charger, not a laptop.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "laptop",
+   "trap"
+  ]
  },
  {
   "lostId": "L-006",
@@ -2141,7 +3743,13 @@
   "isMatch": false,
   "itemKind": "charger",
   "lens": "part-found",
-  "why": "A Dell laptop found with its charger cable still plugged in, but in the library a week earlier; the owner lost only a charger."
+  "why": "A Dell laptop found with its charger cable still plugged in, but in the library a week earlier; the owner lost only a charger.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "charger",
+   "trap"
+  ]
  },
  {
   "lostId": "L-126",
@@ -2149,7 +3757,13 @@
   "isMatch": false,
   "itemKind": "clothing",
   "lens": "same-kind-diff",
-  "why": "A jacket, but brown with a stripe, not a grey GUtech hoodie."
+  "why": "A jacket, but brown with a stripe, not a grey GUtech hoodie.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "clothing",
+   "trap"
+  ]
  },
  {
   "lostId": "L-049",
@@ -2157,7 +3771,13 @@
   "isMatch": false,
   "itemKind": "keys",
   "lens": "sparse",
-  "why": "'keys' in GU1 with no detail; the photo shows several keys and a black head, not one key with a red cap."
+  "why": "'keys' in GU1 with no detail; the photo shows several keys and a black head, not one key with a red cap.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "keys",
+   "trap"
+  ]
  },
  {
   "lostId": "L-058",
@@ -2165,7 +3785,13 @@
   "isMatch": false,
   "itemKind": "car-key",
   "lens": "same-kind-diff",
-  "why": "Black car key, but in the student parking with a silver car tag; the owner says Mercedes with no ring."
+  "why": "Black car key, but in the student parking with a silver car tag; the owner says Mercedes with no ring.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "car-key",
+   "trap"
+  ]
  },
  {
   "lostId": "L-021",
@@ -2173,7 +3799,13 @@
   "isMatch": false,
   "itemKind": "earbuds",
   "lens": "same-kind-diff",
-  "why": "Earphones in a black pouch, but wired silver and blue ones."
+  "why": "Earphones in a black pouch, but wired silver and blue ones.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "earbuds",
+   "trap"
+  ]
  },
  {
   "lostId": "L-083",
@@ -2181,7 +3813,13 @@
   "isMatch": false,
   "itemKind": "power-bank",
   "lens": "same-kind-diff",
-  "why": "A power bank, but a grey pebble."
+  "why": "A power bank, but a grey pebble.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "power-bank",
+   "trap"
+  ]
  },
  {
   "lostId": "L-092",
@@ -2189,7 +3827,13 @@
   "isMatch": false,
   "itemKind": "usb",
   "lens": "same-kind-diff",
-  "why": "A USB, but blue rubber letters."
+  "why": "A USB, but blue rubber letters.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "usb",
+   "trap"
+  ]
  },
  {
   "lostId": "L-104",
@@ -2197,7 +3841,13 @@
   "isMatch": false,
   "itemKind": "wallet",
   "lens": "same-kind-diff",
-  "why": "A small purse, but snake print."
+  "why": "A small purse, but snake print.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ]
  },
  {
   "lostId": "L-113",
@@ -2205,7 +3855,13 @@
   "isMatch": false,
   "itemKind": "cap",
   "lens": "same-kind-diff",
-  "why": "Dark cap, but Stussy navy, in the canteen."
+  "why": "Dark cap, but Stussy navy, in the canteen.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "cap",
+   "trap"
+  ]
  },
  {
   "lostId": "L-075",
@@ -2213,7 +3869,13 @@
   "isMatch": false,
   "itemKind": "headphones",
   "lens": "same-kind-diff",
-  "why": "Over-ear headphones, but Philips with brown pads."
+  "why": "Over-ear headphones, but Philips with brown pads.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "headphones",
+   "trap"
+  ]
  },
  {
   "lostId": "L-122",
@@ -2221,7 +3883,13 @@
   "isMatch": false,
   "itemKind": "bottle",
   "lens": "twin",
-  "why": "Blue Aquaflask, but the finder says no stickers and it was in GU2 parking two days later."
+  "why": "Blue Aquaflask, but the finder says no stickers and it was in GU2 parking two days later.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "bottle",
+   "trap"
+  ]
  },
  {
   "lostId": "L-140",
@@ -2229,7 +3897,13 @@
   "isMatch": false,
   "itemKind": "bottle",
   "lens": "twin",
-  "why": "Grey Nike bottle in the same hall, a day after the other one; the owner mentions no dent. Author's truth: someone else's."
+  "why": "Grey Nike bottle in the same hall, a day after the other one; the owner mentions no dent. Author's truth: someone else's.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "bottle",
+   "trap"
+  ]
  },
  {
   "lostId": "L-070",
@@ -2237,7 +3911,13 @@
   "isMatch": false,
   "itemKind": "earphones",
   "lens": "twin",
-  "why": "White Apple earphones in Oman Hall again, ten days after the owner's date."
+  "why": "White Apple earphones in Oman Hall again, ten days after the owner's date.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "earphones",
+   "trap"
+  ]
  },
  {
   "lostId": "L-123",
@@ -2245,7 +3925,13 @@
   "isMatch": false,
   "itemKind": "calculator",
   "lens": "twin",
-  "why": "Same model, but in the library a week before the exam; the finder does not mention the scratched name."
+  "why": "Same model, but in the library a week before the exam; the finder does not mention the scratched name.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "calculator",
+   "trap"
+  ]
  },
  {
   "lostId": "L-126",
@@ -2253,7 +3939,13 @@
   "isMatch": false,
   "itemKind": "clothing",
   "lens": "same-kind-diff",
-  "why": "Grey hoodie, but the finder thinks it has no logo and it was in GU2."
+  "why": "Grey hoodie, but the finder thinks it has no logo and it was in GU2.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "clothing",
+   "trap"
+  ]
  },
  {
   "lostId": "L-045",
@@ -2261,7 +3953,13 @@
   "isMatch": true,
   "itemKind": "sandals",
   "lens": "plain",
-  "why": "Brown leather sandals at the GU2 prayer room."
+  "why": "Brown leather sandals at the GU2 prayer room.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "sandals",
+   "must"
+  ]
  },
  {
   "lostId": "L-008",
@@ -2269,7 +3967,13 @@
   "isMatch": false,
   "itemKind": "charger",
   "lens": "sparse",
-  "why": "'phone charger' in the canteen with no date or detail; the owner left theirs at the copy centre."
+  "why": "'phone charger' in the canteen with no date or detail; the owner left theirs at the copy centre.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "charger",
+   "trap"
+  ]
  },
  {
   "lostId": "L-047",
@@ -2277,6 +3981,12 @@
   "isMatch": false,
   "itemKind": "keys",
   "lens": "same-kind-diff",
-  "why": "A keychain at the main entrance, but a khanjar charm with no bunch of keys."
+  "why": "A keychain at the main entrance, but a khanjar charm with no bunch of keys.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "keys",
+   "trap"
+  ]
  }
 ]

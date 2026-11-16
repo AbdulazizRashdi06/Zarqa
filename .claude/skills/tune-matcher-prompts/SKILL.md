@@ -1,6 +1,6 @@
 ---
 name: tune-matcher-prompts
-description: "Runs one loop of prompt tuning for Zarqa's lost-and-found matcher (the two advocate models and the judge): diagnose failures from finished benchmark runs, draft one small wording change, attack it with a critic panel before spending money, test it on already-seen sets, and accept it only if it also wins on a fresh outside benchmark scored with the owner's formula. Use when asked to engineer, tune, improve or re-test the matcher's prompts or line, to run the tuning loop again, to re-check a candidate, to continue from the last loop, or to build and run a new outside check. Not for writing a test set by hand or changing the app's matching code directly."
+description: "Runs one loop of prompt tuning for Zarqa's lost-and-found matcher (the two advocate models and the judge): diagnose failures from finished benchmark runs, draft one small wording change, attack it with a critic panel before spending money, test it on already-seen sets, and accept it only if it also wins on a fresh outside benchmark scored with the owner's formula. A council from the agentic-council plugin sits at three points (what to attack, which candidates to test, what to do after the verdict) so the loop can keep going without waiting for the owner. Use when asked to engineer, tune, improve or re-test the matcher's prompts or line, to run the tuning loop again or non-stop, to convene the loop council, to re-check a candidate, to continue from the last loop, or to build and run a new outside check. Not for writing a test set by hand or changing the app's matching code directly."
 ---
 
 # Tune the matcher's prompts
@@ -23,13 +23,18 @@ On 2026-11-15 a written "definition of a match" scored 96% on in-house test sets
 |---|---|---|
 | 0. Context check | main agent | you |
 | 1. Diagnose | sub-agent, one call | `match-failure-analyst` |
+| 1b. Council: agenda | Workflow, four seats and a chair | `agentic-council:Oracle`, `Skeptic`, `Advocate`, `Strategist`; chair `Steward` |
 | 2. Draft | sub-agent, one call (called again once if critics object) | `match-prompt-drafter` |
 | 3. Attack | Workflow, three critics at once | `match-prompt-critic` × 3 angles (+ `agentic-council:Skeptic` and `agentic-council:Oracle` when that plugin is on) |
+| 3b. Council: go or no-go | Workflow, the same council | as 1b |
 | 4. Test on seen sets | main agent runs scripts | you |
 | 5. Outside check | sub-agent, then Workflow | `outside-benchmark-writer`, then `pair-rater` × 2 per batch |
 | 6. Decide, record, report | main agent | you |
+| 6b. Council: verdict and what next | Workflow, the same council | as 1b |
 
-Invoking this skill is the owner's consent to run the two Workflows in steps 3 and 5. Their scripts are in `references/workflows.md`.
+Invoking this skill is the owner's consent to run the Workflows in steps 1b, 3, 3b, 5 and 6b. The critic and rating scripts are in `references/workflows.md`; the council, its seats, what it may and may not decide, and its script are in `references/council.md`. Read that file before the first sitting of a session.
+
+**The council fills the gaps a person would otherwise fill; it never overrides the mechanical steps.** A critic's `fail` with a concrete example still stops a candidate, and the acceptance rule alone says accepted or rejected. What is the owner's (the app, deploying, the line, budgets, providers, card photos) goes on the owner's docket and the loop carries on with the rest.
 
 ## Step 0: context check
 
@@ -49,9 +54,13 @@ Call `match-failure-analyst` once with the names of the base runs on the seen se
 
 Stop here and report if the largest failure class is not a prompt problem (search, the shortlist, the line, or the rating scale). Fixing it with wording would be the wrong tool.
 
+## Step 1b: council, agenda
+
+Run the council Workflow with `sitting: "agenda"`, the diagnosis as papers and one motion per failure class the analyst says wording could move. The drafter works only on the classes the ruling names. A `stop` ruling ends the loop: report and wait for the owner.
+
 ## Step 2: draft
 
-Call `match-prompt-drafter` with the diagnosis. It returns at most two candidates, each a one-sentence edit with before and after text. Save to `<loop>_02_candidates.json`.
+Call `match-prompt-drafter` with the diagnosis and the council's target classes. It returns at most two candidates, each a one-sentence edit with before and after text. Save to `<loop>_02_candidates.json`.
 
 ## Step 3: attack (before any paid call)
 
@@ -62,6 +71,10 @@ A candidate is stopped if any of the three core critics returns `fail` with a co
 If a candidate is stopped, send the objections back to the drafter once (step 2 again, same candidate id); if the revision is stopped too, drop it and record why. Never test a candidate the panel stopped: the panel is the cheap filter, and overriding it is how weak ideas reach the expensive step.
 
 Why `uncertain` is not a stop (owner's ruling, 2026-11-16): the critics are told to answer `uncertain` unless they can show a change is safe, and from wording alone they rarely can. In loop 1 a sound timing fix drew no `fail` in two rounds and was still dropped under the first version of this rule. A risk that can be measured should be measured, not vetoed.
+
+## Step 3b: council, go or no-go
+
+Run the council Workflow with `sitting: "go"`: papers are each surviving candidate's before and after text and every critic verdict; one motion per candidate. Test what the ruling says, as revised, in its order. Add the council's named checks to `state.json` beside the critics'. A candidate the critics stopped is not put to the council.
 
 ## Step 4: test on the seen sets
 
@@ -87,7 +100,11 @@ Apply the rule in `references/acceptance.md`. Then:
 - Write a dated entry in `decisions.md`: the failure class, the exact wording, the critics' verdicts, the scores on every set, the money spent, and the decision. Record rejected candidates too; a rejected wording nobody wrote down gets tested again.
 - An accepted wording is still benchmark-only. Porting it to `server/Zarqa.Api/Matching/Reviewers.cs` changes owner-set wording, so ask the owner first and never deploy from here.
 - Update `benchmark/CLAUDE.md` if a set, switch or script was added. Commit and push.
-- Report to the owner in short plain English with one table: setup, score on the seen sets, score on the outside set, real items shown, wrong pairs shown. Say plainly if the candidate lost.
+- Report to the owner in short plain English with one table: setup, score on the seen sets, score on the outside set, real items shown, stupid matches shown, wrong pairs shown. Say plainly if the candidate lost.
+
+## Step 6b: council, verdict and what next
+
+Run the council Workflow with `sitting: "verdict"`: papers are the results table with each acceptance rule marked pass or fail, and the named checks' numbers. Motions are the open questions, for example "start another loop on class X", "retire class Y as not fixable by wording", "ask the owner to port J1". Then follow the ruling: start the next loop at step 1 with the newly seen set added, or stop. The loop also stops after two loops in a row with no accepted change (`references/council.md`).
 
 ## Rules that hold at every step
 
@@ -110,5 +127,7 @@ Apply the rule in `references/acceptance.md`. Then:
 **Normal loop.** Base runs exist for two seen sets with ratings. The analyst reports "stated difference treated as a missing detail" as the largest class. The drafter proposes one added sentence. Three critics return pass, pass, uncertain. Both seen sets hold or improve. A new outside set is written and rated (raters within one point on 95% or more). The candidate beats the base there by the margin in `references/acceptance.md`. Result: recorded as accepted for the benchmark; the owner is asked whether to port it.
 
 **Stopped by the panel.** The `recall` critic returns `fail` with three example pairs that the wording would push down. The drafter revises once; the critic fails it again. Result: no paid call is made, the candidate and the objections are recorded in `decisions.md`, and the report says so.
+
+**Council splits.** At go or no-go two seats vote `test` and two `drop` on a candidate. Result: two against two is no; the candidate is not tested, the vote and both sides' reasons are recorded, and the loop goes on with the other candidate.
 
 **Loses outside.** The candidate passes the panel and the seen sets, then scores below the base on the outside set. Result: rejected and recorded with all numbers; the outside set becomes a seen set; the report leads with the loss.
