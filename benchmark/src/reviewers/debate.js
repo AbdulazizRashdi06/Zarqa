@@ -50,8 +50,14 @@ const PHOTO = {
   ],
 }[process.env.PHOTO_RULE] || ["", ""];
 const [PHOTO_FOR_ADVOCATES, PHOTO_FOR_JUDGE] = PHOTO;
-export const COMMON = `This is a university lost-and-found app. Use only evidence in the reports and photos: item type, colour, brand/model, distinctive marks, place (location aliases name the same place), and timing (an item cannot be found before it was lost).${PHOTO_FOR_ADVOCATES}
-${SIMILARITY_RULE}
+// ADVOCATE_PLACE_SHADE=1 (loop H2, candidate A1 as the loop council trimmed it, 2026-11-16): a different named place
+// and a neighbouring shade are weak evidence for the advocates, not contradictions. Off by default; with it off the
+// advocates' prompt is byte-identical to the app's.
+export const ADVOCATE_PLACE_SHADE = process.env.ADVOCATE_PLACE_SHADE === "1";
+const PLACE_NOTE = ADVOCATE_PLACE_SHADE ? "; two different places on this small campus are weak evidence against a match, not a contradiction, since items are carried and handed in elsewhere" : "";
+const SHADE_NOTE = ADVOCATE_PLACE_SHADE ? "\nA neighbouring shade, or a colour judged from a photo's lighting, is weak evidence." : "";
+export const COMMON = `This is a university lost-and-found app. Use only evidence in the reports and photos: item type, colour, brand/model, distinctive marks, place (location aliases name the same place${PLACE_NOTE}), and timing (an item cannot be found before it was lost).${PHOTO_FOR_ADVOCATES}
+${SIMILARITY_RULE}${SHADE_NOTE}
 Cite concrete details, say how strong each point is, and do not invent facts. If the evidence on your side is weak, say so plainly. At most 120 words.`;
 
 const ADVOCATE_SCHEMA = {
