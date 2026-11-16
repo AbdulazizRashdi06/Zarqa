@@ -30,7 +30,7 @@ Owner's instruction, 2026-11-16: use the ChatGPT subscription whenever it has al
 export PLAN_BASE_URL=http://127.0.0.1:8090/v1 REQUEST_TIMEOUT_MS=600000
 ```
 
-Each call goes to the plan first. When the plan reports its usage limit the run switches to the API (with the spending stop) and tries the plan again every 10 minutes (`PLAN_RETRY_MIN`). `benchmark/.cache/plan.json` counts how many calls each route answered. On 2026-11-16 the plan gave 64 calls before its limit, so expect most of a large run to land on the API. Revisit this instruction once the app is live: after launch, test calls on the plan take allowance from real matching.
+Each call goes to the plan first. When the plan reports its usage limit the run switches to the API (with the spending stop) and tries the plan again every 10 minutes (`PLAN_RETRY_MIN`). `benchmark/.cache/plan.json` counts how many calls each route answered. At most 8 calls are on the plan at once (`PLAN_MAX_PARALLEL`); a limit error is retried twice after a wait before the plan is given up for 10 minutes. This matters: on 2026-11-16 twenty calls at once drew a "limit" after 64 calls, which was read as a used-up allowance; single calls worked again three minutes later, and 32 calls run 8 at a time all went through (about 110 calls a minute). The gateway reports a burst limit and a used-up allowance with the same words, so do not conclude the allowance is gone from one error. Revisit this instruction once the app is live: after launch, test calls on the plan take allowance from real matching.
 
 ## What a loop costs (measured on the API, 2026-11-15)
 

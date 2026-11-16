@@ -80,6 +80,20 @@ export async function embed(texts, { useCache = true } = {}) {
   );
 }
 
+// At most PLAN_MAX_PARALLEL calls are on the plan at once (default 8): 20 at once drew a limit error within a minute
+// on 2026-11-16 although single calls worked again minutes later. Extra calls wait for a slot rather than go to the API.
+let planBusy = 0;
+const planWaiters = [];
+async function planSlot() {
+  const max = Number(process.env.PLAN_MAX_PARALLEL || 8);
+  if (planBusy >= max) await new Promise((go) => planWaiters.push(go));
+  planBusy++;
+  return () => {
+    planBusy--;
+    planWaiters.shift()?.();
+  };
+}
+
 /**
  * One structured-output Luna call: a text prompt plus optional photos (local file paths).
  * Returns {parsed, inputTokens, cachedInputTokens, outputTokens, latencyMs, fromCache}.
@@ -107,17 +121,27 @@ export async function chatJson({ system, text, imagePaths = [], imageDetail, sch
     // cacheSalt asks for a fresh sample of the same prompt (run-to-run variation); it is never sent.
     cacheSalt ? { ...body, cacheSalt } : body,
     async () => {
-      // Owner, 2026-11-16: use the ChatGPT plan until it runs out, then the paid API. PLAN_BASE_URL is the Codex
-      // gateway; its answers cost nothing and are not counted against the budget.
+      // Owner, 2026-11-16: use the ChatGPT plan whenever it has allowance, then the paid API. PLAN_BASE_URL is the
+      // Codex gateway; its answers cost nothing and are not counted against the budget.
       const plan = process.env.PLAN_BASE_URL;
       if (plan && plan !== r.base && planOpen()) {
+        const release = await planSlot();
         try {
-          const viaPlan = await postJson(`${plan}/chat/completions`, body, {}, { attempts: 2 });
-          countRoute("plan");
-          return { parsed: JSON.parse(viaPlan.choices[0].message.content), inputTokens: viaPlan.usage?.prompt_tokens ?? 0, cachedInputTokens: 0, outputTokens: viaPlan.usage?.completion_tokens ?? 0, route: "plan" };
-        } catch (err) {
-          if (/usage limit/i.test(err.message)) closePlan();
-          // any other gateway failure: this one call goes to the API
+          // The gateway reports a burst limit ("too many requests") and a used-up allowance with the same words.
+          // A burst clears in seconds, so wait and try again before giving the plan up for a while.
+          for (let attempt = 0; attempt < 3 && planOpen(); attempt++) {
+            try {
+              const viaPlan = await postJson(`${plan}/chat/completions`, body, {}, { attempts: 1 });
+              countRoute("plan");
+              return { parsed: JSON.parse(viaPlan.choices[0].message.content), inputTokens: viaPlan.usage?.prompt_tokens ?? 0, cachedInputTokens: 0, outputTokens: viaPlan.usage?.completion_tokens ?? 0, route: "plan" };
+            } catch (err) {
+              if (!/usage limit|HTTP 429/i.test(err.message)) break; // another gateway failure: this one call goes to the API
+              if (attempt === 2) closePlan();
+              else await new Promise((done) => setTimeout(done, 20_000 * (attempt + 1) + Math.random() * 5_000));
+            }
+          }
+        } finally {
+          release();
         }
       }
       checkSpend();
