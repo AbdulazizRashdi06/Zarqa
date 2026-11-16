@@ -93,6 +93,20 @@ Opus's scores follow the raters' quality ratings more closely than any other set
 
 Honest score at "show from 5", set by set (outside 1, outside 2, campus photos, text round 3, outside 3): Opus alone 97 / 99 / 98 / 98 / 98; today's app 96 / 98 / 90 / 96 / 96; Haiku debate 95 / 97 / 95 / 97 / 98. Opus is ahead or level on every set, and its best line sits between 0.30 and 0.45 on every half of every set, so one fixed line near 0.40 to 0.45 serves all five; at the app's 0.55 it loses 17 real items against today's app (9 of them on short text). At 0.45 it shows four more real items than today's app with half the other pairs and 2 stupid matches against 35. The limits above stand (10 pairs per sitting, one run, the line read off the same sets, not priced). What this does not say yet is whether the gain comes from the stronger model or from dropping the debate: Sonnet alone and Haiku alone are run next on outside sets 2 and 3 to separate the two.
 
+**Is it the model or the missing debate? Both.** Sonnet alone and Haiku alone, same prompt and photos, outside sets 2 and 3 (218 real items, 334 other pairs, 229 rated 2 or below). Cost is a rough estimate per 1,000 pair checks from list prices on 2026-11-03 (Opus $4 / $20, Sonnet $2 / $10, Haiku $0.10 / $0.50 per million tokens in / out), about 700 tokens of text plus about 1,050 for one photo, and an assumed 150 to 500 thinking tokens; not a measured bill.
+
+| Outside sets 2 and 3 | Honest score (set 2 / set 3) | Real items | Other pairs | Stupid matches | Calls per pair | Rough cost per 1,000 pairs |
+|---|---|---|---|---|---|---|
+| Today's app, Luna and Terra at 0.55 | 98 / 96 | 212 | 63 | 11 | 3 | about $2 |
+| Haiku debate at 0.35 | 97 / 98 | 215 | 79 | 17 | 3 | about $1 to $1.50 |
+| Haiku alone at 0.45 | 97 / 99 | 214 | 60 | 9 | 1 | about $0.30 to $0.50 |
+| Sonnet alone at 0.45 | 98 / 98 | 213 | 40 | 6 | 1 | about $6 to $10 |
+| Opus alone at 0.45 | 99 / 98 | 215 | 33 | 1 | 1 | about $12 to $19 |
+
+Haiku alone is level with the Haiku debate on real items and shows fewer other pairs and about half the stupid matches with a third of the calls: with this model the two advocates and the judge were not earning their calls. Haiku alone is also level with today's app at a fraction of its price. A stronger model then cuts wrong and stupid suggestions further at the same recall (Sonnet, then Opus). The 0.45 line for the three one-model runs is read off these two sets (their honest picks fall between 0.30 and 0.55). The owner's comment on seeing this: "all this over engineering just to have opus alone win". Fair: the one-strong-model baseline should have been run before any debate wording was tuned.
+
+**A flaw in how the helper agents were fed, being checked.** Each agent saw 10 pairs in the set's own order, and in outside set 3, 98 of 284 neighbouring pairs share the same lost report, so a lookalike often sat next to the real item. That may make every plan-route result here (Haiku, Sonnet, Opus, debate or alone) look better than one pair per call would. Opus alone is being re-run on set 3 with the pairs shuffled (3 same-report repeats left inside a file).
+
 **Set 3 run twice** (the council's ruling; same arguments, the judge run again): 112 of 113 real items and 6 stupid matches both times, other pairs 31 and 27, honest score 98 both; with the judge-sides-against rule 112 / 21 / 2 and 112 / 18 / 2. Ten of 285 pairs crossed the line between the two runs. The first run stays the run of record.
 
 ## 2026-11-16: Haiku for all three roles, on the Claude plan (rough test, benchmark only)
