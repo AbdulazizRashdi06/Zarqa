@@ -146,6 +146,8 @@ public class AdminAndRetentionTests(TestApp app) : IClassFixture<TestApp>
         Assert.True(stats.GetProperty("admins").GetInt32() >= 1);
         Assert.Equal(0, stats.GetProperty("sampleUsers").GetInt32());
         Assert.Equal(0, stats.GetProperty("sampleReports").GetInt32());
+        // How shown suggestions turned out, one row per confidence band, read from a real database.
+        Assert.Equal(["held", "small", "looks", "big"], stats.GetProperty("outcomes").EnumerateArray().Select(o => o.GetProperty("key").GetString()));
 
         await using (var db = app.Db())
         {

@@ -27,8 +27,7 @@ public static class AdminEndpoints
             var shown = await db.Matches
                 .Where(m => m.DecidedBy != MatchDecider.RsaStaff && m.Status != MatchStatus.Held && m.Status != MatchStatus.Withheld)
                 .Where(m => !m.Lost!.User!.Email.EndsWith(SampleData.EmailSuffix) && !m.Found!.User!.Email.EndsWith(SampleData.EmailSuffix))
-                .Select(m => new MatchOutcomes.Row(m.FinalScore, m.Status,
-                    db.Conversations.Any(c => c.MatchId == m.Id && c.Status == ConversationStatus.Returned)))
+                .Select(m => new { m.FinalScore, m.Status, Returned = db.Conversations.Any(c => c.MatchId == m.Id && c.Status == ConversationStatus.Returned) })
                 .ToListAsync(ct);
             return Results.Ok(new
             {
@@ -41,7 +40,7 @@ public static class AdminEndpoints
                 reports,
                 matches,
                 decidedBy = decided,
-                outcomes = MatchOutcomes.ByBand(shown),
+                outcomes = MatchOutcomes.ByBand(shown.Select(m => new MatchOutcomes.Row(m.FinalScore, m.Status, m.Returned))),
                 returned = await db.Conversations.CountAsync(c => c.Status == ConversationStatus.Returned, ct),
                 pendingJobs = await db.MatchJobs.CountAsync(j => j.CompletedAt == null, ct),
                 failedJobs = await db.MatchJobs.CountAsync(j => j.CompletedAt != null && j.LastError != null, ct),

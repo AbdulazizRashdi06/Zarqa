@@ -17,16 +17,17 @@ public static class MatchOutcomes
     /// <param name="Returned">Both people confirmed the item went back.</param>
     /// <param name="Waiting">Still shown, no answer yet.</param>
     /// <param name="Expired">Closed without an answer (a report ended or timed out).</param>
-    public sealed record Band(string Key, double From, double To, int Shown, int Claimed, int NotMine, int Returned, int Waiting, int Expired);
+    public sealed record Band(string Key, double From, double? To, int Shown, int Claimed, int NotMine, int Returned, int Waiting, int Expired);
 
     // The same edges as the labels people see and the admin hold (HeldMatches.HoldBelow, MatchEndpoints.LooksLikeAt/BigChanceAt).
-    private static readonly (string Key, double From, double To)[] Edges =
+    // The top band has no upper edge (null): JSON cannot carry infinity.
+    private static readonly (string Key, double From, double? To)[] Edges =
     [
         ("below", 0, DebateEdge),
         ("held", DebateEdge, Matching.HeldMatches.HoldBelow),
         ("small", Matching.HeldMatches.HoldBelow, MatchEndpoints.LooksLikeAt),
         ("looks", MatchEndpoints.LooksLikeAt, MatchEndpoints.BigChanceAt),
-        ("big", MatchEndpoints.BigChanceAt, double.PositiveInfinity),
+        ("big", MatchEndpoints.BigChanceAt, null),
     ];
 
     private const double DebateEdge = Matching.DebateReviewer.Threshold;
@@ -36,7 +37,7 @@ public static class MatchOutcomes
         var list = rows.ToList();
         return [.. Edges.Select(e =>
         {
-            var inBand = list.Where(r => r.Score >= e.From && r.Score < e.To).ToList();
+            var inBand = list.Where(r => r.Score >= e.From && (e.To is null || r.Score < e.To)).ToList();
             return new Band(e.Key, e.From, e.To,
                 inBand.Count,
                 inBand.Count(r => r.Status == MatchStatus.Confirmed),
