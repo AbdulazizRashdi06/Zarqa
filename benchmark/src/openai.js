@@ -6,7 +6,7 @@ import { codexJson } from "./codexClient.js";
 import { postJson } from "./http.js";
 import { LOCAL_EMBEDDING_MODEL, localEmbed } from "./localEmbed.js";
 import { photoDataUrls } from "./photos.js";
-import { charge, checkSpend } from "./spend.js";
+import { charge, checkSpend, closePlan, countRoute, planOpen } from "./spend.js";
 
 // Where Luna and embedding calls go:
 // 1. OPENAI_BASE_URL / EMBEDDING_BASE_URL set → that OpenAI-compatible endpoint.
@@ -107,15 +107,29 @@ export async function chatJson({ system, text, imagePaths = [], imageDetail, sch
     // cacheSalt asks for a fresh sample of the same prompt (run-to-run variation); it is never sent.
     cacheSalt ? { ...body, cacheSalt } : body,
     async () => {
+      // Owner, 2026-11-16: use the ChatGPT plan until it runs out, then the paid API. PLAN_BASE_URL is the Codex
+      // gateway; its answers cost nothing and are not counted against the budget.
+      const plan = process.env.PLAN_BASE_URL;
+      if (plan && plan !== r.base && planOpen()) {
+        try {
+          const viaPlan = await postJson(`${plan}/chat/completions`, body, {}, { attempts: 2 });
+          countRoute("plan");
+          return { parsed: JSON.parse(viaPlan.choices[0].message.content), inputTokens: viaPlan.usage?.prompt_tokens ?? 0, cachedInputTokens: 0, outputTokens: viaPlan.usage?.completion_tokens ?? 0, route: "plan" };
+        } catch (err) {
+          if (/usage limit/i.test(err.message)) closePlan();
+          // any other gateway failure: this one call goes to the API
+        }
+      }
       checkSpend();
       const json = await postJson(`${r.base}/chat/completions`, body, r.headers);
+      countRoute("api");
       const usage = {
         inputTokens: json.usage?.prompt_tokens ?? 0,
         cachedInputTokens: json.usage?.prompt_tokens_details?.cached_tokens ?? 0,
         outputTokens: json.usage?.completion_tokens ?? 0,
       };
       charge(body.model, usage); // before parsing: a reply that fails to parse was still paid for
-      return { parsed: JSON.parse(json.choices[0].message.content), ...usage };
+      return { parsed: JSON.parse(json.choices[0].message.content), ...usage, route: "api" };
     },
     { enabled: useCache },
   );
