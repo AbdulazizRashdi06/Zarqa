@@ -21,9 +21,16 @@ node scripts/edge.js --data data/<set> --normalize --vector-limit 100000 --triag
 
 Switches go in front as environment variables: `JUDGE_PHOTOS=1` (the judge sees the photos), `SIMILARITY_RULE=v2|v3|…` (wording versions of the shared instruction). Runs go one at a time. Answers are cached, so re-running a finished run is free and two runs that share prompts share calls.
 
-## The ChatGPT plan route
+## The ChatGPT plan route (use it first)
 
-`PLAN_BASE_URL=http://127.0.0.1:8090/v1` (with `node deploy/codex/gateway.mjs` running) sends each call to the owner's ChatGPT plan first and to the API when the plan reports its limit. The plan costs no money but production shares its allowance, and it is much slower. Use it only when the owner asks for it.
+Owner's instruction, 2026-11-16: use the ChatGPT subscription whenever it has allowance and the paid API only when it does not; the app is not launched, so production is not competing for it. Start the gateway and add the route to the environment above:
+
+```bash
+(cd .. && CODEX_MAX_RUNNING=24 nohup node deploy/codex/gateway.mjs > /tmp/gateway.log 2>&1 &)
+export PLAN_BASE_URL=http://127.0.0.1:8090/v1 REQUEST_TIMEOUT_MS=600000
+```
+
+Each call goes to the plan first. When the plan reports its usage limit the run switches to the API (with the spending stop) and tries the plan again every 10 minutes (`PLAN_RETRY_MIN`). `benchmark/.cache/plan.json` counts how many calls each route answered. On 2026-11-16 the plan gave 64 calls before its limit, so expect most of a large run to land on the API. Revisit this instruction once the app is live: after launch, test calls on the plan take allowance from real matching.
 
 ## What a loop costs (measured on the API, 2026-11-15)
 

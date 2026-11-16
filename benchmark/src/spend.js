@@ -57,7 +57,9 @@ export const spendSoFar = load;
 
 // ---- which route answered: the ChatGPT plan (free, shared with production) or the paid API ----
 const PLAN_FILE = path.resolve(import.meta.dirname, "..", ".cache", "plan.json");
-const RETRY_PLAN_AFTER_MS = 60 * 60 * 1000; // a closed plan is tried again after an hour
+// A closed plan is tried again after this long. The owner asked for the subscription to be used whenever it has
+// allowance (2026-11-16: the app is not launched, so production is not competing for it); a probe costs nothing.
+const RETRY_PLAN_AFTER_MS = Number(process.env.PLAN_RETRY_MIN || 10) * 60 * 1000;
 const readPlan = () => {
   try {
     return JSON.parse(readFileSync(PLAN_FILE, "utf8"));
@@ -72,7 +74,7 @@ const writePlan = (s) => {
 export const planOpen = () => Date.now() - readPlan().closedAt > RETRY_PLAN_AFTER_MS;
 export function closePlan() {
   const s = readPlan();
-  if (Date.now() - s.closedAt > RETRY_PLAN_AFTER_MS) console.error(`\nThe ChatGPT plan reported its usage limit at ${new Date().toISOString()}; calls go to the API for the next hour.`);
+  if (Date.now() - s.closedAt > RETRY_PLAN_AFTER_MS) console.error(`\nThe ChatGPT plan reported its usage limit at ${new Date().toISOString()}; calls go to the API until the next retry.`);
   writePlan({ ...s, closedAt: Date.now() });
 }
 export function countRoute(route) {

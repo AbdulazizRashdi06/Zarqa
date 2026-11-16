@@ -3,7 +3,7 @@ import path from "node:path";
 import { CURRENT, MODELS, OFFLINE_ESTIMATE, PROPOSED, RUNTIME } from "../../config.js";
 import { askJev, readChoice, readNoul, readScore } from "../jevClient.js";
 import { chatJson } from "../openai.js";
-import { dateRelation, matchAliases, truncate } from "../text.js";
+import { dateRelation, foundOneDayBeforeLost, matchAliases, ONE_DAY_LINE, ONE_DAY_TEXT, POSTED_NOTE, POSTED_ON, postedOn, truncate } from "../text.js";
 import { usage } from "./luna.js";
 
 // Same as the app (decisions.md, 2026-10-27 and 2026-10-31): read item names in context, similarity over proof.
@@ -128,6 +128,7 @@ const brief = (r) => ({
   description: truncate(r.description, 500),
   location: r.location,
   eventDate: r.eventDate || null, // the app sends null for a blank date
+  ...(POSTED_ON ? { postedOn: postedOn(r) } : {}),
 });
 
 // The app's line ("0 from the LOST report first, then 1 from the FOUND report") was misread in the photo round:
@@ -218,8 +219,10 @@ async function advocate(side, lost, found, ctx) {
   const aliases = [...matchAliases(lost.location, ctx.aliasIndex), ...matchAliases(found.location, ctx.aliasIndex)].map((g) => `${g.canonical}: ${g.names.join(", ")}`);
   const text =
     `LOST report: ${JSON.stringify(brief(lost))}\nFOUND report: ${JSON.stringify(brief(found))}\n` +
+    (POSTED_ON ? `${POSTED_NOTE}\n` : "") +
     `Location aliases: ${aliases.join(" | ") || "none"}\n` +
-    photoLine(lostPhotos.length, foundPhotos.length);
+    photoLine(lostPhotos.length, foundPhotos.length) +
+    (ONE_DAY_LINE && foundOneDayBeforeLost(lost, found) ? `\n${ONE_DAY_TEXT}` : "");
   const res = await chatJson({
     system: `${SIDES[side]}\n${COMMON}`,
     text,
@@ -270,7 +273,7 @@ export async function debateReview(lost, found, prelim, ctx, { threshold = PROPO
       const res = await chatJson({
         model: MODELS.terra,
         system: TERRA_SYSTEM + DEFINITION_FOR_JUDGE + DETAIL_FOR_JUDGE + PHOTOS_FOR_JUDGE,
-        text: JSON.stringify(state) + (JUDGE_PHOTOS ? `\n${ownerLine(photosOf(lost, ctx).length, photosOf(found, ctx).length)}` : ""),
+        text: JSON.stringify(state) + (POSTED_ON ? `\n${POSTED_NOTE}` : "") + (JUDGE_PHOTOS ? `\n${ownerLine(photosOf(lost, ctx).length, photosOf(found, ctx).length)}` : ""),
         imagePaths: judgePhotos,
         imageDetail: RUNTIME.lunaImageDetail,
         schemaName: "debate_judge",

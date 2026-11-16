@@ -1,5 +1,5 @@
 import { chatJson } from "../openai.js";
-import { truncate } from "../text.js";
+import { POSTED_NOTE, POSTED_ON, postedOn, truncate } from "../text.js";
 
 // Experiment (2026-11-14): one Luna call per report that screens a longer candidate list before the
 // debate. The prescore can only rank by shared words and vector closeness, so true pairs written in
@@ -17,12 +17,12 @@ const SCHEMA = {
   properties: { keep: { type: "array", items: { type: "integer" } } },
 };
 
-const line = (r) => JSON.stringify({ description: truncate(r.description, 300), location: r.location, eventDate: r.eventDate || null });
+const line = (r) => JSON.stringify({ description: truncate(r.description, 300), location: r.location, eventDate: r.eventDate || null, ...(POSTED_ON ? { postedOn: postedOn(r) } : {}) });
 
 /** Returns the candidates worth a full review, in the model's order. Falls back to all of them when the call fails. */
 export async function triage(query, candidates, ctx) {
   if (!candidates.length) return { kept: [], call: null };
-  const text = `${query.type.toUpperCase()} report: ${line(query)}\nCandidate ${candidates[0].type.toUpperCase()} reports:\n` + candidates.map((c, i) => `${i + 1}. ${line(c)}`).join("\n");
+  const text = `${query.type.toUpperCase()} report: ${line(query)}\nCandidate ${candidates[0].type.toUpperCase()} reports:\n` + candidates.map((c, i) => `${i + 1}. ${line(c)}`).join("\n") + (POSTED_ON ? `\n${POSTED_NOTE}` : "");
   try {
     const res = await chatJson({ system: TRIAGE_SYSTEM, text, schemaName: "triage", schema: SCHEMA, useCache: ctx.useCache });
     const seen = new Set();
