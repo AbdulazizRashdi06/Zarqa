@@ -253,7 +253,36 @@ export function debateScore(f) {
   return 0.5 * f.sameItem + 0.5 * f.overall;
 }
 
+// One model alone, no advocates and no separate judge (owner's ask, 2026-11-16). SOLO_REVIEW=luna or terra has
+// that one model answer the judge's same_item and overall questions straight from the two reports and the photos,
+// with the app's rule sentence word for word. Off by default: with it unset nothing below changes.
+export const SOLO_REVIEW = ["luna", "terra"].includes(process.env.SOLO_REVIEW) ? process.env.SOLO_REVIEW : null;
+export const SOLO_SYSTEM = `You review possible matches in a university lost-and-found app: a LOST report and a FOUND report. Use only evidence in the reports and photos: item type, colour, brand/model, distinctive marks, place (location aliases name the same place), and timing (an item cannot be found before it was lost). For each pair answer three questions.
+same_item: Do the LOST and FOUND reports describe the same physical item? ${SIMILARITY_RULE} Give the probability (0 to 1) that the answer is yes.
+stronger_case: Which way does the concrete evidence in the reports and photos lean? "for" = it better supports a match; "against" = it better supports different items; "balanced" = about equal.
+overall: ${QUESTIONS.overall.instructions} Give a probability (0 to 1) for each level; they should sum to 1. Levels: ${LEVEL_KEYS.map((k, i) => `${k} = "${DEBATE_LEVELS[i]}"`).join("; ")}.
+When a photo is attached, look at it yourself and go by what it shows.`;
+
+async function soloReview(lost, found, ctx, threshold) {
+  const lostPhotos = photosOf(lost, ctx), foundPhotos = photosOf(found, ctx);
+  const aliases = [...matchAliases(lost.location, ctx.aliasIndex), ...matchAliases(found.location, ctx.aliasIndex)].map((g) => `${g.canonical}: ${g.names.join(", ")}`);
+  const text = `LOST report: ${JSON.stringify(brief(lost))}\nFOUND report: ${JSON.stringify(brief(found))}\nLocation aliases: ${aliases.join(" | ") || "none"}\n${ownerLine(lostPhotos.length, foundPhotos.length)}`;
+  let res, read;
+  try {
+    res = await chatJson({ ...(SOLO_REVIEW === "terra" ? { model: MODELS.terra } : {}), system: SOLO_SYSTEM, text, imagePaths: [...lostPhotos, ...foundPhotos], imageDetail: RUNTIME.lunaImageDetail, schemaName: "solo_review", schema: JUDGE_SCHEMA, useCache: ctx.useCache, cacheSalt: ctx.cacheSalt });
+    read = readJudge(res.parsed);
+    if (!read) throw new Error("unusable answer");
+  } catch (err) {
+    return { failed: true, error: `solo review failed: ${err.message}`, call: null };
+  }
+  const features = { sameItem: read.sameItem, overall: read.overall, stronger: read.stronger, timing: dateRelation(lost, found) };
+  const finalScore = debateScore(features);
+  const call = { kind: "luna", ...usage(res) };
+  return { isLikelyMatch: finalScore >= threshold, finalScore, explanation: `One model alone (${SOLO_REVIEW}).`, matchedFields: [], riskFlags: read.stronger === "against" ? ["case_against_stronger"] : [], features, latencyMs: call.latencyMs || 0, call, extraCalls: [] };
+}
+
 export async function debateReview(lost, found, prelim, ctx, { threshold = PROPOSED.debateThreshold, judge = "jev" } = {}) {
+  if (SOLO_REVIEW && !ctx.offline) return soloReview(lost, found, ctx, threshold);
   let pro, con;
   try {
     [pro, con] = await Promise.all([advocate("for", lost, found, ctx), advocate("against", lost, found, ctx)]);
