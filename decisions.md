@@ -119,18 +119,18 @@ Haiku alone is level with the Haiku debate on real items and shows fewer other p
 
 **Debate v2, built with the harness skill at the owner's request** ("Can you redo debate using harness skill. Do a haiku and an opus version"). Three role agents and a skill: `match-claimant` speaks for the owner and may say it has no case; `match-skeptic` speaks for the desk, may name only differences both sides state or show, never a missing detail, and may say there is none; `match-referee` reads the reports and the photo first and the two notes second, and never averages them. The owner's rule sentence is unchanged, word for word, in all three. `.claude/skills/match-debate/` holds the workflow (`scripts/debate-workflow.js`, args `{dir, files, model, roles}`) and `scripts/collect.py`. What would count as better was written down before any score: at the same real items, fewer other pairs or fewer stupid matches than the same model alone by more than the chance band; level at three calls against one is a loss on cost. The roles were written from failures on the five rated sets, so these are seen-set results and a verdict needs a fresh outside set. The loop's critic step was not run before this test: it costs plan allowance only and the owner asked for the build directly; the critics are owed before any acceptance.
 
-**Debate v2 results** (outside sets 2 and 3, both seen: 218 real items, 334 other pairs, 229 rated 2 or below; every pair judged; one Opus skeptic note missing on one pair, that file re-run). The roles were followed: the claimant said it had no case on 30 to 40% of pairs and the skeptic said it found no difference on 36 to 38%.
+**Debate v2 results** (outside sets 2 and 3, both seen: 218 real items, 334 other pairs, 229 rated 2 or below; every pair judged; one Opus skeptic note was missing on one pair, so that file of ten pairs was run again and its answers replace the first ones, which moved one other pair). The roles were followed: the claimant said it had no case on 30 to 40% of pairs and the skeptic said it found no difference on 36 to 38%.
 
 | Outside sets 2 and 3 | Honest score (set 2 / set 3) | At 0.55 | At 0.50 | At 0.45 | At 0.40 |
 |---|---|---|---|---|---|
 | Opus alone | 99 / 98 | 209 / 25 / 0 | 213 / 28 / 0 | 215 / 33 / 1 | 215 / 43 / 1 |
-| Opus debate v2 | 99 / 98 | 214 / 23 / 0 | 215 / 31 / 0 | 215 / 40 / 0 | 216 / 52 / 1 |
+| Opus debate v2 | 99 / 98 | 214 / 23 / 0 | 215 / 30 / 0 | 215 / 39 / 0 | 216 / 52 / 1 |
 | Haiku alone | 97 / 99 | 208 / 42 / 9 | 210 / 51 / 9 | 214 / 60 / 9 | 215 / 70 / 12 |
 | Haiku debate v2 | 96 / 98 | 200 / 32 / 7 | 204 / 40 / 10 | 208 / 49 / 12 | 215 / 66 / 18 |
 
 (Cells are real items / other pairs / stupid matches. The first Haiku debate at its 0.35 line: 215 / 79 / 17, honest 97 / 98.)
 
-**With Opus, level.** Each at its own best line gives the same answer: debate v2 at 0.50 shows 215 / 31 / 0, Opus alone at 0.45 shows 215 / 33 / 1, a difference inside the chance band. The debate's scores sit higher for real items, so at the app's 0.55 line it keeps five more of them (outside the band), but Opus alone reaches the same items by setting its line at 0.45. By the test written down beforehand, level at three calls against one is a loss on cost.
+**With Opus, level.** Each at its own best line gives the same answer: debate v2 at 0.50 shows 215 / 30 / 0, Opus alone at 0.45 shows 215 / 33 / 1, a difference inside the chance band. The debate's scores sit higher for real items, so at the app's 0.55 line it keeps five more of them (outside the band), but Opus alone reaches the same items by setting its line at 0.45. By the test written down beforehand, level at three calls against one is a loss on cost.
 
 **With Haiku, not better than alone.** At the same 215 real items debate v2 shows four fewer other pairs (inside the band) and six more stupid matches (outside it), and its honest score is a point lower on both sets. It is about where the first Haiku debate was. The redesign removed the invented cases and the judging from second-hand arguments, and the result did not move: with Haiku the limit is the model reading the evidence, not the shape of the debate.
 
