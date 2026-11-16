@@ -57,7 +57,11 @@ Call `match-prompt-drafter` with the diagnosis. It returns at most two candidate
 
 Run the critic Workflow from `references/workflows.md` with the candidates. Each candidate gets three critics, one per angle: `recall`, `overfit`, `side-effects`.
 
-A candidate goes forward only if no critic returns `fail` and at most one returns `uncertain`. If it is stopped, send the objections back to the drafter once (step 2 again, same candidate id); if the revision is stopped too, drop it and record why. Never test a candidate the panel stopped: the panel is the cheap filter, and overriding it is how weak ideas reach the expensive step.
+A candidate is stopped if any of the three core critics returns `fail` with a concrete example pair. An `uncertain` does not stop it: each `uncertain` objection becomes a **named check** that the paid test in step 4 must report on (for example "real pairs with a two-day-early found date, before and after"). Write the checks into `state.json` before spending anything, so they cannot be chosen after the numbers are in.
+
+If a candidate is stopped, send the objections back to the drafter once (step 2 again, same candidate id); if the revision is stopped too, drop it and record why. Never test a candidate the panel stopped: the panel is the cheap filter, and overriding it is how weak ideas reach the expensive step.
+
+Why `uncertain` is not a stop (owner's ruling, 2026-11-16): the critics are told to answer `uncertain` unless they can show a change is safe, and from wording alone they rarely can. In loop 1 a sound timing fix drew no `fail` in two rounds and was still dropped under the first version of this rule. A risk that can be measured should be measured, not vetoed.
 
 ## Step 4: test on the seen sets
 

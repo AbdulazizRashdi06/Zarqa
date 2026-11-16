@@ -41,6 +41,7 @@ The real app is being **built from scratch**: an ASP.NET Core (.NET 10) backend 
 | Date | Change | What | Why |
 |---|---|---|---|
 | 2026-11-16 | First built with the harness plugin (v2) | 5 agents, 2 skills, 2 scripts | A wording tuned on in-house sets failed on an outside benchmark |
+| 2026-11-16 | A critic's `uncertain` becomes a named check in the paid test; only a `fail` with a concrete example stops a candidate | `tune-matcher-prompts` step 3 and its critic workflow | Loop 1: a sound fix drew no `fail` in two rounds and was still dropped. Owner's ruling |
 
 ## Project rules that aren't obvious from the code
 

@@ -52,8 +52,10 @@ if (verdicts.length < jobs.length) log(`${jobs.length - verdicts.length} critics
 // The three core angles decide; the outside reviewers inform the revision.
 const decision = args.candidates.map((c) => {
   const core = verdicts.filter((v) => v.candidate === c.id && ANGLES.includes(v.angle))
-  const fails = core.filter((v) => v.verdict === 'fail').length, unsure = core.filter((v) => v.verdict === 'uncertain').length + (ANGLES.length - core.length)
-  return { candidate: c.id, goesForward: fails === 0 && unsure <= 1, fails, unsure }
+  // A fail needs a concrete example to count; an uncertain becomes a named check for the paid test.
+  const fails = core.filter((v) => v.verdict === 'fail' && v.examples.length).length
+  const checks = verdicts.filter((v) => v.candidate === c.id && v.verdict !== 'pass').map((v) => `${v.angle}: ${v.objection.slice(0, 300)}`)
+  return { candidate: c.id, goesForward: fails === 0, fails, checks }
 })
 return { decision, verdicts }
 ```
