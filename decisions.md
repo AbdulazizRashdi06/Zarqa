@@ -2,6 +2,25 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-16: Haiku for all three roles, on the Claude plan (rough test, benchmark only)
+
+The owner asked for Claude Haiku 5.5 in place of Luna and Terra so that testing runs faster, on the Claude subscription only; an API key for production follows only if the results are good. Haiku wrote both advocates' arguments and judged them (the judge sees the photo) on all four rated sets, through helper agents: the app's exact prompts and inputs, a separate agent for each side, 10 pairs per advocate agent and 12 per judge agent. Search and the screen are the base runs'.
+
+The bar was written down before any result: on outside set 2, honest score at "show from 5" within one point of Luna and Terra's 98%, and no fewer than 101 of 105 real items at Haiku's own best line. It passed (97%, 103).
+
+| Set | Luna + Terra, honest score | Haiku, honest score | Haiku's best line |
+|---|---|---|---|
+| Outside set 1 (276 pairs) | 96% | 95% | 0.30 (halves pick 0.30 and 0.50) |
+| Outside set 2 (267) | 98% | 97% | 0.40 |
+| Photo round 3 (313) | 90% | 95% | 0.40 |
+| Text round 3 (416) | 96% | 97% | 0.35 |
+
+Across the four sets (489 real items, 783 others): Luna and Terra at 0.55 show 471 real and 180 others; Haiku at 0.35 shows 474 and 193; Haiku at 0.40 shows 462 and 142; Haiku at 0.55 shows 407 and 53.
+
+- **Haiku scores every pair lower.** Its line is about 0.35, not 0.55. On short text-only reports its scores sit in a narrow band: on text round 3, 0.35 shows 176 of 184 real items and 0.40 shows 165. The line is fragile in a way Terra's is not. If Haiku is used, its score should be rescaled in code so the app's line, labels and admin hold keep their numbers.
+- **Limits of this test.** An agent sees 10 to 12 pairs in one sitting; the app sends one pair per call. On sets where several lookalikes share a place, seeing them side by side may make them easier to tell apart, so the gain on photo round 3 may be partly the method. At least one agent attached a photo to the wrong neighbouring pair (the instructions now say to open photos one pair at a time). Six of about 2,500 answers were skipped by an agent and re-run. One run per set, so run-to-run spread is unknown. Haiku ignored instruction text planted inside reports.
+- Not decided: whether to use Haiku. A proper test is one API call per pair from the owner's machine; production use sends reports and photos to a second provider, which the privacy notice would have to say.
+
 ## 2026-11-16: Loops 2 and 3, a second outside set, and Haiku as the judge
 
 **In the app, committed and not deployed:** three switches, all off by default (`MATCHING_JUDGE_PHOTOS`, `MATCHING_ONE_DAY_NOTE`, `MATCHING_POSTED_ON`), with every prompt byte-identical while they are off, and a table on `/admin` of how shown suggestions turned out by confidence band (shown, claimed, not mine, returned), built from what the app already records. Benchmark only: the early-date note (`EARLY_LINE=1`) and per-photo descriptions (`--photo-captions data/photo-set/luna-captions.json`).
