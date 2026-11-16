@@ -8,13 +8,15 @@
 //   one-day   both event dates present and the found one exactly one calendar day before the lost one
 //   relative  a report in the pair has no event date and uses a relative-time word ("today", "last week", "ams", …)
 //   undated   a report in the pair has no event date
+//   found-early  both event dates present and the found one two or more calendar days before the lost one
+//   sparse    the finder's text is four words or fewer
 //   early     both reports undated and the found one posted 3 or more days before the lost one
 // For the gated pairs and for the rest it prints: pairs whose score changed, real and other pairs shown before and
 // after, pairs that crossed the line each way, pairs the screen dropped, and how many debates argue "found before lost".
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { parseArgs } from "node:util";
-import { foundOneDayBeforeLost } from "../src/text.js";
+import { foundDaysBeforeLost, foundOneDayBeforeLost } from "../src/text.js";
 
 const { values: args } = parseArgs({ options: { base: { type: "string" }, cand: { type: "string" }, gate: { type: "string", default: "one-day" }, line: { type: "string", default: "0.55" }, list: { type: "boolean", default: false } } });
 if (!args.base || !args.cand) throw new Error("--base <run> and --cand <run> are required");
@@ -33,6 +35,8 @@ const pairs = new Map(JSON.parse(await readFile(path.resolve(base.summary.data, 
 const RELATIVE = /\b(today|tonight|yesterday|this (morning|afternoon|evening)|last (night|week)|a (few|couple of) days ago|recently|ams|el ?yo?u?m|embare7|imbare7)\b|امس|أمس|اليوم|البارحة|قبل/i;
 const GATES = {
   "one-day": (l, f) => foundOneDayBeforeLost(l, f),
+  "found-early": (l, f) => foundDaysBeforeLost(l, f) !== null,
+  sparse: (l, f) => f.description.trim().split(/\s+/).length <= 4, // the finder wrote almost nothing
   relative: (l, f) => (!l.eventDate && RELATIVE.test(l.description)) || (!f.eventDate && RELATIVE.test(f.description)),
   undated: (l, f) => !l.eventDate || !f.eventDate,
   early: (l, f) => !l.eventDate && !f.eventDate && Date.parse(l.createdAt) - Date.parse(f.createdAt) >= 3 * 86_400_000,

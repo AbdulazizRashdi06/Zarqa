@@ -79,10 +79,18 @@ if (args.normalize) {
 if (args["no-photos"]) for (const r of all) r.photos = [];
 if (args["photo-captions"]) {
   // A finder who writes "found this" gives search no words. A description of their photo does.
-  // Search and ranking only: the reviewers still get the finder's own words and the photo itself.
+  // Search, ranking and the text-only screen: the advocates and the judge still get the finder's own words and the photo itself.
   const captions = JSON.parse(await readFile(path.resolve(args["photo-captions"]), "utf8"));
   let n = 0;
-  for (const r of all) if (captions[r.id]) { r.rankText = `${r.rankText ?? r.description} ${captions[r.id]}`; r.categoryKey = normalizeCategory(r.rankText); n++; }
+  // Keyed by report id (the first stage test) or by the photo's file name (scripts/caption-photos.js).
+  for (const r of all) {
+    const caption = captions[r.id] ?? (r.photos?.length ? captions[path.basename(r.photos[0])] : undefined);
+    if (!caption) continue;
+    r.rankText = `${r.rankText ?? r.description} ${caption}`;
+    r.categoryKey = normalizeCategory(r.rankText);
+    r.photoCaption = caption; // the text-only screen reads it too (triage.js): it cannot see the photo itself
+    n++;
+  }
   console.log(`photo captions added to ${n} reports`);
 }
 const setup = await embedReports(all, "text", ctx);
@@ -210,7 +218,7 @@ for (const lens of [...new Set(rows.map((r) => r.lens))]) {
 }
 
 const pct = (a, b) => (b ? `${a}/${b} (${Math.round((100 * a) / b)}%)` : "–");
-summary.settings = { postedOn: process.env.POSTED_ON === "1", oneDayLine: process.env.ONE_DAY_LINE === "1", fold: args.fold || null, judgePhotos: process.env.JUDGE_PHOTOS === '1', detailCheck: process.env.DETAIL_CHECK === '1', matchDefinition: process.env.MATCH_DEFINITION || null, photoRule: process.env.PHOTO_RULE || null, photoLine: process.env.PHOTO_LINE || null, photos: !args["no-photos"], normalize: args.normalize, rule: process.env.SIMILARITY_RULE || "v1", legacyCode: process.env.EDGE_LEGACY === "1", vectorLimit: PROPOSED.vectorLimit, maxCandidates: CURRENT.maxCandidates, shortlistThreshold, triage: args.triage ? Number(args.triage) : null };
+summary.settings = { earlyLine: process.env.EARLY_LINE === "1", photoCaptions: args["photo-captions"] || null, postedOn: process.env.POSTED_ON === "1", oneDayLine: process.env.ONE_DAY_LINE === "1", fold: args.fold || null, judgePhotos: process.env.JUDGE_PHOTOS === '1', detailCheck: process.env.DETAIL_CHECK === '1', matchDefinition: process.env.MATCH_DEFINITION || null, photoRule: process.env.PHOTO_RULE || null, photoLine: process.env.PHOTO_LINE || null, photos: !args["no-photos"], normalize: args.normalize, rule: process.env.SIMILARITY_RULE || "v1", legacyCode: process.env.EDGE_LEGACY === "1", vectorLimit: PROPOSED.vectorLimit, maxCandidates: CURRENT.maxCandidates, shortlistThreshold, triage: args.triage ? Number(args.triage) : null };
 summary.reviewsPerReport = round([...reviewsPerReport.values()].reduce((s, v) => s + v, 0) / (reviewsPerReport.size || 1));
 console.log(`\nvector top ${PROPOSED.vectorLimit} · shortlist ≥ ${shortlistThreshold}, top ${CURRENT.maxCandidates} · ${summary.reviewsPerReport} reviews per report on average`);
 console.log(`${rows.length} labelled pairs in a database of ${all.length} reports · embeddings ${summary.embeddings} · cut-off ${PROPOSED.debateThreshold}`);
