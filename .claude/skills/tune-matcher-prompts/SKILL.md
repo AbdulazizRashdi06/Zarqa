@@ -94,6 +94,8 @@ Apply the rule in `references/acceptance.md`. Then:
 
 ## When something fails
 
+- "Agent type not found" for one of the harness's own agents: agent files in `.claude/agents/` are registered when a session starts, so a session that created or changed them cannot call them by name. Use `general-purpose` instead and start its prompt with "First read `.claude/agents/<name>.md`; that file is your role", keeping the model the file names. In the Workflow scripts, drop `agentType` and add the same sentence to the brief.
+
 - An agent returns nothing or malformed data: call it once more. If it fails again, carry on without it and say in the report what is missing. A critic that never answered counts as `uncertain`, not `pass`.
 - A usage limit, an expired sign-in or a permission refusal: do not retry. Note how far the step got, tell the owner when the limit resets if it says, and stop the loop there.
 - The spending stop ends a run: the cached answers are kept. Do not raise the cap; only the owner sets the budget.
