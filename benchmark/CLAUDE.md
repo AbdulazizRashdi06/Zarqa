@@ -27,6 +27,7 @@ node scripts/edge.js --data data/edge/round2 --normalize --vector-limit 100000 -
 EDGE_LEGACY=1 node scripts/edge.js --data data/edge/round2 --yes   # live, the app before 2026-11-14 (control)
 node scripts/edge-read.js --runs <name>,<name> --lines 0.55,0.75   # read finished edge runs as good match / bad match (free)
 node scripts/edge-failures.js --run <name> --show-from 5 --line 0.55   # a run's costliest mistakes by the owner's rules, with the debates (free)
+node scripts/edge-diff.js --base <run> --cand <run> --gate one-day|relative|undated|early   # what a change moved, on the pairs it is aimed at and on the rest (free)
 node scripts/edge-outside.js prepare|merge --data data/<set> ...       # check a set written by an outside agent, cut rating batches, merge the raters' scores
 node scripts/edge-rate.js --runs <name>,<name> --show-from 4,5,6   # best line for each run from the 0-10 quality ratings (round 3 sets; free). Owner's rules are the defaults: a wrong suggestion counts a quarter of a miss, mistakes on easy pairs count most
 ```
