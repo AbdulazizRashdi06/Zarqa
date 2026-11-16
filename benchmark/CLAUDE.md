@@ -108,4 +108,6 @@ The preliminary score (`src/prescore.js`) is a reconstruction of production's fo
 
 **`data/independent/`** (2026-11-15) is a benchmark written by an agent with no knowledge of the matching work or the earlier sets: 271 reports, 276 pairs, its own taxonomy (`DESIGN.md`). It uses the same photos, minus four it rejected. Run it with `scripts/edge.js --data data/independent`.
 
+**`data/independent2/`** (2026-11-16) is the second outside set, written through the `outside-benchmark-writer` agent and rated with the light version (one rater, a second on two of seven batches). `data/photo-set/luna-captions.json` holds one gpt-6-luna description per found photo (`scripts/caption-photos.js`), for `edge.js --photo-captions`. `EARLY_LINE=1`, `ONE_DAY_LINE=1` and `POSTED_ON=1` switch on the date candidates from the tuning loops; none is accepted yet (decisions.md, 2026-11-16).
+
 **`data/sample/`** is a tiny text-only set for offline checks. Any pair not listed in `pairs.json` with `isMatch: true` counts as a non-match.

@@ -2,6 +2,37 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-16: Loops 2 and 3, a second outside set, and Haiku as the judge
+
+**In the app, committed and not deployed:** three switches, all off by default (`MATCHING_JUDGE_PHOTOS`, `MATCHING_ONE_DAY_NOTE`, `MATCHING_POSTED_ON`), with every prompt byte-identical while they are off, and a table on `/admin` of how shown suggestions turned out by confidence band (shown, claimed, not mine, returned), built from what the app already records. Benchmark only: the early-date note (`EARLY_LINE=1`) and per-photo descriptions (`--photo-captions data/photo-set/luna-captions.json`).
+
+**Owner's rulings this day.** A wrong suggestion costs less than a missed one. A mistake on an easy pair costs more than one on a hard pair. A missed pair costs its distance above "show from" to the power 1.2. A critic's `uncertain` becomes a named check in the paid test; only a `fail` with a concrete example stops a candidate. A found date before the lost date is never a veto: it is weak evidence that grows with the gap (the owner first said "any amount of time"; a three-person panel from the council plugin all chose the graded version, because without any date guard every old found item matches every later loss).
+
+**Second outside set** (`benchmark/data/independent2`): 257 reports, 267 pairs (105 real), written through the harness's `outside-benchmark-writer`, each photo opened at full size; 266 pairs rated, the two raters within one point on all 75 pairs both scored. Measured against the first outside set: reports share 27% of their words with their nearest neighbour there, 84 photos are common to both, and both writers independently made lookalikes the main decoy and 39% of pairs real. **The outside sets are independent of the tuning, not of each other: same model, same brief, same photos.**
+
+**Results** (owner's formula, show from 5; judge sees photos in every row; through the ChatGPT subscription, about 2,800 calls, no API money):
+
+| Change | Seen sets (independent / photo round 3 / text round 3) | Outside set 2 |
+|---|---|---|
+| Base | 96 / 90 / 96% | 98%, 102 of 105 real items shown |
+| One-day note | 97 / 96 / 96%; gated real pairs shown 6 to 9 of 9; 4 lookalikes newly shown (rated 2, 4.5, 5.5, 6.5) | 98%, 102; the set has no real pair with a one-day-early date |
+| Early-date note | 97 / 91 / 96%; real early pairs shown 1 to 3 of 3; 3 of 40 other early pairs newly shown (rated 4.5, 5, 7); "found before lost" arguments 27 to 0; no real pair without a date problem lost | 98%, 102; one real early pair, not shown before or after (0.53 to 0.44); 1 of 15 others newly shown |
+| Photo descriptions for search and the screen | 97 / 92 / (not run); one real pair gained on the first set, one gained and one lost on photo round 3 | 98%, 102; 3 more lookalikes shown |
+| All together | not run | 98%, 102 |
+
+- **By the rule fixed in advance (at least 1 point better on the outside set), none of the three is accepted.** The outside set cannot tell them apart: its base is already 98% and it holds almost none of the cases they are for. They did no harm there. Their gains are on sets the fixes were written from.
+- **What is proven on fresh pairs** is the setup itself: the committed fixes with the judge seeing the photo show 102 of 105 real items.
+- The one real pair still missed there: a chemistry textbook the owner called the 10th edition, whose photo shows the 9th. This is the "brand from memory against text read off the item" case that no wording resolved in loop 1.
+- Posting-date runs (`POSTED_ON=1`) were deferred behind the recall fixes and have not been read.
+
+**The subscription route.** `PLAN_BASE_URL` sends each test call to the ChatGPT plan first and to the API when the plan reports its limit. Twenty calls at once drew a "limit" after 64 calls, which the assistant first reported as a used-up allowance; it was a burst limit, and single calls worked three minutes later. The client now finds the level itself (starts at 8, adds one after clean runs, drops to 70% on a limit error) and settled at 4 to 7 at once, about 100 calls a minute.
+
+**Haiku as the judge (rough signal only).** No Claude API key can be used from this cloud environment, so Claude Haiku 5.5 stood in as judge through 23 helper agents on the owner's Claude subscription: the judge's exact prompt, the same advocates' arguments and the same photos, 12 pairs per agent on outside set 2.
+- Score under the formula: 98 / 98 / 97% for show from 4 / 5 / 6, against Terra's 98 / 98 / 98%. Rank correlation with the quality ratings 0.87 against 0.91.
+- Haiku scores about 0.05 lower on average, so its best line is lower (0.40 to 0.55 against 0.45 to 0.70). At 0.55 it shows 101 of 105 real items and 22 of 162 others; Terra shows 102 and 37.
+- Haiku 5.5 is listed at $0.10 in and $0.50 out per million tokens, a tenth of Terra, and the judge is 91% of what matching costs.
+- Limits: 12 pairs judged in one sitting where the app sends one per call; an agent wrapper, not a bare API call; one set. A proper test needs one API call per pair, run from the owner's machine. Using it in production would send reports and photos to a second provider, which the privacy notice would have to say.
+
 ## 2026-11-16: Prompt-tuning harness, and loop 1: no wording change survived the critics
 
 **Nothing in the app changed, and no model call was paid for in this loop.**
