@@ -95,12 +95,17 @@ const QUESTIONS = {
   },
 };
 
+// JUDGE_CONFLICT=1 (loop H2, candidate J1r as the loop council trimmed it, 2026-11-16): the judge is told to keep thin
+// pairs with nothing disagreeing at "unclear" or higher, and to treat as a conflict only a difference no ordinary slip
+// could explain. Off by default; with it off the judge's prompt is byte-identical to the app's.
+export const JUDGE_CONFLICT = process.env.JUDGE_CONFLICT === "1";
+const JUDGE_CONFLICT_NOTE = JUDGE_CONFLICT ? '\nFor both same_item and overall, tell thin evidence from a conflict. When nothing in the reports or photos disagrees, few details are a reason for "unclear" or higher, not for a low score. Treat a difference as a conflict, and a reason for "probably_different" or lower, only when no ordinary slip of memory, wording, language, lighting or wear could explain it: for example, a personal name on the item that differs from the one the other report gives, beyond another spelling or script; or a plainly different kind of object rather than another word, in any language, for the same one, or a case, holder, contents or part that could have been separated from it.' : "";
 // The app's Terra judge (server Reviewers.cs, TerraSystem and JudgeSchema), kept word for word.
 const LEVEL_KEYS = ["clearly_different", "probably_different", "unclear", "probably_same", "almost_certainly_same"];
 export const TERRA_SYSTEM = `You are the judge in a university lost-and-found app. Two advocates have argued whether a LOST report and a FOUND report describe the same physical item. Read the reports and both cases, then answer three questions.
 same_item: ${QUESTIONS.same_item.instructions} Give the probability (0 to 1) that the answer is yes.
 stronger_case: ${QUESTIONS.stronger_case.instructions} "for" = ${QUESTIONS.stronger_case.criteria.for}; "against" = ${QUESTIONS.stronger_case.criteria.against}; "balanced" = ${QUESTIONS.stronger_case.criteria.balanced}.
-overall: ${QUESTIONS.overall.instructions} Give a probability (0 to 1) for each level; they should sum to 1. Levels: ${LEVEL_KEYS.map((k, i) => `${k} = "${DEBATE_LEVELS[i]}"`).join("; ")}.${PHOTO_FOR_JUDGE}`;
+overall: ${QUESTIONS.overall.instructions} Give a probability (0 to 1) for each level; they should sum to 1. Levels: ${LEVEL_KEYS.map((k, i) => `${k} = "${DEBATE_LEVELS[i]}"`).join("; ")}.${JUDGE_CONFLICT_NOTE}${PHOTO_FOR_JUDGE}`;
 const num = { type: "number" };
 const JUDGE_SCHEMA = {
   type: "object",

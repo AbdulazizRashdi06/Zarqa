@@ -35,7 +35,7 @@ Return one judgment per pair with its n exactly as given: same_item_probability 
 
 const out = await parallel(args.files.map((file, i) => () =>
   agent(brief(file), { label: `haiku-judge:${i}`, phase: 'Judge', schema: SCHEMA, model: 'haiku' })
-    .then((r) => (r ? { batch: i, judgments: r.judgments } : null))))
+    .then((r) => (r ? { batch: i, file, judgments: r.judgments } : null))))
 const ok = out.filter(Boolean)
 log(`${ok.length}/${args.files.length} batches returned; ${ok.reduce((s, x) => s + x.judgments.length, 0)} judgments`)
 return ok
