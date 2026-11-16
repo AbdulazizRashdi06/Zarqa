@@ -42,3 +42,6 @@ benchmark/data/online/candidates.json
 benchmark/data/online/photos/
 benchmark/data/online/norm/
 benchmark/data/online/vetted.json
+
+# working state of the prompt-tuning harness (.claude/skills/tune-matcher-prompts)
+benchmark/_workspace/

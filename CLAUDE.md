@@ -30,6 +30,18 @@ The real app is being **built from scratch**: an ASP.NET Core (.NET 10) backend 
 - **Recall is the deciding metric.** A missed match means someone never gets their item back. Precision is secondary.
 - **Design for 100–1,000 active reports.** GUtech has about 2,000 people, so 10,000 is unrealistic.
 
+## Harness: matcher prompt tuning
+
+**Goal:** change the matching models' prompts only through a loop that diagnoses observed failures, attacks each small change before paying to test it, and accepts it only on a fresh outside benchmark scored with the owner's formula.
+
+**When to use:** for any request to engineer, tune, improve or re-test the matcher's prompts or line, or to build and run an outside check, use the `tune-matcher-prompts` skill. To write or rate a blind test set on its own, use `blind-benchmark`. Simple questions about results can be answered directly.
+
+**Change log:**
+
+| Date | Change | What | Why |
+|---|---|---|---|
+| 2026-11-16 | First built with the harness plugin (v2) | 5 agents, 2 skills, 2 scripts | A wording tuned on in-house sets failed on an outside benchmark |
+
 ## Project rules that aren't obvious from the code
 
 - **Never send original photos of ID cards or bank cards to any model, never show them to anyone but their uploader, and never copy them into the repo.** The collection page held a real national ID and a debit card; those entries are text-only in the dataset. Since 2026-10-27 (owner decision) the app makes a **covered copy** of each new card photo with local Tesseract OCR: every number, MRZ line and barcode is covered, while names and faces stay visible. Only that copy is shown to a possible owner (already at the suggestion stage), the finder after a claim, RSA staff and admins, and sent to Luna. If covering fails, no long number was found to cover, or any digit is still readable, the photo stays private (a real bank card came out with nothing covered on 2026-11-14; see decisions.md). Tests use cards drawn in code, never real ones.
