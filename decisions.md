@@ -2,6 +2,41 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-16: Prompt-tuning harness, and loop 1: no wording change survived the critics
+
+**Nothing in the app changed, and no model call was paid for in this loop.**
+
+**The harness** (owner's request; built with the `harness` plugin, with reviewers from the `agentic-council` plugin). Five agent roles in `.claude/agents/` (failure analyst, prompt drafter, prompt critic, outside benchmark writer, pair rater), two skills in `.claude/skills/` (`tune-matcher-prompts` runs the loop, `blind-benchmark` holds everything a writer or rater needs), and two scripts (`edge-failures.js`, `edge-outside.js`). The acceptance rule is fixed in advance in `tune-matcher-prompts/references/acceptance.md`: a wording is kept only if it beats the base by at least 1 point on a fresh outside set under the owner's formula, shows no fewer real items, and has a stable line.
+
+**Diagnosis** (112 mistakes read in full on three seen sets: `ind-judge-photos`, `p3-judge-photos`, `r3t-app`; show from 5, line 0.55; class counts 1 to 3 hand-sorted, about ±3):
+
+| Failure | Mistakes | Fixable by wording? |
+|---|---|---|
+| A stated difference on an identifying detail is named and then waved away because type and place agree | 50 (45%) | thought so; see below |
+| The photo shows a visibly different item but it is called "unverified, not contradicted" | 22 (20%) | thought so |
+| An item name stretched across different objects | 12 (11%) | unclear |
+| A found date one day before the lost date treated as impossible | 6 (5%, but 21% of all cost; 4 real matches rated 7 to 10) | yes, or by an input |
+| The finder wrote almost nothing, so the pair never reaches the debate | 6 | no: search |
+| "today" / "last week" read against the model's own today; the models are not given the posting date | 2 (both real, rated 8 to 9) | no: a missing input |
+
+- Open for the owner: a found date two or more days before the lost date (10 pairs). The outside author calls them non-matches, the raters rated them 5.5 to 7, the matcher rejects them.
+
+**Candidates and the panel.** The drafter rejected the assistant's own sentence from that morning (`SIMILARITY_RULE=v3`: it counted "a part one side says is not there" as a contradiction, which sinks a wallet whose cards were taken) and the long `v2`. Its own proposals, each attacked by three critics (recall, overfit, side effects) plus two outside reviewers, in two rounds:
+
+| Candidate | Round 1 | Revised | Round 2 | Outcome |
+|---|---|---|---|---|
+| Timing: "a found date one day before the lost date is not a contradiction, because report dates can be off by a day" | no fail, 2 uncertain | "…exactly one day before… does not by itself count against a match, but a report's words about when the owner last had the item still count" | no fail, 3 uncertain | dropped |
+| Stated difference, two versions | 3 fails each | one version grading a difference by how hard it is to get wrong | 2 fails, 1 uncertain | dropped |
+
+What the critics found, and why the drops are right:
+- **Stated difference.** The revised wording classifies the commonest brand conflict both ways: an owner's brand from memory (called weak) against a brand the finder reads off the item (called hard to get wrong). Critics on all angles built the same pair: "lost my Casio calculator" against a found one that says SHARP. From the evidence, a misremembered brand and a twin look the same. **This class is mostly not a wording problem:** such pairs are middling matches (the raters score them about 4), and the app already scores them in the middle (0.55 to 0.72). What to do with a middling pair is the owner's "show from" choice and the label it gets, not something a sentence can resolve.
+- **Timing.** The fix is sound for a bare one-day gap, but any sentence in the shared text is read on every pair. The clause about the owner's words fires on "lost it today" and "had it this morning", which are relative to a posting date the models never see, so it could cancel the fix on the very pairs it was for. The side-effects critic proposed the better mechanism: leave the shared text alone and add one line, built in code, only on pairs where the found date is exactly one day before the lost date. That cannot touch any other pair.
+- **A first-round wording said "the two sides"**, which the judge, who reads two advocates, could take as the advocates.
+
+**What loop 1 produced instead of a wording:** two input fixes to try next, neither of which is prompt wording in the shared text: (1) give the models each report's posting date, so "today" and "last week" mean something; (2) a code-built timing line on one-day-before pairs only. And the earlier finding stands for the search failures: a description of the finder's photo for search.
+
+**About the panel itself.** In both rounds the timing candidate had no `fail`, only `uncertain`. The critics are told to answer `uncertain` unless they can say why a change is safe, and the rule lets at most one `uncertain` through, so a sound change with a measurable risk is stopped. That rule was written an hour before its first use. It was applied as written here; loosening it (an `uncertain` becomes a named check in the paid test, a `fail` with a concrete example still stops) is the owner's call, because changing a gate after it stops your own candidate is the bias the harness is for.
+
 ## 2026-11-15: The outside benchmark does not back the written definition or a 0.75 line
 
 **Nothing in the app changed. This entry withdraws part of the one below it ("The judge that sees photos holds up").**
