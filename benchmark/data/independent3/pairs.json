@@ -1244,8 +1244,8 @@
   "foundId": "F-060",
   "isMatch": true,
   "itemKind": "power-bank",
-  "lens": "plain",
-  "why": "Silver Xiaomi Mi power bank on the bus."
+  "lens": "place-date-off",
+  "why": "Silver Xiaomi Mi power bank on the bus; the finder's date is one day before the owner's."
  },
  {
   "lostId": "L-085",
@@ -1413,7 +1413,7 @@
   "isMatch": true,
   "itemKind": "usb",
   "lens": "sparse",
-  "why": "Both sides are bare 'USB, copy centre' and undated."
+  "why": "Both sides are bare 'USB, copy centre'; the finder gave no date."
  },
  {
   "lostId": "L-097",
@@ -1452,8 +1452,8 @@
   "foundId": "F-072",
   "isMatch": true,
   "itemKind": "wallet",
-  "lens": "plain",
-  "why": "Black Timberland wallet in the Sports Hall."
+  "lens": "place-date-off",
+  "why": "Black Timberland wallet in the Sports Hall; found the day before the owner's date, as people often notice a loss the next morning."
  },
  {
   "lostId": "L-099",
@@ -2214,5 +2214,69 @@
   "itemKind": "headphones",
   "lens": "same-kind-diff",
   "why": "Over-ear headphones, but Philips with brown pads."
+ },
+ {
+  "lostId": "L-122",
+  "foundId": "F-133",
+  "isMatch": false,
+  "itemKind": "bottle",
+  "lens": "twin",
+  "why": "Blue Aquaflask, but the finder says no stickers and it was in GU2 parking two days later."
+ },
+ {
+  "lostId": "L-140",
+  "foundId": "F-134",
+  "isMatch": false,
+  "itemKind": "bottle",
+  "lens": "twin",
+  "why": "Grey Nike bottle in the same hall, a day after the other one; the owner mentions no dent. Author's truth: someone else's."
+ },
+ {
+  "lostId": "L-070",
+  "foundId": "F-135",
+  "isMatch": false,
+  "itemKind": "earphones",
+  "lens": "twin",
+  "why": "White Apple earphones in Oman Hall again, ten days after the owner's date."
+ },
+ {
+  "lostId": "L-123",
+  "foundId": "F-137",
+  "isMatch": false,
+  "itemKind": "calculator",
+  "lens": "twin",
+  "why": "Same model, but in the library a week before the exam; the finder does not mention the scratched name."
+ },
+ {
+  "lostId": "L-126",
+  "foundId": "F-138",
+  "isMatch": false,
+  "itemKind": "clothing",
+  "lens": "same-kind-diff",
+  "why": "Grey hoodie, but the finder thinks it has no logo and it was in GU2."
+ },
+ {
+  "lostId": "L-045",
+  "foundId": "F-139",
+  "isMatch": true,
+  "itemKind": "sandals",
+  "lens": "plain",
+  "why": "Brown leather sandals at the GU2 prayer room."
+ },
+ {
+  "lostId": "L-008",
+  "foundId": "F-140",
+  "isMatch": false,
+  "itemKind": "charger",
+  "lens": "sparse",
+  "why": "'phone charger' in the canteen with no date or detail; the owner left theirs at the copy centre."
+ },
+ {
+  "lostId": "L-047",
+  "foundId": "F-143",
+  "isMatch": false,
+  "itemKind": "keys",
+  "lens": "same-kind-diff",
+  "why": "A keychain at the main entrance, but a khanjar charm with no bunch of keys."
  }
 ]
