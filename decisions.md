@@ -47,6 +47,24 @@ Against the measured chance band (about one real item, four other pairs and one 
 
 **Owner's idea, started the same day: a panel of Haikus instead of instruction lines.** Six members, each answering for one rule only (kind of object, names and marks, brand, colour and material, place, time) and scoring how well a pair follows it. The ways of combining the six scores were written down before any score existed (`benchmark/_workspace/tuning/state.json`): the plain average; the average with the pair hidden when the kind or marks member says "differs"; the debate score with the same hiding; and a regression fitted on half the item kinds and scored on the other half. A close relative, Jev's typed questions decided in code, lost to the debate earlier in this log, with a weaker model and no photos.
 
+**The panel's first result** (outside set 2 and text round 3, both seen: 372 real items, 394 other pairs, 249 rated 2 or below; every member scored all 683 pairs; `scripts/plan-agents/members-workflow.js` and `panel-score.py`):
+
+| Two seen sets | Honest score, show from 5 (set 2 / round 3) | Real items | Other pairs | Stupid matches |
+|---|---|---|---|---|
+| Today's app, Luna and Terra at 0.55 | 98 / 96 | 276 | 114 | 16 |
+| Haiku debate at 0.35 | 97 / 97 | 279 | 116 | 17 |
+| Haiku debate, hidden when the judge sides against | | 275 | 96 | 9 |
+| Panel alone, plain average (its best line, 0.60) | 91 / 93 | 278 | 174 | 61 |
+| Panel alone, average, hidden when kind or marks differs (0.60) | 95 / 94 | 277 | 157 | 52 |
+| Panel alone, fitted weights (0.40 / 0.45) | 95 / 88 | 281 | 206 | 94 |
+| Haiku debate, hidden when the kind or marks member says "differs" | 97 / 97 | 277 | 104 | 12 |
+
+**The panel does not replace the debate.** Alone it shows three to five times the stupid matches. The reason is in the scores: most members answer "not stated" (0.5) on most pairs, so two reports of the same kind of thing in the same place average about 0.67 with nothing else agreeing, and that is exactly a stupid match. The fitted weights do not rescue it (on round 3 the two halves fit different weights and the honest score falls to 88). Six separate answers cannot tell thin evidence from conflicting evidence; weighing them against each other is what the debate and the judge do.
+
+**As a veto on top of the debate it is about level with the judge-sides-against rule**, at two more model calls per pair: fewer stupid matches than the plain debate (17 to 12, against 9 for the rule) and two real items lost (against four). One of the two was rated 10 of 10: a two-language pair where the kind member called the Arabic word a different object. Read after the fact on the same two sets: the kind member's veto does nothing useful (it hides that one real item and no wrong pair); the marks member alone gives 278 / 104 / 12; hiding only when the judge sides against and a member also says "differs" gives 279 / 109 / 13, no real item lost. These three were picked after seeing the scores.
+
+**Set 3 run twice** (the council's ruling; same arguments, the judge run again): 112 of 113 real items and 6 stupid matches both times, other pairs 31 and 27, honest score 98 both; with the judge-sides-against rule 112 / 21 / 2 and 112 / 18 / 2. Ten of 285 pairs crossed the line between the two runs. The first run stays the run of record.
+
 ## 2026-11-16: Haiku for all three roles, on the Claude plan (rough test, benchmark only)
 
 The owner asked for Claude Haiku 5.5 in place of Luna and Terra so that testing runs faster, on the Claude subscription only; an API key for production follows only if the results are good. Haiku wrote both advocates' arguments and judged them (the judge sees the photo) on all four rated sets, through helper agents: the app's exact prompts and inputs, a separate agent for each side, 10 pairs per advocate agent and 12 per judge agent. Search and the screen are the base runs'.
