@@ -1,0 +1,2218 @@
+[
+ {
+  "lostId": "L-001",
+  "foundId": "F-001",
+  "isMatch": true,
+  "itemKind": "laptop",
+  "lens": "plain",
+  "why": "Black Dell left charging in the library; the copper-coloured logo the owner names shows in the photo."
+ },
+ {
+  "lostId": "L-001",
+  "foundId": "F-002",
+  "isMatch": false,
+  "itemKind": "laptop",
+  "lens": "twin",
+  "why": "Also a black Dell, but found in the canteen with a silver logo and a heavily scratched lid the owner does not mention."
+ },
+ {
+  "lostId": "L-002",
+  "foundId": "F-002",
+  "isMatch": true,
+  "itemKind": "laptop",
+  "lens": "plain",
+  "why": "Scratched black Dell left in the canteen, as the owner says."
+ },
+ {
+  "lostId": "L-002",
+  "foundId": "F-001",
+  "isMatch": false,
+  "itemKind": "laptop",
+  "lens": "twin",
+  "why": "Black Dell of the same kind, but its lid is clean and it was left charging in the library."
+ },
+ {
+  "lostId": "L-003",
+  "foundId": "F-017",
+  "isMatch": true,
+  "itemKind": "laptop",
+  "lens": "language",
+  "why": "Arabic report of a silver MacBook lost in the studio; the finder wrote in English."
+ },
+ {
+  "lostId": "L-003",
+  "foundId": "F-002",
+  "isMatch": false,
+  "itemKind": "laptop",
+  "lens": "same-kind-diff",
+  "why": "A laptop, but a black Dell in the canteen, not a silver MacBook."
+ },
+ {
+  "lostId": "L-004",
+  "foundId": "F-101",
+  "isMatch": true,
+  "itemKind": "laptop",
+  "lens": "plain",
+  "why": "Grey HP with stickers in a GU2 classroom; the finder does not say which sticker."
+ },
+ {
+  "lostId": "L-004",
+  "foundId": "F-017",
+  "isMatch": false,
+  "itemKind": "laptop",
+  "lens": "same-kind-diff",
+  "why": "Silver laptop is close to grey, but the photo shows an Apple MacBook with no stickers."
+ },
+ {
+  "lostId": "L-005",
+  "foundId": "F-001",
+  "isMatch": false,
+  "itemKind": "laptop",
+  "lens": "same-kind-diff",
+  "why": "Black laptop left in the library on the same day, but the photo shows a Dell logo, not a ThinkPad."
+ },
+ {
+  "lostId": "L-005",
+  "foundId": "F-002",
+  "isMatch": false,
+  "itemKind": "laptop",
+  "lens": "same-kind-diff",
+  "why": "Black laptop, but a Dell, and in the canteen."
+ },
+ {
+  "lostId": "L-006",
+  "foundId": "F-039",
+  "isMatch": true,
+  "itemKind": "charger",
+  "lens": "plain",
+  "why": "Dell charger with a cloverleaf cable on the 4th floor; found a day after the owner's date."
+ },
+ {
+  "lostId": "L-006",
+  "foundId": "F-117",
+  "isMatch": false,
+  "itemKind": "charger",
+  "lens": "twin",
+  "why": "Another Dell charger on the same floor; nothing in the text separates them, the photo-less report was simply someone else's."
+ },
+ {
+  "lostId": "L-006",
+  "foundId": "F-038",
+  "isMatch": false,
+  "itemKind": "charger",
+  "lens": "same-kind-diff",
+  "why": "A black laptop brick, but the photo shows a Chicony adapter with a European two-pin plug."
+ },
+ {
+  "lostId": "L-007",
+  "foundId": "F-038",
+  "isMatch": true,
+  "itemKind": "charger",
+  "lens": "memory-slip",
+  "why": "German report of an Acer charger with a Euro plug; the brick itself is labelled Chicony, the maker of many Acer adapters."
+ },
+ {
+  "lostId": "L-007",
+  "foundId": "F-039",
+  "isMatch": false,
+  "itemKind": "charger",
+  "lens": "same-kind-diff",
+  "why": "Laptop charger, but a Dell one with a cloverleaf cable on the 4th floor."
+ },
+ {
+  "lostId": "L-008",
+  "foundId": "F-007",
+  "isMatch": true,
+  "itemKind": "charger",
+  "lens": "plain",
+  "why": "White plug with a long black USB-C cable left in the copy centre socket."
+ },
+ {
+  "lostId": "L-008",
+  "foundId": "F-014",
+  "isMatch": false,
+  "itemKind": "cable",
+  "lens": "part-found",
+  "why": "A long black USB-C cable, but found outside by the padel courts with no plug; it belongs to another owner."
+ },
+ {
+  "lostId": "L-008",
+  "foundId": "F-121",
+  "isMatch": false,
+  "itemKind": "cable",
+  "lens": "same-kind-diff",
+  "why": "A white lightning cable, not a black USB-C cable with a plug."
+ },
+ {
+  "lostId": "L-009",
+  "foundId": "F-014",
+  "isMatch": true,
+  "itemKind": "cable",
+  "lens": "plain",
+  "why": "Long black braided USB-C cable on the ground by the padel courts."
+ },
+ {
+  "lostId": "L-009",
+  "foundId": "F-007",
+  "isMatch": false,
+  "itemKind": "cable",
+  "lens": "part-found",
+  "why": "Same kind of long black cable, but this one is attached to a white plug in the copy centre and the owner lost only a cable outdoors."
+ },
+ {
+  "lostId": "L-010",
+  "foundId": "F-003",
+  "isMatch": true,
+  "itemKind": "pen",
+  "lens": "sparse",
+  "why": "Finder wrote two words and no date; the photo shows the clear body and blue grip the owner describes."
+ },
+ {
+  "lostId": "L-010",
+  "foundId": "F-019",
+  "isMatch": false,
+  "itemKind": "pen",
+  "lens": "same-kind-diff",
+  "why": "A pen in Oman Hall, but a black one with silver rings."
+ },
+ {
+  "lostId": "L-011",
+  "foundId": "F-019",
+  "isMatch": true,
+  "itemKind": "pen",
+  "lens": "plain",
+  "why": "Black pen with silver rings found in Oman Hall."
+ },
+ {
+  "lostId": "L-011",
+  "foundId": "F-056",
+  "isMatch": false,
+  "itemKind": "pen",
+  "lens": "twin",
+  "why": "Also black lacquer pens with silver trim, but two pens in a denim pouch on the 4th floor."
+ },
+ {
+  "lostId": "L-011",
+  "foundId": "F-003",
+  "isMatch": false,
+  "itemKind": "pen",
+  "lens": "different-kind",
+  "why": "A cheap blue plastic pen."
+ },
+ {
+  "lostId": "L-012",
+  "foundId": "F-056",
+  "isMatch": true,
+  "itemKind": "pen",
+  "lens": "plain",
+  "why": "Two black pens in a denim sleeve on the 4th floor."
+ },
+ {
+  "lostId": "L-012",
+  "foundId": "F-019",
+  "isMatch": false,
+  "itemKind": "pen",
+  "lens": "twin",
+  "why": "A single black pen with silver rings, without the pouch, in Oman Hall."
+ },
+ {
+  "lostId": "L-013",
+  "foundId": "F-004",
+  "isMatch": true,
+  "itemKind": "backpack",
+  "lens": "plain",
+  "why": "Grey backpack with black mesh back and side pockets found in the Sports Hall with notebooks inside."
+ },
+ {
+  "lostId": "L-013",
+  "foundId": "F-102",
+  "isMatch": false,
+  "itemKind": "backpack",
+  "lens": "same-kind-diff",
+  "why": "A black Nike backpack on the bus."
+ },
+ {
+  "lostId": "L-014",
+  "foundId": "F-004",
+  "isMatch": false,
+  "itemKind": "backpack",
+  "lens": "photo-cannot-tell",
+  "why": "Grey backpack in the gym on the same day; the photo shows only the back panel, so the Adidas stripes on the front can be neither seen nor ruled out. The author's truth is that it is not this one."
+ },
+ {
+  "lostId": "L-014",
+  "foundId": "F-102",
+  "isMatch": false,
+  "itemKind": "backpack",
+  "lens": "language",
+  "why": "Arabizi report of a grey Adidas backpack; the found one is a black Nike on the bus."
+ },
+ {
+  "lostId": "L-015",
+  "foundId": "F-024",
+  "isMatch": true,
+  "itemKind": "backpack",
+  "lens": "plain",
+  "why": "Brown backpack with big coloured dots and pink zips at the girls' dorm reception."
+ },
+ {
+  "lostId": "L-015",
+  "foundId": "F-025",
+  "isMatch": false,
+  "itemKind": "backpack",
+  "lens": "same-kind-diff",
+  "why": "A backpack with orange on it, but a black-and-orange camera bag."
+ },
+ {
+  "lostId": "L-016",
+  "foundId": "F-025",
+  "isMatch": true,
+  "itemKind": "backpack",
+  "lens": "plain",
+  "why": "Tamrac camera backpack, orange and black, heavy with a lens, found under the amphi seats."
+ },
+ {
+  "lostId": "L-016",
+  "foundId": "F-024",
+  "isMatch": false,
+  "itemKind": "backpack",
+  "lens": "same-kind-diff",
+  "why": "A backpack with orange dots, but brown with pink zips, at the girls' dorms."
+ },
+ {
+  "lostId": "L-017",
+  "foundId": "F-025",
+  "isMatch": false,
+  "itemKind": "backpack",
+  "lens": "same-kind-diff",
+  "why": "Orange and black backpack, but the photo shows a Tamrac logo, not The North Face, and it was found in the amphi."
+ },
+ {
+  "lostId": "L-017",
+  "foundId": "F-004",
+  "isMatch": false,
+  "itemKind": "backpack",
+  "lens": "same-kind-diff",
+  "why": "A backpack in the Sports Hall, but grey, not orange."
+ },
+ {
+  "lostId": "L-018",
+  "foundId": "F-102",
+  "isMatch": true,
+  "itemKind": "backpack",
+  "lens": "sparse",
+  "why": "Black Nike backpack left on the bus; both sides say little but agree."
+ },
+ {
+  "lostId": "L-018",
+  "foundId": "F-004",
+  "isMatch": false,
+  "itemKind": "backpack",
+  "lens": "same-kind-diff",
+  "why": "Grey backpack in the Sports Hall."
+ },
+ {
+  "lostId": "L-019",
+  "foundId": "F-005",
+  "isMatch": true,
+  "itemKind": "earbuds",
+  "lens": "plain",
+  "why": "JBL case, silver rim and black top, outside GU2."
+ },
+ {
+  "lostId": "L-019",
+  "foundId": "F-114",
+  "isMatch": false,
+  "itemKind": "earbuds",
+  "lens": "same-kind-diff",
+  "why": "An earbuds case found near GU2, but a black Samsung one."
+ },
+ {
+  "lostId": "L-020",
+  "foundId": "F-105",
+  "isMatch": true,
+  "itemKind": "earbuds",
+  "lens": "part-found",
+  "why": "White AirPods case found empty in the library; the owner lost the case with the earbuds inside."
+ },
+ {
+  "lostId": "L-020",
+  "foundId": "F-005",
+  "isMatch": false,
+  "itemKind": "earbuds",
+  "lens": "same-kind-diff",
+  "why": "An earbuds case, but a JBL with a black top."
+ },
+ {
+  "lostId": "L-020",
+  "foundId": "F-045",
+  "isMatch": false,
+  "itemKind": "earbuds",
+  "lens": "kind-trap",
+  "why": "White Apple earphones, but wired ones, not AirPods."
+ },
+ {
+  "lostId": "L-021",
+  "foundId": "F-114",
+  "isMatch": true,
+  "itemKind": "earbuds",
+  "lens": "sparse",
+  "why": "Black Galaxy Buds in GU2 parking; three words from the owner."
+ },
+ {
+  "lostId": "L-021",
+  "foundId": "F-005",
+  "isMatch": false,
+  "itemKind": "earbuds",
+  "lens": "same-kind-diff",
+  "why": "Earbuds case near GU2 with a black top, but the photo shows JBL and a silver rim."
+ },
+ {
+  "lostId": "L-022",
+  "foundId": "F-006",
+  "isMatch": true,
+  "itemKind": "glasses",
+  "lens": "language",
+  "why": "Arabic finder report from room 205 on the second floor of GU1; the photo shows thick black plastic frames."
+ },
+ {
+  "lostId": "L-022",
+  "foundId": "F-040",
+  "isMatch": false,
+  "itemKind": "glasses",
+  "lens": "same-kind-diff",
+  "why": "Glasses, but a thin metal frame in the library."
+ },
+ {
+  "lostId": "L-023",
+  "foundId": "F-040",
+  "isMatch": true,
+  "itemKind": "glasses",
+  "lens": "memory-slip",
+  "why": "Arabic report of thin black metal frames in the library; the photo shows thin dark gunmetal metal frames."
+ },
+ {
+  "lostId": "L-023",
+  "foundId": "F-006",
+  "isMatch": false,
+  "itemKind": "glasses",
+  "lens": "same-kind-diff",
+  "why": "Black frames, but thick plastic and in a GU1 classroom, not thin metal."
+ },
+ {
+  "lostId": "L-023",
+  "foundId": "F-042",
+  "isMatch": false,
+  "itemKind": "glasses",
+  "lens": "same-kind-diff",
+  "why": "Thin metal frame, but gold-coloured with amber pads and in the canteen."
+ },
+ {
+  "lostId": "L-024",
+  "foundId": "F-012",
+  "isMatch": true,
+  "itemKind": "glasses",
+  "lens": "plain",
+  "why": "Rimless glasses found in the female residences."
+ },
+ {
+  "lostId": "L-024",
+  "foundId": "F-040",
+  "isMatch": false,
+  "itemKind": "glasses",
+  "lens": "same-kind-diff",
+  "why": "Thin metal glasses, but full-rim."
+ },
+ {
+  "lostId": "L-025",
+  "foundId": "F-042",
+  "isMatch": true,
+  "itemKind": "glasses",
+  "lens": "photo-decides",
+  "why": "Finder wrote only 'glasses, metal frame'; the photo shows the gold colour and amber nose pads."
+ },
+ {
+  "lostId": "L-025",
+  "foundId": "F-040",
+  "isMatch": false,
+  "itemKind": "glasses",
+  "lens": "same-kind-diff",
+  "why": "Thin metal frame, but dark gunmetal, not gold, and in the library."
+ },
+ {
+  "lostId": "L-026",
+  "foundId": "F-042",
+  "isMatch": false,
+  "itemKind": "glasses",
+  "lens": "twin",
+  "why": "Gold metal glasses found the same day, but in the canteen; nothing in the evidence separates them except the place. Author's truth: another owner's."
+ },
+ {
+  "lostId": "L-026",
+  "foundId": "F-040",
+  "isMatch": false,
+  "itemKind": "glasses",
+  "lens": "same-kind-diff",
+  "why": "Found in the library, but dark metal, not gold."
+ },
+ {
+  "lostId": "L-027",
+  "foundId": "F-041",
+  "isMatch": true,
+  "itemKind": "glasses",
+  "lens": "plain",
+  "why": "An optician's trial frame from the sciences floor; the finder did not know what it was."
+ },
+ {
+  "lostId": "L-027",
+  "foundId": "F-006",
+  "isMatch": false,
+  "itemKind": "glasses",
+  "lens": "different-kind",
+  "why": "Ordinary black prescription glasses."
+ },
+ {
+  "lostId": "L-028",
+  "foundId": "F-063",
+  "isMatch": true,
+  "itemKind": "sunglasses",
+  "lens": "plain",
+  "why": "Oversized burgundy sunglasses with blue gradient lenses at the padel courts; the owner is unsure of the brand and none shows."
+ },
+ {
+  "lostId": "L-028",
+  "foundId": "F-119",
+  "isMatch": false,
+  "itemKind": "sunglasses",
+  "lens": "same-kind-diff",
+  "why": "Sunglasses at the padel courts, but black Ray-Bans."
+ },
+ {
+  "lostId": "L-029",
+  "foundId": "F-119",
+  "isMatch": true,
+  "itemKind": "sunglasses",
+  "lens": "plain",
+  "why": "Black Ray-Bans at the padel courts."
+ },
+ {
+  "lostId": "L-029",
+  "foundId": "F-063",
+  "isMatch": false,
+  "itemKind": "sunglasses",
+  "lens": "same-kind-diff",
+  "why": "Sunglasses at the padel courts the day before, but an oversized burgundy frame."
+ },
+ {
+  "lostId": "L-030",
+  "foundId": "F-008",
+  "isMatch": true,
+  "itemKind": "book",
+  "lens": "plain",
+  "why": "Blue marbled hardcover in Germany Hall; the finder calls it a book, the owner a notebook."
+ },
+ {
+  "lostId": "L-030",
+  "foundId": "F-113",
+  "isMatch": false,
+  "itemKind": "notebook",
+  "lens": "same-kind-diff",
+  "why": "A notebook, but an A4 spiral one with thermodynamics notes."
+ },
+ {
+  "lostId": "L-031",
+  "foundId": "F-015",
+  "isMatch": true,
+  "itemKind": "book",
+  "lens": "memory-slip",
+  "why": "Zumdahl Chemistry on the 3rd floor; the owner guesses the 10th edition, the spine says ninth."
+ },
+ {
+  "lostId": "L-031",
+  "foundId": "F-125",
+  "isMatch": false,
+  "itemKind": "book",
+  "lens": "same-kind-diff",
+  "why": "A chemistry book, but Atkins, in the library."
+ },
+ {
+  "lostId": "L-032",
+  "foundId": "F-125",
+  "isMatch": true,
+  "itemKind": "book",
+  "lens": "sparse",
+  "why": "Atkins chemistry book in the library."
+ },
+ {
+  "lostId": "L-032",
+  "foundId": "F-015",
+  "isMatch": false,
+  "itemKind": "book",
+  "lens": "same-kind-diff",
+  "why": "Chemistry textbook, but the photo shows Zumdahl."
+ },
+ {
+  "lostId": "L-033",
+  "foundId": "F-020",
+  "isMatch": true,
+  "itemKind": "book",
+  "lens": "photo-decides",
+  "why": "Finder says only 'not English, not Arabic'; the photo shows Cyrillic print, matching the Russian novel."
+ },
+ {
+  "lostId": "L-034",
+  "foundId": "F-020",
+  "isMatch": false,
+  "itemKind": "book",
+  "lens": "photo-decides",
+  "why": "Old yellowed book in the same garden on the same day, but the photo shows Cyrillic, not Arabic, script."
+ },
+ {
+  "lostId": "L-035",
+  "foundId": "F-064",
+  "isMatch": true,
+  "itemKind": "book",
+  "lens": "plain",
+  "why": "Children's science book open at the solar system, left in Oman Hall."
+ },
+ {
+  "lostId": "L-035",
+  "foundId": "F-008",
+  "isMatch": false,
+  "itemKind": "book",
+  "lens": "different-kind",
+  "why": "A plain hardcover with a marbled cover."
+ },
+ {
+  "lostId": "L-036",
+  "foundId": "F-009",
+  "isMatch": true,
+  "itemKind": "game",
+  "lens": "language",
+  "why": "The Arabic title and Balinca brand agree on both sides."
+ },
+ {
+  "lostId": "L-037",
+  "foundId": "F-009",
+  "isMatch": false,
+  "itemKind": "game",
+  "lens": "same-kind-diff",
+  "why": "A card game in the same lounge on the same day, but Money Talks, not Uno."
+ },
+ {
+  "lostId": "L-038",
+  "foundId": "F-010",
+  "isMatch": true,
+  "itemKind": "sports",
+  "lens": "photo-decides",
+  "why": "Finder wrote 'old table tennis racket'; the photo shows the orange handle and peeling red rubber."
+ },
+ {
+  "lostId": "L-039",
+  "foundId": "F-010",
+  "isMatch": false,
+  "itemKind": "sports",
+  "lens": "same-kind-diff",
+  "why": "Table tennis bat in the Sports Hall, but the photo shows a worn cheap bat with an orange handle, not an almost new black and red Butterfly."
+ },
+ {
+  "lostId": "L-040",
+  "foundId": "F-011",
+  "isMatch": true,
+  "itemKind": "remote",
+  "lens": "photo-decides",
+  "why": "Finder gave no brand; the photo shows an Oscar remote."
+ },
+ {
+  "lostId": "L-041",
+  "foundId": "F-011",
+  "isMatch": false,
+  "itemKind": "remote",
+  "lens": "same-kind-diff",
+  "why": "A remote in the boys' dorms, but a dark grey TV remote, not a white AC one."
+ },
+ {
+  "lostId": "L-042",
+  "foundId": "F-013",
+  "isMatch": true,
+  "itemKind": "clothing",
+  "lens": "kind-trap",
+  "why": "Owner says kumma, finder was unsure what the white cloth with brown embroidery is; the photo fits a crumpled cap."
+ },
+ {
+  "lostId": "L-043",
+  "foundId": "F-013",
+  "isMatch": false,
+  "itemKind": "clothing",
+  "lens": "same-kind-diff",
+  "why": "A white kumma, but the photo shows brown embroidery, not green and red."
+ },
+ {
+  "lostId": "L-044",
+  "foundId": "F-016",
+  "isMatch": true,
+  "itemKind": "sandals",
+  "lens": "place-date-off",
+  "why": "Arabic report of black leather sandals at the musalla; the finder posted three days later."
+ },
+ {
+  "lostId": "L-044",
+  "foundId": "F-045",
+  "isMatch": false,
+  "itemKind": "earphones",
+  "lens": "different-kind",
+  "why": "White earphones."
+ },
+ {
+  "lostId": "L-045",
+  "foundId": "F-016",
+  "isMatch": false,
+  "itemKind": "sandals",
+  "lens": "same-kind-diff",
+  "why": "Leather sandals by a prayer room, but black and at GU1, not brown and at GU2."
+ },
+ {
+  "lostId": "L-046",
+  "foundId": "F-018",
+  "isMatch": true,
+  "itemKind": "keys",
+  "lens": "plain",
+  "why": "Keys on a silver carabiner found in the dirt parking."
+ },
+ {
+  "lostId": "L-046",
+  "foundId": "F-051",
+  "isMatch": false,
+  "itemKind": "keys",
+  "lens": "same-kind-diff",
+  "why": "A bunch of keys, but about ten on a ring with a round tag and no carabiner."
+ },
+ {
+  "lostId": "L-047",
+  "foundId": "F-051",
+  "isMatch": true,
+  "itemKind": "keys",
+  "lens": "plain",
+  "why": "About ten keys with a round tag and a torch-like object, found at the main entrance."
+ },
+ {
+  "lostId": "L-047",
+  "foundId": "F-018",
+  "isMatch": false,
+  "itemKind": "keys",
+  "lens": "same-kind-diff",
+  "why": "Keys, but five on a carabiner, in the dirt parking."
+ },
+ {
+  "lostId": "L-048",
+  "foundId": "F-052",
+  "isMatch": true,
+  "itemKind": "keys",
+  "lens": "language",
+  "why": "Both reports in German; the photo shows an old bit key and a grey tag."
+ },
+ {
+  "lostId": "L-048",
+  "foundId": "F-051",
+  "isMatch": false,
+  "itemKind": "keys",
+  "lens": "same-kind-diff",
+  "why": "Many keys, but no old bit key and no grey tag in the photo."
+ },
+ {
+  "lostId": "L-049",
+  "foundId": "F-103",
+  "isMatch": true,
+  "itemKind": "keys",
+  "lens": "plain",
+  "why": "A single key with a red rubber cover found on the GU1 stairs."
+ },
+ {
+  "lostId": "L-049",
+  "foundId": "F-128",
+  "isMatch": false,
+  "itemKind": "keys",
+  "lens": "same-kind-diff",
+  "why": "A small key, but on a grey GUtech lanyard in Germany Hall."
+ },
+ {
+  "lostId": "L-050",
+  "foundId": "F-036",
+  "isMatch": true,
+  "itemKind": "keys",
+  "lens": "sparse",
+  "why": "Both sides almost empty and undated; the blurry photo shows a black key head beside other keys, as the owner says."
+ },
+ {
+  "lostId": "L-050",
+  "foundId": "F-051",
+  "isMatch": false,
+  "itemKind": "keys",
+  "lens": "sparse",
+  "why": "Also keys with a black-headed key in the photo, but found at the main entrance; no detail separates them, only the author knows."
+ },
+ {
+  "lostId": "L-050",
+  "foundId": "F-018",
+  "isMatch": false,
+  "itemKind": "keys",
+  "lens": "sparse",
+  "why": "Keys, but in the dirt parking, and none of them is a car key."
+ },
+ {
+  "lostId": "L-051",
+  "foundId": "F-021",
+  "isMatch": true,
+  "itemKind": "car-key",
+  "lens": "plain",
+  "why": "Two-button car key with a silver car-shaped tag in the student parking."
+ },
+ {
+  "lostId": "L-051",
+  "foundId": "F-104",
+  "isMatch": false,
+  "itemKind": "car-key",
+  "lens": "twin",
+  "why": "A two-button Toyota key, but with nothing on it and in GU2 parking."
+ },
+ {
+  "lostId": "L-052",
+  "foundId": "F-104",
+  "isMatch": true,
+  "itemKind": "car-key",
+  "lens": "sparse",
+  "why": "Black Toyota key in GU2 parking."
+ },
+ {
+  "lostId": "L-052",
+  "foundId": "F-021",
+  "isMatch": false,
+  "itemKind": "car-key",
+  "lens": "twin",
+  "why": "Two-button black key of the same style, but with a car-shaped tag the owner does not mention, in the student parking."
+ },
+ {
+  "lostId": "L-053",
+  "foundId": "F-032",
+  "isMatch": true,
+  "itemKind": "car-key",
+  "lens": "language",
+  "why": "Arabizi report of a VW flip key with a little Japanese sumo doll on an orange string; the photo shows exactly that."
+ },
+ {
+  "lostId": "L-053",
+  "foundId": "F-123",
+  "isMatch": false,
+  "itemKind": "car-key",
+  "lens": "same-kind-diff",
+  "why": "A black car key in GU1 parking, but with no charm."
+ },
+ {
+  "lostId": "L-054",
+  "foundId": "F-033",
+  "isMatch": true,
+  "itemKind": "car-key",
+  "lens": "plain",
+  "why": "Honda smart key at the main entrance."
+ },
+ {
+  "lostId": "L-055",
+  "foundId": "F-033",
+  "isMatch": false,
+  "itemKind": "car-key",
+  "lens": "same-kind-diff",
+  "why": "Honda key at the main entrance on the same day, but a keyless smart fob, not a blade key."
+ },
+ {
+  "lostId": "L-056",
+  "foundId": "F-034",
+  "isMatch": true,
+  "itemKind": "car-key",
+  "lens": "plain",
+  "why": "Key snapped in two, both pieces, in the workshops."
+ },
+ {
+  "lostId": "L-056",
+  "foundId": "F-123",
+  "isMatch": false,
+  "itemKind": "car-key",
+  "lens": "same-kind-diff",
+  "why": "A whole black car key in a parking lot."
+ },
+ {
+  "lostId": "L-057",
+  "foundId": "F-037",
+  "isMatch": true,
+  "itemKind": "car-key",
+  "lens": "plain",
+  "why": "Mercedes key with a chrome Mercedes keychain in the dirt parking."
+ },
+ {
+  "lostId": "L-057",
+  "foundId": "F-123",
+  "isMatch": false,
+  "itemKind": "car-key",
+  "lens": "same-kind-diff",
+  "why": "A black car key, but in GU1 parking with no keychain mentioned."
+ },
+ {
+  "lostId": "L-058",
+  "foundId": "F-123",
+  "isMatch": true,
+  "itemKind": "car-key",
+  "lens": "sparse",
+  "why": "Black car key in GU1 parking; the finder gives no brand."
+ },
+ {
+  "lostId": "L-058",
+  "foundId": "F-037",
+  "isMatch": false,
+  "itemKind": "car-key",
+  "lens": "same-kind-diff",
+  "why": "A Mercedes key, but on a chrome keychain while the owner says there was no ring."
+ },
+ {
+  "lostId": "L-059",
+  "foundId": "F-035",
+  "isMatch": true,
+  "itemKind": "usb",
+  "lens": "photo-decides",
+  "why": "The finder took it for a car remote; the photo shows a USB plug, as the owner says."
+ },
+ {
+  "lostId": "L-059",
+  "foundId": "F-122",
+  "isMatch": false,
+  "itemKind": "usb",
+  "lens": "sparse",
+  "why": "A USB found in the copy centre, but no detail; the key-shaped one is in the other report."
+ },
+ {
+  "lostId": "L-060",
+  "foundId": "F-035",
+  "isMatch": false,
+  "itemKind": "car-key",
+  "lens": "photo-decides",
+  "why": "The finder's words fit a black and grey car remote, but the photo shows a USB stick."
+ },
+ {
+  "lostId": "L-061",
+  "foundId": "F-116",
+  "isMatch": true,
+  "itemKind": "car-key",
+  "lens": "plain",
+  "why": "Nissan key with a blue lanyard in the student parking."
+ },
+ {
+  "lostId": "L-061",
+  "foundId": "F-021",
+  "isMatch": false,
+  "itemKind": "car-key",
+  "lens": "same-kind-diff",
+  "why": "A car key in the student parking, but with a silver car tag, not a lanyard."
+ },
+ {
+  "lostId": "L-062",
+  "foundId": "F-081",
+  "isMatch": true,
+  "itemKind": "watch",
+  "lens": "photo-decides",
+  "why": "Finder wrote 'gold watch'; the photo shows the half black, half cream dial with sub-dials and a strap."
+ },
+ {
+  "lostId": "L-062",
+  "foundId": "F-084",
+  "isMatch": false,
+  "itemKind": "watch",
+  "lens": "same-kind-diff",
+  "why": "A watch, but steel with a black face, in the prayer room."
+ },
+ {
+  "lostId": "L-063",
+  "foundId": "F-082",
+  "isMatch": true,
+  "itemKind": "watch",
+  "lens": "plain",
+  "why": "Victorinox with a black dial and a steel bracelet found at the GU2 wudu area."
+ },
+ {
+  "lostId": "L-063",
+  "foundId": "F-084",
+  "isMatch": false,
+  "itemKind": "watch",
+  "lens": "twin",
+  "why": "A steel watch with a black face, also left at wudu, but at GU1, and the photo shows Breitling."
+ },
+ {
+  "lostId": "L-064",
+  "foundId": "F-084",
+  "isMatch": true,
+  "itemKind": "watch",
+  "lens": "plain",
+  "why": "Breitling Navitimer at the GU1 prayer room."
+ },
+ {
+  "lostId": "L-064",
+  "foundId": "F-082",
+  "isMatch": false,
+  "itemKind": "watch",
+  "lens": "twin",
+  "why": "Steel watch with a black dial left at wudu, but at GU2, and the photo shows Victorinox."
+ },
+ {
+  "lostId": "L-065",
+  "foundId": "F-084",
+  "isMatch": false,
+  "itemKind": "watch",
+  "lens": "language",
+  "why": "Hindi/Urdu report of a steel Casio with a black dial at the same prayer room on the same day; the photo shows Breitling."
+ },
+ {
+  "lostId": "L-065",
+  "foundId": "F-082",
+  "isMatch": false,
+  "itemKind": "watch",
+  "lens": "same-kind-diff",
+  "why": "Steel with a black dial, but the photo shows Victorinox, at GU2."
+ },
+ {
+  "lostId": "L-066",
+  "foundId": "F-083",
+  "isMatch": true,
+  "itemKind": "watch",
+  "lens": "place-date-off",
+  "why": "Bulova Accutron in its box; the owner guesses GU2, it was found on the 4th floor."
+ },
+ {
+  "lostId": "L-067",
+  "foundId": "F-081",
+  "isMatch": false,
+  "itemKind": "watch",
+  "lens": "same-kind-diff",
+  "why": "A watch from the Sports Hall changing room, but gold with a dial, not an Apple Watch."
+ },
+ {
+  "lostId": "L-068",
+  "foundId": "F-043",
+  "isMatch": true,
+  "itemKind": "earphones",
+  "lens": "plain",
+  "why": "Silver and blue earphones in a black mesh pouch."
+ },
+ {
+  "lostId": "L-068",
+  "foundId": "F-044",
+  "isMatch": false,
+  "itemKind": "earphones",
+  "lens": "same-kind-diff",
+  "why": "Metal in-ear earphones, but chrome Skullcandy with a black wire."
+ },
+ {
+  "lostId": "L-069",
+  "foundId": "F-044",
+  "isMatch": true,
+  "itemKind": "earphones",
+  "lens": "plain",
+  "why": "Chrome Skullcandy earphones in the Sports Hall."
+ },
+ {
+  "lostId": "L-069",
+  "foundId": "F-043",
+  "isMatch": false,
+  "itemKind": "earphones",
+  "lens": "same-kind-diff",
+  "why": "Metal earphones, but blue and silver with a white wire."
+ },
+ {
+  "lostId": "L-070",
+  "foundId": "F-045",
+  "isMatch": true,
+  "itemKind": "earphones",
+  "lens": "plain",
+  "why": "Wired Apple earphones with a mic in Oman Hall."
+ },
+ {
+  "lostId": "L-070",
+  "foundId": "F-046",
+  "isMatch": false,
+  "itemKind": "earphones",
+  "lens": "twin",
+  "why": "Identical-looking white Apple earphones, found in the library a week later."
+ },
+ {
+  "lostId": "L-071",
+  "foundId": "F-046",
+  "isMatch": true,
+  "itemKind": "earphones",
+  "lens": "sparse",
+  "why": "White Apple earphones in the library."
+ },
+ {
+  "lostId": "L-071",
+  "foundId": "F-045",
+  "isMatch": false,
+  "itemKind": "earphones",
+  "lens": "twin",
+  "why": "Identical-looking white Apple earphones, but in Oman Hall."
+ },
+ {
+  "lostId": "L-071",
+  "foundId": "F-050",
+  "isMatch": false,
+  "itemKind": "earphones",
+  "lens": "same-kind-diff",
+  "why": "White Apple earbuds, but with a hand-sewn red sleeve the owner would have mentioned."
+ },
+ {
+  "lostId": "L-072",
+  "foundId": "F-050",
+  "isMatch": true,
+  "itemKind": "earphones",
+  "lens": "plain",
+  "why": "Hand-sewn red fabric sleeve with green stitches on white earbuds."
+ },
+ {
+  "lostId": "L-072",
+  "foundId": "F-046",
+  "isMatch": false,
+  "itemKind": "earphones",
+  "lens": "same-kind-diff",
+  "why": "Plain white earphones with no sleeve."
+ },
+ {
+  "lostId": "L-073",
+  "foundId": "F-047",
+  "isMatch": true,
+  "itemKind": "headphones",
+  "lens": "plain",
+  "why": "Philips headphones with brown leather pads in the studio."
+ },
+ {
+  "lostId": "L-073",
+  "foundId": "F-049",
+  "isMatch": false,
+  "itemKind": "headphones",
+  "lens": "same-kind-diff",
+  "why": "Over-ear headphones in a UPAD building, but AKG with a white ring."
+ },
+ {
+  "lostId": "L-074",
+  "foundId": "F-048",
+  "isMatch": true,
+  "itemKind": "headphones",
+  "lens": "plain",
+  "why": "Sennheiser HD 280 pro in the Mechatronics Lab."
+ },
+ {
+  "lostId": "L-074",
+  "foundId": "F-049",
+  "isMatch": false,
+  "itemKind": "headphones",
+  "lens": "same-kind-diff",
+  "why": "Black over-ear headphones, but AKG."
+ },
+ {
+  "lostId": "L-075",
+  "foundId": "F-049",
+  "isMatch": true,
+  "itemKind": "headphones",
+  "lens": "plain",
+  "why": "AKG headphones found in GU2."
+ },
+ {
+  "lostId": "L-075",
+  "foundId": "F-048",
+  "isMatch": false,
+  "itemKind": "headphones",
+  "lens": "same-kind-diff",
+  "why": "Black studio headphones, but Sennheiser."
+ },
+ {
+  "lostId": "L-076",
+  "foundId": "F-049",
+  "isMatch": false,
+  "itemKind": "headphones",
+  "lens": "same-kind-diff",
+  "why": "Big black headphones in UPAD on the same day, but AKG, not Sony."
+ },
+ {
+  "lostId": "L-076",
+  "foundId": "F-047",
+  "isMatch": false,
+  "itemKind": "headphones",
+  "lens": "same-kind-diff",
+  "why": "Over-ear headphones in the studio, but Philips with brown pads."
+ },
+ {
+  "lostId": "L-077",
+  "foundId": "F-053",
+  "isMatch": true,
+  "itemKind": "pencil-case",
+  "lens": "plain",
+  "why": "London tube map pencil case in Germany Hall."
+ },
+ {
+  "lostId": "L-078",
+  "foundId": "F-054",
+  "isMatch": true,
+  "itemKind": "pencil-case",
+  "lens": "plain",
+  "why": "Purple book-style case with pink and purple pens."
+ },
+ {
+  "lostId": "L-078",
+  "foundId": "F-053",
+  "isMatch": false,
+  "itemKind": "pencil-case",
+  "lens": "same-kind-diff",
+  "why": "A pencil case, but white with a tube map."
+ },
+ {
+  "lostId": "L-079",
+  "foundId": "F-055",
+  "isMatch": true,
+  "itemKind": "pencil-case",
+  "lens": "photo-cannot-tell",
+  "why": "Small round striped case in the studio; the photo is sepia, so it fits beige and brown but cannot prove the colours."
+ },
+ {
+  "lostId": "L-080",
+  "foundId": "F-055",
+  "isMatch": false,
+  "itemKind": "pencil-case",
+  "lens": "photo-cannot-tell",
+  "why": "Striped case found in the same studio on the same day; the sepia photo hides the colour, so blue cannot be ruled out. Author's truth: not this one."
+ },
+ {
+  "lostId": "L-080",
+  "foundId": "F-054",
+  "isMatch": false,
+  "itemKind": "pencil-case",
+  "lens": "same-kind-diff",
+  "why": "A purple case, not blue striped."
+ },
+ {
+  "lostId": "L-081",
+  "foundId": "F-057",
+  "isMatch": true,
+  "itemKind": "phone",
+  "lens": "memory-slip",
+  "why": "iPhone 6 with no case in the canteen; the finder says silver, the owner gold, and the photo's pale gold tone could be read either way."
+ },
+ {
+  "lostId": "L-082",
+  "foundId": "F-057",
+  "isMatch": false,
+  "itemKind": "phone",
+  "lens": "same-kind-diff",
+  "why": "An iPhone in the canteen on the same day, but an older model with no case, not a blue iPhone 13 in a clear case."
+ },
+ {
+  "lostId": "L-144",
+  "foundId": "F-057",
+  "isMatch": false,
+  "itemKind": "phone",
+  "lens": "sparse",
+  "why": "'phone lost' in GU1; a phone was found in the canteen on the same day, and nothing either supports or rules it out."
+ },
+ {
+  "lostId": "L-083",
+  "foundId": "F-058",
+  "isMatch": true,
+  "itemKind": "power-bank",
+  "lens": "place-date-off",
+  "why": "Black Anker with four lights; the owner guessed Oman Hall, it turned up in the library."
+ },
+ {
+  "lostId": "L-083",
+  "foundId": "F-060",
+  "isMatch": false,
+  "itemKind": "power-bank",
+  "lens": "same-kind-diff",
+  "why": "A power bank, but a silver Xiaomi on the bus."
+ },
+ {
+  "lostId": "L-084",
+  "foundId": "F-059",
+  "isMatch": true,
+  "itemKind": "power-bank",
+  "lens": "memory-slip",
+  "why": "Pebble power bank printed EU2017.EE in Germany Hall; the owner calls the light grey white."
+ },
+ {
+  "lostId": "L-085",
+  "foundId": "F-060",
+  "isMatch": true,
+  "itemKind": "power-bank",
+  "lens": "plain",
+  "why": "Silver Xiaomi Mi power bank on the bus."
+ },
+ {
+  "lostId": "L-085",
+  "foundId": "F-059",
+  "isMatch": false,
+  "itemKind": "power-bank",
+  "lens": "same-kind-diff",
+  "why": "A light-coloured power bank, but a grey pebble one in Germany Hall."
+ },
+ {
+  "lostId": "L-086",
+  "foundId": "F-058",
+  "isMatch": false,
+  "itemKind": "power-bank",
+  "lens": "photo-decides",
+  "why": "Black power bank in the library on the same day; the finder gave no brand, but the photo shows Anker, not Baseus."
+ },
+ {
+  "lostId": "L-087",
+  "foundId": "F-062",
+  "isMatch": true,
+  "itemKind": "prayer-beads",
+  "lens": "language",
+  "why": "Both in Arabic; the photo shows brown and orange wooden beads with a tassel."
+ },
+ {
+  "lostId": "L-088",
+  "foundId": "F-062",
+  "isMatch": false,
+  "itemKind": "prayer-beads",
+  "lens": "photo-decides",
+  "why": "A misbaha from the same musalla on the same day; the finder wrote one word, and the photo shows wood, not black onyx."
+ },
+ {
+  "lostId": "L-089",
+  "foundId": "F-061",
+  "isMatch": true,
+  "itemKind": "prayer-beads",
+  "lens": "language",
+  "why": "Hindi/Urdu report of a mala of brown seed beads with a few red ones on silver wire."
+ },
+ {
+  "lostId": "L-089",
+  "foundId": "F-062",
+  "isMatch": false,
+  "itemKind": "prayer-beads",
+  "lens": "same-kind-diff",
+  "why": "A string of beads, but a wooden misbaha with a tassel, at GU1."
+ },
+ {
+  "lostId": "L-090",
+  "foundId": "F-066",
+  "isMatch": true,
+  "itemKind": "umbrella",
+  "lens": "photo-decides",
+  "why": "The finder wrote 'umbrella red'; the photo shows the long one with the wooden crook handle."
+ },
+ {
+  "lostId": "L-090",
+  "foundId": "F-065",
+  "isMatch": false,
+  "itemKind": "umbrella",
+  "lens": "same-kind-diff",
+  "why": "A red umbrella, but a small folding one at the main entrance."
+ },
+ {
+  "lostId": "L-091",
+  "foundId": "F-065",
+  "isMatch": true,
+  "itemKind": "umbrella",
+  "lens": "memory-slip",
+  "why": "Small red folding umbrella at the main entrance; the owner says dark red, the canopy is bright red."
+ },
+ {
+  "lostId": "L-091",
+  "foundId": "F-066",
+  "isMatch": false,
+  "itemKind": "umbrella",
+  "lens": "same-kind-diff",
+  "why": "A red umbrella, but a long one with a wooden handle."
+ },
+ {
+  "lostId": "L-132",
+  "foundId": "F-118",
+  "isMatch": true,
+  "itemKind": "umbrella",
+  "lens": "sparse",
+  "why": "Black umbrella at the main entrance."
+ },
+ {
+  "lostId": "L-132",
+  "foundId": "F-065",
+  "isMatch": false,
+  "itemKind": "umbrella",
+  "lens": "same-kind-diff",
+  "why": "An umbrella at the main entrance on the same day, but red."
+ },
+ {
+  "lostId": "L-092",
+  "foundId": "F-067",
+  "isMatch": true,
+  "itemKind": "usb",
+  "lens": "plain",
+  "why": "Silver TDK flash drive in the copy centre."
+ },
+ {
+  "lostId": "L-092",
+  "foundId": "F-122",
+  "isMatch": false,
+  "itemKind": "usb",
+  "lens": "sparse",
+  "why": "Some USB found in the copy centre with no detail; the TDK was posted separately."
+ },
+ {
+  "lostId": "L-093",
+  "foundId": "F-068",
+  "isMatch": true,
+  "itemKind": "usb",
+  "lens": "plain",
+  "why": "Black 2GB USB with a black cap."
+ },
+ {
+  "lostId": "L-093",
+  "foundId": "F-070",
+  "isMatch": false,
+  "itemKind": "usb",
+  "lens": "twin",
+  "why": "Black USB with a black cap, but the photo shows a Transcend 1GB with a light-blue collar."
+ },
+ {
+  "lostId": "L-094",
+  "foundId": "F-070",
+  "isMatch": true,
+  "itemKind": "usb",
+  "lens": "memory-slip",
+  "why": "Transcend with a lanyard in the CS department; the owner says dark blue, the collar is light blue."
+ },
+ {
+  "lostId": "L-094",
+  "foundId": "F-068",
+  "isMatch": false,
+  "itemKind": "usb",
+  "lens": "twin",
+  "why": "Black USB with a black cap, but no blue part and no lanyard."
+ },
+ {
+  "lostId": "L-095",
+  "foundId": "F-069",
+  "isMatch": true,
+  "itemKind": "usb",
+  "lens": "plain",
+  "why": "Blue rubber USB shaped like the word CREATE, in the studio."
+ },
+ {
+  "lostId": "L-096",
+  "foundId": "F-071",
+  "isMatch": true,
+  "itemKind": "usb",
+  "lens": "plain",
+  "why": "Silver and red USB with a black leather strap at GUbridge."
+ },
+ {
+  "lostId": "L-097",
+  "foundId": "F-122",
+  "isMatch": true,
+  "itemKind": "usb",
+  "lens": "sparse",
+  "why": "Both sides are bare 'USB, copy centre' and undated."
+ },
+ {
+  "lostId": "L-097",
+  "foundId": "F-067",
+  "isMatch": false,
+  "itemKind": "usb",
+  "lens": "sparse",
+  "why": "A USB from the copy centre, a week earlier; nothing in the owner's words rules it out."
+ },
+ {
+  "lostId": "L-097",
+  "foundId": "F-035",
+  "isMatch": false,
+  "itemKind": "usb",
+  "lens": "sparse",
+  "why": "A USB stick (described as a car remote) at the copy centre on the owner's date; nothing in the owner's words rules it out."
+ },
+ {
+  "lostId": "L-098",
+  "foundId": "F-022",
+  "isMatch": true,
+  "itemKind": "wallet",
+  "lens": "plain",
+  "why": "Black wallet with an embossed line pattern and cash, found at GUbridge."
+ },
+ {
+  "lostId": "L-098",
+  "foundId": "F-072",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "same-kind-diff",
+  "why": "Black leather wallet, but plain with a Timberland tree and in the Sports Hall."
+ },
+ {
+  "lostId": "L-099",
+  "foundId": "F-072",
+  "isMatch": true,
+  "itemKind": "wallet",
+  "lens": "plain",
+  "why": "Black Timberland wallet in the Sports Hall."
+ },
+ {
+  "lostId": "L-099",
+  "foundId": "F-022",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "same-kind-diff",
+  "why": "Black wallet, but with an embossed pattern and no tree logo, at GUbridge."
+ },
+ {
+  "lostId": "L-100",
+  "foundId": "F-077",
+  "isMatch": true,
+  "itemKind": "wallet",
+  "lens": "plain",
+  "why": "New black Guess wallet with the tag on, in the GU1 lobby."
+ },
+ {
+  "lostId": "L-109",
+  "foundId": "F-077",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "twin",
+  "why": "Black Guess bifold in GU1 on the same day, but the owner's is old and worn while the found one still has its price tag."
+ },
+ {
+  "lostId": "L-109",
+  "foundId": "F-072",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "same-kind-diff",
+  "why": "Black leather bifold, but Timberland."
+ },
+ {
+  "lostId": "L-101",
+  "foundId": "F-073",
+  "isMatch": true,
+  "itemKind": "wallet",
+  "lens": "plain",
+  "why": "Moroccan leather wallet with a green star in the canteen."
+ },
+ {
+  "lostId": "L-102",
+  "foundId": "F-074",
+  "isMatch": true,
+  "itemKind": "wallet",
+  "lens": "plain",
+  "why": "Snake-print wristlet with a purple zip in the girls' dorms."
+ },
+ {
+  "lostId": "L-103",
+  "foundId": "F-075",
+  "isMatch": true,
+  "itemKind": "wallet",
+  "lens": "plain",
+  "why": "Long red Dooney & Bourke wallet in the library."
+ },
+ {
+  "lostId": "L-103",
+  "foundId": "F-076",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "same-kind-diff",
+  "why": "Red wallet, but small, with a clover, in Germany Hall."
+ },
+ {
+  "lostId": "L-104",
+  "foundId": "F-076",
+  "isMatch": true,
+  "itemKind": "wallet",
+  "lens": "plain",
+  "why": "Small red 'motto' wallet with a clover in Germany Hall."
+ },
+ {
+  "lostId": "L-104",
+  "foundId": "F-075",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "same-kind-diff",
+  "why": "Red wallet, but a long Dooney & Bourke one."
+ },
+ {
+  "lostId": "L-105",
+  "foundId": "F-076",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "photo-decides",
+  "why": "Red zipped wallet in Germany Hall on the same day; the finder's words fit, but the photo shows the 'motto' brand with a clover, not Michael Kors."
+ },
+ {
+  "lostId": "L-105",
+  "foundId": "F-075",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "same-kind-diff",
+  "why": "Red wallet, but a flap-style Dooney & Bourke in the library."
+ },
+ {
+  "lostId": "L-106",
+  "foundId": "F-078",
+  "isMatch": true,
+  "itemKind": "wallet",
+  "lens": "plain",
+  "why": "Hand-tooled basket-weave wallet with dark laces at the football pitch."
+ },
+ {
+  "lostId": "L-106",
+  "foundId": "F-073",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "same-kind-diff",
+  "why": "Laced tan leather wallet, but plain with a painted Morocco star."
+ },
+ {
+  "lostId": "L-107",
+  "foundId": "F-079",
+  "isMatch": true,
+  "itemKind": "wallet",
+  "lens": "photo-decides",
+  "why": "Finder wrote 'wallet in a black box'; the photo shows TOM'S and the carbon pattern."
+ },
+ {
+  "lostId": "L-108",
+  "foundId": "F-080",
+  "isMatch": true,
+  "itemKind": "wallet",
+  "lens": "plain",
+  "why": "Slim brown leather card holder in Oman Hall."
+ },
+ {
+  "lostId": "L-108",
+  "foundId": "F-078",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "same-kind-diff",
+  "why": "Brown leather, but a thick tooled bifold."
+ },
+ {
+  "lostId": "L-143",
+  "foundId": "F-022",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "sparse",
+  "why": "'lost my wallet' with no place or date; the found black wallet fits and cannot be ruled out, but the author's truth is no."
+ },
+ {
+  "lostId": "L-143",
+  "foundId": "F-075",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "sparse",
+  "why": "'lost my wallet' with no place or date; a red wallet fits as well as any."
+ },
+ {
+  "lostId": "L-110",
+  "foundId": "F-028",
+  "isMatch": true,
+  "itemKind": "cap",
+  "lens": "photo-decides",
+  "why": "Finder wrote 'blue cap'; the photo shows the red Cubs C."
+ },
+ {
+  "lostId": "L-111",
+  "foundId": "F-029",
+  "isMatch": true,
+  "itemKind": "cap",
+  "lens": "memory-slip",
+  "why": "Stussy cap in the canteen; the owner says black, the photo shows navy."
+ },
+ {
+  "lostId": "L-111",
+  "foundId": "F-031",
+  "isMatch": false,
+  "itemKind": "cap",
+  "lens": "same-kind-diff",
+  "why": "Black cap, but with a Mariners logo, in GU2 parking."
+ },
+ {
+  "lostId": "L-112",
+  "foundId": "F-030",
+  "isMatch": true,
+  "itemKind": "cap",
+  "lens": "photo-decides",
+  "why": "Finder wrote 'trucker cap'; the photo shows the white CCB letters and mesh."
+ },
+ {
+  "lostId": "L-113",
+  "foundId": "F-031",
+  "isMatch": true,
+  "itemKind": "cap",
+  "lens": "photo-decides",
+  "why": "Finder wrote 'black baseball cap'; the photo shows the Mariners S."
+ },
+ {
+  "lostId": "L-113",
+  "foundId": "F-028",
+  "isMatch": false,
+  "itemKind": "cap",
+  "lens": "same-kind-diff",
+  "why": "Baseball cap, but blue with a red C."
+ },
+ {
+  "lostId": "L-114",
+  "foundId": "F-029",
+  "isMatch": false,
+  "itemKind": "cap",
+  "lens": "same-kind-diff",
+  "why": "Navy cap with red writing in the canteen on the same day, but the logo is Stussy, not NY."
+ },
+ {
+  "lostId": "L-114",
+  "foundId": "F-028",
+  "isMatch": false,
+  "itemKind": "cap",
+  "lens": "same-kind-diff",
+  "why": "Blue cap with a red letter logo, but a C, at the football pitch."
+ },
+ {
+  "lostId": "L-115",
+  "foundId": "F-023",
+  "isMatch": true,
+  "itemKind": "jacket",
+  "lens": "photo-decides",
+  "why": "Finder wrote 'brown jacket'; the photo shows the stripe and the LOST patch."
+ },
+ {
+  "lostId": "L-116",
+  "foundId": "F-023",
+  "isMatch": false,
+  "itemKind": "jacket",
+  "lens": "same-kind-diff",
+  "why": "Clothing left in the same lab on the same day, but a brown zip jacket, not a black hoodie."
+ },
+ {
+  "lostId": "L-116",
+  "foundId": "F-131",
+  "isMatch": false,
+  "itemKind": "jacket",
+  "lens": "same-kind-diff",
+  "why": "Black, in the same lab, but a North Face jacket five days later."
+ },
+ {
+  "lostId": "L-141",
+  "foundId": "F-131",
+  "isMatch": true,
+  "itemKind": "jacket",
+  "lens": "plain",
+  "why": "Black North Face jacket in the Mechatronics Lab."
+ },
+ {
+  "lostId": "L-117",
+  "foundId": "F-026",
+  "isMatch": true,
+  "itemKind": "bottle",
+  "lens": "photo-decides",
+  "why": "Finder wrote 'black bottle'; the photo shows the Boca Chica print."
+ },
+ {
+  "lostId": "L-119",
+  "foundId": "F-026",
+  "isMatch": false,
+  "itemKind": "bottle",
+  "lens": "photo-decides",
+  "why": "Black bottle at the padel courts on the same day; the finder's words fit, but the photo shows Boca Chica, not Hydro Flask."
+ },
+ {
+  "lostId": "L-118",
+  "foundId": "F-027",
+  "isMatch": true,
+  "itemKind": "bottle",
+  "lens": "place-alias",
+  "why": "The finder wrote 'sab3', the students' name for the 7th-floor smoking area, the owner wrote '7th floor'."
+ },
+ {
+  "lostId": "L-120",
+  "foundId": "F-027",
+  "isMatch": false,
+  "itemKind": "bottle",
+  "lens": "language",
+  "why": "Arabic report of a silver Stanley tumbler on the 7th floor on the same day; the photo shows a Thermos logo."
+ },
+ {
+  "lostId": "L-122",
+  "foundId": "F-108",
+  "isMatch": true,
+  "itemKind": "bottle",
+  "lens": "plain",
+  "why": "Blue Aquaflask with stickers in the gym."
+ },
+ {
+  "lostId": "L-122",
+  "foundId": "F-130",
+  "isMatch": false,
+  "itemKind": "bottle",
+  "lens": "sparse",
+  "why": "'water bottle' in the Sports Hall three days later, no colour or brand."
+ },
+ {
+  "lostId": "L-140",
+  "foundId": "F-130",
+  "isMatch": true,
+  "itemKind": "bottle",
+  "lens": "sparse",
+  "why": "Grey Nike bottle; the finder wrote only 'water bottle' in the Sports Hall on the same date."
+ },
+ {
+  "lostId": "L-140",
+  "foundId": "F-108",
+  "isMatch": false,
+  "itemKind": "bottle",
+  "lens": "same-kind-diff",
+  "why": "A bottle in the Sports Hall, but blue Aquaflask."
+ },
+ {
+  "lostId": "L-121",
+  "foundId": "F-106",
+  "isMatch": true,
+  "itemKind": "clothing",
+  "lens": "sparse",
+  "why": "Black shayla in Oman Hall."
+ },
+ {
+  "lostId": "L-123",
+  "foundId": "F-109",
+  "isMatch": true,
+  "itemKind": "calculator",
+  "lens": "plain",
+  "why": "Casio fx-991 after the exam in Oman Hall."
+ },
+ {
+  "lostId": "L-124",
+  "foundId": "F-109",
+  "isMatch": false,
+  "itemKind": "calculator",
+  "lens": "same-kind-diff",
+  "why": "Casio calculator in the same hall on the same day, but an fx-991, not an fx-82."
+ },
+ {
+  "lostId": "L-125",
+  "foundId": "F-110",
+  "isMatch": true,
+  "itemKind": "clothing",
+  "lens": "sparse",
+  "why": "Black abaya in the dorm laundry; the finder does not mention the gold embroidery, which is not evidence against."
+ },
+ {
+  "lostId": "L-126",
+  "foundId": "F-111",
+  "isMatch": true,
+  "itemKind": "clothing",
+  "lens": "plain",
+  "why": "Grey GUtech hoodie in the Sports Hall."
+ },
+ {
+  "lostId": "L-127",
+  "foundId": "F-111",
+  "isMatch": false,
+  "itemKind": "clothing",
+  "lens": "same-kind-diff",
+  "why": "GUtech hoodie in the same hall on the same day, but grey, not navy."
+ },
+ {
+  "lostId": "L-128",
+  "foundId": "F-112",
+  "isMatch": true,
+  "itemKind": "lunchbox",
+  "lens": "sparse",
+  "why": "Pink lunch box in the canteen."
+ },
+ {
+  "lostId": "L-129",
+  "foundId": "F-113",
+  "isMatch": true,
+  "itemKind": "notebook",
+  "lens": "plain",
+  "why": "A4 spiral notebook with thermodynamics notes."
+ },
+ {
+  "lostId": "L-129",
+  "foundId": "F-008",
+  "isMatch": false,
+  "itemKind": "notebook",
+  "lens": "same-kind-diff",
+  "why": "A hardcover with a marbled cover, not a spiral notebook."
+ },
+ {
+  "lostId": "L-130",
+  "foundId": "F-115",
+  "isMatch": true,
+  "itemKind": "jewellery",
+  "lens": "plain",
+  "why": "Silver ring with a small blue stone next to the GU1 sink."
+ },
+ {
+  "lostId": "L-131",
+  "foundId": "F-115",
+  "isMatch": false,
+  "itemKind": "jewellery",
+  "lens": "same-kind-diff",
+  "why": "Jewellery in GU1 on the same day, but a silver ring, not a gold bracelet."
+ },
+ {
+  "lostId": "L-133",
+  "foundId": "F-120",
+  "isMatch": true,
+  "itemKind": "perfume",
+  "lens": "plain",
+  "why": "Small attar bottle with a gold cap in the GU1 prayer room."
+ },
+ {
+  "lostId": "L-134",
+  "foundId": "F-126",
+  "isMatch": true,
+  "itemKind": "book",
+  "lens": "plain",
+  "why": "Small green Quran in the GU2 prayer room; the finder does not mention the name sticker."
+ },
+ {
+  "lostId": "L-135",
+  "foundId": "F-127",
+  "isMatch": true,
+  "itemKind": "clothing",
+  "lens": "plain",
+  "why": "Lab coat with Aisha sewn on it."
+ },
+ {
+  "lostId": "L-136",
+  "foundId": "F-127",
+  "isMatch": false,
+  "itemKind": "clothing",
+  "lens": "same-kind-diff",
+  "why": "Lab coat on the same floor and day, but it bears a name, while the owner says theirs has none."
+ },
+ {
+  "lostId": "L-137",
+  "foundId": "F-128",
+  "isMatch": true,
+  "itemKind": "keys",
+  "lens": "plain",
+  "why": "Grey GUtech lanyard with a small key in Germany Hall."
+ },
+ {
+  "lostId": "L-138",
+  "foundId": "F-129",
+  "isMatch": true,
+  "itemKind": "shoes",
+  "lens": "plain",
+  "why": "Adidas boots, black and white, at the pitch."
+ },
+ {
+  "lostId": "L-139",
+  "foundId": "F-129",
+  "isMatch": false,
+  "itemKind": "shoes",
+  "lens": "same-kind-diff",
+  "why": "Football boots at the pitch on the same day, but Adidas, not Nike."
+ },
+ {
+  "lostId": "L-142",
+  "foundId": "F-132",
+  "isMatch": true,
+  "itemKind": "glasses-case",
+  "lens": "sparse",
+  "why": "Brown glasses case, empty, in the library; the finder gives no brand."
+ },
+ {
+  "lostId": "L-142",
+  "foundId": "F-040",
+  "isMatch": false,
+  "itemKind": "glasses",
+  "lens": "kind-trap",
+  "why": "Glasses found in the library, but the owner lost only the case."
+ },
+ {
+  "lostId": "L-145",
+  "foundId": "F-058",
+  "isMatch": false,
+  "itemKind": "e-reader",
+  "lens": "kind-trap",
+  "why": "A flat black device in the library on the same day, but a power bank, not a Kindle."
+ },
+ {
+  "lostId": "L-145",
+  "foundId": "F-001",
+  "isMatch": false,
+  "itemKind": "e-reader",
+  "lens": "different-kind",
+  "why": "A black laptop, not an e-reader."
+ },
+ {
+  "lostId": "L-010",
+  "foundId": "F-045",
+  "isMatch": false,
+  "itemKind": "pen",
+  "lens": "different-kind",
+  "why": "Same hall and month, but earphones."
+ },
+ {
+  "lostId": "L-016",
+  "foundId": "F-064",
+  "isMatch": false,
+  "itemKind": "backpack",
+  "lens": "different-kind",
+  "why": "Same hall, but a children's book."
+ },
+ {
+  "lostId": "L-036",
+  "foundId": "F-049",
+  "isMatch": false,
+  "itemKind": "game",
+  "lens": "different-kind",
+  "why": "Same building, but headphones."
+ },
+ {
+  "lostId": "L-040",
+  "foundId": "F-052",
+  "isMatch": false,
+  "itemKind": "remote",
+  "lens": "different-kind",
+  "why": "Same dorm and day, but keys."
+ },
+ {
+  "lostId": "L-046",
+  "foundId": "F-037",
+  "isMatch": false,
+  "itemKind": "keys",
+  "lens": "kind-trap",
+  "why": "Found in the same dirt parking, but a Mercedes car key on its own chain, not house keys on a carabiner."
+ },
+ {
+  "lostId": "L-057",
+  "foundId": "F-018",
+  "isMatch": false,
+  "itemKind": "car-key",
+  "lens": "kind-trap",
+  "why": "Same dirt parking, but house keys on a carabiner."
+ },
+ {
+  "lostId": "L-062",
+  "foundId": "F-044",
+  "isMatch": false,
+  "itemKind": "watch",
+  "lens": "different-kind",
+  "why": "Same Sports Hall, but earphones."
+ },
+ {
+  "lostId": "L-077",
+  "foundId": "F-038",
+  "isMatch": false,
+  "itemKind": "pencil-case",
+  "lens": "different-kind",
+  "why": "Same Germany Hall, but a laptop charger."
+ },
+ {
+  "lostId": "L-085",
+  "foundId": "F-030",
+  "isMatch": false,
+  "itemKind": "power-bank",
+  "lens": "different-kind",
+  "why": "Same bus, but a cap."
+ },
+ {
+  "lostId": "L-095",
+  "foundId": "F-047",
+  "isMatch": false,
+  "itemKind": "usb",
+  "lens": "different-kind",
+  "why": "Same studio, but headphones."
+ },
+ {
+  "lostId": "L-101",
+  "foundId": "F-112",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "different-kind",
+  "why": "Same canteen and day, but a lunch box."
+ },
+ {
+  "lostId": "L-102",
+  "foundId": "F-012",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "different-kind",
+  "why": "Same residences, but glasses."
+ },
+ {
+  "lostId": "L-112",
+  "foundId": "F-060",
+  "isMatch": false,
+  "itemKind": "cap",
+  "lens": "different-kind",
+  "why": "Same bus and day, but a power bank."
+ },
+ {
+  "lostId": "L-133",
+  "foundId": "F-084",
+  "isMatch": false,
+  "itemKind": "perfume",
+  "lens": "different-kind",
+  "why": "Same prayer room, but a watch."
+ },
+ {
+  "lostId": "L-134",
+  "foundId": "F-066",
+  "isMatch": false,
+  "itemKind": "book",
+  "lens": "different-kind",
+  "why": "Same prayer room, but an umbrella."
+ },
+ {
+  "lostId": "L-138",
+  "foundId": "F-028",
+  "isMatch": false,
+  "itemKind": "shoes",
+  "lens": "different-kind",
+  "why": "Same pitch, but a cap."
+ },
+ {
+  "lostId": "L-067",
+  "foundId": "F-044",
+  "isMatch": false,
+  "itemKind": "watch",
+  "lens": "different-kind",
+  "why": "Same Sports Hall, but earphones."
+ },
+ {
+  "lostId": "L-131",
+  "foundId": "F-120",
+  "isMatch": false,
+  "itemKind": "jewellery",
+  "lens": "different-kind",
+  "why": "GU1, but a perfume bottle."
+ },
+ {
+  "lostId": "L-144",
+  "foundId": "F-105",
+  "isMatch": false,
+  "itemKind": "phone",
+  "lens": "kind-trap",
+  "why": "A white Apple case found the same day; not a phone."
+ },
+ {
+  "lostId": "L-024",
+  "foundId": "F-063",
+  "isMatch": false,
+  "itemKind": "glasses",
+  "lens": "kind-trap",
+  "why": "Glasses, but sunglasses with burgundy frames."
+ },
+ {
+  "lostId": "L-020",
+  "foundId": "F-121",
+  "isMatch": false,
+  "itemKind": "earbuds",
+  "lens": "different-kind",
+  "why": "An Apple accessory, but a cable."
+ },
+ {
+  "lostId": "L-129",
+  "foundId": "F-015",
+  "isMatch": false,
+  "itemKind": "notebook",
+  "lens": "different-kind",
+  "why": "A science book, not a spiral notebook."
+ },
+ {
+  "lostId": "L-032",
+  "foundId": "F-113",
+  "isMatch": false,
+  "itemKind": "book",
+  "lens": "different-kind",
+  "why": "Science-related papers, but a spiral notebook, not the Atkins textbook."
+ },
+ {
+  "lostId": "L-003",
+  "foundId": "F-039",
+  "isMatch": false,
+  "itemKind": "laptop",
+  "lens": "different-kind",
+  "why": "A charger, not a laptop."
+ },
+ {
+  "lostId": "L-006",
+  "foundId": "F-001",
+  "isMatch": false,
+  "itemKind": "charger",
+  "lens": "part-found",
+  "why": "A Dell laptop found with its charger cable still plugged in, but in the library a week earlier; the owner lost only a charger."
+ },
+ {
+  "lostId": "L-126",
+  "foundId": "F-023",
+  "isMatch": false,
+  "itemKind": "clothing",
+  "lens": "same-kind-diff",
+  "why": "A jacket, but brown with a stripe, not a grey GUtech hoodie."
+ },
+ {
+  "lostId": "L-049",
+  "foundId": "F-036",
+  "isMatch": false,
+  "itemKind": "keys",
+  "lens": "sparse",
+  "why": "'keys' in GU1 with no detail; the photo shows several keys and a black head, not one key with a red cap."
+ },
+ {
+  "lostId": "L-058",
+  "foundId": "F-021",
+  "isMatch": false,
+  "itemKind": "car-key",
+  "lens": "same-kind-diff",
+  "why": "Black car key, but in the student parking with a silver car tag; the owner says Mercedes with no ring."
+ },
+ {
+  "lostId": "L-021",
+  "foundId": "F-043",
+  "isMatch": false,
+  "itemKind": "earbuds",
+  "lens": "same-kind-diff",
+  "why": "Earphones in a black pouch, but wired silver and blue ones."
+ },
+ {
+  "lostId": "L-083",
+  "foundId": "F-059",
+  "isMatch": false,
+  "itemKind": "power-bank",
+  "lens": "same-kind-diff",
+  "why": "A power bank, but a grey pebble."
+ },
+ {
+  "lostId": "L-092",
+  "foundId": "F-069",
+  "isMatch": false,
+  "itemKind": "usb",
+  "lens": "same-kind-diff",
+  "why": "A USB, but blue rubber letters."
+ },
+ {
+  "lostId": "L-104",
+  "foundId": "F-074",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "same-kind-diff",
+  "why": "A small purse, but snake print."
+ },
+ {
+  "lostId": "L-113",
+  "foundId": "F-029",
+  "isMatch": false,
+  "itemKind": "cap",
+  "lens": "same-kind-diff",
+  "why": "Dark cap, but Stussy navy, in the canteen."
+ },
+ {
+  "lostId": "L-075",
+  "foundId": "F-047",
+  "isMatch": false,
+  "itemKind": "headphones",
+  "lens": "same-kind-diff",
+  "why": "Over-ear headphones, but Philips with brown pads."
+ }
+]
