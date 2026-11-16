@@ -16,6 +16,10 @@ const RULES = {
   // Proposed 2026-11-14 after the round-1 edge run: the models treated a missing detail and a stated
   // difference alike, and treated a wrongly remembered brand as a contradiction.
   v2: `${RULE_START} Separate a gap from a stated difference. A detail one report gives and the other leaves out is a gap and counts for nothing; parts and contents can go missing from an item but are not added, so a found item with less than the lost report describes is also a gap. The lost report is written from memory and the found report by someone who saw the item only from outside, so either may get a brand, model or the name of the object wrong; details people commonly misjudge, recall from memory or mark as unsure are weak evidence, weaker still when both reports share a specific physical detail. A stated difference is strong evidence of different items when the writer was in a position to know: text the finder reads off the item, something plainly visible that cannot be a matter of shade or memory, or a found item with something the owner says was not there. A different spelling or transliteration of the same name, or a name the finder marks as unsure, is not a difference.`,
+  // Proposed 2026-11-16 from the outside benchmark: with the judge seeing photos, 10 of 33 same-place "twins" were
+  // still shown (a Lenovo charger owner offered a Dell one, a long wooden-handled umbrella offered a folding one)
+  // because the advocates filed a stated difference under "the other side does not confirm it". One sentence added.
+  v3: `${RULE_START} Still weigh concrete contradictions honestly: a detail the two sides state or show differently (another brand or name, another kind or build of object, a part one side says is not there) is a contradiction, not a missing detail, and a matching place and day do not outweigh it.`,
 };
 export const SIMILARITY_RULE = RULES[process.env.SIMILARITY_RULE || "v1"];
 if (!SIMILARITY_RULE) throw new Error(`Unknown SIMILARITY_RULE "${process.env.SIMILARITY_RULE}"`);
