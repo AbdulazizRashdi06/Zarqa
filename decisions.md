@@ -21,6 +21,7 @@ The decisions made while turning the uni matching prototype into a real app, and
 | All together | not run | 98%, 102 |
 
 - **By the rule fixed in advance (at least 1 point better on the outside set), none of the three is accepted.** The outside set cannot tell them apart: its base is already 98% and it holds almost none of the cases they are for. They did no harm there. Their gains are on sets the fixes were written from.
+- **The judge seeing the photo holds on a third set.** On outside set 2 at 0.55 the app as committed (judge reads the arguments only) shows 101 of 105 real items and 46 of 162 others, 97% under the formula; with the judge seeing the photo, 102 and 37, 98%. Its scores follow the quality ratings more closely as well (rank correlation 0.87 to 0.91).
 - **What is proven on fresh pairs** is the setup itself: the committed fixes with the judge seeing the photo show 102 of 105 real items.
 - The one real pair still missed there: a chemistry textbook the owner called the 10th edition, whose photo shows the 9th. This is the "brand from memory against text read off the item" case that no wording resolved in loop 1.
 - Posting-date runs (`POSTED_ON=1`) were deferred behind the recall fixes and have not been read.
