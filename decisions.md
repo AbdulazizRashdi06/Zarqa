@@ -65,6 +65,19 @@ Against the measured chance band (about one real item, four other pairs and one 
 
 **The veto on outside set 3** (kind and marks members only; what would be read was written down before their scores existed; information, nothing accepted): Haiku debate 112 real / 31 other / 6 stupid; hidden when kind or marks says "differs" 112 / 26 / 3 (the marks member alone gives the same); hidden when the judge sides against 112 / 21 / 2. So the veto holds on a set it was not built on and loses no real item there, but the rule that needs no extra model call does more. **The owner then said this was not what was meant** ("i meant judges will represent our rules"): each member should be a judge standing for one of our rules, not a checker of one attribute. That version has not been built or run.
 
+**Owner's next ask, the same day: "test a smart model alone, one Opus, no debate system."** One Claude Opus helper agent per 10 pairs on the Claude plan (`scripts/plan-agents/solo-workflow.js`): no advocates, no separate judge; the judge's `same_item` and `overall` questions with the advocates taken out, the app's rule sentence word for word, the same photos; score = 0.5·same_item + 0.5·overall as in the app. How it would be read was written down before any score existed. First on the two outside sets with photos (sets 2 and 3: 218 real items, 334 other pairs, 229 rated 2 or below):
+
+| Outside sets 2 and 3 | Honest score, show from 5 (set 2 / set 3) | Real items | Other pairs | Stupid matches |
+|---|---|---|---|---|
+| Today's app, Luna and Terra at 0.55 | 98 / 96 | 212 | 63 | 11 |
+| Haiku debate at 0.35 | 97 / 98 | 215 | 79 | 17 |
+| Haiku debate, hidden when the judge sides against | | 215 | 58 | 9 |
+| Opus alone at 0.55 | 99 / 98 | 209 | 25 | 0 |
+| Opus alone at 0.45 | 99 / 98 | 215 | 33 | 1 |
+| Opus alone at 0.35 | 99 / 98 | 216 | 60 | 3 |
+
+Opus's scores follow the raters' quality ratings more closely than any other setup's (rank correlation 0.95 on both sets, against 0.91 to 0.92), and its honest score holds at "show from" 4 and 6 (99 / 99 and 99 / 98). At 0.45 it shows three more real items than today's app, about half the other pairs and one stupid match against eleven: the last two are far outside the chance band (about one real item, four other pairs and one stupid match per set), the first is at its edge. **Limits.** The line is not settled: the halves pick 0.30 to 0.45, and 0.45 is read off these same two sets; at the app's 0.55 it loses three real items. Opus saw 10 pairs in one sitting, as Haiku did, while the app sends one pair per call. One run per set. Not priced. Benchmark only; nothing in the app changes.
+
 **Set 3 run twice** (the council's ruling; same arguments, the judge run again): 112 of 113 real items and 6 stupid matches both times, other pairs 31 and 27, honest score 98 both; with the judge-sides-against rule 112 / 21 / 2 and 112 / 18 / 2. Ten of 285 pairs crossed the line between the two runs. The first run stays the run of record.
 
 ## 2026-11-16: Haiku for all three roles, on the Claude plan (rough test, benchmark only)
