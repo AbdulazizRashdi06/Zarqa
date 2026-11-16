@@ -262,7 +262,8 @@ public sealed class Matcher(
         r.EventDate?.ToString("yyyy-MM-dd"),
         r.IsSensitive,
         // Card/ID photos only as their covered copy, never the original (owner decision 2026-10-27).
-        r.Photos.OrderBy(p => p.Position).Select(PhotoAccess.SharedKey).OfType<string>().Select(photos.PathFor).ToList());
+        r.Photos.OrderBy(p => p.Position).Select(PhotoAccess.SharedKey).OfType<string>().Select(photos.PathFor).ToList(),
+        CreatedAt: r.CreatedAt);
 
     // An app report's name is cut from its one text: it is the start of that text (older reports), or what
     // ReportText.Split names it today (greetings and "I lost my" skipped). Those match on the text alone, as they

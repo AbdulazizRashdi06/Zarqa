@@ -24,7 +24,7 @@ internal static class PromptParts
     public static string Stringify(JsonObject o) => o.ToJsonString(Js);
 
     /// <summary>benchmark brief(r): title, category, description (≤500 chars), location, eventDate.</summary>
-    public static JsonObject Brief(MatchInput r)
+    public static JsonObject Brief(MatchInput r, bool postedOn = false)
     {
         var o = new JsonObject();
         // One-text reports have no item name: the description carries everything.
@@ -33,6 +33,7 @@ internal static class PromptParts
         o["description"] = TextRules.Truncate(r.Description, 500);
         o["location"] = r.Location;
         o["eventDate"] = r.EventDate;
+        if (postedOn) o["postedOn"] = TextRules.PostedOn(r);
         return o;
     }
 
@@ -102,6 +103,9 @@ public sealed class DebateReviewer(ILuna luna, ITerra terra, IDeepSeek deepSeek,
         overall: {{OverallQuestion}} Give a probability (0 to 1) for each level; they should sum to 1. Levels: {{string.Join("; ", LevelKeys.Zip(Levels, (key, label) => $"{key} = \"{label}\""))}}.
         """.ReplaceLineEndings("\n");
 
+    /// <summary>benchmark PHOTOS_FOR_JUDGE, added to the judge's system text when it gets the photos.</summary>
+    public const string PhotosForJudge = "\nThe photos are attached. Look at them yourself and go by what they show.";
+
     private const string JudgeSchema = """
         {"type":"object","additionalProperties":false,"required":["same_item_probability","stronger_case","overall_probabilities"],"properties":{"same_item_probability":{"type":"number"},"stronger_case":{"type":"string","enum":["for","against","balanced"]},"overall_probabilities":{"type":"object","additionalProperties":false,"required":["clearly_different","probably_different","unclear","probably_same","almost_certainly_same"],"properties":{"clearly_different":{"type":"number"},"probably_different":{"type":"number"},"unclear":{"type":"number"},"probably_same":{"type":"number"},"almost_certainly_same":{"type":"number"}}}}}
         """;
@@ -137,10 +141,14 @@ public sealed class DebateReviewer(ILuna luna, ITerra terra, IDeepSeek deepSeek,
     /// <summary>Null when an advocate failed, so the worker can retry. Judge failures are handled by the matcher.</summary>
     public async Task<Review?> ReviewAsync(MatchInput lost, MatchInput found, IReadOnlyList<string> images, CancellationToken ct)
     {
+        var o = options.Value;
+        // Order and wording as in benchmark/src/reviewers/debate.js advocate().
         var text =
-            $"LOST report: {PromptParts.Stringify(PromptParts.Brief(lost))}\nFOUND report: {PromptParts.Stringify(PromptParts.Brief(found))}\n" +
+            $"LOST report: {PromptParts.Stringify(PromptParts.Brief(lost, o.PostedOn))}\nFOUND report: {PromptParts.Stringify(PromptParts.Brief(found, o.PostedOn))}\n" +
+            (o.PostedOn ? $"{TextRules.PostedNote}\n" : "") +
             $"Location aliases: {PromptParts.AliasLine(lost, found, aliases)}\n" +
-            $"Attached photos: {Photos.CountFor(lost)} from the LOST report first, then {Photos.CountFor(found)} from the FOUND report.";
+            $"Attached photos: {Photos.CountFor(lost)} from the LOST report first, then {Photos.CountFor(found)} from the FOUND report." +
+            (o.OneDayNote && TextRules.FoundOneDayBeforeLost(lost, found) ? $"\n{TextRules.OneDayText}" : "");
 
         LunaResult pro, con;
         try
@@ -165,8 +173,8 @@ public sealed class DebateReviewer(ILuna luna, ITerra terra, IDeepSeek deepSeek,
 
         var state = new JsonObject
         {
-            ["lost"] = PromptParts.Brief(lost),
-            ["found"] = PromptParts.Brief(found),
+            ["lost"] = PromptParts.Brief(lost, o.PostedOn),
+            ["found"] = PromptParts.Brief(found, o.PostedOn),
             ["timing"] = TextRules.DateRelation(lost, found),
             ["case_for"] = new JsonObject { ["argument"] = Str(pro.Parsed, "argument"), ["self_rated_strength"] = Str(pro.Parsed, "strength") },
             ["case_against"] = new JsonObject { ["argument"] = Str(con.Parsed, "argument"), ["self_rated_strength"] = Str(con.Parsed, "strength") },
@@ -174,7 +182,12 @@ public sealed class DebateReviewer(ILuna luna, ITerra terra, IDeepSeek deepSeek,
 
         if (options.Value.UseTerraJudge)
         {
-            var judged = await WithFallbackAsync(terra, TerraSystem, PromptParts.Stringify(state), [], "debate_judge",
+            // benchmark: text = state + the posting note + whose item each photo shows; system = TERRA_SYSTEM + the photo line.
+            var judgeText = PromptParts.Stringify(state) +
+                (o.PostedOn ? $"\n{TextRules.PostedNote}" : "") +
+                (o.JudgeSeesPhotos ? $"\n{Photos.OwnerLine(Photos.CountFor(lost), Photos.CountFor(found))}" : "");
+            var judged = await WithFallbackAsync(terra, o.JudgeSeesPhotos ? TerraSystem + PhotosForJudge : TerraSystem, judgeText,
+                o.JudgeSeesPhotos ? images : [], "debate_judge",
                 JudgeSchema, JudgeExample, answer => ReadJudge(answer) is not null, ct);
             var result = ReadJudge(judged.Parsed)!.Value;
             return Complete(result.SameItem, result.Overall, result.Stronger, judged.Parsed, judged.Model ?? options.Value.TerraModel,
@@ -374,22 +387,28 @@ public sealed class ScreenReviewer(ILuna luna, IDeepSeek deepSeek, IOptions<Mode
     private const string Example = """{"keep":[2,5]}""";
 
     /// <summary>benchmark line(r): description (≤300 chars), location, eventDate. No title, category or photos.</summary>
-    private static string Line(MatchInput r) => PromptParts.Stringify(new JsonObject
+    private static string Line(MatchInput r, bool postedOn)
     {
-        ["description"] = TextRules.Truncate(r.Description, 300),
-        ["location"] = r.Location,
-        ["eventDate"] = string.IsNullOrEmpty(r.EventDate) ? null : r.EventDate,
-    });
+        var o = new JsonObject
+        {
+            ["description"] = TextRules.Truncate(r.Description, 300),
+            ["location"] = r.Location,
+            ["eventDate"] = string.IsNullOrEmpty(r.EventDate) ? null : r.EventDate,
+        };
+        if (postedOn) o["postedOn"] = TextRules.PostedOn(r);
+        return PromptParts.Stringify(o);
+    }
 
-    public static string Text(MatchInput query, IReadOnlyList<MatchInput> candidates) =>
-        $"{query.Type.ToUpperInvariant()} report: {Line(query)}\nCandidate {candidates[0].Type.ToUpperInvariant()} reports:\n" +
-        string.Join("\n", candidates.Select((c, i) => $"{i + 1}. {Line(c)}"));
+    public static string Text(MatchInput query, IReadOnlyList<MatchInput> candidates, bool postedOn = false) =>
+        $"{query.Type.ToUpperInvariant()} report: {Line(query, postedOn)}\nCandidate {candidates[0].Type.ToUpperInvariant()} reports:\n" +
+        string.Join("\n", candidates.Select((c, i) => $"{i + 1}. {Line(c, postedOn)}")) +
+        (postedOn ? $"\n{TextRules.PostedNote}" : "");
 
     /// <summary>Never throws for a model failure: the matcher then reviews the best by prescore, as it did before the screen.</summary>
     public async Task<ScreenResult> ScreenAsync(MatchInput query, IReadOnlyList<MatchInput> candidates, CancellationToken ct)
     {
         if (candidates.Count == 0) return new ScreenResult([], null, false);
-        var text = Text(query, candidates);
+        var text = Text(query, candidates, options.Value.PostedOn);
         try
         {
             // Same route as the advocates: Luna, then DeepSeek when the Terra debate is on.
@@ -576,6 +595,15 @@ public static class Photos
     public const int PerReport = 2;
 
     public static int CountFor(MatchInput r) => Math.Min(PerReport, r.PhotoPaths.Count(File.Exists));
+
+    /// <summary>benchmark ownerLine: whose item each attached photo shows, said plainly, for the judge.</summary>
+    public static string OwnerLine(int lostCount, int foundCount)
+    {
+        if (lostCount == 0 && foundCount == 0) return "Attached photos: none. Neither report has a photo.";
+        if (lostCount == 0) return $"Attached photos: {foundCount}, all taken by the finder of the FOUND item. The LOST report has no photo: what the owner lost is known only from the LOST report's words.";
+        if (foundCount == 0) return $"Attached photos: {lostCount}, all from the owner and showing the LOST item. The FOUND report has no photo: what was found is known only from the FOUND report's words.";
+        return $"Attached photos: {lostCount + foundCount}. The first {lostCount} are from the owner and show the LOST item; the next {foundCount} were taken by the finder and show the FOUND item.";
+    }
 
     public static IReadOnlyList<string> DataUrls(MatchInput lost, MatchInput found) =>
         [.. Urls(lost), .. Urls(found)];

@@ -9,6 +9,7 @@
 //          Whole item kinds stay in one batch so a rater sees every pair that shares a photo.
 // merge:   takes the raters' answers ([{batch, rater: "A"|"B", ratings: [{n, quality, difficulty, reason}]}]),
 //          writes quality {a, b}, difficulty {a, b} and ratingNote into pairs.json, and prints how well they agree.
+//          A pair only one rater scored keeps that score for both and is marked singleRater.
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
@@ -60,17 +61,20 @@ if (mode === "prepare") {
   const diffs = [];
   let missing = 0;
   pairs.forEach((p, n) => {
-    const a = got.A.get(n), b = got.B.get(n);
-    if (!a || !b) return void missing++;
+    const a = got.A.get(n) ?? got.B.get(n), b = got.B.get(n) ?? got.A.get(n);
+    if (!a) return void missing++;
+    // The light version rates most batches once and a few twice as a check; a single rating stands for both.
+    const twice = got.A.has(n) && got.B.has(n);
     p.quality = { a: a.quality, b: b.quality };
     p.difficulty = { a: a.difficulty, b: b.difficulty };
     p.ratingNote = a.reason;
-    diffs.push(Math.abs(a.quality - b.quality));
+    if (twice) diffs.push(Math.abs(a.quality - b.quality));
+    else p.singleRater = true;
   });
   await writeFile(pairsFile, JSON.stringify(pairs, null, 1));
   const share = (f) => `${Math.round((100 * diffs.filter(f).length) / diffs.length)}%`;
   const q = (p) => (p.quality.a + p.quality.b) / 2;
   const ratedPairs = pairs.filter((p) => p.quality);
-  console.log(`${diffs.length} pairs rated, ${missing} left unrated · the two raters are within 1 point on ${share((d) => d <= 1)}, within 2 on ${share((d) => d <= 2)}; ${diffs.filter((d) => d >= 4).length} differ by 4 or more`);
+  console.log(`${pairs.filter((p) => p.quality).length} pairs rated (${diffs.length} by two raters), ${missing} left unrated · where two rated, they are within 1 point on ${share((d) => d <= 1)}, within 2 on ${share((d) => d <= 2)}; ${diffs.filter((d) => d >= 4).length} differ by 4 or more`);
   console.log(`real pairs rated below 4: ${ratedPairs.filter((p) => p.isMatch && q(p) < 4).length} of ${ratedPairs.filter((p) => p.isMatch).length} · other pairs rated above 6: ${ratedPairs.filter((p) => !p.isMatch && q(p) > 6).length} of ${ratedPairs.filter((p) => !p.isMatch).length}`);
 }

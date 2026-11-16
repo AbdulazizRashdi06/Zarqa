@@ -27,6 +27,21 @@ public sealed class ModelOptions
     /// candidates (benchmark/src/normalize.js). Off: nothing is called and stored renderings are ignored.
     /// </summary>
     public bool UseNormalize { get; set; } = true;
+    /// <summary>
+    /// The judge gets the same photos as the advocates (for a card report, only the covered copy) and is told to go by
+    /// what they show. Fewer wrong pairs at the same recall on two benchmark sets (decisions.md, 2026-11-15). Off by default.
+    /// </summary>
+    public bool JudgeSeesPhotos { get; set; }
+    /// <summary>
+    /// One line for the advocates on pairs where the found date is exactly one calendar day before the lost date,
+    /// saying that order is not a point against a match (decisions.md, 2026-11-16). No other pair changes. Off by default.
+    /// </summary>
+    public bool OneDayNote { get; set; }
+    /// <summary>
+    /// Every model that sees a report's dates also gets the day it was posted, so "today" and "last week" can be
+    /// placed (decisions.md, 2026-11-16). Changes every screening, advocate and judge prompt. Off by default.
+    /// </summary>
+    public bool PostedOn { get; set; }
     public string LunaModel { get; set; } = "gpt-6-luna";
     public string TerraModel { get; set; } = "gpt-6.1-terra";
     public string EmbeddingModel { get; set; } = "text-embedding-3-small";

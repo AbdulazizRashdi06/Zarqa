@@ -22,7 +22,9 @@ public sealed record MatchInput(
     // The person's words plus a plain-English rendering (ReportNormalizer), when one exists. Only for finding and
     // ranking candidates: the embedded text and the prescore. No model that reviews a pair reads them.
     string? RankText = null,
-    string? RankLocation = null)
+    string? RankLocation = null,
+    // When the report was posted. Only read when ModelOptions.PostedOn is on.
+    DateTimeOffset? CreatedAt = null)
 {
     /// <summary>The prescore's category: guessed from the rendering when there is one (benchmark/scripts/edge.js --normalize).</summary>
     public string RankCategoryKey => RankText is null ? CategoryKey : Categories.Normalize(RankText, null) ?? "";
@@ -88,6 +90,22 @@ public static partial class TextRules
         if (d <= 7) return "within_a_week";
         return "more_than_a_week";
     }
+
+    // ---- Switches from the 2026-11-16 tuning loop (benchmark/src/text.js); the wording is kept verbatim. ----
+
+    /// <summary>benchmark postedOn(r): the day a report was posted in Oman time (UTC+4, no daylight saving) with its weekday.</summary>
+    public static string? PostedOn(MatchInput r) =>
+        r.CreatedAt is { } t ? t.ToOffset(TimeSpan.FromHours(4)).ToString("yyyy-MM-dd dddd", CultureInfo.InvariantCulture) : null;
+
+    public const string PostedNote =
+        "postedOn is the day each report was posted, in campus time. Words in a report such as \"today\", \"yesterday\" or \"last week\" count from that day, not from your own today.";
+
+    /// <summary>benchmark foundOneDayBeforeLost: both dates present and the found one exactly one calendar day earlier.</summary>
+    public static bool FoundOneDayBeforeLost(MatchInput lost, MatchInput found) =>
+        TryDate(lost.EventDate, out var l) && TryDate(found.EventDate, out var f) && l.DayNumber - f.DayNumber == 1;
+
+    public const string OneDayText =
+        "Dates: the FOUND date is one calendar day before the LOST date. The lost date may be the day the owner noticed the loss rather than the day it happened, so this order is not a point against a match, alone or together with other points, and not a point for one. It counts against a match only if the LOST report's own words say the owner still had or used the item on the LOST date. Repeating that date or saying when the loss was noticed does not, and words such as \"today\", \"this morning\" or \"yesterday\" count from the day the report was posted, which may not be the LOST date.";
 
     /// <summary>The structured text that gets embedded.</summary>
     public static string EmbeddingText(MatchInput r, AliasIndex aliases)
