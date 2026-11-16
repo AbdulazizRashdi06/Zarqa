@@ -78,6 +78,21 @@ Against the measured chance band (about one real item, four other pairs and one 
 
 Opus's scores follow the raters' quality ratings more closely than any other setup's (rank correlation 0.95 on both sets, against 0.91 to 0.92), and its honest score holds at "show from" 4 and 6 (99 / 99 and 99 / 98). At 0.45 it shows three more real items than today's app, about half the other pairs and one stupid match against eleven: the last two are far outside the chance band (about one real item, four other pairs and one stupid match per set), the first is at its edge. **Limits.** The line is not settled: the halves pick 0.30 to 0.45, and 0.45 is read off these same two sets; at the app's 0.55 it loses three real items. Opus saw 10 pairs in one sitting, as Haiku did, while the app sends one pair per call. One run per set. Not priced. Benchmark only; nothing in the app changes.
 
+**Opus alone on all five rated sets** (602 real items, 955 other pairs, 669 rated 2 or below; every pair scored, none skipped):
+
+| Five sets | Real items (of 602) | Other pairs (of 955) | Stupid matches (of 669) |
+|---|---|---|---|
+| Today's app, Luna and Terra at 0.55 | 581 | 206 | 35 |
+| Haiku debate at 0.35 | 586 | 224 | 39 |
+| Haiku debate, hidden when the judge sides against | 582 | 172 | 18 |
+| Opus alone at 0.55 | 564 | 71 | 1 |
+| Opus alone at 0.50 | 576 | 86 | 1 |
+| Opus alone at 0.45 | 585 | 103 | 2 |
+| Opus alone at 0.40 | 588 | 127 | 3 |
+| Opus alone at 0.35 | 591 | 159 | 7 |
+
+Honest score at "show from 5", set by set (outside 1, outside 2, campus photos, text round 3, outside 3): Opus alone 97 / 99 / 98 / 98 / 98; today's app 96 / 98 / 90 / 96 / 96; Haiku debate 95 / 97 / 95 / 97 / 98. Opus is ahead or level on every set, and its best line sits between 0.30 and 0.45 on every half of every set, so one fixed line near 0.40 to 0.45 serves all five; at the app's 0.55 it loses 17 real items against today's app (9 of them on short text). At 0.45 it shows four more real items than today's app with half the other pairs and 2 stupid matches against 35. The limits above stand (10 pairs per sitting, one run, the line read off the same sets, not priced). What this does not say yet is whether the gain comes from the stronger model or from dropping the debate: Sonnet alone and Haiku alone are run next on outside sets 2 and 3 to separate the two.
+
 **Set 3 run twice** (the council's ruling; same arguments, the judge run again): 112 of 113 real items and 6 stupid matches both times, other pairs 31 and 27, honest score 98 both; with the judge-sides-against rule 112 / 21 / 2 and 112 / 18 / 2. Ten of 285 pairs crossed the line between the two runs. The first run stays the run of record.
 
 ## 2026-11-16: Haiku for all three roles, on the Claude plan (rough test, benchmark only)
