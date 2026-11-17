@@ -3,6 +3,9 @@
 #   ZARQA_DOMAIN=zarqa.example.com
 #   EMAIL_PROVIDER=resend            (optional; default "log")
 #   RESEND_API_KEY=re_...            (set with deploy/set-secret.sh, never typed into chat)
+#   BREVO_API_KEY=xkeysib-...        (optional backup sender, set the same way; in Brevo, verify the domain and
+#                                     add this server's address under Security > Authorized IPs)
+#   BREVO_EMAIL_FROM=...             (optional; Brevo's sender if it must differ from EMAIL_FROM)
 #   EMAIL_FROM=Zarqa <hello@zarqa.example.com>
 # Run: docker compose -f deploy/docker-compose.yml --env-file deploy/.env up -d --build
 name: zarqa
@@ -19,7 +22,10 @@ services:
       # Sign-in emails: "log" (codes in the server log) until a Resend key and verified sender are set.
       Email__Provider: ${EMAIL_PROVIDER:-log}
       Email__ResendApiKey: ${RESEND_API_KEY:-}
+      # Backup sender: used when Resend refuses (its free plan stops at 100 emails a day) or cannot be reached.
+      Email__BrevoApiKey: ${BREVO_API_KEY:-}
       Email__From: ${EMAIL_FROM:-}
+      Email__BrevoFrom: ${BREVO_EMAIL_FROM:-}
       # TEST ONLY: shows the sign-in code in the app (anyone can sign in as anyone). Off for real users.
       Auth__TestMode: ${AUTH_TEST_MODE:-false}
       # Exact email exceptions for pilot testers; normal emailed-code verification still applies.
