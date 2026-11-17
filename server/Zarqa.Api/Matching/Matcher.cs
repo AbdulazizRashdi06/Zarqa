@@ -25,6 +25,7 @@ public sealed class Matcher(
     IEmbedder embedder,
     IJev jev,
     DebateReviewer debate,
+    SoloReviewer solo,
     LunaReviewer lunaReviewer,
     ScreenReviewer screen,
     ReportNormalizer normalizer,
@@ -185,8 +186,8 @@ public sealed class Matcher(
                 var (lostReport, foundReport) = report.Kind == ReportKind.Lost ? (report, x.Counterpart) : (x.Counterpart, report);
                 var why = await reasons.WriteAsync(lost, found, lostReport.EventTime, foundReport.EventTime, ct);
                 Log(report.Id, x.Counterpart.Id, "reasons", new JsonObject { ["reasons"] = new JsonArray(why.Reasons.Select(r => (JsonNode)r).ToArray()) }, why.CostUsd);
-                var decider = review.Decider == "debate" ? MatchDecider.Debate : MatchDecider.LunaFallback;
-                // A debate match just over the cut-off waits for an admin (or 48 hours) before the owner hears of it.
+                var decider = review.Decider switch { "debate" => MatchDecider.Debate, "opus" => MatchDecider.Opus, _ => MatchDecider.LunaFallback };
+                // A debate or one-model match just over its cut-off waits for an admin (or 48 hours) before the owner hears of it.
                 var hold = HeldMatches.ShouldHold(decider, review.FinalScore);
                 var match = new Match
                 {
@@ -214,6 +215,18 @@ public sealed class Matcher(
     private async Task<Review?> ReviewAsync(MatchInput lost, MatchInput found, CancellationToken ct)
     {
         var images = Photos.DataUrls(lost, found);
+        // One model alone when switched on; a failed call (gateway down, plan limit, unusable answer) goes to the debate.
+        if (solo.IsConfigured)
+        {
+            try
+            {
+                return await solo.ReviewAsync(lost, found, images, ct);
+            }
+            catch (Exception e) when (DebateReviewer.IsModelFailure(e, ct))
+            {
+                log.LogWarning("One-model review unavailable; using the debate for this pair");
+            }
+        }
         if (models.Value.UseTerraJudge || jev.IsConfigured)
         {
             try

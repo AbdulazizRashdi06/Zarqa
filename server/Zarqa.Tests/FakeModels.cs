@@ -39,16 +39,29 @@ public sealed class FakeModels
     /// <summary>Every chat prompt any model was sent, by schema name.</summary>
     public ConcurrentQueue<(string SchemaName, string System, string Text)> Prompts { get; } = [];
 
+    /// <summary>The one-model review is switched on and its gateway is set (off by default, as in the app).</summary>
+    public bool OpusConfigured { get; set; }
+    /// <summary>The gateway is down, signed out or at its plan limit.</summary>
+    public bool OpusFails { get; set; }
+    public double OpusSameItem { get; set; } = 0.9;
+    public int OpusOverallLevel { get; set; } = 4;
+    public ConcurrentQueue<(string SchemaName, string System, string Text, int Images)> OpusCalls { get; } = [];
+
     public FakeEmbedder Embedder => new(this);
     public FakeLuna Luna => new(this);
     public FakeJudge Terra => new(this, Fallback: false);
     public FakeJudge DeepSeek => new(this, Fallback: true);
+    public FakeOpus Opus => new(this);
 
     public void Reset()
     {
         LunaConfigured = TerraConfigured = true;
         SameItem = 0.9;
         OverallLevel = 4;
+        OpusConfigured = OpusFails = false;
+        OpusSameItem = 0.9;
+        OpusOverallLevel = 4;
+        OpusCalls.Clear();
         LunaCalls.Clear();
         LunaImages.Clear();
         JudgeModels.Clear();
@@ -159,5 +172,26 @@ public sealed class FakeJudge(FakeModels m, bool Fallback) : ITerra, IDeepSeek
                 KeyValuePair.Create<string, JsonNode?>(level, JsonValue.Create(i == m.OverallLevel ? 1 : 0)))),
         };
         return Task.FromResult(new LunaResult(JsonSerializer.SerializeToElement(answers), 500, 0, 50, 5) { Model = model });
+    }
+}
+
+/// <summary>The private Claude Code gateway: one call answers the judge's three questions.</summary>
+public sealed class FakeOpus(FakeModels m) : IOpus
+{
+    public bool IsConfigured => m.OpusConfigured;
+
+    public Task<LunaResult> ChatJsonAsync(string system, string text, IReadOnlyList<string> images, string schemaName, JsonObject schema, CancellationToken ct)
+    {
+        m.OpusCalls.Enqueue((schemaName, system, text, images.Count));
+        if (m.OpusFails) throw new ModelCallException("429 from claude");
+        var levels = new[] { "clearly_different", "probably_different", "unclear", "probably_same", "almost_certainly_same" };
+        var answers = new JsonObject
+        {
+            ["same_item_probability"] = m.OpusSameItem,
+            ["stronger_case"] = "for",
+            ["overall_probabilities"] = new JsonObject(levels.Select((level, i) =>
+                KeyValuePair.Create<string, JsonNode?>(level, JsonValue.Create(i == m.OpusOverallLevel ? 1 : 0)))),
+        };
+        return Task.FromResult(new LunaResult(JsonSerializer.SerializeToElement(answers), 4000, 0, 300, 9) { Model = "opus", ProviderCostUsd = Prices.Opus(4000, 0, 300) });
     }
 }

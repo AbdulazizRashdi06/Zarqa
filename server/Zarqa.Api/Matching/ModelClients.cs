@@ -42,6 +42,22 @@ public sealed class ModelOptions
     /// placed (decisions.md, 2026-11-16). Changes every screening, advocate and judge prompt. Off by default.
     /// </summary>
     public bool PostedOn { get; set; }
+    /// <summary>
+    /// One model alone reviews each pair in place of the debate: no advocates, no separate judge (owner decision,
+    /// decisions.md 2026-11-16). Needs <see cref="OpusBaseUrl"/>. A failed call falls back to the debate. Off by default.
+    /// </summary>
+    public bool UseOpusAlone { get; set; }
+    /// <summary>The private Claude Code gateway (deploy/claude), e.g. http://claude:8091/v1. Never receives API keys.</summary>
+    public string? OpusBaseUrl { get; set; }
+    public string OpusModel { get; set; } = "opus";
+    /// <summary>Reasoning level sent to the gateway: low, medium or high. The benchmark runs used high.</summary>
+    public string OpusEffort { get; set; } = "high";
+    /// <summary>
+    /// A one-model review is shown from this score. Its scores sit lower than the debate's: on the five rated sets
+    /// its best line fell between 0.30 and 0.45 on every half (decisions.md, 2026-11-16). Read off test sets; to be
+    /// settled on pilot reports.
+    /// </summary>
+    public double OpusThreshold { get; set; } = 0.45;
     public string LunaModel { get; set; } = "gpt-6-luna";
     public string TerraModel { get; set; } = "gpt-6.1-terra";
     public string EmbeddingModel { get; set; } = "text-embedding-3-small";
@@ -62,6 +78,13 @@ public static class Prices
 
     public static decimal Luna(int input, int cached, int output) =>
         ((input - cached) * LunaInput + cached * LunaCachedInput + output * LunaOutput) / 1_000_000m;
+
+    /// <summary>
+    /// Opus at API list prices on 2026-11-03 ($4 in, $0.20 cached in, $20 out per 1M tokens). The Claude Code gateway
+    /// runs on a plan and is not billed per call; this is what the same calls would cost through the API.
+    /// </summary>
+    public static decimal Opus(int input, int cached, int output) =>
+        ((input - cached) * 4.00m + cached * 0.20m + output * 20.00m) / 1_000_000m;
 
     // DeepSeek Flash peak rates, in USD per 1M tokens. Use the peak rate for the spend cap.
     public static decimal DeepSeek(int input, int cached, int output) =>
@@ -96,6 +119,7 @@ public interface IStructuredChat
 public interface ILuna : IStructuredChat { }
 public interface ITerra : IStructuredChat { }
 public interface IDeepSeek : IStructuredChat { }
+public interface IOpus : IStructuredChat { }
 
 public interface IJev
 {
@@ -187,6 +211,21 @@ public sealed class OpenAiTerra(HttpClient http, IOptions<ModelOptions> options)
     }
 }
 
+/// <summary>Opus through the private Claude Code gateway, which speaks the same Chat Completions shape as the Codex one.</summary>
+public sealed class ClaudeGatewayOpus(HttpClient http, IOptions<ModelOptions> options) : IOpus
+{
+    public bool IsConfigured => options.Value.UseOpusAlone && !string.IsNullOrWhiteSpace(options.Value.OpusBaseUrl);
+
+    public async Task<LunaResult> ChatJsonAsync(string system, string text, IReadOnlyList<string> imageDataUrls, string schemaName, JsonObject schema, CancellationToken ct)
+    {
+        var o = options.Value;
+        if (!IsConfigured) throw new ModelCallException("No Opus gateway configured.");
+        var result = await ChatCompletions.SendAsync(http, (o.OpusBaseUrl!.TrimEnd('/'), null, o.OpusModel), system, text, imageDataUrls,
+            o.LunaImageDetail, ChatCompletions.StrictFormat(schemaName, schema), ct, reasoningEffort: o.OpusEffort);
+        return result with { ProviderCostUsd = Prices.Opus(result.InputTokens, result.CachedInputTokens, result.OutputTokens) };
+    }
+}
+
 public sealed class DeepSeekChat(HttpClient http, IOptions<ModelOptions> options) : IDeepSeek
 {
     public const string Model = "deepseek-flash";
@@ -212,7 +251,7 @@ internal static class ChatCompletions
 
     public static async Task<LunaResult> SendAsync(HttpClient http, (string Base, string? Key, string Model) route,
         string system, string text, IReadOnlyList<string> imageDataUrls, string imageDetail, JsonObject format,
-        CancellationToken ct, bool deepSeek = false)
+        CancellationToken ct, bool deepSeek = false, string? reasoningEffort = null)
     {
         var content = new JsonArray { new JsonObject { ["type"] = "text", ["text"] = text } };
         foreach (var url in imageDataUrls)
@@ -227,6 +266,7 @@ internal static class ChatCompletions
             },
             ["response_format"] = format,
         };
+        if (reasoningEffort is not null) body["reasoning_effort"] = reasoningEffort;
         if (deepSeek)
         {
             body["reasoning_effort"] = "low";

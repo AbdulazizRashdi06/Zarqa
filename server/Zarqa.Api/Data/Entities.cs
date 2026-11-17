@@ -16,7 +16,7 @@ public enum ReportStatus { Open, InChat, Returned, Closed, Expired, Pickup }
 public enum MatchStatus { Suggested, Confirmed, Rejected, Expired, Held, Withheld }
 
 /// <summary>RsaStaff: matched by hand at the RSA desk, after someone described their item in person.</summary>
-public enum MatchDecider { Debate, LunaFallback, RsaStaff }
+public enum MatchDecider { Debate, LunaFallback, RsaStaff, Opus }
 
 public enum ConversationStatus { Active, Returned, Closed }
 

@@ -39,6 +39,12 @@ services:
       Models__JudgeSeesPhotos: ${MATCHING_JUDGE_PHOTOS:-false}
       Models__OneDayNote: ${MATCHING_ONE_DAY_NOTE:-false}
       Models__PostedOn: ${MATCHING_POSTED_ON:-false}
+      # One model alone in place of the debate (owner decision, decisions.md 2026-11-16). Off unless both are set:
+      # MATCHING_OPUS_ALONE=true and OPUS_BASE_URL=http://claude:8091/v1 (deploy/enable-claude.sh sets them).
+      # A failed call or a plan limit falls back to the debate above.
+      Models__UseOpusAlone: ${MATCHING_OPUS_ALONE:-false}
+      Models__OpusBaseUrl: ${OPUS_BASE_URL:-}
+      Models__OpusEffort: ${MATCHING_OPUS_EFFORT:-high}
       Models__DailySpendCapUsd: ${MODEL_DAILY_CAP_USD:-2}
       Matching__Worker: ${MATCHING_ENABLED:-true}
       # Comma-separated admin emails (Profile shows an Admin link for them).
@@ -71,6 +77,29 @@ services:
     mem_limit: 1g
     pids_limit: 1024   # Live value since 2026-10-24: 256 ran out when killed runs left codex processes behind.
 
+  # Private gateway for the one-model review: Claude Code signed in with the owner's Claude account.
+  # No published ports, no API keys, no database or photo mounts. Its sign-in lives in its own volume.
+  claude:
+    build:
+      context: ..
+      dockerfile: deploy/claude/Dockerfile
+    restart: unless-stopped
+    init: true
+    read_only: true
+    tmpfs:
+      - /tmp:size=128m,mode=1777
+    environment:
+      CLAUDE_CONFIG_DIR: /home/node/.claude
+      CLAUDE_MAX_RUNNING: ${CLAUDE_MAX_RUNNING:-3}
+    volumes:
+      - claude_auth:/home/node/.claude
+    security_opt:
+      - no-new-privileges:true
+    cap_drop: [ALL]
+    # Up to CLAUDE_MAX_RUNNING (3) Claude Code processes at once; each needs roughly 250 MB.
+    mem_limit: 1500m
+    pids_limit: 1024
+
   postgres:
     image: pgvector/pgvector:pg17
     restart: unless-stopped
@@ -102,6 +131,7 @@ services:
 
 volumes:
   codex_auth:
+  claude_auth:
   pgdata:
   photos:
   caddy_data:
