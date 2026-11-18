@@ -47,6 +47,14 @@ public sealed class Matcher(
     /// <summary>How many of the shortlist the screen reads when more than MaxCandidates pass (benchmark, 2026-11-14).</summary>
     public const int ScreenSize = 30;
     /// <summary>max(floor 0.55, 0.72 − 0.16): the shortlist luna-debate was benchmarked with.</summary>
+    /// <summary>
+    /// With the one-model review on, every candidate over the prescore floor is reviewed, up to this many, and the
+    /// screen is skipped. On the five rated sets the screen and the cap of 10 dropped 7 real pairs before any
+    /// reviewer saw them, most of them rated 8 to 10; reviewing everything over the floor showed 592 of 602 real
+    /// items instead of 585, for 7 more other pairs (decisions.md, 2026-11-18). The owner expects under 200
+    /// reports, so the extra calls do not matter.
+    /// </summary>
+    public const int OpusMaxCandidates = 100;
     public const double ShortlistThreshold = 0.56;
 
     public bool IsConfigured => embedder.IsConfigured && debate.IsConfigured;
@@ -126,7 +134,9 @@ public sealed class Matcher(
             .Where(x => x.Prescore.Score >= ShortlistThreshold)
             .OrderByDescending(x => x.Prescore.Score)
             .ToList();
-        var shortlist = passed.Take(MaxCandidates).ToList();
+        // One model alone reviews every candidate over the floor; the debate keeps its screen and its cap of 10.
+        var wide = solo.IsConfigured;
+        var shortlist = passed.Take(wide ? OpusMaxCandidates : MaxCandidates).ToList();
         Log(report.Id, null, "shortlist", new JsonObject
         {
             ["pool"] = pool.Count,
@@ -146,7 +156,7 @@ public sealed class Matcher(
         await db.SaveChangesAsync(ct);
 
         // 4. Screen. Only when more passed than can be reviewed: with 10 or fewer it could only lose pairs.
-        if (models.Value.UseScreen && passed.Count > MaxCandidates)
+        if (!wide && models.Value.UseScreen && passed.Count > MaxCandidates)
         {
             var screened = passed.Take(ScreenSize).ToList();
             var result = await screen.ScreenAsync(input, screened.Select(x => x.Input).ToList(), ct);

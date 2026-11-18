@@ -2,6 +2,28 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-18: With Opus alone, every candidate over the floor is reviewed (committed, off with the Opus switch, not deployed)
+
+**Owner's steer.** Fewer than 200 reports are expected in real use, so Opus usage on the plan is not a concern; a missed match is the worst outcome and a wrong suggestion is bad but less so.
+
+**Where the remaining misses were.** With Opus alone at 0.45 on the five rated sets, 585 of 602 real items are shown. Of the 17 missed, 10 were reviewed and scored under the line (mostly weak pairs, rated 2 to 6.5), and **7 never reached the reviewer**: all seven passed the prescore (0.66 to 1.0, two of them ranked first or second by search) and were dropped by the Luna screen or by the cap of 10 after it. Raters put those seven at 10, 10, 9, 8, 8, 6 and 5.5. The reviewer is no longer the weak link; the step in front of it is.
+
+**What changes.** When the one-model review is on, the screen is skipped and every candidate over the 0.56 prescore floor is reviewed, up to 100 (`Matcher.OpusMaxCandidates`). The debate path keeps its screen and its cap of 10. Worked out from the Opus answers already recorded for every rated pair, with no new model calls:
+
+| Five rated sets, Opus alone | Real items (of 602) | Other pairs (of 955) | Stupid matches (of 669) |
+|---|---|---|---|
+| Screen, then the best 10 (as built on 2026-11-17), line 0.45 | 585 | 103 | 2 |
+| Everything over the floor, line 0.45 | 592 | 110 | 3 |
+| Everything over the floor, line 0.40 | 595 | 135 | 4 |
+| Everything over the floor, line 0.35 | 598 | 168 | 8 |
+
+A cap of 30 by prescore would still lose four real pairs (ranked 34, 36, 54 and 70), so the cap is 100, which at the expected size means no cap. The line stays 0.45: lowering it is the owner's call and is better settled on pilot reports. One more stupid match (3 against 2) is inside the chance band but is, strictly, more than the base; the owner has ruled that a missed match is worse.
+
+**Limits.** These are the same Opus answers as before (helper agents, 10 pairs per sitting, one run). The test sets hold only the pairs their writers made; on real data reviewing every candidate also reviews lookalikes no set contains, so wrong suggestions will rise by more than the seven shown here. Considered and set aside on the owner's steer: Haiku in front of Opus (Opus asked only when Haiku scores 0.3 to 0.7 gave 216 real / 36 other / 2 stupid against 215 / 33 / 1 for Opus on every pair on outside sets 2 and 3, with Opus called on 24% of pairs), and a lower reasoning level; both save usage, which is not the constraint.
+
+**Also corrected.** Tables in the 2026-11-16 entries label a row "today's app". Those runs had the photo-judge switch on, which is off by default in the app. The app as committed (text-only judge, 0.55) on the four sets that have such a run shows 468 of 489 real items, 228 other pairs and 69 stupid matches; with the photo judge 471 / 180 / 30; Opus alone at 0.45 on the same four sets 474 / 91 / 1.
+
+
 ## 2026-11-16: Loops H1 and H2 with Haiku, the loop council, and a rule that halves stupid matches (benchmark only)
 
 **Owner's rulings.** "Remember that we can't also make stupid matches": a pair shown although raters put it at 2 of 10 or lower is counted in every test (`benchmark/scripts/edge-stupid.js`), and a change that shows more of them than the base is not accepted (fifth acceptance rule). The owner also asked for a loop council built with the harness and council plugins, so the loop keeps going without waiting for them.
