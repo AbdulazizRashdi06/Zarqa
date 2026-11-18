@@ -57,14 +57,26 @@
    "note": ""
   },
   "quality": {
-   "a": 3,
-   "b": 4
+   "a": 6,
+   "b": 6
   },
   "difficulty": {
-   "a": 3,
-   "b": 3
+   "a": 2,
+   "b": 2
   },
-  "ratingNote": "black wallet but smooth, no pressed lines; thick stuffed"
+  "ratingNote": "wallet in canteen; found side gives no detail",
+  "ratingWithRemovedPhoto": {
+   "quality": {
+    "a": 3,
+    "b": 4
+   },
+   "difficulty": {
+    "a": 3,
+    "b": 3
+   },
+   "ratingNote": "black wallet but smooth, no pressed lines; thick stuffed"
+  },
+  "reratedTextOnly": "2026-11-18"
  },
  {
   "lostId": "L-C-F25",
@@ -155,14 +167,26 @@
   "secondNote": "",
   "disputed": false,
   "quality": {
-   "a": 9,
-   "b": 9
+   "a": 6,
+   "b": 6
   },
   "difficulty": {
    "a": 2,
    "b": 2
   },
-  "ratingNote": "thick old black wallet stuffed with cards, on table"
+  "ratingNote": "wallet on canteen table; found side says nothing more",
+  "ratingWithRemovedPhoto": {
+   "quality": {
+    "a": 9,
+    "b": 9
+   },
+   "difficulty": {
+    "a": 2,
+    "b": 2
+   },
+   "ratingNote": "thick old black wallet stuffed with cards, on table"
+  },
+  "reratedTextOnly": "2026-11-18"
  },
  {
   "lostId": "L-O-wallet-01",
@@ -259,13 +283,25 @@
   },
   "quality": {
    "a": 4,
-   "b": 5
+   "b": 3
   },
   "difficulty": {
    "a": 3,
    "b": 3
   },
-  "ratingNote": "old black leather but only two cards, not stuffed"
+  "ratingNote": "old black leather wallet in canteen, but two cards and lying open vs stuffed thick",
+  "ratingWithRemovedPhoto": {
+   "quality": {
+    "a": 4,
+    "b": 5
+   },
+   "difficulty": {
+    "a": 3,
+    "b": 3
+   },
+   "ratingNote": "old black leather but only two cards, not stuffed"
+  },
+  "reratedTextOnly": "2026-11-18"
  },
  {
   "lostId": "L-O-wallet-02",
@@ -368,7 +404,19 @@
    "a": 3,
    "b": 3
   },
-  "ratingNote": "black worn wallet, no Timberland seen; brown vs black"
+  "ratingNote": "dark brown Timberland vs old black leather; contents roughly similar",
+  "ratingWithRemovedPhoto": {
+   "quality": {
+    "a": 3,
+    "b": 3
+   },
+   "difficulty": {
+    "a": 3,
+    "b": 3
+   },
+   "ratingNote": "black worn wallet, no Timberland seen; brown vs black"
+  },
+  "reratedTextOnly": "2026-11-18"
  },
  {
   "lostId": "L-O-wallet-02",
@@ -454,14 +502,26 @@
   "secondNote": "black wallet, not light tan with a star",
   "disputed": false,
   "quality": {
-   "a": 0,
-   "b": 0
+   "a": 1,
+   "b": 1
   },
   "difficulty": {
    "a": 1,
    "b": 1
   },
-  "ratingNote": "black vs light tan Moroccan"
+  "ratingNote": "light tan Moroccan coin wallet vs old black wallet with cards",
+  "ratingWithRemovedPhoto": {
+   "quality": {
+    "a": 0,
+    "b": 0
+   },
+   "difficulty": {
+    "a": 1,
+    "b": 1
+   },
+   "ratingNote": "black vs light tan Moroccan"
+  },
+  "reratedTextOnly": "2026-11-18"
  },
  {
   "lostId": "L-O-wallet-03",
@@ -547,14 +607,26 @@
   "secondNote": "",
   "disputed": false,
   "quality": {
-   "a": 10,
-   "b": 10
+   "a": 9,
+   "b": 9
   },
   "difficulty": {
-   "a": 2,
+   "a": 1,
    "b": 1
   },
-  "ratingNote": "old black leather, coin pocket, two cards, on table all confirmed"
+  "ratingNote": "old black leather wallet, two cards, coin, canteen table all agree",
+  "ratingWithRemovedPhoto": {
+   "quality": {
+    "a": 10,
+    "b": 10
+   },
+   "difficulty": {
+    "a": 2,
+    "b": 1
+   },
+   "ratingNote": "old black leather, coin pocket, two cards, on table all confirmed"
+  },
+  "reratedTextOnly": "2026-11-18"
  },
  {
   "lostId": "L-O-wallet-04",
@@ -1384,14 +1456,26 @@
   "secondNote": "plain smooth leather bifold stuffed with cards, not a carbon-fibre coin wallet with flap",
   "disputed": false,
   "quality": {
-   "a": 2,
-   "b": 1
+   "a": 5,
+   "b": 5
   },
   "difficulty": {
-   "a": 2,
-   "b": 1
+   "a": 3,
+   "b": 3
   },
-  "ratingNote": "black but thick used wallet, not new boxed coin wallet"
+  "ratingNote": "bare 'wallet' found; nothing to confirm the boxed carbon coin wallet; other place",
+  "ratingWithRemovedPhoto": {
+   "quality": {
+    "a": 2,
+    "b": 1
+   },
+   "difficulty": {
+    "a": 2,
+    "b": 1
+   },
+   "ratingNote": "black but thick used wallet, not new boxed coin wallet"
+  },
+  "reratedTextOnly": "2026-11-18"
  },
  {
   "lostId": "L-O-wallet-11",
@@ -1477,14 +1561,26 @@
   "secondNote": "thick black wallet, not a thin brown card sleeve",
   "disputed": false,
   "quality": {
-   "a": 1,
-   "b": 1
+   "a": 5,
+   "b": 5
   },
   "difficulty": {
-   "a": 1,
-   "b": 1
+   "a": 3,
+   "b": 3
   },
-  "ratingNote": "thick black wallet vs brown card sleeve"
+  "ratingNote": "same canteen; 'wallet' could be a card sleeve; found says almost nothing",
+  "ratingWithRemovedPhoto": {
+   "quality": {
+    "a": 1,
+    "b": 1
+   },
+   "difficulty": {
+    "a": 1,
+    "b": 1
+   },
+   "ratingNote": "thick black wallet vs brown card sleeve"
+  },
+  "reratedTextOnly": "2026-11-18"
  },
  {
   "lostId": "L-O-wallet-11",
