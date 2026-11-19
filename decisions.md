@@ -2,6 +2,28 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-19: Loop O2, the date fix on the seen sets: 3 of 18 date-order real pairs shown becomes 15, and it failed one of its own rules by a pair (benchmark only)
+
+**Run.** Candidate A2 (`SOLO_DATES=a2`) against the base, each asked twice on all 1,892 pairs of the five seen sets and set 4, one pair per call on the app's route, no failed call. Read by the rules written into the loop state before any A2 answer existed. Full reading: `benchmark/_workspace/tuning/O2_06_seen_result.txt`.
+
+| Real pairs with the found date first | Base, shown on both asks | A2, shown on both asks |
+|---|---|---|
+| All 18 | 3 | 15 |
+| One day before (12) | 2 | 11 |
+| Two days before (5) | 0 | 3 |
+| Eight days before (1) | 1 | 1 |
+| Set 4's three, the only pairs written after the notes were frozen | 0 | 3 |
+
+- No real pair was lost. The three still missed are two whose owners name the lost date as a day they still had the item (the note's own exception) and one rated 5 in another place.
+- Guard: of 107 found-first pairs rated 2 or lower, none reaches 0.45 on either ask; the highest is 0.40 (base 0.17). On the seen sets this guard could not fail (those pairs differ in kind); set 4's 23 and set 5 are the real guard.
+- Wiring: 0 of 1,713 pairs outside the gate changed.
+- **Failed sign 5:** 3 not-real pairs rated 3 to 3.5 became shown on both asks; the limit written beforehand was 2. All three are at gaps of 3 to 6 days, where these sets hold no real pair. Per gap, not-real pairs rated 2.1 to 5 newly shown on both asks: one day 0 of 4, two days 0 of 7, three to six days 4 of 20, seven or more 1 of 7.
+- Totals on the first ask at 0.45 (real / other / stupid): 789 / 147 / 5 becomes 796 / 157 / 5.
+
+**Base noise, measured on all five seen sets.** Asked twice with identical prompts, the base shows 584 / 129 / 4 and then 581 / 132 / 8; 32 of 1,557 pairs change side, 9 of them real. The stupid-match count of the base is therefore 4 to 8, not 4.
+
+**Council, second go sitting** (`O2_council_go2.json`). The full A2 may not read set 5 (the rule decided that). The arm that does: A2 limited to gaps of one and two days (`SOLO_DATES_GATE=2`), 4-0; one day only 0-4; hold 0-4. Written down before the read: the cut at two days was chosen after the seen-set answers were read, the two gaps are read separately, a gated pair rated 2 or lower shown on either ask rejects the arm. Free checks before opening: on the seen sets the arm needs no new call, and set 5's prompts carry the note at one and two days and the old sentence at three.
+
 ## 2026-11-19: Council rulings after loop O1, the cap forecast, and loop O2's candidate (benchmark only)
 
 **Loop O1 verdict** (`benchmark/_workspace/tuning/O1_council_verdict.json`, all 4-0). The helper-agent numbers are retired; 584 / 129 / 4 on the app's route is the base. Search and the floor are closed as a stage until a real pilot pair is lost there. Recommendations for the owner: keep the line at 0.45 and do not adopt 0.40; widen the held band to 0.45-0.549 as a precaution (the edge was read off seen sets, rests on two pairs from one in-house set and catches nothing extra on set 4; held pairs are shown after 48 hours anyway); switch Opus alone on for the pilot now with the hold fallback, after seeing one real Opus review work on the live server. One thing only the owner can confirm: with Opus on, the covered copies of card photos go to Anthropic through the Claude plan route, not only to Luna.
