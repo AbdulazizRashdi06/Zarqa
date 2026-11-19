@@ -2,6 +2,27 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-19: Outside set 4, read once: Opus alone shows 205 of 208 real items, and every miss is a date-order pair (benchmark only)
+
+**The set.** Written blind before any run by an outside agent (`benchmark/data/independent4`: 432 reports, 335 pairs, 208 real), with marked slices of the reports real students write: vague, misspelt, Arabic, Arabizi, mixed-language, the wrong kind of item named, text-only. Card reports are text only. Two blind raters on every pair, within one point on all 335. `edge-outside.js check` clean. What would be read was written down first.
+
+**The reading** (Opus alone, every candidate reviewed, one pair per call through the app's gateway, no failed call):
+
+| Line | Real items (of 208) | Other pairs (of 127) | Stupid matches (of 63 rated 2 or lower) |
+|---|---|---|---|
+| 0.45 | 205 | 18 | 1 (scored 0.473, so held for an admin) |
+| 0.40 | 205 | 21 | 1 |
+
+By the owner's scoring 99% of the most possible (honest figure 99%); 4 wrong suggestions (rated under 5 and shown).
+
+**Search holds on messy reports.** Real pairs shown: vague 27 of 27, misspelt 29 of 29, Arabic 27 of 27, Arabizi 28 of 28, mixed-language 54 of 54, wrong kind named 25 of 25, text-only 119 of 122. No real pair was lost at search, at the floor or at the cap in any slice.
+
+**All three misses have the found date before the lost date**, and they are the only three such real pairs in the set: a grey North Face jacket in the same library (found two days "before" it was lost, 0.28), a Nissan key in the same parking (one day, 0.38), an Apple Watch at the gym (two days, 0.24). The other 205 real pairs are all shown. On the five seen sets the same class is 52% of the cost by the owner's scoring (diagnosis in `benchmark/_workspace/tuning/O2_02_diagnosis.json`): the reviewer is told "an item cannot be found before it was lost" and applies it to dates people type from memory.
+
+**Still to come.** The declared comparison with the old screen and cap of 10, and the row for today's app, need the old debate run on set 4. The ChatGPT plan's rate limit is slowing it; it is reported when it finishes.
+
+**Set 4 is now a seen set.** Set 5 (`benchmark/data/independent5`, 341 pairs, 220 real, written and rated the same way) is sealed for loop O2.
+
 ## 2026-11-19: Opus alone measured the way the app calls it; the helper-agent numbers were too good (benchmark only)
 
 **What was run.** Step A of loop O1, ordered by the council 4-0: Opus alone on all five seen sets through the Claude Code gateway, one pair per call, every candidate over the floor reviewed, effort high (`<key>-opus-route`). 1,557 pairs, no failed call. Outside set 3 was asked twice.
