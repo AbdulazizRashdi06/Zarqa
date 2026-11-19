@@ -276,9 +276,13 @@ const SOLO_TIMING = process.env.SOLO_TIMING === "v2"
   : APP_TIMING;
 export const SOLO_DATES = ["a2", "b2"].includes(process.env.SOLO_DATES) ? process.env.SOLO_DATES : null;
 /** Calendar days the found date is before the lost date when both are given and it is first; else null. */
-//   SOLO_DATES_GATE=1  with either value: only the one-day gate; longer gaps stay as the app sends them.
-const ONE_DAY_GATE_ONLY = process.env.SOLO_DATES_GATE === "1";
-const foundFirstDays = (lost, found) => (foundOneDayBeforeLost(lost, found) ? 1 : ONE_DAY_GATE_ONLY ? null : foundDaysBeforeLost(lost, found));
+//   SOLO_DATES_GATE=N  with either value: only gaps of up to N calendar days are gated (1 = the one-day note only,
+//                      2 = one and two days); longer gaps stay as the app sends them.
+const MAX_GATED_GAP = Number(process.env.SOLO_DATES_GATE) || Infinity;
+const foundFirstDays = (lost, found) => {
+  const days = foundOneDayBeforeLost(lost, found) ? 1 : foundDaysBeforeLost(lost, found);
+  return days && days <= MAX_GATED_GAP ? days : null;
+};
 const A2_TIMING = 'for this pair, weigh the dates as the line beginning "Dates:" after the two reports says';
 const B2_ONE_DAY = "for this pair the FOUND date is one calendar day before the LOST date; the lost date may be the day the owner noticed the loss rather than the day it happened, so this order is not a point against a match, alone or together with other points, and not a point for one; it counts against a match only if the LOST report's own words say the owner still had or used the item on the LOST date, and repeating that date or saying when the loss was noticed does not";
 const b2Early = (days) => `for this pair the FOUND date is ${days} calendar days before the LOST date; the lost date is typed from memory and is often the day the loss was noticed or reported, so this order does not rule a match out; it is a point against a match, never a point for one, and it weighs more the longer the gap, a few days counting for little; it is a strong point against only if the LOST report's own words clearly say the owner still had or used the item after the FOUND date, and repeating the LOST date does not say that`;
