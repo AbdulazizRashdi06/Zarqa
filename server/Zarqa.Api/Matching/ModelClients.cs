@@ -58,6 +58,16 @@ public sealed class ModelOptions
     /// settled on pilot reports.
     /// </summary>
     public double OpusThreshold { get; set; } = 0.45;
+    /// <summary>
+    /// What happens to a pair when the one-model call fails (gateway down, signed out, plan limit, unusable answer).
+    /// "debate" (the default): the debate reviews the pair and its match is shown as any debate match is.
+    /// "hold": the debate still reviews it, so nothing is missed, but a match it finds always waits in To review,
+    /// whatever its score. In tests the debate showed far more clearly wrong pairs than the one-model review
+    /// (69 against 2), so its answers should not reach people unseen while it is only the stand-in
+    /// (council, 2026-11-19; the owner allowed the build, off by default).
+    /// </summary>
+    public string OpusFallback { get; set; } = "debate";
+    public bool HoldsOpusFallback => string.Equals(OpusFallback?.Trim(), "hold", StringComparison.OrdinalIgnoreCase);
     public string LunaModel { get; set; } = "gpt-6-luna";
     public string TerraModel { get; set; } = "gpt-6.1-terra";
     public string EmbeddingModel { get; set; } = "text-embedding-3-small";

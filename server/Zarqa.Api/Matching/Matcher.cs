@@ -184,12 +184,14 @@ public sealed class Matcher(
             var reviews = await Task.WhenAll(batch.Select(async x =>
             {
                 var (lost, found) = report.Kind == ReportKind.Lost ? (input, x.Input) : (x.Input, input);
-                return (x, lost, found, review: await ReviewAsync(lost, found, ct));
+                var (review, standIn) = await ReviewAsync(lost, found, ct);
+                return (x, lost, found, review, standIn);
             }));
-            foreach (var (x, lost, found, review) in reviews)
+            foreach (var (x, lost, found, review, standIn) in reviews)
             {
                 if (review is null) { retry = true; continue; }
                 review.Log["prescore"] = x.Prescore.Score;
+                if (standIn) review.Log["opusUnavailable"] = true;
                 Log(report.Id, x.Counterpart.Id, "review", review.Log, review.CostUsd);
                 if (!review.IsMatch) continue;
 
@@ -198,7 +200,9 @@ public sealed class Matcher(
                 Log(report.Id, x.Counterpart.Id, "reasons", new JsonObject { ["reasons"] = new JsonArray(why.Reasons.Select(r => (JsonNode)r).ToArray()) }, why.CostUsd);
                 var decider = review.Decider switch { "debate" => MatchDecider.Debate, "opus" => MatchDecider.Opus, _ => MatchDecider.LunaFallback };
                 // A debate or one-model match just over its cut-off waits for an admin (or 48 hours) before the owner hears of it.
-                var hold = HeldMatches.ShouldHold(decider, review.FinalScore);
+                // With the fallback set to "hold", a match made by the stand-in while the one-model call was failing waits too.
+                var heldAsStandIn = standIn && models.Value.HoldsOpusFallback;
+                var hold = heldAsStandIn || HeldMatches.ShouldHold(decider, review.FinalScore);
                 var match = new Match
                 {
                     LostId = lostReport.Id,
@@ -213,7 +217,12 @@ public sealed class Matcher(
                     CreatedAt = clock.GetUtcNow(),
                 };
                 db.Matches.Add(match);
-                if (hold) Log(lostReport.Id, foundReport.Id, HeldMatches.HeldStep, new JsonObject { ["finalScore"] = review.FinalScore }, 0);
+                if (hold)
+                {
+                    var held = new JsonObject { ["finalScore"] = review.FinalScore };
+                    if (heldAsStandIn) held["reason"] = HeldMatches.OpusUnavailable;
+                    Log(lostReport.Id, foundReport.Id, HeldMatches.HeldStep, held, 0);
+                }
                 await db.SaveChangesAsync(ct);
                 if (!hold) await notifier.MatchCreatedAsync(match.Id, ct);
             }
@@ -222,7 +231,11 @@ public sealed class Matcher(
         return retry ? MatchOutcome.Retry : MatchOutcome.Done;
     }
 
-    private async Task<Review?> ReviewAsync(MatchInput lost, MatchInput found, CancellationToken ct)
+    /// <summary>
+    /// The review of one pair, or null when it must be tried again later. StandIn is true when the one-model review
+    /// is switched on but its call failed, so another reviewer answered in its place.
+    /// </summary>
+    private async Task<(Review? Review, bool StandIn)> ReviewAsync(MatchInput lost, MatchInput found, CancellationToken ct)
     {
         var images = Photos.DataUrls(lost, found);
         // One model alone when switched on; a failed call (gateway down, plan limit, unusable answer) goes to the debate.
@@ -230,13 +243,20 @@ public sealed class Matcher(
         {
             try
             {
-                return await solo.ReviewAsync(lost, found, images, ct);
+                return (await solo.ReviewAsync(lost, found, images, ct), false);
             }
             catch (Exception e) when (DebateReviewer.IsModelFailure(e, ct))
             {
                 log.LogWarning("One-model review unavailable; using the debate for this pair");
             }
+            return (await StandInReviewAsync(lost, found, images, ct), true);
         }
+        return (await StandInReviewAsync(lost, found, images, ct), false);
+    }
+
+    /// <summary>The debate, and behind it the plain Luna review: what ran before the one-model review and what stands in for it.</summary>
+    private async Task<Review?> StandInReviewAsync(MatchInput lost, MatchInput found, IReadOnlyList<string> images, CancellationToken ct)
+    {
         if (models.Value.UseTerraJudge || jev.IsConfigured)
         {
             try

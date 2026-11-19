@@ -28,6 +28,9 @@ public sealed class HeldMatches(ZarqaDb db, INotifier notifier, TimeProvider clo
     public const string RejectStep = "held_reject";
     public const string AutoReleaseStep = "held_release";
 
+    /// <summary>The "reason" a held step carries when the match came from the stand-in while the one-model call was failing.</summary>
+    public const string OpusUnavailable = "opus_unavailable";
+
     /// <summary>What review_log records as "who" when the 48 hours ran out.</summary>
     public const string Auto = "auto";
 

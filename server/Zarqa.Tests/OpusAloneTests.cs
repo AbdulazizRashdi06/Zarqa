@@ -2,6 +2,7 @@ using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json.Nodes;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Zarqa.Api.Data;
 using Zarqa.Api.Matching;
@@ -22,8 +23,11 @@ public class OpusAloneTests : IClassFixture<TestApp>, IAsyncLifetime
     public Task InitializeAsync()
     {
         app.Models.Reset();
+        Settings.OpusFallback = "debate";
         return Task.CompletedTask;
     }
+
+    private ModelOptions Settings => app.Services.GetRequiredService<IOptions<ModelOptions>>().Value;
 
     public Task DisposeAsync() => Task.CompletedTask;
 
@@ -121,6 +125,60 @@ public class OpusAloneTests : IClassFixture<TestApp>, IAsyncLifetime
         Assert.Equal(MatchDecider.Debate, match.DecidedBy);
         Assert.NotEmpty(app.Models.OpusCalls);
         Assert.Contains("gpt-6.1-terra", app.Models.JudgeModels);
+    }
+
+    [Fact]
+    public async Task With_the_fallback_set_to_hold_a_stand_in_match_waits_for_an_admin_whatever_its_score()
+    {
+        app.Models.OpusConfigured = true;
+        app.Models.OpusFails = true;
+        Settings.OpusFallback = "hold";
+        var (lost, found) = await PostPair("garnet");
+        await app.DrainMatchingAsync();
+
+        await using var db = app.Db();
+        var match = await db.Matches.SingleAsync(m => m.LostId == lost && m.FoundId == found);
+        Assert.Equal(MatchDecider.Debate, match.DecidedBy);
+        // The fake debate scores this pair far above the debate's own held band (under 0.60), so only the setting holds it.
+        Assert.True(match.FinalScore >= HeldMatches.HoldBelow);
+        Assert.Equal(MatchStatus.Held, match.Status);
+        var step = await db.ReviewLogs.SingleAsync(l => l.ReportId == lost && l.CounterpartId == found && l.Step == HeldMatches.HeldStep);
+        Assert.Contains(HeldMatches.OpusUnavailable, step.Payload);
+    }
+
+    [Fact]
+    public async Task With_the_fallback_set_to_hold_a_match_the_one_model_review_made_itself_is_shown_as_usual()
+    {
+        app.Models.OpusConfigured = true;
+        Settings.OpusFallback = "hold";
+        var (lost, found) = await PostPair("topaz");
+        await app.DrainMatchingAsync();
+
+        await using var db = app.Db();
+        var match = await db.Matches.SingleAsync(m => m.LostId == lost && m.FoundId == found);
+        Assert.Equal(MatchDecider.Opus, match.DecidedBy);
+        Assert.Equal(MatchStatus.Suggested, match.Status);
+    }
+
+    [Fact]
+    public async Task With_the_one_model_review_off_the_fallback_setting_changes_nothing()
+    {
+        Settings.OpusFallback = "hold";
+        var (lost, found) = await PostPair("onyx");
+        await app.DrainMatchingAsync();
+
+        await using var db = app.Db();
+        var match = await db.Matches.SingleAsync(m => m.LostId == lost && m.FoundId == found);
+        Assert.Equal(MatchDecider.Debate, match.DecidedBy);
+        Assert.Equal(MatchStatus.Suggested, match.Status);
+    }
+
+    [Fact]
+    public void The_fallback_is_the_debate_unless_set_to_hold()
+    {
+        Assert.False(new ModelOptions().HoldsOpusFallback);
+        Assert.True(new ModelOptions { OpusFallback = " Hold " }.HoldsOpusFallback);
+        Assert.False(new ModelOptions { OpusFallback = "retry" }.HoldsOpusFallback);
     }
 
     [Theory]
