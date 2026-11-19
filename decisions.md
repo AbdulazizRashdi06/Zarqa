@@ -2,6 +2,31 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-19: Opus alone measured the way the app calls it; the helper-agent numbers were too good (benchmark only)
+
+**What was run.** Step A of loop O1, ordered by the council 4-0: Opus alone on all five seen sets through the Claude Code gateway, one pair per call, every candidate over the floor reviewed, effort high (`<key>-opus-route`). 1,557 pairs, no failed call. Outside set 3 was asked twice.
+
+| Real items / other pairs / stupid matches | Helper agents, 0.45 | App's route, 0.45 | Helper agents, 0.40 | App's route, 0.40 |
+|---|---|---|---|---|
+| Outside set 1 (108 real) | 106 / 16 / 1 | 103 / 14 / 0 | 107 / 20 / 1 | 105 / 15 / 0 |
+| Outside set 2 (105 real) | 104 / 22 / 0 | 102 / 16 / 0 | 104 / 25 / 0 | 102 / 22 / 0 |
+| Outside set 3 (113 real) | 112 / 13 / 0 | 112 / 13 / 0 | 112 / 20 / 0 | 112 / 20 / 1 |
+| Photo set, round 3 (92 real) | 91 / 9 / 1 | 89 / 20 / 3 | 92 / 11 / 2 | 90 / 21 / 3 |
+| Text set, round 3 (184 real) | 179 / 50 / 0 | 178 / 66 / 1 | 180 / 59 / 0 | 178 / 78 / 6 |
+| **All five (602 real)** | **592 / 110 / 2** | **584 / 129 / 4** | **595 / 135 / 3** | **587 / 156 / 10** |
+
+**Reading.** On the app's route Opus shows 8 fewer real items, 19 more other pairs and 2 more stupid matches at 0.45 than the helper agents suggested. Four of the five sets differ by more than the chance band on at least one count. The helper agents saw ten neighbouring pairs in one sitting and that flattered them, as suspected. **The base for the loop is 584 / 129 / 4 at 0.45, not 592 / 110 / 2.** It is still far ahead of the app as committed (468 / 228 / 69 on four of these sets).
+
+**Run-to-run.** Outside set 3 asked twice: 4 of 285 pairs change side at 0.45 (one of them real), 1 at 0.40. The median score moves 0.01 between two identical calls, the 90th percentile 0.04, the largest 0.17. A difference of one or two pairs per set is noise.
+
+**0.40 is not safe on the app's route.** It adds 3 real items and 6 stupid matches (4 to 10). The helper runs had shown 2 at both lines.
+
+**Where the wrongly shown pairs sit.** Scores of 0.50 to 0.549 hold 15 real items, 25 other pairs and 2 of the 4 stupid matches; the held band of 0.45 to 0.499 holds 9 real, 22 other and none of them. An unsure Opus answers "0.5", which lands just above the band meant to catch it.
+
+**Seen in passing, for the next loop's diagnosis.** A real pair rated 9 and easy ("Xiaomi power bank silver, lost on the bus" against "Mi power bank") scores 0.30 on both asks because the found date is one day before the lost date. Photos do reach the model through the gateway (checked by asking it to describe three of them).
+
+**Calls per report.** On the 650-report test database 81 to 92 candidates per report pass the 0.56 floor, so the cap of 100 is nearly reached. At 200 open reports it will be far fewer, but the floor is doing little and "Re-check open reports" means thousands of Opus calls.
+
 ## 2026-11-19: A match made while the Opus call is failing can be held for an admin (committed, off by default, not deployed)
 
 **Why.** With Opus alone on, a failed call (gateway down, signed out, plan limit, unusable answer) sends the pair to the Luna debate, and until now its match was shown like any other. In tests the debate showed 69 clearly wrong pairs on four sets against 2 for Opus on five. All four council seats recommended that such matches not reach people unseen, and the owner allowed anything that affects matching to be built while away, behind a switch.
