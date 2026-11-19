@@ -2,6 +2,22 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-19: Council rulings after loop O1, the cap forecast, and loop O2's candidate (benchmark only)
+
+**Loop O1 verdict** (`benchmark/_workspace/tuning/O1_council_verdict.json`, all 4-0). The helper-agent numbers are retired; 584 / 129 / 4 on the app's route is the base. Search and the floor are closed as a stage until a real pilot pair is lost there. Recommendations for the owner: keep the line at 0.45 and do not adopt 0.40; widen the held band to 0.45-0.549 as a precaution (the edge was read off seen sets, rests on two pairs from one in-house set and catches nothing extra on set 4; held pairs are shown after 48 hours anyway); switch Opus alone on for the pilot now with the hold fallback, after seeing one real Opus review work on the live server. One thing only the owner can confirm: with Opus on, the covered copies of card photos go to Anthropic through the Claude plan route, not only to Luna.
+
+**The cap of 100 candidates per report, forecast for free** (no model review; generated filler reports added). Outside set 4: all 208 real pairs stay inside the cap at 810, 1,210 and 1,610 reports (deepest real pair at rank 17, 22, 27). In-house text set, round 3: deepest real pair at rank 70 at about 650 reports; at about 1,200 reports the cap cuts 1 real pair (rated 5.5), at about 1,600 it cuts 2 (one rated 8). So the cap costs nothing at pilot size and starts to cut somewhere past 1,000 reports. Filler reports are generated, so real same-kind clutter may bite sooner.
+
+**Loop O2 agenda** (`O2_council_agenda.json`). Date order: attack 4-0. Another place 0-4, a stated difference answered "about 0.5" 1-3 (People dissented: it holds 3 of the 4 stupid matches), remembered details 0-4, thin found reports 0-4 and to the docket. Condition: the prompt must not hold both "an item cannot be found before it was lost" and a note saying the opposite.
+
+**Candidates.** The drafter's first two (A: the owner's two date notes appended on gated pairs; B: a softer timing clause on every pair) drew six "uncertain" verdicts and no "fail". Revised once to meet the critics and the council:
+- **A2** (`SOLO_DATES=a2`). Only when both dates are given and the found date is first: the system's timing clause reads "for this pair, weigh the dates as the line beginning "Dates:" after the two reports says", the owner-approved one-day note or longer-gap note is appended word for word, and one line gives the day the LOST report was posted. Every other pair's prompt is unchanged.
+- **B2** (`SOLO_DATES=b2`). The same gate; the clause itself carries a shortened form of the notes (the long-gap passage and the "today counts from the posting day" passage cut) and nothing is appended. Fallback only.
+
+**Go or no-go** (`O2_council_go.json`). A2: test 4-0. B2: test 3-1, only if A2 fails by not being obeyed or by losing a longer-gap real pair, never if A2 breaks the guard. The reading rules were written into the loop state before any A2 answer existed: base and candidate each asked twice; a pair counts as shown only on both asks; A2 must show at least 3 more of the 18 real gated pairs than the base; any gated pair rated 2 or lower newly at 0.45 on either ask rejects it; if neither of set 4's two two-day pairs is fixed, only the one-day gate goes to set 5.
+
+**Set 5, counted from its dates and labels only before opening:** 28 real pairs with the found date first (18 one day, 10 longer) and 36 not-real ones (18 rated 2 or lower, 1 of them one day). The writer's brief for set 5 carried one sentence more than set 4's, that people are careless with dates on real and false pairs alike; it names no fix, but it is why this class is larger than in set 4 (3 real pairs) and is stated with the result.
+
 ## 2026-11-19: Outside set 4, read once: Opus alone shows 205 of 208 real items, and every miss is a date-order pair (benchmark only)
 
 **The set.** Written blind before any run by an outside agent (`benchmark/data/independent4`: 432 reports, 335 pairs, 208 real), with marked slices of the reports real students write: vague, misspelt, Arabic, Arabizi, mixed-language, the wrong kind of item named, text-only. Card reports are text only. Two blind raters on every pair, within one point on all 335. `edge-outside.js check` clean. What would be read was written down first.
