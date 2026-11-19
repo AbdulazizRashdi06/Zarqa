@@ -265,6 +265,11 @@ export const SOLO_REVIEW = ["luna", "terra", "opus"].includes(process.env.SOLO_R
 //                    line, the owner-approved one-day or longer-gap note is appended word for word, and the LOST
 //                    report's posting day is given. Every other pair is byte-identical.
 //   SOLO_DATES=b2    the same gate; the clause itself carries a shortened form of the notes and nothing is appended.
+//   SOLO_EXTRA=s1|s2 (owner's ask, 2026-11-19: "add that sentence and test"): one last line on stated differences,
+//                    sent on every pair. s1 is the owner's sentence as the drafter placed it; s2 also says that
+//                    preferring recall does not cancel such a difference. Benchmark only, off by default.
+const SOLO_EXTRA = { s1: "A detail only one report gives is missing; a detail both reports give differently is evidence against a match: weigh it by how likely an honest slip of memory or naming is, and do not explain it away with a story neither report tells.", s2: "Unlike a detail only one report gives, a detail both give differently is evidence against a match that preferring recall does not cancel: weigh it by how likely an honest slip of memory or naming is, not by a story neither report tells." }[process.env.SOLO_EXTRA];
+const SOLO_EXTRA_LINE = SOLO_EXTRA ? `\n${SOLO_EXTRA}` : "";
 const APP_TIMING = "an item cannot be found before it was lost";
 const SOLO_TIMING = process.env.SOLO_TIMING === "v2"
   ? "the LOST date is often the day the owner noticed the loss, so a FOUND date before it does not rule a match out: one day before is not a point against a match, and a longer gap is a point against that weighs more the longer it is"
@@ -281,7 +286,7 @@ const soloSystem = (timing) => `You review possible matches in a university lost
 same_item: Do the LOST and FOUND reports describe the same physical item? ${SIMILARITY_RULE} Give the probability (0 to 1) that the answer is yes.
 stronger_case: Which way does the concrete evidence in the reports and photos lean? "for" = it better supports a match; "against" = it better supports different items; "balanced" = about equal.
 overall: ${QUESTIONS.overall.instructions} Give a probability (0 to 1) for each level; they should sum to 1. Levels: ${LEVEL_KEYS.map((k, i) => `${k} = "${DEBATE_LEVELS[i]}"`).join("; ")}.
-When a photo is attached, look at it yourself and go by what it shows.`;
+When a photo is attached, look at it yourself and go by what it shows.${SOLO_EXTRA_LINE}`;
 export const SOLO_SYSTEM = soloSystem(SOLO_TIMING);
 
 async function soloReview(lost, found, ctx, threshold) {
