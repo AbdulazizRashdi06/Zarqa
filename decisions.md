@@ -19,7 +19,15 @@ By the owner's scoring 99% of the most possible (honest figure 99%); 4 wrong sug
 
 **All three misses have the found date before the lost date**, and they are the only three such real pairs in the set: a grey North Face jacket in the same library (found two days "before" it was lost, 0.28), a Nissan key in the same parking (one day, 0.38), an Apple Watch at the gym (two days, 0.24). The other 205 real pairs are all shown. On the five seen sets the same class is 52% of the cost by the owner's scoring (diagnosis in `benchmark/_workspace/tuning/O2_02_diagnosis.json`): the reviewer is told "an item cannot be found before it was lost" and applies it to dates people type from memory.
 
-**Still to come.** The declared comparison with the old screen and cap of 10, and the row for today's app, need the old debate run on set 4. The ChatGPT plan's rate limit is slowing it; it is reported when it finishes.
+**The declared comparison and today's app** (the old debate's run finished the same day, all on the ChatGPT plan, no failed call):
+
+| Set 4 | Real items (of 208) | Other pairs (of 127) | Stupid matches |
+|---|---|---|---|
+| The app as committed (Luna debate, screen and cap of 10, line 0.55) | 204 | 26 | 4 |
+| Opus alone, the old screen and cap, 0.45 | 204 | 18 | 1 |
+| Opus alone, every candidate reviewed, 0.45 | 205 | 18 | 1 |
+
+Reviewing every candidate passes the rule written down beforehand (at least as many real items, no more stupid matches): one more real item, rated 10, a USB stick shaped like a car remote that the finder called "car key?", which the screen had dropped. It is one pair, inside the noise on its own, and in the same direction as the seven on the seen sets. Today's app is close to Opus on this set in real items (204 against 205; honest score 98% against 99%) and worse on wrong pairs (26 against 18) and stupid matches (4 against 1). The large gap on the seen sets (468 against 584 real items) comes mostly from the two in-house sets; on a set written by an outsider the two are much nearer. Today's app misses the same three date-order pairs (0.22, 0.46 and 0.21 against its line of 0.55).
 
 **Set 4 is now a seen set.** Set 5 (`benchmark/data/independent5`, 341 pairs, 220 real, written and rated the same way) is sealed for loop O2.
 

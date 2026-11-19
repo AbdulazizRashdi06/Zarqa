@@ -138,7 +138,6 @@ export async function opusJson({ system, text, imagePaths = [], schemaName, sche
     cacheSalt ? { ...body, cacheSalt } : body,
     async () => {
       const json = await postJson(`${base}/chat/completions`, body, {}, { attempts: 3 });
-      countRoute("plan");
       return { parsed: JSON.parse(json.choices[0].message.content), inputTokens: json.usage?.prompt_tokens ?? 0, cachedInputTokens: json.usage?.prompt_tokens_details?.cached_tokens ?? 0, outputTokens: json.usage?.completion_tokens ?? 0, route: "claude-plan" };
     },
     { enabled: useCache },
