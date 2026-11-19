@@ -258,28 +258,47 @@ export function debateScore(f) {
 // with the app's rule sentence word for word. Off by default: with it unset nothing below changes. opus goes one
 // pair per call through the Claude Code gateway (OPUS_BASE_URL), the app's own route for MATCHING_OPUS_ALONE.
 export const SOLO_REVIEW = ["luna", "terra", "opus"].includes(process.env.SOLO_REVIEW) ? process.env.SOLO_REVIEW : null;
-// SOLO_TIMING=v2 (loop O2, candidate B; benchmark only, off by default): what the one-model reviewer is told about
-// timing in its system text. Unset, the clause is the app's, word for word.
+// What the one-model reviewer is told about timing in its system text. Unset, every pair gets the app's clause,
+// word for word. Two benchmark-only switches, off by default (loop O2):
+//   SOLO_TIMING=v2   the first candidate B: a softer clause on every pair (not tested; kept for the record).
+//   SOLO_DATES=a2    on pairs where both dates are given and the found date is first: the clause points at a "Dates:"
+//                    line, the owner-approved one-day or longer-gap note is appended word for word, and the LOST
+//                    report's posting day is given. Every other pair is byte-identical.
+//   SOLO_DATES=b2    the same gate; the clause itself carries a shortened form of the notes and nothing is appended.
+const APP_TIMING = "an item cannot be found before it was lost";
 const SOLO_TIMING = process.env.SOLO_TIMING === "v2"
   ? "the LOST date is often the day the owner noticed the loss, so a FOUND date before it does not rule a match out: one day before is not a point against a match, and a longer gap is a point against that weighs more the longer it is"
-  : "an item cannot be found before it was lost";
-export const SOLO_SYSTEM = `You review possible matches in a university lost-and-found app: a LOST report and a FOUND report. Use only evidence in the reports and photos: item type, colour, brand/model, distinctive marks, place (location aliases name the same place), and timing (${SOLO_TIMING}). For each pair answer three questions.
+  : APP_TIMING;
+export const SOLO_DATES = ["a2", "b2"].includes(process.env.SOLO_DATES) ? process.env.SOLO_DATES : null;
+/** Calendar days the found date is before the lost date when both are given and it is first; else null. */
+const foundFirstDays = (lost, found) => (foundOneDayBeforeLost(lost, found) ? 1 : foundDaysBeforeLost(lost, found));
+const A2_TIMING = 'for this pair, weigh the dates as the line beginning "Dates:" after the two reports says';
+const B2_ONE_DAY = "for this pair the FOUND date is one calendar day before the LOST date; the lost date may be the day the owner noticed the loss rather than the day it happened, so this order is not a point against a match, alone or together with other points, and not a point for one; it counts against a match only if the LOST report's own words say the owner still had or used the item on the LOST date, and repeating that date or saying when the loss was noticed does not";
+const b2Early = (days) => `for this pair the FOUND date is ${days} calendar days before the LOST date; the lost date is typed from memory and is often the day the loss was noticed or reported, so this order does not rule a match out; it is a point against a match, never a point for one, and it weighs more the longer the gap, a few days counting for little; it is a strong point against only if the LOST report's own words clearly say the owner still had or used the item after the FOUND date, and repeating the LOST date does not say that`;
+const soloSystem = (timing) => `You review possible matches in a university lost-and-found app: a LOST report and a FOUND report. Use only evidence in the reports and photos: item type, colour, brand/model, distinctive marks, place (location aliases name the same place), and timing (${timing}). For each pair answer three questions.
 same_item: Do the LOST and FOUND reports describe the same physical item? ${SIMILARITY_RULE} Give the probability (0 to 1) that the answer is yes.
 stronger_case: Which way does the concrete evidence in the reports and photos lean? "for" = it better supports a match; "against" = it better supports different items; "balanced" = about equal.
 overall: ${QUESTIONS.overall.instructions} Give a probability (0 to 1) for each level; they should sum to 1. Levels: ${LEVEL_KEYS.map((k, i) => `${k} = "${DEBATE_LEVELS[i]}"`).join("; ")}.
 When a photo is attached, look at it yourself and go by what it shows.`;
+export const SOLO_SYSTEM = soloSystem(SOLO_TIMING);
 
 async function soloReview(lost, found, ctx, threshold) {
   const lostPhotos = photosOf(lost, ctx), foundPhotos = photosOf(found, ctx);
   const aliases = [...matchAliases(lost.location, ctx.aliasIndex), ...matchAliases(found.location, ctx.aliasIndex)].map((g) => `${g.canonical}: ${g.names.join(", ")}`);
+  // SOLO_DATES: only when both dates are given and the found date is first (see the switch above).
+  const days = SOLO_DATES ? foundFirstDays(lost, found) : null;
+  const system = !days ? SOLO_SYSTEM : soloSystem(SOLO_DATES === "a2" ? A2_TIMING : days === 1 ? B2_ONE_DAY : b2Early(days));
+  const posted = days && SOLO_DATES === "a2" ? postedOn(lost) : null;
+  const datesNote = days && SOLO_DATES === "a2" ? `\n${days === 1 ? ONE_DAY_TEXT : earlyText(days)}${posted ? `\nThe LOST report was posted on ${posted}.` : ""}` : "";
   // ONE_DAY_LINE=1 and EARLY_LINE=1 add the owner-ruled date notes the debate's advocates can be given (off by default:
   // with both unset the text is byte-identical to the app's SoloReviewer).
   const text = `LOST report: ${JSON.stringify(brief(lost))}\nFOUND report: ${JSON.stringify(brief(found))}\nLocation aliases: ${aliases.join(" | ") || "none"}\n${ownerLine(lostPhotos.length, foundPhotos.length)}` +
     (ONE_DAY_LINE && foundOneDayBeforeLost(lost, found) ? `\n${ONE_DAY_TEXT}` : "") +
-    (EARLY_LINE && foundDaysBeforeLost(lost, found) ? `\n${earlyText(foundDaysBeforeLost(lost, found))}` : "");
+    (EARLY_LINE && foundDaysBeforeLost(lost, found) ? `\n${earlyText(foundDaysBeforeLost(lost, found))}` : "") +
+    datesNote;
   let res, read;
   try {
-    const ask = { system: SOLO_SYSTEM, text, imagePaths: [...lostPhotos, ...foundPhotos], schemaName: "solo_review", schema: JUDGE_SCHEMA, useCache: ctx.useCache, cacheSalt: ctx.cacheSalt };
+    const ask = { system, text, imagePaths: [...lostPhotos, ...foundPhotos], schemaName: "solo_review", schema: JUDGE_SCHEMA, useCache: ctx.useCache, cacheSalt: ctx.cacheSalt };
     res = SOLO_REVIEW === "opus" ? await opusJson(ask) : await chatJson({ ...ask, ...(SOLO_REVIEW === "terra" ? { model: MODELS.terra } : {}), imageDetail: RUNTIME.lunaImageDetail });
     read = readJudge(res.parsed);
     if (!read) throw new Error("unusable answer");
