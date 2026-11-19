@@ -2,6 +2,33 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-19: Loop O2 accepted on outside set 5: the date notes for gaps of one and two days (benchmark only; app copy to be built behind a switch)
+
+**The arm.** A2 limited to gaps of one and two calendar days (`SOLO_DATES=a2 SOLO_DATES_GATE=2`), chosen 4-0 by the council after the full A2 failed one sign on the seen sets. Only when both dates are given and the found date is one or two days before the lost date: the reviewer's "an item cannot be found before it was lost" becomes "for this pair, weigh the dates as the line beginning "Dates:" after the two reports says", the owner-approved note is appended word for word (the one-day note at one day, the longer-gap note at two), and one line gives the day the LOST report was posted. Every other pair is sent as before.
+
+**Set 5, read once** (341 pairs, 220 real; base and arm each asked twice on the app's route; no failed call; 0 of 277 pairs outside the gate changed). Full reading: `benchmark/_workspace/tuning/O2_07_set5_result.txt`.
+
+| Set 5 | Base | With the date notes |
+|---|---|---|
+| Real items shown, first ask (of 220) | 201 | 217 |
+| Real items shown, second ask | 200 | 216 |
+| Other pairs shown, first ask (of 121) | 12 | 14 |
+| Stupid matches (of 67 rated 2 or lower) | 0 | 0 |
+| Real found-first pairs shown on both asks, one day (18) | 7 | 17 |
+| Real found-first pairs shown on both asks, two days (10) | 1 | 9 |
+| Honest score at show from 4 / 5 / 6 | 99 / 98 / 98 | 99 / 99 / 100 |
+| Easy pairs rated above 5 that are missed | 18 | 6 |
+
+**The five acceptance rules.** (1) Honest score at show from 5 is 1 point higher (98 to 99): pass, at the edge, with the base already near the ceiling. (2) Not worse at show from 4 and 6: pass. (3) No fewer real items at the base's line: 201 to 217, pass. (4) The halves pick lines within 0.10 (0.30 and 0.35): pass. (5) No more stupid matches: 0 and 0, pass. Both gaps show a gain on their own counts (10 and 8 real pairs on both asks; the bar was 3). **Accepted for the benchmark.**
+
+**Guard and costs.** No real pair shown by the base was lost. Of 19 found-first pairs rated 2 or lower none comes near the line (highest 0.33; base 0.16); the one-day guard rests on a single such pair, so it is "not tested" for one day. Newly shown on both asks: one wrong pair rated 3.0 at one day (house keys with a club medal against a big bunch of keys) and one look-alike rated 5.5 at two days. Slices: every one gains and none loses a real pair (Arabic 35 to 38 of 38, Arabizi 32 to 37 of 37, mixed-language 68 to 76 of 76, text-only 108 to 120 of 123). Four real pairs are still not shown on both asks: two rated 3 and 4.5 with stated differences, one bare "iphone charger" at 0.45 and 0.44, and a power bank the finder called a hard disk (rated 1.5).
+
+**What to hold against it.** The cut at two days was chosen after the seen-set answers were read. Set 5's writer was told that people are careless with dates, on real and false pairs alike, which is why it holds 28 such real pairs where set 4 held 3; it names no fix. Gaps of three days or more are untouched and unproven either way: no test set holds a real pair there except one at eight days that the base already shows. The debate and the plain Luna review, which stand in when an Opus call fails, keep the old sentence.
+
+**Side-read for the held band** (no pass or fail): the base's pairs scoring 0.50 to 0.549 are 9 real, 4 other and 0 stupid on set 5, and 6, 3 and 0 on set 4. On outsider-written sets the wider band would hold real items and catch no stupid match.
+
+**Set 5 is now a seen set.**
+
 ## 2026-11-19: Loop O2, the date fix on the seen sets: 3 of 18 date-order real pairs shown becomes 15, and it failed one of its own rules by a pair (benchmark only)
 
 **Run.** Candidate A2 (`SOLO_DATES=a2`) against the base, each asked twice on all 1,892 pairs of the five seen sets and set 4, one pair per call on the app's route, no failed call. Read by the rules written into the loop state before any A2 answer existed. Full reading: `benchmark/_workspace/tuning/O2_06_seen_result.txt`.
