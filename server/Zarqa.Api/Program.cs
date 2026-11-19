@@ -40,7 +40,7 @@ builder.Services.AddScoped<MatchQueue>();
 
 // Matching (decisions.md: luna-debate). Without model keys the worker waits and jobs stay queued.
 builder.Services.Configure<ModelOptions>(builder.Configuration.GetSection("Models"));
-builder.Services.AddSingleton(_ => new AliasIndex(Seeder.LoadLocations().Select(kv => (kv.Key, kv.Value))));
+builder.Services.AddSingleton(_ => new AliasIndex(Seeder.LoadLocations().Select(kv => (kv.Key, kv.Value)), builder.Configuration.GetValue("Models:WholeWordPlaces", false)));
 builder.Services.AddHttpClient<IEmbedder, OpenAiEmbedder>(c => c.Timeout = TimeSpan.FromSeconds(60));
 // Long enough for a review that waits its turn in the Codex gateway's queue.
 builder.Services.AddHttpClient<ILuna, OpenAiLuna>(c => c.Timeout = TimeSpan.FromMinutes(5));

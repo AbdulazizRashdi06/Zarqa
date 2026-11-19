@@ -160,9 +160,16 @@ public sealed class AliasIndex
     public sealed record Group(string Canonical, IReadOnlyList<string> Names);
 
     private readonly List<(string Key, Group Group)> _entries = [];
+    private readonly bool _wholeWords;
 
-    public AliasIndex(IEnumerable<(string Canonical, string[] Aliases)> locations)
+    /// <param name="wholeWords">
+    /// True matches a place name as whole words only, as the benchmark has done since 2026-11-14. False (the default)
+    /// keeps the older rule, which also matches a longer name inside a word: "Female Residences" then also matches
+    /// Boys Dorms through its alias "male residences" (ModelOptions.WholeWordPlaces).
+    /// </param>
+    public AliasIndex(IEnumerable<(string Canonical, string[] Aliases)> locations, bool wholeWords = false)
     {
+        _wholeWords = wholeWords;
         var position = new Dictionary<string, int>();
         foreach (var (canonical, aliases) in locations)
         {
@@ -189,7 +196,7 @@ public sealed class AliasIndex
         var result = new List<Group>();
         foreach (var (name, group) in _entries)
         {
-            if ((text.Contains($" {name} ", StringComparison.Ordinal) || (name.Length > 3 && text.Contains(name, StringComparison.Ordinal)))
+            if ((text.Contains($" {name} ", StringComparison.Ordinal) || (!_wholeWords && name.Length > 3 && text.Contains(name, StringComparison.Ordinal)))
                 && seen.Add(group.Canonical))
                 result.Add(group);
         }

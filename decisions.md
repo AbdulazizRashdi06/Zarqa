@@ -2,6 +2,16 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-19: The app told reviewers that the girls' residence is also the boys' dorms; whole-word place names behind a switch (committed, off by default, not deployed)
+
+**How it was found.** The council asked for a test that the app sends, byte for byte, what the accepted benchmark arm sent on set 5 (`server/Zarqa.Tests/SoloDateNotesGoldenTests.cs`; fixture from `benchmark/scripts/export-solo-dates-fixture.mjs`: 39 pairs with a date note, 25 found-first pairs at three days or more, 40 others). It failed on a pair whose found report says "Female Residences": the app's alias line read "Female Residences: ... | Boys Dorms: ...".
+
+**Cause.** The app matches a place name of more than three letters anywhere in the text, so "Female Residences" contains the Boys Dorms alias "male residences". The benchmark stopped doing that on 2026-11-14 (whole words only) and the entry of that day lists it among three faults "fixed in the benchmark only" that were never ported. In the app it reaches the alias line every reviewer reads, the prescore's place term and the embedded text.
+
+**Fix.** `MATCHING_WHOLE_WORD_PLACES=true` (`Models:WholeWordPlaces`) makes the app match whole words. Off by default, so the prescore fixture and today's behaviour are unchanged. With it on, all 104 recorded prompts equal the benchmark's byte for byte, and both system texts match by hash. Every benchmark number since 2026-11-14 was measured with whole words, so this switch belongs with Opus alone.
+
+**Still not ported** from that same list: the tokeniser that splits Arabic and German letters carrying marks, and "power bank" counting as Wallets & cards. Both change only the prescore (ranking), not what a reviewer reads; with every candidate over the floor reviewed they matter little, but the app and the benchmark still differ there.
+
 ## 2026-11-19: Loop O2 accepted on outside set 5: the date notes for gaps of one and two days (benchmark only; app copy to be built behind a switch)
 
 **The arm.** A2 limited to gaps of one and two calendar days (`SOLO_DATES=a2 SOLO_DATES_GATE=2`), chosen 4-0 by the council after the full A2 failed one sign on the seen sets. Only when both dates are given and the found date is one or two days before the lost date: the reviewer's "an item cannot be found before it was lost" becomes "for this pair, weigh the dates as the line beginning "Dates:" after the two reports says", the owner-approved note is appended word for word (the one-day note at one day, the longer-gap note at two), and one line gives the day the LOST report was posted. Every other pair is sent as before.

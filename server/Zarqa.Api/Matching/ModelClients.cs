@@ -59,6 +59,13 @@ public sealed class ModelOptions
     /// </summary>
     public double OpusThreshold { get; set; } = 0.45;
     /// <summary>
+    /// Place names match as whole words only, as in the benchmark since 2026-11-14. Off (the default), a longer name
+    /// also matches inside a word, so "Female Residences" picks up Boys Dorms through its alias "male residences":
+    /// the reviewer is then told both places' names, and the prescore and the embedded text count them as one place.
+    /// Every benchmark number since 2026-11-14 was measured with whole words (decisions.md, 2026-11-14 and 2026-11-19).
+    /// </summary>
+    public bool WholeWordPlaces { get; set; }
+    /// <summary>
     /// Date notes for the one-model reviewer (loop O2, accepted on outside set 5, decisions.md 2026-11-19). Only when
     /// both reports give a date and the found date is one or two calendar days before the lost date: the sentence
     /// "an item cannot be found before it was lost" is replaced by a pointer to a "Dates:" line, the owner's one-day
