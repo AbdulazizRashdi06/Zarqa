@@ -12,7 +12,7 @@ The decisions made while turning the uni matching prototype into a real app, and
 
 **Still not ported** from that same list: the tokeniser that splits Arabic and German letters carrying marks, and "power bank" counting as Wallets & cards. Both change only the prescore (ranking), not what a reviewer reads; with every candidate over the floor reviewed they matter little, but the app and the benchmark still differ there.
 
-## 2026-11-19: Loop O2 accepted on outside set 5: the date notes for gaps of one and two days (benchmark only; app copy to be built behind a switch)
+## 2026-11-19: Loop O2 accepted on outside set 5: the date notes for gaps of one and two days (accepted on the benchmark; in the app behind MATCHING_OPUS_DATE_NOTES, off by default, not deployed)
 
 **The arm.** A2 limited to gaps of one and two calendar days (`SOLO_DATES=a2 SOLO_DATES_GATE=2`), chosen 4-0 by the council after the full A2 failed one sign on the seen sets. Only when both dates are given and the found date is one or two days before the lost date: the reviewer's "an item cannot be found before it was lost" becomes "for this pair, weigh the dates as the line beginning "Dates:" after the two reports says", the owner-approved note is appended word for word (the one-day note at one day, the longer-gap note at two), and one line gives the day the LOST report was posted. Every other pair is sent as before.
 
@@ -38,6 +38,8 @@ The decisions made while turning the uni matching prototype into a real app, and
 **Side-read for the held band** (no pass or fail): the base's pairs scoring 0.50 to 0.549 are 9 real, 4 other and 0 stupid on set 5, and 6, 3 and 0 on set 4. On outsider-written sets the wider band would hold real items and catch no stupid match.
 
 **In the app (committed, off by default, not deployed).** `MATCHING_OPUS_DATE_NOTES=true` in the server's `deploy/.env` (`Models:OpusDateNotes`). `SoloReviewer.Prompt` builds the system text and the pair's text; with the switch off, and on every pair outside the gate, both are exactly as before (tested). The longer-gap note and the days-before helper are new in `TextRules`; tests read the benchmark's source and fail if a word of either note or of the pointer clause drifts. When the posting-day switch is also on, the posting day is already in the report and the extra line is left out. The debate and the plain Luna review are not touched.
+
+**Review of the app copy** (three angles, each finding attacked by a second reader). No fault in the tested configuration: wording, line order, the day count across month ends and the UTC+4 midnight, the two-day limit and the system text all equal the benchmark's. One real gap fixed: a lost report edited later to a new lost date would have been given its original posting day; the line is now left out when the lost date is after the posting day. Not tested together: the date notes with the posting-day switch (`MATCHING_POSTED_ON`); the notes were accepted with that switch off. Council verdict sitting (`O2_council_verdict.json`): build 4-0, recommend switching on with Opus 4-0 after one real found-first pair has been seen reviewed on the live server, gaps of three days or more left alone 4-0, recommend the form stop prefilling the lost date with today 4-0, turning on the old debate's one-day note 0-4 (it never passed an outside test and once showed a pair rated 2), next the held band on pilot data 4-0.
 
 **Set 5 is now a seen set.**
 

@@ -342,8 +342,11 @@ public sealed class SoloReviewer(IOpus opus, AliasIndex aliases, IOptions<ModelO
         if (!o.OpusDateNotes || TextRules.FoundDaysBeforeLost(lost, found) is not { } days || days > TextRules.DateNoteMaxDays) return (System, text);
         text += "\n" + (days == 1 ? TextRules.OneDayText : TextRules.EarlyText(days));
         // The one-day note counts "today" from the posting day, so the reviewer is told it. With the posting switch on
-        // the day is already in the report itself.
-        if (!o.PostedOn && TextRules.PostedOn(lost) is { } posted) text += $"\nThe LOST report was posted on {posted}.";
+        // the day is already in the report itself. A report whose lost date is later than the day it was posted was
+        // edited afterwards (a future date is refused when posting), so its words were not written on that day and
+        // the line is left out rather than point "this morning" at the wrong day.
+        if (!o.PostedOn && TextRules.PostedOn(lost) is { } posted && string.CompareOrdinal(posted[..10], lost.EventDate![..10]) >= 0)
+            text += $"\nThe LOST report was posted on {posted}.";
         return (DatedSystem, text);
     }
 

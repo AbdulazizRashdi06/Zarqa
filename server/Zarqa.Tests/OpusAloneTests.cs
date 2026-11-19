@@ -252,6 +252,17 @@ public class OpusAloneTests : IClassFixture<TestApp>, IAsyncLifetime
     }
 
     [Fact]
+    public void A_lost_report_edited_to_a_later_lost_date_does_not_get_its_old_posting_day()
+    {
+        // Posted on Monday 2 November; a week later the owner edits the words and sets the lost date to the 9th.
+        var lost = Dated("lost", "had it this morning in the lab, gone now", "2026-11-09", new DateTimeOffset(2026, 11, 2, 9, 0, 0, TimeSpan.Zero));
+        var found = Dated("found", "black calculator", "2026-11-08");
+        var on = SoloReviewer.Prompt(lost, found, new ModelOptions { OpusDateNotes = true }, new AliasIndex([]));
+        Assert.EndsWith(TextRules.OneDayText, on.Text);
+        Assert.DoesNotContain("posted on", on.Text);
+    }
+
+    [Fact]
     public void With_the_posting_switch_on_the_day_is_already_in_the_report_and_is_not_repeated()
     {
         var lost = Dated("lost", "Xiaomi power bank silver, lost on the bus", "2026-11-08", PostedSunday);
