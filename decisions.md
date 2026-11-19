@@ -27,6 +27,8 @@ The decisions made while turning the uni matching prototype into a real app, and
 
 **Side-read for the held band** (no pass or fail): the base's pairs scoring 0.50 to 0.549 are 9 real, 4 other and 0 stupid on set 5, and 6, 3 and 0 on set 4. On outsider-written sets the wider band would hold real items and catch no stupid match.
 
+**In the app (committed, off by default, not deployed).** `MATCHING_OPUS_DATE_NOTES=true` in the server's `deploy/.env` (`Models:OpusDateNotes`). `SoloReviewer.Prompt` builds the system text and the pair's text; with the switch off, and on every pair outside the gate, both are exactly as before (tested). The longer-gap note and the days-before helper are new in `TextRules`; tests read the benchmark's source and fail if a word of either note or of the pointer clause drifts. When the posting-day switch is also on, the posting day is already in the report and the extra line is left out. The debate and the plain Luna review are not touched.
+
 **Set 5 is now a seen set.**
 
 ## 2026-11-19: Loop O2, the date fix on the seen sets: 3 of 18 date-order real pairs shown becomes 15, and it failed one of its own rules by a pair (benchmark only)

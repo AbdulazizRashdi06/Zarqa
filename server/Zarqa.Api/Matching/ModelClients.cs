@@ -59,6 +59,14 @@ public sealed class ModelOptions
     /// </summary>
     public double OpusThreshold { get; set; } = 0.45;
     /// <summary>
+    /// Date notes for the one-model reviewer (loop O2, accepted on outside set 5, decisions.md 2026-11-19). Only when
+    /// both reports give a date and the found date is one or two calendar days before the lost date: the sentence
+    /// "an item cannot be found before it was lost" is replaced by a pointer to a "Dates:" line, the owner's one-day
+    /// note (one day) or longer-gap note (two days) is appended, and the day the LOST report was posted is given.
+    /// Every other pair is sent exactly as before. Off by default; turning it on is the owner's.
+    /// </summary>
+    public bool OpusDateNotes { get; set; }
+    /// <summary>
     /// What happens to a pair when the one-model call fails (gateway down, signed out, plan limit, unusable answer).
     /// "debate" (the default): the debate reviews the pair and its match is shown as any debate match is.
     /// "hold": the debate still reviews it, so nothing is missed, but a match it finds always waits in To review,

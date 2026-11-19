@@ -107,6 +107,25 @@ public static partial class TextRules
     public const string OneDayText =
         "Dates: the FOUND date is one calendar day before the LOST date. The lost date may be the day the owner noticed the loss rather than the day it happened, so this order is not a point against a match, alone or together with other points, and not a point for one. It counts against a match only if the LOST report's own words say the owner still had or used the item on the LOST date. Repeating that date or saying when the loss was noticed does not, and words such as \"today\", \"this morning\" or \"yesterday\" count from the day the report was posted, which may not be the LOST date.";
 
+    // ---- Date notes for the one-model reviewer (loop O2, accepted on outside set 5, decisions.md 2026-11-19). ----
+
+    /// <summary>
+    /// benchmark foundFirstDays: calendar days the found date is before the lost date, when both dates are given and
+    /// the found one is first; null otherwise. Code counts the days, so the reviewer cannot miscount them.
+    /// </summary>
+    public static int? FoundDaysBeforeLost(MatchInput lost, MatchInput found) =>
+        TryDate(lost.EventDate, out var l) && TryDate(found.EventDate, out var f) && l.DayNumber - f.DayNumber >= 1 ? l.DayNumber - f.DayNumber : null;
+
+    /// <summary>
+    /// The longest gap that gets a date note (benchmark SOLO_DATES_GATE=2). At three days and more the note let wrong
+    /// pairs through on the seen sets, and no test set holds a real pair there, so those gaps keep the old sentence.
+    /// </summary>
+    public const int DateNoteMaxDays = 2;
+
+    /// <summary>benchmark earlyText(days): the owner's longer-gap note (ruling of 2026-11-16), word for word.</summary>
+    public static string EarlyText(int days) =>
+        $"Dates: the FOUND date is {days} calendar days before the LOST date. The lost date is typed from memory and is often the day the loss was noticed or reported, so this order does not rule a match out. It is a point against a match, never a point for one, and it weighs more the longer the gap: a few days count for little, but over a long gap the same kind of item in the same place is not enough without something distinctive in common. It is a strong point against only if the LOST report's own words clearly say the owner still had or used the item after the FOUND date; repeating the LOST date does not say that.";
+
     /// <summary>The structured text that gets embedded.</summary>
     public static string EmbeddingText(MatchInput r, AliasIndex aliases)
     {

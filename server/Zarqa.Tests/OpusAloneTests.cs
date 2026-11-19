@@ -24,6 +24,7 @@ public class OpusAloneTests : IClassFixture<TestApp>, IAsyncLifetime
     {
         app.Models.Reset();
         Settings.OpusFallback = "debate";
+        Settings.OpusDateNotes = false;
         return Task.CompletedTask;
     }
 
@@ -182,6 +183,127 @@ public class OpusAloneTests : IClassFixture<TestApp>, IAsyncLifetime
         Assert.Equal(MatchStatus.Suggested, match.Status);
     }
 
+    // ---- Date notes (loop O2, accepted on outside set 5; decisions.md 2026-11-19) ----
+
+    private static MatchInput Dated(string type, string text, string? date, DateTimeOffset? posted = null) =>
+        new(Guid.NewGuid(), type, "", "", "", text, "bus", "", date, false, [], CreatedAt: posted);
+
+    private static readonly DateTimeOffset PostedSunday = new(2026, 11, 8, 9, 0, 0, TimeSpan.Zero);
+
+    [Fact]
+    public void Date_notes_are_off_by_default_and_then_every_prompt_is_as_before()
+    {
+        Assert.False(new ModelOptions().OpusDateNotes);
+        var lost = Dated("lost", "Xiaomi power bank silver, lost on the bus", "2026-11-08", PostedSunday);
+        var found = Dated("found", "Mi power bank", "2026-11-07");
+        var (system, text) = SoloReviewer.Prompt(lost, found, new ModelOptions(), new AliasIndex([]));
+        Assert.Same(SoloReviewer.System, system);
+        Assert.Contains(SoloReviewer.TimingClause, system);
+        Assert.DoesNotContain("Dates:", text);
+        Assert.DoesNotContain("posted on", text);
+    }
+
+    [Theory]
+    [InlineData("2026-11-08", "2026-11-08")] // same day
+    [InlineData("2026-11-07", "2026-11-08")] // found after it was lost
+    [InlineData("2026-11-08", "2026-11-05")] // three days: the note is not proven there, so the old sentence stays
+    [InlineData("2026-11-08", "2026-10-30")] // nine days
+    [InlineData(null, "2026-11-07")] // a date missing
+    [InlineData("2026-11-08", null)]
+    [InlineData(null, null)]
+    public void With_date_notes_on_a_pair_outside_the_gate_is_sent_exactly_as_before(string? lostDate, string? foundDate)
+    {
+        var lost = Dated("lost", "Xiaomi power bank silver, lost on the bus", lostDate, PostedSunday);
+        var found = Dated("found", "Mi power bank", foundDate);
+        var off = SoloReviewer.Prompt(lost, found, new ModelOptions(), new AliasIndex([]));
+        var on = SoloReviewer.Prompt(lost, found, new ModelOptions { OpusDateNotes = true }, new AliasIndex([]));
+        Assert.Equal(off, on);
+        Assert.Same(SoloReviewer.System, on.System);
+    }
+
+    [Fact]
+    public void One_day_before_gets_the_owners_one_day_note_the_posting_day_and_no_cannot_be_found_sentence()
+    {
+        var lost = Dated("lost", "Xiaomi power bank silver, lost on the bus", "2026-11-08", PostedSunday);
+        var found = Dated("found", "Mi power bank", "2026-11-07");
+        var off = SoloReviewer.Prompt(lost, found, new ModelOptions(), new AliasIndex([]));
+        var on = SoloReviewer.Prompt(lost, found, new ModelOptions { OpusDateNotes = true }, new AliasIndex([]));
+
+        Assert.Equal(SoloReviewer.DatedSystem, on.System);
+        Assert.DoesNotContain("cannot be found before it was lost", on.System);
+        Assert.Contains(SoloReviewer.DatedTimingClause, on.System);
+        // Only the timing clause differs between the two system texts.
+        Assert.Equal(SoloReviewer.System.Replace(SoloReviewer.TimingClause, "X"), on.System.Replace(SoloReviewer.DatedTimingClause, "X"));
+        // 09:00 UTC on Sunday 8 November is 13:00 the same day on campus.
+        Assert.Equal($"{off.Text}\n{TextRules.OneDayText}\nThe LOST report was posted on 2026-11-08 Sunday.", on.Text);
+    }
+
+    [Fact]
+    public void Two_days_before_gets_the_owners_longer_gap_note_with_the_days_counted_in_code()
+    {
+        var lost = Dated("lost", "jacket grey north face, left on a chair", "2026-11-13");
+        var found = Dated("found", "grey north face fleece", "2026-11-11");
+        var off = SoloReviewer.Prompt(lost, found, new ModelOptions(), new AliasIndex([]));
+        var on = SoloReviewer.Prompt(lost, found, new ModelOptions { OpusDateNotes = true }, new AliasIndex([]));
+        Assert.Equal(SoloReviewer.DatedSystem, on.System);
+        // No posting time on the report: the line is left out rather than guessed.
+        Assert.Equal($"{off.Text}\n{TextRules.EarlyText(2)}", on.Text);
+        Assert.StartsWith("Dates: the FOUND date is 2 calendar days before the LOST date.", TextRules.EarlyText(2));
+    }
+
+    [Fact]
+    public void With_the_posting_switch_on_the_day_is_already_in_the_report_and_is_not_repeated()
+    {
+        var lost = Dated("lost", "Xiaomi power bank silver, lost on the bus", "2026-11-08", PostedSunday);
+        var found = Dated("found", "Mi power bank", "2026-11-07", PostedSunday);
+        var on = SoloReviewer.Prompt(lost, found, new ModelOptions { OpusDateNotes = true, PostedOn = true }, new AliasIndex([]));
+        Assert.EndsWith(TextRules.OneDayText, on.Text);
+        Assert.DoesNotContain("The LOST report was posted on", on.Text);
+        Assert.Contains("\"postedOn\":\"2026-11-08 Sunday\"", on.Text);
+    }
+
+    [Fact]
+    public void The_date_note_wording_is_the_benchmarks_word_for_word()
+    {
+        var dir = new DirectoryInfo(AppContext.BaseDirectory);
+        while (dir is not null && !Directory.Exists(Path.Combine(dir.FullName, "benchmark"))) dir = dir.Parent;
+        var text = File.ReadAllText(Path.Combine(dir!.FullName, "benchmark", "src", "text.js"));
+        var debate = File.ReadAllText(Path.Combine(dir.FullName, "benchmark", "src", "reviewers", "debate.js"));
+
+        var early = System.Text.RegularExpressions.Regex.Match(text, "export const earlyText = \\(days\\) => `([^`]+)`;").Groups[1].Value;
+        Assert.StartsWith("Dates: the FOUND date is ${days} calendar days", early);
+        Assert.Equal(early.Replace("${days}", "2"), TextRules.EarlyText(2));
+
+        var oneDay = System.Text.RegularExpressions.Regex.Match(text, "export const ONE_DAY_TEXT = '((?:[^'\\\\]|\\\\.)+)';").Groups[1].Value.Replace("\\'", "'");
+        Assert.Equal(oneDay, TextRules.OneDayText);
+
+        var pointer = System.Text.RegularExpressions.Regex.Match(debate, "const A2_TIMING = '([^']+)';").Groups[1].Value;
+        Assert.Equal($"timing ({pointer})", SoloReviewer.DatedTimingClause);
+        Assert.Contains("`\\nThe LOST report was posted on ${posted}.`", debate);
+    }
+
+    [Fact]
+    public async Task With_date_notes_on_the_matcher_sends_the_note_to_the_gateway_for_a_one_day_pair()
+    {
+        app.Models.OpusConfigured = true;
+        Settings.OpusDateNotes = true;
+        try
+        {
+            var owner = await app.SignedIn("owner.opal@gutech.edu.om");
+            var finder = await app.SignedIn("finder.opal@gutech.edu.om");
+            var yesterday = DateTime.UtcNow.AddDays(-1).ToString("yyyy-MM-dd");
+            await owner.PostAsync("/api/reports", Form("lost", "Blue opal water bottle", "Bottles", "GU1 Library", Today, "10:00", 1, "blue metal bottle, cat sticker, small dent"));
+            await finder.PostAsync("/api/reports", Form("found", "Blue opal bottle", "Bottles", "GU1 Library", yesterday, "13:00", 1, "blue metal water bottle with a cat sticker"));
+            await app.DrainMatchingAsync();
+
+            var call = app.Models.OpusCalls.First(c => c.Text.Contains("Blue opal water bottle") && c.Text.Contains("Blue opal bottle"));
+            Assert.Equal(SoloReviewer.DatedSystem, call.System);
+            Assert.Contains(TextRules.OneDayText, call.Text);
+            Assert.Contains("The LOST report was posted on ", call.Text);
+        }
+        finally { Settings.OpusDateNotes = false; }
+    }
+
     [Fact]
     public void The_fallback_is_the_debate_unless_set_to_hold()
     {
@@ -269,13 +391,21 @@ public class OpusAloneTests : IClassFixture<TestApp>, IAsyncLifetime
         var dir = AppContext.BaseDirectory;
         while (!File.Exists(Path.Combine(dir, "decisions.md"))) dir = Path.GetDirectoryName(dir) ?? throw new InvalidOperationException("repo root not found");
         var debate = File.ReadAllText(Path.Combine(dir, "benchmark", "src", "reviewers", "debate.js"));
-        var start = debate.IndexOf("export const SOLO_SYSTEM = `", StringComparison.Ordinal);
+        // The benchmark builds the text from a template whose timing clause and last line can be switched for tests;
+        // with no switch set they are the app's clause and nothing.
+        const string opening = "const soloSystem = (timing) => `";
+        var start = debate.IndexOf(opening, StringComparison.Ordinal);
         Assert.True(start >= 0);
-        start += "export const SOLO_SYSTEM = `".Length;
+        start += opening.Length;
         var template = debate[start..debate.IndexOf("`;", start, StringComparison.Ordinal)];
-        // Fill the template's three placeholders the way the benchmark does.
+        Assert.Contains("export const SOLO_SYSTEM = soloSystem(SOLO_TIMING);", debate);
+        var appTiming = System.Text.RegularExpressions.Regex.Match(debate, "const APP_TIMING = \"([^\"]+)\";").Groups[1].Value;
+        Assert.Equal($"timing ({appTiming})", SoloReviewer.TimingClause);
+        // Fill the template's placeholders the way the benchmark does.
         var levels = string.Join("; ", DebateReviewer.LevelKeys.Zip(DebateReviewer.Levels, (key, label) => $"{key} = \"{label}\""));
         var filled = template
+            .Replace("${timing}", appTiming)
+            .Replace("${SOLO_EXTRA_LINE}", "")
             .Replace("${SIMILARITY_RULE}", DebateReviewer.SimilarityRule)
             .Replace("${QUESTIONS.overall.instructions}", DebateReviewer.OverallQuestion)
             .Replace("${LEVEL_KEYS.map((k, i) => `${k} = \"${DEBATE_LEVELS[i]}\"`).join(\"; \")}", levels);

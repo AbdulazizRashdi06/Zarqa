@@ -320,17 +320,39 @@ public sealed class SoloReviewer(IOpus opus, AliasIndex aliases, IOptions<ModelO
         When a photo is attached, look at it yourself and go by what it shows.
         """.ReplaceLineEndings("\n");
 
-    /// <summary>Throws a model failure (see <see cref="DebateReviewer.IsModelFailure"/>) when the call or its answer is unusable.</summary>
-    public async Task<Review> ReviewAsync(MatchInput lost, MatchInput found, IReadOnlyList<string> images, CancellationToken ct)
+    /// <summary>The timing clause every pair gets today, and the one a pair with a date note gets (benchmark A2_TIMING).</summary>
+    public const string TimingClause = "timing (an item cannot be found before it was lost)";
+    public const string DatedTimingClause = "timing (for this pair, weigh the dates as the line beginning \"Dates:\" after the two reports says)";
+
+    /// <summary>The system text for a pair that carries a date note: the same text with only the timing clause changed.</summary>
+    public static readonly string DatedSystem = System.Replace(TimingClause, DatedTimingClause);
+
+    /// <summary>
+    /// What one pair is sent: the system text and the pair's text. Order and wording as in
+    /// benchmark/src/reviewers/debate.js soloReview(); the posting note only with its switch; the date note only with
+    /// <see cref="ModelOptions.OpusDateNotes"/> and only at gaps of one and two days (benchmark SOLO_DATES=a2, SOLO_DATES_GATE=2).
+    /// </summary>
+    public static (string System, string Text) Prompt(MatchInput lost, MatchInput found, ModelOptions o, AliasIndex aliases)
     {
-        var o = options.Value;
-        // Order and wording as in benchmark/src/reviewers/debate.js soloReview(); the posting note only with its switch.
         var text =
             $"LOST report: {PromptParts.Stringify(PromptParts.Brief(lost, o.PostedOn))}\nFOUND report: {PromptParts.Stringify(PromptParts.Brief(found, o.PostedOn))}\n" +
             (o.PostedOn ? $"{TextRules.PostedNote}\n" : "") +
             $"Location aliases: {PromptParts.AliasLine(lost, found, aliases)}\n" +
             Photos.OwnerLine(Photos.CountFor(lost), Photos.CountFor(found));
-        var res = await opus.ChatJsonAsync(System, text, images, "solo_review", PromptParts.Schema(DebateReviewer.JudgeSchema), ct);
+        if (!o.OpusDateNotes || TextRules.FoundDaysBeforeLost(lost, found) is not { } days || days > TextRules.DateNoteMaxDays) return (System, text);
+        text += "\n" + (days == 1 ? TextRules.OneDayText : TextRules.EarlyText(days));
+        // The one-day note counts "today" from the posting day, so the reviewer is told it. With the posting switch on
+        // the day is already in the report itself.
+        if (!o.PostedOn && TextRules.PostedOn(lost) is { } posted) text += $"\nThe LOST report was posted on {posted}.";
+        return (DatedSystem, text);
+    }
+
+    /// <summary>Throws a model failure (see <see cref="DebateReviewer.IsModelFailure"/>) when the call or its answer is unusable.</summary>
+    public async Task<Review> ReviewAsync(MatchInput lost, MatchInput found, IReadOnlyList<string> images, CancellationToken ct)
+    {
+        var o = options.Value;
+        var (system, text) = Prompt(lost, found, o, aliases);
+        var res = await opus.ChatJsonAsync(system, text, images, "solo_review", PromptParts.Schema(DebateReviewer.JudgeSchema), ct);
         if (DebateReviewer.ReadJudge(res.Parsed) is not { } read) throw new ModelCallException("Invalid JSON for solo_review.");
         var score = DebateReviewer.Score(read.SameItem, read.Overall);
         var details = new JsonObject
@@ -343,6 +365,7 @@ public sealed class SoloReviewer(IOpus opus, AliasIndex aliases, IOptions<ModelO
             ["stronger"] = read.Stronger,
             ["finalScore"] = score,
             ["timing"] = TextRules.DateRelation(lost, found),
+            ["dateNote"] = system != System,
             ["tokens"] = new JsonObject { ["in"] = res.InputTokens, ["out"] = res.OutputTokens },
             ["latencyMs"] = res.LatencyMs,
         };
