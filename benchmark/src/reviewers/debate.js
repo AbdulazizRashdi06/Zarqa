@@ -265,10 +265,14 @@ export const SOLO_REVIEW = ["luna", "terra", "opus"].includes(process.env.SOLO_R
 //                    line, the owner-approved one-day or longer-gap note is appended word for word, and the LOST
 //                    report's posting day is given. Every other pair is byte-identical.
 //   SOLO_DATES=b2    the same gate; the clause itself carries a shortened form of the notes and nothing is appended.
-//   SOLO_EXTRA=s1|s2 (owner's ask, 2026-11-19: "add that sentence and test"): one last line on stated differences,
+//   SOLO_EXTRA=s1|s1b|s2 (owner's ask, 2026-11-19: "add that sentence and test"): one last line on stated differences,
 //                    sent on every pair. s1 is the owner's sentence as the drafter placed it; s2 also says that
 //                    preferring recall does not cancel such a difference. Benchmark only, off by default.
-const SOLO_EXTRA = { s1: "A detail only one report gives is missing; a detail both reports give differently is evidence against a match: weigh it by how likely an honest slip of memory or naming is, and do not explain it away with a story neither report tells.", s2: "Unlike a detail only one report gives, a detail both give differently is evidence against a match that preferring recall does not cancel: weigh it by how likely an honest slip of memory or naming is, not by a story neither report tells." }[process.env.SOLO_EXTRA];
+const SOLO_EXTRA = { s1: "A detail only one report gives is missing; a detail both reports give differently is evidence against a match: weigh it by how likely an honest slip of memory or naming is, and do not explain it away with a story neither report tells.", s2: "Unlike a detail only one report gives, a detail both give differently is evidence against a match that preferring recall does not cancel: weigh it by how likely an honest slip of memory or naming is, not by a story neither report tells.",
+  // s1b: s1 with the one fix all three of its critics asked for before the test (limit it to the item itself, so place and
+  // dates are not "a detail given differently"; widen the honest slips; a found item with less is not a difference).
+  s1b: "A detail of the item itself that only one report gives is missing; one that both reports or their photos give differently is evidence against a match: weigh it by how easily two honest people describing the same item could differ on it, and do not explain it away with a story neither report tells. A found item with less than the owner described (contents, a cover, one of a pair) is not such a difference, and this line is not about place or dates." }[process.env.SOLO_EXTRA];
+if (process.env.SOLO_EXTRA && !SOLO_EXTRA) throw new Error(`Unknown SOLO_EXTRA "${process.env.SOLO_EXTRA}" (s1, s1b or s2)`);
 const SOLO_EXTRA_LINE = SOLO_EXTRA ? `\n${SOLO_EXTRA}` : "";
 const APP_TIMING = "an item cannot be found before it was lost";
 const SOLO_TIMING = process.env.SOLO_TIMING === "v2"
