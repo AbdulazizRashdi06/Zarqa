@@ -2,6 +2,26 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-19: A structured answer (F1) does not remove the stupid matches either; the track ends and set 6 stays sealed (benchmark only)
+
+**The idea.** After three sentences were not obeyed, F1 (`SOLO_FACTS=f1`) asked the reviewer to record two facts before its scores, `fact_same_kind` (same, unsure, different) and `fact_stated_difference` (none, slip, clear), and let code hold a shown pair for an admin when the kind is not "same" or the difference is "clear". Nothing hidden. Drafted, attacked by three critics (all "uncertain", their wording fixes folded in), rule and pass marks written before any answer. Six seen sets, 1,880 reviewed pairs, base and F1 each asked twice. Full reading: `benchmark/_workspace/tuning/F1_06_seen_result.txt`.
+
+| Six seen sets, on both asks | Base | F1 |
+|---|---|---|
+| Real items at 0.45 or more (of 810) | 783 | 790 |
+| Other pairs at 0.45 or more | 135 | 160 |
+| Pairs rated 2 or lower at 0.45 or more | 5 | 8 |
+| Shown at once with no admin look: real / other / stupid | 775 / 113 / 3 | 779 / 121 / 3 |
+| Newly held by the flag: real / other / stupid | | 2 / 3 / 1 |
+
+**Why it fails its rules.** The facts are written first in every answer and four of the five named pairs are flagged, so the reviewer does state them. But (rule 3) the stupid matches shown with no admin look stay at 3 and those at the line rise from 5 to 8, and (rule 6) the flag differs between two identical asks on 24% of flagged pairs (limit 20%). What happens instead: having written "clear" or "unsure" the reviewer scores the pair low, so it is not shown and the flag has nothing to hold; having written "same" and "none" it scores higher than before (real pairs +0.02 on average). The net is close to lowering the line: 7 more real items for 25 more other pairs and 3 more stupid ones. The one clean catch is the student ID against the bank card (0.65 and 0.59 become 0.53 and 0.52, flagged "unsure", held). The photo-set pairs are recorded as "same, none": the photo does not show the part the owner names, and no question to the model can change that.
+
+**Where this leaves the stupid matches.** Of 717 pairs rated 2 or lower on six sets the base shows 5 on both asks (0.7%), and three fresh raters put two of those at 2.3 to 4.7. Four reviewer-side candidates (three sentences and F1) moved none of the rest. What is left is not at the reviewer:
+- the found form asking for a photo of the whole item (the photo cases) and both forms asking for the kind of item (the "ring", "cap" and card cases);
+- the held band and the "about 0.5" answers, to be read on pilot outcomes (council, 4-0);
+- asking twice near the line, which the free forecast puts at 3 shown at once instead of 4.
+All three are the owner's. **Set 6 has not been run and stays sealed** for whatever is tested next.
+
 ## 2026-11-19: The owner's stated-difference sentence, three wordings: none is obeyed (benchmark only)
 
 **Why.** A study of every pair rated 2 or lower that reaches 0.40 (16 of 729 on six sets; 9 touch the 0.45 line on one of two identical asks, 4 on both) asked Opus to explain itself with the same inputs. It sees the difference each time and then excuses it with a story neither report tells ("the finder or the office may have added the tag", "some student IDs are co-branded with a bank") and leans to a match "because recall matters". Three independent analysts read the same evidence the same way (`benchmark/_workspace/tuning/S1_stupid_match_causes.json`). Causes: a stated difference explained away (5 pairs), a photo that does not show the deciding part (3 or 4), a word with two meanings (2 or 3: "ring", "cap", a student card against a bank card), one local word translated wrongly, the rest noise near the line. Three fresh blind raters put 4 of the 16 at 4 to 5.3: those are not stupid matches. The owner then ordered: "add that sentence and test".
