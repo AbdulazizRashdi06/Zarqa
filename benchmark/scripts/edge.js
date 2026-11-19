@@ -186,6 +186,8 @@ const rows = await mapLimit(pairs, Number(args.parallel), async (p) => {
       break;
     }
     row.scores.push(round(r.finalScore));
+    // SOLO_FACTS: the two recorded facts of each ask, [same_kind, stated_difference, written before the scores].
+    if (r.features.sameKind !== undefined) (row.facts ??= []).push([r.features.sameKind, r.features.statedDifference, r.features.factsFirst]);
     if (i === 0) Object.assign(row, { finalScore: round(r.finalScore), sameItem: round(r.features.sameItem), overall: round(r.features.overall), stronger: r.features.stronger, timing: r.features.timing, debate: r.explanation, ...(r.features.details ? { details: r.features.details, contradicted: r.features.contradicted, shownDetails: r.features.shownDetails } : {}) });
   }
   if (row.finalScore != null) {

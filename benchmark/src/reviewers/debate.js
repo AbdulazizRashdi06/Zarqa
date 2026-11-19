@@ -118,6 +118,14 @@ const JUDGE_SCHEMA = {
   },
 };
 
+// The one-model reviewer's answer with the two facts in front (SOLO_FACTS). The debate's judge keeps JUDGE_SCHEMA.
+const SOLO_FACTS_SCHEMA = {
+  type: "object",
+  additionalProperties: false,
+  required: ["fact_same_kind", "fact_stated_difference", ...JUDGE_SCHEMA.required],
+  properties: { fact_same_kind: { type: "string", enum: ["same", "unsure", "different"] }, fact_stated_difference: { type: "string", enum: ["none", "slip", "clear"] }, ...JUDGE_SCHEMA.properties },
+};
+
 /** Reads the Terra judge's answer the way the app does (ReadJudge); null when it is unusable. */
 export function readJudge(a) {
   const p = (v) => (typeof v === "number" && Number.isFinite(v) ? Math.min(1, Math.max(0, v)) : null);
@@ -274,6 +282,18 @@ const SOLO_EXTRA = { s1: "A detail only one report gives is missing; a detail bo
   s1b: "A detail of the item itself that only one report gives is missing; one that both reports or their photos give differently is evidence against a match: weigh it by how easily two honest people describing the same item could differ on it, and do not explain it away with a story neither report tells. A found item with less than the owner described (contents, a cover, one of a pair) is not such a difference, and this line is not about place or dates." }[process.env.SOLO_EXTRA];
 if (process.env.SOLO_EXTRA && !SOLO_EXTRA) throw new Error(`Unknown SOLO_EXTRA "${process.env.SOLO_EXTRA}" (s1, s1b or s2)`);
 const SOLO_EXTRA_LINE = SOLO_EXTRA ? `\n${SOLO_EXTRA}` : "";
+//   SOLO_FACTS=f1 (2026-11-19, after three sentences were not obeyed): before its three answers the reviewer records
+//                    two facts it already names when asked to explain itself, fact_same_kind and fact_stated_difference, and
+//                    code HOLDS a shown pair for an admin when same_kind is not "same" or stated_difference is
+//                    "clear". Nothing is hidden and no score is meant to change. Benchmark only, off by default.
+export const SOLO_FACTS = process.env.SOLO_FACTS === "f1" ? "f1" : null;
+if (process.env.SOLO_FACTS && !SOLO_FACTS) throw new Error(`Unknown SOLO_FACTS "${process.env.SOLO_FACTS}" (f1)`);
+const SOLO_FACTS_LINES = SOLO_FACTS ? `
+Before the three answers, record two facts about the item itself, leaving place and dates aside. They are facts, not a verdict: answer the three questions exactly as you would without them.
+fact_same_kind: Are the two items the same sort of object? "same": yes, even under a loose, general, careless, guessed or other-language name, or a found part or one of a set of what was lost, or the lost item inside or attached to what was found. "unsure": a name could mean two different sorts of object and nothing in either report or photo settles which. "different": plainly another sort.
+fact_stated_difference: Does a feature of the item that both sides plainly give, in words or clearly visible in a photo, differ? "none": no; a detail only one side gives, or a found item with less than the owner described, is no difference. "slip": only a number, a shade or neighbouring colour, a brand, a material or a spelling differs. "clear": anything else, whatever might explain it.` : "";
+/** The hold rule of SOLO_FACTS=f1, fixed before any answer was read: a missing or unknown value counts as a flag. */
+export const factsFlag = (sameKind, statedDifference) => sameKind !== "same" || !["none", "slip"].includes(statedDifference);
 const APP_TIMING = "an item cannot be found before it was lost";
 const SOLO_TIMING = process.env.SOLO_TIMING === "v2"
   ? "the LOST date is often the day the owner noticed the loss, so a FOUND date before it does not rule a match out: one day before is not a point against a match, and a longer gap is a point against that weighs more the longer it is"
@@ -294,7 +314,7 @@ const soloSystem = (timing) => `You review possible matches in a university lost
 same_item: Do the LOST and FOUND reports describe the same physical item? ${SIMILARITY_RULE} Give the probability (0 to 1) that the answer is yes.
 stronger_case: Which way does the concrete evidence in the reports and photos lean? "for" = it better supports a match; "against" = it better supports different items; "balanced" = about equal.
 overall: ${QUESTIONS.overall.instructions} Give a probability (0 to 1) for each level; they should sum to 1. Levels: ${LEVEL_KEYS.map((k, i) => `${k} = "${DEBATE_LEVELS[i]}"`).join("; ")}.
-When a photo is attached, look at it yourself and go by what it shows.${SOLO_EXTRA_LINE}`;
+When a photo is attached, look at it yourself and go by what it shows.${SOLO_EXTRA_LINE}${SOLO_FACTS_LINES}`;
 export const SOLO_SYSTEM = soloSystem(SOLO_TIMING);
 
 async function soloReview(lost, found, ctx, threshold) {
@@ -313,7 +333,7 @@ async function soloReview(lost, found, ctx, threshold) {
     datesNote;
   let res, read;
   try {
-    const ask = { system, text, imagePaths: [...lostPhotos, ...foundPhotos], schemaName: "solo_review", schema: JUDGE_SCHEMA, useCache: ctx.useCache, cacheSalt: ctx.cacheSalt };
+    const ask = { system, text, imagePaths: [...lostPhotos, ...foundPhotos], schemaName: "solo_review", schema: SOLO_FACTS ? SOLO_FACTS_SCHEMA : JUDGE_SCHEMA, useCache: ctx.useCache, cacheSalt: ctx.cacheSalt };
     res = SOLO_REVIEW === "opus" ? await opusJson(ask) : await chatJson({ ...ask, ...(SOLO_REVIEW === "terra" ? { model: MODELS.terra } : {}), imageDetail: RUNTIME.lunaImageDetail });
     read = readJudge(res.parsed);
     if (!read) throw new Error("unusable answer");
@@ -321,6 +341,14 @@ async function soloReview(lost, found, ctx, threshold) {
     return { failed: true, error: `solo review failed: ${err.message}`, call: null };
   }
   const features = { sameItem: read.sameItem, overall: read.overall, stronger: read.stronger, timing: dateRelation(lost, found) };
+  if (SOLO_FACTS) {
+    const keys = Object.keys(res.parsed);
+    // factsFirst: were the two facts written before the first score? If not, the run says nothing about this candidate.
+    // The names start with "fact_" so they come first whether the answer is written in schema order or in
+    // alphabetical order (both were seen on the gateway).
+    const first = Math.min(...["same_item_probability", "stronger_case", "overall_probabilities"].map((k) => keys.indexOf(k)).filter((i) => i >= 0));
+    Object.assign(features, { sameKind: res.parsed.fact_same_kind ?? null, statedDifference: res.parsed.fact_stated_difference ?? null, factsFirst: keys.indexOf("fact_same_kind") >= 0 && keys.indexOf("fact_same_kind") < first && keys.indexOf("fact_stated_difference") >= 0 && keys.indexOf("fact_stated_difference") < first });
+  }
   const finalScore = debateScore(features);
   const call = { kind: SOLO_REVIEW === "opus" ? "opus" : "luna", ...usage(res) };
   return { isLikelyMatch: finalScore >= threshold, finalScore, explanation: `One model alone (${SOLO_REVIEW}).`, matchedFields: [], riskFlags: read.stronger === "against" ? ["case_against_stronger"] : [], features, latencyMs: call.latencyMs || 0, call, extraCalls: [] };

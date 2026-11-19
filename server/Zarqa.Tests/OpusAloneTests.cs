@@ -417,6 +417,7 @@ public class OpusAloneTests : IClassFixture<TestApp>, IAsyncLifetime
         var filled = template
             .Replace("${timing}", appTiming)
             .Replace("${SOLO_EXTRA_LINE}", "")
+            .Replace("${SOLO_FACTS_LINES}", "")
             .Replace("${SIMILARITY_RULE}", DebateReviewer.SimilarityRule)
             .Replace("${QUESTIONS.overall.instructions}", DebateReviewer.OverallQuestion)
             .Replace("${LEVEL_KEYS.map((k, i) => `${k} = \"${DEBATE_LEVELS[i]}\"`).join(\"; \")}", levels);
