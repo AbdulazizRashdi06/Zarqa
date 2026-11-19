@@ -117,6 +117,35 @@ function planPushedBack() {
 export const planParallelism = () => ({ now: planMax, ceiling: planCeiling, peak: planPeak });
 
 /**
+ * One Opus review through the private Claude Code gateway (deploy/claude/gateway.mjs), the route the app uses with
+ * MATCHING_OPUS_ALONE=true: one pair per call, signed in with a Claude plan. OPUS_BASE_URL names the gateway
+ * (for example http://127.0.0.1:8091/v1). There is no paid route behind it: a plan limit fails the call, so a
+ * run can be continued later from the cache instead of quietly switching model.
+ */
+export async function opusJson({ system, text, imagePaths = [], schemaName, schema, useCache = true, cacheSalt }) {
+  const base = process.env.OPUS_BASE_URL;
+  if (!base) throw new Error("OPUS_BASE_URL is not set (start deploy/claude/gateway.mjs and point it there).");
+  const content = [{ type: "text", text }];
+  for (const url of await photoDataUrls({ photos: imagePaths }, "/", imagePaths.length)) content.push({ type: "image_url", image_url: { url } });
+  const body = {
+    model: process.env.OPUS_MODEL || "opus",
+    reasoning_effort: process.env.OPUS_EFFORT || "high",
+    messages: [{ role: "system", content: system }, { role: "user", content }],
+    response_format: { type: "json_schema", json_schema: { name: schemaName, strict: true, schema } },
+  };
+  return cached(
+    "opus",
+    cacheSalt ? { ...body, cacheSalt } : body,
+    async () => {
+      const json = await postJson(`${base}/chat/completions`, body, {}, { attempts: 3 });
+      countRoute("plan");
+      return { parsed: JSON.parse(json.choices[0].message.content), inputTokens: json.usage?.prompt_tokens ?? 0, cachedInputTokens: json.usage?.prompt_tokens_details?.cached_tokens ?? 0, outputTokens: json.usage?.completion_tokens ?? 0, route: "claude-plan" };
+    },
+    { enabled: useCache },
+  );
+}
+
+/**
  * One structured-output Luna call: a text prompt plus optional photos (local file paths).
  * Returns {parsed, inputTokens, cachedInputTokens, outputTokens, latencyMs, fromCache}.
  */

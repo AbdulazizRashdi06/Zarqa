@@ -2,7 +2,7 @@ import { existsSync } from "node:fs";
 import path from "node:path";
 import { CURRENT, MODELS, OFFLINE_ESTIMATE, PROPOSED, RUNTIME } from "../../config.js";
 import { askJev, readChoice, readNoul, readScore } from "../jevClient.js";
-import { chatJson } from "../openai.js";
+import { chatJson, opusJson } from "../openai.js";
 import { dateRelation, EARLY_LINE, earlyJudgeText, earlyText, foundDaysBeforeLost, foundOneDayBeforeLost, matchAliases, ONE_DAY_LINE, ONE_DAY_TEXT, POSTED_NOTE, POSTED_ON, postedOn, truncate } from "../text.js";
 import { usage } from "./luna.js";
 
@@ -253,10 +253,11 @@ export function debateScore(f) {
   return 0.5 * f.sameItem + 0.5 * f.overall;
 }
 
-// One model alone, no advocates and no separate judge (owner's ask, 2026-11-16). SOLO_REVIEW=luna or terra has
+// One model alone, no advocates and no separate judge (owner's ask, 2026-11-16). SOLO_REVIEW=luna, terra or opus has
 // that one model answer the judge's same_item and overall questions straight from the two reports and the photos,
-// with the app's rule sentence word for word. Off by default: with it unset nothing below changes.
-export const SOLO_REVIEW = ["luna", "terra"].includes(process.env.SOLO_REVIEW) ? process.env.SOLO_REVIEW : null;
+// with the app's rule sentence word for word. Off by default: with it unset nothing below changes. opus goes one
+// pair per call through the Claude Code gateway (OPUS_BASE_URL), the app's own route for MATCHING_OPUS_ALONE.
+export const SOLO_REVIEW = ["luna", "terra", "opus"].includes(process.env.SOLO_REVIEW) ? process.env.SOLO_REVIEW : null;
 export const SOLO_SYSTEM = `You review possible matches in a university lost-and-found app: a LOST report and a FOUND report. Use only evidence in the reports and photos: item type, colour, brand/model, distinctive marks, place (location aliases name the same place), and timing (an item cannot be found before it was lost). For each pair answer three questions.
 same_item: Do the LOST and FOUND reports describe the same physical item? ${SIMILARITY_RULE} Give the probability (0 to 1) that the answer is yes.
 stronger_case: Which way does the concrete evidence in the reports and photos lean? "for" = it better supports a match; "against" = it better supports different items; "balanced" = about equal.
@@ -269,7 +270,8 @@ async function soloReview(lost, found, ctx, threshold) {
   const text = `LOST report: ${JSON.stringify(brief(lost))}\nFOUND report: ${JSON.stringify(brief(found))}\nLocation aliases: ${aliases.join(" | ") || "none"}\n${ownerLine(lostPhotos.length, foundPhotos.length)}`;
   let res, read;
   try {
-    res = await chatJson({ ...(SOLO_REVIEW === "terra" ? { model: MODELS.terra } : {}), system: SOLO_SYSTEM, text, imagePaths: [...lostPhotos, ...foundPhotos], imageDetail: RUNTIME.lunaImageDetail, schemaName: "solo_review", schema: JUDGE_SCHEMA, useCache: ctx.useCache, cacheSalt: ctx.cacheSalt });
+    const ask = { system: SOLO_SYSTEM, text, imagePaths: [...lostPhotos, ...foundPhotos], schemaName: "solo_review", schema: JUDGE_SCHEMA, useCache: ctx.useCache, cacheSalt: ctx.cacheSalt };
+    res = SOLO_REVIEW === "opus" ? await opusJson(ask) : await chatJson({ ...ask, ...(SOLO_REVIEW === "terra" ? { model: MODELS.terra } : {}), imageDetail: RUNTIME.lunaImageDetail });
     read = readJudge(res.parsed);
     if (!read) throw new Error("unusable answer");
   } catch (err) {
@@ -277,7 +279,7 @@ async function soloReview(lost, found, ctx, threshold) {
   }
   const features = { sameItem: read.sameItem, overall: read.overall, stronger: read.stronger, timing: dateRelation(lost, found) };
   const finalScore = debateScore(features);
-  const call = { kind: "luna", ...usage(res) };
+  const call = { kind: SOLO_REVIEW === "opus" ? "opus" : "luna", ...usage(res) };
   return { isLikelyMatch: finalScore >= threshold, finalScore, explanation: `One model alone (${SOLO_REVIEW}).`, matchedFields: [], riskFlags: read.stronger === "against" ? ["case_against_stronger"] : [], features, latencyMs: call.latencyMs || 0, call, extraCalls: [] };
 }
 
