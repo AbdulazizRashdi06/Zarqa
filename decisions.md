@@ -2,6 +2,16 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-19: A match made while the Opus call is failing can be held for an admin (committed, off by default, not deployed)
+
+**Why.** With Opus alone on, a failed call (gateway down, signed out, plan limit, unusable answer) sends the pair to the Luna debate, and until now its match was shown like any other. In tests the debate showed 69 clearly wrong pairs on four sets against 2 for Opus on five. All four council seats recommended that such matches not reach people unseen, and the owner allowed anything that affects matching to be built while away, behind a switch.
+
+**What.** `MATCHING_OPUS_FALLBACK=hold` in the server's `deploy/.env` (`Models:OpusFallback`). The debate still reviews the pair, so nothing is missed, but a match it finds is stored as Held whatever its score: nobody is notified, an admin approves or rejects it on To review, and after 48 hours it is shown anyway, as with every held match. The To review card now shows the label the owner will see (it follows the score) and the line "Made by the backup reviewer while the main one was down". The default, `debate`, is unchanged behaviour. Only a plain off value (`debate`, `false`, `off`, `no`, `0`, empty) shows stand-in matches directly; anything else, a typo included, holds, because a match held by mistake is released after 48 hours and one shown by mistake cannot be taken back.
+
+**Not built.** Trying Opus again later instead of the debate. The worker gives up after three attempts, so a long plan limit would lose reviews; the hold keeps recall and puts a person in front of the weaker reviewer.
+
+**Checked.** A review panel (three angles, each finding attacked by a second reader) found no fault in the matching logic and four smaller points, all fixed: the admin card's label and reason, the fail-safe for mistyped values, a test that pins the default, and this note. 412 server tests and the admin page browser tests pass.
+
 ## 2026-11-19: The tuning loop re-planned for Opus alone; loop O1 is a proving loop (benchmark and harness only)
 
 **Why.** The loop was built to tune the wording of two advocates and a judge. The owner has since moved matching to Opus alone, four wording loops accepted nothing, and the largest loss turned out to sit at the screen and cap in front of the reviewer. The owner asked for the loop to be planned again with the harness and the council.

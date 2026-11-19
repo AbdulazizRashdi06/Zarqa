@@ -109,10 +109,21 @@ public static class AdminEndpoints
                 .Include(m => m.Lost).ThenInclude(r => r!.Photos).Include(m => m.Lost).ThenInclude(r => r!.User)
                 .Include(m => m.Found).ThenInclude(r => r!.Photos).Include(m => m.Found).ThenInclude(r => r!.User)
                 .Where(m => m.Status == MatchStatus.Held).OrderBy(m => m.CreatedAt).Take(200).ToListAsync(ct);
+            // Held although it scored well: made by the stand-in while the one-model call was failing (MATCHING_OPUS_FALLBACK=hold).
+            var lostIds = list.Select(m => m.LostId).ToList();
+            // The payload is a jsonb column, so the reason is read here, not in SQL; at most 200 held matches are listed.
+            var standIns = (await db.ReviewLogs.AsNoTracking()
+                    .Where(l => l.Step == HeldMatches.HeldStep && lostIds.Contains(l.ReportId))
+                    .Select(l => new { l.ReportId, l.CounterpartId, l.Payload }).ToListAsync(ct))
+                .Where(l => l.Payload.Contains(HeldMatches.OpusUnavailable))
+                .Select(l => (l.ReportId, l.CounterpartId)).ToHashSet();
             return list.Select(m => new
             {
                 m.Id,
                 score = m.FinalScore,
+                // What the owner will see once it is shown: the label follows the score, whoever held it.
+                confidence = Chat.MatchEndpoints.Confidence(m.FinalScore),
+                standIn = standIns.Contains((m.LostId, (Guid?)m.FoundId)),
                 m.Reasons,
                 m.CreatedAt,
                 releaseAt = m.CreatedAt + HeldMatches.ReleaseAfter,

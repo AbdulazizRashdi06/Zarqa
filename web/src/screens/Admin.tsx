@@ -26,7 +26,7 @@ type HeldSide = {
   isSensitive: boolean; owner: string; photoIds?: string[]
 }
 /** A match held back for review: nobody but admins can see it until it is approved or 48 hours pass. */
-type Held = { id: string; score: number; reasons?: string[]; createdAt: string; releaseAt: string; lost: HeldSide; found: HeldSide }
+type Held = { id: string; score: number; confidence?: 'small' | 'looks' | 'big'; standIn?: boolean; reasons?: string[]; createdAt: string; releaseAt: string; lost: HeldSide; found: HeldSide }
 type Log = { id: number; step: string; payload: string; createdAt: string; costUsd: number | null; counterpartTitle?: string | null; counterpartKind?: string | null }
 type Result = { ok?: string; err?: string }
 /** key: where its result shows; action: which button shows the busy label. */
@@ -151,7 +151,7 @@ export default function Admin() {
     setAsk({
       key: `held:${m.id}`, action: `${verb}:${m.id}`, title: t(approve ? 'admin.held.approveTitle' : 'admin.held.rejectTitle'),
       confirmLabel: t(approve ? 'admin.held.approveGo' : 'admin.held.rejectGo'),
-      body: <><UserText>“{m.lost.title}”</UserText> · <UserText>“{m.found.title}”</UserText><br />{t(approve ? 'admin.held.approveConfirm' : 'admin.held.rejectConfirm')}</>,
+      body: <><UserText>“{m.lost.title}”</UserText> · <UserText>“{m.found.title}”</UserText><br />{approve ? t('admin.held.approveConfirm', { level: t(`admin.held.level.${m.confidence ?? 'small'}`) }) : t('admin.held.rejectConfirm')}</>,
       // Whatever the answer, the list is read again: someone else, or the 48 hours, may have decided it first.
       run: async () => {
         try { await api(`/admin/held/${m.id}/${verb}`, { method: 'POST' }) } finally { void loadHeld(); void loadStats() }
@@ -275,7 +275,8 @@ export default function Admin() {
         : !held.length ? <p>{t('admin.held.empty')}</p>
         : <div className={a.list}>{held.map(m => <Ticket className={`${s.card} ${a.card}`} key={m.id} data-held={m.id}>
           <p className={a.heldHead}>
-            <span className={a.tag}>{t('admin.held.tag')}</span> {t('admin.held.score', { score: m.score.toFixed(2) })}
+            <span className={a.tag}>{t(`admin.held.level.${m.confidence ?? 'small'}`)}</span> {t('admin.held.score', { score: m.score.toFixed(2) })}
+            {m.standIn && <><br />{t('admin.held.standIn')}</>}
             <br />{t('admin.held.auto', { when: new Date(m.releaseAt).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' }) })}
           </p>
           {([['lost', m.lost], ['found', m.found]] as const).map(([kind, r]) => {

@@ -67,7 +67,12 @@ public sealed class ModelOptions
     /// (council, 2026-11-19; the owner allowed the build, off by default).
     /// </summary>
     public string OpusFallback { get; set; } = "debate";
-    public bool HoldsOpusFallback => string.Equals(OpusFallback?.Trim(), "hold", StringComparison.OrdinalIgnoreCase);
+    /// <summary>
+    /// Only a plain "off" value shows stand-in matches directly. Anything else, a typo included, holds them: a match
+    /// held by mistake is released after 48 hours, one shown by mistake cannot be taken back.
+    /// </summary>
+    public bool HoldsOpusFallback => !ShowsStandInMatches.Contains((OpusFallback ?? "").Trim());
+    private static readonly HashSet<string> ShowsStandInMatches = new(StringComparer.OrdinalIgnoreCase) { "", "debate", "false", "off", "no", "0" };
     public string LunaModel { get; set; } = "gpt-6-luna";
     public string TerraModel { get; set; } = "gpt-6.1-terra";
     public string EmbeddingModel { get; set; } = "text-embedding-3-small";

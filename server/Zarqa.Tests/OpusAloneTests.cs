@@ -125,6 +125,9 @@ public class OpusAloneTests : IClassFixture<TestApp>, IAsyncLifetime
         Assert.Equal(MatchDecider.Debate, match.DecidedBy);
         Assert.NotEmpty(app.Models.OpusCalls);
         Assert.Contains("gpt-6.1-terra", app.Models.JudgeModels);
+        // The default: the stand-in's match is shown like any debate match, and nothing is held.
+        Assert.Equal(MatchStatus.Suggested, match.Status);
+        Assert.False(await db.ReviewLogs.AnyAsync(l => l.ReportId == lost && l.CounterpartId == found && l.Step == HeldMatches.HeldStep));
     }
 
     [Fact]
@@ -144,6 +147,12 @@ public class OpusAloneTests : IClassFixture<TestApp>, IAsyncLifetime
         Assert.Equal(MatchStatus.Held, match.Status);
         var step = await db.ReviewLogs.SingleAsync(l => l.ReportId == lost && l.CounterpartId == found && l.Step == HeldMatches.HeldStep);
         Assert.Contains(HeldMatches.OpusUnavailable, step.Payload);
+
+        // The admin page is told why a strong match is waiting, and what the owner will see once it is shown.
+        var admin = await app.SignedIn("admin@gutech.edu.om");
+        var row = (await Json(await admin.GetAsync("/api/admin/held"))).EnumerateArray().Single(m => m.GetProperty("id").GetGuid() == match.Id);
+        Assert.True(row.GetProperty("standIn").GetBoolean());
+        Assert.Equal(Zarqa.Api.Chat.MatchEndpoints.Confidence(match.FinalScore), row.GetProperty("confidence").GetString());
     }
 
     [Fact]
@@ -177,8 +186,11 @@ public class OpusAloneTests : IClassFixture<TestApp>, IAsyncLifetime
     public void The_fallback_is_the_debate_unless_set_to_hold()
     {
         Assert.False(new ModelOptions().HoldsOpusFallback);
-        Assert.True(new ModelOptions { OpusFallback = " Hold " }.HoldsOpusFallback);
-        Assert.False(new ModelOptions { OpusFallback = "retry" }.HoldsOpusFallback);
+        foreach (var off in new[] { "debate", " Debate ", "false", "off", "no", "0", "" })
+            Assert.False(new ModelOptions { OpusFallback = off }.HoldsOpusFallback);
+        // A typo must not quietly show the stand-in's matches: anything that is not a plain "off" holds.
+        foreach (var on in new[] { "hold", " Hold ", "true", "on", "held", "retry" })
+            Assert.True(new ModelOptions { OpusFallback = on }.HoldsOpusFallback);
     }
 
     [Theory]
