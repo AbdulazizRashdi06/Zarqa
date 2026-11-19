@@ -267,7 +267,11 @@ When a photo is attached, look at it yourself and go by what it shows.`;
 async function soloReview(lost, found, ctx, threshold) {
   const lostPhotos = photosOf(lost, ctx), foundPhotos = photosOf(found, ctx);
   const aliases = [...matchAliases(lost.location, ctx.aliasIndex), ...matchAliases(found.location, ctx.aliasIndex)].map((g) => `${g.canonical}: ${g.names.join(", ")}`);
-  const text = `LOST report: ${JSON.stringify(brief(lost))}\nFOUND report: ${JSON.stringify(brief(found))}\nLocation aliases: ${aliases.join(" | ") || "none"}\n${ownerLine(lostPhotos.length, foundPhotos.length)}`;
+  // ONE_DAY_LINE=1 and EARLY_LINE=1 add the owner-ruled date notes the debate's advocates can be given (off by default:
+  // with both unset the text is byte-identical to the app's SoloReviewer).
+  const text = `LOST report: ${JSON.stringify(brief(lost))}\nFOUND report: ${JSON.stringify(brief(found))}\nLocation aliases: ${aliases.join(" | ") || "none"}\n${ownerLine(lostPhotos.length, foundPhotos.length)}` +
+    (ONE_DAY_LINE && foundOneDayBeforeLost(lost, found) ? `\n${ONE_DAY_TEXT}` : "") +
+    (EARLY_LINE && foundDaysBeforeLost(lost, found) ? `\n${earlyText(foundDaysBeforeLost(lost, found))}` : "");
   let res, read;
   try {
     const ask = { system: SOLO_SYSTEM, text, imagePaths: [...lostPhotos, ...foundPhotos], schemaName: "solo_review", schema: JUDGE_SCHEMA, useCache: ctx.useCache, cacheSalt: ctx.cacheSalt };
