@@ -2,6 +2,26 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-19: The owner's stated-difference sentence, three wordings: none is obeyed (benchmark only)
+
+**Why.** A study of every pair rated 2 or lower that reaches 0.40 (16 of 729 on six sets; 9 touch the 0.45 line on one of two identical asks, 4 on both) asked Opus to explain itself with the same inputs. It sees the difference each time and then excuses it with a story neither report tells ("the finder or the office may have added the tag", "some student IDs are co-branded with a bank") and leans to a match "because recall matters". Three independent analysts read the same evidence the same way (`benchmark/_workspace/tuning/S1_stupid_match_causes.json`). Causes: a stated difference explained away (5 pairs), a photo that does not show the deciding part (3 or 4), a word with two meanings (2 or 3: "ring", "cap", a student card against a bank card), one local word translated wrongly, the rest noise near the line. Three fresh blind raters put 4 of the 16 at 4 to 5.3: those are not stupid matches. The owner then ordered: "add that sentence and test".
+
+**The wordings**, each as a last line of the reviewer's instructions (`SOLO_EXTRA`), each asked twice on all 1,892 pairs of the six seen sets against the base asked twice; read by rules written before any answer existed.
+- **S1**, the owner's sentence as drafted: "A detail only one report gives is missing; a detail both reports give differently is evidence against a match: weigh it by how likely an honest slip of memory or naming is, and do not explain it away with a story neither report tells."
+- **S1b**, the fix all three critics asked for before the test: limited to "the item itself", "this line is not about place or dates", a found item with less is not a difference.
+- **S2**, adds "that preferring recall does not cancel".
+
+| Six seen sets, shown on both asks | Base | S1 | S1b | S2 |
+|---|---|---|---|---|
+| Real items (of 810) | 783 | 782 | 780 | 783 |
+| Other pairs (of 1,070) | 135 | 126 | 135 | 129 |
+| Stupid matches | 5 | 5 | 4 | 7 |
+| Rated 2 or lower at 0.45 on either ask | 9 | 8 | 10 | 9 |
+
+**Reading.** No wording loses real items beyond the noise, and none removes the pairs it was written for: the student ID against the bank card, the ordinary USB stick for the odd-shaped one and the keys on a clip stay shown under all three. Opus lowers most scores by about 0.01 and goes on calling these pairs "plausible". S1b also pulls real date-order pairs down (mean -0.06), against the date fix. S2 shows more stupid matches on both asks than the base. By the written rule none goes to set 6. **A sentence is not the lever for this class.** Set 6 stays sealed.
+
+**What follows.** A structured answer (`SOLO_FACTS=f1`): before its scores the reviewer records two facts, whether the two items are the same sort of object and whether a feature both sides plainly give differs, and code holds a flagged pair for an admin instead of showing it at once. Nothing is hidden. On a smoke test of five of the known pairs all five were flagged. It is running on the seen sets; set 6 is its outside check. The other levers stay with the owner: a required item type and found photo on the form, and the held band.
+
 ## 2026-11-19: The app told reviewers that the girls' residence is also the boys' dorms; whole-word place names behind a switch (committed, off by default, not deployed)
 
 **How it was found.** The council asked for a test that the app sends, byte for byte, what the accepted benchmark arm sent on set 5 (`server/Zarqa.Tests/SoloDateNotesGoldenTests.cs`; fixture from `benchmark/scripts/export-solo-dates-fixture.mjs`: 39 pairs with a date note, 25 found-first pairs at three days or more, 40 others). It failed on a pair whose found report says "Female Residences": the app's alias line read "Female Residences: ... | Boys Dorms: ...".
