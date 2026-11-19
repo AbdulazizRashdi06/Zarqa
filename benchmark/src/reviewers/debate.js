@@ -258,7 +258,12 @@ export function debateScore(f) {
 // with the app's rule sentence word for word. Off by default: with it unset nothing below changes. opus goes one
 // pair per call through the Claude Code gateway (OPUS_BASE_URL), the app's own route for MATCHING_OPUS_ALONE.
 export const SOLO_REVIEW = ["luna", "terra", "opus"].includes(process.env.SOLO_REVIEW) ? process.env.SOLO_REVIEW : null;
-export const SOLO_SYSTEM = `You review possible matches in a university lost-and-found app: a LOST report and a FOUND report. Use only evidence in the reports and photos: item type, colour, brand/model, distinctive marks, place (location aliases name the same place), and timing (an item cannot be found before it was lost). For each pair answer three questions.
+// SOLO_TIMING=v2 (loop O2, candidate B; benchmark only, off by default): what the one-model reviewer is told about
+// timing in its system text. Unset, the clause is the app's, word for word.
+const SOLO_TIMING = process.env.SOLO_TIMING === "v2"
+  ? "the LOST date is often the day the owner noticed the loss, so a FOUND date before it does not rule a match out: one day before is not a point against a match, and a longer gap is a point against that weighs more the longer it is"
+  : "an item cannot be found before it was lost";
+export const SOLO_SYSTEM = `You review possible matches in a university lost-and-found app: a LOST report and a FOUND report. Use only evidence in the reports and photos: item type, colour, brand/model, distinctive marks, place (location aliases name the same place), and timing (${SOLO_TIMING}). For each pair answer three questions.
 same_item: Do the LOST and FOUND reports describe the same physical item? ${SIMILARITY_RULE} Give the probability (0 to 1) that the answer is yes.
 stronger_case: Which way does the concrete evidence in the reports and photos lean? "for" = it better supports a match; "against" = it better supports different items; "balanced" = about equal.
 overall: ${QUESTIONS.overall.instructions} Give a probability (0 to 1) for each level; they should sum to 1. Levels: ${LEVEL_KEYS.map((k, i) => `${k} = "${DEBATE_LEVELS[i]}"`).join("; ")}.
