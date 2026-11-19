@@ -3,6 +3,7 @@
 //
 //   node scripts/edge-outside.js prepare --data data/independent2 --batches 7 --out <scratch>/rate
 //   node scripts/edge-outside.js merge   --data data/independent2 --ratings <file.json>
+//   node scripts/edge-outside.js check   --data data/independent2
 //
 // prepare: checks the set, adds the fields the runner needs (kind, conflict, tags), copies the place aliases, and
 //          writes rating batches (each pair with both reports and the absolute photo path) for the pair-rater agents.
@@ -10,6 +11,12 @@
 // merge:   takes the raters' answers ([{batch, rater: "A"|"B", ratings: [{n, quality, difficulty, reason}]}]),
 //          writes quality {a, b}, difficulty {a, b} and ratingNote into pairs.json, and prints how well they agree.
 //          A pair only one rater scored keeps that score for both and is marked singleRater.
+// check:   compares, pair by pair, what the raters were shown with what a reviewer is sent now (both reports'
+//          words, place, date and photos). prepare stamps each pair with a fingerprint of the first; merge keeps it
+//          as ratedOn. Run check before scoring: on 2026-11-18 nine pairs turned out to have been rated with a
+//          card photo that was later removed, so the raters had seen evidence no model saw. A mismatch means the
+//          pair must be rated again, not dropped. Exits 1 on any mismatch. Sends nothing anywhere.
+import { createHash } from "node:crypto";
 import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
@@ -17,11 +24,26 @@ import { parseArgs } from "node:util";
 
 const { values: args, positionals } = parseArgs({ allowPositionals: true, options: { data: { type: "string" }, batches: { type: "string", default: "7" }, out: { type: "string" }, ratings: { type: "string" } } });
 const mode = positionals[0];
-if (!["prepare", "merge"].includes(mode) || !args.data) throw new Error("usage: edge-outside.js prepare|merge --data <dir> ...");
+if (!["prepare", "merge", "check"].includes(mode) || !args.data) throw new Error("usage: edge-outside.js prepare|merge|check --data <dir> ...");
 const dir = path.resolve(args.data);
 const pairsFile = path.join(dir, "pairs.json");
 const pairs = JSON.parse(await readFile(pairsFile, "utf8"));
 const reports = new Map(JSON.parse(await readFile(path.join(dir, "reports.json"), "utf8")).map((r) => [r.id, r]));
+
+// Everything a rater or a reviewer is given about a pair. Raters open only a report's first photo, so a report with
+// more than one photo shows a reviewer more than the rater saw; check counts those apart.
+const seen = (r) => [r.description, r.location, r.eventDate || "", (r.photos ?? []).map((ph) => path.basename(ph))];
+const fingerprint = (p) => createHash("sha256").update(JSON.stringify([seen(reports.get(p.lostId)), seen(reports.get(p.foundId))])).digest("hex").slice(0, 16);
+
+if (mode === "check") {
+  const rated = pairs.filter((p) => p.quality);
+  const changed = rated.filter((p) => p.ratedOn && p.ratedOn !== fingerprint(p));
+  const noRecord = rated.filter((p) => !p.ratedOn).length;
+  const morePhotos = rated.filter((p) => [p.lostId, p.foundId].some((id) => (reports.get(id).photos ?? []).length > 1)).length;
+  console.log(`${rated.length} rated pairs · same as the raters saw: ${rated.length - changed.length - noRecord} · changed since rating: ${changed.length} · no record (rated before this check existed): ${noRecord} · a report with more than one photo (raters open only the first): ${morePhotos}`);
+  for (const p of changed) console.log(`  rate again: ${p.lostId} / ${p.foundId}`);
+  process.exit(changed.length ? 1 : 0);
+}
 
 if (mode === "prepare") {
   if (!args.out) throw new Error("--out <folder for the rating batches> is required");
@@ -41,6 +63,7 @@ if (mode === "prepare") {
     p.kind ??= p.isMatch ? "must" : /indistinguish|cannot tell|identical/i.test(`${p.lens} ${p.why}`) ? "lookalike" : "trap";
     p.conflict ??= p.kind === "trap" ? "hard" : "none";
     p.tags ??= [p.itemKind, p.kind];
+    p.ratingInputs = fingerprint(p); // what the rating batches written below show for this pair
   }
   await writeFile(pairsFile, JSON.stringify(pairs, null, 1));
   if (!existsSync(path.join(dir, "locations.json"))) await copyFile(path.resolve("data/photo-set/locations.json"), path.join(dir, "locations.json"));
@@ -68,6 +91,7 @@ if (mode === "prepare") {
     p.quality = { a: a.quality, b: b.quality };
     p.difficulty = { a: a.difficulty, b: b.difficulty };
     p.ratingNote = a.reason;
+    if (p.ratingInputs) p.ratedOn = p.ratingInputs;
     if (twice) diffs.push(Math.abs(a.quality - b.quality));
     else p.singleRater = true;
   });

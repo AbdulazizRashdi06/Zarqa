@@ -1,10 +1,14 @@
-# When a candidate wording is accepted
+# When a candidate change is accepted
 
 All scores come from `node scripts/edge-rate.js` with the owner's rules as its defaults (a wrong suggestion counts a quarter of a miss; a miss costs its distance above "show from" to the power 1.2; every mistake is weighed by how easy the pair was). Use the "honest" figure: the line is picked on half the item kinds and scored on the other half.
 
+## What is compared
+
+The **base** is Opus alone with every candidate over the floor reviewed, read at 0.45, run one pair per call through the Claude gateway (council, 2026-11-19; the helper-agent figures are not the base, and 0.45 here is not a ruling on the line). The candidate runs through the same route in the same week. A difference smaller than the run-to-run band measured on that route is no difference. Failed calls are reported and never filled in. The Luna debate stays in every table as a second reference row.
+
 ## The rule
 
-A candidate is accepted for the benchmark only if all of these hold on the **outside set**, which neither the drafter nor the main agent had looked at when the wording was written:
+A candidate is accepted for the benchmark only if all of these hold on the **outside set**, which was written and sealed before the candidate existed and is opened once:
 
 1. Its honest score at "show from 5" is at least **1 point** above the base's. Less than that is inside the noise: the same model gives slightly different answers on a re-run, and two raters differ by up to a point.
 2. At "show from 4" and "show from 6" it is not more than 1 point below the base. A wording that only wins at one setting is tuned to that setting.
@@ -14,9 +18,13 @@ A candidate is accepted for the benchmark only if all of these hold on the **out
 
 On the **seen sets** it only has to not be worse (step 4 of the skill). Winning there proves little, because the wording was written from their failures.
 
+## A change that only moves the line or hides pairs
+
+Rule 1 can only tie for such a change, and the council would not judge it on real items and stupid matches alone (1-3, 2026-11-19: that prices a wrong suggestion at nothing). So it gets **no pass or fail** from the loop. Report three counts, each beside the chance band: real items shown, other pairs shown, stupid matches. The line and the "To review" band are the owner's; a line move is never a loop candidate.
+
 ## What acceptance does not mean
 
-- It does not change the app. Porting needs the owner's yes.
+- It does not change the app. Putting a wording, the floor, the number of candidates reviewed or the effort level into the app needs the owner's yes.
 - It does not set the line. The two written test sets used so far disagree on where a line loses real items (87% against 61% at 0.75 for the same setup). The line is settled on real pilot reports.
 
 ## Ties and losses

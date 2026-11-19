@@ -18,11 +18,11 @@ A motion carries with three of four votes. Two against two is "no": the base sta
 
 ## The three sittings
 
-**1. Agenda** (after step 1, the diagnosis). Papers: the diagnosis, the list of wordings already tried and rejected in `decisions.md`, the owner's rules below. Each seat names up to two failure classes to attack this loop, or votes `stop` if nothing left is worth a loop. Ruling: the target class or classes for the drafter, or stop.
+**1. Agenda** (after step 2, the diagnosis by stage). Papers: the diagnosis, the base's numbers on the app's route, the list of changes already tried and rejected in `decisions.md`, the owner's rules below. Each seat names up to two weak points to attack this loop, or votes `stop` if nothing left is worth a loop. Ruling: the target class or classes for the drafter, or stop.
 
-**2. Go or no-go** (after step 3, the critics). Papers: each candidate's exact before and after text and every critic verdict. Each seat votes per candidate: `test`, `revise` (with the clause to cut or change) or `drop`. Seats also add named checks the test must report. Ruling: which candidates are tested, in what order, with which clauses and checks.
+**2. Go or no-go** (after step 5, the critics). Papers: each candidate's exact before and after text or old and new setting, its free forecast and every critic verdict. Each seat votes per candidate: `test`, `revise` (with the clause to cut or change) or `drop`. Seats also add named checks the test must report. Ruling: which candidates are tested, in what order, with which clauses and checks.
 
-**3. Verdict** (after step 5, the outside set). Papers: one table per candidate with the five acceptance rules already worked out by `edge-rate.js` and `edge-stupid.js` (pass or fail each), plus the named checks' numbers. The acceptance rule decides accepted or rejected. The council rules on the rest: what the loop taught, whether the next loop starts and on what, and what goes on the owner's docket.
+**3. Verdict** (after step 7, the outside set). Papers: one table per candidate with the five acceptance rules already worked out by `edge-rate.js` and `edge-stupid.js` (pass or fail each), plus the named checks' numbers. The acceptance rule decides accepted or rejected. The council rules on the rest: what the loop taught, whether the next loop starts and on what, and what goes on the owner's docket.
 
 ## What the council may not do
 
@@ -31,14 +31,14 @@ These hold whatever the vote:
 - It cannot accept a candidate the acceptance rule rejects, or reject one it accepts. Numbers decide; the council explains and plans.
 - It cannot send to test a candidate a critic stopped with a `fail` and a concrete example. The drafter gets one revision; the critics see it again.
 - It cannot change the owner's rules: a missed real item costs more than a wrong suggestion; a mistake on an easy pair costs more than one on a hard pair; no stupid matches; a change is accepted only on a fresh outside set.
-- It cannot change the app, deploy, set the line or the "show from" level, raise a budget, add a provider or touch anything about card and ID photos.
+- It cannot change the app, deploy, set the line, the prescore floor or the "show from" level, raise a budget or the plan allowance for testing, add a provider, change the report form or touch anything about card and ID photos.
 
 Anything in the last group goes on the **owner's docket**: `benchmark/_workspace/tuning/owner-docket.md`, one line each with the question, the council's recommendation and the vote. The loop carries on with whatever does not depend on the answer.
 
 ## When the loop stops
 
 - The council votes `stop` at an Agenda sitting.
-- Two loops in a row end with no accepted change.
+- Two loops in a row end with no accepted change. The count was reset once, on 2026-11-19, when matching moved from the debate to Opus alone (4-0); moving to another stage is not a reason to reset again, and any later reset is the owner's. A loop that only measures the base, or a proving loop with no candidate, does not count; a loop whose ideas all die at the free forecast does.
 - No fresh outside set can be made (no writer, or the photos are used up).
 - A usage limit, an expired sign-in or the spending stop.
 
@@ -65,7 +65,7 @@ const SEATS = [
   { seat: 'People', type: 'agentic-council:Advocate', lens: 'The student who lost something and the one who found it: a missed item against a silly suggestion.' },
   { seat: 'Priority', type: 'agentic-council:Strategist', lens: 'Whether this is worth a loop and an outside test set before launch, or something else is worth more.' },
 ]
-const RULES = `The owner's rules, which no vote can change: (1) a missed real item costs more than a wrong suggestion; (2) a mistake on an easy pair costs more than one on a hard pair; (3) the app must not show stupid matches (pairs raters put at 2 of 10 or lower); (4) a wording is accepted only if it wins on a fresh outside test set, by the written acceptance rule; (5) changing the app, deploying, the line, budgets, providers and anything about card or ID photos are the owner's alone: put them on the docket, do not decide them.`
+const RULES = `The owner's rules, which no vote can change: (1) a missed real item costs more than a wrong suggestion; (2) a mistake on an easy pair costs more than one on a hard pair; (3) the app must not show stupid matches (pairs raters put at 2 of 10 or lower); (4) a change is accepted only if it wins on a fresh outside test set, by the written acceptance rule; (5) changing the app, deploying, the line, the prescore floor, budgets and plan allowance, providers, the report form and anything about card or ID photos are the owner's alone: put them on the docket, do not decide them.`
 const VOTE = {
   type: 'object',
   required: ['votes', 'reasoning'],
@@ -87,11 +87,11 @@ const RULING = {
   },
 }
 const HOW = {
-  agenda: 'For each motion (a failure class), vote "attack" or "skip". You may attack at most two. If nothing is worth a loop, vote "stop" on every motion and say why.',
-  go: 'For each motion (a candidate wording), vote "test", "revise" (put the clause to cut or change in "condition") or "drop". Add any number you want the test to report under named_checks. You cannot send to test a candidate a critic stopped with a fail and a concrete example.',
+  agenda: 'For each motion (a weak point of the pipeline or of the evidence for it), vote "attack" or "skip". You may attack at most two. If nothing is worth a loop, vote "stop" on every motion and say why.',
+  go: 'For each motion (a candidate change), vote "test", "revise" (put the clause to cut or change in "condition") or "drop". Add any number you want the test to report under named_checks. You cannot send to test a candidate a critic stopped with a fail and a concrete example.',
   verdict: 'The acceptance rule has already decided accepted or rejected; you cannot change that. For each motion (what to do next), vote "yes" or "no". Put anything that is the owner\'s to decide under docket, with your recommendation.',
 }
-const brief = (s) => `You hold the ${s.seat} seat on the council that governs the tuning of a lost-and-found matcher's prompts (loop ${args.loop}, sitting: ${args.sitting}). Your lens: ${s.lens}
+const brief = (s) => `You hold the ${s.seat} seat on the council that governs the tuning of a lost-and-found matcher (loop ${args.loop}, sitting: ${args.sitting}). Your lens: ${s.lens}
 
 ${RULES}
 
@@ -112,7 +112,7 @@ const ballots = (await parallel(SEATS.map((s) => () =>
 if (ballots.length < SEATS.length) log(`${SEATS.length - ballots.length} seats did not answer; each counts as a vote against`)
 
 phase('Rule')
-const ruling = await agent(`You chair the council that governs the tuning of a lost-and-found matcher's prompts (loop ${args.loop}, sitting: ${args.sitting}). You do not vote. Count the ballots below and write the ruling.
+const ruling = await agent(`You chair the council that governs the tuning of a lost-and-found matcher (loop ${args.loop}, sitting: ${args.sitting}). You do not vote. Count the ballots below and write the ruling.
 
 Counting: four seats; a motion carries with three votes for it ("attack", "test" or "yes"). Two against two is no. A seat that did not answer counts as a vote against. For "revise" votes: if "test" plus "revise" reach three, the ruling is "test as revised" and the conditions are the clauses at least two seats asked to cut or change. Never report a count the ballots do not show.
 

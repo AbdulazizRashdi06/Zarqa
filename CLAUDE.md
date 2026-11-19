@@ -34,11 +34,11 @@ The real app is being **built from scratch**: an ASP.NET Core (.NET 10) backend 
 - **Recall is the deciding metric.** A missed match means someone never gets their item back. Precision is secondary, **but no stupid matches** (owner, 2026-11-16): a pair shown although raters put it at quality 2 or below is counted in every test (`benchmark/scripts/edge-stupid.js`), and a change that shows more of them than the base is not accepted.
 - **Design for 100–1,000 active reports.** GUtech has about 2,000 people, so 10,000 is unrealistic.
 
-## Harness: matcher prompt tuning
+## Harness: matcher tuning
 
-**Goal:** change the matching models' prompts only through a loop that diagnoses observed failures, attacks each small change before paying to test it, and accepts it only on a fresh outside benchmark scored with the owner's formula.
+**Goal:** change the matcher (since 2026-11-16 one Opus review per pair) only through a loop that measures the base on the app's own route, diagnoses by pipeline stage, changes one stage at a time, forecasts and attacks each change before running it, and accepts it only on a sealed outside benchmark scored with the owner's formula.
 
-**When to use:** for any request to engineer, tune, improve or re-test the matcher's prompts or line, to keep the loop running, to convene the loop council, or to build and run an outside check, use the `tune-matcher-prompts` skill. To write or rate a blind test set on its own, use `blind-benchmark`. To run or compare the redesigned debate (claimant, skeptic, referee) with Haiku or Opus, use `match-debate`. Simple questions about results can be answered directly.
+**When to use:** for any request to engineer, tune, improve or re-test the matcher, its prompts, its stages or its line, to plan or keep the loop running, to convene the loop council, to re-measure the base, or to build and run an outside check, use the `tune-matcher-prompts` skill. To write or rate a blind test set on its own, use `blind-benchmark`. To run or compare the redesigned debate (claimant, skeptic, referee) with Haiku or Opus, use `match-debate`. Simple questions about results can be answered directly.
 
 **Change log:**
 
@@ -49,6 +49,7 @@ The real app is being **built from scratch**: an ASP.NET Core (.NET 10) backend 
 | 2026-11-16 | A loop council sits at three points of every loop (agenda, go or no-go, verdict and what next): four seats and a chair from the `agentic-council` plugin | `tune-matcher-prompts` steps 1b, 3b, 6b and `references/council.md` | Owner asked for a loop that keeps going without waiting for them; the council decides only what the critics, the tests and the acceptance rule leave open |
 | 2026-11-16 | No stupid matches: a fifth acceptance rule and a count in every report | `references/acceptance.md`, `benchmark/scripts/edge-stupid.js` | Owner's reminder that recall must not come with clearly wrong suggestions |
 | 2026-11-16 | Debate v2 added: three role agents (`match-claimant`, `match-skeptic`, `match-referee`) and the `match-debate` skill, run with Haiku or Opus on the Claude plan | `.claude/agents/match-*.md`, `.claude/skills/match-debate/` | One model alone matched or beat the first debate; the owner asked for the debate to be redone with the harness skill in a Haiku and an Opus version |
+| 2026-11-19 | The loop re-planned for Opus alone (council: motions 1 to 7 carried 4-0): any one stage per loop, a free forecast gate, only one-pair-per-call runs through the Claude gateway count, the base is Opus alone measured on that route, the outside set is written first and sealed, raters must have seen what the reviewer is sent, the stop count reset once | `tune-matcher-prompts` (all steps and references), `match-failure-analyst`, `match-prompt-drafter`, `match-prompt-critic`, `benchmark/scripts/edge-forecast.js`, `edge-outside.js check` | The owner moved matching to Opus alone; four wording loops accepted nothing while the loss sat at the screen and cap; every Opus number came from helper agents reading 10 pairs at once |
 
 ## Project rules that aren't obvious from the code
 

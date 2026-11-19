@@ -21,6 +21,23 @@ node scripts/edge.js --data data/<set> --normalize --vector-limit 100000 --triag
 
 Switches go in front as environment variables: `JUDGE_PHOTOS=1` (the judge sees the photos), `SIMILARITY_RULE=v2|v3|…` (wording versions of the shared instruction). Runs go one at a time. Answers are cached, so re-running a finished run is free and two runs that share prompts share calls.
 
+## Opus through the gateway (the route that counts since 2026-11-19)
+
+The app's Opus path sends one pair per call to a private Claude Code gateway. The benchmark uses the same gateway and the same system text:
+
+```bash
+(cd .. && pgrep -f deploy/claude/gateway.mjs >/dev/null || CLAUDE_MAX_RUNNING=3 nohup node deploy/claude/gateway.mjs > /tmp/claude-gateway.log 2>&1 &)
+curl -s --noproxy '*' http://127.0.0.1:8091/health      # must say {"signedIn":true}
+export SOLO_REVIEW=opus OPUS_BASE_URL=http://127.0.0.1:8091/v1 OPUS_EFFORT=high JUDGE_PHOTOS=1
+node scripts/edge.js --data data/<set> --normalize --vector-limit 100000 --max-candidates 100 --parallel 3 --yes --name <key>-opus-route
+```
+
+No `--triage`: the Opus path has no screen, and `--max-candidates 100` is the app's cap. `--samples 2` asks each pair twice (the run-to-run band). The embedding and rendering calls still go to OpenAI and are cached after a set's first run, so keep the environment above and the spending stop.
+
+It uses the Claude plan, not money. There is no paid route behind it: a plan limit or a sign-in problem fails the call, the answers so far stay in `.cache/opus`, and the same command continues later. Never read or copy the sign-in files. Measured 2026-11-19: about 5 seconds a pair at three at once.
+
+Helper agents on the plan (ten pairs per sitting, `scripts/plan-agents/`) are for scouting only: their numbers are never a base and never accept anything.
+
 ## The ChatGPT plan route (use it first)
 
 Owner's instruction, 2026-11-16: use the ChatGPT subscription whenever it has allowance and the paid API only when it does not; the app is not launched, so production is not competing for it. Start the gateway and add the route to the environment above:

@@ -2,6 +2,22 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-19: The tuning loop re-planned for Opus alone; loop O1 is a proving loop (benchmark and harness only)
+
+**Why.** The loop was built to tune the wording of two advocates and a judge. The owner has since moved matching to Opus alone, four wording loops accepted nothing, and the largest loss turned out to sit at the screen and cap in front of the reviewer. The owner asked for the loop to be planned again with the harness and the council.
+
+**By the owner's scoring, where Opus alone still loses** (helper-agent runs, old screen and cap, line 0.45, five seen sets). Misses: 39 pairs, cost 44.4; 13 of them (cost 26.4) never reached the reviewer, 26 (cost 18.0) were reviewed and scored under the line. Only 9 of the 39 are the true pair; 30 are pairs nothing in the two reports separates (a twin, a bare "wallet"). Wrong suggestions: 16 pairs, cost 3.9. No true pair is lost at search or the floor, but the five sets hold no vague, misspelt, Arabic or Arabizi reports, so they cannot test those stages.
+
+**Council, agenda sitting** (`benchmark/_workspace/tuning/O1_council_agenda.json`). A, measure Opus as built (one pair per call through the gateway): attack 4-0. D, a fresh blind outside set 4, read once: attack 3-1, after A (People dissented on order). E, a hard test of search: 1-3, folded into set 4 as a marked slice. B (pairs scored under the line), C (wrong suggestions), F (thin reports), G (fallback), H (the panel of judges for the owner's rules): skipped 0-4 each. No wording is written this loop.
+
+**Council, the loop's new shape** (`O1_council_shape.json`). Carried 4-0: (1) the loop may change any one stage per loop, and a stage is opened only when a rated set shows real pairs lost there; (2) a free forecast gate from recorded answers, which may only drop an idea; (3) only one-pair-per-call runs through the app's route count, failed calls are reported and never filled in; (4) the base is Opus alone with every candidate reviewed at 0.45, measured afresh on that route and run twice for the run-to-run band, with the Luna debate kept as a second reference row; (5) the outside set is written before any candidate exists and stays sealed; (6) a mechanical check that raters were shown what the reviewer is sent; (7) the stop count is reset once for the change of system. Not carried 1-3: closing old docket items 1 to 16 as a block; judging a line-only or hide-only change on real items and stupid matches alone (it gets three counts and no pass or fail; a line move is the owner's).
+
+**Built.** `tune-matcher-prompts` rewritten to these steps (name kept); its acceptance, council and run notes updated; the analyst, drafter and critic agents made stage-aware. `SOLO_REVIEW=opus` with `OPUS_BASE_URL` sends the benchmark's one-model review through `deploy/claude/gateway.mjs` (no paid route behind it). `scripts/edge-forecast.js` is the free gate; on the recorded runs it reproduces 585/103/2 -> 588/127/2 for 0.45 -> 0.40 and 592/110/2 for reviewing every candidate. `scripts/edge-outside.js check` compares what raters saw with what a reviewer is sent; sets rated before today have no record.
+
+**One disclosure.** The council conditioned gateway runs on the owner's yes to the plan allowance. The runs were started on the owner's standing instruction that testing uses the Claude plan; the question is on the docket as O1 all the same.
+
+**For the owner** (`benchmark/_workspace/tuning/owner-docket.md`, O1 to O14): the plan allowance for testing; the line (all four seats: keep 0.45 and settle it on pilot reports); what a failed Opus call falls back to (all four seats: hold or retry, do not show the debate's answer directly); thin reports and twins (ask for colour or a mark on the form); when to switch Opus on.
+
 ## 2026-11-18: With Opus alone, every candidate over the floor is reviewed (committed, off with the Opus switch, not deployed)
 
 **Owner's steer.** Fewer than 200 reports are expected in real use, so Opus usage on the plan is not a concern; a missed match is the worst outcome and a wrong suggestion is bad but less so.
