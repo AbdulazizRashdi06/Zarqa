@@ -58,6 +58,20 @@ test('the match reveal plays, and never hides the answer buttons', async ({ page
   await expect(page.getByRole('img', { name: /chance|match/i }).first()).toBeVisible()
 })
 
+test('Coming soon puts on its show, a tap throws coins, and the way back works from the first frame', async ({ page }) => {
+  await page.route('**/api/me', (route) => route.fulfill({ status: 401, json: {} }))
+  await page.goto('/coming-soon')
+  await expect(page.getByRole('link', { name: 'Use another email' })).toBeEnabled()
+  const names = await moving(page)
+  for (const name of ['slam', 'launch', 'coinBurst', 'tapeRun', 'spin']) expect(names.some((n) => n.includes(name))).toBe(true)
+  const stage = page.locator('main > div')
+  const before = await stage.locator('> span').count()
+  await page.mouse.click(300, 520)
+  await expect.poll(() => stage.locator('> span').count()).toBeGreaterThan(before)
+  // The thrown coins clean up after themselves.
+  await expect.poll(() => stage.locator('> span').count()).toBe(before)
+})
+
 test.describe('reduced motion', () => {
   test.use({ reducedMotion: 'reduce' })
 
@@ -70,6 +84,15 @@ test.describe('reduced motion', () => {
 
     await page.goto('/')
     await page.getByRole('heading', { level: 1 }).waitFor()
+    expect(await moving(page)).toEqual([])
+  })
+
+  test('Coming soon is a still picture, and a tap throws nothing', async ({ page }) => {
+    await page.route('**/api/me', (route) => route.fulfill({ status: 401, json: {} }))
+    await page.goto('/coming-soon')
+    await page.getByRole('heading', { name: /coming soon/i }).waitFor()
+    expect(await moving(page)).toEqual([])
+    await page.mouse.click(300, 520)
     expect(await moving(page)).toEqual([])
   })
 })

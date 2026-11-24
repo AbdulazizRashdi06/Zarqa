@@ -1,0 +1,606 @@
+/* Coming soon (design board B: envelope + luggage tags), drawn on a 390 × 844 artboard that scales to the phone:
+ * --u is one design px. Motion is a show on purpose (see motion.css: rare moments only): letters slam down, Zarqa
+ * launches from below, coins burst out from behind her, a radar sweeps, tapes scroll. All of it is transform and
+ * opacity, none of it holds a tap, and reduced motion gets the still picture with plain fades. */
+.page {
+  --u: min(min(100vw, 480px) / 390, 100dvh / 844);
+  position: relative;
+  flex-grow: 1;
+  min-height: 100dvh;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.stage {
+  position: relative;
+  width: calc(390 * var(--u));
+  height: calc(844 * var(--u));
+  font-family: var(--font-display);
+  animation: fade 240ms ease backwards;
+}
+
+/* ---- Background: disc, dashed rings, radar ---- */
+.disc,
+.sweep,
+.ring,
+.ping {
+  position: absolute;
+  left: calc(195 * var(--u));
+  top: calc(420 * var(--u));
+  width: calc(var(--d) * var(--u));
+  height: calc(var(--d) * var(--u));
+  margin: calc(var(--d) * var(--u) / -2) 0 0 calc(var(--d) * var(--u) / -2);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.disc {
+  --d: 340;
+  background: var(--surface);
+}
+.sweep {
+  --d: 520;
+  background: conic-gradient(from 0deg, transparent 0 68%, rgb(227 184 92 / 0.05) 72%, rgb(227 184 92 / 0.42) 100%);
+  mask-image: radial-gradient(closest-side, #000 60%, transparent 100%);
+  opacity: 0;
+}
+.ring {
+  border: calc(2 * var(--u)) dotted var(--line);
+}
+.ringA {
+  --d: 420;
+}
+.ringB {
+  --d: 500;
+  border-width: calc(1.5 * var(--u));
+  border-style: dashed;
+}
+.ping {
+  --d: 340;
+  border: calc(2 * var(--u)) solid #e3b85c;
+  opacity: 0;
+}
+
+/* ---- Tapes ---- */
+.tape {
+  position: absolute;
+  left: calc(-40 * var(--u));
+  right: calc(-40 * var(--u));
+  height: calc(30 * var(--u));
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  font-size: calc(17 * var(--u));
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 calc(4 * var(--u)) 0 rgb(0 0 0 / 0.22);
+}
+.tapeTop {
+  top: calc(300 * var(--u));
+  rotate: 7deg;
+  background: var(--slate);
+  color: var(--ground);
+}
+.tapeLow {
+  top: calc(628 * var(--u));
+  rotate: -4deg;
+  background: var(--tan);
+  color: var(--ground);
+}
+.tapeRun {
+  display: flex;
+  flex-shrink: 0;
+}
+.tapeRun span {
+  padding-right: calc(14 * var(--u));
+}
+.tapeRun span::after {
+  content: '';
+  display: inline-block;
+  width: calc(7 * var(--u));
+  height: calc(7 * var(--u));
+  margin-left: calc(14 * var(--u));
+  border-radius: 50%;
+  background: currentColor;
+  vertical-align: 0.12em;
+}
+
+/* ---- Coins ---- */
+.coin {
+  position: absolute;
+  left: calc((var(--x) - var(--r)) * var(--u));
+  top: calc((var(--y) - var(--r)) * var(--u));
+  width: calc(var(--r) * 2 * var(--u));
+  height: calc(var(--r) * 2 * var(--u));
+  border-radius: 50%;
+  background: #e3b85c;
+  pointer-events: none;
+}
+.coinRing {
+  outline: calc(1.5 * var(--u)) solid #e3b85c;
+  outline-offset: calc(3 * var(--u));
+}
+/* Thrown by a tap (ComingSoon.tsx animates and removes them). */
+.spark {
+  position: absolute;
+  z-index: 6;
+  border-radius: 50%;
+  background: #e3b85c;
+  pointer-events: none;
+}
+.sparkRing {
+  background: none;
+  border: calc(2 * var(--u)) solid var(--paper);
+}
+
+/* ---- Words ---- */
+.title {
+  position: absolute;
+  left: calc(22 * var(--u));
+  top: calc(84 * var(--u));
+  margin: 0;
+  font-weight: 400;
+  font-size: calc(100 * var(--u));
+  line-height: 0.88;
+  letter-spacing: calc(0.5 * var(--u));
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--paper);
+}
+.soon {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(34 * var(--u));
+  text-align: center;
+  font-size: calc(150 * var(--u));
+  line-height: 0.85;
+  letter-spacing: calc(1 * var(--u));
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: calc(2.5 * var(--u)) var(--paper);
+  pointer-events: none;
+}
+.letter,
+.letter > span {
+  display: inline-block;
+  white-space: pre;
+}
+
+/* ---- Luggage tags and the eye sticker ---- */
+.tag {
+  position: absolute;
+  filter: drop-shadow(0 calc(5 * var(--u)) 0 rgb(0 0 0 / 0.25));
+  pointer-events: none;
+}
+.tag > div {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(var(--c) 0, 100% 0, 100% 100%, var(--c) 100%, 0 calc(100% - var(--c)), 0 var(--c));
+  background: var(--bg);
+}
+.tag i {
+  position: absolute;
+  left: 11%;
+  top: 39%;
+  width: 12%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--ground);
+}
+.tag b {
+  position: absolute;
+  left: 36%;
+  right: 14%;
+  top: 33%;
+  height: calc(4 * var(--u));
+  border-radius: calc(2 * var(--u));
+  background: var(--ink-line);
+}
+.tag b + b {
+  right: 31%;
+  top: 57%;
+}
+.tagTan {
+  --bg: var(--tan);
+  --ink-line: var(--tan-dark);
+  --c: calc(14 * var(--u));
+  --tilt: -14deg;
+  --from: -140%;
+  left: calc(18 * var(--u));
+  top: calc(360 * var(--u));
+  width: calc(84 * var(--u));
+  height: calc(46 * var(--u));
+  rotate: var(--tilt);
+  transform-origin: 16% 50%;
+}
+.tagSage {
+  --bg: var(--sage);
+  --ink-line: var(--slate);
+  --c: calc(12 * var(--u));
+  --tilt: 12deg;
+  --from: 160%;
+  right: calc(16 * var(--u));
+  top: calc(394 * var(--u));
+  width: calc(72 * var(--u));
+  height: calc(40 * var(--u));
+  rotate: var(--tilt);
+  transform-origin: 16% 50%;
+}
+.eye {
+  position: absolute;
+  right: calc(34 * var(--u));
+  top: calc(160 * var(--u));
+  width: calc(48 * var(--u));
+  height: calc(48 * var(--u));
+  rotate: 10deg;
+  border-radius: calc(12 * var(--u));
+  background: var(--paper);
+  display: grid;
+  place-items: center;
+  filter: drop-shadow(0 calc(5 * var(--u)) 0 rgb(0 0 0 / 0.25));
+  pointer-events: none;
+}
+.eye svg {
+  width: calc(30 * var(--u));
+  height: calc(20 * var(--u));
+}
+
+/* ---- Zarqa ---- */
+.zarqa {
+  position: absolute;
+  left: calc(50 * var(--u));
+  top: calc(196 * var(--u));
+  width: calc(290 * var(--u));
+  pointer-events: none;
+}
+.zarqa img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform-origin: 50% 98%;
+}
+
+.back {
+  position: absolute;
+  z-index: 7;
+  left: calc(20 * var(--u));
+  top: calc(20 * var(--u));
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1.5px solid var(--slate);
+  color: var(--paper);
+  display: grid;
+  place-items: center;
+}
+.back svg {
+  width: 20px;
+  height: 20px;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+.sweep {
+  opacity: 0.5;
+}
+
+/* ================= The show ================= */
+@media (prefers-reduced-motion: no-preference) {
+  /* The last letter of the headline lands at about 0.75s: the whole stage takes the hit. */
+  .stage {
+    animation:
+      fade 240ms ease backwards,
+      quake 380ms linear 760ms;
+  }
+
+  .sweep {
+    opacity: 1;
+    animation:
+      fade 600ms ease 300ms backwards,
+      spin 3600ms linear infinite;
+  }
+  .ringA {
+    animation: spin 46s linear infinite;
+  }
+  .ringB {
+    animation: spin 70s linear infinite reverse;
+  }
+  .ping {
+    animation: ping 3200ms var(--ease-out) 1100ms infinite;
+  }
+  .pingLate {
+    animation-delay: 2700ms;
+  }
+  .disc {
+    animation: discIn 700ms var(--spring) backwards;
+  }
+
+  /* Tapes shoot across, then never stop scrolling. */
+  .tapeTop {
+    animation: tapeInLeft 520ms var(--ease-out) 380ms backwards;
+  }
+  .tapeLow {
+    animation: tapeInRight 520ms var(--ease-out) 520ms backwards;
+  }
+  .tapeRun {
+    animation: tapeRun 14s linear infinite;
+  }
+  .tapeLow .tapeRun {
+    animation-duration: 10s;
+    animation-direction: reverse;
+  }
+
+  /* Coins: thrown out from behind her as she lands, then they keep glinting. */
+  .coin {
+    animation:
+      coinBurst 760ms var(--spring) calc(1180ms + var(--n) * 35ms) backwards,
+      glint 2400ms var(--ease-in-out) calc(2200ms + var(--n) * 310ms) infinite;
+  }
+
+  /* Headline: each letter drops from close to the camera and hits. */
+  .slam .letter {
+    animation: slam 420ms cubic-bezier(0.5, 0, 0.9, 0.4) calc(140ms + var(--n) * 75ms) backwards;
+  }
+  .slam .letter > span {
+    animation: recoil 360ms var(--ease-out) calc(560ms + var(--n) * 75ms);
+  }
+  /* SOON: punched up from the floor one letter at a time, then a wave runs through it for good. */
+  .soon .letter {
+    animation: punch 620ms var(--spring) calc(1500ms + var(--k) * 90ms) backwards;
+  }
+  .soon .letter > span {
+    animation: wave 2600ms var(--ease-in-out) calc(2500ms + var(--k) * 140ms) infinite;
+  }
+
+  .tag {
+    animation:
+      tagIn 700ms var(--spring) 1300ms backwards,
+      tagSwing 3400ms var(--ease-in-out) 2000ms infinite;
+  }
+  .tagSage {
+    animation-delay: 1400ms, 2300ms;
+    animation-duration: 700ms, 2900ms;
+  }
+  .eye {
+    animation:
+      stickerIn 560ms var(--spring) 1560ms backwards,
+      eyeHop 4200ms var(--ease-in-out) 2600ms infinite;
+  }
+  .eye svg {
+    animation: blink 4200ms linear 2600ms infinite;
+  }
+
+  /* Zarqa: fired up from under the screen, overshoots, lands with a squash, then floats. */
+  .zarqa {
+    animation: launch 1050ms linear 700ms backwards;
+    transform-origin: 50% 100%;
+  }
+  .float {
+    animation: float 3000ms var(--ease-in-out) 1750ms infinite;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+@keyframes quake {
+  0%,
+  100% {
+    transform: none;
+  }
+  12% {
+    transform: translate(-7px, 5px) rotate(-0.6deg);
+  }
+  28% {
+    transform: translate(6px, -4px) rotate(0.5deg);
+  }
+  46% {
+    transform: translate(-4px, 3px) rotate(-0.3deg);
+  }
+  66% {
+    transform: translate(3px, -2px);
+  }
+  84% {
+    transform: translate(-1px, 1px);
+  }
+}
+@keyframes discIn {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+}
+@keyframes ping {
+  0% {
+    opacity: 0.55;
+    transform: scale(0.55);
+  }
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(1.6);
+  }
+}
+@keyframes tapeInLeft {
+  from {
+    translate: -110% 0;
+  }
+}
+@keyframes tapeInRight {
+  from {
+    translate: 110% 0;
+  }
+}
+@keyframes tapeRun {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes coinBurst {
+  from {
+    opacity: 0;
+    transform: translate(calc(var(--dx) * var(--u)), calc(var(--dy) * var(--u))) scale(0.3);
+  }
+  30% {
+    opacity: 1;
+  }
+}
+@keyframes glint {
+  0%,
+  60%,
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+  20% {
+    transform: scale(1.55);
+    opacity: 1;
+  }
+  40% {
+    transform: scale(0.8);
+    opacity: 0.55;
+  }
+}
+@keyframes slam {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5em) scale(3.4) rotate(-9deg);
+    filter: blur(8px);
+  }
+  35% {
+    opacity: 1;
+  }
+  to {
+    transform: none;
+    filter: blur(0);
+  }
+}
+@keyframes recoil {
+  0% {
+    transform: scale(1.14, 0.8);
+  }
+  45% {
+    transform: scale(0.95, 1.08);
+  }
+  100% {
+    transform: none;
+  }
+}
+@keyframes punch {
+  from {
+    opacity: 0;
+    transform: translateY(1.1em) scale(0.7, 1.5);
+  }
+  25% {
+    opacity: 1;
+  }
+}
+@keyframes wave {
+  0%,
+  45%,
+  100% {
+    transform: none;
+  }
+  18% {
+    transform: translateY(-0.085em) rotate(-2deg);
+  }
+  30% {
+    transform: translateY(0.02em) scale(1.03, 0.97);
+  }
+}
+@keyframes tagIn {
+  from {
+    opacity: 0;
+    translate: var(--from) 0;
+    rotate: calc(var(--tilt) * -3);
+  }
+}
+@keyframes tagSwing {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(11deg);
+  }
+  65% {
+    transform: rotate(-8deg);
+  }
+}
+@keyframes stickerIn {
+  from {
+    opacity: 0;
+    scale: 0.3;
+    rotate: -70deg;
+  }
+}
+@keyframes eyeHop {
+  0%,
+  78%,
+  100% {
+    transform: none;
+  }
+  84% {
+    transform: translateY(-16%) rotate(-10deg);
+  }
+  90% {
+    transform: translateY(0) scale(1.08, 0.92);
+  }
+  95% {
+    transform: rotate(6deg);
+  }
+}
+@keyframes blink {
+  0%,
+  44%,
+  52%,
+  100% {
+    transform: none;
+  }
+  48% {
+    transform: scaleY(0.1);
+  }
+}
+@keyframes launch {
+  0% {
+    transform: translateY(135%) scale(0.86, 1.22);
+    animation-timing-function: cubic-bezier(0.1, 0.8, 0.2, 1);
+  }
+  42% {
+    transform: translateY(-13%) scale(0.96, 1.06);
+    animation-timing-function: cubic-bezier(0.6, 0, 0.9, 0.5);
+  }
+  62% {
+    transform: translateY(0) scale(1.1, 0.86);
+    animation-timing-function: var(--ease-out);
+  }
+  78% {
+    transform: translateY(-3%) scale(0.97, 1.04);
+    animation-timing-function: var(--ease-in-out);
+  }
+  100% {
+    transform: none;
+  }
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: none;
+  }
+  50% {
+    transform: translateY(-2.6%) rotate(1.2deg);
+  }
+}

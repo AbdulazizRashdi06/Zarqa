@@ -55,6 +55,7 @@ The mascot is a girl inspired by Zarqa Al-Yamama: cream veil, blue eyes, two bra
 ## Running and deploying
 
 - Launch pages: `/terms`, `/privacy`, `/help`, `/tips` are public; `/admin` is restricted to admins; `/rsa` (RSA desk: drop-off, pickup codes, shelf, read-only chats, team) is restricted to `rsa_members` and admins. See decisions.md, 2026-10-26. Profile has account deletion with two confirmations. All new copy lives in `web/src/i18n/en.json`.
+- **Coming soon (2026-11-24):** while `AUTH_COMING_SOON` is true (the default in `deploy/docker-compose.yml`), a brand-new student address gets no account and lands on `/coming-soon` after their code checks out. Existing accounts, `@gutech.edu.om` staff, admins, RSA members and `AUTH_ALLOWED_EMAILS` get in as usual. Set `AUTH_COMING_SOON=false` in the server `.env` to open sign-up. The screen is design board B of the "Zarqa Coming Soon" canvas (`https://claude.ai/artifact/2t8DzcVrnHobWMJiTRNnZf`) and is one of the screens that gets a show; a tap anywhere throws coins.
 - Browser regression tests: `cd web` then `npx playwright install chromium` and `npx playwright test` (390 × 844 viewport, mocked API for launch UI). CI runs these alongside lint/build and server tests.
 - Owner override (2026-10-02): keep the existing iPhone mascot. Do not replace its phone or regenerate the artwork.
 - Public mascot WebPs are reproducible with `python deploy/optimize-mascots.py` (Pillow). PNG originals stay unchanged; the PWA excludes those PNGs from precache. English pilot fonts use Latin subsets.
