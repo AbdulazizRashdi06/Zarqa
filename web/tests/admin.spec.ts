@@ -25,6 +25,23 @@ function heldMatch(over: Record<string, unknown> = {}) {
   }
 }
 
+test('To review says so when a strong match waits because the backup reviewer made it', async ({ page }) => {
+  await session(page)
+  await page.route('**/api/admin/stats', route => route.fulfill({ json: stats }))
+  await page.route('**/api/admin/reports*', route => route.fulfill({ json: [] }))
+  await page.route('**/api/photos/p9', route => route.fulfill({ contentType: 'image/svg+xml', body: '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="63"><rect width="100" height="63" fill="#888"/></svg>' }))
+  await page.route('**/api/admin/held', route => route.fulfill({ json: [heldMatch({ id: 'm7', score: 0.91, confidence: 'big', standIn: true })] }))
+  await page.goto('/admin')
+  const card = page.locator('[data-held="m7"]')
+  await expect(card.getByText('Big chance')).toBeVisible()
+  await expect(card).toContainText('score 0.91')
+  await expect(card).toContainText('Made by the backup reviewer while the main one was down')
+  await expect(card.getByText('Small chance')).toHaveCount(0)
+  await card.getByRole('button', { name: 'Approve', exact: true }).click()
+  await expect(page.getByRole('dialog')).toContainText('They get the usual match alert now. It shows as Big chance.')
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+})
+
 test('a failed load offers Try again instead of an empty list, and keeps Delete everything off', async ({ page }) => {
   await session(page)
   let fail = true

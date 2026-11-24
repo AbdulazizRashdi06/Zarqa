@@ -65,6 +65,11 @@ export function callCost(c) {
     }
     case "jev":
       return ((c.inputTokens || 0) * PRICES.jevInput + (c.outputTokens || 0) * PRICES.jevOutput) / M;
+    case "opus": {
+      // What the same tokens would cost on the API ($4 / $0.20 cached / $20 per million); the run itself is on the plan.
+      const cachedIn = c.cachedInputTokens || 0;
+      return (((c.inputTokens || 0) - cachedIn) * 4 + cachedIn * 0.2 + (c.outputTokens || 0) * 20) / M;
+    }
     default:
       return 0;
   }

@@ -17,6 +17,10 @@ export const PRICES = {
   lunaInput: 0.10,
   lunaCachedInput: 0.01,
   lunaOutput: 0.50,
+  // gpt-6.1-terra, from OpenAI's pricing page on 2026-11-15 (standard tier). The app's ledger still prices the judge as Luna.
+  terraInput: 1.0,
+  terraCachedInput: 0.05,
+  terraOutput: 5.0,
   jevInput: 0.042,
   jevOutput: 0,
   firestoreRead: 0.06 / 100_000,

@@ -7,5 +7,5 @@ namespace Zarqa.Api.Users;
 /// </summary>
 public static class Consent
 {
-    public const string Current = "2026-11-13";
+    public const string Current = "2026-11-17";
 }

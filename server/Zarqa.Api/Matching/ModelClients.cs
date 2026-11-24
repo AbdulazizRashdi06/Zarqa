@@ -27,6 +27,67 @@ public sealed class ModelOptions
     /// candidates (benchmark/src/normalize.js). Off: nothing is called and stored renderings are ignored.
     /// </summary>
     public bool UseNormalize { get; set; } = true;
+    /// <summary>
+    /// The judge gets the same photos as the advocates (for a card report, only the covered copy) and is told to go by
+    /// what they show. Fewer wrong pairs at the same recall on two benchmark sets (decisions.md, 2026-11-15). Off by default.
+    /// </summary>
+    public bool JudgeSeesPhotos { get; set; }
+    /// <summary>
+    /// One line for the advocates on pairs where the found date is exactly one calendar day before the lost date,
+    /// saying that order is not a point against a match (decisions.md, 2026-11-16). No other pair changes. Off by default.
+    /// </summary>
+    public bool OneDayNote { get; set; }
+    /// <summary>
+    /// Every model that sees a report's dates also gets the day it was posted, so "today" and "last week" can be
+    /// placed (decisions.md, 2026-11-16). Changes every screening, advocate and judge prompt. Off by default.
+    /// </summary>
+    public bool PostedOn { get; set; }
+    /// <summary>
+    /// One model alone reviews each pair in place of the debate: no advocates, no separate judge (owner decision,
+    /// decisions.md 2026-11-16). Needs <see cref="OpusBaseUrl"/>. A failed call falls back to the debate. Off by default.
+    /// </summary>
+    public bool UseOpusAlone { get; set; }
+    /// <summary>The private Claude Code gateway (deploy/claude), e.g. http://claude:8091/v1. Never receives API keys.</summary>
+    public string? OpusBaseUrl { get; set; }
+    public string OpusModel { get; set; } = "opus";
+    /// <summary>Reasoning level sent to the gateway: low, medium or high. The benchmark runs used high.</summary>
+    public string OpusEffort { get; set; } = "high";
+    /// <summary>
+    /// A one-model review is shown from this score. Its scores sit lower than the debate's: on the five rated sets
+    /// its best line fell between 0.30 and 0.45 on every half (decisions.md, 2026-11-16). Read off test sets; to be
+    /// settled on pilot reports.
+    /// </summary>
+    public double OpusThreshold { get; set; } = 0.45;
+    /// <summary>
+    /// Place names match as whole words only, as in the benchmark since 2026-11-14. Off (the default), a longer name
+    /// also matches inside a word, so "Female Residences" picks up Boys Dorms through its alias "male residences":
+    /// the reviewer is then told both places' names, and the prescore and the embedded text count them as one place.
+    /// Every benchmark number since 2026-11-14 was measured with whole words (decisions.md, 2026-11-14 and 2026-11-19).
+    /// </summary>
+    public bool WholeWordPlaces { get; set; }
+    /// <summary>
+    /// Date notes for the one-model reviewer (loop O2, accepted on outside set 5, decisions.md 2026-11-19). Only when
+    /// both reports give a date and the found date is one or two calendar days before the lost date: the sentence
+    /// "an item cannot be found before it was lost" is replaced by a pointer to a "Dates:" line, the owner's one-day
+    /// note (one day) or longer-gap note (two days) is appended, and the day the LOST report was posted is given.
+    /// Every other pair is sent exactly as before. Off by default; turning it on is the owner's.
+    /// </summary>
+    public bool OpusDateNotes { get; set; }
+    /// <summary>
+    /// What happens to a pair when the one-model call fails (gateway down, signed out, plan limit, unusable answer).
+    /// "debate" (the default): the debate reviews the pair and its match is shown as any debate match is.
+    /// "hold": the debate still reviews it, so nothing is missed, but a match it finds always waits in To review,
+    /// whatever its score. In tests the debate showed far more clearly wrong pairs than the one-model review
+    /// (69 against 2), so its answers should not reach people unseen while it is only the stand-in
+    /// (council, 2026-11-19; the owner allowed the build, off by default).
+    /// </summary>
+    public string OpusFallback { get; set; } = "debate";
+    /// <summary>
+    /// Only a plain "off" value shows stand-in matches directly. Anything else, a typo included, holds them: a match
+    /// held by mistake is released after 48 hours, one shown by mistake cannot be taken back.
+    /// </summary>
+    public bool HoldsOpusFallback => !ShowsStandInMatches.Contains((OpusFallback ?? "").Trim());
+    private static readonly HashSet<string> ShowsStandInMatches = new(StringComparer.OrdinalIgnoreCase) { "", "debate", "false", "off", "no", "0" };
     public string LunaModel { get; set; } = "gpt-6-luna";
     public string TerraModel { get; set; } = "gpt-6.1-terra";
     public string EmbeddingModel { get; set; } = "text-embedding-3-small";
@@ -47,6 +108,13 @@ public static class Prices
 
     public static decimal Luna(int input, int cached, int output) =>
         ((input - cached) * LunaInput + cached * LunaCachedInput + output * LunaOutput) / 1_000_000m;
+
+    /// <summary>
+    /// Opus at API list prices on 2026-11-03 ($4 in, $0.20 cached in, $20 out per 1M tokens). The Claude Code gateway
+    /// runs on a plan and is not billed per call; this is what the same calls would cost through the API.
+    /// </summary>
+    public static decimal Opus(int input, int cached, int output) =>
+        ((input - cached) * 4.00m + cached * 0.20m + output * 20.00m) / 1_000_000m;
 
     // DeepSeek Flash peak rates, in USD per 1M tokens. Use the peak rate for the spend cap.
     public static decimal DeepSeek(int input, int cached, int output) =>
@@ -81,6 +149,7 @@ public interface IStructuredChat
 public interface ILuna : IStructuredChat { }
 public interface ITerra : IStructuredChat { }
 public interface IDeepSeek : IStructuredChat { }
+public interface IOpus : IStructuredChat { }
 
 public interface IJev
 {
@@ -172,6 +241,21 @@ public sealed class OpenAiTerra(HttpClient http, IOptions<ModelOptions> options)
     }
 }
 
+/// <summary>Opus through the private Claude Code gateway, which speaks the same Chat Completions shape as the Codex one.</summary>
+public sealed class ClaudeGatewayOpus(HttpClient http, IOptions<ModelOptions> options) : IOpus
+{
+    public bool IsConfigured => options.Value.UseOpusAlone && !string.IsNullOrWhiteSpace(options.Value.OpusBaseUrl);
+
+    public async Task<LunaResult> ChatJsonAsync(string system, string text, IReadOnlyList<string> imageDataUrls, string schemaName, JsonObject schema, CancellationToken ct)
+    {
+        var o = options.Value;
+        if (!IsConfigured) throw new ModelCallException("No Opus gateway configured.");
+        var result = await ChatCompletions.SendAsync(http, (o.OpusBaseUrl!.TrimEnd('/'), null, o.OpusModel), system, text, imageDataUrls,
+            o.LunaImageDetail, ChatCompletions.StrictFormat(schemaName, schema), ct, reasoningEffort: o.OpusEffort);
+        return result with { ProviderCostUsd = Prices.Opus(result.InputTokens, result.CachedInputTokens, result.OutputTokens) };
+    }
+}
+
 public sealed class DeepSeekChat(HttpClient http, IOptions<ModelOptions> options) : IDeepSeek
 {
     public const string Model = "deepseek-flash";
@@ -197,7 +281,7 @@ internal static class ChatCompletions
 
     public static async Task<LunaResult> SendAsync(HttpClient http, (string Base, string? Key, string Model) route,
         string system, string text, IReadOnlyList<string> imageDataUrls, string imageDetail, JsonObject format,
-        CancellationToken ct, bool deepSeek = false)
+        CancellationToken ct, bool deepSeek = false, string? reasoningEffort = null)
     {
         var content = new JsonArray { new JsonObject { ["type"] = "text", ["text"] = text } };
         foreach (var url in imageDataUrls)
@@ -212,6 +296,7 @@ internal static class ChatCompletions
             },
             ["response_format"] = format,
         };
+        if (reasoningEffort is not null) body["reasoning_effort"] = reasoningEffort;
         if (deepSeek)
         {
             body["reasoning_effort"] = "low";

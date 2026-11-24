@@ -22,6 +22,13 @@ public static class AdminEndpoints
             var matches = await db.Matches.GroupBy(m => m.Status).Select(g => new { Status = g.Key.ToString(), Count = g.Count() }).ToListAsync(ct);
             var reports = await db.Reports.GroupBy(r => new { r.Kind, r.Status }).Select(g => new { Kind = g.Key.Kind.ToString(), Status = g.Key.Status.ToString(), Count = g.Count() }).ToListAsync(ct);
             var decided = await db.Matches.GroupBy(m => m.DecidedBy).Select(g => new { By = g.Key.ToString(), Count = g.Count() }).ToListAsync(ct);
+            // Model-made suggestions people could see, real people only: matches made by hand at the RSA desk, ones still
+            // held or withheld by an admin, and sample data say nothing about how good the matcher's scores are.
+            var shown = await db.Matches
+                .Where(m => m.DecidedBy != MatchDecider.RsaStaff && m.Status != MatchStatus.Held && m.Status != MatchStatus.Withheld)
+                .Where(m => !m.Lost!.User!.Email.EndsWith(SampleData.EmailSuffix) && !m.Found!.User!.Email.EndsWith(SampleData.EmailSuffix))
+                .Select(m => new { m.FinalScore, m.Status, Returned = db.Conversations.Any(c => c.MatchId == m.Id && c.Status == ConversationStatus.Returned) })
+                .ToListAsync(ct);
             return Results.Ok(new
             {
                 users = await db.Users.CountAsync(ct),
@@ -33,6 +40,7 @@ public static class AdminEndpoints
                 reports,
                 matches,
                 decidedBy = decided,
+                outcomes = MatchOutcomes.ByBand(shown.Select(m => new MatchOutcomes.Row(m.FinalScore, m.Status, m.Returned))),
                 returned = await db.Conversations.CountAsync(c => c.Status == ConversationStatus.Returned, ct),
                 pendingJobs = await db.MatchJobs.CountAsync(j => j.CompletedAt == null, ct),
                 failedJobs = await db.MatchJobs.CountAsync(j => j.CompletedAt != null && j.LastError != null, ct),
@@ -101,10 +109,21 @@ public static class AdminEndpoints
                 .Include(m => m.Lost).ThenInclude(r => r!.Photos).Include(m => m.Lost).ThenInclude(r => r!.User)
                 .Include(m => m.Found).ThenInclude(r => r!.Photos).Include(m => m.Found).ThenInclude(r => r!.User)
                 .Where(m => m.Status == MatchStatus.Held).OrderBy(m => m.CreatedAt).Take(200).ToListAsync(ct);
+            // Held although it scored well: made by the stand-in while the one-model call was failing (MATCHING_OPUS_FALLBACK=hold).
+            var lostIds = list.Select(m => m.LostId).ToList();
+            // The payload is a jsonb column, so the reason is read here, not in SQL; at most 200 held matches are listed.
+            var standIns = (await db.ReviewLogs.AsNoTracking()
+                    .Where(l => l.Step == HeldMatches.HeldStep && lostIds.Contains(l.ReportId))
+                    .Select(l => new { l.ReportId, l.CounterpartId, l.Payload }).ToListAsync(ct))
+                .Where(l => l.Payload.Contains(HeldMatches.OpusUnavailable))
+                .Select(l => (l.ReportId, l.CounterpartId)).ToHashSet();
             return list.Select(m => new
             {
                 m.Id,
                 score = m.FinalScore,
+                // What the owner will see once it is shown: the label follows the score, whoever held it.
+                confidence = Chat.MatchEndpoints.Confidence(m.FinalScore),
+                standIn = standIns.Contains((m.LostId, (Guid?)m.FoundId)),
                 m.Reasons,
                 m.CreatedAt,
                 releaseAt = m.CreatedAt + HeldMatches.ReleaseAfter,

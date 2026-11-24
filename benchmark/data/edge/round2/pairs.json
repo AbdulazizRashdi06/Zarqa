@@ -12,7 +12,15 @@
   "tags": [
    "colour",
    "must"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "dark blue backpack, owner says black",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-colour-01-L1",
@@ -27,7 +35,15 @@
   "tags": [
    "colour",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-colour-02-L1",
@@ -42,7 +58,10 @@
   "tags": [
    "colour",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-colour-02-L1",
@@ -57,7 +76,10 @@
   "tags": [
    "colour",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-colour-03-L1",
@@ -72,7 +94,10 @@
   "tags": [
    "colour",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-colour-03-L1",
@@ -87,7 +112,10 @@
   "tags": [
    "colour",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "Zara size M vs H&M large",
+  "closeCall": false
  },
  {
   "lostId": "R2-colour-04-L1",
@@ -102,7 +130,15 @@
   "tags": [
    "colour",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-colour-04-L2",
@@ -117,7 +153,10 @@
   "tags": [
    "colour",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "red long wallet vs small brown wallet",
+  "closeCall": false
  },
  {
   "lostId": "R2-colour-04-L1",
@@ -132,7 +171,15 @@
   "tags": [
    "colour",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-colour-05-L1",
@@ -147,7 +194,10 @@
   "tags": [
    "colour",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-colour-05-L2",
@@ -162,7 +212,10 @@
   "tags": [
    "colour",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "owner says no cover; found has a transparent cover (also rose gold vs gold)",
+  "closeCall": false
  },
  {
   "lostId": "R2-colour-06-L1",
@@ -177,7 +230,10 @@
   "tags": [
    "colour",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-colour-06-L1",
@@ -192,7 +248,15 @@
   "tags": [
    "colour",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "owner: stickers on it; found: no stickers",
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "stickers on it vs no stickers"
+  }
  },
  {
   "lostId": "R2-colour-07-L1",
@@ -207,7 +271,10 @@
   "tags": [
    "colour",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-colour-07-L1",
@@ -222,7 +289,15 @@
   "tags": [
    "colour",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "contents shown are makeup items, not drafting pens",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "bad",
+   "note": "holds make-up, not drafting pens"
+  }
  },
  {
   "lostId": "R2-colour-08-L1",
@@ -237,7 +312,15 @@
   "tags": [
    "colour",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-colour-08-L2",
@@ -252,7 +335,10 @@
   "tags": [
    "colour",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-colour-09-L1",
@@ -267,7 +353,10 @@
   "tags": [
    "colour",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-colour-09-L1",
@@ -282,7 +371,10 @@
   "tags": [
    "colour",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "Adidas bag, not Decathlon; plain black, not black and orange",
+  "closeCall": false
  },
  {
   "lostId": "R2-colour-10-L1",
@@ -297,7 +389,10 @@
   "tags": [
    "colour",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-colour-10-L1",
@@ -312,7 +407,10 @@
   "tags": [
    "colour",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "folding umbrella vs big non-folding with wooden handle",
+  "closeCall": false
  },
  {
   "lostId": "R2-colour-11-L1",
@@ -327,7 +425,10 @@
   "tags": [
    "colour",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-colour-11-L1",
@@ -342,7 +443,10 @@
   "tags": [
    "colour",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "thin frame vs thick frame",
+  "closeCall": false
  },
  {
   "lostId": "R2-colour-12-L1",
@@ -357,7 +461,10 @@
   "tags": [
    "colour",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-colour-12-L2",
@@ -372,7 +479,10 @@
   "tags": [
    "colour",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "grey laptop bag vs dark blue sleeve",
+  "closeCall": false
  },
  {
   "lostId": "R2-colour-13-L1",
@@ -387,7 +497,10 @@
   "tags": [
    "colour",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-colour-13-L1",
@@ -402,7 +515,15 @@
   "tags": [
    "colour",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "maroon (3nabi) vs brown",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-colour-14-L1",
@@ -417,7 +538,10 @@
   "tags": [
    "colour",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-colour-14-L2",
@@ -432,7 +556,10 @@
   "tags": [
    "colour",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-colour-14-L1",
@@ -447,7 +574,15 @@
   "tags": [
    "colour",
    "trap"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-colour-14-L2",
@@ -462,7 +597,10 @@
   "tags": [
    "colour",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "light blue denim jacket vs navy puffer jacket",
+  "closeCall": false
  },
  {
   "lostId": "R2-colour-15-L2",
@@ -477,7 +615,10 @@
   "tags": [
    "colour",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-colour-15-L1",
@@ -492,7 +633,10 @@
   "tags": [
    "colour",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-colour-15-L1",
@@ -507,7 +651,10 @@
   "tags": [
    "colour",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "pink vs off white",
+  "closeCall": false
  },
  {
   "lostId": "R2-colour-15-L2",
@@ -522,7 +669,10 @@
   "tags": [
    "colour",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "cream vs pink",
+  "closeCall": false
  },
  {
   "lostId": "R2-colour-16-L1",
@@ -537,7 +687,15 @@
   "tags": [
    "colour",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-colour-16-L1",
@@ -552,7 +710,10 @@
   "tags": [
    "colour",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "MacBook Air vs HP laptop",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-01-L1",
@@ -567,7 +728,10 @@
   "tags": [
    "word-meaning",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-01-L2",
@@ -582,7 +746,10 @@
   "tags": [
    "word-meaning",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-01-L1",
@@ -597,7 +764,15 @@
   "tags": [
    "word-meaning",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "bad",
+   "note": "laptop, not a notebook of notes"
+  }
  },
  {
   "lostId": "R2-word-meaning-01-L2",
@@ -612,7 +787,10 @@
   "tags": [
    "word-meaning",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "HP laptop vs spiral paper notebook",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-02-L1",
@@ -627,7 +805,10 @@
   "tags": [
    "word-meaning",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-02-L2",
@@ -642,7 +823,10 @@
   "tags": [
    "word-meaning",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-02-L1",
@@ -657,7 +841,10 @@
   "tags": [
    "word-meaning",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "medicine tablets in a box vs Samsung tablet device",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-02-L2",
@@ -672,7 +859,10 @@
   "tags": [
    "word-meaning",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "Samsung tablet vs box of medicine",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-03-L1",
@@ -687,7 +877,10 @@
   "tags": [
    "word-meaning",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-03-L1",
@@ -702,7 +895,10 @@
   "tags": [
    "word-meaning",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "gold-frame spectacles vs two drinking glasses with blue rim",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-03-L2",
@@ -717,7 +913,10 @@
   "tags": [
    "word-meaning",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "black sunglasses vs clear drinking glasses with blue rim",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-03-L2",
@@ -732,7 +931,10 @@
   "tags": [
    "word-meaning",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "black sunglasses vs gold round metal-frame glasses",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-04-L1",
@@ -747,7 +949,10 @@
   "tags": [
    "word-meaning",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-04-L2",
@@ -762,7 +967,10 @@
   "tags": [
    "word-meaning",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-04-L1",
@@ -777,7 +985,10 @@
   "tags": [
    "word-meaning",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "key ring with keys and torch vs finger ring with inscription",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-04-L2",
@@ -792,7 +1003,10 @@
   "tags": [
    "word-meaning",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "ring vs bunch of keys",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-05-L1",
@@ -807,7 +1021,15 @@
   "tags": [
    "word-meaning",
    "must"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "JBL earbuds, not AirPods",
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "AirPods vs JBL earbuds"
+  }
  },
  {
   "lostId": "R2-word-meaning-05-L2",
@@ -822,7 +1044,10 @@
   "tags": [
    "word-meaning",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-05-L1",
@@ -837,7 +1062,15 @@
   "tags": [
    "word-meaning",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "black case vs brown leather pouch",
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "black case vs brown leather pouch"
+  }
  },
  {
   "lostId": "R2-word-meaning-05-L2",
@@ -852,7 +1085,10 @@
   "tags": [
    "word-meaning",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "JBL earbuds in black case, not AirPods Pro",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-06-L1",
@@ -867,7 +1103,10 @@
   "tags": [
    "word-meaning",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-06-L2",
@@ -882,7 +1121,10 @@
   "tags": [
    "word-meaning",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-06-L1",
@@ -897,7 +1139,10 @@
   "tags": [
    "word-meaning",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "Lenovo laptop charger vs white Apple USB-C to Lightning cable",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-06-L2",
@@ -912,7 +1157,10 @@
   "tags": [
    "word-meaning",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "black Lenovo adapter, not a white iPhone cable",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-07-L1",
@@ -927,7 +1175,15 @@
   "tags": [
    "word-meaning",
    "must"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "Huawei tablet, not an iPad",
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "iPad vs Huawei tablet"
+  }
  },
  {
   "lostId": "R2-word-meaning-07-L1",
@@ -942,7 +1198,10 @@
   "tags": [
    "word-meaning",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-08-L1",
@@ -957,7 +1216,15 @@
   "tags": [
    "word-meaning",
    "must"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "Stanley vs no brand on it",
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "Stanley vs no brand on it"
+  }
  },
  {
   "lostId": "R2-word-meaning-08-L1",
@@ -972,7 +1239,10 @@
   "tags": [
    "word-meaning",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-09-L1",
@@ -987,7 +1257,10 @@
   "tags": [
    "word-meaning",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-09-L2",
@@ -1002,7 +1275,10 @@
   "tags": [
    "word-meaning",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-09-L1",
@@ -1017,7 +1293,10 @@
   "tags": [
    "word-meaning",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "flask screw cap vs Nike hat",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-09-L2",
@@ -1032,7 +1311,15 @@
   "tags": [
    "word-meaning",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "cap worn on the head vs plastic bottle lid",
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "cap (hat) vs plastic bottle lid"
+  }
  },
  {
   "lostId": "R2-word-meaning-10-L1",
@@ -1047,7 +1334,10 @@
   "tags": [
    "word-meaning",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-10-L1",
@@ -1062,7 +1352,10 @@
   "tags": [
    "word-meaning",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "SanDisk pen drive vs Parker pen",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-10-L2",
@@ -1077,7 +1370,10 @@
   "tags": [
    "word-meaning",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "black WD hard drive vs red/black SanDisk flash drive",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-10-L2",
@@ -1092,7 +1388,10 @@
   "tags": [
    "word-meaning",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "hard drive vs pen",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-11-L1",
@@ -1107,7 +1406,15 @@
   "tags": [
    "word-meaning",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-word-meaning-11-L2",
@@ -1122,7 +1429,10 @@
   "tags": [
    "word-meaning",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-11-L1",
@@ -1137,7 +1447,15 @@
   "tags": [
    "word-meaning",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-word-meaning-11-L2",
@@ -1152,7 +1470,10 @@
   "tags": [
    "word-meaning",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "bag with chain vs mens wallet",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-12-L1",
@@ -1167,7 +1488,10 @@
   "tags": [
    "word-meaning",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-12-L1",
@@ -1182,7 +1506,10 @@
   "tags": [
    "word-meaning",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "hooded zip jumper vs knitted wool sweater with no hood",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-13-L1",
@@ -1197,7 +1524,10 @@
   "tags": [
    "word-meaning",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-13-L2",
@@ -1212,7 +1542,10 @@
   "tags": [
    "word-meaning",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-13-L1",
@@ -1227,7 +1560,10 @@
   "tags": [
    "word-meaning",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "phone vs power bank",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-13-L2",
@@ -1242,7 +1578,10 @@
   "tags": [
    "word-meaning",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "power bank vs phone",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-14-L1",
@@ -1257,7 +1596,10 @@
   "tags": [
    "word-meaning",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-14-L1",
@@ -1272,7 +1614,10 @@
   "tags": [
    "word-meaning",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "Xiaomi fitness band vs hair bands",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-14-L2",
@@ -1287,7 +1632,10 @@
   "tags": [
    "word-meaning",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "silver Casio metal strap vs black Mi smart band rubber strap",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-14-L2",
@@ -1302,7 +1650,10 @@
   "tags": [
    "word-meaning",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "watch vs hair bands",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-15-L1",
@@ -1317,7 +1668,10 @@
   "tags": [
    "word-meaning",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-15-L2",
@@ -1332,7 +1686,10 @@
   "tags": [
    "word-meaning",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-15-L1",
@@ -1347,7 +1704,10 @@
   "tags": [
    "word-meaning",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "mesh pencil case vs hard-shell case",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-15-L2",
@@ -1362,7 +1722,10 @@
   "tags": [
    "word-meaning",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "hard glasses case vs pouch with stationery",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-16-L1",
@@ -1377,7 +1740,10 @@
   "tags": [
    "word-meaning",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-16-L2",
@@ -1392,7 +1758,10 @@
   "tags": [
    "word-meaning",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-16-L1",
@@ -1407,7 +1776,10 @@
   "tags": [
    "word-meaning",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "Toyota car key with black remote vs small silver room/locker key",
+  "closeCall": false
  },
  {
   "lostId": "R2-word-meaning-16-L2",
@@ -1422,7 +1794,10 @@
   "tags": [
    "word-meaning",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "single room key with number tag vs Toyota car key fob",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-01-L1",
@@ -1437,7 +1812,10 @@
   "tags": [
    "language",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-01-L1",
@@ -1452,7 +1830,10 @@
   "tags": [
    "language",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "silver Casio watch vs black smartwatch with rubber strap",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-02-L1",
@@ -1467,7 +1848,10 @@
   "tags": [
    "language",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-02-L1",
@@ -1482,7 +1866,15 @@
   "tags": [
    "language",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "car key plus one room key vs two door keys, no car key",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-language-03-L1",
@@ -1497,7 +1889,10 @@
   "tags": [
    "language",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-03-L2",
@@ -1512,7 +1907,10 @@
   "tags": [
    "language",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-03-L2",
@@ -1527,7 +1925,15 @@
   "tags": [
    "language",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "massar (turban cloth) vs Omani cap",
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "massar (folded cloth) vs Omani cap"
+  }
  },
  {
   "lostId": "R2-language-03-L1",
@@ -1542,7 +1948,15 @@
   "tags": [
    "language",
    "trap"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "bad",
+   "note": "folded cloth (massar), not a kumma cap"
+  }
  },
  {
   "lostId": "R2-language-04-L1",
@@ -1557,7 +1971,10 @@
   "tags": [
    "language",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-04-L1",
@@ -1572,7 +1989,10 @@
   "tags": [
    "language",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "wooden rosary with a cross, not agate prayer beads with silver tassel",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-04-L2",
@@ -1587,7 +2007,10 @@
   "tags": [
    "language",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "black digital ring counter vs brown stone prayer beads",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-05-L1",
@@ -1602,7 +2025,10 @@
   "tags": [
    "language",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-05-L1",
@@ -1617,7 +2043,10 @@
   "tags": [
    "language",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "shayla (headscarf) vs notebook",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-05-L2",
@@ -1632,7 +2061,15 @@
   "tags": [
    "language",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "abaya vs scarf",
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "abaya vs scarf"
+  }
  },
  {
   "lostId": "R2-language-06-L1",
@@ -1647,7 +2084,10 @@
   "tags": [
    "language",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-06-L1",
@@ -1662,7 +2102,10 @@
   "tags": [
    "language",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "phone vs screwdriver kit",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-07-L1",
@@ -1677,7 +2120,10 @@
   "tags": [
    "language",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-07-L1",
@@ -1692,7 +2138,10 @@
   "tags": [
    "language",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "Titan watch vs Nissan car key",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-08-L1",
@@ -1707,7 +2156,10 @@
   "tags": [
    "language",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-08-L1",
@@ -1722,7 +2174,10 @@
   "tags": [
    "language",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "white cap with brown stitching vs red and white shemagh",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-09-L1",
@@ -1737,7 +2192,10 @@
   "tags": [
    "language",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-09-L1",
@@ -1752,7 +2210,10 @@
   "tags": [
    "language",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "blue rubber stamp, not a silver ring with blue stone",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-09-L2",
@@ -1767,7 +2228,10 @@
   "tags": [
    "language",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "gold ring without stone vs silver ring with turquoise stone",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-10-L1",
@@ -1782,7 +2246,10 @@
   "tags": [
    "language",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-10-L2",
@@ -1797,7 +2264,10 @@
   "tags": [
    "language",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-10-L1",
@@ -1812,7 +2282,10 @@
   "tags": [
    "language",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "prescription glasses vs sunglasses",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-10-L2",
@@ -1827,7 +2300,10 @@
   "tags": [
    "language",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "sunglasses vs reading glasses",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-11-L1",
@@ -1842,7 +2318,10 @@
   "tags": [
    "language",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-11-L1",
@@ -1857,7 +2336,10 @@
   "tags": [
    "language",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "paperback 'Quranic Arabic' workbook, not a Quran in a zip cover",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-11-L2",
@@ -1872,7 +2354,10 @@
   "tags": [
    "language",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "dark blue vs green",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-12-L1",
@@ -1887,7 +2372,10 @@
   "tags": [
    "language",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-12-L2",
@@ -1902,7 +2390,10 @@
   "tags": [
    "language",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-12-L1",
@@ -1917,7 +2408,10 @@
   "tags": [
    "language",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "oud instrument in soft case vs small bottle of oud oil",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-12-L2",
@@ -1932,7 +2426,10 @@
   "tags": [
    "language",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "oud perfume oil bottle vs string instrument",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-13-L1",
@@ -1947,7 +2444,10 @@
   "tags": [
    "language",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-13-L2",
@@ -1962,7 +2462,10 @@
   "tags": [
    "language",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-13-L1",
@@ -1977,7 +2480,15 @@
   "tags": [
    "language",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "dishdasha vs lab coat",
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "dishdasha vs lab coat"
+  }
  },
  {
   "lostId": "R2-language-13-L2",
@@ -1992,7 +2503,10 @@
   "tags": [
    "language",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "lab coat vs kandura",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-14-L1",
@@ -2007,7 +2521,10 @@
   "tags": [
    "language",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-14-L1",
@@ -2022,7 +2539,10 @@
   "tags": [
    "language",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "prayer mat vs charger",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-14-L1",
@@ -2037,7 +2557,10 @@
   "tags": [
    "language",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "maroon vs green prayer mat",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-15-L1",
@@ -2052,7 +2575,10 @@
   "tags": [
    "language",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-15-L2",
@@ -2067,7 +2593,10 @@
   "tags": [
    "language",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-15-L1",
@@ -2082,7 +2611,10 @@
   "tags": [
    "language",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "wallet vs diary book",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-15-L2",
@@ -2097,7 +2629,10 @@
   "tags": [
    "language",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "diary/sketchbook vs wallet",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-16-L1",
@@ -2112,7 +2647,10 @@
   "tags": [
    "language",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-16-L1",
@@ -2127,7 +2665,10 @@
   "tags": [
    "language",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "black JBL, not AirPods Pro",
+  "closeCall": false
  },
  {
   "lostId": "R2-language-16-L1",
@@ -2142,7 +2683,10 @@
   "tags": [
    "language",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "AirPods Pro vs Sony over-ear headphones",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-01-L1",
@@ -2157,7 +2701,10 @@
   "tags": [
    "sloppy-writing",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-01-L1",
@@ -2172,7 +2719,10 @@
   "tags": [
    "sloppy-writing",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "black wallet vs brown wallet",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-01-L2",
@@ -2187,7 +2737,10 @@
   "tags": [
    "sloppy-writing",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-01-L2",
@@ -2202,7 +2755,10 @@
   "tags": [
    "sloppy-writing",
    "lookalike"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-02-L1",
@@ -2217,7 +2773,10 @@
   "tags": [
    "sloppy-writing",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-02-L1",
@@ -2232,7 +2791,15 @@
   "tags": [
    "sloppy-writing",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "AirPods Pro case vs round case thought to be Samsung",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-sloppy-writing-02-L2",
@@ -2247,7 +2814,10 @@
   "tags": [
    "sloppy-writing",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "single left airpod without case vs case with both buds",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-03-L1",
@@ -2262,7 +2832,10 @@
   "tags": [
    "sloppy-writing",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-03-L1",
@@ -2277,7 +2850,10 @@
   "tags": [
    "sloppy-writing",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "HP round-pin charger vs white USB-C charger",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-03-L2",
@@ -2292,7 +2868,10 @@
   "tags": [
    "sloppy-writing",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "power bank vs laptop charger",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-04-L1",
@@ -2307,7 +2886,10 @@
   "tags": [
    "sloppy-writing",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-04-L1",
@@ -2322,7 +2904,15 @@
   "tags": [
    "sloppy-writing",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-sloppy-writing-04-L2",
@@ -2337,7 +2927,10 @@
   "tags": [
    "sloppy-writing",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-05-L1",
@@ -2352,7 +2945,10 @@
   "tags": [
    "sloppy-writing",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-05-L2",
@@ -2367,7 +2963,15 @@
   "tags": [
    "sloppy-writing",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "no case vs transparent cover with sticker",
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "no case vs transparent cover with sticker"
+  }
  },
  {
   "lostId": "R2-sloppy-writing-05-L2",
@@ -2382,7 +2986,10 @@
   "tags": [
    "sloppy-writing",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-05-L1",
@@ -2397,7 +3004,10 @@
   "tags": [
    "sloppy-writing",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-06-L1",
@@ -2412,7 +3022,10 @@
   "tags": [
    "sloppy-writing",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-06-L1",
@@ -2427,7 +3040,15 @@
   "tags": [
    "sloppy-writing",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-sloppy-writing-06-L2",
@@ -2442,7 +3063,10 @@
   "tags": [
    "sloppy-writing",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "Sony headphones vs Toyota car key",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-07-L1",
@@ -2457,7 +3081,10 @@
   "tags": [
    "sloppy-writing",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-07-L1",
@@ -2472,7 +3099,15 @@
   "tags": [
    "sloppy-writing",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "owner's mark is initials M.K; found has name sticker Fatma",
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "initials M.K vs name sticker Fatma"
+  }
  },
  {
   "lostId": "R2-sloppy-writing-07-L2",
@@ -2487,7 +3122,15 @@
   "tags": [
    "sloppy-writing",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "bag vs calculator",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-sloppy-writing-08-L1",
@@ -2502,7 +3145,10 @@
   "tags": [
    "sloppy-writing",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-08-L1",
@@ -2517,7 +3163,15 @@
   "tags": [
    "sloppy-writing",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-sloppy-writing-08-L2",
@@ -2532,7 +3186,10 @@
   "tags": [
    "sloppy-writing",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-08-L2",
@@ -2547,7 +3204,10 @@
   "tags": [
    "sloppy-writing",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "black Ray-Ban sunglasses vs gold-framed reading glasses",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-09-L1",
@@ -2562,7 +3222,10 @@
   "tags": [
    "sloppy-writing",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-09-L1",
@@ -2577,7 +3240,10 @@
   "tags": [
    "sloppy-writing",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-09-L1",
@@ -2592,7 +3258,15 @@
   "tags": [
    "sloppy-writing",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-sloppy-writing-10-L1",
@@ -2607,7 +3281,10 @@
   "tags": [
    "sloppy-writing",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-10-L2",
@@ -2622,7 +3299,10 @@
   "tags": [
    "sloppy-writing",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "car key vs access card",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-10-L3",
@@ -2637,7 +3317,10 @@
   "tags": [
    "sloppy-writing",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-10-L1",
@@ -2652,7 +3335,10 @@
   "tags": [
    "sloppy-writing",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "silver Casio watch, not a key card",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-11-L1",
@@ -2667,7 +3353,10 @@
   "tags": [
    "sloppy-writing",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-11-L1",
@@ -2682,7 +3371,10 @@
   "tags": [
    "sloppy-writing",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "brown wood with silver tassel vs black plastic with green tassel",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-11-L2",
@@ -2697,7 +3389,15 @@
   "tags": [
    "sloppy-writing",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-sloppy-writing-12-L1",
@@ -2712,7 +3412,10 @@
   "tags": [
    "sloppy-writing",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-12-L1",
@@ -2727,7 +3430,10 @@
   "tags": [
    "sloppy-writing",
    "lookalike"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-12-L2",
@@ -2742,7 +3448,10 @@
   "tags": [
    "sloppy-writing",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-12-L2",
@@ -2757,7 +3466,10 @@
   "tags": [
    "sloppy-writing",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-13-L1",
@@ -2772,7 +3484,10 @@
   "tags": [
    "sloppy-writing",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-13-L1",
@@ -2787,7 +3502,10 @@
   "tags": [
    "sloppy-writing",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "iPad stylus vs Lamy ink pen",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-13-L2",
@@ -2802,7 +3520,10 @@
   "tags": [
    "sloppy-writing",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "Samsung stylus vs Apple Pencil",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-14-L1",
@@ -2817,7 +3538,10 @@
   "tags": [
    "sloppy-writing",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-14-L1",
@@ -2832,7 +3556,10 @@
   "tags": [
    "sloppy-writing",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "gold ring vs silver ring",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-14-L2",
@@ -2847,7 +3574,15 @@
   "tags": [
    "sloppy-writing",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "earring vs ring",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-sloppy-writing-15-L1",
@@ -2862,7 +3597,10 @@
   "tags": [
    "sloppy-writing",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-15-L1",
@@ -2877,7 +3615,10 @@
   "tags": [
    "sloppy-writing",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "abaya with gold line vs plain shayla scarf only",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-15-L2",
@@ -2892,7 +3633,10 @@
   "tags": [
    "sloppy-writing",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "long cloak/dress with gold embroidery, not a North Face jacket",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-16-L1",
@@ -2907,7 +3651,10 @@
   "tags": [
    "sloppy-writing",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-sloppy-writing-16-L1",
@@ -2922,7 +3669,10 @@
   "tags": [
    "sloppy-writing",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "grey laptop bag with Lenovo vs Dell laptop with no bag",
+  "closeCall": false
  },
  {
   "lostId": "R2-human-memory-errors-01-L1",
@@ -2937,7 +3687,10 @@
   "tags": [
    "human-memory-errors",
    "must"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "Samsung vs Huawei",
+  "closeCall": false
  },
  {
   "lostId": "R2-human-memory-errors-01-L1",
@@ -2952,7 +3705,10 @@
   "tags": [
    "human-memory-errors",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "lock screen cat on red sofa vs mosque at night",
+  "closeCall": false
  },
  {
   "lostId": "R2-human-memory-errors-02-L1",
@@ -2967,7 +3723,10 @@
   "tags": [
    "human-memory-errors",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-human-memory-errors-02-L2",
@@ -2982,7 +3741,10 @@
   "tags": [
    "human-memory-errors",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-human-memory-errors-03-L1",
@@ -2997,7 +3759,10 @@
   "tags": [
    "human-memory-errors",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-human-memory-errors-03-L2",
@@ -3012,7 +3777,15 @@
   "tags": [
    "human-memory-errors",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "JBL brand vs no brand",
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "JBL vs no brand, skin-colour odd-shaped buds"
+  }
  },
  {
   "lostId": "R2-human-memory-errors-04-L1",
@@ -3027,7 +3800,15 @@
   "tags": [
    "human-memory-errors",
    "must"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "dark blue wallet vs black wallet",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-human-memory-errors-04-L1",
@@ -3042,7 +3823,10 @@
   "tags": [
    "human-memory-errors",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-human-memory-errors-05-L1",
@@ -3057,7 +3841,10 @@
   "tags": [
    "human-memory-errors",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-human-memory-errors-05-L1",
@@ -3072,7 +3859,15 @@
   "tags": [
    "human-memory-errors",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-human-memory-errors-06-L1",
@@ -3087,7 +3882,15 @@
   "tags": [
    "human-memory-errors",
    "must"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "3 keys vs 5 keys",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-human-memory-errors-06-L1",
@@ -3102,7 +3905,10 @@
   "tags": [
    "human-memory-errors",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-human-memory-errors-07-L1",
@@ -3117,7 +3923,15 @@
   "tags": [
    "human-memory-errors",
    "must"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "vape vs USB flash drive",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-human-memory-errors-07-L2",
@@ -3132,7 +3946,10 @@
   "tags": [
    "human-memory-errors",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-human-memory-errors-08-L1",
@@ -3147,7 +3964,10 @@
   "tags": [
    "human-memory-errors",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-human-memory-errors-08-L2",
@@ -3162,7 +3982,10 @@
   "tags": [
    "human-memory-errors",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-human-memory-errors-08-L2",
@@ -3177,7 +4000,10 @@
   "tags": [
    "human-memory-errors",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-human-memory-errors-08-L1",
@@ -3192,7 +4018,10 @@
   "tags": [
    "human-memory-errors",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-human-memory-errors-09-L1",
@@ -3207,7 +4036,15 @@
   "tags": [
    "human-memory-errors",
    "must"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "grey vs light blue",
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "grey vs light blue"
+  }
  },
  {
   "lostId": "R2-human-memory-errors-09-L1",
@@ -3222,7 +4059,10 @@
   "tags": [
    "human-memory-errors",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "zip Nike vs no zip Adidas",
+  "closeCall": false
  },
  {
   "lostId": "R2-human-memory-errors-10-L1",
@@ -3237,7 +4077,15 @@
   "tags": [
    "human-memory-errors",
    "must"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "MacBook Pro vs MacBook Air",
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "MacBook Pro vs MacBook Air"
+  }
  },
  {
   "lostId": "R2-human-memory-errors-10-L1",
@@ -3252,7 +4100,10 @@
   "tags": [
    "human-memory-errors",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "lost is a laptop; found is a charger and an empty sleeve",
+  "closeCall": false
  },
  {
   "lostId": "R2-human-memory-errors-11-L1",
@@ -3267,7 +4118,10 @@
   "tags": [
    "human-memory-errors",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-human-memory-errors-11-L1",
@@ -3282,7 +4136,10 @@
   "tags": [
    "human-memory-errors",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-human-memory-errors-12-L1",
@@ -3297,7 +4154,15 @@
   "tags": [
    "human-memory-errors",
    "must"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "green lanyard vs blue neck strap",
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "green lanyard vs blue neck strap"
+  }
  },
  {
   "lostId": "R2-human-memory-errors-12-L1",
@@ -3312,7 +4177,15 @@
   "tags": [
    "human-memory-errors",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "logistics vs engineering on the card",
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "logistics vs engineering on the card"
+  }
  },
  {
   "lostId": "R2-human-memory-errors-13-L1",
@@ -3327,7 +4200,15 @@
   "tags": [
    "human-memory-errors",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-human-memory-errors-13-L1",
@@ -3342,7 +4223,10 @@
   "tags": [
    "human-memory-errors",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "plain ring vs ring with black stone",
+  "closeCall": false
  },
  {
   "lostId": "R2-human-memory-errors-14-L1",
@@ -3357,7 +4241,10 @@
   "tags": [
    "human-memory-errors",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-human-memory-errors-14-L2",
@@ -3372,7 +4259,10 @@
   "tags": [
    "human-memory-errors",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-human-memory-errors-15-L1",
@@ -3387,7 +4277,10 @@
   "tags": [
    "human-memory-errors",
    "stretch"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "Apple watch vs Huawei watch",
+  "closeCall": false
  },
  {
   "lostId": "R2-human-memory-errors-15-L1",
@@ -3402,7 +4295,10 @@
   "tags": [
    "human-memory-errors",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-human-memory-errors-15-L2",
@@ -3417,7 +4313,10 @@
   "tags": [
    "human-memory-errors",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "pink strap vs dark grey band",
+  "closeCall": false
  },
  {
   "lostId": "R2-human-memory-errors-16-L1",
@@ -3432,7 +4331,10 @@
   "tags": [
    "human-memory-errors",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-human-memory-errors-16-L1",
@@ -3447,7 +4349,10 @@
   "tags": [
    "human-memory-errors",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "small bag vs big handbag",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-01-L1",
@@ -3462,7 +4367,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-01-L2",
@@ -3477,7 +4385,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "model text: fx-991EX ClassWiz vs ES PLUS",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-02-L1",
@@ -3492,7 +4403,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-02-L1",
@@ -3507,7 +4421,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "grey with H.A written on back vs black with nothing written",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-03-L1",
@@ -3522,7 +4439,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-03-L2",
@@ -3537,7 +4457,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-03-L1",
@@ -3552,7 +4475,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "lost is the case only; found is a single airpod with no case",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-03-L2",
@@ -3567,7 +4493,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "single left earbud vs empty case with no buds",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-04-L1",
@@ -3582,7 +4511,15 @@
   "tags": [
    "lookalikes-parts-numbers",
    "must"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "3 keys vs 2 keys",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-04-L2",
@@ -3597,7 +4534,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-04-L1",
@@ -3612,7 +4552,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "single key with tag 214, not three keys on a ring",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-04-L2",
@@ -3627,7 +4570,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "single loose key vs two keys on a keyring",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-05-L1",
@@ -3642,7 +4588,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-05-L1",
@@ -3657,7 +4606,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "tag number ends with 47 vs 7417",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-06-L1",
@@ -3672,7 +4624,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-06-L1",
@@ -3687,7 +4642,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "Lightning charger with plug vs braided USB-C to USB-C cable",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-06-L2",
@@ -3702,7 +4660,15 @@
   "tags": [
    "lookalikes-parts-numbers",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-07-L1",
@@ -3717,7 +4683,15 @@
   "tags": [
    "lookalikes-parts-numbers",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-07-L1",
@@ -3732,7 +4706,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "ID name Ahmed vs Khalid",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-08-L1",
@@ -3747,7 +4724,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-08-L2",
@@ -3762,7 +4742,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-08-L1",
@@ -3777,7 +4760,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "empty sleeve (owner has the laptop) vs sleeve with a Lenovo laptop in it",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-08-L2",
@@ -3792,7 +4778,15 @@
   "tags": [
    "lookalikes-parts-numbers",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "grey bag holds only a mouse and adapter, no laptop",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-09-L1",
@@ -3807,7 +4801,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-09-L1",
@@ -3822,7 +4819,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "1 litre without lid vs 500ml with lid",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-09-L1",
@@ -3837,7 +4837,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "bottle without lid vs lid without bottle",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-10-L1",
@@ -3852,7 +4855,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-10-L2",
@@ -3867,7 +4873,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-10-L2",
@@ -3882,7 +4891,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "has transparent cover and cat on screen; owner says no case, default wallpaper",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-10-L1",
@@ -3897,7 +4909,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-11-L1",
@@ -3912,7 +4927,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-11-L2",
@@ -3927,7 +4945,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-12-L1",
@@ -3942,7 +4963,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-12-L2",
@@ -3957,7 +4981,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "7th edition vs 8th edition",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-13-L1",
@@ -3972,7 +4999,15 @@
   "tags": [
    "lookalikes-parts-numbers",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "64GB vs 128GB",
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "64GB vs 128GB"
+  }
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-13-L1",
@@ -3987,7 +5022,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-14-L1",
@@ -4002,7 +5040,15 @@
   "tags": [
    "lookalikes-parts-numbers",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "size 43 vs size 42",
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "size 43 vs size 42"
+  }
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-14-L1",
@@ -4017,7 +5063,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-15-L1",
@@ -4032,7 +5081,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-15-L1",
@@ -4047,7 +5099,15 @@
   "tags": [
    "lookalikes-parts-numbers",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-16-L1",
@@ -4062,7 +5122,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-lookalikes-parts-numbers-16-L2",
@@ -4077,7 +5140,10 @@
   "tags": [
    "lookalikes-parts-numbers",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "small folding with plastic handle vs long umbrella with wood handle",
+  "closeCall": false
  },
  {
   "lostId": "R2-time-and-place-01-L1",
@@ -4092,7 +5158,10 @@
   "tags": [
    "time-and-place",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-time-and-place-01-L1",
@@ -4107,7 +5176,10 @@
   "tags": [
    "time-and-place",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-time-and-place-02-L1",
@@ -4122,7 +5194,10 @@
   "tags": [
    "time-and-place",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-time-and-place-02-L1",
@@ -4137,7 +5212,10 @@
   "tags": [
    "time-and-place",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-time-and-place-02-L1",
@@ -4152,7 +5230,15 @@
   "tags": [
    "time-and-place",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-time-and-place-03-L1",
@@ -4167,7 +5253,10 @@
   "tags": [
    "time-and-place",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-time-and-place-03-L1",
@@ -4182,7 +5271,10 @@
   "tags": [
    "time-and-place",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "steel vs plastic bottle with straw",
+  "closeCall": false
  },
  {
   "lostId": "R2-time-and-place-04-L1",
@@ -4197,7 +5289,10 @@
   "tags": [
    "time-and-place",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-time-and-place-04-L1",
@@ -4212,7 +5307,10 @@
   "tags": [
    "time-and-place",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "thin gold frame vs thick black frame",
+  "closeCall": false
  },
  {
   "lostId": "R2-time-and-place-05-L1",
@@ -4227,7 +5325,10 @@
   "tags": [
    "time-and-place",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-time-and-place-06-L1",
@@ -4242,7 +5343,15 @@
   "tags": [
    "time-and-place",
    "trap"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "found weeks before owner last used it"
+  }
  },
  {
   "lostId": "R2-time-and-place-06-L1",
@@ -4257,7 +5366,15 @@
   "tags": [
    "time-and-place",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-time-and-place-07-L1",
@@ -4272,7 +5389,10 @@
   "tags": [
    "time-and-place",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-time-and-place-07-L1",
@@ -4287,7 +5407,15 @@
   "tags": [
    "time-and-place",
    "trap"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-time-and-place-08-L1",
@@ -4302,7 +5430,15 @@
   "tags": [
    "time-and-place",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-time-and-place-08-L1",
@@ -4317,7 +5453,10 @@
   "tags": [
    "time-and-place",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "plain silver men's ring, no blue stone",
+  "closeCall": false
  },
  {
   "lostId": "R2-time-and-place-09-L1",
@@ -4332,7 +5471,10 @@
   "tags": [
    "time-and-place",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-time-and-place-09-L1",
@@ -4347,7 +5489,10 @@
   "tags": [
    "time-and-place",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "silver watch vs black watch",
+  "closeCall": false
  },
  {
   "lostId": "R2-time-and-place-10-L1",
@@ -4362,7 +5507,10 @@
   "tags": [
    "time-and-place",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-time-and-place-10-L2",
@@ -4377,7 +5525,10 @@
   "tags": [
    "time-and-place",
    "trap"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-time-and-place-11-L1",
@@ -4392,7 +5543,10 @@
   "tags": [
    "time-and-place",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-time-and-place-12-L1",
@@ -4407,7 +5561,10 @@
   "tags": [
    "time-and-place",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "white MacBook USB-C charger vs black Lenovo round pin",
+  "closeCall": false
  },
  {
   "lostId": "R2-time-and-place-12-L1",
@@ -4422,7 +5579,10 @@
   "tags": [
    "time-and-place",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-time-and-place-13-L1",
@@ -4437,7 +5597,10 @@
   "tags": [
    "time-and-place",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-time-and-place-13-L1",
@@ -4452,7 +5615,15 @@
   "tags": [
    "time-and-place",
    "trap"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-time-and-place-14-L1",
@@ -4467,7 +5638,10 @@
   "tags": [
    "time-and-place",
    "trap"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-time-and-place-14-L1",
@@ -4482,7 +5656,10 @@
   "tags": [
    "time-and-place",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-time-and-place-15-L1",
@@ -4497,7 +5674,10 @@
   "tags": [
    "time-and-place",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-time-and-place-15-L1",
@@ -4512,7 +5692,10 @@
   "tags": [
    "time-and-place",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "gold hoop vs silver stud with pearl",
+  "closeCall": false
  },
  {
   "lostId": "R2-time-and-place-16-L1",
@@ -4527,7 +5710,10 @@
   "tags": [
    "time-and-place",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-time-and-place-16-L1",
@@ -4542,7 +5728,10 @@
   "tags": [
    "time-and-place",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-01-L1",
@@ -4557,7 +5746,10 @@
   "tags": [
    "adversarial-and-odd",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "blue iPhone 13 vs black Samsung phone",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-01-L1",
@@ -4572,7 +5764,10 @@
   "tags": [
    "adversarial-and-odd",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-02-L1",
@@ -4587,7 +5782,10 @@
   "tags": [
    "adversarial-and-odd",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "brown leather wallet vs black velcro wallet",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-02-L2",
@@ -4602,7 +5800,10 @@
   "tags": [
    "adversarial-and-odd",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-03-L1",
@@ -4617,7 +5818,10 @@
   "tags": [
    "adversarial-and-odd",
    "lookalike"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-03-L2",
@@ -4632,7 +5836,10 @@
   "tags": [
    "adversarial-and-odd",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-04-L1",
@@ -4647,7 +5854,10 @@
   "tags": [
    "adversarial-and-odd",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-04-L2",
@@ -4662,7 +5872,10 @@
   "tags": [
    "adversarial-and-odd",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-05-L1",
@@ -4677,7 +5890,10 @@
   "tags": [
    "adversarial-and-odd",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-05-L1",
@@ -4692,7 +5908,15 @@
   "tags": [
    "adversarial-and-odd",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "dark blue with a dent vs black, looks new",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-adversarial-and-odd-06-L1",
@@ -4707,7 +5931,10 @@
   "tags": [
    "adversarial-and-odd",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-06-L1",
@@ -4722,7 +5949,10 @@
   "tags": [
    "adversarial-and-odd",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "only right AirPod inside vs both inside",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-07-L1",
@@ -4737,7 +5967,10 @@
   "tags": [
    "adversarial-and-odd",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-07-L1",
@@ -4752,7 +5985,15 @@
   "tags": [
    "adversarial-and-odd",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "no stickers; owner states a Palestine flag sticker on the lid",
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "flag sticker on lid vs no stickers"
+  }
  },
  {
   "lostId": "R2-adversarial-and-odd-08-L1",
@@ -4767,7 +6008,10 @@
   "tags": [
    "adversarial-and-odd",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-08-L1",
@@ -4782,7 +6026,15 @@
   "tags": [
    "adversarial-and-odd",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "Z scratched on back vs name sticker Hamed"
+  }
  },
  {
   "lostId": "R2-adversarial-and-odd-09-L1",
@@ -4797,7 +6049,10 @@
   "tags": [
    "adversarial-and-odd",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "Toyota car key with remote; owner says not a car key, no remote",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-09-L1",
@@ -4812,7 +6067,10 @@
   "tags": [
    "adversarial-and-odd",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-10-L1",
@@ -4827,7 +6085,10 @@
   "tags": [
    "adversarial-and-odd",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-10-L2",
@@ -4842,7 +6103,10 @@
   "tags": [
    "adversarial-and-odd",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "long umbrella with curved handle, not a small folding one",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-10-L3",
@@ -4857,7 +6121,10 @@
   "tags": [
    "adversarial-and-odd",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "Ray Ban sunglasses vs reading glasses with clear lenses",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-11-L1",
@@ -4872,7 +6139,10 @@
   "tags": [
    "adversarial-and-odd",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-11-L1",
@@ -4887,7 +6157,10 @@
   "tags": [
    "adversarial-and-odd",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "student ID card vs bank debit card",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-11-L2",
@@ -4902,7 +6175,10 @@
   "tags": [
    "adversarial-and-odd",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-11-L2",
@@ -4917,7 +6193,10 @@
   "tags": [
    "adversarial-and-odd",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "GUtech student card, not a Bank Muscat bank card",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-12-L1",
@@ -4932,7 +6211,10 @@
   "tags": [
    "adversarial-and-odd",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-12-L1",
@@ -4947,7 +6229,10 @@
   "tags": [
    "adversarial-and-odd",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "uni ID card vs resident card (finder says not uni card)",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-12-L2",
@@ -4962,7 +6247,10 @@
   "tags": [
    "adversarial-and-odd",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-12-L2",
@@ -4977,7 +6265,10 @@
   "tags": [
    "adversarial-and-odd",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "resident card in pink holder vs student card on blue strap",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-13-L1",
@@ -4992,7 +6283,10 @@
   "tags": [
    "adversarial-and-odd",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "name on card: Salim vs Salma",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-13-L1",
@@ -5007,7 +6301,10 @@
   "tags": [
    "adversarial-and-odd",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-14-L1",
@@ -5022,7 +6319,15 @@
   "tags": [
    "adversarial-and-odd",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "name on card Alia vs Ali",
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "name Alia vs name Ali"
+  }
  },
  {
   "lostId": "R2-adversarial-and-odd-14-L1",
@@ -5037,7 +6342,10 @@
   "tags": [
    "adversarial-and-odd",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-15-L1",
@@ -5052,7 +6360,10 @@
   "tags": [
    "adversarial-and-odd",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-15-L1",
@@ -5067,7 +6378,10 @@
   "tags": [
    "adversarial-and-odd",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "MacBook charger vs Samsung fast charger",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-16-L1",
@@ -5082,7 +6396,10 @@
   "tags": [
    "adversarial-and-odd",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-adversarial-and-odd-16-L2",
@@ -5097,7 +6414,10 @@
   "tags": [
    "adversarial-and-odd",
    "lookalike"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-01-L1",
@@ -5112,7 +6432,10 @@
   "tags": [
    "ordinary",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-01-L2",
@@ -5127,7 +6450,10 @@
   "tags": [
    "ordinary",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "dark blue silicone case vs transparent cover",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-02-L1",
@@ -5142,7 +6468,10 @@
   "tags": [
    "ordinary",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-02-L2",
@@ -5157,7 +6486,10 @@
   "tags": [
    "ordinary",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-02-L2",
@@ -5172,7 +6504,10 @@
   "tags": [
    "ordinary",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "black card holder vs light brown wallet",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-03-L1",
@@ -5187,7 +6522,10 @@
   "tags": [
    "ordinary",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-03-L2",
@@ -5202,7 +6540,10 @@
   "tags": [
    "ordinary",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "owner: just the remote, no keychain; found has another key and a red football keychain",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-04-L1",
@@ -5217,7 +6558,10 @@
   "tags": [
    "ordinary",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-04-L2",
@@ -5232,7 +6576,10 @@
   "tags": [
    "ordinary",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-04-L1",
@@ -5247,7 +6594,10 @@
   "tags": [
    "ordinary",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "metal bottle vs see-through bottle",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-04-L2",
@@ -5262,7 +6612,10 @@
   "tags": [
    "ordinary",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "plastic bottle with straw vs steel flask",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-05-L1",
@@ -5277,7 +6630,10 @@
   "tags": [
    "ordinary",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-05-L2",
@@ -5292,7 +6648,10 @@
   "tags": [
    "ordinary",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-05-L2",
@@ -5307,7 +6666,10 @@
   "tags": [
    "ordinary",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "Samsung phone charger vs Apple laptop charger",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-05-L1",
@@ -5322,7 +6684,15 @@
   "tags": [
    "ordinary",
    "trap"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-ordinary-06-L1",
@@ -5337,7 +6707,10 @@
   "tags": [
    "ordinary",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-06-L2",
@@ -5352,7 +6725,15 @@
   "tags": [
    "ordinary",
    "trap"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-ordinary-07-L1",
@@ -5367,7 +6748,10 @@
   "tags": [
    "ordinary",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-07-L2",
@@ -5382,7 +6766,10 @@
   "tags": [
    "ordinary",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-07-L1",
@@ -5397,7 +6784,10 @@
   "tags": [
    "ordinary",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-07-L2",
@@ -5412,7 +6802,10 @@
   "tags": [
    "ordinary",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "no cover (owner has it) vs slide cover on",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-08-L1",
@@ -5427,7 +6820,10 @@
   "tags": [
    "ordinary",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-08-L2",
@@ -5442,7 +6838,10 @@
   "tags": [
    "ordinary",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-08-L2",
@@ -5457,7 +6856,10 @@
   "tags": [
    "ordinary",
    "trap"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-08-L1",
@@ -5472,7 +6874,10 @@
   "tags": [
    "ordinary",
    "trap-soft"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-09-L1",
@@ -5487,7 +6892,10 @@
   "tags": [
    "ordinary",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-09-L2",
@@ -5502,7 +6910,10 @@
   "tags": [
    "ordinary",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "Adidas zip jacket with 3 stripes vs hooded pullover with tick logo",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-09-L3",
@@ -5517,7 +6928,10 @@
   "tags": [
    "ordinary",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-10-L1",
@@ -5532,7 +6946,10 @@
   "tags": [
    "ordinary",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-10-L2",
@@ -5547,7 +6964,10 @@
   "tags": [
    "ordinary",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-10-L2",
@@ -5562,7 +6982,10 @@
   "tags": [
    "ordinary",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "black sunglasses without case vs eyeglasses in a brown case",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-11-L1",
@@ -5577,7 +7000,10 @@
   "tags": [
    "ordinary",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-11-L2",
@@ -5592,7 +7018,15 @@
   "tags": [
    "ordinary",
    "trap"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": true,
+  "draft3": {
+   "a": "good",
+   "b": "good",
+   "note": ""
+  }
  },
  {
   "lostId": "R2-ordinary-12-L1",
@@ -5607,7 +7041,10 @@
   "tags": [
    "ordinary",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-12-L2",
@@ -5622,7 +7059,10 @@
   "tags": [
    "ordinary",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "owner says no stickers, found has stickers on top",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-13-L1",
@@ -5637,7 +7077,10 @@
   "tags": [
    "ordinary",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-13-L2",
@@ -5652,7 +7095,10 @@
   "tags": [
    "ordinary",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-13-L2",
@@ -5667,7 +7113,10 @@
   "tags": [
    "ordinary",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "spiral notebook vs textbook",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-14-L1",
@@ -5682,7 +7131,10 @@
   "tags": [
    "ordinary",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-14-L2",
@@ -5697,7 +7149,10 @@
   "tags": [
    "ordinary",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-14-L1",
@@ -5712,7 +7167,10 @@
   "tags": [
    "ordinary",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "silver Casio digital with metal strap vs smart watch with black strap",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-15-L1",
@@ -5727,7 +7185,10 @@
   "tags": [
    "ordinary",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-15-L2",
@@ -5742,7 +7203,10 @@
   "tags": [
    "ordinary",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-15-L3",
@@ -5757,7 +7221,10 @@
   "tags": [
    "ordinary",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "plain ring, no stone vs ring with a stone",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-16-L1",
@@ -5772,7 +7239,10 @@
   "tags": [
    "ordinary",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-16-L2",
@@ -5787,7 +7257,10 @@
   "tags": [
    "ordinary",
    "must"
-  ]
+  ],
+  "definitionLabel": "good",
+  "definitionNote": "",
+  "closeCall": false
  },
  {
   "lostId": "R2-ordinary-16-L3",
@@ -5802,6 +7275,14 @@
   "tags": [
    "ordinary",
    "trap"
-  ]
+  ],
+  "definitionLabel": "bad",
+  "definitionNote": "owner says no cover; found is in a black zip bag",
+  "closeCall": true,
+  "draft3": {
+   "a": "bad",
+   "b": "bad",
+   "note": "no cover vs in a black zip bag"
+  }
  }
 ]

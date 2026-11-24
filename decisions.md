@@ -11,6 +11,698 @@ The decisions made while turning the uni matching prototype into a real app, and
 - **Code.** `server/Zarqa.Api/Email/EmailLayout.cs` (`EmailLayout`, and one `EmailLook` per email in `EmailLooks`). Pictures: originals in `design/mascot/`, email copies in `web/public/mascot/email/` built by `python deploy/email-mascots.py`, left out of the app's offline cache.
 - **Verified.** Every email rendered in Chromium at 390 and 344 px wide: pictures load, nothing scrolls sideways. A test fails if an email names a picture that is not in the web app. **Not verified:** real mail apps (Outlook, Gmail, Apple Mail). After deploying, press **Send me a test email** on `/admin` and open it on a phone. The pictures only show once the web app that contains them is live.
 
+## 2026-11-19: A structured answer (F1) does not remove the stupid matches either; the track ends and set 6 stays sealed (benchmark only)
+
+**The idea.** After three sentences were not obeyed, F1 (`SOLO_FACTS=f1`) asked the reviewer to record two facts before its scores, `fact_same_kind` (same, unsure, different) and `fact_stated_difference` (none, slip, clear), and let code hold a shown pair for an admin when the kind is not "same" or the difference is "clear". Nothing hidden. Drafted, attacked by three critics (all "uncertain", their wording fixes folded in), rule and pass marks written before any answer. Six seen sets, 1,880 reviewed pairs, base and F1 each asked twice. Full reading: `benchmark/_workspace/tuning/F1_06_seen_result.txt`.
+
+| Six seen sets, on both asks | Base | F1 |
+|---|---|---|
+| Real items at 0.45 or more (of 810) | 783 | 790 |
+| Other pairs at 0.45 or more | 135 | 160 |
+| Pairs rated 2 or lower at 0.45 or more | 5 | 8 |
+| Shown at once with no admin look: real / other / stupid | 775 / 113 / 3 | 779 / 121 / 3 |
+| Newly held by the flag: real / other / stupid | | 2 / 3 / 1 |
+
+**Why it fails its rules.** The facts are written first in every answer and four of the five named pairs are flagged, so the reviewer does state them. But (rule 3) the stupid matches shown with no admin look stay at 3 and those at the line rise from 5 to 8, and (rule 6) the flag differs between two identical asks on 24% of flagged pairs (limit 20%). What happens instead: having written "clear" or "unsure" the reviewer scores the pair low, so it is not shown and the flag has nothing to hold; having written "same" and "none" it scores higher than before (real pairs +0.02 on average). The net is close to lowering the line: 7 more real items for 25 more other pairs and 3 more stupid ones. The one clean catch is the student ID against the bank card (0.65 and 0.59 become 0.53 and 0.52, flagged "unsure", held). The photo-set pairs are recorded as "same, none": the photo does not show the part the owner names, and no question to the model can change that.
+
+**Where this leaves the stupid matches.** Of 717 pairs rated 2 or lower on six sets the base shows 5 on both asks (0.7%), and three fresh raters put two of those at 2.3 to 4.7. Four reviewer-side candidates (three sentences and F1) moved none of the rest. What is left is not at the reviewer:
+- the found form asking for a photo of the whole item (the photo cases) and both forms asking for the kind of item (the "ring", "cap" and card cases);
+- the held band and the "about 0.5" answers, to be read on pilot outcomes (council, 4-0);
+- asking twice near the line, which the free forecast puts at 3 shown at once instead of 4.
+All three are the owner's. **Set 6 has not been run and stays sealed** for whatever is tested next.
+
+## 2026-11-19: The owner's stated-difference sentence, three wordings: none is obeyed (benchmark only)
+
+**Why.** A study of every pair rated 2 or lower that reaches 0.40 (16 of 729 on six sets; 9 touch the 0.45 line on one of two identical asks, 4 on both) asked Opus to explain itself with the same inputs. It sees the difference each time and then excuses it with a story neither report tells ("the finder or the office may have added the tag", "some student IDs are co-branded with a bank") and leans to a match "because recall matters". Three independent analysts read the same evidence the same way (`benchmark/_workspace/tuning/S1_stupid_match_causes.json`). Causes: a stated difference explained away (5 pairs), a photo that does not show the deciding part (3 or 4), a word with two meanings (2 or 3: "ring", "cap", a student card against a bank card), one local word translated wrongly, the rest noise near the line. Three fresh blind raters put 4 of the 16 at 4 to 5.3: those are not stupid matches. The owner then ordered: "add that sentence and test".
+
+**The wordings**, each as a last line of the reviewer's instructions (`SOLO_EXTRA`), each asked twice on all 1,892 pairs of the six seen sets against the base asked twice; read by rules written before any answer existed.
+- **S1**, the owner's sentence as drafted: "A detail only one report gives is missing; a detail both reports give differently is evidence against a match: weigh it by how likely an honest slip of memory or naming is, and do not explain it away with a story neither report tells."
+- **S1b**, the fix all three critics asked for before the test: limited to "the item itself", "this line is not about place or dates", a found item with less is not a difference.
+- **S2**, adds "that preferring recall does not cancel".
+
+| Six seen sets, shown on both asks | Base | S1 | S1b | S2 |
+|---|---|---|---|---|
+| Real items (of 810) | 783 | 782 | 780 | 783 |
+| Other pairs (of 1,070) | 135 | 126 | 135 | 129 |
+| Stupid matches | 5 | 5 | 4 | 7 |
+| Rated 2 or lower at 0.45 on either ask | 9 | 8 | 10 | 9 |
+
+**Reading.** No wording loses real items beyond the noise, and none removes the pairs it was written for: the student ID against the bank card, the ordinary USB stick for the odd-shaped one and the keys on a clip stay shown under all three. Opus lowers most scores by about 0.01 and goes on calling these pairs "plausible". S1b also pulls real date-order pairs down (mean -0.06), against the date fix. S2 shows more stupid matches on both asks than the base. By the written rule none goes to set 6. **A sentence is not the lever for this class.** Set 6 stays sealed.
+
+**What follows.** A structured answer (`SOLO_FACTS=f1`): before its scores the reviewer records two facts, whether the two items are the same sort of object and whether a feature both sides plainly give differs, and code holds a flagged pair for an admin instead of showing it at once. Nothing is hidden. On a smoke test of five of the known pairs all five were flagged. It is running on the seen sets; set 6 is its outside check. The other levers stay with the owner: a required item type and found photo on the form, and the held band.
+
+## 2026-11-19: The app told reviewers that the girls' residence is also the boys' dorms; whole-word place names behind a switch (committed, off by default, not deployed)
+
+**How it was found.** The council asked for a test that the app sends, byte for byte, what the accepted benchmark arm sent on set 5 (`server/Zarqa.Tests/SoloDateNotesGoldenTests.cs`; fixture from `benchmark/scripts/export-solo-dates-fixture.mjs`: 39 pairs with a date note, 25 found-first pairs at three days or more, 40 others). It failed on a pair whose found report says "Female Residences": the app's alias line read "Female Residences: ... | Boys Dorms: ...".
+
+**Cause.** The app matches a place name of more than three letters anywhere in the text, so "Female Residences" contains the Boys Dorms alias "male residences". The benchmark stopped doing that on 2026-11-14 (whole words only) and the entry of that day lists it among three faults "fixed in the benchmark only" that were never ported. In the app it reaches the alias line every reviewer reads, the prescore's place term and the embedded text.
+
+**Fix.** `MATCHING_WHOLE_WORD_PLACES=true` (`Models:WholeWordPlaces`) makes the app match whole words. Off by default, so the prescore fixture and today's behaviour are unchanged. With it on, all 104 recorded prompts equal the benchmark's byte for byte, and both system texts match by hash. Every benchmark number since 2026-11-14 was measured with whole words, so this switch belongs with Opus alone.
+
+**Still not ported** from that same list: the tokeniser that splits Arabic and German letters carrying marks, and "power bank" counting as Wallets & cards. Both change only the prescore (ranking), not what a reviewer reads; with every candidate over the floor reviewed they matter little, but the app and the benchmark still differ there.
+
+## 2026-11-19: Loop O2 accepted on outside set 5: the date notes for gaps of one and two days (accepted on the benchmark; in the app behind MATCHING_OPUS_DATE_NOTES, off by default, not deployed)
+
+**The arm.** A2 limited to gaps of one and two calendar days (`SOLO_DATES=a2 SOLO_DATES_GATE=2`), chosen 4-0 by the council after the full A2 failed one sign on the seen sets. Only when both dates are given and the found date is one or two days before the lost date: the reviewer's "an item cannot be found before it was lost" becomes "for this pair, weigh the dates as the line beginning "Dates:" after the two reports says", the owner-approved note is appended word for word (the one-day note at one day, the longer-gap note at two), and one line gives the day the LOST report was posted. Every other pair is sent as before.
+
+**Set 5, read once** (341 pairs, 220 real; base and arm each asked twice on the app's route; no failed call; 0 of 277 pairs outside the gate changed). Full reading: `benchmark/_workspace/tuning/O2_07_set5_result.txt`.
+
+| Set 5 | Base | With the date notes |
+|---|---|---|
+| Real items shown, first ask (of 220) | 201 | 217 |
+| Real items shown, second ask | 200 | 216 |
+| Other pairs shown, first ask (of 121) | 12 | 14 |
+| Stupid matches (of 67 rated 2 or lower) | 0 | 0 |
+| Real found-first pairs shown on both asks, one day (18) | 7 | 17 |
+| Real found-first pairs shown on both asks, two days (10) | 1 | 9 |
+| Honest score at show from 4 / 5 / 6 | 99 / 98 / 98 | 99 / 99 / 100 |
+| Easy pairs rated above 5 that are missed | 18 | 6 |
+
+**The five acceptance rules.** (1) Honest score at show from 5 is 1 point higher (98 to 99): pass, at the edge, with the base already near the ceiling. (2) Not worse at show from 4 and 6: pass. (3) No fewer real items at the base's line: 201 to 217, pass. (4) The halves pick lines within 0.10 (0.30 and 0.35): pass. (5) No more stupid matches: 0 and 0, pass. Both gaps show a gain on their own counts (10 and 8 real pairs on both asks; the bar was 3). **Accepted for the benchmark.**
+
+**Guard and costs.** No real pair shown by the base was lost. Of 19 found-first pairs rated 2 or lower none comes near the line (highest 0.33; base 0.16); the one-day guard rests on a single such pair, so it is "not tested" for one day. Newly shown on both asks: one wrong pair rated 3.0 at one day (house keys with a club medal against a big bunch of keys) and one look-alike rated 5.5 at two days. Slices: every one gains and none loses a real pair (Arabic 35 to 38 of 38, Arabizi 32 to 37 of 37, mixed-language 68 to 76 of 76, text-only 108 to 120 of 123). Four real pairs are still not shown on both asks: two rated 3 and 4.5 with stated differences, one bare "iphone charger" at 0.45 and 0.44, and a power bank the finder called a hard disk (rated 1.5).
+
+**What to hold against it.** The cut at two days was chosen after the seen-set answers were read. Set 5's writer was told that people are careless with dates, on real and false pairs alike, which is why it holds 28 such real pairs where set 4 held 3; it names no fix. Gaps of three days or more are untouched and unproven either way: no test set holds a real pair there except one at eight days that the base already shows. The debate and the plain Luna review, which stand in when an Opus call fails, keep the old sentence.
+
+**Side-read for the held band** (no pass or fail): the base's pairs scoring 0.50 to 0.549 are 9 real, 4 other and 0 stupid on set 5, and 6, 3 and 0 on set 4. On outsider-written sets the wider band would hold real items and catch no stupid match.
+
+**In the app (committed, off by default, not deployed).** `MATCHING_OPUS_DATE_NOTES=true` in the server's `deploy/.env` (`Models:OpusDateNotes`). `SoloReviewer.Prompt` builds the system text and the pair's text; with the switch off, and on every pair outside the gate, both are exactly as before (tested). The longer-gap note and the days-before helper are new in `TextRules`; tests read the benchmark's source and fail if a word of either note or of the pointer clause drifts. When the posting-day switch is also on, the posting day is already in the report and the extra line is left out. The debate and the plain Luna review are not touched.
+
+**Review of the app copy** (three angles, each finding attacked by a second reader). No fault in the tested configuration: wording, line order, the day count across month ends and the UTC+4 midnight, the two-day limit and the system text all equal the benchmark's. One real gap fixed: a lost report edited later to a new lost date would have been given its original posting day; the line is now left out when the lost date is after the posting day. Not tested together: the date notes with the posting-day switch (`MATCHING_POSTED_ON`); the notes were accepted with that switch off. Council verdict sitting (`O2_council_verdict.json`): build 4-0, recommend switching on with Opus 4-0 after one real found-first pair has been seen reviewed on the live server, gaps of three days or more left alone 4-0, recommend the form stop prefilling the lost date with today 4-0, turning on the old debate's one-day note 0-4 (it never passed an outside test and once showed a pair rated 2), next the held band on pilot data 4-0.
+
+**Set 5 is now a seen set.**
+
+## 2026-11-19: Loop O2, the date fix on the seen sets: 3 of 18 date-order real pairs shown becomes 15, and it failed one of its own rules by a pair (benchmark only)
+
+**Run.** Candidate A2 (`SOLO_DATES=a2`) against the base, each asked twice on all 1,892 pairs of the five seen sets and set 4, one pair per call on the app's route, no failed call. Read by the rules written into the loop state before any A2 answer existed. Full reading: `benchmark/_workspace/tuning/O2_06_seen_result.txt`.
+
+| Real pairs with the found date first | Base, shown on both asks | A2, shown on both asks |
+|---|---|---|
+| All 18 | 3 | 15 |
+| One day before (12) | 2 | 11 |
+| Two days before (5) | 0 | 3 |
+| Eight days before (1) | 1 | 1 |
+| Set 4's three, the only pairs written after the notes were frozen | 0 | 3 |
+
+- No real pair was lost. The three still missed are two whose owners name the lost date as a day they still had the item (the note's own exception) and one rated 5 in another place.
+- Guard: of 107 found-first pairs rated 2 or lower, none reaches 0.45 on either ask; the highest is 0.40 (base 0.17). On the seen sets this guard could not fail (those pairs differ in kind); set 4's 23 and set 5 are the real guard.
+- Wiring: 0 of 1,713 pairs outside the gate changed.
+- **Failed sign 5:** 3 not-real pairs rated 3 to 3.5 became shown on both asks; the limit written beforehand was 2. All three are at gaps of 3 to 6 days, where these sets hold no real pair. Per gap, not-real pairs rated 2.1 to 5 newly shown on both asks: one day 0 of 4, two days 0 of 7, three to six days 4 of 20, seven or more 1 of 7.
+- Totals on the first ask at 0.45 (real / other / stupid): 789 / 147 / 5 becomes 796 / 157 / 5.
+
+**Base noise, measured on all five seen sets.** Asked twice with identical prompts, the base shows 584 / 129 / 4 and then 581 / 132 / 8; 32 of 1,557 pairs change side, 9 of them real. The stupid-match count of the base is therefore 4 to 8, not 4.
+
+**Council, second go sitting** (`O2_council_go2.json`). The full A2 may not read set 5 (the rule decided that). The arm that does: A2 limited to gaps of one and two days (`SOLO_DATES_GATE=2`), 4-0; one day only 0-4; hold 0-4. Written down before the read: the cut at two days was chosen after the seen-set answers were read, the two gaps are read separately, a gated pair rated 2 or lower shown on either ask rejects the arm. Free checks before opening: on the seen sets the arm needs no new call, and set 5's prompts carry the note at one and two days and the old sentence at three.
+
+## 2026-11-19: Council rulings after loop O1, the cap forecast, and loop O2's candidate (benchmark only)
+
+**Loop O1 verdict** (`benchmark/_workspace/tuning/O1_council_verdict.json`, all 4-0). The helper-agent numbers are retired; 584 / 129 / 4 on the app's route is the base. Search and the floor are closed as a stage until a real pilot pair is lost there. Recommendations for the owner: keep the line at 0.45 and do not adopt 0.40; widen the held band to 0.45-0.549 as a precaution (the edge was read off seen sets, rests on two pairs from one in-house set and catches nothing extra on set 4; held pairs are shown after 48 hours anyway); switch Opus alone on for the pilot now with the hold fallback, after seeing one real Opus review work on the live server. One thing only the owner can confirm: with Opus on, the covered copies of card photos go to Anthropic through the Claude plan route, not only to Luna.
+
+**The cap of 100 candidates per report, forecast for free** (no model review; generated filler reports added). Outside set 4: all 208 real pairs stay inside the cap at 810, 1,210 and 1,610 reports (deepest real pair at rank 17, 22, 27). In-house text set, round 3: deepest real pair at rank 70 at about 650 reports; at about 1,200 reports the cap cuts 1 real pair (rated 5.5), at about 1,600 it cuts 2 (one rated 8). So the cap costs nothing at pilot size and starts to cut somewhere past 1,000 reports. Filler reports are generated, so real same-kind clutter may bite sooner.
+
+**Loop O2 agenda** (`O2_council_agenda.json`). Date order: attack 4-0. Another place 0-4, a stated difference answered "about 0.5" 1-3 (People dissented: it holds 3 of the 4 stupid matches), remembered details 0-4, thin found reports 0-4 and to the docket. Condition: the prompt must not hold both "an item cannot be found before it was lost" and a note saying the opposite.
+
+**Candidates.** The drafter's first two (A: the owner's two date notes appended on gated pairs; B: a softer timing clause on every pair) drew six "uncertain" verdicts and no "fail". Revised once to meet the critics and the council:
+- **A2** (`SOLO_DATES=a2`). Only when both dates are given and the found date is first: the system's timing clause reads "for this pair, weigh the dates as the line beginning "Dates:" after the two reports says", the owner-approved one-day note or longer-gap note is appended word for word, and one line gives the day the LOST report was posted. Every other pair's prompt is unchanged.
+- **B2** (`SOLO_DATES=b2`). The same gate; the clause itself carries a shortened form of the notes (the long-gap passage and the "today counts from the posting day" passage cut) and nothing is appended. Fallback only.
+
+**Go or no-go** (`O2_council_go.json`). A2: test 4-0. B2: test 3-1, only if A2 fails by not being obeyed or by losing a longer-gap real pair, never if A2 breaks the guard. The reading rules were written into the loop state before any A2 answer existed: base and candidate each asked twice; a pair counts as shown only on both asks; A2 must show at least 3 more of the 18 real gated pairs than the base; any gated pair rated 2 or lower newly at 0.45 on either ask rejects it; if neither of set 4's two two-day pairs is fixed, only the one-day gate goes to set 5.
+
+**Set 5, counted from its dates and labels only before opening:** 28 real pairs with the found date first (18 one day, 10 longer) and 36 not-real ones (18 rated 2 or lower, 1 of them one day). The writer's brief for set 5 carried one sentence more than set 4's, that people are careless with dates on real and false pairs alike; it names no fix, but it is why this class is larger than in set 4 (3 real pairs) and is stated with the result.
+
+## 2026-11-19: Outside set 4, read once: Opus alone shows 205 of 208 real items, and every miss is a date-order pair (benchmark only)
+
+**The set.** Written blind before any run by an outside agent (`benchmark/data/independent4`: 432 reports, 335 pairs, 208 real), with marked slices of the reports real students write: vague, misspelt, Arabic, Arabizi, mixed-language, the wrong kind of item named, text-only. Card reports are text only. Two blind raters on every pair, within one point on all 335. `edge-outside.js check` clean. What would be read was written down first.
+
+**The reading** (Opus alone, every candidate reviewed, one pair per call through the app's gateway, no failed call):
+
+| Line | Real items (of 208) | Other pairs (of 127) | Stupid matches (of 63 rated 2 or lower) |
+|---|---|---|---|
+| 0.45 | 205 | 18 | 1 (scored 0.473, so held for an admin) |
+| 0.40 | 205 | 21 | 1 |
+
+By the owner's scoring 99% of the most possible (honest figure 99%); 4 wrong suggestions (rated under 5 and shown).
+
+**Search holds on messy reports.** Real pairs shown: vague 27 of 27, misspelt 29 of 29, Arabic 27 of 27, Arabizi 28 of 28, mixed-language 54 of 54, wrong kind named 25 of 25, text-only 119 of 122. No real pair was lost at search, at the floor or at the cap in any slice.
+
+**All three misses have the found date before the lost date**, and they are the only three such real pairs in the set: a grey North Face jacket in the same library (found two days "before" it was lost, 0.28), a Nissan key in the same parking (one day, 0.38), an Apple Watch at the gym (two days, 0.24). The other 205 real pairs are all shown. On the five seen sets the same class is 52% of the cost by the owner's scoring (diagnosis in `benchmark/_workspace/tuning/O2_02_diagnosis.json`): the reviewer is told "an item cannot be found before it was lost" and applies it to dates people type from memory.
+
+**The declared comparison and today's app** (the old debate's run finished the same day, all on the ChatGPT plan, no failed call):
+
+| Set 4 | Real items (of 208) | Other pairs (of 127) | Stupid matches |
+|---|---|---|---|
+| The app as committed (Luna debate, screen and cap of 10, line 0.55) | 204 | 26 | 4 |
+| Opus alone, the old screen and cap, 0.45 | 204 | 18 | 1 |
+| Opus alone, every candidate reviewed, 0.45 | 205 | 18 | 1 |
+
+Reviewing every candidate passes the rule written down beforehand (at least as many real items, no more stupid matches): one more real item, rated 10, a USB stick shaped like a car remote that the finder called "car key?", which the screen had dropped. It is one pair, inside the noise on its own, and in the same direction as the seven on the seen sets. Today's app is close to Opus on this set in real items (204 against 205; honest score 98% against 99%) and worse on wrong pairs (26 against 18) and stupid matches (4 against 1). The large gap on the seen sets (468 against 584 real items) comes mostly from the two in-house sets; on a set written by an outsider the two are much nearer. Today's app misses the same three date-order pairs (0.22, 0.46 and 0.21 against its line of 0.55).
+
+**Set 4 is now a seen set.** Set 5 (`benchmark/data/independent5`, 341 pairs, 220 real, written and rated the same way) is sealed for loop O2.
+
+## 2026-11-19: Opus alone measured the way the app calls it; the helper-agent numbers were too good (benchmark only)
+
+**What was run.** Step A of loop O1, ordered by the council 4-0: Opus alone on all five seen sets through the Claude Code gateway, one pair per call, every candidate over the floor reviewed, effort high (`<key>-opus-route`). 1,557 pairs, no failed call. Outside set 3 was asked twice.
+
+| Real items / other pairs / stupid matches | Helper agents, 0.45 | App's route, 0.45 | Helper agents, 0.40 | App's route, 0.40 |
+|---|---|---|---|---|
+| Outside set 1 (108 real) | 106 / 16 / 1 | 103 / 14 / 0 | 107 / 20 / 1 | 105 / 15 / 0 |
+| Outside set 2 (105 real) | 104 / 22 / 0 | 102 / 16 / 0 | 104 / 25 / 0 | 102 / 22 / 0 |
+| Outside set 3 (113 real) | 112 / 13 / 0 | 112 / 13 / 0 | 112 / 20 / 0 | 112 / 20 / 1 |
+| Photo set, round 3 (92 real) | 91 / 9 / 1 | 89 / 20 / 3 | 92 / 11 / 2 | 90 / 21 / 3 |
+| Text set, round 3 (184 real) | 179 / 50 / 0 | 178 / 66 / 1 | 180 / 59 / 0 | 178 / 78 / 6 |
+| **All five (602 real)** | **592 / 110 / 2** | **584 / 129 / 4** | **595 / 135 / 3** | **587 / 156 / 10** |
+
+**Reading.** On the app's route Opus shows 8 fewer real items, 19 more other pairs and 2 more stupid matches at 0.45 than the helper agents suggested. Four of the five sets differ by more than the chance band on at least one count. The helper agents saw ten neighbouring pairs in one sitting and that flattered them, as suspected. **The base for the loop is 584 / 129 / 4 at 0.45, not 592 / 110 / 2.** It is still far ahead of the app as committed (468 / 228 / 69 on four of these sets).
+
+**Run-to-run.** Outside set 3 asked twice: 4 of 285 pairs change side at 0.45 (one of them real), 1 at 0.40. The median score moves 0.01 between two identical calls, the 90th percentile 0.04, the largest 0.17. A difference of one or two pairs per set is noise.
+
+**0.40 is not safe on the app's route.** It adds 3 real items and 6 stupid matches (4 to 10). The helper runs had shown 2 at both lines.
+
+**Where the wrongly shown pairs sit.** Scores of 0.50 to 0.549 hold 15 real items, 25 other pairs and 2 of the 4 stupid matches; the held band of 0.45 to 0.499 holds 9 real, 22 other and none of them. An unsure Opus answers "0.5", which lands just above the band meant to catch it.
+
+**Seen in passing, for the next loop's diagnosis.** A real pair rated 9 and easy ("Xiaomi power bank silver, lost on the bus" against "Mi power bank") scores 0.30 on both asks because the found date is one day before the lost date. Photos do reach the model through the gateway (checked by asking it to describe three of them).
+
+**Calls per report.** On the 650-report test database 81 to 92 candidates per report pass the 0.56 floor, so the cap of 100 is nearly reached. At 200 open reports it will be far fewer, but the floor is doing little and "Re-check open reports" means thousands of Opus calls.
+
+## 2026-11-19: A match made while the Opus call is failing can be held for an admin (committed, off by default, not deployed)
+
+**Why.** With Opus alone on, a failed call (gateway down, signed out, plan limit, unusable answer) sends the pair to the Luna debate, and until now its match was shown like any other. In tests the debate showed 69 clearly wrong pairs on four sets against 2 for Opus on five. All four council seats recommended that such matches not reach people unseen, and the owner allowed anything that affects matching to be built while away, behind a switch.
+
+**What.** `MATCHING_OPUS_FALLBACK=hold` in the server's `deploy/.env` (`Models:OpusFallback`). The debate still reviews the pair, so nothing is missed, but a match it finds is stored as Held whatever its score: nobody is notified, an admin approves or rejects it on To review, and after 48 hours it is shown anyway, as with every held match. The To review card now shows the label the owner will see (it follows the score) and the line "Made by the backup reviewer while the main one was down". The default, `debate`, is unchanged behaviour. Only a plain off value (`debate`, `false`, `off`, `no`, `0`, empty) shows stand-in matches directly; anything else, a typo included, holds, because a match held by mistake is released after 48 hours and one shown by mistake cannot be taken back.
+
+**Not built.** Trying Opus again later instead of the debate. The worker gives up after three attempts, so a long plan limit would lose reviews; the hold keeps recall and puts a person in front of the weaker reviewer.
+
+**Checked.** A review panel (three angles, each finding attacked by a second reader) found no fault in the matching logic and four smaller points, all fixed: the admin card's label and reason, the fail-safe for mistyped values, a test that pins the default, and this note. 412 server tests and the admin page browser tests pass.
+
+## 2026-11-19: The tuning loop re-planned for Opus alone; loop O1 is a proving loop (benchmark and harness only)
+
+**Why.** The loop was built to tune the wording of two advocates and a judge. The owner has since moved matching to Opus alone, four wording loops accepted nothing, and the largest loss turned out to sit at the screen and cap in front of the reviewer. The owner asked for the loop to be planned again with the harness and the council.
+
+**By the owner's scoring, where Opus alone still loses** (helper-agent runs, old screen and cap, line 0.45, five seen sets). Misses: 39 pairs, cost 44.4; 13 of them (cost 26.4) never reached the reviewer, 26 (cost 18.0) were reviewed and scored under the line. Only 9 of the 39 are the true pair; 30 are pairs nothing in the two reports separates (a twin, a bare "wallet"). Wrong suggestions: 16 pairs, cost 3.9. No true pair is lost at search or the floor, but the five sets hold no vague, misspelt, Arabic or Arabizi reports, so they cannot test those stages.
+
+**Council, agenda sitting** (`benchmark/_workspace/tuning/O1_council_agenda.json`). A, measure Opus as built (one pair per call through the gateway): attack 4-0. D, a fresh blind outside set 4, read once: attack 3-1, after A (People dissented on order). E, a hard test of search: 1-3, folded into set 4 as a marked slice. B (pairs scored under the line), C (wrong suggestions), F (thin reports), G (fallback), H (the panel of judges for the owner's rules): skipped 0-4 each. No wording is written this loop.
+
+**Council, the loop's new shape** (`O1_council_shape.json`). Carried 4-0: (1) the loop may change any one stage per loop, and a stage is opened only when a rated set shows real pairs lost there; (2) a free forecast gate from recorded answers, which may only drop an idea; (3) only one-pair-per-call runs through the app's route count, failed calls are reported and never filled in; (4) the base is Opus alone with every candidate reviewed at 0.45, measured afresh on that route and run twice for the run-to-run band, with the Luna debate kept as a second reference row; (5) the outside set is written before any candidate exists and stays sealed; (6) a mechanical check that raters were shown what the reviewer is sent; (7) the stop count is reset once for the change of system. Not carried 1-3: closing old docket items 1 to 16 as a block; judging a line-only or hide-only change on real items and stupid matches alone (it gets three counts and no pass or fail; a line move is the owner's).
+
+**Built.** `tune-matcher-prompts` rewritten to these steps (name kept); its acceptance, council and run notes updated; the analyst, drafter and critic agents made stage-aware. `SOLO_REVIEW=opus` with `OPUS_BASE_URL` sends the benchmark's one-model review through `deploy/claude/gateway.mjs` (no paid route behind it). `scripts/edge-forecast.js` is the free gate; on the recorded runs it reproduces 585/103/2 -> 588/127/2 for 0.45 -> 0.40 and 592/110/2 for reviewing every candidate. `scripts/edge-outside.js check` compares what raters saw with what a reviewer is sent; sets rated before today have no record.
+
+**One disclosure.** The council conditioned gateway runs on the owner's yes to the plan allowance. The runs were started on the owner's standing instruction that testing uses the Claude plan; the question is on the docket as O1 all the same.
+
+**For the owner** (`benchmark/_workspace/tuning/owner-docket.md`, O1 to O14): the plan allowance for testing; the line (all four seats: keep 0.45 and settle it on pilot reports); what a failed Opus call falls back to (all four seats: hold or retry, do not show the debate's answer directly); thin reports and twins (ask for colour or a mark on the form); when to switch Opus on.
+
+## 2026-11-18: With Opus alone, every candidate over the floor is reviewed (committed, off with the Opus switch, not deployed)
+
+**Owner's steer.** Fewer than 200 reports are expected in real use, so Opus usage on the plan is not a concern; a missed match is the worst outcome and a wrong suggestion is bad but less so.
+
+**Where the remaining misses were.** With Opus alone at 0.45 on the five rated sets, 585 of 602 real items are shown. Of the 17 missed, 10 were reviewed and scored under the line (mostly weak pairs, rated 2 to 6.5), and **7 never reached the reviewer**: all seven passed the prescore (0.66 to 1.0, two of them ranked first or second by search) and were dropped by the Luna screen or by the cap of 10 after it. Raters put those seven at 10, 10, 9, 8, 8, 6 and 5.5. The reviewer is no longer the weak link; the step in front of it is.
+
+**What changes.** When the one-model review is on, the screen is skipped and every candidate over the 0.56 prescore floor is reviewed, up to 100 (`Matcher.OpusMaxCandidates`). The debate path keeps its screen and its cap of 10. Worked out from the Opus answers already recorded for every rated pair, with no new model calls:
+
+| Five rated sets, Opus alone | Real items (of 602) | Other pairs (of 955) | Stupid matches (of 669) |
+|---|---|---|---|
+| Screen, then the best 10 (as built on 2026-11-17), line 0.45 | 585 | 103 | 2 |
+| Everything over the floor, line 0.45 | 592 | 110 | 3 |
+| Everything over the floor, line 0.40 | 595 | 135 | 4 |
+| Everything over the floor, line 0.35 | 598 | 168 | 8 |
+
+A cap of 30 by prescore would still lose four real pairs (ranked 34, 36, 54 and 70), so the cap is 100, which at the expected size means no cap. The line stays 0.45: lowering it is the owner's call and is better settled on pilot reports. One more stupid match (3 against 2) is inside the chance band but is, strictly, more than the base; the owner has ruled that a missed match is worse.
+
+**That extra stupid match is a flaw in the test set, not in the model** (owner asked to see it). It is the campus photo set's pair `L-O-wallet-11` / `F-O-wallet-01`: a thin brown card sleeve lost in the GU1 cafeteria against "wallet found on a table" in the Canteen. The raters gave it 1 of 10 with the note "thick black wallet vs brown card sleeve", which they read off the found photo. That photo was later removed from the set because it shows a payment card, so no model ever sees it: all a model gets is "wallet found on a table" in the same place, and by the owner's own rule a thin report is not evidence against a match. Opus scored it 0.455, leaning balanced, which lands in the held band. The Luna and Terra debate scored the same pair higher, 0.597, and would have shown it too; it stayed hidden only because the screen and the cap of 10 happened to drop it. The four rated pairs that involve `F-O-wallet-01` carry ratings made with a photo the models cannot see and should be rated again from the text alone before that set is used for another verdict.
+
+**Rated again, and the rest of the sets checked (same day).** Only three found reports had a photo removed for showing a card (`F-052` in the first outside set; `F-O-wallet-01` and `F-O-wallet-04` in the campus photo set), which is 9 rated pairs. Across all 1,557 rated pairs those are the only ones whose rating note describes something seen in a photo the models do not get; no set has a photo on the lost side, every photo a report names exists, and the helper agents were given exactly the photos the sets name. Two blind raters scored the 9 from the text alone, mixed with 12 untouched pairs as a control: the two were within one point of each other on all 21, and within one point of the old ratings on 10 of the 12 controls (mean gap 0.5).
+
+| Pair | Same item | Old | New |
+|---|---|---|---|
+| `L-085` / `F-052` (found text: "wallet") | yes | 9 | 6 |
+| `L-O-wallet-01` / `F-O-wallet-01` ("wallet found on a table") | yes | 9 | 6 |
+| `L-C-F25` / `F-O-wallet-01` | no | 3.5 | 6 |
+| `L-O-wallet-10` / `F-O-wallet-01` | no | 1.5 | 5 |
+| `L-O-wallet-11` / `F-O-wallet-01` | no | 1 | 5 |
+| `L-O-wallet-04` / `F-O-wallet-04` (a full description) | yes | 10 | 9 |
+| `L-O-wallet-01` / `F-O-wallet-04` | no | 4.5 | 3.5 |
+| `L-O-wallet-02` / `F-O-wallet-04` | no | 3 | 3 |
+| `L-O-wallet-03` / `F-O-wallet-04` | no | 0 | 1 |
+
+The five pairs on a bare "wallet" moved a lot, in both directions: with nothing but that word, the real owner and three other owners are all "nothing differs, many would fit". The four on the found report that carries a real description barely moved. The new ratings are in the two `pairs.json` files; the old ones are kept beside them as `ratingWithRemovedPhoto`.
+
+**What it changes in the numbers.** Nothing in the totals reported so far: the app as committed stays at 468 / 228 / 69 on four sets, the app with the photo judge at 471 / 180 / 30 and 581 / 206 / 35, Opus alone at 474 / 91 / 1 and 585 / 103 / 2, and the honest scores of the two sets are unchanged. Opus alone reviewing every candidate now reads 592 / 110 / **2** at 0.45 (was 3), 595 / 135 / 2 at 0.40 (was 4) and 598 / 168 / 6 at 0.35 (was 8): widening the review adds no stupid match at 0.45 or 0.40.
+
+**Limits.** These are the same Opus answers as before (helper agents, 10 pairs per sitting, one run). The test sets hold only the pairs their writers made; on real data reviewing every candidate also reviews lookalikes no set contains, so wrong suggestions will rise by more than the seven shown here. Considered and set aside on the owner's steer: Haiku in front of Opus (Opus asked only when Haiku scores 0.3 to 0.7 gave 216 real / 36 other / 2 stupid against 215 / 33 / 1 for Opus on every pair on outside sets 2 and 3, with Opus called on 24% of pairs), and a lower reasoning level; both save usage, which is not the constraint.
+
+**Also corrected.** Tables in the 2026-11-16 entries label a row "today's app". Those runs had the photo-judge switch on, which is off by default in the app. The app as committed (text-only judge, 0.55) on the four sets that have such a run shows 468 of 489 real items, 228 other pairs and 69 stupid matches; with the photo judge 471 / 180 / 30; Opus alone at 0.45 on the same four sets 474 / 91 / 1.
+
+
+## 2026-11-16: Loops H1 and H2 with Haiku, the loop council, and a rule that halves stupid matches (benchmark only)
+
+**Owner's rulings.** "Remember that we can't also make stupid matches": a pair shown although raters put it at 2 of 10 or lower is counted in every test (`benchmark/scripts/edge-stupid.js`), and a change that shows more of them than the base is not accepted (fifth acceptance rule). The owner also asked for a loop council built with the harness and council plugins, so the loop keeps going without waiting for them.
+
+**The loop council** (`tune-matcher-prompts`, `references/council.md`): four seats from the `agentic-council` plugin (Oracle for evidence, Skeptic for risk, Advocate for the people using the app, Strategist for priority) and a chair (Steward) sit three times per loop: what to attack, which candidates to test, what to do after the verdict. Three of four votes carry; two against two is no. It cannot overrule a critic's `fail`, the acceptance rule, or the owner's rules, and anything that is the owner's goes on a docket (`benchmark/_workspace/tuning/owner-docket.md`).
+
+**Noise floor** (the council asked for it). Haiku's unchanged judge run twice on outside set 2: honest score 97% then 96%, real items 103 then 102, other pairs 48 then 44, stupid matches 11 then 10; 11 of 267 pairs crossed 0.35; mean absolute score change 0.048. Anything smaller than about one point, one real item or four other pairs per set is chance.
+
+**Loop H1: the two date notes with Haiku.** On the 83 pairs they apply to: real items 12 of 13 before and after, 9 more other pairs shown, stupid matches 33 to 34. Haiku already shows the real one-day-early pairs without help. No gain; not accepted for Haiku (their result with Luna and Terra stands as recorded below).
+
+**Loop H2.** Diagnosis of Haiku at 0.35 on the four seen sets: 24 missed and 99 wrongly shown; the largest class by far is a conflict that an advocate named and the judge still scored 0.35 to 0.50 (75 pairs), and the judge gives the same 0.35 to 0.39 to thin real pairs with nothing against them.
+
+| Candidate (as the council trimmed it) | Critics | Council | Seen sets at 0.35: real / others / stupid | Result |
+|---|---|---|---|---|
+| Base Haiku | | | 474 / 193 / 33 | |
+| J1r, judge: thin evidence is not a low score; a conflict is a difference no ordinary slip explains (`JUDGE_CONFLICT=1`) | J1 stopped by a `fail` (an owner writing Anker for a Baseus); the revision drew three `uncertain` | test parts 1 and 2 (4-0 each, part 2 trimmed), drop the no-photo sentence (0-4) | 477 / 220 / 42 | rejected at the seen-set step |
+| A1, advocates: different places and neighbouring shades are weak evidence (`ADVOCATE_PLACE_SHADE=1`) | three `uncertain` | place 4-0; shades 4-0 with "a different colour family is a contradiction" cut; the stated-difference clause dropped 1-3 | 477 / 216 / 40 | rejected at the seen-set step |
+
+Both lifted every pair, not only the ones they were aimed at. On the 220 pairs with two different named places, A1 moved real items 30 to 31, other pairs 46 to 61 and stupid matches 8 to 14: a different place was keeping lookalikes out. J1r did make the line less fragile on short text (0.35 to 0.40 loses 3 real items instead of 11), but its conflict half does not bite. Outside set 3 was not spent on either.
+
+**A rule in code, found while checking.** The judge already returns which case was stronger. "Do not show a pair when the judge says the case against is stronger" (`edge-stupid.js --not-against`, no new model calls, no tuned number):
+
+| Four seen sets | Real items (of 489) | Other pairs (of 783) | Stupid matches (of 545) |
+|---|---|---|---|
+| Today's app, Luna and Terra at 0.55 | 471 | 180 | 30 |
+| Haiku at 0.35 | 474 | 193 | 33 |
+| Haiku at 0.40 | 462 | 142 | 18 |
+| Haiku at 0.35 with the rule | 470 | 151 | 16 |
+
+The four real items it hides are rated 4.5 to 5.5 (navy hoodie against "black jacket", maroon against "brown wallet"). With the rule, lowering the line to 0.30 loses no real item. On Terra's answers the rule changes nothing: Terra already scores those pairs under 0.55. **This was found on the four sets it is reported on**; the fresh check is outside set 3.
+
+**The council's verdict sitting (H2).** J1r and A1 recorded as rejected, 4-0. The rule gets no accepting test, 1-3: it hides real items on the seen sets, so it fails the seen-set step that stopped J1r, and a rule that only hides pairs can at best tie on "no fewer real items"; how such a rule is to be judged is the owner's. Outside set 3 is read as information, 4-0. Wording loops for Haiku stop until the owner answers, 4-0 (two loops with nothing accepted). A repeat run on set 3 to measure chance, 4-0.
+
+**Outside set 3** (`data/independent3`: 269 reports, 285 pairs, 113 real, written by the `outside-benchmark-writer` and rated by two blind raters who are within one point on all 285 pairs). The lines (0.55 and 0.35) and the rule were fixed before it was scored; only totals and ratings were read, no pair text. Different models at different lines, read as information, nothing accepted:
+
+| Outside set 3 | Real items (of 113) | Other pairs (of 172) | Stupid matches (of 124) | Honest score, show from 5 |
+|---|---|---|---|---|
+| Today's app, Luna and Terra at 0.55 | 110 | 26 | 5 | 96% |
+| Haiku at 0.35 | 112 | 31 | 6 | 98% |
+| Haiku at 0.35 with the rule | 112 | 21 | 2 | |
+
+Against the measured chance band (about one real item, four other pairs and one stupid match per set) the rule's drop in stupid matches is outside it and it hid no real item here; Haiku's two extra real items over today's app are at the edge of it. Haiku ran through helper agents, 10 to 12 pairs at a time, not the app's route.
+
+**Owner's idea, started the same day: a panel of Haikus instead of instruction lines.** Six members, each answering for one rule only (kind of object, names and marks, brand, colour and material, place, time) and scoring how well a pair follows it. The ways of combining the six scores were written down before any score existed (`benchmark/_workspace/tuning/state.json`): the plain average; the average with the pair hidden when the kind or marks member says "differs"; the debate score with the same hiding; and a regression fitted on half the item kinds and scored on the other half. A close relative, Jev's typed questions decided in code, lost to the debate earlier in this log, with a weaker model and no photos.
+
+**The panel's first result** (outside set 2 and text round 3, both seen: 372 real items, 394 other pairs, 249 rated 2 or below; every member scored all 683 pairs; `scripts/plan-agents/members-workflow.js` and `panel-score.py`):
+
+| Two seen sets | Honest score, show from 5 (set 2 / round 3) | Real items | Other pairs | Stupid matches |
+|---|---|---|---|---|
+| Today's app, Luna and Terra at 0.55 | 98 / 96 | 276 | 114 | 16 |
+| Haiku debate at 0.35 | 97 / 97 | 279 | 116 | 17 |
+| Haiku debate, hidden when the judge sides against | | 275 | 96 | 9 |
+| Panel alone, plain average (its best line, 0.60) | 91 / 93 | 278 | 174 | 61 |
+| Panel alone, average, hidden when kind or marks differs (0.60) | 95 / 94 | 277 | 157 | 52 |
+| Panel alone, fitted weights (0.40 / 0.45) | 95 / 88 | 281 | 206 | 94 |
+| Haiku debate, hidden when the kind or marks member says "differs" | 97 / 97 | 277 | 104 | 12 |
+
+**The panel does not replace the debate.** Alone it shows three to five times the stupid matches. The reason is in the scores: most members answer "not stated" (0.5) on most pairs, so two reports of the same kind of thing in the same place average about 0.67 with nothing else agreeing, and that is exactly a stupid match. The fitted weights do not rescue it (on round 3 the two halves fit different weights and the honest score falls to 88). Six separate answers cannot tell thin evidence from conflicting evidence; weighing them against each other is what the debate and the judge do.
+
+**As a veto on top of the debate it is about level with the judge-sides-against rule**, at two more model calls per pair: fewer stupid matches than the plain debate (17 to 12, against 9 for the rule) and two real items lost (against four). One of the two was rated 10 of 10: a two-language pair where the kind member called the Arabic word a different object. Read after the fact on the same two sets: the kind member's veto does nothing useful (it hides that one real item and no wrong pair); the marks member alone gives 278 / 104 / 12; hiding only when the judge sides against and a member also says "differs" gives 279 / 109 / 13, no real item lost. These three were picked after seeing the scores.
+
+**The veto on outside set 3** (kind and marks members only; what would be read was written down before their scores existed; information, nothing accepted): Haiku debate 112 real / 31 other / 6 stupid; hidden when kind or marks says "differs" 112 / 26 / 3 (the marks member alone gives the same); hidden when the judge sides against 112 / 21 / 2. So the veto holds on a set it was not built on and loses no real item there, but the rule that needs no extra model call does more. **The owner then said this was not what was meant** ("i meant judges will represent our rules"): each member should be a judge standing for one of our rules, not a checker of one attribute. That version has not been built or run.
+
+**Owner's next ask, the same day: "test a smart model alone, one Opus, no debate system."** One Claude Opus helper agent per 10 pairs on the Claude plan (`scripts/plan-agents/solo-workflow.js`): no advocates, no separate judge; the judge's `same_item` and `overall` questions with the advocates taken out, the app's rule sentence word for word, the same photos; score = 0.5·same_item + 0.5·overall as in the app. How it would be read was written down before any score existed. First on the two outside sets with photos (sets 2 and 3: 218 real items, 334 other pairs, 229 rated 2 or below):
+
+| Outside sets 2 and 3 | Honest score, show from 5 (set 2 / set 3) | Real items | Other pairs | Stupid matches |
+|---|---|---|---|---|
+| Today's app, Luna and Terra at 0.55 | 98 / 96 | 212 | 63 | 11 |
+| Haiku debate at 0.35 | 97 / 98 | 215 | 79 | 17 |
+| Haiku debate, hidden when the judge sides against | | 215 | 58 | 9 |
+| Opus alone at 0.55 | 99 / 98 | 209 | 25 | 0 |
+| Opus alone at 0.45 | 99 / 98 | 215 | 33 | 1 |
+| Opus alone at 0.35 | 99 / 98 | 216 | 60 | 3 |
+
+Opus's scores follow the raters' quality ratings more closely than any other setup's (rank correlation 0.95 on both sets, against 0.91 to 0.92), and its honest score holds at "show from" 4 and 6 (99 / 99 and 99 / 98). At 0.45 it shows three more real items than today's app, about half the other pairs and one stupid match against eleven: the last two are far outside the chance band (about one real item, four other pairs and one stupid match per set), the first is at its edge. **Limits.** The line is not settled: the halves pick 0.30 to 0.45, and 0.45 is read off these same two sets; at the app's 0.55 it loses three real items. Opus saw 10 pairs in one sitting, as Haiku did, while the app sends one pair per call. One run per set. Not priced. Benchmark only; nothing in the app changes.
+
+**Opus alone on all five rated sets** (602 real items, 955 other pairs, 669 rated 2 or below; every pair scored, none skipped):
+
+| Five sets | Real items (of 602) | Other pairs (of 955) | Stupid matches (of 669) |
+|---|---|---|---|
+| Today's app, Luna and Terra at 0.55 | 581 | 206 | 35 |
+| Haiku debate at 0.35 | 586 | 224 | 39 |
+| Haiku debate, hidden when the judge sides against | 582 | 172 | 18 |
+| Opus alone at 0.55 | 564 | 71 | 1 |
+| Opus alone at 0.50 | 576 | 86 | 1 |
+| Opus alone at 0.45 | 585 | 103 | 2 |
+| Opus alone at 0.40 | 588 | 127 | 3 |
+| Opus alone at 0.35 | 591 | 159 | 7 |
+
+Honest score at "show from 5", set by set (outside 1, outside 2, campus photos, text round 3, outside 3): Opus alone 97 / 99 / 98 / 98 / 98; today's app 96 / 98 / 90 / 96 / 96; Haiku debate 95 / 97 / 95 / 97 / 98. Opus is ahead or level on every set, and its best line sits between 0.30 and 0.45 on every half of every set, so one fixed line near 0.40 to 0.45 serves all five; at the app's 0.55 it loses 17 real items against today's app (9 of them on short text). At 0.45 it shows four more real items than today's app with half the other pairs and 2 stupid matches against 35. The limits above stand (10 pairs per sitting, one run, the line read off the same sets, not priced). What this does not say yet is whether the gain comes from the stronger model or from dropping the debate: Sonnet alone and Haiku alone are run next on outside sets 2 and 3 to separate the two.
+
+**Is it the model or the missing debate? Both.** Sonnet alone and Haiku alone, same prompt and photos, outside sets 2 and 3 (218 real items, 334 other pairs, 229 rated 2 or below). Cost is a rough estimate per 1,000 pair checks from list prices on 2026-11-03 (Opus $4 / $20, Sonnet $2 / $10, Haiku $0.10 / $0.50 per million tokens in / out), about 700 tokens of text plus about 1,050 for one photo, and an assumed 150 to 500 thinking tokens; not a measured bill.
+
+| Outside sets 2 and 3 | Honest score (set 2 / set 3) | Real items | Other pairs | Stupid matches | Calls per pair | Rough cost per 1,000 pairs |
+|---|---|---|---|---|---|---|
+| Today's app, Luna and Terra at 0.55 | 98 / 96 | 212 | 63 | 11 | 3 | about $2 |
+| Haiku debate at 0.35 | 97 / 98 | 215 | 79 | 17 | 3 | about $1 to $1.50 |
+| Haiku alone at 0.45 | 97 / 99 | 214 | 60 | 9 | 1 | about $0.30 to $0.50 |
+| Sonnet alone at 0.45 | 98 / 98 | 213 | 40 | 6 | 1 | about $6 to $10 |
+| Opus alone at 0.45 | 99 / 98 | 215 | 33 | 1 | 1 | about $12 to $19 |
+
+Haiku alone is level with the Haiku debate on real items and shows fewer other pairs and about half the stupid matches with a third of the calls: with this model the two advocates and the judge were not earning their calls. Haiku alone is also level with today's app at a fraction of its price. A stronger model then cuts wrong and stupid suggestions further at the same recall (Sonnet, then Opus). The 0.45 line for the three one-model runs is read off these two sets (their honest picks fall between 0.30 and 0.55). The owner's comment on seeing this: "all this over engineering just to have opus alone win". Fair: the one-strong-model baseline should have been run before any debate wording was tuned.
+
+**A flaw in how the helper agents were fed, being checked.** Each agent saw 10 pairs in the set's own order, and in outside set 3, 98 of 284 neighbouring pairs share the same lost report, so a lookalike often sat next to the real item. That may make every plan-route result here (Haiku, Sonnet, Opus, debate or alone) look better than one pair per call would. Opus alone is being re-run on set 3 with the pairs shuffled (3 same-report repeats left inside a file).
+
+**The shuffled run: the result holds.** Opus alone on set 3, original order against shuffled: at 0.45, 111 / 12 / 1 against 111 / 16 / 1 (real items / other pairs / stupid matches); at 0.35, 112 / 21 / 1 against 112 / 23 / 1; at 0.55, 109 / 8 / 0 against 109 / 9 / 0; honest score 98 against 99. Scores of non-matching pairs rose by 0.03 on average once their real counterpart was no longer beside them, so the side-by-side order did flatter the runs a little, in the feared direction, but by less than the chance band (four other pairs per set). It is also a second run: 12 of 285 pairs crossed 0.45 between the two. One pair per call, as the app sends them, is still untested on this route.
+
+**Next, on the ChatGPT plan: Luna alone with the same rule sentence** (`SOLO_REVIEW=luna` in `benchmark/src/reviewers/debate.js`, off by default; the 10 unit tests pass). The plain one-model reviewer the debate was once chosen over (`src/reviewers/luna.js`) still says "Be cautious: a false match wastes both people's time", the opposite of the owner's recall-first rule that only the debate was given, so that baseline was never tested on equal terms. If Luna alone holds, today's app could drop two of its three calls with no new provider.
+
+**Luna alone does not quite hold** (the app's own route, one pair per call, no failed pair; outside sets 2 and 3): honest score 97 / 95 against the app's 98 / 96. At 0.55 it shows 209 real items, 51 other pairs and 7 stupid matches against the app's 212 / 63 / 11; to reach the app's 212 real items its line has to drop to 0.35, where it shows 74 other pairs and 14 stupid matches. So with Luna the debate is worth a little, about three real items or about ten wrong suggestions on these two sets, at the edge of the chance band. The app's judge is Terra, a stronger model than Luna, so the fair one-model test for today's app is Terra alone (`SOLO_REVIEW=terra`), run next. The assistant's earlier guess to the owner, that the app "could probably drop two of its three calls with the model it already uses", is not supported for Luna.
+
+**Terra alone holds** (the same route, one pair per call, no failed pair; 552 calls through the API for $0.85, so a measured $1.54 per 1,000 pair checks; test spend is now $11.09 of the $19.50 stop). Honest score 99 / 96 against the app's 98 / 96. At 0.45 it shows 212 real items, 63 other pairs and 3 stupid matches; the app at 0.55 shows 212 / 63 / 11. At 0.55 it shows 209 / 41 / 3. So the app's own judge model, asked directly with the same rule sentence and the photos, gives the same real items and the same number of other pairs with 3 stupid matches instead of 11, in one call instead of three and with no new provider. Its line is 0.45, not 0.55. Read off the same two sets it is reported on, one run each; benchmark only.
+
+**Owner's decision, 2026-11-16: go with Opus alone.** After seeing Opus, Sonnet, Terra and Haiku alone side by side with the cost per 1,000 pair checks ("pricing per 1000 is still low i go with opus"). What that rests on: Opus alone was ahead or level on all five rated sets and its prompt was not tuned on any of them (it is the app's own rule sentence), but its line (about 0.45) was read off those sets, the runs were helper agents on the Claude plan with 10 pairs per sitting (the shuffled re-run moved little), and its cost is an estimate until real calls are billed. What it needs before it is live: an Anthropic key on the server (the owner's hidden prompt, `bash deploy/set-secret.sh`), a one-model review path in the server behind a switch that is off by default, a privacy notice that names the second provider, a line and a held-for-admin band for the new scores, and a fallback for a failed call. Not built yet; nothing deployed.
+
+**Opus alone, built for the server on the owner's Claude plan (2026-11-17, committed, switched off, not deployed).** The owner asked for "claude sdk instead of api": Opus through Claude Code signed in with their own Claude account, the way Luna runs on their ChatGPT plan. The owner forbade reading the official documentation for this and said they take the liability if a plan sign-in is not permitted for a service used by other people; the assistant's unverified recollection is that it is not, and said so. Everything below was worked out from the installed tool's own help text and from running it. The risks stay the owner's: the Claude account could be limited or suspended, and matching shares that account's usage limit.
+
+- **What was measured first.** Every helper agent's transcript recorded its real token use. Opus alone, at the high reasoning level the session ran on, used about 350 output tokens per pair including thinking, so the earlier estimate of about $14 per 1,000 pair checks at API prices holds; the Opus debate would be about $45 to $65. A live call through the tool with a real found-item photo and the judge's answer shape took 4 to 10 seconds and about 4,000 input tokens.
+- **Gateway** (`deploy/claude/`): a private Compose service with the same request and answer shape as the Codex one. Each review is one `claude -p` run with Opus, no tools, no settings files, no project instructions, no MCP servers and no saved session; the photo goes in as an image block; only the structured answer comes out. No published port, no API keys, no database or photo mounts, non-root, read-only root. Sign-in lives in its own volume (`claude_auth`), which backups leave out. A plan limit answers 429 and nothing else. Claude Code is pinned to 2.1.326, the version this was tested with.
+- **Server** (`SoloReviewer`, `ClaudeGatewayOpus`): with `MATCHING_OPUS_ALONE=true` and `OPUS_BASE_URL` set, each shortlisted pair gets one Opus call with the benchmark's one-model wording (word for word; the owner's rule sentence unchanged) and the same photos the advocates would get. **A failed call, a signed-out gateway or a plan limit sends that pair through today's debate**, so no pair is dropped. Its line is 0.45 (`OpusThreshold`) and its weakest matches, 0.45 to 0.499, wait in To review like the debate's 0.55 to 0.599. Matches it decides are stored as decided by `Opus`. The ledger prices each call at API rates although the plan is not billed per call, so `deploy/enable-claude.sh` raises the daily stop to $25 (about 1,700 pair reviews).
+- **Privacy notice and consent.** The notice now names Anthropic among the providers that read report text and permitted photos, and the consent version moved to 2026-11-17, so everyone is asked once more. That also covers the Brevo backup sender added on 2026-11-14, whose entry had left the question of asking again to the owner. The card rule is unchanged: only the covered copy of a card or ID photo is ever sent to any model.
+- **Checked here:** 384 server tests (13 new), 8 gateway tests, web lint, build and the launch browser tests; one real review through the gateway process; the image built and ran locked down with this container's network settings. **Not checked:** the owner's sign-in inside the container, a real match on the VPS, how the plan limit behaves under the app's load, and one-pair-per-call accuracy for Opus on a rated set (the plan runs saw 10 pairs per sitting).
+- **To turn it on (owner, on the VPS, after deploying):** start the service and sign in with `docker compose -f deploy/docker-compose.yml --env-file deploy/.env up -d --build claude` then `docker compose -f deploy/docker-compose.yml --env-file deploy/.env exec claude claude auth login`; then `bash deploy/enable-claude.sh`; then press Re-check open reports on `/admin`. To turn it off: `MATCHING_OPUS_ALONE=false` in `deploy/.env` and recreate the API.
+
+**Debate v2, built with the harness skill at the owner's request** ("Can you redo debate using harness skill. Do a haiku and an opus version"). Three role agents and a skill: `match-claimant` speaks for the owner and may say it has no case; `match-skeptic` speaks for the desk, may name only differences both sides state or show, never a missing detail, and may say there is none; `match-referee` reads the reports and the photo first and the two notes second, and never averages them. The owner's rule sentence is unchanged, word for word, in all three. `.claude/skills/match-debate/` holds the workflow (`scripts/debate-workflow.js`, args `{dir, files, model, roles}`) and `scripts/collect.py`. What would count as better was written down before any score: at the same real items, fewer other pairs or fewer stupid matches than the same model alone by more than the chance band; level at three calls against one is a loss on cost. The roles were written from failures on the five rated sets, so these are seen-set results and a verdict needs a fresh outside set. The loop's critic step was not run before this test: it costs plan allowance only and the owner asked for the build directly; the critics are owed before any acceptance.
+
+**Debate v2 results** (outside sets 2 and 3, both seen: 218 real items, 334 other pairs, 229 rated 2 or below; every pair judged; one Opus skeptic note was missing on one pair, so that file of ten pairs was run again and its answers replace the first ones, which moved one other pair). The roles were followed: the claimant said it had no case on 30 to 40% of pairs and the skeptic said it found no difference on 36 to 38%.
+
+| Outside sets 2 and 3 | Honest score (set 2 / set 3) | At 0.55 | At 0.50 | At 0.45 | At 0.40 |
+|---|---|---|---|---|---|
+| Opus alone | 99 / 98 | 209 / 25 / 0 | 213 / 28 / 0 | 215 / 33 / 1 | 215 / 43 / 1 |
+| Opus debate v2 | 99 / 98 | 214 / 23 / 0 | 215 / 30 / 0 | 215 / 39 / 0 | 216 / 52 / 1 |
+| Haiku alone | 97 / 99 | 208 / 42 / 9 | 210 / 51 / 9 | 214 / 60 / 9 | 215 / 70 / 12 |
+| Haiku debate v2 | 96 / 98 | 200 / 32 / 7 | 204 / 40 / 10 | 208 / 49 / 12 | 215 / 66 / 18 |
+
+(Cells are real items / other pairs / stupid matches. The first Haiku debate at its 0.35 line: 215 / 79 / 17, honest 97 / 98.)
+
+**With Opus, level.** Each at its own best line gives the same answer: debate v2 at 0.50 shows 215 / 30 / 0, Opus alone at 0.45 shows 215 / 33 / 1, a difference inside the chance band. The debate's scores sit higher for real items, so at the app's 0.55 line it keeps five more of them (outside the band), but Opus alone reaches the same items by setting its line at 0.45. By the test written down beforehand, level at three calls against one is a loss on cost.
+
+**With Haiku, not better than alone.** At the same 215 real items debate v2 shows four fewer other pairs (inside the band) and six more stupid matches (outside it), and its honest score is a point lower on both sets. It is about where the first Haiku debate was. The redesign removed the invented cases and the judging from second-hand arguments, and the result did not move: with Haiku the limit is the model reading the evidence, not the shape of the debate.
+
+**Read together with the one-model runs:** a debate helps only when the judge is a stronger model than the advocates (Luna advocates with a Terra judge beat Luna alone, and Terra alone then matched that debate). With one model in all three roles it adds cost and nothing else. The owner's decision for Opus alone stands on these numbers; no fresh outside set was spent on debate v2 because it did not pass the seen-set step.
+
+**Set 3 run twice** (the council's ruling; same arguments, the judge run again): 112 of 113 real items and 6 stupid matches both times, other pairs 31 and 27, honest score 98 both; with the judge-sides-against rule 112 / 21 / 2 and 112 / 18 / 2. Ten of 285 pairs crossed the line between the two runs. The first run stays the run of record.
+
+## 2026-11-16: Haiku for all three roles, on the Claude plan (rough test, benchmark only)
+
+The owner asked for Claude Haiku 5.5 in place of Luna and Terra so that testing runs faster, on the Claude subscription only; an API key for production follows only if the results are good. Haiku wrote both advocates' arguments and judged them (the judge sees the photo) on all four rated sets, through helper agents: the app's exact prompts and inputs, a separate agent for each side, 10 pairs per advocate agent and 12 per judge agent. Search and the screen are the base runs'.
+
+The bar was written down before any result: on outside set 2, honest score at "show from 5" within one point of Luna and Terra's 98%, and no fewer than 101 of 105 real items at Haiku's own best line. It passed (97%, 103).
+
+| Set | Luna + Terra, honest score | Haiku, honest score | Haiku's best line |
+|---|---|---|---|
+| Outside set 1 (276 pairs) | 96% | 95% | 0.30 (halves pick 0.30 and 0.50) |
+| Outside set 2 (267) | 98% | 97% | 0.40 |
+| Photo round 3 (313) | 90% | 95% | 0.40 |
+| Text round 3 (416) | 96% | 97% | 0.35 |
+
+Across the four sets (489 real items, 783 others): Luna and Terra at 0.55 show 471 real and 180 others; Haiku at 0.35 shows 474 and 193; Haiku at 0.40 shows 462 and 142; Haiku at 0.55 shows 407 and 53.
+
+- **Haiku scores every pair lower.** Its line is about 0.35, not 0.55. On short text-only reports its scores sit in a narrow band: on text round 3, 0.35 shows 176 of 184 real items and 0.40 shows 165. The line is fragile in a way Terra's is not. If Haiku is used, its score should be rescaled in code so the app's line, labels and admin hold keep their numbers.
+- **Limits of this test.** An agent sees 10 to 12 pairs in one sitting; the app sends one pair per call. On sets where several lookalikes share a place, seeing them side by side may make them easier to tell apart, so the gain on photo round 3 may be partly the method. At least one agent attached a photo to the wrong neighbouring pair (the instructions now say to open photos one pair at a time). Six of about 2,500 answers were skipped by an agent and re-run. One run per set, so run-to-run spread is unknown. Haiku ignored instruction text planted inside reports.
+- Not decided: whether to use Haiku. A proper test is one API call per pair from the owner's machine; production use sends reports and photos to a second provider, which the privacy notice would have to say.
+
+## 2026-11-16: Loops 2 and 3, a second outside set, and Haiku as the judge
+
+**In the app, committed and not deployed:** three switches, all off by default (`MATCHING_JUDGE_PHOTOS`, `MATCHING_ONE_DAY_NOTE`, `MATCHING_POSTED_ON`), with every prompt byte-identical while they are off, and a table on `/admin` of how shown suggestions turned out by confidence band (shown, claimed, not mine, returned), built from what the app already records. Benchmark only: the early-date note (`EARLY_LINE=1`) and per-photo descriptions (`--photo-captions data/photo-set/luna-captions.json`).
+
+**Owner's rulings this day.** A wrong suggestion costs less than a missed one. A mistake on an easy pair costs more than one on a hard pair. A missed pair costs its distance above "show from" to the power 1.2. A critic's `uncertain` becomes a named check in the paid test; only a `fail` with a concrete example stops a candidate. A found date before the lost date is never a veto: it is weak evidence that grows with the gap (the owner first said "any amount of time"; a three-person panel from the council plugin all chose the graded version, because without any date guard every old found item matches every later loss).
+
+**Second outside set** (`benchmark/data/independent2`): 257 reports, 267 pairs (105 real), written through the harness's `outside-benchmark-writer`, each photo opened at full size; 266 pairs rated, the two raters within one point on all 75 pairs both scored. Measured against the first outside set: reports share 27% of their words with their nearest neighbour there, 84 photos are common to both, and both writers independently made lookalikes the main decoy and 39% of pairs real. **The outside sets are independent of the tuning, not of each other: same model, same brief, same photos.**
+
+**Results** (owner's formula, show from 5; judge sees photos in every row; through the ChatGPT subscription, about 2,800 calls, no API money):
+
+| Change | Seen sets (independent / photo round 3 / text round 3) | Outside set 2 |
+|---|---|---|
+| Base | 96 / 90 / 96% | 98%, 102 of 105 real items shown |
+| One-day note | 97 / 96 / 96%; gated real pairs shown 6 to 9 of 9; 4 lookalikes newly shown (rated 2, 4.5, 5.5, 6.5) | 98%, 102; the set has no real pair with a one-day-early date |
+| Early-date note | 97 / 91 / 96%; real early pairs shown 1 to 3 of 3; 3 of 40 other early pairs newly shown (rated 4.5, 5, 7); "found before lost" arguments 27 to 0; no real pair without a date problem lost | 98%, 102; one real early pair, not shown before or after (0.53 to 0.44); 1 of 15 others newly shown |
+| Photo descriptions for search and the screen | 97 / 92 / (not run); one real pair gained on the first set, one gained and one lost on photo round 3 | 98%, 102; 3 more lookalikes shown |
+| All together | not run | 98%, 102 |
+
+- **By the rule fixed in advance (at least 1 point better on the outside set), none of the three is accepted.** The outside set cannot tell them apart: its base is already 98% and it holds almost none of the cases they are for. They did no harm there. Their gains are on sets the fixes were written from.
+- **The judge seeing the photo holds on a third set.** On outside set 2 at 0.55 the app as committed (judge reads the arguments only) shows 101 of 105 real items and 46 of 162 others, 97% under the formula; with the judge seeing the photo, 102 and 37, 98%. Its scores follow the quality ratings more closely as well (rank correlation 0.87 to 0.91).
+- **What is proven on fresh pairs** is the setup itself: the committed fixes with the judge seeing the photo show 102 of 105 real items.
+- The one real pair still missed there: a chemistry textbook the owner called the 10th edition, whose photo shows the 9th. This is the "brand from memory against text read off the item" case that no wording resolved in loop 1.
+- Posting-date runs (`POSTED_ON=1`) were deferred behind the recall fixes and have not been read.
+
+**The subscription route.** `PLAN_BASE_URL` sends each test call to the ChatGPT plan first and to the API when the plan reports its limit. Twenty calls at once drew a "limit" after 64 calls, which the assistant first reported as a used-up allowance; it was a burst limit, and single calls worked three minutes later. The client now finds the level itself (starts at 8, adds one after clean runs, drops to 70% on a limit error) and settled at 4 to 7 at once, about 100 calls a minute.
+
+**Haiku as the judge (rough signal only).** No Claude API key can be used from this cloud environment, so Claude Haiku 5.5 stood in as judge through 23 helper agents on the owner's Claude subscription: the judge's exact prompt, the same advocates' arguments and the same photos, 12 pairs per agent on outside set 2.
+- Score under the formula: 98 / 98 / 97% for show from 4 / 5 / 6, against Terra's 98 / 98 / 98%. Rank correlation with the quality ratings 0.87 against 0.91.
+- Haiku scores about 0.05 lower on average, so its best line is lower (0.40 to 0.55 against 0.45 to 0.70). At 0.55 it shows 101 of 105 real items and 22 of 162 others; Terra shows 102 and 37.
+- Haiku 5.5 is listed at $0.10 in and $0.50 out per million tokens, a tenth of Terra, and the judge is 91% of what matching costs.
+- Limits: 12 pairs judged in one sitting where the app sends one per call; an agent wrapper, not a bare API call; one set. A proper test needs one API call per pair, run from the owner's machine. Using it in production would send reports and photos to a second provider, which the privacy notice would have to say.
+
+## 2026-11-16: Prompt-tuning harness, and loop 1: no wording change survived the critics
+
+**Nothing in the app changed, and no model call was paid for in this loop.**
+
+**The harness** (owner's request; built with the `harness` plugin, with reviewers from the `agentic-council` plugin). Five agent roles in `.claude/agents/` (failure analyst, prompt drafter, prompt critic, outside benchmark writer, pair rater), two skills in `.claude/skills/` (`tune-matcher-prompts` runs the loop, `blind-benchmark` holds everything a writer or rater needs), and two scripts (`edge-failures.js`, `edge-outside.js`). The acceptance rule is fixed in advance in `tune-matcher-prompts/references/acceptance.md`: a wording is kept only if it beats the base by at least 1 point on a fresh outside set under the owner's formula, shows no fewer real items, and has a stable line.
+
+**Diagnosis** (112 mistakes read in full on three seen sets: `ind-judge-photos`, `p3-judge-photos`, `r3t-app`; show from 5, line 0.55; class counts 1 to 3 hand-sorted, about ±3):
+
+| Failure | Mistakes | Fixable by wording? |
+|---|---|---|
+| A stated difference on an identifying detail is named and then waved away because type and place agree | 50 (45%) | thought so; see below |
+| The photo shows a visibly different item but it is called "unverified, not contradicted" | 22 (20%) | thought so |
+| An item name stretched across different objects | 12 (11%) | unclear |
+| A found date one day before the lost date treated as impossible | 6 (5%, but 21% of all cost; 4 real matches rated 7 to 10) | yes, or by an input |
+| The finder wrote almost nothing, so the pair never reaches the debate | 6 | no: search |
+| "today" / "last week" read against the model's own today; the models are not given the posting date | 2 (both real, rated 8 to 9) | no: a missing input |
+
+- Open for the owner: a found date two or more days before the lost date (10 pairs). The outside author calls them non-matches, the raters rated them 5.5 to 7, the matcher rejects them.
+
+**Candidates and the panel.** The drafter rejected the assistant's own sentence from that morning (`SIMILARITY_RULE=v3`: it counted "a part one side says is not there" as a contradiction, which sinks a wallet whose cards were taken) and the long `v2`. Its own proposals, each attacked by three critics (recall, overfit, side effects) plus two outside reviewers, in two rounds:
+
+| Candidate | Round 1 | Revised | Round 2 | Outcome |
+|---|---|---|---|---|
+| Timing: "a found date one day before the lost date is not a contradiction, because report dates can be off by a day" | no fail, 2 uncertain | "…exactly one day before… does not by itself count against a match, but a report's words about when the owner last had the item still count" | no fail, 3 uncertain | dropped |
+| Stated difference, two versions | 3 fails each | one version grading a difference by how hard it is to get wrong | 2 fails, 1 uncertain | dropped |
+
+What the critics found, and why the drops are right:
+- **Stated difference.** The revised wording classifies the commonest brand conflict both ways: an owner's brand from memory (called weak) against a brand the finder reads off the item (called hard to get wrong). Critics on all angles built the same pair: "lost my Casio calculator" against a found one that says SHARP. From the evidence, a misremembered brand and a twin look the same. **This class is mostly not a wording problem:** such pairs are middling matches (the raters score them about 4), and the app already scores them in the middle (0.55 to 0.72). What to do with a middling pair is the owner's "show from" choice and the label it gets, not something a sentence can resolve.
+- **Timing.** The fix is sound for a bare one-day gap, but any sentence in the shared text is read on every pair. The clause about the owner's words fires on "lost it today" and "had it this morning", which are relative to a posting date the models never see, so it could cancel the fix on the very pairs it was for. The side-effects critic proposed the better mechanism: leave the shared text alone and add one line, built in code, only on pairs where the found date is exactly one day before the lost date. That cannot touch any other pair.
+- **A first-round wording said "the two sides"**, which the judge, who reads two advocates, could take as the advocates.
+
+**What loop 1 produced instead of a wording:** two input fixes to try next, neither of which is prompt wording in the shared text: (1) give the models each report's posting date, so "today" and "last week" mean something; (2) a code-built timing line on one-day-before pairs only. And the earlier finding stands for the search failures: a description of the finder's photo for search.
+
+**About the panel itself.** In both rounds the timing candidate had no `fail`, only `uncertain`. The critics are told to answer `uncertain` unless they can say why a change is safe, and the rule lets at most one `uncertain` through, so a sound change with a measurable risk is stopped. That rule was written an hour before its first use. It was applied as written here; loosening it (an `uncertain` becomes a named check in the paid test, a `fail` with a concrete example still stops) is the owner's call, because changing a gate after it stops your own candidate is the bias the harness is for.
+
+## 2026-11-15: The outside benchmark does not back the written definition or a 0.75 line
+
+**Nothing in the app changed. This entry withdraws part of the one below it ("The judge that sees photos holds up").**
+
+Five setups were run on the independent benchmark (276 pairs, 108 real; through the API), and the missing combination, a judge that sees photos with no written definition, was added on photo round 3. Two raters scored the independent pairs for quality and difficulty (within one point on every pair; 3 pairs unrated). Scores are the owner's formula (share of the best possible, line picked on half the item kinds and scored on the other half), for show from 4 / 5 / 6:
+
+| Setup | Independent set | Photo round 3 |
+|---|---|---|
+| App before 14 Nov (what is live) | 92 / 91 / 91% | not run |
+| App as committed (rendering + screen) | 95 / 95 / 95% | 88 / 85 / 83% |
+| Same, photos withheld | 95 / 94 / 92% | not run |
+| Judge sees photos | 95 / 96 / 97% | 96 / 90 / 88% |
+| Judge sees photos + definition draft 2 | 96 / 94 / 95%, line unstable (0.10 to 0.75) | 96 / 96 / 95%, line 0.75 |
+
+Real items and other items shown, independent set (of 108 and 168):
+
+| Setup | 0.55 | 0.65 | 0.75 |
+|---|---|---|---|
+| App before 14 Nov | 103, 32 | 103, 16 | 90, 5 |
+| App as committed | 106, 39 | 106, 19 | 94, 5 |
+| Judge sees photos | 107, 28 | 107, 18 | 98, 4 |
+| Judge sees photos + definition | 103, 55 | 103, 47 | 100, 16 |
+
+- **Holds on both sets:** the committed fixes find more real items (103 to 106 of 108 here); a judge that sees the photo shows fewer wrong pairs at the same or better recall (here at 0.55: 107 real and 28 others, against 106 and 39; on round 3: 88 and 38, against 87 and 64); the app's score follows the quality ratings more closely when the judge sees the photo (rank correlation 0.84 to 0.91 here, 0.79 to 0.85 on round 3).
+- **Does not hold:** the written definition. On the outside set it shows more wrong pairs at every line (55 of 168 at 0.55 where the plain photo judge shows 28) and its best line jumps between 0.10 and 0.75. It tells the judge that a pair with nothing plainly different is a match, and the outside author's decoys are mostly twins with nothing plainly different, which the assistant's own sets under-represented. The definition was the assistant's wording, tested on sets built by agents the assistant briefed.
+- **Does not hold:** a 0.75 line. It came from the definition arm on round 3. With the photo judge and no definition the best line is 0.50 to 0.65 on the outside set and 0.40 to 0.65 on round 3; today's 0.55 is inside both ranges.
+- **A line cannot be fixed from written test sets.** Today's app at 0.75 shows 87% of real items on the outside set and 61% on round 3: the two sets differ in how much people wrote and how often they gave a date. The line needs real pilot reports.
+- The outside author misread two photos (a Cyrillic book written up as an Arabic novel, a cable as a cord necklace); the raters scored those "real" pairs below 4.
+- Spent so far: $9.14 of the 20 dollar budget.
+
+**Standing recommendation:** deploy the committed fixes; build "the judge sees the photos" behind a switch, with no written definition and the line left at 0.55; drop definition drafts 1 to 3.
+
+## 2026-11-15: An independent benchmark, and a card-showing photo removed
+
+**Nothing in the app changed.**
+
+- **Independent benchmark** (`benchmark/data/independent`, owner's request). Built by an agent started with none of the testing session's context and told not to read the earlier sets, results, matching code or this log; it was given what the app collects, the campus places and the 92 item photos, and a free hand on design. 271 reports (162 lost, 109 found, 88 with a photo) and 276 pairs (108 real, 168 not) across 19 situations of its own choosing; its reasoning and what it leaves out are in `DESIGN.md` there. It ran on another Claude model and still saw the project's instruction file, which mentions the experiments.
+- **A stock photo that shows a payment card was in the photo set.** The independent agent spotted that the online wallet photo `wallet__01421c7f…` (report `O-wallet-01`) shows a payment card with a visible logo; the earlier vetting had passed it. It is an openly licensed stock photo, not a student's card, but the project rule is that no card photo goes to any model, and this one was sent to Luna, and to Terra in the judge-sees-photos arms, in photo rounds 1 to 3. The report is now text-only in `data/photo-set` and in all three rounds (tag `card_photo_removed`), so no later run sends it. Results already recorded include it; a re-run will differ on the few pairs that used it.
+
+## 2026-11-15: The judge that sees photos holds up on unseen pairs (benchmark only)
+
+**Partly withdrawn the same day: see the entry above. The gain from the judge seeing photos stands; the written definition and the 0.75 line do not.**
+
+**Nothing in the app changed.** The owner gave an OpenAI API key for testing with a 10 dollar limit, so these runs went through the API (`gpt-6-luna`, `gpt-6.1-terra`), not the Codex gateway that production uses and that the earlier runs used. Same models and prompts; answers through the two routes are not guaranteed identical, so arms are compared within one route. Spent: $6.33 for 5,472 calls, stopped by `benchmark/src/spend.js` at $9.50 if reached. The judge is 91% of the cost: Terra is $1.00 in and $5.00 out per million tokens, ten times Luna, and the app's ledger still prices it as Luna.
+
+**The test fixed in advance, photo round 3** (313 pairs no arm had been run on; labels from the written definition; the 8 pairs the labellers split on are left out of the good and bad rows):
+
+| | Good matches shown (of 103) | Bad matches shown (of 202) | Real items shown (of 92) |
+|---|---|---|---|
+| App today, line 0.55 | 98 | 45 | 87 |
+| App today, line 0.75 | 58 | 1 | 56 |
+| Judge sees photos + definition draft 2, line 0.55 | 101 | 31 | 88 |
+| Judge sees photos + definition draft 2, line 0.75 | 94 | 6 | 88 |
+| Same with draft 3, line 0.75 | 94 | 6 | 88 |
+
+- The goal set before the run (at least 87% of real items, at most 10% of bad matches) is met at 0.75: 96% and 3%. Today's app cannot meet it at any line: at 0.65 it shows 85% of good matches and 10% of bad ones, at 0.70 76% and 2%.
+- Draft 3 changes nothing at 0.75 and lets 5 more bad matches through at 0.55. On photos it is not better than draft 2.
+
+**Text, where the judge has no photo to see** (definition only):
+
+| | Good shown | Bad shown | Real items shown |
+|---|---|---|---|
+| Text round 3, app today, 0.55 | 228 of 250 | 23 of 163 | 174 of 184 |
+| Text round 3, definition draft 2, 0.55 | 237 | 25 | 174 |
+| Text round 3, definition draft 2, 0.70 | 223 | 17 | not read |
+| Text round 3, definition draft 2, 0.75 | 185 | 12 | 150 |
+| Text round 3, definition draft 3, 0.75 | 184 | 16 | 153 |
+| Text holdout (round 2), app, 0.55, judge through Codex | 194 of 225 | 24 of 162 | 172 of 185 |
+| Text holdout, definition draft 2, 0.55, judge through the API | 209 | 21 | 167 |
+
+- In text the definition lifts the scores of good matches but does not remove bad ones: at equal recall (about 89% of good matches) it shows 17 bad matches where the app shows 20. The gain on photos comes from the judge seeing the photo, not from the wording alone.
+- Draft 3 is no better than draft 2 on either text set.
+- The text holdout rows mix routes (old judge through Codex, new judge through the API); read them as a rough check only.
+
+**Photo descriptions for search, confirmed on round 3** (stage test, no review): good matches within the best 10 candidates go from 99 to 101 of 103, near-empty finder reports from 26 to 28 of 29; within the best 30, 102 to 103. Smaller than on round 2 (106 to 112 of 115) because less was being lost.
+
+**Quality on a spectrum (owner's request, 15 Nov).** Each pair in both round-3 sets now carries two raters' scores in `pairs.json`: `quality` 0 to 10 (how much the found item deserves to be shown to that owner, on the evidence alone; 10 = distinctive details confirmed, 6 = nothing differs but little to go on, 2 = a clear difference, 0 = plainly another item) and `difficulty` 1 to 5. The raters saw neither the truth nor the app's answers.
+- **The scale is reproducible:** the two raters are within one point on 99% of pairs in both sets (rank correlation 0.94 on photos, 0.99 on text). Both raters are the same Claude model, so that is an upper bound.
+- **Photo pairs are nearly black and white, text pairs are grey:** about 20 of 313 photo pairs sit between 4 and 7, against about 130 of 416 text pairs. Without a photo, "found a wallet" fits many owners.
+- **Real items the scale rates low:** none of 92 below 4 with photos; 3 of 184 in text, and 38 more between 4 and 6.
+- **The calculation** (`scripts/edge-rate.js`). The owner picks "show from", the lowest quality still worth showing. Showing a pair rated q is worth q minus that number, negative below it, with a weight on the negative side (1 = a wrong suggestion hurts as much as a miss helps; 0.25 = it costs a glance). The best line is the one with the most value; "honest" picks the line on half the item kinds and scores the other half. Value as a share of the most possible, honest, for show from 4 / 5 / 6:
+
+| | Wrong weight 1 | Wrong weight 0.25 | Best line |
+|---|---|---|---|
+| Photos, app today | 80 / 78 / 75% | 87 / 83 / 81% | 0.60 to 0.70 |
+| Photos, judge sees photos + definition draft 2 | 94 / 92 / 87% | 95 / 95 / 94% | 0.75 every time |
+| Text, app today | 91 / 90 / 89% | 94 / 94 / 92% | 0.45 to 0.70, rising with "show from" |
+| Text, definition draft 2 | 91 / 84 / 83% | 95 / 94 / 91% | 0.60 to 0.80 |
+
+- **Photos:** the judge that sees photos wins under every setting tried, always at 0.75, so that choice does not depend on the owner's two numbers.
+- **Text:** today's wording is as good as or better than the definition. Its best line does depend on "show from": about 0.50 for 4, 0.65 for 5, 0.70 for 6.
+- **The app's score already follows the quality scale:** rank correlation 0.79 on photos today, 0.85 with the judge seeing photos, 0.90 on text.
+- **Difficulty is used to break results down, not as a weight** (the sets are hard on purpose; weighting hard pairs more would tune the app for rare cases). The misses and wrong suggestions sit in the hard pairs: with the photo judge at 0.75 and show from 5, easy pairs are 42 of 43 shown and 1 of 173 wrongly shown; hard pairs 11 of 13 and 6 of 13.
+- **The owner's rule for difficulty (15 Nov): punish mistakes on easy pairs, go easy on mistakes on hard pairs, and give nothing extra for getting a hard pair right.** `edge-rate.js --forgive-hard` weighs each mistake (a pair above "show from" not shown, or one below it shown) by (6 - difficulty) / 5. Honest value, show from 4 / 5 / 6, wrong weight 1: photos, app today 81 / 80 / 77%, judge sees photos 95 / 93 / 89%; text, app today 92 / 91 / 88%, definition 92 / 89 / 84%. With wrong weight 0.25: 86 / 83 / 82%, 96 / 95 / 95%, 95 / 95 / 94%, 96 / 95 / 93%. The order of the options and the best lines do not change. Easy mistakes at show from 5: photos, app today misses 6 of 43 easy pairs above the line and the photo judge misses 1; text, app today misses 6 of 92 and wrongly shows 0 of 91.
+- **Owner's rule (15 Nov): a wrong suggestion costs less than a missed one.** The calculation uses a quarter; that size is the assistant's number, and the order of the options is the same at 1 and at 0.25. Both owner rules are now the defaults of `edge-rate.js`. Still open: the lowest quality to show ("show from" 4, 5 or 6).
+- **Owner's idea (15 Nov): a really good, easy match that is missed should cost much more, exponentially.** `edge-rate.js --miss-power exp` makes a miss cost 2^(distance above "show from") - 1, so with show from 5 a missed pair rated 10 costs 31 and one rated 6 costs 1, against 1.25 for an easy, plainly wrong suggestion. Scores, show from 4 / 5: photos, app today 94 / 91%, judge sees photos 97 / 96%; text, app today 98 / 97%, definition 98 / 98%. The order holds. The penalty also pulls the best line down: today's app on photos to 0.40, where it shows 87 of 215 pairs below the level to recover 5 above it. Not adopted. **The owner then chose a gentler curve: distance to the power 1.2** (a missed pair 5 points above the level costs 6.9 where the plain formula says 5), now the default. With it the photo judge's best line is 0.75 at show from 4, 5 and 6 (honest 96 / 96 / 95%), today's app on photos scores 88 / 85 / 83%, and on text today's app scores 96 / 95 / 94% at lines 0.45 / 0.60 / 0.65 against 96 / 96 / 94% with the definition.
+- **The great easy matches that are missed are few, and the line is not why.** Pairs rated 8.5 or more with difficulty 1.5 or less: on photos today's app at 0.65 misses 4 of 41 and the photo judge at 0.75 misses 1 of 41; on text today's app misses 0 of 57. All four photo misses have a finder who wrote next to nothing ("found this", "found this cap", a few words in Arabic). The one the photo judge still misses never reached it: search had no words to rank. That is the case photo descriptions for search are for.
+- The anchors of the quality scale are the assistant's wording and need the owner's ruling, as do "show from" and the wrong weight.
+
+## 2026-11-15: Tests built on good match / bad match from a written definition
+
+**Nothing in the app changed.** Follow-up to the entry below, done without model calls while the ChatGPT plan limit was closed.
+
+- **Labels now come from the written definition** (draft 2 below), applied by agents who look at the photo and are told neither the truth nor the app's answers. Photo round 2 was relabelled and photo round 3 was built this way from the start (`definitionLabel` in each `pairs.json`).
+- **The definition is clear enough to test against.** Two independent sets of labellers agreed on 305 of 313 round-3 pairs (97.4%, kappa 0.94). None of the second set opened the first set's answers. The 8 they split on are marked `disputed` and should be reported apart: 5 key rings (is a different number or mix of keys "plainly shown"?), 2 wallets and 1 cap (are black, navy and dark brown neighbouring shades?). **Those two questions need the owner's ruling.**
+- **The definition costs almost no real returns.** 91 of 92 real items in round 2 and 90 of 92 in round 3 are good matches under it. The two round-3 exceptions are both the dark-shade question.
+- **It agrees with the earlier checker** on 301 of 313 round-2 pairs, so the earlier good and bad counts were close to this definition.
+- **The held-back half of round 2, regraded by the definition labels.** Picked arm (judge sees photos, definition draft 2): at 0.55, 49 of 54 good matches and 18 of 102 bad ones shown; at 0.75, 47 of 54 and 1 of 102, with 44 of 47 real items. The app today: 48 and 27 at 0.55; 30 and 0 at 0.75, with 29 real items.
+- **Why good matches are still missed at 0.75:** 4 of the 7 never reached the judge. The finder wrote almost nothing ("found this on the ground", "old key found"), so search had no words to rank.
+
+**Photo descriptions for search** (`edge.js --photo-captions`, stage test only, no model calls). A short description of the finder's photo is added to what search and ranking see; the reviewers still get the finder's own words and the photo. On round 2, good matches within the best 10 candidates go from 106 to 112 of 115, near-empty finder reports from 30 to 35 of 36, real items from 86 to 90 of 92; within the best 30, 113 to 115 of 115. The descriptions used were written by the agents that vetted the photos, not by Luna, and round 2 had been used before: confirm on round 3. In the app this would be one vision call per found photo.
+
+**Photo round 3** (`benchmark/data/photo-set/round3`): 184 reports, 313 pairs, the same hard condition as round 2 (three reports in four undated, every item of a kind found in one place), fresh blind writing. By the first labelling: 108 good matches (90 real items and 18 lookalikes) and 205 bad. The test fixed in advance for it: judge sees photos with definition draft 2, read at 0.55 and 0.75, against the app's wording.
+
+**The text holdout by the same yardstick** (387 pairs, labelled the same way without photos; cached answers): good matches shown go from 176 of 225 with the app before to 194 with both fixes, bad matches shown from 21 to 24 of 162.
+- **Without a photo the definition costs more.** It calls 13 of 185 real items bad matches, 8 of them owners who misremembered a fact; with photos it was 1 or 2 in 92. A difference the finder only *states* is weaker evidence than one a photo shows.
+- A labeller also found a hole: draft 2 forgives any date, so an item found seven weeks before the owner last used theirs was a "good match".
+
+**Definition draft 3** (`MATCH_DEFINITION=3`) adds three clarifications to draft 2: dark colours (black, navy, dark grey, dark brown) are neighbours of each other and light ones of each other; a rough count or one off by one or two is not a difference, a clearly different amount is; an impossible order of events rules a pair out. Tested on the 100 pairs that were close calls or disputed, two independent readers each:
+- Photo round 3 (36 pairs): the two readers agree on 33, where draft 2's readers agreed on 28. All 7 real items in the subset are good matches (5 under draft 2).
+- Text holdout (64 pairs): the readers agree on 61. 13 of the 19 real items are good matches (8 under draft 2).
+- It lets a few more lookalikes through as good matches (photo 16 to 19, text 22 to 25), which is the direction the owner's "a wrong suggestion costs a glance" points.
+- Still split: a slim wallet against a "thick, stuffed" one, a single car key against a bunch, a notebook against a laptop. These are judgments about what kind of object it is, not wording.
+- Draft 3 was written after reading these pairs, so the gain on them is not a holdout result. **The owner has not ruled on any draft.**
+
+**Text round 3** (`benchmark/data/edge/round3`, written 15 Nov): a fresh blind text set under the hard condition that hurt most on photos. 438 reports and 416 pairs from eight writers, one per kind of human mistake: three reports in four undated, every found item of a group in the same place, one report in three under 8 words. Labelled from the start by two independent readers who apply the definition and are not told the truth.
+- Draft 2: 251 good matches and 165 bad; the readers agree on 413 of 416. 176 of the 184 real items are good matches, against 172 of 185 on the older text holdout.
+- Draft 3 changes 12 labels, 6 each way, and the readers agree on 413 again.
+- The eight writers and four of the readers ran on the session's model; the other twelve readers ran on another Claude model after a usage limit. Both readers of a lens used the same model.
+- No arm has been run on it. It is the unseen text set for the definition, draft 3 included.
+
+**Limit of "blind".** The harness shows every agent this repository's instruction files, which describe these experiments, though not the definition's wording. Writers and labellers were not asked to match anything.
+
+## 2026-11-15: What counts as a match, and a judge that sees the photo (benchmark only)
+
+**Nothing in the app changed.** This entry records an owner principle, a loop run on it, and a result for the owner to rule on.
+
+**Owner principle.** From the app's side a close pair is a "Schrödinger's match": whether it really is the same item should matter less in testing than whether it was a **good match or a bad match** given what the app could see. What has to be decided is the *semantic* cut-off, meaning what we deem a match, and the models adjusted to that. The tests should have been built this way from the start.
+- **How results are now read.** Good match: the checker, who is not told the truth, found nothing that disagrees, or only a soft disagreement. Bad match: a concrete contradiction. The share of real items shown stays alongside as the check on the definition itself: a definition graded only against itself would always look good.
+- **The earlier rounds regraded** (no re-run): text holdout, app before, 187 of 236 good shown and 10 of 151 bad; with both fixes 206 of 236 and 12 of 151. Photo round 1: 88 of 109 and 3 of 204. Photo round 2: 104 of 113 and 54 of 200.
+- **Still open: the labels follow the checker's unwritten judgment, not a definition the owner chose.**
+
+**Goal of the loop.** In the hard case (same kind of item, same place, no date), keep at least 87% of real items shown and bring bad matches shown to 10% or less. Benchmark only; the numeric cut-off, product changes and the app's wording were out of scope.
+
+**Method.** Photo round 2 split in two by item kind (`edge.js --fold a|b`): half A to tune (62 good, 95 bad, 45 real), half B held back (51 good, 105 bad, 47 real). Three tuning rounds on A, then the chosen arm once on B.
+
+**Tuning, half A** (accepted by the models at 0.55):
+
+| Arm | Good, of 62 | Bad, of 95 |
+|---|---|---|
+| App today | 60 | 29 |
+| Judge sees the photos (`JUDGE_PHOTOS=1`) | 60 | 16 |
+| Detail check (`DETAIL_CHECK=1`) | 56 | 7 |
+| Judge sees photos + definition draft 1 | 61 | 39 |
+| Definition draft 1, no photos | 60 | 48 |
+| Judge sees photos + definition draft 2 | 60 | 13 |
+| Same, plus the detail check | 56 | 11 |
+
+- **The definition moves results more than anything else tried.** Same judge, same photos, same pairs: 16 or 39 bad matches accepted depending only on what was written down as a match.
+- **Draft 1 forgave by kind of detail** (a brand, a count or a size never counts against). It accepted a watch whose dial plainly reads another brand. **Draft 2 forgives by what the found side shows:** a plainly shown difference rules the pair out whatever it is about; a neighbouring shade, a hedged statement, a part that could have come off, place, date and anything the finder could not see do not. Both texts are in `benchmark/src/reviewers/debate.js`.
+- **The detail check** lists each thing the owner stated and whether the found side shows it, cannot show it or contradicts it. It found a contradiction in 88 of 95 bad matches and in 19 of 45 real ones, and with it the judge began rejecting good matches over shade. Left out.
+
+**Holdout, half B** (shown end to end; the arm was picked before this ran: judge sees the photos, definition draft 2):
+
+| Line | App today: real of 47, bad of 105 | Picked arm: real of 47, bad of 105 |
+|---|---|---|
+| 0.55 (the app's) | 43, 29 | 44, 20 |
+| 0.70 | 32, 6 | 44, 11 |
+| 0.75 | 29, 0 | **44, 2** |
+| 0.80 | 20, 0 | 42, 0 |
+
+- **At the app's 0.55 the goal is missed:** bad matches shown fall from 28% to 19%, not to 10%.
+- **The scores now separate.** Real items keep their place while bad matches fall away as the line rises. A line of 0.75, the best on half A (42 of 45 real, 2 of 95 bad), gives 44 of 47 real (94%) and 2 of 105 bad (2%) on half B. Today's app at the same line shows 29 of 47 real.
+- By label on half B with the picked arm: Big chance 43 good and 0 bad; Looks like it 4 and 11; Small chance 0 and 8; held 0 and 1.
+
+**Limits.** One run, 47 real items and 105 bad matches in the holdout. Labels are an AI checker's. Both halves come from one photo set and one round of blind writing. The judge seeing a photo breaks the 2026-11-10 rule that the judge is text only, and the DeepSeek fallback cannot see photos. Draft 2 is a draft: the owner has not ruled on it. Run-to-run variation was not measured. A second holdout arm (judge sees photos, no definition) lost 6 of 156 pairs to the plan's usage limit: 40 of 47 real and 13 of 105 bad shown on what completed.
+
+**For the owner to decide.** (1) The definition: rule on draft 2, row by row. (2) Whether the judge may see photos. (3) The line, once (1) and (2) are settled; 0.75 is where this data points. Any of these in the app needs a fresh blind photo round first, written against the chosen definition.
+
+**Plan limit.** The loop used about 1,250 model calls and ended on the ChatGPT plan's usage limit at 07:58 UTC (reset stated as 12:08). Production shares the plan.
+
+## 2026-11-15: Photo tests: what the finder's photo adds, and where wrong suggestions come from
+
+**Nothing in the app changed.** This entry records two photo rounds run on the app's new pipeline (rendering, screen, production embeddings, gpt-6-luna advocates who see the photos, gpt-6.1-terra judge who does not).
+
+**The photo set** (`benchmark/data/photo-set/`): 92 found items that each have a photo: the 23 campus photos and 69 openly licensed photos found through Openverse and vetted one by one by agents (one everyday item, no face, no readable card or document; sources and licences in `benchmark/data/online/manifest.json`). Blind writers looked at each photo and wrote a finder's report and an owner's report; the owner has no photo. Finder texts are normal, near-empty ("found this") or carry one detail the photo contradicts. Checkers who were not told the truth graded each pair against the photo. Traps are other items of the same kind.
+
+**Round 1** (every report dated; traps found on other days and in other places):
+
+| | With photos | Without photos |
+|---|---|---|
+| Same-item pairs shown | 84 / 92 (91%) | 83 / 92 (90%) |
+| Clear-difference traps shown | 3 / 204 | 4 / 204 |
+
+**Round 2** (three reports in four undated, as the Home form's default gives; every item of a kind found in the same place), with photos:
+
+| | Shown |
+|---|---|
+| Same-item pairs | 84 / 92 (91%) |
+| Clear-difference traps | **54 / 200 (27%)** |
+| Soft-difference traps and lookalikes | 20 / 21 |
+
+By label in round 2: Big chance 34 real and 1 wrong; Looks like it 30 and 24; Small chance 18 and 40; held for review 2 and 9.
+
+**What this shows.**
+- **Place and day were doing the separating, not the look of the item.** In round 1 no trap shared a day with the owner's report, and near-empty finder reports still matched on kind, place and day alone. In round 2, where place agrees and dates are missing, the models suggest one clear-difference lookalike in four, even with the photo attached. Most real reports will be undated, because the "I know when" switch is off by default.
+- **Photos add little as the pipeline stands.** A few points of score, a pair or two. The judge never sees a photo; it reads the advocates' accounts of it.
+- **"Big chance" stays trustworthy in the hard round** (34 of 35). The two lower labels do not: more wrong than right below 0.70.
+- **The advocates sometimes take the finder's photo for the owner's.** With the app's line ("0 from the LOST report first, then 1 from the FOUND report"), 29 of 313 debates in each round spoke of "the LOST photo".
+
+**Tried and not adopted.**
+- **A clearer photo line** (`PHOTO_LINE=2`: whose item each photo shows). It cut the mix-up from 29 to 9 debates on round 2, but changed nothing that matters: 82 against 84 same-item pairs shown, 52 against 54 traps. On round 1, where it was tuned, it had looked like a gain (86 to 90 accepted); the holdout did not confirm it.
+- **Two photo rules** telling the models to go by a report's own photo over its words (`PHOTO_RULE=1`, `2`). Both recovered the pairs where the finder's text contradicted the photo and both let through many more wrong pairs (2 to 11 and 14 of 82), because a model that had the photo's owner wrong then replaced the owner's words with the finder's picture.
+
+**Limits.** One photo per item, both rounds on the same 92 photos, traps limited to up to three other items of the same kind, each pair judged once. Round 2 was not run without photos. The online photos are tidy single-item shots; real finder photos are messier. The ChatGPT plan's usage limit was reached twice during these runs (production shares it); 139 failed pairs were re-run.
+
+**Open.**
+- The real problem to work on is round 2's: same kind, same place, no date. Candidates, none measured: have the opposing advocate compare each detail the owner states with what the photo shows; give the judge the photo; show the owner several same-place candidates side by side instead of one suggestion each; show the posting time to the models.
+- A round with two different photos of the same object (owner's and finder's) needs new photos from the owner.
+
 ## 2026-11-14: A card photo with no long number found gets no covered copy
 
 **Found on a real card (owner asked for the check and consented to the test).** The two card photos on the collection page were run through the app's own covering, locally, with real Tesseract. The originals were never opened by a model and all files were deleted afterwards.

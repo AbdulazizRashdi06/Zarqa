@@ -10,7 +10,10 @@ import s from './Launch.module.css'
 import a from './Admin.module.css'
 
 type Group = { status?: string; count: number; kind?: string; by?: string }
+/** How shown suggestions turned out in one confidence band (server: MatchOutcomes.Band). */
+type Outcome = { key: 'below' | 'held' | 'small' | 'looks' | 'big'; shown: number; claimed: number; notMine: number; returned: number; waiting: number; expired: number }
 type Stats = {
+  outcomes?: Outcome[]
   users: number; admins?: number; sampleUsers?: number; sampleReports?: number; newUsers30d: number; returned: number
   pendingJobs: number; failedJobs: number; spendTodayUsd: number; spend30dUsd: number; reports?: Group[]; matches?: Group[]; decidedBy?: Group[]
 }
@@ -23,7 +26,7 @@ type HeldSide = {
   isSensitive: boolean; owner: string; photoIds?: string[]
 }
 /** A match held back for review: nobody but admins can see it until it is approved or 48 hours pass. */
-type Held = { id: string; score: number; reasons?: string[]; createdAt: string; releaseAt: string; lost: HeldSide; found: HeldSide }
+type Held = { id: string; score: number; confidence?: 'small' | 'looks' | 'big'; standIn?: boolean; reasons?: string[]; createdAt: string; releaseAt: string; lost: HeldSide; found: HeldSide }
 type Log = { id: number; step: string; payload: string; createdAt: string; costUsd: number | null; counterpartTitle?: string | null; counterpartKind?: string | null }
 type Result = { ok?: string; err?: string }
 /** key: where its result shows; action: which button shows the busy label. */
@@ -148,7 +151,7 @@ export default function Admin() {
     setAsk({
       key: `held:${m.id}`, action: `${verb}:${m.id}`, title: t(approve ? 'admin.held.approveTitle' : 'admin.held.rejectTitle'),
       confirmLabel: t(approve ? 'admin.held.approveGo' : 'admin.held.rejectGo'),
-      body: <><UserText>“{m.lost.title}”</UserText> · <UserText>“{m.found.title}”</UserText><br />{t(approve ? 'admin.held.approveConfirm' : 'admin.held.rejectConfirm')}</>,
+      body: <><UserText>“{m.lost.title}”</UserText> · <UserText>“{m.found.title}”</UserText><br />{approve ? t('admin.held.approveConfirm', { level: t(`admin.held.level.${m.confidence ?? 'small'}`) }) : t('admin.held.rejectConfirm')}</>,
       // Whatever the answer, the list is read again: someone else, or the 48 hours, may have decided it first.
       run: async () => {
         try { await api(`/admin/held/${m.id}/${verb}`, { method: 'POST' }) } finally { void loadHeld(); void loadStats() }
@@ -272,7 +275,8 @@ export default function Admin() {
         : !held.length ? <p>{t('admin.held.empty')}</p>
         : <div className={a.list}>{held.map(m => <Ticket className={`${s.card} ${a.card}`} key={m.id} data-held={m.id}>
           <p className={a.heldHead}>
-            <span className={a.tag}>{t('admin.held.tag')}</span> {t('admin.held.score', { score: m.score.toFixed(2) })}
+            <span className={a.tag}>{t(`admin.held.level.${m.confidence ?? 'small'}`)}</span> {t('admin.held.score', { score: m.score.toFixed(2) })}
+            {m.standIn && <><br />{t('admin.held.standIn')}</>}
             <br />{t('admin.held.auto', { when: new Date(m.releaseAt).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' }) })}
           </p>
           {([['lost', m.lost], ['found', m.found]] as const).map(([kind, r]) => {
@@ -306,6 +310,26 @@ export default function Admin() {
           {outcome(`held:${m.id}`, true)}
         </Ticket>)}</div>}
     </section>
+
+    {stats?.outcomes && <section aria-labelledby="outcomes-title" className={a.section}>
+      <h2 id="outcomes-title">{t('admin.outcomes.title')}</h2>
+      <p className={a.note}>{t('admin.outcomes.note')}</p>
+      {stats.outcomes.every(o => o.shown === 0) ? <p>{t('admin.outcomes.empty')}</p>
+        : <div className={a.tableWrap}><table className={a.table}>
+          <thead><tr>
+            <th scope="col">{t('admin.outcomes.band')}</th>
+            <th scope="col">{t('admin.outcomes.shown')}</th>
+            <th scope="col">{t('admin.outcomes.claimed')}</th>
+            <th scope="col">{t('admin.outcomes.notMine')}</th>
+            <th scope="col">{t('admin.outcomes.returned')}</th>
+            <th scope="col">{t('admin.outcomes.waiting')}</th>
+          </tr></thead>
+          <tbody>{stats.outcomes.map(o => <tr key={o.key} data-outcome={o.key}>
+            <th scope="row">{t(`admin.outcomes.bands.${o.key}` as StringKey)}</th>
+            <td>{o.shown}</td><td>{o.claimed}</td><td>{o.notMine}</td><td>{o.returned}</td><td>{o.waiting + o.expired}</td>
+          </tr>)}</tbody>
+        </table></div>}
+    </section>}
 
     <section aria-labelledby="email-title" className={a.section}>
       <h2 id="email-title">{t('admin.email.title')}</h2>

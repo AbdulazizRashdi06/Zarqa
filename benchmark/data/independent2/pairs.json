@@ -1,0 +1,6325 @@
+[
+ {
+  "lostId": "L-078",
+  "foundId": "F-100",
+  "isMatch": false,
+  "itemKind": "car key",
+  "lens": "lookalike-brand",
+  "why": "Black fob with a red panic button too, but Mercedes.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "car key",
+   "trap"
+  ],
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Honda fob vs Mercedes key in photo",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-086",
+  "foundId": "F-021",
+  "isMatch": false,
+  "itemKind": "car key",
+  "lens": "lookalike-detail",
+  "why": "Black two-button key, but brand unknown and in the student parking.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "car key",
+   "trap"
+  ],
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "black car key fits, Suzuki brand unconfirmed, little detail",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-043",
+  "foundId": "F-093",
+  "isMatch": false,
+  "itemKind": "sandals",
+  "lens": "lookalike-detail",
+  "why": "Leather sandals at the same door, but black, not brown.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "sandals",
+   "trap"
+  ],
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "same musalla, leather sandals; photo black not brown",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-107",
+  "foundId": "F-054",
+  "isMatch": true,
+  "itemKind": "usb",
+  "lens": "finder-misnames",
+  "why": "Finder took the key-shaped USB for a car key; the photo shows the USB plug.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "usb",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "photo is car-key shaped USB, black/grey; finder thought it a key",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-039",
+  "foundId": "F-075",
+  "isMatch": true,
+  "itemKind": "laptop",
+  "lens": "sparse-owner",
+  "why": "Owner wrote two words; the ThinkPad really is theirs but nothing in the text proves it.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "laptop",
+   "must"
+  ],
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "black laptop fits; owner gives almost nothing to confirm",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-077",
+  "foundId": "F-012",
+  "isMatch": true,
+  "itemKind": "laptop",
+  "lens": "duplicate-lost",
+  "why": "Re-post by the owner against the helpdesk's text-only re-post.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "laptop",
+   "must"
+  ],
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "black Dell from library fits; no photo, nothing distinctive",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-087",
+  "foundId": "F-018",
+  "isMatch": false,
+  "itemKind": "headphones",
+  "lens": "lookalike-brand",
+  "why": "Black studio headphones in the same studio, but AKG.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "headphones",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "photo shows AKG, owner says Sennheiser HD 280",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-140",
+  "foundId": "F-020",
+  "isMatch": true,
+  "itemKind": "mouse",
+  "lens": "memory-slip",
+  "why": "Logitech mouse on the CS floor; grey against dark grey/black.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "mouse",
+   "must"
+  ],
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Logitech grey wireless mouse fits; no model or photo",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-005",
+  "foundId": "F-097",
+  "isMatch": false,
+  "itemKind": "backpack",
+  "lens": "nothing-separates",
+  "why": "Grey backpack in the same canteen; the brand would be on the front, which the photo does not show.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "backpack",
+   "trap"
+  ],
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "grey backpack at canteen fits; Nike not visible",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-008",
+  "foundId": "F-004",
+  "isMatch": true,
+  "itemKind": "wallet",
+  "lens": "sparse-owner",
+  "why": "Owner gives no brand but the long red wallet with a metal plate fits the Dooney & Bourke.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "wallet",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "red long wallet, gold plate on flap visible in photo"
+ },
+ {
+  "lostId": "L-044",
+  "foundId": "F-104",
+  "isMatch": false,
+  "itemKind": "earphones",
+  "lens": "nothing-separates",
+  "why": "Same: fits on looks, different owner.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "earphones",
+   "trap"
+  ],
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "white wired Apple earphones fit; generic, place differs",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-042",
+  "foundId": "F-098",
+  "isMatch": false,
+  "itemKind": "keys",
+  "lens": "lookalike-detail",
+  "why": "A bunch with a torch, no bottle opener.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "keys",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "keys both; red bottle opener absent, torch bunch instead",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-085",
+  "foundId": "F-072",
+  "isMatch": false,
+  "itemKind": "pencil case",
+  "lens": "clear-mismatch",
+  "why": "White tube-map case against a purple Smiggle.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "pencil case",
+   "trap"
+  ],
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "purple Smiggle vs white tube-map case",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-085",
+  "foundId": "F-013",
+  "isMatch": false,
+  "itemKind": "pencil case",
+  "lens": "nothing-separates",
+  "why": "Purple zip-around case in the library; the found one could be a Smiggle and the evidence cannot say. It is not.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "pencil case",
+   "trap"
+  ],
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "purple hard-shell zip-around case, library; Smiggle unconfirmed",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-143",
+  "foundId": "F-031",
+  "isMatch": true,
+  "itemKind": "watch",
+  "lens": "plain",
+  "why": "Bulova Accutron Astronaut in its box, 4th floor.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "watch",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Bulova Accutron Astronaut, black dial, original box all confirmed",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-097",
+  "foundId": "F-066",
+  "isMatch": true,
+  "itemKind": "cap",
+  "lens": "plain",
+  "why": "Navy cap with red Stussy script.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "cap",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "navy Stussy cap, red writing confirmed in photo",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-071",
+  "foundId": "F-002",
+  "isMatch": true,
+  "itemKind": "remote",
+  "lens": "sparse-owner",
+  "why": "Dark grey remote with a Netflix button from the same common room; owner calls it black.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "remote",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "common room TV remote with Netflix button; black vs dark grey trivial"
+ },
+ {
+  "lostId": "L-145",
+  "foundId": "F-017",
+  "isMatch": true,
+  "itemKind": "wallet",
+  "lens": "plain",
+  "why": "Black wallet with an embossed line pattern and cash, canteen.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "wallet",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black leather, geometric line pattern, cash, canteen, same date"
+ },
+ {
+  "lostId": "L-144",
+  "foundId": "F-012",
+  "isMatch": false,
+  "itemKind": "laptop",
+  "lens": "nothing-separates",
+  "why": "A text-only black Dell from the library; only the place argues against it.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "laptop",
+   "trap"
+  ],
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "black Dell fits; found came from library not canteen, scratches not confirmed",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-131",
+  "foundId": "F-035",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "lookalike-brand",
+  "why": "German: black leather wallet in the sports hall, but Timberland, not Hugo Boss.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "black wallets but Hugo Boss vs Timberland"
+ },
+ {
+  "lostId": "L-029",
+  "foundId": "F-063",
+  "isMatch": false,
+  "itemKind": "textbook",
+  "lens": "lookalike-brand",
+  "why": "Chemistry textbook in the same faculty, but by Zumdahl, not Chang.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "textbook",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "chemistry textbooks but Chang vs Zumdahl"
+ },
+ {
+  "lostId": "L-147",
+  "foundId": "F-010",
+  "isMatch": true,
+  "itemKind": "laptop",
+  "lens": "language",
+  "why": "Arabic report of a silver MacBook left on the Germany Hall sofa; photo matches.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "laptop",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "silver MacBook on sofa, Germany Hall, same day; photo fits",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-153",
+  "foundId": "F-015",
+  "isMatch": true,
+  "itemKind": "wallet",
+  "lens": "plain",
+  "why": "Small red wallet with clover and snap tab.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "wallet",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "small red leather, clover, photo shows snap tab too"
+ },
+ {
+  "lostId": "L-009",
+  "foundId": "F-078",
+  "isMatch": true,
+  "itemKind": "usb",
+  "lens": "memory-slip",
+  "why": "Transcend, light blue collar and string all visible; the stick says 1GB, the owner says 2GB.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "usb",
+   "must"
+  ],
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "Transcend black/light blue with string; photo says 1GB not 2GB",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-004",
+  "foundId": "F-093",
+  "isMatch": true,
+  "itemKind": "sandals",
+  "lens": "language",
+  "why": "Arabic: black leather men's sandals at the GU2 prayer room.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "sandals",
+   "must"
+  ],
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black leather men's sandals, musalla door, same day; generic",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-105",
+  "foundId": "F-051",
+  "isMatch": true,
+  "itemKind": "abaya",
+  "lens": "sparse-finder",
+  "why": "Black abaya in a paper bag in Germany Hall; the finder did not unfold it to see the sleeves.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "abaya",
+   "must"
+  ],
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "black abaya in paper bag, same hall; embroidery unconfirmed",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-063",
+  "foundId": "F-064",
+  "isMatch": false,
+  "itemKind": "glasses",
+  "lens": "clear-mismatch",
+  "why": "A pen in the same library.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "glasses",
+   "trap"
+  ],
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "glasses vs fountain pen"
+ },
+ {
+  "lostId": "L-115",
+  "foundId": "F-006",
+  "isMatch": false,
+  "itemKind": "power bank",
+  "lens": "clear-mismatch",
+  "why": "Silver Xiaomi on a bus against a black Anker.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "power bank",
+   "trap"
+  ],
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black Anker vs silver Mi",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-041",
+  "foundId": "F-092",
+  "isMatch": false,
+  "itemKind": "keys",
+  "lens": "lookalike-detail",
+  "why": "Large bunch, but in the boys dorms, with a skeleton key and no torch.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "keys",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "torch and round tag missing; skeleton key bunch, fewer keys",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-084",
+  "foundId": "F-035",
+  "isMatch": true,
+  "itemKind": "wallet",
+  "lens": "plain",
+  "why": "Timberland tree logo, black, gym.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "wallet",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black Timberland, tree logo in photo; gym = sports hall"
+ },
+ {
+  "lostId": "L-069",
+  "foundId": "F-002",
+  "isMatch": false,
+  "itemKind": "remote",
+  "lens": "different-kind-shared-word",
+  "why": "\"Remote\" means a car key fob here, not a TV remote.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "remote",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "car key remote vs TV remote"
+ },
+ {
+  "lostId": "L-057",
+  "foundId": "F-009",
+  "isMatch": false,
+  "itemKind": "charger",
+  "lens": "clear-mismatch",
+  "why": "A Dell laptop brick against an Apple phone charger.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "charger",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "white Apple 20W vs grey Dell laptop brick"
+ },
+ {
+  "lostId": "L-089",
+  "foundId": "F-103",
+  "isMatch": false,
+  "itemKind": "key",
+  "lens": "lookalike-detail",
+  "why": "A single key with no keychain, but an old clover-head key from a buggy, not a house key.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "key",
+   "trap"
+  ],
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "single old key but in buggy ignition, not a house key",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-003",
+  "foundId": "F-016",
+  "isMatch": false,
+  "itemKind": "glasses",
+  "lens": "lookalike-detail",
+  "why": "Black glasses in the library, but full-rim, not half-rim.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "glasses",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "black fits; half-rim vs full thick rim in photo"
+ },
+ {
+  "lostId": "L-037",
+  "foundId": "F-021",
+  "isMatch": false,
+  "itemKind": "car key",
+  "lens": "lookalike-brand",
+  "why": "Black car key in the same parking, but Toyota-style with tags, not BMW.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "car key",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "BMW key vs plain 2-button key with tags",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-062",
+  "foundId": "F-088",
+  "isMatch": false,
+  "itemKind": "glasses",
+  "lens": "lookalike-detail",
+  "why": "Thin metal glasses, but gunmetal rectangular with no amber pads.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "glasses",
+   "trap"
+  ],
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "thin metal fits; photo frame silver/gunmetal not gold"
+ },
+ {
+  "lostId": "L-088",
+  "foundId": "F-032",
+  "isMatch": true,
+  "itemKind": "car key",
+  "lens": "duplicate-found",
+  "why": "Security re-posted the same VW key with its doll keychain in words only.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "car key",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "VW key with doll keychain confirmed; no photo",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-096",
+  "foundId": "F-023",
+  "isMatch": false,
+  "itemKind": "glasses",
+  "lens": "lookalike-detail",
+  "why": "Thin metal frame too, but oval with amber pads, on another floor.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "glasses",
+   "trap"
+  ],
+  "quality": {
+   "a": 4,
+   "b": 4
+  },
+  "difficulty": {
+   "a": 4,
+   "b": 3
+  },
+  "ratingNote": "thin dark metal; photo frame oval-ish, warm tone, arms unclear"
+ },
+ {
+  "lostId": "L-102",
+  "foundId": "F-045",
+  "isMatch": false,
+  "itemKind": "hoodie",
+  "lens": "lookalike-detail",
+  "why": "Dark top, but a brown zip jacket with a stripe, not a black Nike hoodie.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "hoodie",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black Nike hoodie vs brown LOST zip jacket",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-149",
+  "foundId": "F-058",
+  "isMatch": false,
+  "itemKind": "umbrella",
+  "lens": "lookalike-detail",
+  "why": "Red umbrella the same day, but a short folding one.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "umbrella",
+   "trap"
+  ],
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "red, but photo is folding compact, not long wooden handle",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-110",
+  "foundId": "F-049",
+  "isMatch": false,
+  "itemKind": "shayla",
+  "lens": "lookalike-detail",
+  "why": "Head covering, but grey wool, not a black shayla.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "shayla",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "black shayla vs grey wool scarf"
+ },
+ {
+  "lostId": "L-031",
+  "foundId": "F-031",
+  "isMatch": false,
+  "itemKind": "watch",
+  "lens": "lookalike-detail",
+  "why": "A watch with a black dial, but steel on a bracelet, not gold on leather.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "watch",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "gold/leather/cream dial vs steel bracelet black Bulova",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-023",
+  "foundId": "F-004",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "different-kind-shared-word",
+  "why": "Same brand and place, but the owner lost a handbag and this is a wallet.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ],
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "same brand, colour, place, date but handbag vs long wallet"
+ },
+ {
+  "lostId": "L-032",
+  "foundId": "F-034",
+  "isMatch": false,
+  "itemKind": "keys",
+  "lens": "lookalike-detail",
+  "why": "Bunch of keys, but on a carabiner with no skeleton key.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "keys",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "no skeleton key or grey/black tags; carabiner bunch",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-051",
+  "foundId": "F-100",
+  "isMatch": true,
+  "itemKind": "car key",
+  "lens": "memory-slip",
+  "why": "Mercedes key and tag; owner remembers the tag as gold, photo shows chrome.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "car key",
+   "must"
+  ],
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "Mercedes key and keyring, same place/date; gold (unsure) vs silver",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-124",
+  "foundId": "F-030",
+  "isMatch": true,
+  "itemKind": "usb",
+  "lens": "memory-slip",
+  "why": "Sliding silver stick with red inlay and leather strap; owner unsure of the brand.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "usb",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "silver slider, red front, black leather strap all in photo",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-121",
+  "foundId": "F-080",
+  "isMatch": true,
+  "itemKind": "laptop",
+  "lens": "plain",
+  "why": "Same brand, colour, desk with charger and the library floor all agree.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "laptop",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black Dell charging on library 6th floor desk, same day; photo confirms",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-092",
+  "foundId": "F-007",
+  "isMatch": true,
+  "itemKind": "textbook",
+  "lens": "plain",
+  "why": "Children's science book open at the solar system chapter.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "textbook",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "kids science book, solar system chapter, library"
+ },
+ {
+  "lostId": "L-077",
+  "foundId": "F-080",
+  "isMatch": true,
+  "itemKind": "laptop",
+  "lens": "duplicate-lost",
+  "why": "The same owner posting again three days later; same laptop.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "laptop",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black Dell charging, library 6th floor, same day; photo confirms",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-110",
+  "foundId": "F-057",
+  "isMatch": true,
+  "itemKind": "shayla",
+  "lens": "sparse-both",
+  "why": "Arabic: a black shayla, same prayer room; nothing else to check.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "shayla",
+   "must"
+  ],
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black shayla, same prayer room; nothing distinctive"
+ },
+ {
+  "lostId": "L-007",
+  "foundId": "F-014",
+  "isMatch": false,
+  "itemKind": "bottle",
+  "lens": "lookalike-brand",
+  "why": "Insulated drink container, but a steel Thermos, not a black Hydro Flask.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "bottle",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black Hydro Flask vs steel Thermos tumbler",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-093",
+  "foundId": "F-096",
+  "isMatch": true,
+  "itemKind": "charger",
+  "lens": "language",
+  "why": "German report; Acer laptops ship with Chicony adapters, so the brand on the brick differs from the laptop brand the owner names.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "charger",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "black brick Euro plug, Chicony (Acer OEM), same place and date"
+ },
+ {
+  "lostId": "L-038",
+  "foundId": "F-010",
+  "isMatch": false,
+  "itemKind": "laptop",
+  "lens": "lookalike-brand",
+  "why": "Silver laptop in a nearby building, but the photo shows an Apple MacBook, not an HP, and no sleeve.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "laptop",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "silver laptop, but HP Envy vs MacBook; no sleeve",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-087",
+  "foundId": "F-094",
+  "isMatch": true,
+  "itemKind": "headphones",
+  "lens": "plain",
+  "why": "Sennheiser HD 280 pro.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "headphones",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "photo shows Sennheiser HD 280 pro, studio, same day",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-037",
+  "foundId": "F-054",
+  "isMatch": false,
+  "itemKind": "car key",
+  "lens": "different-kind-shared-word",
+  "why": "Looks like a BMW key and the finder says car key, but the photo shows a USB plug.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "car key",
+   "trap"
+  ],
+  "quality": {
+   "a": 4,
+   "b": 4
+  },
+  "difficulty": {
+   "a": 4,
+   "b": 4
+  },
+  "ratingNote": "black/grey LOCK key shape fits, but photo is USB novelty, multicolour logo",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-049",
+  "foundId": "F-085",
+  "isMatch": true,
+  "itemKind": "earphones",
+  "lens": "plain",
+  "why": "White Apple wired earbuds with remote, canteen at lunch.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "earphones",
+   "must"
+  ],
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "white wired Apple earphones, canteen, same day; common item",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-033",
+  "foundId": "F-024",
+  "isMatch": true,
+  "itemKind": "electronics",
+  "lens": "plain",
+  "why": "Green PCB, coin-cell holder and yellow capacitors are all visible.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "electronics",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "green PCB, coin cell holder, yellow caps, same lab and date",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-053",
+  "foundId": "F-026",
+  "isMatch": false,
+  "itemKind": "key",
+  "lens": "lookalike-detail",
+  "why": "A key, but modern laser-cut with a black head.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "key",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "old buggy key wanted; photo modern black-head key bunch",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-114",
+  "foundId": "F-061",
+  "isMatch": false,
+  "itemKind": "power bank",
+  "lens": "nothing-separates",
+  "why": "Fits two words, but in Germany Hall and not this owner's.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "power bank",
+   "trap"
+  ],
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "lost says only powerbank; nothing to confirm or contradict",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-081",
+  "foundId": "F-081",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "lookalike-detail",
+  "why": "Brown leather wallet, but tooled and found in the workshops.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ],
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "brown leather wallet fits; found 6 days before loss, other place"
+ },
+ {
+  "lostId": "L-120",
+  "foundId": "F-063",
+  "isMatch": true,
+  "itemKind": "textbook",
+  "lens": "memory-slip",
+  "why": "Zumdahl Chemistry; the spine says ninth edition, the owner said tenth.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "textbook",
+   "must"
+  ],
+  "quality": {
+   "a": 6,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 3
+  },
+  "ratingNote": "Zumdahl chemistry; photo 9th edition vs 10th"
+ },
+ {
+  "lostId": "L-060",
+  "foundId": "F-089",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "nothing-separates",
+  "why": "Black wallet, text only; the brand is not given.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ],
+  "quality": {
+   "a": 6,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "black wallet, no brand or photo on found side; other place"
+ },
+ {
+  "lostId": "L-009",
+  "foundId": "F-048",
+  "isMatch": false,
+  "itemKind": "usb",
+  "lens": "lookalike-detail",
+  "why": "Black capped stick at the Copy Centre, but no blue collar or lanyard and a 2GB label.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "usb",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "plain black 2G stick, no blue part, not Transcend",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-148",
+  "foundId": "F-043",
+  "isMatch": false,
+  "itemKind": "sunglasses",
+  "lens": "clear-mismatch",
+  "why": "Same courts, but plum oversized frames against gold aviators.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "sunglasses",
+   "trap"
+  ],
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "gold aviators vs dark red oversized frames",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-060",
+  "foundId": "F-046",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "lookalike-brand",
+  "why": "Black wallet, but GUESS.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black wallets, Tommy Hilfiger vs Guess"
+ },
+ {
+  "lostId": "L-015",
+  "foundId": "F-023",
+  "isMatch": false,
+  "itemKind": "glasses",
+  "lens": "lookalike-detail",
+  "why": "Thin metal glasses, but with a full rim.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "glasses",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "rimless round vs full metal rim in photo"
+ },
+ {
+  "lostId": "L-152",
+  "foundId": "F-035",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "lookalike-brand",
+  "why": "Black bifold, but Timberland.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Guess with tag vs plain Timberland"
+ },
+ {
+  "lostId": "L-084",
+  "foundId": "F-034",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "clear-mismatch",
+  "why": "Keys against a wallet.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ],
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "wallet vs bunch of keys"
+ },
+ {
+  "lostId": "L-145",
+  "foundId": "F-089",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "nothing-separates",
+  "why": "A text-only black wallet with cash; only the place argues against it.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ],
+  "quality": {
+   "a": 6,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "black wallet with cash, found side vague; other place"
+ },
+ {
+  "lostId": "L-045",
+  "foundId": "F-070",
+  "isMatch": true,
+  "itemKind": "headphones",
+  "lens": "plain",
+  "why": "Philips, black with brown leather.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "headphones",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Philips black with brown leather; photo matches exactly",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-011",
+  "foundId": "F-008",
+  "isMatch": false,
+  "itemKind": "watch",
+  "lens": "lookalike-brand",
+  "why": "Black-dial steel chronograph at the same courts, but Breitling, not Omega.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "watch",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Omega Speedmaster vs Breitling Navitimer",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-130",
+  "foundId": "F-017",
+  "isMatch": false,
+  "itemKind": "notebook",
+  "lens": "clear-mismatch",
+  "why": "A wallet from the canteen.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "notebook",
+   "trap"
+  ],
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "notebook vs wallet"
+ },
+ {
+  "lostId": "L-115",
+  "foundId": "F-062",
+  "isMatch": true,
+  "itemKind": "power bank",
+  "lens": "different-word-same-thing",
+  "why": "Owner says \"portable charger\", finder says \"power bank\"; slim black Anker with four lights in both.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "power bank",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black slim Anker, 4 lights, library, same date",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-127",
+  "foundId": "F-093",
+  "isMatch": false,
+  "itemKind": "prayer beads",
+  "lens": "clear-mismatch",
+  "why": "Sandals from the same prayer room door.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "prayer beads",
+   "trap"
+  ],
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "prayer beads vs sandals"
+ },
+ {
+  "lostId": "L-040",
+  "foundId": "F-100",
+  "isMatch": false,
+  "itemKind": "car key",
+  "lens": "lookalike-brand",
+  "why": "Black key with a silver tag, but a Mercedes fob and tag.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "car key",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Toyota 2-button with tags vs Mercedes key",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-044",
+  "foundId": "F-085",
+  "isMatch": false,
+  "itemKind": "earphones",
+  "lens": "nothing-separates",
+  "why": "Arabic: white wired Apple earbuds, but lost in the boys dorms; not this pair.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "earphones",
+   "trap"
+  ],
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "white wired Apple earphones fit; generic, place differs",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-113",
+  "foundId": "F-065",
+  "isMatch": true,
+  "itemKind": "earphones",
+  "lens": "plain",
+  "why": "Handmade red sleeve with green stitches; the most distinctive earphones in the set.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "earphones",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "hand-sewn red sleeve with green stitches confirmed in photo",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-153",
+  "foundId": "F-004",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "lookalike-detail",
+  "why": "Red, but a long flap wallet with a brass plate.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "red, but small clover snap wallet vs long Dooney & Bourke"
+ },
+ {
+  "lostId": "L-015",
+  "foundId": "F-071",
+  "isMatch": true,
+  "itemKind": "glasses",
+  "lens": "plain",
+  "why": "Rimless round lenses with thin dark arms.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "glasses",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "rimless round, dark thin arms in photo, dorms"
+ },
+ {
+  "lostId": "L-022",
+  "foundId": "F-036",
+  "isMatch": false,
+  "itemKind": "hoodie",
+  "lens": "nothing-separates",
+  "why": "A black hoodie fits, but it was in the sports hall and is not theirs.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "hoodie",
+   "trap"
+  ],
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "black hoodie fits; owner vague, places differ",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-035",
+  "foundId": "F-030",
+  "isMatch": false,
+  "itemKind": "usb",
+  "lens": "lookalike-brand",
+  "why": "Red and silver-black against red-and-black SanDisk Cruzer; different shape, strap not mentioned.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "usb",
+   "trap"
+  ],
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "red usb but silver frame, strap; SanDisk Cruzer differs",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-027",
+  "foundId": "F-003",
+  "isMatch": true,
+  "itemKind": "wallet",
+  "lens": "plain",
+  "why": "TOM'S carbon wallet in its gift box.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "wallet",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "TOM'S carbon black wallet in gift box, same hall"
+ },
+ {
+  "lostId": "L-050",
+  "foundId": "F-029",
+  "isMatch": true,
+  "itemKind": "usb",
+  "lens": "different-word-same-thing",
+  "why": "\"Pen drive\" is a USB stick; TDK, silver, left in a CS lab PC.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "usb",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "silver TDK drive, CS lab 4th floor, same date",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-024",
+  "foundId": "F-086",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "nothing-separates",
+  "why": "A brown wallet on the bus; the owner lost theirs in the labs, and it is not this one.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ],
+  "quality": {
+   "a": 6,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "brown wallet fits, found side says little; place/date differ"
+ },
+ {
+  "lostId": "L-146",
+  "foundId": "F-071",
+  "isMatch": true,
+  "itemKind": "glasses",
+  "lens": "second-hand",
+  "why": "A roommate reports for the owner; rimless round glasses in the residences.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "glasses",
+   "must"
+  ],
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "round rimless in dorms; few details"
+ },
+ {
+  "lostId": "L-079",
+  "foundId": "F-091",
+  "isMatch": true,
+  "itemKind": "umbrella",
+  "lens": "moved-or-misdated",
+  "why": "Owner gives the main entrance on the 14th; the umbrella was found at GU2 parking on the 12th. People misremember both.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "umbrella",
+   "must"
+  ],
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "black umbrella fits; little detail, other place, found earlier",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-129",
+  "foundId": "F-048",
+  "isMatch": false,
+  "itemKind": "usb",
+  "lens": "nothing-separates",
+  "why": "A USB at the Copy Centre fits a four-word report; it is not this person's.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "usb",
+   "trap"
+  ],
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "usb at copy centre; owner gives no detail",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-057",
+  "foundId": "F-042",
+  "isMatch": false,
+  "itemKind": "charger",
+  "lens": "lookalike-detail",
+  "why": "A white Apple cable on its own in the Copy Centre; no plug, Lightning end, other building.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "charger",
+   "trap"
+  ],
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "white Apple cable fits; plug missing, no photo"
+ },
+ {
+  "lostId": "L-034",
+  "foundId": "F-014",
+  "isMatch": true,
+  "itemKind": "bottle",
+  "lens": "moved-or-misdated",
+  "why": "Steel Thermos tumbler; owner names a GU2 room and the day before, it was found in Oman Hall.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "bottle",
+   "must"
+  ],
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "stainless Thermos tumbler in photo; place and day differ slightly",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-040",
+  "foundId": "F-021",
+  "isMatch": true,
+  "itemKind": "car key",
+  "lens": "language",
+  "why": "Arabic: black two-button Toyota-style key with silver tags, one car-shaped.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "car key",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black 2-button key, silver tags, car-shaped tag all confirmed",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-013",
+  "foundId": "F-026",
+  "isMatch": true,
+  "itemKind": "key",
+  "lens": "sparse-finder",
+  "why": "Finder wrote one word; the photo shows a black-head key with others, and the place matches.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "key",
+   "must"
+  ],
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "black-head car key with other keys, GU1 prayer room",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-116",
+  "foundId": "F-019",
+  "isMatch": false,
+  "itemKind": "watch",
+  "lens": "lookalike-brand",
+  "why": "Black-faced watch in the gym, but a steel Victorinox, not a resin G-Shock.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "watch",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "G-Shock vs Victorinox steel watch",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-059",
+  "foundId": "F-034",
+  "isMatch": false,
+  "itemKind": "keys",
+  "lens": "nothing-separates",
+  "why": "Keys with nothing to compare; the place differs a little.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "keys",
+   "trap"
+  ],
+  "quality": {
+   "a": 4,
+   "b": 4
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "bare 'keys' vs carabiner bunch; pitch vs dirt parking",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-017",
+  "foundId": "F-085",
+  "isMatch": false,
+  "itemKind": "earbuds",
+  "lens": "lookalike-detail",
+  "why": "White Apple earbuds in the canteen, but wired, not AirPods.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "earbuds",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "AirPods Pro case vs wired earphones",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-141",
+  "foundId": "F-070",
+  "isMatch": false,
+  "itemKind": "headphones",
+  "lens": "lookalike-brand",
+  "why": "Over-ear in the same hall, but red Beats.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "headphones",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "red Beats vs brown/black Philips",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-078",
+  "foundId": "F-040",
+  "isMatch": true,
+  "itemKind": "car key",
+  "lens": "plain",
+  "why": "Honda smart key with remote start, padel courts.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "car key",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Honda smart key with remote start, same place/date",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-030",
+  "foundId": "F-055",
+  "isMatch": true,
+  "itemKind": "earphones",
+  "lens": "plain",
+  "why": "Silver-blue in-ears, white cable, black mesh pouch.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "earphones",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "silver/blue in-ears, white cable, black mesh pouch all match",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-010",
+  "foundId": "F-037",
+  "isMatch": false,
+  "itemKind": "cap",
+  "lens": "lookalike-detail",
+  "why": "Blue cap with a C, but the owner's letter is white and the found one is red with a white edge.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "cap",
+   "trap"
+  ],
+  "quality": {
+   "a": 4,
+   "b": 4
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "blue C cap; photo C is red with white outline, owner says white",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-048",
+  "foundId": "F-087",
+  "isMatch": false,
+  "itemKind": "phone",
+  "lens": "lookalike-brand",
+  "why": "Gold phone in the library, but a Samsung; the photo shows an Apple logo.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "phone",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "gold phone both, but Samsung vs iPhone",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-133",
+  "foundId": "F-084",
+  "isMatch": true,
+  "itemKind": "wallet",
+  "lens": "plain",
+  "why": "Slim oxblood card holder from the pitch.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "wallet",
+   "must"
+  ],
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "slim burgundy leather card holder, pitch"
+ },
+ {
+  "lostId": "L-109",
+  "foundId": "F-053",
+  "isMatch": false,
+  "itemKind": "cap",
+  "lens": "different-kind-shared-word",
+  "why": "\"Cap\" here is a camera lens cap.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "cap",
+   "trap"
+  ],
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "camera lens cap vs baseball cap",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-132",
+  "foundId": "F-019",
+  "isMatch": false,
+  "itemKind": "watch",
+  "lens": "nothing-separates",
+  "why": "Steel bracelet and black face fit; it is not theirs.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "watch",
+   "trap"
+  ],
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "silver metal strap black face fits; generic description",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-058",
+  "foundId": "F-059",
+  "isMatch": false,
+  "itemKind": "car key",
+  "lens": "lookalike-brand",
+  "why": "Black flip key in the same parking, but VW with a sumo charm, not Hyundai.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "car key",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "flip key fits but Hyundai vs VW with sumo doll",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-019",
+  "foundId": "F-067",
+  "isMatch": true,
+  "itemKind": "bottle",
+  "lens": "plain",
+  "why": "Blue Nalgene with stickers.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "bottle",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "blue Nalgene with stickers, gym/sports hall; no photo",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-068",
+  "foundId": "F-033",
+  "isMatch": false,
+  "itemKind": "backpack",
+  "lens": "clear-mismatch",
+  "why": "A laptop found in the canteen against a backpack lost there.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "backpack",
+   "trap"
+  ],
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "backpack vs Dell laptop",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-004",
+  "foundId": "F-089",
+  "isMatch": false,
+  "itemKind": "sandals",
+  "lens": "clear-mismatch",
+  "why": "A wallet from the same prayer room.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "sandals",
+   "trap"
+  ],
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "sandals vs wallet",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-141",
+  "foundId": "F-018",
+  "isMatch": false,
+  "itemKind": "headphones",
+  "lens": "lookalike-brand",
+  "why": "Over-ear headphones, but black AKG, not red Beats.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "headphones",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "red Beats vs black/silver AKG",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-080",
+  "foundId": "F-013",
+  "isMatch": true,
+  "itemKind": "pencil case",
+  "lens": "language",
+  "why": "Arabic: purple case full of pink and purple pens.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "pencil case",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "purple case with pink/purple pens, library, same date",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-061",
+  "foundId": "F-101",
+  "isMatch": true,
+  "itemKind": "table tennis bat",
+  "lens": "memory-slip",
+  "why": "Worn red rubber; the handle is orange, the owner says yellow.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "table tennis bat",
+   "must"
+  ],
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "red worn bat fits; handle orange not yellow",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-109",
+  "foundId": "F-041",
+  "isMatch": false,
+  "itemKind": "camera bag",
+  "lens": "different-kind-shared-word",
+  "why": "Camera gear in the studio; the bag is not a lens cap.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "camera bag",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "lens cap lost; found is camera backpack, a cap only incidental in photo",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-018",
+  "foundId": "F-068",
+  "isMatch": true,
+  "itemKind": "book",
+  "lens": "plain",
+  "why": "Yellowed book in Cyrillic, falling apart.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "book",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "old Russian book, yellow pages, falling apart",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-045",
+  "foundId": "F-094",
+  "isMatch": false,
+  "itemKind": "headphones",
+  "lens": "lookalike-detail",
+  "why": "Over-ear headphones, but all black Sennheiser with no brown leather.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "headphones",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Philips brown leather vs black Sennheiser",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-132",
+  "foundId": "F-008",
+  "isMatch": false,
+  "itemKind": "watch",
+  "lens": "nothing-separates",
+  "why": "Same: fits the vague report.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "watch",
+   "trap"
+  ],
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "steel bracelet black dial fits; vague owner, busy Breitling dial",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-093",
+  "foundId": "F-009",
+  "isMatch": false,
+  "itemKind": "charger",
+  "lens": "lookalike-brand",
+  "why": "A laptop brick, but a Dell one in the workshops.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "charger",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black Acer vs grey Dell brick"
+ },
+ {
+  "lostId": "L-132",
+  "foundId": "F-031",
+  "isMatch": false,
+  "itemKind": "watch",
+  "lens": "nothing-separates",
+  "why": "Steel bracelet and black dial fit; the box and Bulova name are not mentioned. Not theirs.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "watch",
+   "trap"
+  ],
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "steel black-dial fits; vintage boxed Bulova unmentioned",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-030",
+  "foundId": "F-013",
+  "isMatch": false,
+  "itemKind": "earphones",
+  "lens": "clear-mismatch",
+  "why": "A pencil case in the same library.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "earphones",
+   "trap"
+  ],
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "earphones vs pencil case",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-014",
+  "foundId": "F-098",
+  "isMatch": false,
+  "itemKind": "keys",
+  "lens": "lookalike-detail",
+  "why": "A bunch of keys, but with a torch and round tag, in the girls' residence.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "keys",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "silver carabiner absent; torch bunch instead",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-121",
+  "foundId": "F-012",
+  "isMatch": true,
+  "itemKind": "laptop",
+  "lens": "duplicate-found",
+  "why": "The helpdesk re-posted the same library laptop in a few words; same object as the photographed one.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "laptop",
+   "must"
+  ],
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "black Dell from library at helpdesk; no photo, nothing distinctive",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-072",
+  "foundId": "F-072",
+  "isMatch": true,
+  "itemKind": "pencil case",
+  "lens": "plain",
+  "why": "Tube-map print with red zip.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "pencil case",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "tube map case, white with red zip confirmed by photo",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-028",
+  "foundId": "F-087",
+  "isMatch": false,
+  "itemKind": "phone",
+  "lens": "lookalike-detail",
+  "why": "Same library, but a black phone in a navy case against a bare gold iPhone.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "phone",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "black iPhone 13 in navy case vs gold iPhone no case",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-121",
+  "foundId": "F-033",
+  "isMatch": false,
+  "itemKind": "laptop",
+  "lens": "lookalike-detail",
+  "why": "Another black Dell, but found in the canteen with a heavily scratched lid; the owner was in the library.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "laptop",
+   "trap"
+  ],
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "black Dell fits; found in canteen 2 days later, not library",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-059",
+  "foundId": "F-005",
+  "isMatch": true,
+  "itemKind": "keys",
+  "lens": "sparse-both",
+  "why": "Both sides say almost nothing; the B&W photo shows only a ring and discs. They are the same.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "keys",
+   "must"
+  ],
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "keys at pitch both; neither side gives detail",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-136",
+  "foundId": "F-018",
+  "isMatch": true,
+  "itemKind": "headphones",
+  "lens": "plain",
+  "why": "AKG over-ears in the studio.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "headphones",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "photo shows AKG 271, studio, same day",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-031",
+  "foundId": "F-099",
+  "isMatch": true,
+  "itemKind": "watch",
+  "lens": "sparse-owner",
+  "why": "No brand from the owner, but gold case, black/cream dial, leather strap all fit.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "watch",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "gold, leather strap, black/cream face, subdials, same hall",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-079",
+  "foundId": "F-058",
+  "isMatch": false,
+  "itemKind": "umbrella",
+  "lens": "clear-mismatch",
+  "why": "Black against red.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "umbrella",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black umbrella vs red",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-142",
+  "foundId": "F-058",
+  "isMatch": true,
+  "itemKind": "umbrella",
+  "lens": "plain",
+  "why": "Red compact folding umbrella.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "umbrella",
+   "must"
+  ],
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "small red folding umbrella, same place and date",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-059",
+  "foundId": "F-098",
+  "isMatch": false,
+  "itemKind": "keys",
+  "lens": "nothing-separates",
+  "why": "Keys with nothing to compare, girls' residences.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "keys",
+   "trap"
+  ],
+  "quality": {
+   "a": 4,
+   "b": 4
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "bare 'keys' vs torch bunch; pitch vs female residences",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-134",
+  "foundId": "F-076",
+  "isMatch": true,
+  "itemKind": "earbuds",
+  "lens": "plain",
+  "why": "JBL case, silver rim and black lid as the owner says, same canteen.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "earbuds",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "JBL silver case with black top, same place/date",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-144",
+  "foundId": "F-033",
+  "isMatch": true,
+  "itemKind": "laptop",
+  "lens": "plain",
+  "why": "Scratched black Dell left charging by the canteen windows; photo shows the scratches.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "laptop",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "scratched black Dell, canteen windows, charger, same day; photo confirms",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-114",
+  "foundId": "F-062",
+  "isMatch": false,
+  "itemKind": "power bank",
+  "lens": "nothing-separates",
+  "why": "Two words and a place; the library power bank fits, but it belongs to someone else.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "power bank",
+   "trap"
+  ],
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "lost says only powerbank, library fits",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-041",
+  "foundId": "F-077",
+  "isMatch": false,
+  "itemKind": "keys",
+  "lens": "clear-mismatch",
+  "why": "A purse in the girls' residences.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "keys",
+   "trap"
+  ],
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "keys vs snakeskin purse",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-096",
+  "foundId": "F-088",
+  "isMatch": true,
+  "itemKind": "glasses",
+  "lens": "plain",
+  "why": "Thin gunmetal rectangular frame, Faculty of Sciences.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "glasses",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 1
+  },
+  "ratingNote": "gunmetal rectangular, black arms in photo, same place/date"
+ },
+ {
+  "lostId": "L-117",
+  "foundId": "F-056",
+  "isMatch": true,
+  "itemKind": "calculator",
+  "lens": "memory-slip",
+  "why": "Same exam hall and day; ES against EX is the kind of model mix-up a finder or owner makes.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "calculator",
+   "must"
+  ],
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 4,
+   "b": 4
+  },
+  "ratingNote": "Casio fx-991, EX vs ES easy slip; hall differs, same day",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-083",
+  "foundId": "F-043",
+  "isMatch": true,
+  "itemKind": "sunglasses",
+  "lens": "language",
+  "why": "Arabic: oversized burgundy frame and gradient blue lenses.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "sunglasses",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "big maroon frame, blue gradient lenses, padel, same date",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-111",
+  "foundId": "F-056",
+  "isMatch": false,
+  "itemKind": "calculator",
+  "lens": "lookalike-detail",
+  "why": "A Casio in the same exam hall, but an fx-82, a different model.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "calculator",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "fx-82 blue vs fx-991ES, different model",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-077",
+  "foundId": "F-033",
+  "isMatch": false,
+  "itemKind": "laptop",
+  "lens": "lookalike-detail",
+  "why": "The scratched canteen Dell again.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "laptop",
+   "trap"
+  ],
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "black Dell fits; canteen 2 days later vs library desk",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-102",
+  "foundId": "F-036",
+  "isMatch": true,
+  "itemKind": "hoodie",
+  "lens": "plain",
+  "why": "Black Nike hoodie size M in the gym.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "hoodie",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black Nike hoodie size M, gym/sports hall",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-128",
+  "foundId": "F-090",
+  "isMatch": false,
+  "itemKind": "card game",
+  "lens": "lookalike-detail",
+  "why": "A card game box in GU1, but red Uno, not the navy Money Talks box.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "card game",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "red Uno vs navy Money Talks box"
+ },
+ {
+  "lostId": "L-051",
+  "foundId": "F-021",
+  "isMatch": false,
+  "itemKind": "car key",
+  "lens": "lookalike-detail",
+  "why": "Car key with a silver tag, but not a Mercedes, and in another parking.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "car key",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Mercedes key vs 2-button key with tags",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-147",
+  "foundId": "F-075",
+  "isMatch": false,
+  "itemKind": "laptop",
+  "lens": "clear-mismatch",
+  "why": "Black ThinkPad against a silver MacBook.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "laptop",
+   "trap"
+  ],
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "silver MacBook Air vs black Lenovo ThinkPad",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-022",
+  "foundId": "F-045",
+  "isMatch": false,
+  "itemKind": "jacket",
+  "lens": "lookalike-detail",
+  "why": "Dark top in the studio, but a brown zip jacket with no hood.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "jacket",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "black hoodie vs brown collared zip jacket in photo",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-058",
+  "foundId": "F-040",
+  "isMatch": false,
+  "itemKind": "car key",
+  "lens": "lookalike-brand",
+  "why": "Black smart key, but Honda.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "car key",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Hyundai flip key vs Honda smart key",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-041",
+  "foundId": "F-098",
+  "isMatch": true,
+  "itemKind": "keys",
+  "lens": "plain",
+  "why": "Big bunch with torch and round tag from the girls' residences.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "keys",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "9-10 keys, torch, round tag, girls dorms all confirmed",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-152",
+  "foundId": "F-046",
+  "isMatch": true,
+  "itemKind": "wallet",
+  "lens": "plain",
+  "why": "New black GUESS wallet with its tag still on.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "wallet",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "new black Guess with price tag, same place"
+ },
+ {
+  "lostId": "L-055",
+  "foundId": "F-104",
+  "isMatch": true,
+  "itemKind": "earphones",
+  "lens": "sparse-both",
+  "why": "White Apple earbuds in the canteen; as plain as it gets.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "earphones",
+   "must"
+  ],
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "old white Apple earbuds, canteen, same day",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-067",
+  "foundId": "F-093",
+  "isMatch": false,
+  "itemKind": "sandals",
+  "lens": "lookalike-detail",
+  "why": "Black footwear, but rubber Adidas slides, not leather sandals.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "sandals",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Adidas slides vs black leather sandals",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-050",
+  "foundId": "F-064",
+  "isMatch": false,
+  "itemKind": "usb",
+  "lens": "different-kind-shared-word",
+  "why": "\"Pen drive\" against a fountain pen.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "usb",
+   "trap"
+  ],
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "pen drive vs fountain pen",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-144",
+  "foundId": "F-080",
+  "isMatch": false,
+  "itemKind": "laptop",
+  "lens": "lookalike-detail",
+  "why": "Black Dell too, but on a library carrel with a fairly clean lid.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "laptop",
+   "trap"
+  ],
+  "quality": {
+   "a": 4,
+   "b": 4
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "black Dell with charger; library 2 days earlier, heavy scratches not visible",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-103",
+  "foundId": "F-061",
+  "isMatch": true,
+  "itemKind": "power bank",
+  "lens": "language",
+  "why": "German: light grey pebble shape with a leather tab; the EU2017.EE print fits a conference in Estonia.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "power bank",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "grey pebble, leather loop, Estonia EU2017.EE",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-086",
+  "foundId": "F-040",
+  "isMatch": false,
+  "itemKind": "car key",
+  "lens": "lookalike-brand",
+  "why": "Hindi/Urdu: black car key at the padel courts, but Honda, not Suzuki.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "car key",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "black key at padel, but Suzuki vs Honda",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-056",
+  "foundId": "F-069",
+  "isMatch": true,
+  "itemKind": "cap",
+  "lens": "memory-slip",
+  "why": "CCB trucker with white mesh; owner says black, the cap is navy.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "cap",
+   "must"
+  ],
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "CCB trucker white mesh; navy vs black near shade",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-008",
+  "foundId": "F-015",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "lookalike-detail",
+  "why": "Red wallet, but small with a zip and clover and no plate.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "red, but long gold-plate vs small zip clover"
+ },
+ {
+  "lostId": "L-064",
+  "foundId": "F-008",
+  "isMatch": true,
+  "itemKind": "watch",
+  "lens": "language",
+  "why": "Arabic: Breitling Navitimer in steel.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "watch",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Breitling Navitimer steel, padel, same day; photo confirms",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-066",
+  "foundId": "F-050",
+  "isMatch": false,
+  "itemKind": "ring",
+  "lens": "nothing-separates",
+  "why": "A silver ring, but lost in the sports hall; not this one.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "ring",
+   "trap"
+  ],
+  "quality": {
+   "a": 5,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 2
+  },
+  "ratingNote": "silver ring fits; no photo, plainness unknown, other place"
+ },
+ {
+  "lostId": "L-047",
+  "foundId": "F-044",
+  "isMatch": true,
+  "itemKind": "prayer beads",
+  "lens": "plain",
+  "why": "Wire-linked seed beads with red beads and a handwritten note.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "prayer beads",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "seed beads on wire, red beads, note all in photo"
+ },
+ {
+  "lostId": "L-125",
+  "foundId": "F-061",
+  "isMatch": false,
+  "itemKind": "power bank",
+  "lens": "lookalike-detail",
+  "why": "Pale power bank, but pebble-shaped with a leather tab and an event print the owner would mention.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "power bank",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "white Xiaomi vs grey stone EU2017 bank",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-025",
+  "foundId": "F-006",
+  "isMatch": true,
+  "itemKind": "power bank",
+  "lens": "language",
+  "why": "Hindi/Urdu mix: silver Xiaomi left on the bus.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "power bank",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "silver Xiaomi Mi, bus, same date",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-104",
+  "foundId": "F-083",
+  "isMatch": false,
+  "itemKind": "cable",
+  "lens": "lookalike-detail",
+  "why": "Has a long black cable but comes with a white plug and was in GU2.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "cable",
+   "trap"
+  ],
+  "quality": {
+   "a": 4,
+   "b": 4
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "long black cable but with white plug, other building",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-057",
+  "foundId": "F-083",
+  "isMatch": false,
+  "itemKind": "charger",
+  "lens": "lookalike-detail",
+  "why": "White plug in GU2 too, but the found cable is black and the owner's is white.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "charger",
+   "trap"
+  ],
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "white plug fits, but cable black not white"
+ },
+ {
+  "lostId": "L-118",
+  "foundId": "F-073",
+  "isMatch": true,
+  "itemKind": "wallet",
+  "lens": "language",
+  "why": "Arabic: tan leather, green star, MOROCCO, prayer room.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "wallet",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "light brown leather, green star, MOROCCO, same place/date"
+ },
+ {
+  "lostId": "L-108",
+  "foundId": "F-027",
+  "isMatch": false,
+  "itemKind": "kumma",
+  "lens": "different-kind-shared-word",
+  "why": "White cloth with brown pattern, but it is a stiff embroidered kumma, not a massar turban cloth.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "kumma",
+   "trap"
+  ],
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 4,
+   "b": 4
+  },
+  "ratingNote": "white with brown pattern fits; photo looks like a cap rather than massar",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-021",
+  "foundId": "F-026",
+  "isMatch": false,
+  "itemKind": "key",
+  "lens": "lookalike-detail",
+  "why": "Black-head key, but whole, not snapped.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "key",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "broken Nissan key vs intact key bunch elsewhere",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-002",
+  "foundId": "F-024",
+  "isMatch": false,
+  "itemKind": "electronics",
+  "lens": "lookalike-detail",
+  "why": "A board from the same lab, but green and tiny, not a blue Arduino Uno.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "electronics",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "blue Arduino Uno vs small green board with battery holder",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-020",
+  "foundId": "F-096",
+  "isMatch": false,
+  "itemKind": "charger",
+  "lens": "lookalike-brand",
+  "why": "Black laptop brick, but branded Chicony with a European plug, on the 4th floor.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "charger",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "black brick but Chicony, not Dell"
+ },
+ {
+  "lostId": "L-073",
+  "foundId": "F-044",
+  "isMatch": false,
+  "itemKind": "prayer beads",
+  "lens": "lookalike-detail",
+  "why": "Beads in the GU1 prayer room, but olive seed beads on wire, not a wooden misbaha.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "prayer beads",
+   "trap"
+  ],
+  "quality": {
+   "a": 5,
+   "b": 4
+  },
+  "difficulty": {
+   "a": 4,
+   "b": 4
+  },
+  "ratingNote": "brownish prayer beads same room; seed mala, not clearly wooden"
+ },
+ {
+  "lostId": "L-089",
+  "foundId": "F-026",
+  "isMatch": false,
+  "itemKind": "key",
+  "lens": "lookalike-detail",
+  "why": "The photo shows a black-headed key with others behind it, not a single bare silver key.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "key",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "single silver house key vs black-head key bunch",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-149",
+  "foundId": "F-025",
+  "isMatch": true,
+  "itemKind": "umbrella",
+  "lens": "plain",
+  "why": "Long red umbrella with wooden crook handle.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "umbrella",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "long red umbrella wooden crook handle, same day",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-060",
+  "foundId": "F-035",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "lookalike-brand",
+  "why": "Black wallet in the same hall, but Timberland and not Tommy Hilfiger.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black wallets, Tommy Hilfiger vs Timberland",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-010",
+  "foundId": "F-066",
+  "isMatch": false,
+  "itemKind": "cap",
+  "lens": "lookalike-detail",
+  "why": "Blue cap, but the logo is red Stussy script, not a letter C.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "cap",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "C cap vs Stussy cap",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-054",
+  "foundId": "F-017",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "nothing-separates",
+  "why": "Black wallet; only the place (canteen against GU2 musalla) separates them.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ],
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "black wallet fits; lost vague, found earlier elsewhere"
+ },
+ {
+  "lostId": "L-062",
+  "foundId": "F-023",
+  "isMatch": true,
+  "itemKind": "glasses",
+  "lens": "memory-slip",
+  "why": "Thin metal frame with amber pads; under the photo's red light the metal looks dark, owner says gold.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "glasses",
+   "must"
+  ],
+  "quality": {
+   "a": 8,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "thin warm-toned metal, brown nose pads visible, same floor"
+ },
+ {
+  "lostId": "L-122",
+  "foundId": "F-094",
+  "isMatch": false,
+  "itemKind": "jacket",
+  "lens": "clear-mismatch",
+  "why": "Headphones from the studio.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "jacket",
+   "trap"
+  ],
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "jacket vs headphones",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-125",
+  "foundId": "F-006",
+  "isMatch": false,
+  "itemKind": "power bank",
+  "lens": "lookalike-detail",
+  "why": "Xiaomi too, but the owner's is white and a bigger 20000 model; the photo shows a small silver one.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "power bank",
+   "trap"
+  ],
+  "quality": {
+   "a": 4,
+   "b": 4
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "Xiaomi fits; white vs silver, 20000mah vs small unit",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-097",
+  "foundId": "F-069",
+  "isMatch": false,
+  "itemKind": "cap",
+  "lens": "lookalike-detail",
+  "why": "Navy cap too, but a mesh trucker with CCB.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "cap",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Stussy snapback vs CCB trucker",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-068",
+  "foundId": "F-097",
+  "isMatch": true,
+  "itemKind": "backpack",
+  "lens": "plain",
+  "why": "Grey with black straps and mesh pockets; photo shows the back only.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "backpack",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "grey, black straps, mesh side pockets all in photo",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-098",
+  "foundId": "F-041",
+  "isMatch": false,
+  "itemKind": "backpack",
+  "lens": "lookalike-brand",
+  "why": "Orange backpack in UPAD, but a Tamrac camera bag.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "backpack",
+   "trap"
+  ],
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "orange backpack, but Jansport vs Tamrac camera bag",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-012",
+  "foundId": "F-095",
+  "isMatch": true,
+  "itemKind": "earring",
+  "lens": "plain",
+  "why": "Single gold hoop on the GUbridge.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "earring",
+   "must"
+  ],
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "single gold hoop, same place; no photo, common item",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-138",
+  "foundId": "F-038",
+  "isMatch": true,
+  "itemKind": "lunch box",
+  "lens": "plain",
+  "why": "Pink lunch box in the canteen.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "lunch box",
+   "must"
+  ],
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "pink lunch box, canteen; no photo, generic",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-006",
+  "foundId": "F-082",
+  "isMatch": true,
+  "itemKind": "pencil case",
+  "lens": "sparse-finder",
+  "why": "The finder gave no colour and the photo is sepia, so the blue cannot be checked; the shape and stripes match.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "pencil case",
+   "must"
+  ],
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "striped fabric case, print shop/copy centre; colours unconfirmable in sepia photo",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-054",
+  "foundId": "F-089",
+  "isMatch": true,
+  "itemKind": "wallet",
+  "lens": "sparse-both",
+  "why": "Black wallet in the GU2 musalla on both sides, nothing more.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "wallet",
+   "must"
+  ],
+  "quality": {
+   "a": 6,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "black wallet, GU2 musalla, same date; both vague"
+ },
+ {
+  "lostId": "L-052",
+  "foundId": "F-052",
+  "isMatch": true,
+  "itemKind": "bottle",
+  "lens": "plain",
+  "why": "Matte black aluminium Boca Chica bottle.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "bottle",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black SpaceX Boca Chica bottle at the pitch; photo confirms",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-142",
+  "foundId": "F-025",
+  "isMatch": false,
+  "itemKind": "umbrella",
+  "lens": "lookalike-detail",
+  "why": "Red umbrella at the same door the same rainy day, but long with a wooden crook.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "umbrella",
+   "trap"
+  ],
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "red, but long wooden-handle vs small folding",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-003",
+  "foundId": "F-088",
+  "isMatch": false,
+  "itemKind": "glasses",
+  "lens": "lookalike-detail",
+  "why": "Thin metal full-rim frame, not black half-rim.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "glasses",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 3
+  },
+  "ratingNote": "black half-rim vs silver full metal frame"
+ },
+ {
+  "lostId": "L-074",
+  "foundId": "F-068",
+  "isMatch": false,
+  "itemKind": "book",
+  "lens": "lookalike-detail",
+  "why": "Old yellow book, but the photo shows Cyrillic text, not Arabic.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "book",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "old yellow book, but Arabic novel vs Russian text",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-055",
+  "foundId": "F-085",
+  "isMatch": false,
+  "itemKind": "earphones",
+  "lens": "nothing-separates",
+  "why": "The other white Apple pair from the same canteen.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "earphones",
+   "trap"
+  ],
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "old white Apple wired earbuds, canteen, same day",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-129",
+  "foundId": "F-078",
+  "isMatch": false,
+  "itemKind": "usb",
+  "lens": "nothing-separates",
+  "why": "Same: fits the vague report, belongs to someone else.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "usb",
+   "trap"
+  ],
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "usb at copy centre; owner gives no detail",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-137",
+  "foundId": "F-079",
+  "isMatch": false,
+  "itemKind": "pen",
+  "lens": "lookalike-detail",
+  "why": "A black fountain pen in a pouch, but with a shiny barrel, together with a second pen, elsewhere.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "pen",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "glossy pens in pouch, not textured single fountain pen",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-103",
+  "foundId": "F-006",
+  "isMatch": false,
+  "itemKind": "power bank",
+  "lens": "lookalike-detail",
+  "why": "Grey-ish power bank, but a metal cylinder with no tab.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "power bank",
+   "trap"
+  ],
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "grey pebble bank vs silver Mi",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-001",
+  "foundId": "F-060",
+  "isMatch": false,
+  "itemKind": "charger",
+  "lens": "lookalike-detail",
+  "why": "A long black USB-C cable, but without the white plug the owner says came with it, and in GU1.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "charger",
+   "trap"
+  ],
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "long black USB-C cable fits; plug missing, other building"
+ },
+ {
+  "lostId": "L-110",
+  "foundId": "F-051",
+  "isMatch": false,
+  "itemKind": "shayla",
+  "lens": "different-kind-shared-word",
+  "why": "Black women's clothing, but an abaya, not a shayla.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "shayla",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "shayla vs abaya, different garment"
+ },
+ {
+  "lostId": "L-082",
+  "foundId": "F-079",
+  "isMatch": false,
+  "itemKind": "pen",
+  "lens": "lookalike-detail",
+  "why": "Pens in Oman Hall, but black pens in a pouch, not a blue Parker.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "pen",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "blue Parker Jotter vs black pens in pouch",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-127",
+  "foundId": "F-047",
+  "isMatch": true,
+  "itemKind": "prayer beads",
+  "lens": "language",
+  "why": "Arabic: two-tone wooden misbaha with a maroon tassel, GU2 prayer room.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "prayer beads",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "light/dark wooden beads, maroon tassel, same place/date"
+ },
+ {
+  "lostId": "L-119",
+  "foundId": "F-074",
+  "isMatch": true,
+  "itemKind": "usb",
+  "lens": "language",
+  "why": "Arabizi: shaped like the word CREATE, blue and dark green; the cap carries \"TE\".",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "usb",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "CREATE-shaped USB blue/dark green in studio, photo matches",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-073",
+  "foundId": "F-047",
+  "isMatch": false,
+  "itemKind": "prayer beads",
+  "lens": "nothing-separates",
+  "why": "Brown wooden misbaha; only the building differs. Not this owner's.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "prayer beads",
+   "trap"
+  ],
+  "quality": {
+   "a": 6,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "brown wooden misbaha fits; GU2 vs GU1"
+ },
+ {
+  "lostId": "L-024",
+  "foundId": "F-081",
+  "isMatch": true,
+  "itemKind": "wallet",
+  "lens": "plain",
+  "why": "Tooled basketweave leather with dark lacing.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "wallet",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "tooled tan leather, dark lacing, same date, labs/workshops"
+ },
+ {
+  "lostId": "L-122",
+  "foundId": "F-045",
+  "isMatch": true,
+  "itemKind": "jacket",
+  "lens": "plain",
+  "why": "The LOST patch and stripe; the funny brand name should not confuse a matcher.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "jacket",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "brown LOST zip jacket with white stripe; photo confirms",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-075",
+  "foundId": "F-053",
+  "isMatch": false,
+  "itemKind": "cap",
+  "lens": "lookalike-brand",
+  "why": "Black baseball cap at the smoking area, but a Mariners S, not NY.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "cap",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Yankees NY vs Mariners S",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-091",
+  "foundId": "F-085",
+  "isMatch": false,
+  "itemKind": "earphones",
+  "lens": "lookalike-detail",
+  "why": "White Apple earbuds in the canteen, but wireless AirPods, not wired.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "earphones",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "wireless AirPods vs wired earphones",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-058",
+  "foundId": "F-021",
+  "isMatch": false,
+  "itemKind": "car key",
+  "lens": "lookalike-detail",
+  "why": "Black car key, but a fixed blade with tags, not a flip key.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "car key",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Hyundai flip key vs fixed-blade 2-button key",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-137",
+  "foundId": "F-064",
+  "isMatch": true,
+  "itemKind": "pen",
+  "lens": "plain",
+  "why": "Textured black barrel with silver bands.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "pen",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black textured fountain pen, silver rings, library",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-021",
+  "foundId": "F-011",
+  "isMatch": true,
+  "itemKind": "key",
+  "lens": "plain",
+  "why": "Snapped key with black rubber head, both pieces, in the workshops.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "key",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "broken black rubber-head key, both pieces, workshop",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-016",
+  "foundId": "F-027",
+  "isMatch": true,
+  "itemKind": "kumma",
+  "lens": "finder-misnames",
+  "why": "Finder was unsure what it was; the photo shows an embroidered kumma in cream and copper as the owner says.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "kumma",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "white kumma with copper-brown embroidery, GU1, same date",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-063",
+  "foundId": "F-088",
+  "isMatch": false,
+  "itemKind": "glasses",
+  "lens": "lookalike-detail",
+  "why": "Dark glasses, but a thin metal frame.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "glasses",
+   "trap"
+  ]
+ },
+ {
+  "lostId": "L-126",
+  "foundId": "F-048",
+  "isMatch": true,
+  "itemKind": "usb",
+  "lens": "plain",
+  "why": "Black 2GB stick with cap, no brand, from the print shop.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "usb",
+   "must"
+  ],
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black 2G capped usb, print/copy centre",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-094",
+  "foundId": "F-087",
+  "isMatch": false,
+  "itemKind": "phone",
+  "lens": "nothing-separates",
+  "why": "Two words; the library iPhone fits and belongs to someone else.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "phone",
+   "trap"
+  ],
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "bare 'phone' in library; nothing to compare",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-105",
+  "foundId": "F-049",
+  "isMatch": false,
+  "itemKind": "abaya",
+  "lens": "clear-mismatch",
+  "why": "A grey scarf in the same hall.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "abaya",
+   "trap"
+  ],
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "abaya vs grey scarf",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-049",
+  "foundId": "F-104",
+  "isMatch": false,
+  "itemKind": "earphones",
+  "lens": "nothing-separates",
+  "why": "Another pair of white Apple earbuds in the same canteen that day; nothing visible tells them apart.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "earphones",
+   "trap"
+  ],
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "white Apple earphones, canteen, same day; remote not visible",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-104",
+  "foundId": "F-060",
+  "isMatch": true,
+  "itemKind": "cable",
+  "lens": "sparse-finder",
+  "why": "Finder cannot see the brand; black braided long USB-C cable on the GU1 ground floor matches.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "cable",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "long black braided USB-C, no plug, GU1 ground, same day",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-047",
+  "foundId": "F-047",
+  "isMatch": false,
+  "itemKind": "prayer beads",
+  "lens": "lookalike-detail",
+  "why": "Prayer beads, but a wooden misbaha with a tassel, not wire-linked seed beads.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "prayer beads",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "grey-green wire mala vs wooden tasselled misbaha"
+ },
+ {
+  "lostId": "L-101",
+  "foundId": "F-076",
+  "isMatch": false,
+  "itemKind": "earbuds",
+  "lens": "lookalike-detail",
+  "why": "Same brand and place, but the owner's case is all matte black; the photo shows a silver body.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "earbuds",
+   "trap"
+  ],
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "JBL case, but all black matte vs silver body",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-139",
+  "foundId": "F-037",
+  "isMatch": true,
+  "itemKind": "cap",
+  "lens": "plain",
+  "why": "Blue cap with the red Cubs C on the pitch.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "cap",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "old blue Cubs cap at pitch, photo confirms",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-006",
+  "foundId": "F-072",
+  "isMatch": false,
+  "itemKind": "pencil case",
+  "lens": "lookalike-detail",
+  "why": "A printed white tube-map case, not striped fabric.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "pencil case",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "blue/white striped vs tube map case",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-065",
+  "foundId": "F-047",
+  "isMatch": false,
+  "itemKind": "prayer beads",
+  "lens": "lookalike-detail",
+  "why": "Misbaha in the same prayer room, but wooden, not black onyx.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "prayer beads",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black onyx vs brown wood"
+ },
+ {
+  "lostId": "L-120",
+  "foundId": "F-007",
+  "isMatch": false,
+  "itemKind": "textbook",
+  "lens": "lookalike-detail",
+  "why": "A science textbook, but a children's one.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "textbook",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Zumdahl college chemistry vs kids science book"
+ },
+ {
+  "lostId": "L-131",
+  "foundId": "F-089",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "nothing-separates",
+  "why": "Black wallet, text only; nothing names the brand. Not this owner's.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ],
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "black wallet, found side unbranded; different place"
+ },
+ {
+  "lostId": "L-091",
+  "foundId": "F-076",
+  "isMatch": false,
+  "itemKind": "earbuds",
+  "lens": "lookalike-brand",
+  "why": "Earbud case in the canteen, but JBL with a silver rim.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "earbuds",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "AirPods vs JBL case",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-070",
+  "foundId": "F-095",
+  "isMatch": false,
+  "itemKind": "ring",
+  "lens": "clear-mismatch",
+  "why": "An earring against a ring.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "ring",
+   "trap"
+  ],
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "silver agate ring vs gold earring"
+ },
+ {
+  "lostId": "L-136",
+  "foundId": "F-094",
+  "isMatch": false,
+  "itemKind": "headphones",
+  "lens": "lookalike-brand",
+  "why": "Black studio headphones, but Sennheiser.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "headphones",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "AKG K271 vs Sennheiser HD 280 in photo",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-046",
+  "foundId": "F-090",
+  "isMatch": true,
+  "itemKind": "card game",
+  "lens": "language",
+  "why": "Arabic name of the game is printed on the box.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "card game",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Balinca Money Talks box exactly"
+ },
+ {
+  "lostId": "L-020",
+  "foundId": "F-009",
+  "isMatch": true,
+  "itemKind": "charger",
+  "lens": "memory-slip",
+  "why": "Dell brick in the workshops; owner says black, photo shows dark grey.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "charger",
+   "must"
+  ],
+  "quality": {
+   "a": 8,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 1
+  },
+  "ratingNote": "Dell brick, workshops, same date; dark grey vs black"
+ },
+ {
+  "lostId": "L-037",
+  "foundId": "F-100",
+  "isMatch": false,
+  "itemKind": "car key",
+  "lens": "lookalike-brand",
+  "why": "Black car key fob, but a Mercedes with a red panic button.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "car key",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "BMW key vs Mercedes key",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-075",
+  "foundId": "F-066",
+  "isMatch": false,
+  "itemKind": "cap",
+  "lens": "lookalike-brand",
+  "why": "Navy Stussy cap, not a black NY cap.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "cap",
+   "trap"
+  ],
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black Yankees vs navy Stussy",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-076",
+  "foundId": "F-077",
+  "isMatch": true,
+  "itemKind": "wallet",
+  "lens": "memory-slip",
+  "why": "Snake-print wristlet; the zip is purple, the owner remembers pink.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "wallet",
+   "must"
+  ],
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "grey snake print wristlet; pink vs purple zip"
+ },
+ {
+  "lostId": "L-017",
+  "foundId": "F-076",
+  "isMatch": false,
+  "itemKind": "earbuds",
+  "lens": "lookalike-brand",
+  "why": "Earbud case in the same canteen, but white AirPods versus a JBL with a silver rim.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "earbuds",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "AirPods Pro white vs JBL silver/black",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-145",
+  "foundId": "F-035",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "lookalike-detail",
+  "why": "Black leather wallet, but plain with a tree logo, in the sports hall.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "black wallet but plain Timberland, no line pattern"
+ },
+ {
+  "lostId": "L-104",
+  "foundId": "F-042",
+  "isMatch": false,
+  "itemKind": "cable",
+  "lens": "lookalike-detail",
+  "why": "A cable on its own, but white Lightning, not black braided USB-C.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "cable",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black braided USB-C vs white Lightning cable",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-054",
+  "foundId": "F-046",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "lookalike-detail",
+  "why": "Black wallet, but brand new and empty with a price tag, at the main entrance.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ],
+  "quality": {
+   "a": 5,
+   "b": 5
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "black wallet fits vague lost; other place, empty"
+ },
+ {
+  "lostId": "L-099",
+  "foundId": "F-019",
+  "isMatch": true,
+  "itemKind": "watch",
+  "lens": "plain",
+  "why": "Victorinox chronograph on a steel bracelet.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "watch",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Victorinox chronograph steel, changing room, same day",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-039",
+  "foundId": "F-080",
+  "isMatch": false,
+  "itemKind": "laptop",
+  "lens": "nothing-separates",
+  "why": "A black laptop in GU1 fits a two-word report; nothing in the evidence rules it out.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "laptop",
+   "trap"
+  ],
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "black laptop fits; owner gives nothing else",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-082",
+  "foundId": "F-028",
+  "isMatch": false,
+  "itemKind": "pen",
+  "lens": "lookalike-brand",
+  "why": "A blue pen in the same hall, but a cheap clear ballpoint, not a Parker Jotter.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "pen",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "cheap blue stick pen, not a Parker Jotter",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-059",
+  "foundId": "F-092",
+  "isMatch": false,
+  "itemKind": "keys",
+  "lens": "nothing-separates",
+  "why": "Keys with nothing to compare, boys dorms.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "keys",
+   "trap"
+  ],
+  "quality": {
+   "a": 4,
+   "b": 4
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "bare 'keys' vs skeleton key bunch, different place",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-036",
+  "foundId": "F-079",
+  "isMatch": true,
+  "itemKind": "pencil case",
+  "lens": "plain",
+  "why": "Denim sleeve with two black pens.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "pencil case",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "handmade denim pouch, two black pens, Oman Hall, same date",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-112",
+  "foundId": "F-087",
+  "isMatch": true,
+  "itemKind": "phone",
+  "lens": "plain",
+  "why": "Gold-silver iPhone with no case in the library; the 6 and 6s look the same from the back.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "phone",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "gold iPhone no case, library, same date",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-146",
+  "foundId": "F-023",
+  "isMatch": false,
+  "itemKind": "glasses",
+  "lens": "lookalike-detail",
+  "why": "Thin-framed glasses, but with a visible metal rim and on the 4th floor.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "glasses",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "rimless vs full metal rim"
+ },
+ {
+  "lostId": "L-005",
+  "foundId": "F-022",
+  "isMatch": false,
+  "itemKind": "backpack",
+  "lens": "clear-mismatch",
+  "why": "Brown dotted backpack against a dark grey Nike.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "backpack",
+   "trap"
+  ],
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "grey Nike vs brown dotted backpack",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-100",
+  "foundId": "F-007",
+  "isMatch": false,
+  "itemKind": "textbook",
+  "lens": "lookalike-detail",
+  "why": "Astronomy topic, but a children's book, not a university textbook.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "textbook",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 2
+  },
+  "ratingNote": "university astronomy text vs kids science book"
+ },
+ {
+  "lostId": "L-014",
+  "foundId": "F-034",
+  "isMatch": true,
+  "itemKind": "keys",
+  "lens": "plain",
+  "why": "Silver carabiner with several keys in the dirt parking.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "keys",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "keys on silver carabiner, dirt parking, same date",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-042",
+  "foundId": "F-034",
+  "isMatch": false,
+  "itemKind": "keys",
+  "lens": "lookalike-detail",
+  "why": "Same parking, but the photo has a carabiner and no red bottle opener.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "keys",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "same place; red bottle opener absent, carabiner instead",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-130",
+  "foundId": "F-039",
+  "isMatch": true,
+  "itemKind": "notebook",
+  "lens": "moved-or-misdated",
+  "why": "Blue marbled hardcover; owner last saw it in the library, it turned up in the canteen.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "notebook",
+   "must"
+  ],
+  "quality": {
+   "a": 8,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "blue marbled hardcover notebook in photo; place differs"
+ },
+ {
+  "lostId": "L-081",
+  "foundId": "F-086",
+  "isMatch": true,
+  "itemKind": "wallet",
+  "lens": "language",
+  "why": "Hindi/Urdu mix: brown wallet with cards on the bus.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "wallet",
+   "must"
+  ],
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "brown wallet on bus, same date; found side vague"
+ },
+ {
+  "lostId": "L-134",
+  "foundId": "F-085",
+  "isMatch": false,
+  "itemKind": "earbuds",
+  "lens": "lookalike-brand",
+  "why": "Earbuds from the same canteen, but wired white Apple ones, not JBL.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "earbuds",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "JBL earbuds case vs wired Apple earphones",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-053",
+  "foundId": "F-103",
+  "isMatch": true,
+  "itemKind": "key",
+  "lens": "plain",
+  "why": "Old clover-head key left in the buggy by the sports hall.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "key",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "small old key in the old buggy behind sports hall",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-032",
+  "foundId": "F-092",
+  "isMatch": true,
+  "itemKind": "keys",
+  "lens": "plain",
+  "why": "Skeleton key and two plastic tags.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "keys",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "skeleton key, grey/black tags, boys dorms, same date",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-095",
+  "foundId": "F-101",
+  "isMatch": false,
+  "itemKind": "table tennis bat",
+  "lens": "lookalike-detail",
+  "why": "Red-faced bat in the same hall, but the handle is orange and straight, not black and flared.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "table tennis bat",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Butterfly black flared handle vs orange straight handle",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-078",
+  "foundId": "F-021",
+  "isMatch": false,
+  "itemKind": "car key",
+  "lens": "lookalike-detail",
+  "why": "Black car key, two buttons and a blade, no remote start.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "car key",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Honda remote-start fob vs basic 2-button key",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-090",
+  "foundId": "F-001",
+  "isMatch": true,
+  "itemKind": "glasses",
+  "lens": "finder-misnames",
+  "why": "Finder did not know a trial frame; the round tortoiseshell frame with white dials is it.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "glasses",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "tortoiseshell trial frame with dials in photo"
+ },
+ {
+  "lostId": "L-056",
+  "foundId": "F-036",
+  "isMatch": false,
+  "itemKind": "cap",
+  "lens": "clear-mismatch",
+  "why": "A hoodie in the gym.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "cap",
+   "trap"
+  ],
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "cap vs hoodie",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-113",
+  "foundId": "F-085",
+  "isMatch": false,
+  "itemKind": "earphones",
+  "lens": "lookalike-detail",
+  "why": "White Apple earbuds, but no red fabric sleeve.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "earphones",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "red sewn sleeve missing; plain white earphones",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-123",
+  "foundId": "F-041",
+  "isMatch": true,
+  "itemKind": "backpack",
+  "lens": "plain",
+  "why": "Tamrac Expedition camera backpack.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "backpack",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Tamrac Expedition orange visible in photo",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-026",
+  "foundId": "F-049",
+  "isMatch": true,
+  "itemKind": "scarf",
+  "lens": "moved-or-misdated",
+  "why": "Lost on the GUbridge, turned up in Germany Hall a day later; only the place differs.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "scarf",
+   "must"
+  ],
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "grey wool scarf, no photo; place differs"
+ },
+ {
+  "lostId": "L-001",
+  "foundId": "F-083",
+  "isMatch": true,
+  "itemKind": "charger",
+  "lens": "plain",
+  "why": "White plug, long black cable, left plugged in in GU2.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "charger",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "white plug, long black cable, GU2, plugged in"
+ },
+ {
+  "lostId": "L-150",
+  "foundId": "F-102",
+  "isMatch": true,
+  "itemKind": "earphones",
+  "lens": "moved-or-misdated",
+  "why": "Chrome Skullcandy with skull logo; the owner guesses the library, they were found in the sports hall.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "earphones",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "chrome Skullcandy, black wire, skull logo; place differs",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-061",
+  "foundId": "F-019",
+  "isMatch": false,
+  "itemKind": "table tennis bat",
+  "lens": "clear-mismatch",
+  "why": "A watch from the sports hall.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "table tennis bat",
+   "trap"
+  ],
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "table tennis bat vs watch",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-070",
+  "foundId": "F-050",
+  "isMatch": true,
+  "itemKind": "ring",
+  "lens": "sparse-finder",
+  "why": "Finder said only \"silver ring\"; the agate stone is not mentioned, but nothing contradicts it.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "ring",
+   "must"
+  ],
+  "quality": {
+   "a": 7,
+   "b": 7
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 2
+  },
+  "ratingNote": "silver ring, wudu area, same date; stone not mentioned"
+ },
+ {
+  "lostId": "L-137",
+  "foundId": "F-028",
+  "isMatch": false,
+  "itemKind": "pen",
+  "lens": "clear-mismatch",
+  "why": "A cheap clear ballpoint against a black fountain pen.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "pen",
+   "trap"
+  ],
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black fountain pen vs blue ballpoint",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-151",
+  "foundId": "F-022",
+  "isMatch": true,
+  "itemKind": "backpack",
+  "lens": "plain",
+  "why": "Brown with big coloured dots.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "backpack",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "brown backpack with coloured circles, girls dorms",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-007",
+  "foundId": "F-052",
+  "isMatch": false,
+  "itemKind": "bottle",
+  "lens": "lookalike-brand",
+  "why": "Black bottle on the pitch, but the print says Boca Chica, not Hydro Flask.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "bottle",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black metal bottle, but Hydro Flask vs Boca Chica",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-081",
+  "foundId": "F-084",
+  "isMatch": false,
+  "itemKind": "wallet",
+  "lens": "lookalike-detail",
+  "why": "Brownish-red leather, but an empty card holder on the pitch.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "wallet",
+   "trap"
+  ],
+  "quality": {
+   "a": 3,
+   "b": 3
+  },
+  "difficulty": {
+   "a": 3,
+   "b": 3
+  },
+  "ratingNote": "brown wallet vs dark red card holder, other place"
+ },
+ {
+  "lostId": "L-038",
+  "foundId": "F-080",
+  "isMatch": false,
+  "itemKind": "laptop",
+  "lens": "clear-mismatch",
+  "why": "Black Dell against a silver HP.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "laptop",
+   "trap"
+  ],
+  "quality": {
+   "a": 1,
+   "b": 1
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "silver HP Envy vs black Dell",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-058",
+  "foundId": "F-032",
+  "isMatch": false,
+  "itemKind": "car key",
+  "lens": "lookalike-brand",
+  "why": "Text says Volkswagen with a doll keychain; the owner's is a Hyundai.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "car key",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "Hyundai vs VW key with doll",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-063",
+  "foundId": "F-016",
+  "isMatch": true,
+  "itemKind": "glasses",
+  "lens": "plain",
+  "why": "Thick black plastic frame in the library.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "glasses",
+   "must"
+  ],
+  "quality": {
+   "a": 8,
+   "b": 8
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "black thick square plastic frame, library"
+ },
+ {
+  "lostId": "L-039",
+  "foundId": "F-033",
+  "isMatch": false,
+  "itemKind": "laptop",
+  "lens": "nothing-separates",
+  "why": "Same as the other black Dell: fits the vague report, is not the item.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "laptop",
+   "trap"
+  ],
+  "quality": {
+   "a": 6,
+   "b": 6
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "black laptop fits; owner gives nothing else",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-088",
+  "foundId": "F-059",
+  "isMatch": true,
+  "itemKind": "car key",
+  "lens": "plain",
+  "why": "Flip key with the wooden sumo figure on an orange cord.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "car key",
+   "must"
+  ],
+  "quality": {
+   "a": 10,
+   "b": 10
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "VW flip key, sumo doll, orange cord, same place/date",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-112",
+  "foundId": "F-062",
+  "isMatch": false,
+  "itemKind": "phone",
+  "lens": "clear-mismatch",
+  "why": "A power bank in the library against a phone.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "phone",
+   "trap"
+  ],
+  "quality": {
+   "a": 0,
+   "b": 0
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "iPhone vs power bank",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-126",
+  "foundId": "F-078",
+  "isMatch": false,
+  "itemKind": "usb",
+  "lens": "lookalike-detail",
+  "why": "Black capped stick in the same place, but branded Transcend with a blue collar and lanyard.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "usb",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "no-brand black 2GB vs Transcend 1GB with blue",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-106",
+  "foundId": "F-014",
+  "isMatch": false,
+  "itemKind": "bottle",
+  "lens": "lookalike-brand",
+  "why": "Steel tumbler in the same hall, but a Thermos without a handle, not a Stanley.",
+  "kind": "trap",
+  "conflict": "hard",
+  "tags": [
+   "bottle",
+   "trap"
+  ],
+  "quality": {
+   "a": 2,
+   "b": 2
+  },
+  "difficulty": {
+   "a": 1,
+   "b": 1
+  },
+  "ratingNote": "Stanley cup with handle vs Thermos tumbler with no handle",
+  "singleRater": true
+ },
+ {
+  "lostId": "L-135",
+  "foundId": "F-053",
+  "isMatch": true,
+  "itemKind": "cap",
+  "lens": "language",
+  "why": "Arabizi: black cap, Seattle S, \"sab3\" is the 7th-floor smoking area.",
+  "kind": "must",
+  "conflict": "none",
+  "tags": [
+   "cap",
+   "must"
+  ],
+  "quality": {
+   "a": 9,
+   "b": 9
+  },
+  "difficulty": {
+   "a": 2,
+   "b": 2
+  },
+  "ratingNote": "black Mariners S cap; place differs",
+  "singleRater": true
+ }
+]

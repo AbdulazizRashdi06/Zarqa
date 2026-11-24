@@ -24,7 +24,7 @@ internal static class PromptParts
     public static string Stringify(JsonObject o) => o.ToJsonString(Js);
 
     /// <summary>benchmark brief(r): title, category, description (≤500 chars), location, eventDate.</summary>
-    public static JsonObject Brief(MatchInput r)
+    public static JsonObject Brief(MatchInput r, bool postedOn = false)
     {
         var o = new JsonObject();
         // One-text reports have no item name: the description carries everything.
@@ -33,6 +33,7 @@ internal static class PromptParts
         o["description"] = TextRules.Truncate(r.Description, 500);
         o["location"] = r.Location;
         o["eventDate"] = r.EventDate;
+        if (postedOn) o["postedOn"] = TextRules.PostedOn(r);
         return o;
     }
 
@@ -89,11 +90,11 @@ public sealed class DebateReviewer(ILuna luna, ITerra terra, IDeepSeek deepSeek,
 
     private const string SameItemQuestion = "Weighing both advocates' cases against the two reports, do the LOST and FOUND reports describe the same physical item? " + SimilarityRule;
     private const string StrongerQuestion = "Which advocate's case is better supported by the concrete evidence in the reports?";
-    private const string OverallQuestion = "How likely is it that the found item is exactly the item described in the lost report? " + SimilarityRule;
+    public const string OverallQuestion = "How likely is it that the found item is exactly the item described in the lost report? " + SimilarityRule;
     private const string ForCriterion = "The case FOR a match is better supported";
     private const string AgainstCriterion = "The case AGAINST a match is better supported";
     private const string BalancedCriterion = "Both cases are about equally supported";
-    private static readonly string[] LevelKeys = ["clearly_different", "probably_different", "unclear", "probably_same", "almost_certainly_same"];
+    public static readonly string[] LevelKeys = ["clearly_different", "probably_different", "unclear", "probably_same", "almost_certainly_same"];
 
     private static readonly string TerraSystem = $$"""
         You are the judge in a university lost-and-found app. Two advocates have argued whether a LOST report and a FOUND report describe the same physical item. Read the reports and both cases, then answer three questions.
@@ -102,7 +103,10 @@ public sealed class DebateReviewer(ILuna luna, ITerra terra, IDeepSeek deepSeek,
         overall: {{OverallQuestion}} Give a probability (0 to 1) for each level; they should sum to 1. Levels: {{string.Join("; ", LevelKeys.Zip(Levels, (key, label) => $"{key} = \"{label}\""))}}.
         """.ReplaceLineEndings("\n");
 
-    private const string JudgeSchema = """
+    /// <summary>benchmark PHOTOS_FOR_JUDGE, added to the judge's system text when it gets the photos.</summary>
+    public const string PhotosForJudge = "\nThe photos are attached. Look at them yourself and go by what they show.";
+
+    internal const string JudgeSchema = """
         {"type":"object","additionalProperties":false,"required":["same_item_probability","stronger_case","overall_probabilities"],"properties":{"same_item_probability":{"type":"number"},"stronger_case":{"type":"string","enum":["for","against","balanced"]},"overall_probabilities":{"type":"object","additionalProperties":false,"required":["clearly_different","probably_different","unclear","probably_same","almost_certainly_same"],"properties":{"clearly_different":{"type":"number"},"probably_different":{"type":"number"},"unclear":{"type":"number"},"probably_same":{"type":"number"},"almost_certainly_same":{"type":"number"}}}}}
         """;
 
@@ -137,10 +141,14 @@ public sealed class DebateReviewer(ILuna luna, ITerra terra, IDeepSeek deepSeek,
     /// <summary>Null when an advocate failed, so the worker can retry. Judge failures are handled by the matcher.</summary>
     public async Task<Review?> ReviewAsync(MatchInput lost, MatchInput found, IReadOnlyList<string> images, CancellationToken ct)
     {
+        var o = options.Value;
+        // Order and wording as in benchmark/src/reviewers/debate.js advocate().
         var text =
-            $"LOST report: {PromptParts.Stringify(PromptParts.Brief(lost))}\nFOUND report: {PromptParts.Stringify(PromptParts.Brief(found))}\n" +
+            $"LOST report: {PromptParts.Stringify(PromptParts.Brief(lost, o.PostedOn))}\nFOUND report: {PromptParts.Stringify(PromptParts.Brief(found, o.PostedOn))}\n" +
+            (o.PostedOn ? $"{TextRules.PostedNote}\n" : "") +
             $"Location aliases: {PromptParts.AliasLine(lost, found, aliases)}\n" +
-            $"Attached photos: {Photos.CountFor(lost)} from the LOST report first, then {Photos.CountFor(found)} from the FOUND report.";
+            $"Attached photos: {Photos.CountFor(lost)} from the LOST report first, then {Photos.CountFor(found)} from the FOUND report." +
+            (o.OneDayNote && TextRules.FoundOneDayBeforeLost(lost, found) ? $"\n{TextRules.OneDayText}" : "");
 
         LunaResult pro, con;
         try
@@ -165,8 +173,8 @@ public sealed class DebateReviewer(ILuna luna, ITerra terra, IDeepSeek deepSeek,
 
         var state = new JsonObject
         {
-            ["lost"] = PromptParts.Brief(lost),
-            ["found"] = PromptParts.Brief(found),
+            ["lost"] = PromptParts.Brief(lost, o.PostedOn),
+            ["found"] = PromptParts.Brief(found, o.PostedOn),
             ["timing"] = TextRules.DateRelation(lost, found),
             ["case_for"] = new JsonObject { ["argument"] = Str(pro.Parsed, "argument"), ["self_rated_strength"] = Str(pro.Parsed, "strength") },
             ["case_against"] = new JsonObject { ["argument"] = Str(con.Parsed, "argument"), ["self_rated_strength"] = Str(con.Parsed, "strength") },
@@ -174,7 +182,12 @@ public sealed class DebateReviewer(ILuna luna, ITerra terra, IDeepSeek deepSeek,
 
         if (options.Value.UseTerraJudge)
         {
-            var judged = await WithFallbackAsync(terra, TerraSystem, PromptParts.Stringify(state), [], "debate_judge",
+            // benchmark: text = state + the posting note + whose item each photo shows; system = TERRA_SYSTEM + the photo line.
+            var judgeText = PromptParts.Stringify(state) +
+                (o.PostedOn ? $"\n{TextRules.PostedNote}" : "") +
+                (o.JudgeSeesPhotos ? $"\n{Photos.OwnerLine(Photos.CountFor(lost), Photos.CountFor(found))}" : "");
+            var judged = await WithFallbackAsync(terra, o.JudgeSeesPhotos ? TerraSystem + PhotosForJudge : TerraSystem, judgeText,
+                o.JudgeSeesPhotos ? images : [], "debate_judge",
                 JudgeSchema, JudgeExample, answer => ReadJudge(answer) is not null, ct);
             var result = ReadJudge(judged.Parsed)!.Value;
             return Complete(result.SameItem, result.Overall, result.Stronger, judged.Parsed, judged.Model ?? options.Value.TerraModel,
@@ -255,13 +268,13 @@ public sealed class DebateReviewer(ILuna luna, ITerra terra, IDeepSeek deepSeek,
         }
     }
 
-    internal static bool IsModelFailure(Exception e, CancellationToken ct) =>
+    public static bool IsModelFailure(Exception e, CancellationToken ct) =>
         !ct.IsCancellationRequested && e is ModelCallException or HttpRequestException or OperationCanceledException or JsonException;
 
     private static bool ValidAdvocate(JsonElement answer) =>
         !string.IsNullOrWhiteSpace(Str(answer, "argument")) && Str(answer, "strength") is "weak" or "moderate" or "strong";
 
-    private static (double SameItem, double Overall, string Stronger)? ReadJudge(JsonElement answer)
+    internal static (double SameItem, double Overall, string Stronger)? ReadJudge(JsonElement answer)
     {
         var sameItem = Probability(Get(answer, "same_item_probability"));
         var stronger = Str(answer, "stronger_case");
@@ -287,6 +300,80 @@ public sealed class DebateReviewer(ILuna luna, ITerra terra, IDeepSeek deepSeek,
 
     internal static string Str(JsonElement e, string name) =>
         e.ValueKind == JsonValueKind.Object && e.TryGetProperty(name, out var v) && v.ValueKind == JsonValueKind.String ? v.GetString()! : "";
+}
+
+/// <summary>
+/// One model alone (owner decision, decisions.md 2026-11-16): Opus answers the judge's questions straight from the two
+/// reports and the photos, with no advocates and no separate judge. The wording is the benchmark's SOLO_SYSTEM
+/// (benchmark/src/reviewers/debate.js), word for word; the owner's rule sentence is unchanged. A failed call throws,
+/// and the matcher then sends the pair through the debate.
+/// </summary>
+public sealed class SoloReviewer(IOpus opus, AliasIndex aliases, IOptions<ModelOptions> options)
+{
+    public bool IsConfigured => opus.IsConfigured;
+
+    public static readonly string System = $$"""
+        You review possible matches in a university lost-and-found app: a LOST report and a FOUND report. Use only evidence in the reports and photos: item type, colour, brand/model, distinctive marks, place (location aliases name the same place), and timing (an item cannot be found before it was lost). For each pair answer three questions.
+        same_item: Do the LOST and FOUND reports describe the same physical item? {{DebateReviewer.SimilarityRule}} Give the probability (0 to 1) that the answer is yes.
+        stronger_case: Which way does the concrete evidence in the reports and photos lean? "for" = it better supports a match; "against" = it better supports different items; "balanced" = about equal.
+        overall: {{DebateReviewer.OverallQuestion}} Give a probability (0 to 1) for each level; they should sum to 1. Levels: {{string.Join("; ", DebateReviewer.LevelKeys.Zip(DebateReviewer.Levels, (key, label) => $"{key} = \"{label}\""))}}.
+        When a photo is attached, look at it yourself and go by what it shows.
+        """.ReplaceLineEndings("\n");
+
+    /// <summary>The timing clause every pair gets today, and the one a pair with a date note gets (benchmark A2_TIMING).</summary>
+    public const string TimingClause = "timing (an item cannot be found before it was lost)";
+    public const string DatedTimingClause = "timing (for this pair, weigh the dates as the line beginning \"Dates:\" after the two reports says)";
+
+    /// <summary>The system text for a pair that carries a date note: the same text with only the timing clause changed.</summary>
+    public static readonly string DatedSystem = System.Replace(TimingClause, DatedTimingClause);
+
+    /// <summary>
+    /// What one pair is sent: the system text and the pair's text. Order and wording as in
+    /// benchmark/src/reviewers/debate.js soloReview(); the posting note only with its switch; the date note only with
+    /// <see cref="ModelOptions.OpusDateNotes"/> and only at gaps of one and two days (benchmark SOLO_DATES=a2, SOLO_DATES_GATE=2).
+    /// </summary>
+    public static (string System, string Text) Prompt(MatchInput lost, MatchInput found, ModelOptions o, AliasIndex aliases)
+    {
+        var text =
+            $"LOST report: {PromptParts.Stringify(PromptParts.Brief(lost, o.PostedOn))}\nFOUND report: {PromptParts.Stringify(PromptParts.Brief(found, o.PostedOn))}\n" +
+            (o.PostedOn ? $"{TextRules.PostedNote}\n" : "") +
+            $"Location aliases: {PromptParts.AliasLine(lost, found, aliases)}\n" +
+            Photos.OwnerLine(Photos.CountFor(lost), Photos.CountFor(found));
+        if (!o.OpusDateNotes || TextRules.FoundDaysBeforeLost(lost, found) is not { } days || days > TextRules.DateNoteMaxDays) return (System, text);
+        text += "\n" + (days == 1 ? TextRules.OneDayText : TextRules.EarlyText(days));
+        // The one-day note counts "today" from the posting day, so the reviewer is told it. With the posting switch on
+        // the day is already in the report itself. A report whose lost date is later than the day it was posted was
+        // edited afterwards (a future date is refused when posting), so its words were not written on that day and
+        // the line is left out rather than point "this morning" at the wrong day.
+        if (!o.PostedOn && TextRules.PostedOn(lost) is { } posted && string.CompareOrdinal(posted[..10], lost.EventDate![..10]) >= 0)
+            text += $"\nThe LOST report was posted on {posted}.";
+        return (DatedSystem, text);
+    }
+
+    /// <summary>Throws a model failure (see <see cref="DebateReviewer.IsModelFailure"/>) when the call or its answer is unusable.</summary>
+    public async Task<Review> ReviewAsync(MatchInput lost, MatchInput found, IReadOnlyList<string> images, CancellationToken ct)
+    {
+        var o = options.Value;
+        var (system, text) = Prompt(lost, found, o, aliases);
+        var res = await opus.ChatJsonAsync(system, text, images, "solo_review", PromptParts.Schema(DebateReviewer.JudgeSchema), ct);
+        if (DebateReviewer.ReadJudge(res.Parsed) is not { } read) throw new ModelCallException("Invalid JSON for solo_review.");
+        var score = DebateReviewer.Score(read.SameItem, read.Overall);
+        var details = new JsonObject
+        {
+            ["model"] = res.Model ?? o.OpusModel,
+            ["effort"] = o.OpusEffort,
+            ["answers"] = JsonNode.Parse(res.Parsed.GetRawText()),
+            ["sameItem"] = read.SameItem,
+            ["overall"] = read.Overall,
+            ["stronger"] = read.Stronger,
+            ["finalScore"] = score,
+            ["timing"] = TextRules.DateRelation(lost, found),
+            ["dateNote"] = system != System,
+            ["tokens"] = new JsonObject { ["in"] = res.InputTokens, ["out"] = res.OutputTokens },
+            ["latencyMs"] = res.LatencyMs,
+        };
+        return new Review(score >= o.OpusThreshold, score, read.SameItem, read.Overall, "opus", details, res.CostUsd);
+    }
 }
 
 /// <summary>Plain gpt-6-luna review (benchmark/src/reviewers/luna.js): the fallback when Jev is unavailable.</summary>
@@ -374,22 +461,28 @@ public sealed class ScreenReviewer(ILuna luna, IDeepSeek deepSeek, IOptions<Mode
     private const string Example = """{"keep":[2,5]}""";
 
     /// <summary>benchmark line(r): description (≤300 chars), location, eventDate. No title, category or photos.</summary>
-    private static string Line(MatchInput r) => PromptParts.Stringify(new JsonObject
+    private static string Line(MatchInput r, bool postedOn)
     {
-        ["description"] = TextRules.Truncate(r.Description, 300),
-        ["location"] = r.Location,
-        ["eventDate"] = string.IsNullOrEmpty(r.EventDate) ? null : r.EventDate,
-    });
+        var o = new JsonObject
+        {
+            ["description"] = TextRules.Truncate(r.Description, 300),
+            ["location"] = r.Location,
+            ["eventDate"] = string.IsNullOrEmpty(r.EventDate) ? null : r.EventDate,
+        };
+        if (postedOn) o["postedOn"] = TextRules.PostedOn(r);
+        return PromptParts.Stringify(o);
+    }
 
-    public static string Text(MatchInput query, IReadOnlyList<MatchInput> candidates) =>
-        $"{query.Type.ToUpperInvariant()} report: {Line(query)}\nCandidate {candidates[0].Type.ToUpperInvariant()} reports:\n" +
-        string.Join("\n", candidates.Select((c, i) => $"{i + 1}. {Line(c)}"));
+    public static string Text(MatchInput query, IReadOnlyList<MatchInput> candidates, bool postedOn = false) =>
+        $"{query.Type.ToUpperInvariant()} report: {Line(query, postedOn)}\nCandidate {candidates[0].Type.ToUpperInvariant()} reports:\n" +
+        string.Join("\n", candidates.Select((c, i) => $"{i + 1}. {Line(c, postedOn)}")) +
+        (postedOn ? $"\n{TextRules.PostedNote}" : "");
 
     /// <summary>Never throws for a model failure: the matcher then reviews the best by prescore, as it did before the screen.</summary>
     public async Task<ScreenResult> ScreenAsync(MatchInput query, IReadOnlyList<MatchInput> candidates, CancellationToken ct)
     {
         if (candidates.Count == 0) return new ScreenResult([], null, false);
-        var text = Text(query, candidates);
+        var text = Text(query, candidates, options.Value.PostedOn);
         try
         {
             // Same route as the advocates: Luna, then DeepSeek when the Terra debate is on.
@@ -576,6 +669,15 @@ public static class Photos
     public const int PerReport = 2;
 
     public static int CountFor(MatchInput r) => Math.Min(PerReport, r.PhotoPaths.Count(File.Exists));
+
+    /// <summary>benchmark ownerLine: whose item each attached photo shows, said plainly, for the judge.</summary>
+    public static string OwnerLine(int lostCount, int foundCount)
+    {
+        if (lostCount == 0 && foundCount == 0) return "Attached photos: none. Neither report has a photo.";
+        if (lostCount == 0) return $"Attached photos: {foundCount}, all taken by the finder of the FOUND item. The LOST report has no photo: what the owner lost is known only from the LOST report's words.";
+        if (foundCount == 0) return $"Attached photos: {lostCount}, all from the owner and showing the LOST item. The FOUND report has no photo: what was found is known only from the FOUND report's words.";
+        return $"Attached photos: {lostCount + foundCount}. The first {lostCount} are from the owner and show the LOST item; the next {foundCount} were taken by the finder and show the FOUND item.";
+    }
 
     public static IReadOnlyList<string> DataUrls(MatchInput lost, MatchInput found) =>
         [.. Urls(lost), .. Urls(found)];

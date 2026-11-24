@@ -28,10 +28,24 @@ public sealed class HeldMatches(ZarqaDb db, INotifier notifier, TimeProvider clo
     public const string RejectStep = "held_reject";
     public const string AutoReleaseStep = "held_release";
 
+    /// <summary>The "reason" a held step carries when the match came from the stand-in while the one-model call was failing.</summary>
+    public const string OpusUnavailable = "opus_unavailable";
+
     /// <summary>What review_log records as "who" when the 48 hours ran out.</summary>
     public const string Auto = "auto";
 
-    public static bool ShouldHold(MatchDecider decidedBy, double finalScore) => decidedBy == MatchDecider.Debate && finalScore < HoldBelow;
+    /// <summary>
+    /// The same rule for the one-model review, whose line is lower (ModelOptions.OpusThreshold, 0.45): its weakest
+    /// matches, up to this score, wait for review. Fixed beside the line, not tuned on data.
+    /// </summary>
+    public const double OpusHoldBelow = 0.50;
+
+    public static bool ShouldHold(MatchDecider decidedBy, double finalScore) => decidedBy switch
+    {
+        MatchDecider.Debate => finalScore < HoldBelow,
+        MatchDecider.Opus => finalScore < OpusHoldBelow,
+        _ => false,
+    };
 
     /// <summary>An admin lets it through: an ordinary suggestion from now on, and the owner is told now. False when it was no longer held.</summary>
     public Task<bool> ApproveAsync(Guid matchId, Guid adminId, CancellationToken ct) => ReleaseAsync(matchId, ApproveStep, adminId.ToString(), ct);

@@ -98,3 +98,9 @@
   .summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
   .summary section + section { border-top: 0; padding-top: 0; }
 }
+
+/* How suggestions turned out: a small numbers table that scrolls sideways on a narrow phone instead of squeezing. */
+.tableWrap { overflow-x: auto; }
+.table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+.table th, .table td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+.table th[scope="row"], .table thead th:first-child { text-align: left; white-space: normal; font-weight: 600; }

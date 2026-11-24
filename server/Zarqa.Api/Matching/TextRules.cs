@@ -22,7 +22,9 @@ public sealed record MatchInput(
     // The person's words plus a plain-English rendering (ReportNormalizer), when one exists. Only for finding and
     // ranking candidates: the embedded text and the prescore. No model that reviews a pair reads them.
     string? RankText = null,
-    string? RankLocation = null)
+    string? RankLocation = null,
+    // When the report was posted. Only read when ModelOptions.PostedOn is on.
+    DateTimeOffset? CreatedAt = null)
 {
     /// <summary>The prescore's category: guessed from the rendering when there is one (benchmark/scripts/edge.js --normalize).</summary>
     public string RankCategoryKey => RankText is null ? CategoryKey : Categories.Normalize(RankText, null) ?? "";
@@ -89,6 +91,41 @@ public static partial class TextRules
         return "more_than_a_week";
     }
 
+    // ---- Switches from the 2026-11-16 tuning loop (benchmark/src/text.js); the wording is kept verbatim. ----
+
+    /// <summary>benchmark postedOn(r): the day a report was posted in Oman time (UTC+4, no daylight saving) with its weekday.</summary>
+    public static string? PostedOn(MatchInput r) =>
+        r.CreatedAt is { } t ? t.ToOffset(TimeSpan.FromHours(4)).ToString("yyyy-MM-dd dddd", CultureInfo.InvariantCulture) : null;
+
+    public const string PostedNote =
+        "postedOn is the day each report was posted, in campus time. Words in a report such as \"today\", \"yesterday\" or \"last week\" count from that day, not from your own today.";
+
+    /// <summary>benchmark foundOneDayBeforeLost: both dates present and the found one exactly one calendar day earlier.</summary>
+    public static bool FoundOneDayBeforeLost(MatchInput lost, MatchInput found) =>
+        TryDate(lost.EventDate, out var l) && TryDate(found.EventDate, out var f) && l.DayNumber - f.DayNumber == 1;
+
+    public const string OneDayText =
+        "Dates: the FOUND date is one calendar day before the LOST date. The lost date may be the day the owner noticed the loss rather than the day it happened, so this order is not a point against a match, alone or together with other points, and not a point for one. It counts against a match only if the LOST report's own words say the owner still had or used the item on the LOST date. Repeating that date or saying when the loss was noticed does not, and words such as \"today\", \"this morning\" or \"yesterday\" count from the day the report was posted, which may not be the LOST date.";
+
+    // ---- Date notes for the one-model reviewer (loop O2, accepted on outside set 5, decisions.md 2026-11-19). ----
+
+    /// <summary>
+    /// benchmark foundFirstDays: calendar days the found date is before the lost date, when both dates are given and
+    /// the found one is first; null otherwise. Code counts the days, so the reviewer cannot miscount them.
+    /// </summary>
+    public static int? FoundDaysBeforeLost(MatchInput lost, MatchInput found) =>
+        TryDate(lost.EventDate, out var l) && TryDate(found.EventDate, out var f) && l.DayNumber - f.DayNumber >= 1 ? l.DayNumber - f.DayNumber : null;
+
+    /// <summary>
+    /// The longest gap that gets a date note (benchmark SOLO_DATES_GATE=2). At three days and more the note let wrong
+    /// pairs through on the seen sets, and no test set holds a real pair there, so those gaps keep the old sentence.
+    /// </summary>
+    public const int DateNoteMaxDays = 2;
+
+    /// <summary>benchmark earlyText(days): the owner's longer-gap note (ruling of 2026-11-16), word for word.</summary>
+    public static string EarlyText(int days) =>
+        $"Dates: the FOUND date is {days} calendar days before the LOST date. The lost date is typed from memory and is often the day the loss was noticed or reported, so this order does not rule a match out. It is a point against a match, never a point for one, and it weighs more the longer the gap: a few days count for little, but over a long gap the same kind of item in the same place is not enough without something distinctive in common. It is a strong point against only if the LOST report's own words clearly say the owner still had or used the item after the FOUND date; repeating the LOST date does not say that.";
+
     /// <summary>The structured text that gets embedded.</summary>
     public static string EmbeddingText(MatchInput r, AliasIndex aliases)
     {
@@ -123,9 +160,16 @@ public sealed class AliasIndex
     public sealed record Group(string Canonical, IReadOnlyList<string> Names);
 
     private readonly List<(string Key, Group Group)> _entries = [];
+    private readonly bool _wholeWords;
 
-    public AliasIndex(IEnumerable<(string Canonical, string[] Aliases)> locations)
+    /// <param name="wholeWords">
+    /// True matches a place name as whole words only, as the benchmark has done since 2026-11-14. False (the default)
+    /// keeps the older rule, which also matches a longer name inside a word: "Female Residences" then also matches
+    /// Boys Dorms through its alias "male residences" (ModelOptions.WholeWordPlaces).
+    /// </param>
+    public AliasIndex(IEnumerable<(string Canonical, string[] Aliases)> locations, bool wholeWords = false)
     {
+        _wholeWords = wholeWords;
         var position = new Dictionary<string, int>();
         foreach (var (canonical, aliases) in locations)
         {
@@ -152,7 +196,7 @@ public sealed class AliasIndex
         var result = new List<Group>();
         foreach (var (name, group) in _entries)
         {
-            if ((text.Contains($" {name} ", StringComparison.Ordinal) || (name.Length > 3 && text.Contains(name, StringComparison.Ordinal)))
+            if ((text.Contains($" {name} ", StringComparison.Ordinal) || (!_wholeWords && name.Length > 3 && text.Contains(name, StringComparison.Ordinal)))
                 && seen.Add(group.Canonical))
                 result.Add(group);
         }

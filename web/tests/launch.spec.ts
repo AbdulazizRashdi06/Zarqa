@@ -96,7 +96,7 @@ test('sign-in needs the consent box, and the code step records it', async ({ pag
   await page.screenshot({ path: 'test-results/signin-consent-phone.png', fullPage: true })
   await send.click()
   await page.locator('#code').fill('123456')
-  await expect.poll(() => verified).toEqual({ email: 'test@gutech.edu.om', code: '123456', consentVersion: '2026-11-13' })
+  await expect.poll(() => verified).toEqual({ email: 'test@gutech.edu.om', code: '123456', consentVersion: '2026-11-17' })
 })
 test('an account without recorded consent is asked once, in a sheet', async ({ page }) => {
   let consented: unknown = null
@@ -115,6 +115,6 @@ test('an account without recorded consent is asked once, in a sheet', async ({ p
   await page.screenshot({ path: 'test-results/consent-sheet-phone.png' })
   await go.click()
   await expect(sheet).toBeHidden()
-  expect(consented).toEqual({ version: '2026-11-13' })
+  expect(consented).toEqual({ version: '2026-11-17' })
   await expect(page).toHaveURL(/\/profile$/)
 })

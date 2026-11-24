@@ -274,6 +274,22 @@ public class ScreenMatchingTests : IClassFixture<TestApp>, IAsyncLifetime
     }
 
     [Fact]
+    public async Task With_the_one_model_review_on_every_candidate_over_the_floor_is_reviewed_and_nothing_is_screened()
+    {
+        app.Models.OpusConfigured = true;
+        app.Models.OpusSameItem = 0.2;  // Opus says no, so no match gets in the way of counting reviews
+        app.Models.OpusOverallLevel = 1;
+        var (lost, found) = await PostCrowd("opuswide", 13);
+
+        var (screen, _, reviewed, completed) = await Outcome(lost);
+        Assert.Null(screen);
+        Assert.Empty(app.Models.ScreenCalls);
+        Assert.Equal(found.ToHashSet(), reviewed); // all 13, not the best 10
+        Assert.True(completed);
+        Assert.DoesNotContain(app.Models.LunaCalls, c => c.SchemaName.StartsWith("advocate_"));
+    }
+
+    [Fact]
     public async Task Ten_or_fewer_candidates_are_reviewed_without_a_screen()
     {
         var (lost, found) = await PostCrowd("few", 10);
