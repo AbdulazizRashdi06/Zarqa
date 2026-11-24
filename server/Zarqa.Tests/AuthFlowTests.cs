@@ -195,4 +195,49 @@ public class AuthFlowTests(TestApp app) : IClassFixture<TestApp>
         await using var db = app.Db();
         Assert.False(await db.LoginCodes.AnyAsync(c => c.Email == email));
     }
+
+    [Fact]
+    public async Task Coming_soon_keeps_new_students_out_but_lets_existing_accounts_and_staff_in()
+    {
+        const string existing = "already.here@student.gutech.edu.om";
+        const string rsa = "desk.helper@student.gutech.edu.om";
+        await app.SignedIn(existing);
+        await using (var db = app.Db())
+        {
+            db.RsaMembers.Add(new Zarqa.Api.Data.RsaMember { Email = rsa, AddedAt = DateTimeOffset.UtcNow });
+            await db.SaveChangesAsync();
+        }
+        using var configured = app.WithWebHostBuilder(builder => builder
+            .UseSetting("Auth:ComingSoon", "true")
+            .UseSetting("Admin:Emails", "boss.gate@student.gutech.edu.om")
+            .UseSetting("Auth:AllowedEmails", "pilot.gate@gmail.com"));
+
+        async Task<HttpClient> Verify(string email, bool expectIn)
+        {
+            var http = configured.CreateClient(new WebApplicationFactoryClientOptions { BaseAddress = new Uri("https://localhost"), HandleCookies = true });
+            Assert.Equal(HttpStatusCode.OK, (await http.PostAsJsonAsync("/api/auth/request-code", new { email })).StatusCode);
+            var verified = await http.PostAsJsonAsync("/api/auth/verify", new { email, code = app.Emails.LastCodeFor(email) });
+            Assert.Equal(HttpStatusCode.OK, verified.StatusCode);
+            var body = await verified.Content.ReadFromJsonAsync<JsonElement>();
+            Assert.Equal(!expectIn, body.TryGetProperty("comingSoon", out var soon) && soon.GetBoolean());
+            Assert.Equal(expectIn ? HttpStatusCode.OK : HttpStatusCode.Unauthorized, (await http.GetAsync("/api/me")).StatusCode);
+            return http;
+        }
+
+        // A new student proves the address, sees "coming soon", and gets no account or session.
+        const string newcomer = "new.student@student.gutech.edu.om";
+        await Verify(newcomer, expectIn: false);
+        await using (var db = app.Db())
+        {
+            Assert.False(await db.Users.AnyAsync(u => u.Email == newcomer));
+            // The code is spent: it can't be typed again.
+            Assert.True(await db.LoginCodes.Where(c => c.Email == newcomer).AllAsync(c => c.UsedAt != null));
+        }
+
+        await Verify(existing, expectIn: true);
+        await Verify("new.lecturer@gutech.edu.om", expectIn: true);
+        await Verify(rsa, expectIn: true);
+        await Verify("boss.gate@student.gutech.edu.om", expectIn: true);
+        await Verify("pilot.gate@gmail.com", expectIn: true);
+    }
 }

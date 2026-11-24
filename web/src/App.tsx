@@ -8,6 +8,7 @@ import Admin from './screens/Admin'
 import Info from './screens/Info'
 import Chat from './screens/Chat'
 import Chats from './screens/Chats'
+import ComingSoon from './screens/ComingSoon'
 import Home from './screens/Home'
 import Match from './screens/Match'
 import Placeholder from './screens/Placeholder'
@@ -33,6 +34,7 @@ export default function App() {
         <PageBoundary>
           <Routes>
             <Route path="/signin" element={<GuestOnly><SignIn /></GuestOnly>} />
+            <Route path="/coming-soon" element={<GuestOnly><ComingSoon /></GuestOnly>} />
             <Route path="/welcome" element={<RequireSession><Welcome /></RequireSession>} />
             <Route path="/" element={<RequireSession><Home /></RequireSession>} />
             <Route path="/reports" element={<RequireSession><Reports /></RequireSession>} />

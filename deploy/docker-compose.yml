@@ -30,6 +30,9 @@ services:
       Auth__TestMode: ${AUTH_TEST_MODE:-false}
       # Exact email exceptions for pilot testers; normal emailed-code verification still applies.
       Auth__AllowedEmails: ${AUTH_ALLOWED_EMAILS:-}
+      # Coming soon: new student accounts see a "coming soon" screen; existing accounts and staff get in.
+      # Set AUTH_COMING_SOON=false to open sign-up to everyone.
+      Auth__ComingSoon: ${AUTH_COMING_SOON:-true}
       # Matching models (secrets: set with deploy/set-secret.*). No keys = matching waits, nothing breaks.
       Models__OpenAiApiKey: ${OPENAI_API_KEY:-}
       Models__OpenAiBaseUrl: ${OPENAI_BASE_URL:-}

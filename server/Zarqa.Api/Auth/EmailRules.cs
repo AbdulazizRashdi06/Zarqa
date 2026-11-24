@@ -1,4 +1,6 @@
 using System.Net.Mail;
+using Microsoft.EntityFrameworkCore;
+using Zarqa.Api.Data;
 
 namespace Zarqa.Api.Auth;
 
@@ -24,6 +26,20 @@ public static class EmailRules
         allowed |= (allowedEmails ?? "").Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
             .Contains(parsed.Address, StringComparer.OrdinalIgnoreCase);
         return allowed ? parsed.Address.ToLowerInvariant() : null;
+    }
+
+    /// <summary>
+    /// Staff for the coming-soon gate: admins, RSA desk members, the pilot's exact sign-in exceptions
+    /// (Auth:AllowedEmails), and university staff, whose address is directly @gutech.edu.om. Students use a
+    /// subdomain (student.gutech.edu.om), so they wait.
+    /// </summary>
+    public static async Task<bool> IsStaffAsync(string address, bool isAdmin, ZarqaDb db, IConfiguration config, CancellationToken ct)
+    {
+        if (isAdmin) return true;
+        if (address.EndsWith("@" + UniversityDomain, StringComparison.Ordinal)) return true;
+        if ((config["Auth:AllowedEmails"] ?? "").Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+            .Contains(address, StringComparer.OrdinalIgnoreCase)) return true;
+        return await db.RsaMembers.AnyAsync(m => m.Email == address, ct);
     }
 
     /// <summary>A friendly first-name guess from the address, e.g. "abdulaziz.rashdi@…" → "Abdulaziz".</summary>

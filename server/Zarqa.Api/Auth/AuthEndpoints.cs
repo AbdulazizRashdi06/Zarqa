@@ -105,16 +105,26 @@ public static class AuthEndpoints
 
             // Signing in retires every code that was sent.
             foreach (var c in live) c.UsedAt = now;
+            // Admins are listed in config (Admin:Emails, comma-separated): no admin UI to grant it.
+            var admins = (config["Admin:Emails"] ?? "").Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+            var isAdmin = admins.Contains(address, StringComparer.OrdinalIgnoreCase);
             var user = await db.Users.FirstOrDefaultAsync(u => u.Email == address, ct);
             if (user is null)
             {
+                // Coming soon (owner, 2026-11-25): while Auth:ComingSoon is on, only people who already have an account
+                // and staff get in. A new student proved the address with the code, so saying so leaks nothing; no
+                // account is made and no session starts.
+                if (config.GetValue<bool>("Auth:ComingSoon") && !await EmailRules.IsStaffAsync(address, isAdmin, db, config, ct))
+                {
+                    await db.SaveChangesAsync(ct);
+                    await tx.CommitAsync(ct);
+                    return Results.Ok(new { comingSoon = true });
+                }
                 user = new User { Email = address, CreatedAt = now };
                 db.Users.Add(user);
             }
             if (user.IsBanned) return Errors.Forbidden("This account can't sign in. Contact us via Help.");
-            // Admins are listed in config (Admin:Emails, comma-separated): no admin UI to grant it.
-            var admins = (config["Admin:Emails"] ?? "").Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
-            user.IsAdmin = admins.Contains(address, StringComparer.OrdinalIgnoreCase);
+            user.IsAdmin = isAdmin;
             user.LastSeenAt = now;
             if (body.ConsentVersion == Users.Consent.Current && user.ConsentVersion != Users.Consent.Current)
             {

@@ -47,6 +47,19 @@ test('a pasted "482 913" or the whole subject line fills all six boxes and signs
   await expect.poll(() => codes).toEqual(['482913', '104729'])
 })
 
+test('a new student whose code checks out while sign-up is closed sees Coming soon and stays signed out', async ({ page }) => {
+  await signedOut(page)
+  await page.route('**/api/auth/verify', route => route.fulfill({ json: { comingSoon: true } }))
+  await toCodeStep(page)
+  await page.locator('#code').fill('482913')
+  await expect(page).toHaveURL(/\/coming-soon$/)
+  await expect(page.getByRole('heading', { name: /coming soon/i })).toBeVisible()
+  await page.getByRole('link', { name: 'Use another email' }).click()
+  await expect(page).toHaveURL(/\/signin$/)
+  // The spent code is forgotten: no "I already have a code" shortcut back to it.
+  await expect(page.getByRole('button', { name: 'I already have a code' })).toHaveCount(0)
+})
+
 test('the email form keeps the typed address and tick across a trip to Terms', async ({ page }) => {
   await signedOut(page)
   await page.goto('/signin')

@@ -278,7 +278,13 @@ function CodeStep({
     let signedIn = false
     try {
       // Consent is recorded with the sign-in only while the box is ticked; otherwise the consent sheet asks.
-      await api('/auth/verify', { body: { email, code: value, consentVersion: consented ? CONSENT_VERSION : undefined } })
+      const r = await api<{ comingSoon?: boolean }>('/auth/verify', { body: { email, code: value, consentVersion: consented ? CONSENT_VERSION : undefined } })
+      if (r?.comingSoon) {
+        // Sign-up isn't open to students yet: no account, no session. The spent code is forgotten.
+        clearSignIn()
+        navigate('/coming-soon', { replace: true, dir: 'forward' })
+        return
+      }
       signedIn = true
       // A new session exists: a sign-out still waiting from before (made offline) must not end this one.
       forgetPendingLogout()
