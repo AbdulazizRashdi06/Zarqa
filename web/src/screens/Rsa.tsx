@@ -53,11 +53,50 @@ const countLabel = (n: number) => (n === 1 ? t('rsa.countOne') : t('rsa.count', 
 
 /** Search over what staff hear at the desk: title, words, place, finder, code (with or without the dash). */
 function matches(item: Item, query: string) {
-  const q = query.trim().toLowerCase()
-  if (!q) return true
+  const words = query.trim().toLowerCase().split(/\s+/).filter(Boolean)
+  if (words.length === 0) return true
   const code = item.code ?? ''
-  return [item.title, item.description, item.locationText, item.finderName, code, code.replace('-', '')]
-    .some((x) => (x ?? '').toLowerCase().includes(q))
+  const fields = [item.title, item.description, item.locationText, item.finderName, code, code.replace('-', '')].map((x) => (x ?? '').toLowerCase())
+  // Every typed word has to be somewhere, in any order: "black umbrella" finds "Umbrella, black handle".
+  return words.every((w) => fields.some((f) => f.includes(w)))
+}
+
+const CLOSE_SHOWN = 6
+/**
+ * Found reports closest in meaning to the search, nearest first (the server ranks them by the embeddings matching
+ * stores, so "earbuds" finds "AirPods"). Asked once typing pauses; empty while waiting, for short searches and when the
+ * server can't answer, which leaves the exact-text filter above working alone.
+ */
+function useCloseIds(query: string) {
+  const [found, setFound] = useState<{ q: string; ids: string[] } | null>(null)
+  const q = query.trim()
+  useEffect(() => {
+    if (q.length < 3) return
+    let live = true
+    const timer = setTimeout(() => {
+      api<{ id: string }[]>('/rsa/search', { body: { q } })
+        .then((hits) => { if (live) setFound({ q, ids: (hits ?? []).map((h) => h.id) }) })
+        .catch(() => {})
+    }, 400)
+    return () => { live = false; clearTimeout(timer) }
+  }, [q])
+  return found?.q === q ? found.ids : []
+}
+/** The closest few that are in this tab's list and not already shown as exact hits. */
+function closeItems(ids: string[], pool: Item[], exact: Item[]) {
+  const taken = new Set(exact.map((i) => i.id))
+  const byId = new Map(pool.map((i) => [i.id, i]))
+  return ids.map((id) => byId.get(id)).filter((i): i is Item => i !== undefined && !taken.has(i.id)).slice(0, CLOSE_SHOWN)
+}
+function CloseGroup({ items, card }: { items: Item[]; card: (item: Item) => ReactNode }) {
+  if (items.length === 0) return null
+  return (
+    <section className={s.group} aria-label={t('rsa.search.close')}>
+      <h2 className={s.groupTitle}>{t('rsa.search.close')}</h2>
+      <p className={s.groupTitle}>{t('rsa.search.closeNote')}</p>
+      <div className={s.grid}>{items.map(card)}</div>
+    </section>
+  )
 }
 
 /** Lines that mix user text with labels: each user part is isolated so Arabic keeps its own order. */
@@ -538,12 +577,40 @@ function FoundTab({ active }: { active: boolean }) {
   const [notes, setNotes] = useState<Record<string, string>>({})
   const countRef = useRef<HTMLParagraphElement>(null)
   const refocus = useRefocus()
+  const closeIds = useCloseIds(query)
 
   if (list.failed) return <LoadError onRetry={list.retry} busy={list.retrying} />
   if (!list.data) return <LoadingState />
-  const shown = list.data
-    .filter((i) => filter === 'all' || (filter === 'open' ? canMatch(i) : i.state === 'held' || i.state === 'claimed'))
-    .filter((i) => matches(i, query))
+  const pool = list.data.filter((i) => filter === 'all' || (filter === 'open' ? canMatch(i) : i.state === 'held' || i.state === 'claimed'))
+  const shown = pool.filter((i) => matches(i, query))
+  const close = closeItems(closeIds, pool, shown)
+  const card = (item: Item, heading: 'h2' | 'h3' = 'h2') => {
+    const sent = item.suggestedTo ?? []
+    return (
+      <ItemCard key={item.id} item={item} heading={heading}>
+        {sent.length > 0 && <CardNote>{t('rsa.match.sentTo', { emails: sent.join(', ') })}</CardNote>}
+        {notes[item.id] && <CardNote live focusId={item.id}>{notes[item.id]}</CardNote>}
+        {canMatch(item) && (open === item.id ? (
+          <MatchForm item={item} onCancel={() => setOpen(null)} onDone={(message) => {
+            // The form goes; focus goes to this card's button, or its result line, or (if the card left the
+            // filtered list) the count line above it.
+            const at = (a: string) => document.querySelector<HTMLElement>(`[${a}="${CSS.escape(item.id)}"]`)
+            refocus(() => at('data-match') ?? at('data-note') ?? countRef.current)
+            setOpen(null)
+            setNotes((n) => ({ ...n, [item.id]: message }))
+            list.load()
+          }} />
+        ) : (
+          <div className={l.actions}>
+            <button type="button" className={s.secondary} data-match={item.id} aria-label={t('rsa.match.openLabel', { title: item.title })}
+              onClick={() => { setOpen(item.id); setNotes((n) => { const next = { ...n }; delete next[item.id]; return next }) }}>
+              {sent.length > 0 || notes[item.id] ? t('rsa.match.openAgain') : t('rsa.match.open')}
+            </button>
+          </div>
+        ))}
+      </ItemCard>
+    )
+  }
 
   return (
     <>
@@ -556,37 +623,10 @@ function FoundTab({ active }: { active: boolean }) {
           { id: 'all', label: t('rsa.found.filter.all') },
         ]} />
       </div>
-      <p ref={countRef} className={s.count} role="status" tabIndex={-1}>{countLabel(shown.length)}</p>
-      {list.data.length === 0 ? <p>{t('rsa.found.empty')}</p> : shown.length === 0 && <p>{t('rsa.search.none')}</p>}
-      <div className={s.grid}>
-        {shown.map((item) => {
-          const sent = item.suggestedTo ?? []
-          return (
-            <ItemCard key={item.id} item={item}>
-              {sent.length > 0 && <CardNote>{t('rsa.match.sentTo', { emails: sent.join(', ') })}</CardNote>}
-              {notes[item.id] && <CardNote live focusId={item.id}>{notes[item.id]}</CardNote>}
-              {canMatch(item) && (open === item.id ? (
-                <MatchForm item={item} onCancel={() => setOpen(null)} onDone={(message) => {
-                  // The form goes; focus goes to this card's button, or its result line, or (if the card left the
-                  // filtered list) the count line above it.
-                  const at = (a: string) => document.querySelector<HTMLElement>(`[${a}="${CSS.escape(item.id)}"]`)
-                  refocus(() => at('data-match') ?? at('data-note') ?? countRef.current)
-                  setOpen(null)
-                  setNotes((n) => ({ ...n, [item.id]: message }))
-                  list.load()
-                }} />
-              ) : (
-                <div className={l.actions}>
-                  <button type="button" className={s.secondary} data-match={item.id} aria-label={t('rsa.match.openLabel', { title: item.title })}
-                    onClick={() => { setOpen(item.id); setNotes((n) => { const next = { ...n }; delete next[item.id]; return next }) }}>
-                    {sent.length > 0 || notes[item.id] ? t('rsa.match.openAgain') : t('rsa.match.open')}
-                  </button>
-                </div>
-              ))}
-            </ItemCard>
-          )
-        })}
-      </div>
+      <p ref={countRef} className={s.count} role="status" tabIndex={-1}>{countLabel(shown.length + close.length)}</p>
+      {list.data.length === 0 ? <p>{t('rsa.found.empty')}</p> : shown.length + close.length === 0 && <p>{t('rsa.search.none')}</p>}
+      <div className={s.grid}>{shown.map((item) => card(item))}</div>
+      <CloseGroup items={close} card={(item) => card(item, 'h3')} />
     </>
   )
 }
@@ -669,6 +709,7 @@ function ShelfTab({ active, onOwnerHere }: { active: boolean; onOwnerHere: (code
   const lastRef = useRef<HTMLDivElement>(null)
   const refocus = useRefocus()
   const ask = useAsk()
+  const closeIds = useCloseIds(query)
 
   function close(item: Item) {
     ask.open({
@@ -700,10 +741,11 @@ function ShelfTab({ active, onOwnerHere }: { active: boolean; onOwnerHere: (code
   if (list.failed) return <>{header}<LoadError onRetry={list.retry} busy={list.retrying} /></>
   if (!list.data) return <>{header}<LoadingState /></>
 
-  const shown = list.data.filter((i) => matches(i, query))
-    .filter((i) => done || old === 'all' || (i.receivedAt != null && daysSince(i.receivedAt) >= 60))
-  const card = (item: Item) => (
-    <ItemCard key={item.id} item={item} heading={done ? 'h2' : 'h3'} showAge>
+  const pool = list.data.filter((i) => done || old === 'all' || (i.receivedAt != null && daysSince(i.receivedAt) >= 60))
+  const shown = pool.filter((i) => matches(i, query))
+  const near = closeItems(closeIds, pool, shown)
+  const card = (item: Item, heading: 'h2' | 'h3' = done ? 'h2' : 'h3') => (
+    <ItemCard key={item.id} item={item} heading={heading} showAge>
       {item.state === 'held' && (
         <div className={l.actions}>
           <button type="button" className={s.secondary} aria-label={t('rsa.shelf.closeLabel', { title: item.title })} onClick={() => close(item)}>
@@ -737,15 +779,16 @@ function ShelfTab({ active, onOwnerHere }: { active: boolean; onOwnerHere: (code
           { id: 'old', label: t('rsa.shelf.old') },
         ]} />}
       </div>
-      {list.data.length === 0 ? <p>{t('rsa.shelf.empty')}</p> : shown.length === 0 && <p>{t('rsa.search.none')}</p>}
+      {list.data.length === 0 ? <p>{t('rsa.shelf.empty')}</p> : shown.length + near.length === 0 && <p>{t('rsa.search.none')}</p>}
       {done ? (
-        <div className={s.grid}>{shown.map(card)}</div>
+        <div className={s.grid}>{shown.map((item) => card(item))}</div>
       ) : groups.filter((g) => g.items.length > 0).map((g) => (
         <section key={g.key} className={s.group}>
           <h2 className={s.groupTitle}>{t(g.key, { n: g.items.length })}</h2>
-          <div className={s.grid}>{g.items.map(card)}</div>
+          <div className={s.grid}>{g.items.map((item) => card(item))}</div>
         </section>
       ))}
+      <CloseGroup items={near} card={(item) => card(item, 'h3')} />
       {ask.sheet}
     </>
   )

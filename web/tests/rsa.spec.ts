@@ -137,6 +137,52 @@ test('the Found tab lists every found report with where it is', async ({ page })
   expect(new Set(tops).size).toBe(1)
 })
 
+test('desk search finds words in any order and adds the closest by meaning', async ({ page }) => {
+  await session(page)
+  const items = [
+    { ...item, id: 'pods', code: null, title: 'AirPods', description: 'White case', state: 'finder' },
+    { ...item, id: 'brolly', code: null, title: 'Umbrella', description: 'Black handle', state: 'finder' },
+    { ...item, id: 'ring', code: null, title: 'Silver ring', description: '', state: 'finder' },
+    { ...item, id: 'chat', code: null, title: 'JBL earbuds case', description: '', state: 'chatting' },
+  ]
+  await page.route('**/api/rsa/found', route => route.fulfill({ json: items }))
+  const asked: string[] = []
+  let down = false
+  await page.route('**/api/rsa/search', route => {
+    const { q } = route.request().postDataJSON()
+    asked.push(q)
+    if (down) return route.fulfill({ status: 502 })
+    // Nearest first; 'gone' is not in the list and 'chat' is hidden by the "Can be matched" filter.
+    return route.fulfill({ json: q === 'earbuds' ? [{ id: 'gone', score: 0.7 }, { id: 'chat', score: 0.6 }, { id: 'pods', score: 0.5 }, { id: 'ring', score: 0.2 }] : [] })
+  })
+  await page.goto('/rsa?tab=found')
+  const search = page.getByRole('searchbox', { name: 'Search' })
+
+  // Exact text: every word, in any order.
+  await search.fill('black umbrella')
+  await expect(page.getByRole('heading', { name: 'Umbrella' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'AirPods' })).toHaveCount(0)
+
+  // No report says "earbuds" in the matchable list: the closest by meaning are offered, nearest first.
+  await search.fill('earbuds')
+  const close = page.getByRole('region', { name: 'Closest by meaning' })
+  await expect(close.getByRole('heading', { level: 3 })).toHaveText(['AirPods', 'Silver ring'])
+  await expect(page.getByText('2 items')).toBeVisible()
+  await expect(page.getByText('Nothing matches that search.')).toHaveCount(0)
+  // Only asked once typing pauses: the search replaced within the pause was never sent.
+  expect(asked).toEqual(['earbuds'])
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+  await page.screenshot({ path: 'test-results/rsa-search-phone.png', fullPage: true })
+
+  // The meaning search failing leaves the text filter working alone.
+  down = true
+  await search.fill('silver')
+  await expect(page.getByRole('heading', { name: 'Silver ring' })).toBeVisible()
+  await expect(close).toHaveCount(0)
+  await search.fill('zzzz')
+  await expect(page.getByText('Nothing matches that search.')).toBeVisible()
+})
+
 test('staff match someone at the desk to a found item', async ({ page }) => {
   await session(page)
   page.on('dialog', d => d.accept())

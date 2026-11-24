@@ -28,6 +28,39 @@ public class RsaDeskTests(TestApp app) : IClassFixture<TestApp>
     }
 
     [Fact]
+    public async Task Desk_search_ranks_found_reports_by_meaning()
+    {
+        var plain = await app.SignedIn("plain.search@gutech.edu.om");
+        Assert.Equal(HttpStatusCode.Forbidden, (await plain.PostAsJsonAsync("/api/rsa/search", new { q = "umbrella" })).StatusCode);
+
+        var rsa = await Staff("search");
+        var finder = await app.SignedIn("finder.search@gutech.edu.om", "Omar");
+        var umbrella = (await Json(await finder.PostAsync("/api/reports", DropForm("Striped umbrella", "Other")))).GetProperty("id").GetGuid();
+        var ring = (await Json(await finder.PostAsync("/api/reports", Form("found", "Silver ring", "Jewellery")))).GetProperty("id").GetGuid();
+        var lost = (await Json(await finder.PostAsync("/api/reports", Form("lost", "Striped umbrella", "Other")))).GetProperty("id").GetGuid();
+        await app.DrainMatchingAsync();
+
+        async Task<List<Guid>> Search(string q) =>
+            (await Json(await rsa.PostAsJsonAsync("/api/rsa/search", new { q }))).EnumerateArray().Select(h => h.GetProperty("id").GetGuid()).ToList();
+
+        // Word order and wording differ from the title; the nearest found report comes first, and lost reports never appear.
+        var hits = await Search("  umbrella   with stripes ");
+        Assert.Contains(ring, hits);
+        Assert.DoesNotContain(lost, hits);
+        Assert.True(hits.IndexOf(umbrella) >= 0 && hits.IndexOf(umbrella) < hits.IndexOf(ring));
+        Assert.Contains(app.Models.EmbeddedTexts, t => t == "type: found\ntitle: umbrella with stripes\ndescription: umbrella with stripes");
+        var first = (await Json(await rsa.PostAsJsonAsync("/api/rsa/search", new { q = "striped umbrella" }))).EnumerateArray().First();
+        Assert.Equal(umbrella, first.GetProperty("id").GetGuid());
+        Assert.InRange(first.GetProperty("score").GetDouble(), 0.3, 1.0);
+
+        // Too short to mean anything, and embeddings switched off: nothing, and the tabs keep their text filter.
+        Assert.Empty(await Search("um"));
+        app.Models.LunaConfigured = false;
+        try { Assert.Empty(await Search("umbrella")); }
+        finally { app.Models.LunaConfigured = true; }
+    }
+
+    [Fact]
     public async Task A_manual_match_is_sent_once_per_person_and_shows_on_the_item()
     {
         var rsa = await Staff("twice");

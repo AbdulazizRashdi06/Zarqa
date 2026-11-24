@@ -580,6 +580,8 @@
   "rsa.search.items": "Title, place, finder or code",
   "rsa.search.chats": "Item or name",
   "rsa.search.none": "Nothing matches that search.",
+  "rsa.search.close": "Closest by meaning",
+  "rsa.search.closeNote": "Not exact matches. These are Zarqa's best guesses for what you typed.",
   "rsa.count": "{n} items",
   "rsa.countOne": "1 item",
   "rsa.match.open": "Match to someone",

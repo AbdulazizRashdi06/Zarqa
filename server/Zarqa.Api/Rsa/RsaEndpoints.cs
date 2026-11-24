@@ -1,6 +1,8 @@
 using System.Globalization;
 using System.Text.Json.Nodes;
 using Microsoft.EntityFrameworkCore;
+using Pgvector;
+using Pgvector.EntityFrameworkCore;
 using Zarqa.Api.Auth;
 using Zarqa.Api.Data;
 using Zarqa.Api.Matching;
@@ -48,6 +50,24 @@ public static class RsaEndpoints
 
     /// <summary>HandOver: the item is on the shelf and the person is at the desk, so they take it now.</summary>
     public record ManualMatchBody(string? Email, bool HandOver);
+
+    /// <summary>A found report close in meaning to a desk search; Score is the cosine similarity.</summary>
+    public record SearchHitDto(Guid Id, double Score);
+
+    public record SearchBody(string? Q);
+
+    public const int SearchMinLength = 3, SearchMaxLength = 200, SearchLimit = 50;
+
+    /// <summary>
+    /// The typed words in the shape reports are embedded in (TextRules.EmbeddingText), which ranks short queries better
+    /// than the bare words (checked on the campus set with local embeddings, 2026-11-16; not measured in production).
+    /// </summary>
+    public static string SearchText(string typed)
+    {
+        var q = string.Join(' ', typed.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries));
+        if (q.Length > SearchMaxLength) q = q[..SearchMaxLength];
+        return $"type: found\ntitle: {q}\ndescription: {q}";
+    }
 
     public static void MapRsa(this RouteGroupBuilder api)
     {
@@ -149,6 +169,32 @@ public static class RsaEndpoints
                     .Select(m => new { m.FoundId, m.Lost!.User!.Email }).ToListAsync(ct))
                 .ToLookup(x => x.FoundId, x => x.Email);
             return list.Select(r => ToItem(r) with { SuggestedTo = sent[r.Id].Distinct().ToArray() });
+        });
+
+        // Search by meaning for the Found and Shelf tabs: found reports nearest to what staff typed, closest first, by the
+        // embeddings matching already stores (so "earbuds" finds "AirPods"). The tabs keep their own exact-text filter and
+        // show these underneath; they only use the ids already in their list. No cut-off: one has not been measured with
+        // the production embeddings, so the tabs show a handful and staff judge. Empty when embeddings are unavailable.
+        // A POST, so what staff type (it may be a name) stays out of URLs and access logs.
+        rsa.MapPost("/search", async (SearchBody body, ZarqaDb db, IEmbedder embedder, ILoggerFactory logs, CancellationToken ct) =>
+        {
+            var text = (body.Q ?? "").Trim();
+            if (text.Length < SearchMinLength || !embedder.IsConfigured) return Results.Ok(Array.Empty<SearchHitDto>());
+            Vector query;
+            try
+            {
+                query = new Vector((await embedder.EmbedAsync([SearchText(text)], ct)).Vectors[0]);
+            }
+            catch (Exception e) when (!ct.IsCancellationRequested)
+            {
+                logs.CreateLogger("Zarqa.Rsa").LogWarning("Desk search could not embed the query: {Message}", e.Message);
+                return Results.Ok(Array.Empty<SearchHitDto>());
+            }
+            var hits = await db.Reports.AsNoTracking().Where(r => r.Kind == ReportKind.Found && r.Embedding != null)
+                .OrderBy(r => r.Embedding!.CosineDistance(query)).Take(SearchLimit)
+                .Select(r => new { r.Id, Distance = r.Embedding!.CosineDistance(query) }).ToListAsync(ct);
+            // A query with no usable words has no direction: its distances are not numbers.
+            return Results.Ok(hits.Where(h => !double.IsNaN(h.Distance)).Select(h => new SearchHitDto(h.Id, Math.Round(1 - h.Distance, 4))));
         });
 
         // Before a manual match: is this address already on Zarqa? Staff check the spelling with the person if not.
