@@ -1,0 +1,35 @@
+{
+  "model_id": "music_v2_5",
+  "composition_plan": {
+    "chunks": [
+      {
+        "text": "[Instrumental]",
+        "duration_ms": 8333,
+        "positive_styles": ["instrumental", "big confident hit on the downbeat", "warm modern pop", "playful", "plucky strings", "light claps", "upbeat groove", "major key"],
+        "negative_styles": ["vocals", "singing", "lyrics", "spoken words", "voice", "choir", "minor key", "dark"],
+        "context_adherence": "high"
+      },
+      {
+        "text": "[Instrumental]",
+        "duration_ms": 7000,
+        "positive_styles": ["instrumental", "warm", "helpful", "bouncy groove continues", "light percussion", "major key"],
+        "negative_styles": ["vocals", "singing", "lyrics", "spoken words", "voice", "choir", "tense"],
+        "context_adherence": "high"
+      },
+      {
+        "text": "[Instrumental]",
+        "duration_ms": 7000,
+        "positive_styles": ["instrumental", "building", "lifting", "everything coming together", "fuller arrangement", "major key"],
+        "negative_styles": ["vocals", "singing", "lyrics", "spoken words", "voice", "choir", "tense"],
+        "context_adherence": "high"
+      },
+      {
+        "text": "[Instrumental]",
+        "duration_ms": 6000,
+        "positive_styles": ["instrumental", "triumphant", "warm", "satisfying finale", "clean resolved ending", "major key"],
+        "negative_styles": ["vocals", "singing", "lyrics", "spoken words", "voice", "choir", "minor key"],
+        "context_adherence": "high"
+      }
+    ]
+  }
+}

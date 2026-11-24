@@ -1,0 +1,35 @@
+{
+  "model_id": "music_v2_5",
+  "composition_plan": {
+    "chunks": [
+      {
+        "text": "[Intro]\nWorried and uneasy: a nervous ticking pulse and hesitant plucks,\nlike someone patting their pockets and realising something is gone.",
+        "duration_ms": 3000,
+        "positive_styles": ["worried", "anxious", "tense", "minor key", "ticking pulse", "nervous pizzicato strings", "soft tremolo strings"],
+        "negative_styles": ["vocals", "EDM drop", "lo-fi crackle", "happy", "upbeat", "horror"],
+        "context_adherence": "high"
+      },
+      {
+        "text": "[Worry grows]\nThe ticking speeds up, a low pulse joins underneath,\nmore anxious plucks stacking up as more people lose things.",
+        "duration_ms": 3000,
+        "positive_styles": ["growing anxiety", "faster ticking", "low pulsing bass", "tense"],
+        "negative_styles": ["vocals", "calm", "happy"],
+        "context_adherence": "high"
+      },
+      {
+        "text": "[Overwhelm]\nPanic and overwhelm: everything speeds up and piles on,\nrising tension, louder and more cluttered, rushing toward one moment.",
+        "duration_ms": 4233,
+        "positive_styles": ["overwhelming", "accelerating", "rising tension", "crescendo", "stressful"],
+        "negative_styles": ["vocals", "calm", "release"],
+        "context_adherence": "high"
+      },
+      {
+        "text": "[Stop and resolution]\nSudden dead stop: one and a half seconds of complete silence.\nThen a warm, bright, satisfying resolution: a major chord lands,\na confident uplifting groove, ending on one clean satisfying final hit.",
+        "duration_ms": 4067,
+        "positive_styles": ["dead stop", "satisfying resolution", "major key", "warm", "uplifting", "confident", "clean final hit"],
+        "negative_styles": ["vocals", "fade out", "tense", "minor key"],
+        "context_adherence": "high"
+      }
+    ]
+  }
+}
