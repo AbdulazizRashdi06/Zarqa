@@ -33,9 +33,14 @@ www.tryzarqa.com {
 }
 
 # Uni Schedule (separate app, container uni-schedule on the zarqa_default network; see the Schedule repo deploy/).
-schedule.tryzarqa.com, schedule.173-249-40-122.sslip.io {
+classy.om {
 	encode gzip
 	reverse_proxy uni-schedule:8080
+}
+
+# One address for Classy: sign-in cookies belong to a single host, so every other name redirects here.
+www.classy.om, schedule.tryzarqa.com, schedule.173-249-40-122.sslip.io {
+	redir https://classy.om{uri} permanent
 }
 
 # >>> zoor
