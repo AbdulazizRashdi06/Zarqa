@@ -62,7 +62,7 @@ export default defineConfig({
         clientsClaim: true,
         // The animated clips are big and each plays once: fetched when needed, not stored with the app shell.
         // Icons and logo.png (the original of logo.webp) are never drawn by the page.
-        globIgnores: ['mascot/*.png', 'mascot/anim/**', 'icons/**', 'logo.png'],
+        globIgnores: ['mascot/*.png', 'mascot/anim/**', 'mascot/email/**', 'icons/**', 'logo.png'],
         globPatterns: ['**/*.{js,css,html,svg,png,webp,woff2}'],
       },
     }),

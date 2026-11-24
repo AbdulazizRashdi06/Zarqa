@@ -2,6 +2,15 @@
 
 The decisions made while turning the uni matching prototype into a real app, and the reasons for them. Newest first. Benchmark code and results: `benchmark/`.
 
+## 2026-11-25: Emails in the app's look, with Zarqa
+
+**Decision (owner).** Every email Zarqa sends now uses one layout in the app's look: the wordmark, a big headline with Zarqa beside it, and the off-white ticket with a tear line. Design: the "Zarqa emails" canvas (2026-11-23). Wording is unchanged apart from a sticker, a small ticket label and, on the sign-in email, the sign-in screen's "your keys are easy" line.
+- **One picture per email**, made with the mascot skill: a key (sign-in), spotting something (match), two thumbs up (someone claims), a luggage tag (ready to collect), an hourglass and a box of found things (the two expiry emails), waving (admin test). Emails to an owner use tan and emails to a finder use sage, like Lost and Found in the app.
+- **What emails now load from outside.** Until now they loaded nothing. Zarqa's picture comes from `https://tryzarqa.com/mascot/email/` and the fonts from Google Fonts (Anton, Figtree, JetBrains Mono; they only load in mail apps that allow web fonts, such as Apple Mail). There are still no links.
+- **Built for mail apps.** Tables and inline styles only. Where a mail app drops a style the email loses decoration, not content: a straight sticker, round corners on the item tag, condensed system fonts. With pictures blocked it still reads in full.
+- **Code.** `server/Zarqa.Api/Email/EmailLayout.cs` (`EmailLayout`, and one `EmailLook` per email in `EmailLooks`). Pictures: originals in `design/mascot/`, email copies in `web/public/mascot/email/` built by `python deploy/email-mascots.py`, left out of the app's offline cache.
+- **Verified.** Every email rendered in Chromium at 390 and 344 px wide: pictures load, nothing scrolls sideways. A test fails if an email names a picture that is not in the web app. **Not verified:** real mail apps (Outlook, Gmail, Apple Mail). After deploying, press **Send me a test email** on `/admin` and open it on a phone. The pictures only show once the web app that contains them is live.
+
 ## 2026-11-14: A card photo with no long number found gets no covered copy
 
 **Found on a real card (owner asked for the check and consented to the test).** The two card photos on the collection page were run through the app's own covering, locally, with real Tesseract. The originals were never opened by a model and all files were deleted afterwards.

@@ -57,7 +57,8 @@ public sealed class Retention(ZarqaDb db, PhotoStore photos, IEmailSender email,
                "It's been 60 days with no owner, so Zarqa stopped matching it. If you still have it, post it again on the home screen or take it to the RSA desk.")
             : ("STILL LOOKING?", "Your lost report has expired",
                "It's been 60 days, so Zarqa stopped matching it. If you're still looking, post it again on the home screen and I'll keep watching.");
-        var (html, text) = NoticeEmail.Build(label, headline, body, item: r.Title);
+        var look = r.Kind == ReportKind.Found ? Email.EmailLooks.ExpiredFound : Email.EmailLooks.ExpiredLost;
+        var (html, text) = NoticeEmail.Build(label, headline, body, look, item: r.Title);
         return ($"{headline}: {r.Title}", html, text);
     }
 

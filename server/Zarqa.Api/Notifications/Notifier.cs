@@ -4,6 +4,7 @@ using System.Threading.Channels;
 using Microsoft.EntityFrameworkCore;
 using Zarqa.Api.Auth;
 using Zarqa.Api.Data;
+using Zarqa.Api.Email;
 using Zarqa.Api.Matching;
 using Zarqa.Api.Reports;
 using Zarqa.Api.Users;
@@ -97,7 +98,7 @@ public sealed class NotificationSender(ZarqaDb db, IPushSender push, IEmailSende
         var (html, text) = NoticeEmail.Build("ZARQA SPOTTED SOMETHING", "Could this be yours?", m.Found!.DropAtRsa
             ? "Someone found an item that might be yours and handed it to the RSA desk. Open Zarqa and check the match: if it's yours, you'll get a pickup code."
             : "Someone found an item that might be yours. Open Zarqa and check the match: if it's yours, you can message the finder right away.",
-            item: m.Lost.Title, footer: NoticeEmail.AlertsFooter);
+            m.Found.DropAtRsa ? EmailLooks.SpottedAtRsa : EmailLooks.Spotted, item: m.Lost.Title, footer: NoticeEmail.AlertsFooter);
         await SafeEmailAsync(owner.Email, $"Zarqa spotted a possible match: {m.Lost.Title}", html, text, ct);
     }
 
@@ -111,7 +112,7 @@ public sealed class NotificationSender(ZarqaDb db, IPushSender push, IEmailSende
         await PushAsync(finder.Id, new PushPayload("Someone thinks it's theirs", $"{MeEndpoints.DisplayName(owner)} thinks this could be theirs: “{item}”. Ask something only the owner would know.", $"/chats/{c.Id}", $"chat-{c.Id}"), ct);
         var (html, text) = NoticeEmail.Build("YOU'RE A LEGEND", "Someone thinks it's theirs",
             $"{MeEndpoints.DisplayName(owner)} saw your found report and thinks it could be theirs. Open Zarqa to chat: ask a question only the owner would know, then meet somewhere public on campus.",
-            item: item);
+            EmailLooks.Claimed, item: item);
         await SafeEmailAsync(finder.Email, $"Someone thinks it's theirs: {item}", html, text, ct);
     }
 
@@ -148,7 +149,7 @@ public sealed class NotificationSender(ZarqaDb db, IPushSender push, IEmailSende
         await PushAsync(owner.Id, new PushPayload("Ready to collect 🎉", $"It's at the RSA desk: “{m.Lost!.Title}”. Pickup code {code}.", $"/matches/{m.Id}", $"match-{m.Id}"), ct);
         var (html, text) = NoticeEmail.Build("READY TO COLLECT", "It's at the RSA desk",
             $"Show the pickup code {code} at the RSA desk and bring your student ID. They'll check it against your description and hand it over.",
-            item: m.Lost.Title);
+            EmailLooks.ReadyToCollect, item: m.Lost.Title, code: code);
         await SafeEmailAsync(owner.Email, $"Your item is ready to collect: {m.Lost.Title}", html, text, ct);
     }
 
@@ -182,7 +183,7 @@ public sealed class NotificationSender(ZarqaDb db, IPushSender push, IEmailSende
     }
 }
 
-/// <summary>Notice emails in the sign-in email's look. No links, like every Zarqa email.</summary>
+/// <summary>Notice emails in the shared <see cref="EmailLayout"/>. No links, like every Zarqa email.</summary>
 public static class NoticeEmail
 {
     /// <summary>Only the match-spotted email can be turned off: the server checks Match alerts for that one alone.</summary>
@@ -193,37 +194,19 @@ public static class NoticeEmail
     /// <paramref name="item"/> is the user's own title, shown on its own line in quotes. Titles are often sentences
     /// ("I lost my black wallet"), so they are never built into the headline.
     /// </summary>
-    public static (string Html, string Text) Build(string label, string headline, string body, string? item = null, string footer = OwnReportFooter)
+    /// <param name="look">Zarqa's picture, the sticker and how the headline breaks over lines (<see cref="EmailLooks"/>).</param>
+    /// <param name="code">A pickup code to set large above the item, when the email is about one.</param>
+    public static (string Html, string Text) Build(string label, string headline, string body, EmailLook look, string? item = null,
+        string footer = OwnReportFooter, string? code = null)
     {
-        static string e(string s) => WebUtility.HtmlEncode(s);
         var hasItem = !string.IsNullOrWhiteSpace(item);
         var itemText = hasItem ? $"“{item}”\n\n" : "";
-        var itemHtml = hasItem ? $"<div style=\"font-size:16px;font-weight:bold;line-height:1.4;margin:0 0 12px;\">&ldquo;{e(item!)}&rdquo;</div>" : "";
-        var text = $"{headline}\n\n{itemText}{body}\n\nOpen Zarqa (tryzarqa.com) on your phone to see it. {footer}\n\nZarqa · the GUtech lost & found, made by students for students.";
-        var html = $"""
-            <!doctype html>
-            <html lang="en" style="background:#222634;">
-            <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{e(headline)}</title></head>
-            <body style="margin:0;padding:0;background:#222634;">
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#222634;">
-                <tr><td align="center" style="padding:32px 16px;">
-                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:420px;">
-                    <tr><td style="padding:0 4px 20px;font-family:Impact,'Arial Narrow Bold',sans-serif;font-size:30px;letter-spacing:1px;color:#BD9777;">ZARQA</td></tr>
-                    <tr><td style="background:#F2EEE8;border-radius:20px;padding:28px 24px;font-family:Arial,Helvetica,sans-serif;color:#222634;">
-                      <div style="font-family:'Courier New',monospace;font-size:12px;font-weight:bold;letter-spacing:2px;color:#8A6A4F;">{e(label)}</div>
-                      <div style="font-family:Impact,'Arial Narrow Bold',sans-serif;font-size:30px;line-height:1.1;margin:10px 0 14px;">{e(headline)}</div>
-                      {itemHtml}
-                      <div style="font-size:15px;line-height:1.5;">{e(body)}</div>
-                      <div style="border-top:2px dashed #CFC6BA;margin:22px 0 16px;"></div>
-                      <div style="font-size:13px;line-height:1.5;color:#5E6472;">Open Zarqa (tryzarqa.com) on your phone to see it. {e(footer)}</div>
-                    </td></tr>
-                    <tr><td style="padding:18px 4px 0;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.5;color:#A9B4B6;">Zarqa · the GUtech lost &amp; found, made by students for students.</td></tr>
-                  </table>
-                </td></tr>
-              </table>
-            </body>
-            </html>
-            """;
-        return (html, text);
+        var open = $"Open Zarqa (tryzarqa.com) on your phone to see it. {footer}";
+        var text = $"{headline}\n\n{itemText}{body}\n\n{open}\n\n{EmailLayout.Signature}";
+        var ticket = EmailLayout.Label(look)
+                     + (code is null ? "" : EmailLayout.Code(WebUtility.HtmlEncode(code), size: 54, spacing: 3))
+                     + (hasItem ? EmailLayout.Tag(item!, look) : "")
+                     + EmailLayout.Body(body);
+        return (EmailLayout.Build(headline, label, look, ticket, open), text);
     }
 }

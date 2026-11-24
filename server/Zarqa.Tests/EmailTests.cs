@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
 using Zarqa.Api.Auth;
 using Zarqa.Api.Email;
+using Zarqa.Api.Notifications;
 
 namespace Zarqa.Tests;
 
@@ -20,6 +21,72 @@ public class EmailTests
         Assert.Contains("code is 042917", m.Text);
         Assert.DoesNotContain("042 917", m.Html);
         Assert.DoesNotContain("href=", m.Html);
+        Assert.Contains($"src=\"{EmailLayout.ArtBase}key.png\"", m.Html);
+    }
+
+    [Fact]
+    public void Every_email_shows_a_Zarqa_picture_that_exists_and_still_has_no_links()
+    {
+        var art = Path.Combine(RepoRoot(), "web", "public", "mascot", "email");
+        foreach (var look in EmailLooks.All)
+        {
+            // A missing file would be a broken picture in every inbox. Rebuild them with deploy/email-mascots.py.
+            Assert.True(File.Exists(Path.Combine(art, look.Art + ".png")), $"{look.Art}.png is missing from web/public/mascot/email");
+
+            var (html, text) = NoticeEmail.Build("LABEL", "A headline", "The body.", look, item: "Blue <b>bottle</b>");
+
+            Assert.Contains($"src=\"{EmailLayout.ArtBase}{look.Art}.png\"", html);
+            Assert.Contains($"alt=\"{look.Alt}\"", html);
+            Assert.Contains(look.Sticker.Replace("'", "&#39;"), html);
+            Assert.Contains("&ldquo;Blue &lt;b&gt;bottle&lt;/b&gt;&rdquo;", html);
+            Assert.DoesNotContain("href=", html);
+            Assert.DoesNotContain("[", html); // the headline's accent brackets never reach the reader
+            Assert.Contains("“Blue <b>bottle</b>”", text);
+        }
+    }
+
+    [Fact]
+    public void Headline_accent_follows_who_the_email_is_for_and_a_pickup_code_is_set_large()
+    {
+        var (owner, _) = NoticeEmail.Build("READY TO COLLECT", "It's at the RSA desk", "Body.", EmailLooks.ReadyToCollect, item: "Calculator", code: "KT7-4QM");
+        Assert.Contains("the <span style=\"color:#BD9777;\">RSA</span><br><span style=\"color:#BD9777;\">desk</span>", owner); // tan, like Lost
+        Assert.Contains("letter-spacing:3px;line-height:1.1;white-space:nowrap;\">KT7-4QM</div>", owner);
+
+        var (finder, _) = NoticeEmail.Build("YOU'RE A LEGEND", "Someone thinks it's theirs", "Body.", EmailLooks.Claimed, item: "Earbuds");
+        Assert.Contains("<span style=\"color:#8E9DA0;\">theirs</span>", finder); // sage, like Found
+        Assert.DoesNotContain("letter-spacing:3px", finder); // no code block without a code
+    }
+
+    /// <summary>
+    /// Not a check: writes every email as a file when ZARQA_EMAIL_PREVIEW_DIR is set, with the pictures read from
+    /// this checkout instead of the live site, so a changed layout can be looked at in a browser before it ships.
+    /// </summary>
+    [Fact]
+    public void Emails_can_be_written_out_to_look_at()
+    {
+        var dir = Environment.GetEnvironmentVariable("ZARQA_EMAIL_PREVIEW_DIR");
+        if (string.IsNullOrWhiteSpace(dir)) return;
+        Directory.CreateDirectory(dir);
+        var local = new Uri(Path.Combine(RepoRoot(), "web", "public", "mascot", "email") + Path.DirectorySeparatorChar).AbsoluteUri;
+        void Write(string name, string html) => File.WriteAllText(Path.Combine(dir, name + ".html"), html.Replace(EmailLayout.ArtBase, local));
+        static Zarqa.Api.Data.Report Report(Zarqa.Api.Data.ReportKind kind, string title) =>
+            new() { Kind = kind, Title = title, Description = "", CategoryText = "", CategoryNorm = "", LocationText = "", LocationName = "" };
+
+        Write("sign-in", SignInCodeEmail.Build("482915").Html);
+        Write("expired-lost", Zarqa.Api.Admin.Retention.ExpiryEmail(Report(Zarqa.Api.Data.ReportKind.Lost, "I lost my blue water bottle")).Html);
+        Write("expired-found", Zarqa.Api.Admin.Retention.ExpiryEmail(Report(Zarqa.Api.Data.ReportKind.Found, "Black umbrella left in the cafeteria")).Html);
+        const string body = "Someone found an item that might be yours and handed it to the RSA desk. Open Zarqa and check the match: if it's yours, you'll get a pickup code.";
+        Write("spotted", NoticeEmail.Build("ZARQA SPOTTED SOMETHING", "Could this be yours?", body, EmailLooks.Spotted, item: "Black wallet with a small Oman flag sticker", footer: NoticeEmail.AlertsFooter).Html);
+        Write("claimed", NoticeEmail.Build("YOU'RE A LEGEND", "Someone thinks it's theirs", body, EmailLooks.Claimed, item: "White earbuds case with a sticker on the back").Html);
+        Write("ready", NoticeEmail.Build("READY TO COLLECT", "It's at the RSA desk", body, EmailLooks.ReadyToCollect, item: "My grey Casio calculator", code: "KT7-4QM").Html);
+        Write("test", NoticeEmail.Build("TEST", "Resend can send", "An admin asked for this test email. It went through Resend.", EmailLooks.Test("Resend"), footer: "Sent from the admin page.").Html);
+    }
+
+    private static string RepoRoot()
+    {
+        var dir = new DirectoryInfo(AppContext.BaseDirectory);
+        while (dir is not null && !Directory.Exists(Path.Combine(dir.FullName, "benchmark"))) dir = dir.Parent;
+        return dir?.FullName ?? throw new InvalidOperationException("repo root not found");
     }
 
     [Fact]

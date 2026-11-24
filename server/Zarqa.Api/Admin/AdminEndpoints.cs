@@ -131,7 +131,7 @@ public static class AdminEndpoints
                 try
                 {
                     var (html, text) = Notifications.NoticeEmail.Build("TEST", $"{route.Name} can send",
-                        $"An admin asked for this test email. It went through {route.Name}.", footer: "Sent from the admin page.");
+                        $"An admin asked for this test email. It went through {route.Name}.", Email.EmailLooks.Test(route.Name), footer: "Sent from the admin page.");
                     await route.Sender.SendAsync(to, $"Zarqa test email ({route.Name})", html, text, ct);
                 }
                 catch (Exception e) when (e is Email.EmailNotSentException or HttpRequestException or TaskCanceledException && !ct.IsCancellationRequested)
