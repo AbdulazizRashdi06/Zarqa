@@ -1,0 +1,39 @@
+{
+  "model_id": "music_v2_5",
+  "composition_plan": {
+    "chunks": [
+      {
+        "song_id": "KYNpf9nLS3cngGbvYNXJ_upload",
+        "range": {
+          "start_ms": 0,
+          "end_ms": 11300
+        }
+      },
+      {
+        "text": "[Button ending]\nFull band, loud and satisfying all the way through, no letting up.\nThe very last moment is one big, short final chord hit, a 'ta-da' button,\nthat stops dead: no tail, no fade, no ring out.",
+        "duration_ms": 3000,
+        "positive_styles": [
+          "satisfying",
+          "full energy",
+          "major key",
+          "warm",
+          "uplifting",
+          "button ending",
+          "stops dead"
+        ],
+        "negative_styles": [
+          "fade out",
+          "outro",
+          "decay",
+          "ritardando",
+          "quiet ending",
+          "reverb tail",
+          "getting quieter",
+          "vocals",
+          "minor key"
+        ],
+        "context_adherence": "high"
+      }
+    ]
+  }
+}

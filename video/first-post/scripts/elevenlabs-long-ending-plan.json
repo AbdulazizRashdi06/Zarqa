@@ -1,0 +1,15 @@
+{
+  "model_id": "music_v2_5",
+  "composition_plan": {
+    "chunks": [
+      {"song_id": "KYNpf9nLS3cngGbvYNXJ_upload", "range": {"start_ms": 0, "end_ms": 11300}},
+      {
+        "text": "[Resolution and outro]\nThe warm, satisfying resolution carries on: confident, playful and uplifting,\na feel-good groove that stays full and present the whole way,\nwrapping up with one clean, satisfying final chord at the very end.",
+        "duration_ms": 9900,
+        "positive_styles": ["satisfying", "warm", "uplifting", "playful", "confident groove", "major key", "feel-good"],
+        "negative_styles": ["vocals", "minor key", "tense", "sparse", "long fade out"],
+        "context_adherence": "high"
+      }
+    ]
+  }
+}

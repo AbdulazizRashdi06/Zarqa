@@ -1,0 +1,132 @@
+{
+  "defaults": {
+    "shape": "square",
+    "sticker": "",
+    "opening": "",
+    "ticketLabel": "",
+    "itemQuotes": false,
+    "bigBody": true,
+    "bodySize": 58,
+    "signOff": "",
+    "stamp": "FOUND"
+  },
+  "posts": [
+    {
+      "id": "00-cover",
+      "layout": "cover",
+      "heading": "Zarqa|writes|[back]",
+      "headingSize": 168,
+      "coverHand": "Dear student,",
+      "coverLine": "I read your lost reports.",
+      "mascot": {
+        "src": "social/email-post/mascots/letter-cover.png"
+      }
+    },
+    {
+      "id": "01-pen",
+      "item": "Lost: pen",
+      "body": "Found it. Pretty sure it's yours. Grab it before Friday.",
+      "mascot": {
+        "src": "social/email-post/mascots/letter-pen.png"
+      }
+    },
+    {
+      "id": "02-motivation",
+      "item": "Lost: motivation",
+      "body": "wdym?",
+      "stamp": "???",
+      "mascot": {
+        "src": "social/email-post/mascots/letter-motivation.png"
+      }
+    },
+    {
+      "id": "03-library-book",
+      "item": "Lost: library book",
+      "body": "Easy. Already returned it.",
+      "stamp": "RETURNED",
+      "mascot": {
+        "src": "social/email-post/mascots/letter-book.png"
+      }
+    },
+    {
+      "id": "04-charger",
+      "item": "Lost: charger",
+      "body": "Turned up safe, sound, and somehow fully charged.",
+      "mascot": {
+        "src": "social/email-post/mascots/letter-charger.png"
+      }
+    },
+    {
+      "id": "05-keys",
+      "item": "Lost: keys",
+      "body": "Found. Done. More of these please.",
+      "mascot": {
+        "src": "social/email-post/mascots/letter-keys.png"
+      }
+    },
+    {
+      "id": "06-phone",
+      "item": "Lost: phone",
+      "body": "IT WAS. IN YOUR OTHER HAND.",
+      "stamp": "OTHER HAND",
+      "mascot": {
+        "src": "social/email-post/mascots/letter-phone.png"
+      }
+    },
+    {
+      "id": "07-goat",
+      "item": "Lost: a goat",
+      "body": "Found it. In the library. I have questions.",
+      "stamp": "FOUND?",
+      "mascot": {
+        "src": "social/email-post/mascots/letter-goat.png",
+        "scale": 1.1,
+        "y": 45
+      }
+    },
+    {
+      "id": "08-one-airpod",
+      "item": "Lost: one AirPod",
+      "body": "No case, obviously. It's here.",
+      "mascot": {
+        "src": "social/email-post/mascots/letter-airpod.png"
+      }
+    },
+    {
+      "id": "09-future",
+      "item": "Lost: future",
+      "body": "THIS IS A LOST & FOUND, NOT CAREER SERVICES.",
+      "stamp": "WRONG DESK",
+      "mascot": {
+        "src": "social/email-post/mascots/letter-future.png"
+      }
+    },
+    {
+      "id": "10-water-bottle",
+      "item": "Lost: water bottle",
+      "body": "Thank you for being normal.",
+      "mascot": {
+        "src": "social/email-post/mascots/letter-bottle.png"
+      }
+    },
+    {
+      "id": "11-will-to-live",
+      "item": "Lost: will to live",
+      "body": "SAME. I QUIT.",
+      "stamp": "I QUIT",
+      "mascot": {
+        "src": "social/email-post/mascots/letter-quit.png"
+      }
+    },
+    {
+      "id": "12-back",
+      "item": "",
+      "body": "…okay I'm back. What else?",
+      "stamp": "BACK",
+      "mascot": {
+        "src": "social/email-post/mascots/letter-back.png",
+        "flip": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+Sound effects (CC0 1.0 unless noted; library picks made with the sound-effects skill by barty-bart, sound-pass approach by Vox, @Voxyz_ai):
+- public/sfx/logo-impact.ogg: "Dramatic Hit" by qubodup (https://freesound.org/people/qubodup/sounds/222517/), CC0
+- public/sfx/woosh.ogg: "quick woosh" by florianreichelt (https://freesound.org/people/florianreichelt/sounds/683101/), CC0
+- public/sfx/sticker-pop.ogg: "ppop.wav" by Narjara (https://freesound.org/people/Narjara/sounds/527522/), CC0
+- public/sfx/there.ogg, public/sfx/is.ogg: Kenney Impact Sounds, impactPunch_heavy_000/001 (https://kenney.nl/assets/impact-sounds), CC0
+- public/sfx/fold.ogg: Kenney Interface Sounds, minimize_001 (https://kenney.nl/assets/interface-sounds), CC0
+- public/sfx/ticket-in.mp3, public/sfx/ticket-out.mp3: generated with ElevenLabs sound effects (Starter plan, commercial licence)
+- public/audio/ping-0..3.wav: synthesized in code (scripts/make-pings.mjs)
+
+Music: generated with ElevenLabs Music (music_v2_5) on a Starter plan, commercial licence.

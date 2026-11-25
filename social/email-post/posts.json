@@ -1,0 +1,18 @@
+[
+  {
+    "id": "spotted-airpods",
+    "item": "Black AirPods case with a moon sticker",
+    "mascot": { "src": "design/mascot/email-spotted.png", "scale": 1, "x": 0, "y": 0 }
+  },
+  {
+    "id": "spotted-rsa",
+    "sticker": "AT THE RSA DESK",
+    "item": "I lost my blue water bottle in the library",
+    "body": "Someone found it and handed it to the RSA desk. Open Zarqa and check the match: if it's yours, you'll get a pickup code.",
+    "mascot": { "src": "design/mascot/lookout.png", "scale": 1, "x": 0, "y": 0 }
+  },
+  {
+    "id": "empty-slot",
+    "mascot": { "src": "" }
+  }
+]

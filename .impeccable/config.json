@@ -1,0 +1,35 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "bounce-easing",
+        "value": "cubic-bezier(0.34, 1.56, 0.64, 1)",
+        "createdAt": "2026-11-10T16:24:04.737Z",
+        "reason": "Claude decided, not user-confirmed: fallback for --spring, used only on Zarqa pop-ins and the verdict sticker, matching the project's playful direction (design/HANDOFF.md)"
+      },
+      {
+        "rule": "bounce-easing",
+        "value": "cubic-bezier(0.3, 1.25, 0.5, 1)",
+        "createdAt": "2026-11-10T16:24:05.079Z",
+        "reason": "Claude decided, not user-confirmed: fallback for --spring-soft, used only on Zarqa, stickers and luggage tags; plain controls were moved to ease-out"
+      },
+      {
+        "rule": "bounce-easing",
+        "value": "var(--spring-soft)",
+        "createdAt": "2026-11-14T00:37:19.744Z",
+        "reason": "Project motion rules (CLAUDE.md, Motion 2026-11-10): bounce is allowed only on Zarqa, stickers and luggage tags; this line is Zarqa's peek-up entrance, committed 2026-11-13 before this session"
+      },
+      {
+        "rule": "wide-tracking",
+        "value": "*",
+        "files": [
+          "social/email-post/template.html"
+        ],
+        "createdAt": "2026-11-24T21:35:23.316Z",
+        "reason": "Claude triage: remaining tracking is only on short uppercase mono labels (sticker, ticket label, NEW EMAIL, footer line), same as EmailLayout.cs and the app"
+      }
+    ]
+  }
+}
