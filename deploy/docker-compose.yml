@@ -33,6 +33,8 @@ services:
       # Coming soon: new student accounts see a "coming soon" screen; existing accounts and staff get in.
       # Set AUTH_COMING_SOON=false to open sign-up to everyone.
       Auth__ComingSoon: ${AUTH_COMING_SOON:-true}
+      # Exact addresses (comma-separated) that always get the coming-soon page and are not signed in, even with an account.
+      Auth__ComingSoonEmails: ${AUTH_COMING_SOON_EMAILS:-}
       # Matching models (secrets: set with deploy/set-secret.*). No keys = matching waits, nothing breaks.
       Models__OpenAiApiKey: ${OPENAI_API_KEY:-}
       Models__OpenAiBaseUrl: ${OPENAI_BASE_URL:-}

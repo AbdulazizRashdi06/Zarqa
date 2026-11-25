@@ -239,5 +239,15 @@ public class AuthFlowTests(TestApp app) : IClassFixture<TestApp>
         await Verify(rsa, expectIn: true);
         await Verify("boss.gate@student.gutech.edu.om", expectIn: true);
         await Verify("pilot.gate@gmail.com", expectIn: true);
+
+        // An address the owner lists gets the page even though it is an admin, an exception and has an account,
+        // and that account is still there afterwards.
+        using var listed = configured.WithWebHostBuilder(builder => builder.UseSetting("Auth:ComingSoonEmails", "Pilot.Gate@gmail.com"));
+        var http = listed.CreateClient(new WebApplicationFactoryClientOptions { BaseAddress = new Uri("https://localhost"), HandleCookies = true });
+        await http.PostAsJsonAsync("/api/auth/request-code", new { email = "pilot.gate@gmail.com" });
+        var answer = await (await http.PostAsJsonAsync("/api/auth/verify", new { email = "pilot.gate@gmail.com", code = app.Emails.LastCodeFor("pilot.gate@gmail.com") })).Content.ReadFromJsonAsync<JsonElement>();
+        Assert.True(answer.GetProperty("comingSoon").GetBoolean());
+        Assert.Equal(HttpStatusCode.Unauthorized, (await http.GetAsync("/api/me")).StatusCode);
+        await using (var db = app.Db()) Assert.True(await db.Users.AnyAsync(u => u.Email == "pilot.gate@gmail.com"));
     }
 }

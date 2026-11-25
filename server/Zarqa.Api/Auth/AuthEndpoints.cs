@@ -108,6 +108,16 @@ public static class AuthEndpoints
             // Admins are listed in config (Admin:Emails, comma-separated): no admin UI to grant it.
             var admins = (config["Admin:Emails"] ?? "").Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
             var isAdmin = admins.Contains(address, StringComparer.OrdinalIgnoreCase);
+            // Addresses the owner wants to get the coming-soon page whatever they are (Auth:ComingSoonEmails, to look at
+            // it with a real sign-in): nobody is signed in, and an account they already have is left untouched.
+            if (config.GetValue<bool>("Auth:ComingSoon")
+                && (config["Auth:ComingSoonEmails"] ?? "").Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+                    .Contains(address, StringComparer.OrdinalIgnoreCase))
+            {
+                await db.SaveChangesAsync(ct);
+                await tx.CommitAsync(ct);
+                return Results.Ok(new { comingSoon = true });
+            }
             var user = await db.Users.FirstOrDefaultAsync(u => u.Email == address, ct);
             if (user is null)
             {
