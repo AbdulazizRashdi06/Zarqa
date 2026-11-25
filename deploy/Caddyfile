@@ -73,3 +73,10 @@ drivealt.tryzarqa.com {
 	}
 }
 # <<< drivealt
+
+# >>> jokers-hunt
+# Joker's Hunt runs on zarqa_default. Retain this route in the shared proxy source.
+jokers-hunt.173-249-40-122.sslip.io {
+	reverse_proxy jokers-hunt:3000
+}
+# <<< jokers-hunt
